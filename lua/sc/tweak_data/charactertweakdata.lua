@@ -3838,6 +3838,8 @@ function CharacterTweakData:_init_boom(presets)
 		self.boom.custom_voicework = "tswat_ru"
 	elseif self:get_ai_group_type() == "nypd" then
 		self.boom.custom_voicework = "grenadier_nypd"
+	elseif self:get_ai_group_type() == "murkywater" then
+		self.boom.custom_voicework = "murky_grenadier"
 	else
 		self.boom.custom_voicework = "grenadier"
 	end
