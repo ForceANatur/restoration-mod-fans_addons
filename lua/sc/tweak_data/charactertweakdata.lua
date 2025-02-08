@@ -837,7 +837,7 @@ function CharacterTweakData:_init_swat(presets)
 		self.hrt_titan.custom_voicework = "asu_ru"
 	else
 		self.hrt_titan.custom_voicework = "asu"
-	end	
+	end
 	if self:get_ai_group_type() == "russia" or self:get_ai_group_type() == "federales" then
 	    self.hrt_titan.speech_prefix_p1 = self._prefix_data_p1.cop()
 	    self.hrt_titan.speech_prefix_p2 = "n"
@@ -919,7 +919,7 @@ function CharacterTweakData:_init_heavy_swat(presets)
 	
 	self.zeal_heavy_swat = deep_clone(self.heavy_swat)
 	table.insert(self._enemy_list, "zeal_heavy_swat")
-	
+
 	--Titan Sniper
 	self.heavy_swat_sniper = deep_clone(self.heavy_swat)
 	self.heavy_swat_sniper.tags = {"law", "sniper", "special", "customvo"}
@@ -996,12 +996,12 @@ function CharacterTweakData:_init_heavy_swat(presets)
 	if self:get_ai_group_type() == "russia" then
 		self.weekend_dmr.custom_voicework = "marshal_marksman_ru"
 	elseif self:get_ai_group_type() == "murkywater" then
-		self.weekend_dmr.custom_voicework = "bravo_dmr_murky"	
+		self.weekend_dmr.custom_voicework = "bravo_dmr_murky"
 	elseif self:get_ai_group_type() == "federales" then
 		self.weekend_dmr.custom_voicework = "bravo_elite_mex"
 	else
 		self.weekend_dmr.custom_voicework = "bravo_dmr"
-	end	
+	end
 	self.weekend_dmr.HEALTH_INIT = 24.375
 	self.weekend_dmr.headshot_dmg_mul = 4.0625
 	self.weekend_dmr.heal_cooldown = 2.5
@@ -1205,12 +1205,12 @@ function CharacterTweakData:_init_city_swat(presets)
 	if self:get_ai_group_type() == "russia" then
 		self.weekend.custom_voicework = "bravo_ru"
 	elseif self:get_ai_group_type() == "murkywater" then
-		self.weekend.custom_voicework = "bravo_murky"	
+		self.weekend.custom_voicework = "bravo_murky"
 	elseif self:get_ai_group_type() == "federales" then
 		self.weekend.custom_voicework = "bravo_mex"
 	else
 		self.weekend.custom_voicework = "bravo"
-	end	
+	end
 	self.weekend.HEALTH_INIT = 18.75
 	self.weekend.headshot_dmg_mul = 3.75
 	self.weekend.speech_prefix_p1 = "null"
@@ -1419,111 +1419,6 @@ function CharacterTweakData:_init_marshal_marksman(presets)
 		self.marshal_marksman_scripted.custom_voicework = "marshal_marksman"
 	end
 	table.insert(self._enemy_list, "marshal_marksman")
-end
-
--- Stronger than normal shields but not as tough as titan shields
-function CharacterTweakData:_init_marshal_shield(presets)
-	self.marshal_shield = deep_clone(presets.base)
-	self.marshal_shield.tags = {
-		"law",
-		"shield"
-	}
-	self.marshal_shield.experience = {}
-	self.marshal_shield.weapon = deep_clone(presets.weapon.normal)
-	self.marshal_shield.static_weapon_preset = true
-	self.marshal_shield.detection = presets.detection.normal
-	self.marshal_shield.HEALTH_INIT = 18
-	self.marshal_shield.headshot_dmg_mul = 2.2
-	self.marshal_shield.allowed_stances = {
-		cbt = true
-	}
-	self.marshal_shield.allowed_poses = {
-		crouch = true
-	}
-	self.marshal_shield.always_face_enemy = true
-	self.marshal_shield.move_speed = presets.move_speed.fast
-	self.marshal_shield.no_run_start = true
-	self.marshal_shield.no_run_stop = true
-	self.marshal_shield.no_retreat = true
-	self.marshal_shield.no_arrest = true
-	self.marshal_shield.surrender = nil
-	self.marshal_shield.rotation_speed = 1.5 -- dunno what this does but im gonna set it to 1.5 and see what happens
-	self.marshal_shield.ecm_vulnerability = 0
-	self.marshal_shield.ecm_hurts = {
-		ears = {
-			max_duration = 0,
-			min_duration = 0
-		}
-	}
-	self.marshal_shield.rescue_hostages = false
-	self.marshal_shield.deathguard = false
-	self.marshal_shield.no_equip_anim = true
-	self.marshal_shield.wall_fwd_offset = 100
-	self.marshal_shield.damage.explosion_damage_mul = 0.8
-	self.marshal_shield.calls_in = nil
-	self.marshal_shield.ignore_medic_revive_animation = true
-	self.marshal_shield.shooting_death = false
-	self.marshal_shield.damage.hurt_severity = presets.hurt_severities.no_hurts
-	self.marshal_shield.damage.shield_knocked = false
-	self.marshal_shield.immune_to_concussion = true
-	self.marshal_shield.damage.immune_to_knockback = true
-	self.marshal_shield.immune_to_knock_down = true
-	self.marshal_shield.use_animation_on_fire_damage = false
-	self.marshal_shield.flammable = true
-	self.marshal_shield.weapon_voice = "3"
-	self.marshal_shield.experience.cable_tie = "tie_swat"
-	self.marshal_shield.speech_prefix_p1 = "cum"
-	self.marshal_shield.speech_prefix_p2 = nil
-	self.marshal_shield.speech_prefix_count = nil
-	self.marshal_shield.yellow_blood = nil
-	self.marshal_shield.no_asu = true
-	self.marshal_shield.custom_voicework = "bravo"
-	self.marshal_shield.speech_prefix_count = nil
-	self.marshal_shield.priority_shout = "f31"
-	self.marshal_shield.access = "shield"
-	self.marshal_shield.chatter = presets.enemy_chatter.shield
-	self.marshal_shield.announce_incomming = "incomming_shield"
-	self.marshal_shield.spawn_sound_event = "shield_identification"
-	self.marshal_shield.steal_loot = nil
-	self.marshal_shield.no_mutator_weapon_override = true
-	self.marshal_shield.is_special = true
-	self.marshal_shield.heal_cooldown = 4
-	table.insert(self._enemy_list, "marshal_shield")
-
-	self.marshal_shield_break = deep_clone(self.marshal_shield)
-	self.marshal_shield_break.rotation_speed = 4 -- dunno what this does but im gonna set it to 4 and see what happens
-	self.marshal_shield_break.tags = {
-		"law"
-	}
-	self.marshal_shield_break.HEALTH_INIT = 20
-	self.marshal_shield_break.headshot_dmg_mul = 2.4
-	self.marshal_shield_break.allowed_stances = nil
-	self.marshal_shield_break.allowed_poses = nil
-	self.marshal_shield_break.no_equip_anim = nil
-	self.marshal_shield_break.no_run_start = nil
-	self.marshal_shield_break.no_run_stop = nil
-	self.marshal_shield_break.always_face_enemy = true
-	self.marshal_shield_break.wall_fwd_offset = nil
-	self.marshal_shield_break.priority_shout = nil
-	self.marshal_shield_break.access = "swat"
-	self.marshal_shield_break.no_mutator_weapon_override = false
-	self.marshal_shield_break.chatter = presets.enemy_chatter.swat
-	self.marshal_shield_break.announce_incomming = nil
-	self.marshal_shield_break.damage.hurt_severity = presets.hurt_severities.base
-	self.marshal_shield_break.damage.explosion_damage_mul = 1
-	self.marshal_shield_break.use_animation_on_fire_damage = nil
-	self.marshal_shield_break.damage.shield_knocked = nil
-	self.marshal_shield_break.modify_health_on_tweak_change = true
-	self.marshal_shield_break.tmp_invulnerable_on_tweak_change = 1.5 --still better than 3 seconds
-	self.marshal_shield_break.unintimidateable = true
-	self.marshal_shield_break.no_asu = true
-	self.marshal_shield_break.heal_cooldown = 2
-	self.marshal_shield_break.damage.explosion_damage_mul = 0.9
-	self.marshal_shield_break.damage.rocket_damage_mul = 0.9
-	self.marshal_shield_break.damage.fire_pool_damage_mul = 0.8
-	self.marshal_shield_break.damage.bullet_damage_mul = 0.85
-	self.marshal_shield_break.damage.fire_damage_mul = 0.8
-	table.insert(self._enemy_list, "marshal_shield_break")
 end
 
 function CharacterTweakData:_init_gangster(presets)
@@ -2801,6 +2696,7 @@ function CharacterTweakData:_init_tank(presets)
 	self.tank_titan.no_asu = true
 	self.tank_titan.heal_cooldown = 22.5
 	self.tank_titan.chatter = presets.enemy_chatter.swat -- talk when you kill us
+	self.tank_titan.kill_taunt = "post_kill_taunt"
 	table.insert(self._enemy_list, "tank_titan")
 	
 	--Titandozer, assault variant (used in assault groups)
@@ -2828,11 +2724,7 @@ function CharacterTweakData:_init_tank(presets)
 	--Halloween Bulldozer (Black)
 	self.tank_hw_black = deep_clone(self.tank_black)
 	self.tank_hw_black.weapon = deep_clone(presets.weapon.normal)
-	if self:get_ai_group_type() == "russia" or self:get_ai_group_type() == "federales" then
-		self.tank_hw_black.custom_voicework = "tdozer_ru"
-	else
-		self.tank_hw_black.custom_voicework = "tdozer"
-	end
+	self.tank_hw_black.custom_voicework = "tdozer"
 	--Dozerish head health, lowered to account for no visor so they're about the same head health
 	self.tank_hw_black.headshot_dmg_mul = 5.5
 	self.tank_hw_black.ignore_headshot = false
@@ -2847,6 +2739,7 @@ function CharacterTweakData:_init_tank(presets)
 	self.tank_hw.weapon = deep_clone(presets.weapon.normal)
 	self.tank_hw.ignore_headshot = false
 	self.tank_hw.melee_anims = nil
+	self.tank_hw.custom_voicework = "tdozer"
 	table.insert(self._enemy_list, "tank_hw")
 	
 	--Halloween Bulldozer, captain minion variant with LMG (Used only for Winters' Squad on DSPJ)
@@ -2880,6 +2773,8 @@ function CharacterTweakData:_init_tank_biker(presets)
 	self.tank_biker.no_omnia_heal = true
 	self.tank_biker.no_asu = true
 	self.tank_biker.move_speed = presets.move_speed.very_slow
+	self.tank_biker.chatter = presets.enemy_chatter.swat -- talk when you kill us
+	self.tank_biker.kill_taunt = "post_kill_taunt"
 	table.insert(self._enemy_list, "tank_biker")	
 end
 
@@ -3326,6 +3221,111 @@ function CharacterTweakData:_init_phalanx_vip(presets)
 	self.phalanx_vip.captain_type = restoration.captain_types.winter
 	self.phalanx_vip.no_mutator_weapon_override = true
 	table.insert(self._enemy_list, "phalanx_vip")
+
+	-- Stronger than normal shields but not as tough as titan shields
+function CharacterTweakData:_init_marshal_shield(presets)
+	self.marshal_shield = deep_clone(presets.base)
+	self.marshal_shield.tags = {
+		"law",
+		"shield"
+	}
+	self.marshal_shield.experience = {}
+	self.marshal_shield.weapon = deep_clone(presets.weapon.normal)
+	self.marshal_shield.static_weapon_preset = true
+	self.marshal_shield.detection = presets.detection.normal
+	self.marshal_shield.HEALTH_INIT = 18
+	self.marshal_shield.headshot_dmg_mul = 2.2
+	self.marshal_shield.allowed_stances = {
+		cbt = true
+	}
+	self.marshal_shield.allowed_poses = {
+		crouch = true
+	}
+	self.marshal_shield.always_face_enemy = true
+	self.marshal_shield.move_speed = presets.move_speed.fast
+	self.marshal_shield.no_run_start = true
+	self.marshal_shield.no_run_stop = true
+	self.marshal_shield.no_retreat = true
+	self.marshal_shield.no_arrest = true
+	self.marshal_shield.surrender = nil
+	self.marshal_shield.rotation_speed = 1.5 -- dunno what this does but im gonna set it to 1.5 and see what happens
+	self.marshal_shield.ecm_vulnerability = 0
+	self.marshal_shield.ecm_hurts = {
+		ears = {
+			max_duration = 0,
+			min_duration = 0
+		}
+	}
+	self.marshal_shield.rescue_hostages = false
+	self.marshal_shield.deathguard = false
+	self.marshal_shield.no_equip_anim = true
+	self.marshal_shield.wall_fwd_offset = 100
+	self.marshal_shield.damage.explosion_damage_mul = 0.8
+	self.marshal_shield.calls_in = nil
+	self.marshal_shield.ignore_medic_revive_animation = true
+	self.marshal_shield.shooting_death = false
+	self.marshal_shield.damage.hurt_severity = presets.hurt_severities.no_hurts
+	self.marshal_shield.damage.shield_knocked = false
+	self.marshal_shield.immune_to_concussion = true
+	self.marshal_shield.damage.immune_to_knockback = true
+	self.marshal_shield.immune_to_knock_down = true
+	self.marshal_shield.use_animation_on_fire_damage = false
+	self.marshal_shield.flammable = true
+	self.marshal_shield.weapon_voice = "3"
+	self.marshal_shield.experience.cable_tie = "tie_swat"
+	self.marshal_shield.speech_prefix_p1 = "cum"
+	self.marshal_shield.speech_prefix_p2 = nil
+	self.marshal_shield.speech_prefix_count = nil
+	self.marshal_shield.yellow_blood = nil
+	self.marshal_shield.no_asu = true
+	self.marshal_shield.custom_voicework = "bravo"
+	self.marshal_shield.speech_prefix_count = nil
+	self.marshal_shield.priority_shout = "f31"
+	self.marshal_shield.access = "shield"
+	self.marshal_shield.chatter = presets.enemy_chatter.shield
+	self.marshal_shield.announce_incomming = "incomming_shield"
+	self.marshal_shield.spawn_sound_event = "shield_identification"
+	self.marshal_shield.steal_loot = nil
+	self.marshal_shield.no_mutator_weapon_override = true
+	self.marshal_shield.is_special = true
+	self.marshal_shield.heal_cooldown = 4
+	table.insert(self._enemy_list, "marshal_shield")
+
+	self.marshal_shield_break = deep_clone(self.marshal_shield)
+	self.marshal_shield_break.rotation_speed = 4 -- dunno what this does but im gonna set it to 4 and see what happens
+	self.marshal_shield_break.tags = {
+		"law"
+	}
+	self.marshal_shield_break.HEALTH_INIT = 20
+	self.marshal_shield_break.headshot_dmg_mul = 2.4
+	self.marshal_shield_break.allowed_stances = nil
+	self.marshal_shield_break.allowed_poses = nil
+	self.marshal_shield_break.no_equip_anim = nil
+	self.marshal_shield_break.no_run_start = nil
+	self.marshal_shield_break.no_run_stop = nil
+	self.marshal_shield_break.always_face_enemy = true
+	self.marshal_shield_break.wall_fwd_offset = nil
+	self.marshal_shield_break.priority_shout = nil
+	self.marshal_shield_break.access = "swat"
+	self.marshal_shield_break.no_mutator_weapon_override = false
+	self.marshal_shield_break.chatter = presets.enemy_chatter.swat
+	self.marshal_shield_break.announce_incomming = nil
+	self.marshal_shield_break.damage.hurt_severity = presets.hurt_severities.base
+	self.marshal_shield_break.damage.explosion_damage_mul = 1
+	self.marshal_shield_break.use_animation_on_fire_damage = nil
+	self.marshal_shield_break.damage.shield_knocked = nil
+	self.marshal_shield_break.modify_health_on_tweak_change = true
+	self.marshal_shield_break.tmp_invulnerable_on_tweak_change = 1.5 --still better than 3 seconds
+	self.marshal_shield_break.unintimidateable = true
+	self.marshal_shield_break.no_asu = true
+	self.marshal_shield_break.heal_cooldown = 2
+	self.marshal_shield_break.damage.explosion_damage_mul = 0.9
+	self.marshal_shield_break.damage.rocket_damage_mul = 0.9
+	self.marshal_shield_break.damage.fire_pool_damage_mul = 0.8
+	self.marshal_shield_break.damage.bullet_damage_mul = 0.85
+	self.marshal_shield_break.damage.fire_damage_mul = 0.8
+	table.insert(self._enemy_list, "marshal_shield_break")
+end
 	
 	--Winters, shield broken
 	self.phalanx_vip_break = deep_clone(self.phalanx_vip)
@@ -18596,14 +18596,15 @@ function CharacterTweakData:character_map()
 	--usm1
 		table.insert(char_map.usm1.list, "ene_male_marshal_marksman_scripted_2")
 	--Christmas
-		table.insert(char_map.cg22.list, "ene_bulldozer_snowman")		
+		table.insert(char_map.cg22.list, "ene_bulldozer_snowman")
 	--vip
 		char_map.vip = {
 			path = "units/pd2_dlc_vip/characters/",
 			list = {
 				"ene_vip_1",
 				"ene_vip_2",
-				"ene_vip_2_assault",					
+				"ene_vip_2_assault",
+				"ene_vip_2_minion",
 				"ene_spring",
 				"ene_vip_autumn",
 				"ene_spook_cloak_1",
@@ -18612,7 +18613,7 @@ function CharacterTweakData:character_map()
 				"ene_phalanx_grenadier",
 				"ene_phalanx_taser",
 				"ene_phalanx_1",
-				"ene_phalanx_1_assault",					
+				"ene_phalanx_1_assault",
 				"ene_titan_shotgun",
 				"ene_titan_rifle",
 				"ene_omnia_lpf",

@@ -2613,6 +2613,8 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons", function(loc
 					["whydoyoucome"] = "The only one of its kind, made specially for rockerboy Johnny Silverhand.\n\n#{skill_color}#Can pierce multiple enemies and their body armor.\nRounds ricochet off surfaces while firing from the hip and pierce walls while aiming.\nWeapon Butt attacks shoot out a short ranged wave of fire.##",
 					--Colt Detective
 					["bm_lemon_dmc_desc"] = "Imagine yourself with a concealable, high-powered revolver. Now imagine no futher, as the Investigator is exactly that.\n\n#{skill_color}#Deals double damage when attacking enemies from behind.##",
+					--PP-91 KEDR
+					["bm_w_kedr_sc_desc"] = "",
 
 			--[[ SMGs ]]
 				--Kobus 90
@@ -2653,6 +2655,10 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons", function(loc
 					["bm_w_lc10_desc_sc"] = "Full-auto submachine gun. Well rounded with excellent damage range and good accuracy. Moderate damage with an impressive muzzle velocity and a high fire rate.",
 					--REDACTED
 					["bm_w_redacted_desc_sc"] = "#{stats_positive}#REDACTED##\n\n#{risk}#This weapon shoots in 2-round auto-bursts when fired from the hip and shoots in semi-auto when fired while aiming down the sights.##",
+					--Scudomnion
+					["bm_w_cagnali_desc"] = "Manufactured by Cagnali Industries for use with the C.I.A.R.S.S.E.A.\n\nOMNIA has taken note of this weapon's existence and are trying to improve where Dr. Lucia Cagnali failed.",
+					--Owen SMG
+					["wpn_fps_smg_owen_desc"] = "Australian submachine gun that supplied the Australian Army from 1938 to 1971. You can dip this in sand, mud, or even both and it still fires perfectly fine.",
 
 			--[[ MGs ]]
 				--Bootleg/HK416c
@@ -2710,6 +2716,9 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons", function(loc
 					--MW2019 PKM
 					["bm_wp_wpn_fps_lmg_pkilo_xmag"] = "Brown Ammo Box",
 					["bm_wp_wpn_fps_lmg_pkilo_xmag_large"] = "Black Ammo Box",
+					--Serious Sam Minigun (XM214-A)
+					["bm_wpn_fps_lmg_xm214a_desc"] = "\"Whenever you get the minigun in a Serious Sam game, you know shit's about to go down.\" - Civvie 11\n\n#{risk}#Has a brief spin-up period before firing; aiming keeps the weapon spun-up.##",
+					["wpn_fps_lmg_k3_desc"] = "Strangly missing a few parts...",
 
 			--[[ SHOTGUNS ]]
 				--Saiga
@@ -2757,6 +2766,8 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons", function(loc
 					["bm_wp_wpn_fps_upg_wmtx_gastube_burst"] = "Burst Fire System",
 					["bm_wp_wpn_fps_upg_wmtx_gastube_burst_desc"] = "Adds a ##{skill_color}#2 round burst-fire## toggle.",
 					["bm_super_sc_desc"] = "",
+					--Chiappa Triple Threat
+					["wpn_fps_shot_triple_desc"] = "If two barrels won't kill whoever you're shooting, then the 3rd one will.",
 
 			--[[ ARs ]]
 				--S552
@@ -2838,6 +2849,10 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons", function(loc
 					["bm_wp_ck_penetrator_desc"] = "A variant of the AR-23 designed to #{skill_color}#penetrate armor.##",
 					["bm_w_ar23_concussive"] = "AR-23C Liberator Concussive",
 					["bm_wp_ck_concussive_desc"] = "A variant of the AR-23 featuring #{skill_color}#concussive rounds## and a modified red-dot sight.\n#{skill_color}#Concussive rounds stagger enemies up to 20 meters away.##\n#{risk}#Stagger range cannot be modified and burst-fire is removed.##",
+					--AMCAR-4
+					["bm_amcar4_sc_desc"] = "The AMCAR-4 is one of the most versatile assault rifle there is.\n\nThe good accuracy coupled with the high rate of fire prepares it's owner for any situation.",
+					--TAR-21
+					["bm_wpn_fps_ass_tar21_sc_desc"] = "Isralic bullpup assault rifle for close-quarters combat.",
 
 			--[[ DMRs ]]
 				--Little Friend
@@ -2983,6 +2998,10 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons", function(loc
 					["bm_hmcar_sc_desc"] = "Before being phased out by law-enforcement, you managed to swipe a case full of these conversion kits.\n\nShoots #{stat_maxed}#titan-sniper rounds## capable of #{skill_color}#piercing multiple enemies, their body armor, shields within max damage range and thin walls;## Alt-fire shoots a #{event_color}#full power sniper round## for #{skill_color}#twice the ammo and power## that also adds the abilty to #{skill_color}#pierce titan-shields.##",
 					["bm_wp_hmcar_hd_kit"] = "32bit 8K HD Kit",
 					["bm_wp_hmcar_hd_kit_desc"] = "Application has crashed: C++ exception\nCould not load texture because IDirect3D9::CreateTexture call failed.\nDirect3D could not allocate sufficient memory to complete the call.\n\n\n\n\n\n\n ",
+					--Travis Baker's Repeater
+					["wpn_fps_snp_baker_desc_sc"] = "A Winchester gilded in a gold pattern, fit for an upcoming candyman king...\n\n#{skill_color}#Can pierce multiple enemies and shields.##",
+					--.300 Knockout
+					["bm_w_knockout_sc_desc"] = "Anti-materiel varaint of the Rattlesnake. Much like other anti-materiel rifles, using this on living targets is probably a warcrime.\n\nComes #{skill_color}#integrally suppressed## and #{skill_color}#can pierce body armor, multiple enemies, shields, titan-shields and thin walls.##",
 
 			--[[ SPECIALS ]]
 				--Saw
