@@ -2429,7 +2429,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons", function(loc
 				["bm_wp_upg_i_csglock_desc"] = "#{risk}#Adds a fire selector##, permitting this weapon to switch to a #{skill_color}#1200 RPM 3-round burst## setting, at the cost of a lower semi-auto fire rate.",
 				--AK12
 				["bm_wp_upg_i_abakan"] = "Abakan Kit",
-				["bm_wp_upg_i_abakan_desc"] = "Allows this weapon to fire a #{risk}#hyperburst## with each trigger pull at the cost of a lower fire rate afterwards.",
+				["bm_wp_upg_i_abakan_desc"] = "Allows this weapon to fire a #{risk}#hyperburst## with each trigger pull at the cost of a slower base fire rate.",
 				--10-0
 				["bm_wp_upg_i_tekna"] = "Tekna Burst Kit",
 				["bm_wp_upg_i_tekna_desc"] = "Locks this weapon to fire in #{risk}#3-round bursts##; pair it with a #{skill_color}#glaive## maybe?",
@@ -2932,7 +2932,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons", function(loc
 					["bm_w_bulldog_desc"] = "Some kind of happiness is measured out in taking down enemies with the Bulldog.\n\n#{risk}#This weapon shoots in full-auto when fired from the hip and shoots in bursts when fired while aiming down the sights.##",
 					--RMC2
 					["bm_w_rmary2"] = "Goblin Mk2",
-					["bm_wp_chf_50_desc"] = "#{skill_color}#Headshots deal 50% more damage to non-captain enemies.##",
+					["bm_wp_chf_50_desc"] = "#{skill_color}#Headshots ignore damage falloff.##",
 					["bm_w_rmary2_desc"] = "Proof of concept prototype designed by a Royal Military College Duntroon cadet.\n\n#{skill_color}#Deals 75% of its damage through body armor and can pierce multiple enemies.##",
 
 			--[[ SNIPERS ]]
@@ -5223,6 +5223,9 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills", function(loc)
 		["mutator_letthesleepinggoddie_longdesc"] = "Upon a non-empty reload, ammo from the previous magazine is lost.\n\nNote: Weapons that retain their ammo during their reload (per-round loading, retention reloads, etc.) as well as reloads triggered by skills are exempt from the effects of this mutator.",
 		["mutator_letthesleepinggoddie_no_effect"] = "Unaffected by the \"Magazine Martyr\" mutator.",
 
+		["mutator_morespecials_whywhywhy"] = "Extremely High Special Spawns",
+		["mutator_morespecials_whywhywhy_desc"] = "why would you subject yourself to this lol",
+		["mutator_morespecials_whywhywhy_longdesc"] = "Sets the special unit cap to 99.\n\nyoure making a huge mistake lol",
 
 		["menu_cg22_post_objective_1_desc"] = "Kill 200 enemies with any sniper rifle.",
 		["menu_cg22_post_objective_2_desc"] = "Kill 15 Cloakers with the North Star rifle on Very Hard or above.",

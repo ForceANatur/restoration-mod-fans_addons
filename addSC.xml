@@ -187,14 +187,6 @@
 	
 	<mission			path="levels/instances/unique/sah/sah_entrance_detector/world/world" force="true" unload="true"/> <!--replaced the casino guards with secret service (don't know why they are here in a first place)-->
 	
-	<!--better SWAT squads-->
-	<mission			path="levels/instances/unique/chca/chca_helicopter_enemies/world/world" force="true"/>
-	<mission			path="levels/instances/unique/deep/deep_helicopter_enemies/world/world" force="true"/>
-	<mission			path="levels/instances/unique/glace/glace_helicopter_swat/world/world" force="true"/>
-	<mission			path="levels/instances/unique/pet_helicopter_swat/world/world" force="true"/>
-	<mission			path="levels/instances/unique/san_helicopter_4swat/world/world" force="true"/>
-	<mission			path="levels/instances/unique/shout_helicopter_swat/world/world" force="true"/>
-	
 	<mission			path="levels/narratives/e_welcome_to_the_jungle/stage_1/world/world" force="true" unload="true"/> <!--Adds female bikers, biker response and biker guard as the camera man-->
 
 	<continent			path="levels/narratives/e_election_day/stage_2/world/world" force="true" unload="true"/>
@@ -2003,6 +1995,12 @@
 	<animation			path="anims/fps/melee/garber/melee_charge" force="true"/>
 	<animation			path="anims/fps/melee/garber/melee_charge_var2" force="true"/>
 	<animation			path="anims/fps/melee/garber/melee_start" force="true"/>
+
+	<!-- agave machete anims for melee_machete since it suffers the same desync issues as the new melee_axe anims -->
+	<animation			path="anims/fps/melee/machete/melee_attack_var1" force="true"/>
+	<animation			path="anims/fps/melee/machete/melee_attack_var2" force="true"/>
+	<animation			path="anims/fps/melee/machete/melee_attack_var3" force="true"/>
+	<animation			path="anims/fps/melee/machete/melee_attack_var4" force="true"/>
 	
 	<!-- Bat stab anims -->
 	<animation			path="anims/fps/melee/baseballbat/melee_attack_var3" force="true"/>

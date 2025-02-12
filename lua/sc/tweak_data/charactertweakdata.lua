@@ -3215,14 +3215,14 @@ function CharacterTweakData:_init_phalanx_vip(presets)
 		contact = true,
 		heal_chatter_winters = true,
 		entrance = true
-	}		
+	}
 	self.phalanx_vip.no_omnia_heal = true	
 	self.phalanx_vip.can_be_healed = false
 	self.phalanx_vip.captain_type = restoration.captain_types.winter
 	self.phalanx_vip.no_mutator_weapon_override = true
 	table.insert(self._enemy_list, "phalanx_vip")
 
-	-- Stronger than normal shields but not as tough as titan shields
+-- Stronger than normal shields but not as tough as titan shields
 function CharacterTweakData:_init_marshal_shield(presets)
 	self.marshal_shield = deep_clone(presets.base)
 	self.marshal_shield.tags = {
