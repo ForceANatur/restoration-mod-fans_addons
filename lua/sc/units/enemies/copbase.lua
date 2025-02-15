@@ -769,6 +769,7 @@ function CopBase:default_weapon_name(...)
 			[Idstring("units/pd2_dlc_bex/characters/ene_swat_dozer_medic_policia_federale/ene_swat_dozer_medic_policia_federale"):key()] = {"m14_sniper_npc"},
 			[Idstring("units/pd2_dlc_bex/characters/ene_swat_dozer_policia_federale_minigun/ene_swat_dozer_policia_federale_minigun"):key()] = {"m14_sniper_npc"},
 			-- SC Bulldozers
+			[Idstring("units/payday2/characters/ene_bulldozer_1_hard/ene_bulldozer_1_hard"):key()] = {"railgun_npc"},
 			[Idstring("units/payday2/characters/ene_bulldozer_1_sc/ene_bulldozer_1_sc"):key()] = {"railgun_npc"},
 			[Idstring("units/payday2/characters/ene_bulldozer_2_sc/ene_bulldozer_2_sc"):key()] = {"railgun_npc"},
 			[Idstring("units/payday2/characters/ene_bulldozer_3_sc/ene_bulldozer_3_sc"):key()] = {"railgun_npc"},
@@ -781,7 +782,9 @@ function CopBase:default_weapon_name(...)
 			[Idstring("units/pd2_dlc_drm/characters/ene_bulldozer_medic_classic/ene_bulldozer_medic_classic")] = {"railgun_npc"},
 			[Idstring("units/pd2_dlc_drm/characters/ene_bulldozer_medic_sc/ene_bulldozer_medic_sc"):key()] = {"railgun_npc"},
 			[Idstring("units/pd2_dlc_vip/characters/ene_vip_2_assault/ene_vip_2_assault"):key()] = {"railgun_npc"},
+			[Idstring("units/pd2_dlc_vip/characters/ene_vip_2_minion/ene_vip_2_minion"):key()] = {"railgun_npc"},
 			[Idstring("units/pd2_dlc_vip/characters/ene_vip_2/ene_vip_2"):key()] = {"railgun_npc"},
+			[Idstring("units/payday2/characters/ene_bulldozer_biker_1/ene_bulldozer_biker_1"):key()] = {"railgun_npc"},
 			-- Akan SC
 			[Idstring("units/pd2_mod_reapers/characters/ene_bulldozer_1/ene_bulldozer_1"):key()] = {"railgun_npc"},
 			[Idstring("units/pd2_mod_reapers/characters/ene_bulldozer_2/ene_bulldozer_2"):key()] = {"railgun_npc"},
@@ -798,6 +801,7 @@ function CopBase:default_weapon_name(...)
 			[Idstring("units/pd2_mod_halloween/characters/ene_zeal_bulldozer/ene_zeal_bulldozer"):key()] = {"railgun_npc"},
 			[Idstring("units/payday2/characters/ene_bulldozer_2_hw/ene_bulldozer_2_hw"):key()] = {"railgun_npc"},
 			[Idstring("units/payday2/characters/ene_bulldozer_4/ene_bulldozer_4"):key()] = {"railgun_npc"},
+			[Idstring("units/payday2/characters/ene_bulldozer_4_minion/ene_bulldozer_4_minion"):key()] = {"railgun_npc"},
 			-- BEX SC
 			[Idstring("units/pd2_dlc_bex/characters/ene_bulldozer_1/ene_bulldozer_1"):key()] = {"railgun_npc"},
 			[Idstring("units/pd2_dlc_bex/characters/ene_bulldozer_2/ene_bulldozer_2"):key()] = {"railgun_npc"},

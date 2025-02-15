@@ -1655,6 +1655,7 @@ local grips = {
 
 
 local attachment_list = {}
+local exclude = {}
 
 --Init function
 Hooks:PostHook(WeaponFactoryTweakData, "init", "resmod_wf_init", function(self)
@@ -3912,7 +3913,7 @@ end)
 						},
 						rof_mult = 0.35,
 						armor_piercing_override = 0.5,
-						lock_semi = true
+						info_lock_semi = true
 
 					}
 					self.parts.wpn_fps_pis_c96_nozzle.forbids = {"wpn_fps_pis_c96_m_extended"}
@@ -4038,16 +4039,22 @@ end)
 					self.wpn_fps_pis_rsh12.override.wpn_fps_upg_i_iw_hailstorm = {
 						desc_id = "bm_wp_upg_i_iw_hailstorm_no_pen_desc",
 						custom_stats = {
-							lock_burst = true,
-							hailstorm = true,
+							burst_fire = {
+								count = 3,
+								recoil_mult = 0.33,
+								last_recoil_mult = 1,
+								delay = 0.25,
+								lock = true,
+							},
+							can_shoot_through_shield = false,
+							armor_piercing_override = 0.5,
 							falloff_start_mult = 0.2,
 							falloff_end_mult = 0.4,
 							ammo_pickup_max_mul = 2,
 							ammo_pickup_min_mul = 2,
 							alt_ammo_pickup_max_mul = 2,
 							alt_ammo_pickup_min_mul = 2,
-							rof_mult = 4.443333,
-							--disable_steelsight_recoil_anim = true
+							rof_mult = 4.443333
 						},
 						stats = {
 							value = 10,
@@ -5237,7 +5244,7 @@ end)
 							recoil = -8
 						},
 						custom_stats = {
-							lock_auto = true,
+							info_lock_auto = true,
 							rof_mult = 1.470588,
 							falloff_start_mult = 0.25,
 							falloff_end_mult = 0.75
@@ -10115,7 +10122,6 @@ end)
 							}
 						}
 					}
-					self.parts.wpn_fps_ass_vhs_body.adds = {"wpn_fps_ass_vhs_m_dummy"}
 					
 					--CQB Barrel
 					self.parts.wpn_fps_ass_vhs_b_short.pcs = {
@@ -10156,6 +10162,9 @@ end)
 					self.parts.wpn_fps_ass_vhs_b_sniper.stats = deep_clone(barrels.long_b3_stats)
 					self.parts.wpn_fps_ass_vhs_b_sniper.custom_stats = deep_clone(barrels.long_b3_stats)
 
+					self.wpn_fps_ass_vhs.adds = self.wpn_fps_ass_vhs.adds or {}
+					self.wpn_fps_ass_vhs.adds.wpn_fps_ass_vhs_body = {"wpn_fps_ass_vhs_m_dummy"}
+
 					self.wpn_fps_ass_vhs.override = self.wpn_fps_ass_vhs.override or {}
 					self.wpn_fps_ass_vhs.override.wpn_fps_upg_o_arbiter_irons_dmc = {
 						third_unit = "units/pd2_dlc_joy/weapons/wpn_fps_smg_shepheard_pts/wpn_third_smg_shepheard_o_standard",
@@ -10167,6 +10176,8 @@ end)
 					table.insert(self.wpn_fps_ass_vhs.uses_parts, "wpn_fps_upg_o_northtac_reddot")
 					table.insert(self.wpn_fps_ass_vhs.uses_parts, "wpn_fps_upg_o_arbiter_irons_dmc")
 
+					self.wpn_fps_ass_vhs_npc.adds = deep_clone(self.wpn_fps_ass_vhs.adds)
+					self.wpn_fps_ass_vhs_npc.override = deep_clone(self.wpn_fps_ass_vhs.override)
 					self.wpn_fps_ass_vhs_npc.uses_parts = deep_clone(self.wpn_fps_ass_vhs.uses_parts)
 				end)
 
@@ -10781,7 +10792,15 @@ end)
 					self.parts.wpn_fps_ass_ak5_fg_fnc.supported = true
 					self.parts.wpn_fps_ass_ak5_fg_fnc.has_description = true
 					self.parts.wpn_fps_ass_ak5_fg_fnc.desc_id = "fnc_burst_desc"
-					self.parts.wpn_fps_ass_ak5_fg_fnc.custom_stats = { funco_chan = true, add_burst = true }
+					self.parts.wpn_fps_ass_ak5_fg_fnc.custom_stats = {
+						burst_fire = {
+							count = 3,
+							delay = 0.1,
+							recoil_mult = 0.85,
+							last_recoil_mult = 1.05
+						},
+						info_add_burst = true
+					}
 					self.parts.wpn_fps_ass_ak5_fg_fnc.stats = {
 						value = 3,
 						spread = 1,
@@ -11547,7 +11566,6 @@ end)
 							}
 						}
 					}
-					self.parts.wpn_fps_ass_famas_body_standard.adds = {"wpn_fps_ass_famas_m_standard_dummy"}
 
 					--Long Barrel
 					self.parts.wpn_fps_ass_famas_b_long.pcs = {}
@@ -11588,6 +11606,9 @@ end)
 					table.insert(self.wpn_fps_ass_famas.uses_parts, "wpn_fps_upg_o_northtac")
 					table.insert(self.wpn_fps_ass_famas.uses_parts, "wpn_fps_upg_o_northtac_reddot")
 
+					self.wpn_fps_ass_famas.adds.wpn_fps_ass_famas_body_standard = {
+						"wpn_fps_ass_famas_m_standard_dummy"
+					}
 					self.wpn_fps_ass_famas.adds.wpn_fps_upg_o_northtac = {
 						"wpn_fps_ass_famas_o_adapter"
 					}
@@ -19919,7 +19940,7 @@ end)
 				spread = 10
 			}
 			self.parts.wpn_fps_upg_i_singlefire.custom_stats = {
-				lock_semi = true,
+				info_lock_semi = true,
 				ignore_rof_mult_anims = true,
 				rof_mult = 0.75,
 				falloff_start_mult = 1.25,
@@ -19947,7 +19968,7 @@ end)
 				recoil = 6
 			}
 			self.parts.wpn_fps_upg_i_autofire.custom_stats = {
-				lock_auto = true,
+				info_lock_auto = true,
 				falloff_start_mult = 0.85,
 				falloff_end_mult = 0.85
 			}			
@@ -23768,7 +23789,7 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 		},
 		custom_stats = {
 			alt_desc = "bm_wp_upg_i_patriot_desc",
-			lock_auto = true,
+			info_lock_auto = true,
 			bandana = true,
 			falloff_start_mult = 0.1111111,
 			falloff_end_mult = 0.1454545,
@@ -23955,7 +23976,7 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 		a_obj = "a_body",
 		has_description = true,
 		custom_stats = {
-			lock_semi = true,
+			info_lock_semi = true,
 			alt_desc = "bm_g3_sg1_sc_desc",
 			rof_mult = 0.5,
 			armor_piercing_override = 1,
@@ -24035,10 +24056,10 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 		custom_stats = {
 			burst_fire = {
 				count = 3,
-				delay = 0.1,
+				delay = 0.15,
 				desired_burst_rof = 0.05454,
 			},
-			add_burst = true
+			info_add_burst = true
 		},
 		alt_icon = "guis/textures/pd2/blackmarket/icons/mods/wpn_fps_upg_i_autofire",
 		unit = "units/payday2/weapons/wpn_upg_dummy/wpn_upg_dummy",
@@ -24067,7 +24088,7 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 				rof_mult = 3,
 				spread_mult = 1.5
 			},
-			add_burst = true, 
+			info_add_burst = true, 
 			rof_mult = 0.5882352, 
 			ignore_rof_mult_anims = true
 		},
@@ -24094,7 +24115,7 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 		custom_stats = {
 			burst_fire = {
 				rof_mult = 3,
-				delay = 0.06,
+				delay = 0.15,
 			},
 			init_rof = {
 				count = 2,
@@ -24125,8 +24146,14 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 		a_obj = "a_body",
 		has_description = true,
 		custom_stats = {
-			lock_burst = true,
-			m8a1_burst = true,
+			info_lock_burst = true,
+			burst_fire = {
+				count = 4,
+				delay = 0.166,
+				recoil_mult = 0.6,
+				last_recoil_mult = 1.03,
+				lock = true
+			},
 			rof_mult = 1.33333333,
 			falloff_start_mult = 0.9,
 			falloff_end_mult = 1
@@ -24163,8 +24190,14 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 		a_obj = "a_body",
 		has_description = true,
 		custom_stats = {
-			lock_burst = true,
-			swordfish_burst = true,
+			info_lock_burst = true,
+			burst_fire = {
+				count = 5,
+				delay = 0.2,
+				recoil_mult = 0.5,
+				last_recoil_mult = 1.08,
+				lock = true
+			},
 			rof_mult = 1.29411764,
 			falloff_start_mult = 0.8,
 			falloff_end_mult = 1
@@ -24201,8 +24234,14 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 		a_obj = "a_body",
 		has_description = true,
 		custom_stats = {
-			lock_burst = true,
-			tekna_burst = true,
+			info_lock_burst = true,
+			burst_fire = {
+				count = 3,
+				delay = 0.15,
+				recoil_mult = 0.5,
+				last_recoil_mult = 1.1,
+				lock = true
+			},
 			rof_mult = 2.0408163,
 			alt_desc = "bm_wally_desc",
 		},
@@ -24316,8 +24355,18 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 		third_unit = "units/payday2/weapons/wpn_upg_dummy/wpn_upg_dummy",
 		supported = true,
 		custom_stats = {
-			auto_to_burst = true,
-			m16_burst = true,
+			info_auto_to_burst = true,
+			burst_fire = {
+				count = 3,
+				delay = 0.12,
+				desired_burst_rof = 0.06315,
+				recoil_mult = 0.75,
+				last_recoil_mult = 1,
+				block_toggle = true,
+				toggle_to_semi = true,
+				burst_default = true,
+			},
+			rof_mult_semi = 0.6,
 			falloff_start_mult = 1,
 			falloff_end_mult = 1
 		},
@@ -24666,9 +24715,13 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			alt_desc = "bm_beer_auto_desc",
 			falloff_start_mult = 0.4,
 			falloff_end_mult = 0.88888,
-			beer_burst = true,
+			can_toggle_firemode = true,
+			orig_toggle_firemode = false,
+			default_firemode = "auto",
+			orig_firemode = "single",
+			block_burst = true,
 			rof_mult = 1.323529,
-			burst_to_auto = true
+			info_burst_to_auto = true
 		},
 		stats = {
 			value = 5,
@@ -24692,8 +24745,15 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 		supported = true,
 		keep_damage = true,
 		custom_stats = {
-			lock_burst = true,
-			hailstorm = true,
+			burst_fire = {
+				count = 3,
+				recoil_mult = 0.33,
+				last_recoil_mult = 1,
+				delay = 0.25,
+				lock = true
+			},
+			can_shoot_through_shield = false,
+			armor_piercing_override = 0.5,
 			falloff_start_mult = 0.5,
 			falloff_end_mult = 0.75,
 			ammo_pickup_max_mul = 2,
@@ -24701,7 +24761,6 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			alt_ammo_pickup_max_mul = 2,
 			alt_ammo_pickup_min_mul = 2,
 			rof_mult = 3.3325,
-			--disable_steelsight_recoil_anim = true
 		},
 		stats = {
 			value = 10,
@@ -24726,17 +24785,26 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 		unit = "units/payday2/weapons/wpn_upg_dummy/wpn_upg_dummy",
 		third_unit = "units/payday2/weapons/wpn_upg_dummy/wpn_upg_dummy",
 		supported = true,
+		keep_damage = true,
 		stats = {
 			value = 10,
 			damage = -90,
 			total_ammo_mod = 408,
 			extra_ammo = 3,
-			reload = -2,
+			reload = -1,
 			spread = -4
 		},
 		custom_stats = {
-			lock_burst = true,
-			widowmaker = true,
+			burst_fire = {
+				count = 2,
+				recoil_mult = 0.2,
+				desired_burst_rof = 0.05,
+				last_recoil_mult = 1.2,
+				no_anim = true,
+				lock = true
+			},
+			info_lock_burst = true,
+			tactical_reload = 0,
 			falloff_start_mult = 0.5,
 			falloff_end_mult = 0.33333
 		},
@@ -24756,8 +24824,14 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 		third_unit = "units/payday2/weapons/wpn_upg_dummy/wpn_upg_dummy",
 		supported = true,
 		custom_stats = {
-			lock_burst = true,
-			mk32 = true,
+			info_lock_burst = true,
+			burst_fire = {
+				count = 2,
+				delay = 0.6,
+				recoil_mult = 0.5,
+				last_recoil_mult = 1,
+				lock = true
+			},
 			rof_mult = 3
 		},
 		stats = {
@@ -24790,7 +24864,7 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			recoil = -4
 		},
 		custom_stats = {
-			lock_semi = true,
+			info_lock_semi = true,
 			alt_desc = "bm_asval_spp_sc_desc",
 			rof_mult = 0.611111,
 			armor_piercing_override = 1,
@@ -24866,11 +24940,17 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 		}, 
 		custom_stats = { 
 			alt_desc = "bm_wp_avelyn_override_desc", 
-			avelyn = true, 
+			burst_fire = {
+				count = 3,
+				delay = 0.2,
+				recoil_mult = 1,
+				last_recoil_mult = 1,
+				lock = true
+			},
 			rof_mult = 7.5,
 			rms = 0.6,
 			sms = 0.6,
-			lock_burst = true
+			info_lock_burst = true
 		}, 
 		internal_part = true, 
 		sub_type = "autofire", 
@@ -25273,8 +25353,15 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 					concealment = -1
 				}
 				self.parts.wpn_fps_upg_wmtx_gastube_burst.custom_stats = {
-					wmtx_burst = true,
-					lock_burst = true
+					burst_fire = {
+						count = 2,
+						rof_mult = 10,
+						recoil_mult = 0.75,
+						last_recoil_mult = 1.3,
+						delay = 0.5,
+						lock = true
+					},
+					info_lock_burst = true
 				}
 
 				self.parts.wpn_fps_shot_wmtx_mag_ext = deep_clone(self.parts.wpn_fps_shot_wmtx_mag)
@@ -25486,12 +25573,12 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 
 			if self.parts.wpn_fps_snp_m200_barrel then --Pawcio's M200
 				self.parts.wpn_fps_upg_m200_barrel_med.supported = true
-				self.parts.wpn_fps_upg_m200_barrel_med.stats = deep_clone(barrels.short_b2_stats)
-				self.parts.wpn_fps_upg_m200_barrel_med.custom_stats = deep_clone(barrels.short_b2_stats)
+				self.parts.wpn_fps_upg_m200_barrel_med.stats = deep_clone(barrels.short_b1_stats)
+				self.parts.wpn_fps_upg_m200_barrel_med.custom_stats = deep_clone(barrels.short_b1_stats)
 		
 				self.parts.wpn_fps_upg_m200_barrel_short.supported = true
-				self.parts.wpn_fps_upg_m200_barrel_short.stats = deep_clone(barrels.short_b3_stats)
-				self.parts.wpn_fps_upg_m200_barrel_short.custom_stats = deep_clone(barrels.short_b3_stats)
+				self.parts.wpn_fps_upg_m200_barrel_short.stats = deep_clone(barrels.short_b2_stats)
+				self.parts.wpn_fps_upg_m200_barrel_short.custom_stats = deep_clone(barrels.short_b2_stats)
 		
 				self.parts.wpn_fps_upg_m200_bipod.supported = true
 				self.parts.wpn_fps_upg_m200_bipod.stats = { value = 0 }
@@ -26896,7 +26983,6 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 				self.parts.wpn_fps_ass_coslo723_stock_mix2.stats = deep_clone(stocks.adj_hvy_acc_stats)
 				self.parts.wpn_fps_ass_coslo723_stock_mix2.custom_stats = deep_clone(stocks.adj_hvy_acc_stats)
 			--MAGS
-
 				--FM 1
 				self.parts.wpn_fps_ass_coslo723_magazine_fastreload1.supported = true
 				self.parts.wpn_fps_ass_coslo723_magazine_fastreload1.stats = {
@@ -26966,16 +27052,16 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 				spread = 2
 			}
 			self.parts.wpn_fps_ass_coslo723_mode_burst.custom_stats = {
-				auto_to_burst = true,
+				info_auto_to_burst = true,
 				burst_fire = {
 					count = 3,
 					recoil_mult = 0.75,
 					last_recoil_mult = 1,
-					delay = 0.15,
+					delay = 0.16,
 					auto_burst = true,
 					block_toggle = true,
-					block_toggle_auto = true,
-					burst_default = true
+					toggle_to_semi = true,
+					burst_default = true,
 				}
 			}
 
@@ -28077,8 +28163,7 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 					ads_speed_mult = 0.975
 				}
 	
-			self.parts.g11_lock_burst = {
-				pcs = {},
+			self.parts.g11_lock_burst = { --dummy attachment to modify the available firemodes on the stat chart
 				type = "custom",
 				sub_type = "autofire",
 				name_id = "bm_wp_upg_i_g11",
@@ -28089,7 +28174,10 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 				supported = true,
 				custom_stats = {
 					ignore_modify_firemode = true,
-					lock_burst = true
+					info_lock_burst = true,
+					burst_fire = {
+						lock = true
+					}
 				},
 				stats = {
 					value = 0
@@ -28110,7 +28198,14 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 				supported = true,
 				custom_stats = {
 					modify_firemode = true,
-					g11_burst = true,
+					burst_fire = {
+						count = 3,
+						delay = 0.15,
+						rof_mult = 4.565217,
+						recoil_mult = 0.2,
+						last_recoil_mult = 1.1,
+						lock = false
+					},
 					ads_speed_mult = 1.1
 				},
 				stats = {
@@ -30418,8 +30513,17 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 				falloff_end_mult = 1.08888,
 				damage_min_mult = 0.8,
 				hip_mult = 1.5,
-				auto_to_burst = true,
-				mike16_burst = true,
+				info_auto_to_burst = true,
+				burst_fire = {
+					count = 3,
+					delay = 0.08,
+					rof_mult = 1.269592,
+					recoil_mult = 0.6,
+					last_recoil_mult = 1,
+					block_toggle = true,
+					toggle_to_semi = true,
+					burst_default = true
+				},
 				ammo_pickup_max_mul = 0.77027,
 				ammo_pickup_min_mul = 0.77027,
 				alt_ammo_pickup_max_mul = 0.77027,
@@ -35131,8 +35235,14 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			self.parts.wpn_fps_pis_vp70_stock_standard.supported = true
 			self.parts.wpn_fps_pis_vp70_stock_standard.stats = deep_clone(stocks.add_fixed_stats)
 			self.parts.wpn_fps_pis_vp70_stock_standard.custom_stats = deep_clone(stocks.add_fixed_stats)
-			self.parts.wpn_fps_pis_vp70_stock_standard.custom_stats.vp70_burst = true
-			self.parts.wpn_fps_pis_vp70_stock_standard.custom_stats.add_burst = true
+			self.parts.wpn_fps_pis_vp70_stock_standard.custom_stats.burst_fire = {
+				count = 3,
+				delay = 0.1,
+				rof_mult = 3.6666,
+				recoil_mult = 0.4,
+				last_recoil_mult = 1.08
+			}
+			self.parts.wpn_fps_pis_vp70_stock_standard.custom_stats.info_add_burst = true
 			self.parts.wpn_fps_pis_vp70_stp_standard.supported = true
 			self.parts.wpn_fps_pis_vp70_stp_standard.stats = {
 				recoil = 2,
@@ -37222,7 +37332,7 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			}
 			self.parts.wpn_fps_pis_czshadow_body_auto.custom_stats = {
 				rof_mult = 1.25,
-				lock_auto = true
+				info_lock_auto = true
 			}
 			self.parts.wpn_fps_pis_czshadow_body_sp.supported = true
 			self.parts.wpn_fps_pis_czshadow_body_sp.stats = {
@@ -37653,7 +37763,7 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 				rof_mult = 0.5,
 				ignore_rof_mult_anims = true,
 				block_burst = true,
-				burst_to_auto = true,
+				info_burst_to_auto = true,
 				natascha = 2000,
 				damage_min_mult = 1.19998
 			}
@@ -38268,8 +38378,12 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			recoil = 4
 		}
 		self.parts.wpn_fps_upg_xr2_handle_01.custom_stats = {
-			xr2_auto = true,
-			burst_to_auto = true
+			block_burst = true,
+			can_toggle_firemode = true,
+			orig_toggle_firemode = false,
+			default_firemode = "auto",
+			orig_firemode = "single",
+			info_burst_to_auto = true
 		}
 		self.parts.wpn_fps_upg_xr2_handle_02.supported = true
 		self.parts.wpn_fps_upg_xr2_handle_02.name_id = "bm_wp_xr2_handle_02_sc"
@@ -38279,7 +38393,10 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			value  = 4
 		}
 		self.parts.wpn_fps_upg_xr2_handle_02.custom_stats = {
-			xr2_rapidfire = true
+			burst_fire = {
+				desired_burst_rof = 0.063157,
+				recoil_mult = 0.95
+			}
 		}
 
 		self.parts.wpn_fps_upg_xr2_stock_01.supported = true
@@ -39290,7 +39407,7 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			falloff_end_mult = 0.4,
 			rof_mult = 2.25,
 			damage_min_mult = 0.66667,
-			s7_flexfire = true,
+			can_shoot_through_titan_shield = false,
 			alt_ammo_pickup_min_mul = 1.45,
 			alt_ammo_pickup_max_mul = 1.45,
 			ammo_pickup_min_mul = 1.45,
@@ -41149,16 +41266,25 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			if self.parts.wpn_fps_upg_fl_ass_smg_sho_pointshoot then
 				self.parts.wpn_fps_upg_fl_ass_smg_sho_pointshoot.stance_mod = deep_clone(self.parts.wpn_fps_upg_o_specter.stance_mod)
 				for i, weap in pairs(self.parts.wpn_fps_upg_fl_ass_smg_sho_pointshoot.stance_mod) do
-					if weap and weap.translation then
-						weap.translation = Vector3(-2, 0, -15)
+					exclude = {
+						"wpn_fps_pis_deagle",
+						"wpn_fps_pis_rage",
+						"wpn_fps_snp_m200",
+						"wpn_fps_shot_bs23"
+					}
+					local excluded = table.contains(exclude, i)
+					if excluded then
+						self.parts.wpn_fps_upg_fl_ass_smg_sho_pointshoot.stance_mod[i] = nil
+					elseif weap and weap.translation then
+						weap.translation = (weap.translation or Vector3(0, 0, 0)) + Vector3(-1, 0, -15)
 						weap.rotation = Rotation(0, 0, -45)
 					end
 				end
 				for factory_id, i in pairs(self) do
 					if self[factory_id] and self[factory_id].uses_parts and table.contains(self[factory_id].uses_parts, "wpn_fps_upg_fl_ass_smg_sho_pointshoot") then
 						self.parts.wpn_fps_upg_fl_ass_smg_sho_pointshoot.stance_mod[factory_id] = self.parts.wpn_fps_upg_fl_ass_smg_sho_pointshoot.stance_mod[factory_id] or {
-							translation = Vector3(-1, 0, -16),
-							rotation = Rotation(0.25, 0, -30)
+							translation = Vector3(1, -4, -16),
+							rotation = Rotation(0, 0, -35)
 						}
 					end
 				end
@@ -43796,7 +43922,7 @@ self.parts.wpn_fps_pis_judge_b_legend.supported = true
 self.parts.wpn_fps_shot_shorty_b_legendary.supported = true
 self.parts.wpn_fps_ass_m14_b_legendary.supported = true
 
-local exclude = {
+exclude = {
 	"wpn_fps_pis_maxim9_a_tranq",
 	"wpn_fps_snp_mosin_a_tranq",
 	"wpn_fps_lmg_mg42_dummy_mag",
