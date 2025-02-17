@@ -815,6 +815,7 @@ Hooks:Add("LocalizationManagerPostInit", "ResMod_english_Localization", function
 		["RestorationModPocoCrimenetAlignSortDescID"] = "Aligns and sorts CRIMENET by difficulty.",
 		["RestorationModPocoCrimenetScaleTitleID"] = "Poco CRIMENET Scale",
 		["RestorationModPocoCrimenetScaleDescID"] = "Allows you to set the scale of CRIMENET.",
+		-- keep these in incase of fuckery happens
 		["RestorationModBriefingFontSizeTitleID"] = "Loadout Menu Briefing Font Size",
 		["RestorationModBriefingFontSizeDescID"] = "Allows you to set the font size of the loadout menu briefing.",
 		["RestorationModVoiceIconTitleID"] = "Voice Chat Icon",
