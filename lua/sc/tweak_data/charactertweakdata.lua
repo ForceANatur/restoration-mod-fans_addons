@@ -646,7 +646,10 @@ function CharacterTweakData:_init_medic(presets)
 	table.insert(self._enemy_list, "medic")
 	
 	self.medic_summers = deep_clone(self.medic)
-	self.medic_summers.HEALTH_INIT = 120
+	--Base health
+	self.medic_summers.HEALTH_INIT = 60
+	--Gains extra health per player, totaling to 1.2k~ at a full party of 4
+	self.medic_summers.player_health_scaling_mul = 1.25
 	self.medic_summers.headshot_dmg_mul = 1.5
 	self.medic_summers.damage_resistance = presets.damage_resistance.none
 	self.medic_summers.tags = {"custom", "special"}
@@ -2695,6 +2698,7 @@ function CharacterTweakData:_init_tank(presets)
 	self.tank_titan.is_special = true
 	self.tank_titan.no_asu = true
 	self.tank_titan.heal_cooldown = 22.5
+	self.tank_titan.no_dozer_armor_resistance = true
 	self.tank_titan.chatter = presets.enemy_chatter.swat -- talk when you kill us
 	self.tank_titan.kill_taunt = "post_kill_taunt"
 	table.insert(self._enemy_list, "tank_titan")
@@ -2710,6 +2714,7 @@ function CharacterTweakData:_init_tank(presets)
 	else
 		self.tank_titan_assault.dt_suppress = nil
 	end
+	self.tank_titan_assault.no_dozer_armor_resistance = true
 	table.insert(self._enemy_list, "tank_titan_assault")
 
 	--Titandozer, captain minion variant with LMG (Used only for Winters' Squad on DSPJ)
@@ -2719,6 +2724,7 @@ function CharacterTweakData:_init_tank(presets)
 	self.tank_titan_minion.dt_suppress = {
 		range = 500
 	}
+	self.tank_titan_minion.no_dozer_armor_resistance = true
 	table.insert(self._enemy_list, "tank_titan_minion")
 
 	--Halloween Bulldozer (Black)
@@ -3168,7 +3174,10 @@ function CharacterTweakData:_init_phalanx_vip(presets)
 	self.phalanx_vip.damage.shield_knocked = false
 	self.phalanx_vip.damage.immune_to_knockback = true
 	self.phalanx_vip.immune_to_knock_down = true
-	self.phalanx_vip.HEALTH_INIT = 130
+	--Base health
+	self.phalanx_vip.HEALTH_INIT = 65
+	--Gains extra health per player, totaling to 1.3k~ at a full party of 4
+	self.phalanx_vip.player_health_scaling_mul = 1.25
 	self.phalanx_vip.headshot_dmg_mul = 2.0
 	self.phalanx_vip.damage_resistance = presets.damage_resistance.none
 	self.phalanx_vip.damage.explosion_damage_mul = 0.05
@@ -3337,7 +3346,10 @@ end
 	self.phalanx_vip_break.can_throw_frag = true	
 	self.phalanx_vip_break.grenade_cooldown = 12
 	self.phalanx_vip_break.grenade_toss_chance = 1
-	self.phalanx_vip_break.HEALTH_INIT = 140
+	--Base health
+	self.phalanx_vip_break.HEALTH_INIT = 70
+	--Gains extra health per player, totaling to 1.4k~ at a full party of 4
+	self.phalanx_vip_break.player_health_scaling_mul = 1.25	
 	self.phalanx_vip_break.headshot_dmg_mul = 2.5
 	self.phalanx_vip_break.allowed_stances = nil
 	self.phalanx_vip_break.allowed_poses = nil
@@ -3378,8 +3390,10 @@ function CharacterTweakData:_init_spring(presets)
 	self.spring.ends_assault_on_death = true
 	self.spring.no_damage_mission = true
 	self.spring.immune_to_knock_down = true
-	self.spring.HEALTH_INIT = 1000
-	self.spring.EXTRA_HEALTH_BALANCE = 50
+	--Base health
+	self.spring.HEALTH_INIT = 500
+	--Gains extra health per player, totaling to 10k~ at a full party of 4
+	self.spring.player_health_scaling_mul = 1.25
 	self.spring.damage_resistance = presets.damage_resistance.none
 	self.spring.headshot_dmg_mul = 3.997125
 	self.spring.damage.explosion_damage_mul = 1.25
@@ -3428,6 +3442,7 @@ function CharacterTweakData:_init_spring(presets)
 	}
 	self.spring.captain_type = restoration.captain_types.spring
 	self.spring.no_xmas_hat = true
+	self.spring.no_dozer_armor_resistance = true
 	table.insert(self._enemy_list, "spring")
 	
 	--Headless Titandozer Boss 
@@ -3450,6 +3465,7 @@ function CharacterTweakData:_init_spring(presets)
 	self.headless_hatman.can_be_healed = false
 	self.headless_hatman.dt_suppress = nil
 	self.headless_hatman.captain_type = restoration.captain_types.hvh
+	self.headless_hatman.no_dozer_armor_resistance = true
 	table.insert(self._enemy_list, "headless_hatman")
 end
 
@@ -3460,7 +3476,10 @@ function CharacterTweakData:_init_summers(presets)
 	self.summers.weapon = deep_clone(presets.weapon.normal)
 	self.summers.melee_weapon_dmg_multiplier = 1
 	self.summers.detection = presets.detection.normal
-	self.summers.HEALTH_INIT = 144
+	--Base health
+	self.summers.HEALTH_INIT = 72
+	--Gains extra health per player, totaling to 1.4k~ at a full party of 4
+	self.summers.player_health_scaling_mul = 1.25
 	self.summers.flammable = false
 	self.summers.use_animation_on_fire_damage = false
 	self.summers.base_summers_dr = 0.25
@@ -3528,7 +3547,10 @@ function CharacterTweakData:_init_autumn(presets)
 	self.autumn.damage.immune_to_knockback = true
 	self.autumn.immune_to_knock_down = true		
 	self.autumn.immune_to_concussion = true		
-	self.autumn.HEALTH_INIT = 120
+	--Base health
+	self.autumn.HEALTH_INIT = 60
+	--Gains extra health per player, totaling to 1.2k~ at a full party of 4
+	self.autumn.player_health_scaling_mul = 1.25
 	self.autumn.headshot_dmg_mul = 2.925
 	self.autumn.damage_resistance = presets.damage_resistance.none
 	self.autumn.damage.bullet_damage_mul = 0.65
@@ -3676,7 +3698,9 @@ function CharacterTweakData:_init_taser(presets)
 	table.insert(self._enemy_list, "taser")
 	
 	self.taser_summers = deep_clone(self.taser)
-	self.taser_summers.HEALTH_INIT = 120
+	self.taser_summers.HEALTH_INIT = 60
+	--Gains extra health per player, totaling to 1.2k~ at a full party of 4
+	self.taser_summers.player_health_scaling_mul = 1.25
 	self.taser_summers.headshot_dmg_mul = 1.5
 	self.taser_summers.damage_resistance = presets.damage_resistance.none
 	self.taser_summers.tags = {"female_enemy","taser", "custom", "special"}
@@ -3863,7 +3887,9 @@ function CharacterTweakData:_init_boom(presets)
 	self.boom_summers.speech_prefix_count = 1
 	self.boom_summers.custom_voicework = "summers_molly"
 	self.boom_summers.use_radio = "dsp_radio_russian"
-	self.boom_summers.HEALTH_INIT = 120
+	self.boom_summers.HEALTH_INIT = 60
+	--Gains extra health per player, totaling to 1.2k~ at a full party of 4
+	self.boom_summers.player_health_scaling_mul = 1.25
 	self.boom_summers.headshot_dmg_mul = 1.5
 	self.boom_summers.damage_resistance = presets.damage_resistance.none
 	self.boom_summers.tags = {"female_enemy", "custom", "special", "customvo"}
