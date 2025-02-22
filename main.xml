@@ -425,6 +425,7 @@
 		<hook file="sc/mutators/new/mutatorwarthogs.lua" source_file="lib/mutators/basemutator"/>
 		<hook file="sc/mutators/new/mutatorsnipersandsnipers.lua" source_file="lib/mutators/basemutator"/>
 		<hook file="sc/mutators/new/mutatormorespecials.lua" source_file="lib/mutators/basemutator"/>
+		<hook file="sc/mutators/new/mutatorumpforyoutoo.lua" source_file="lib/mutators/basemutator"/>
 		<!--<hook file="sc/mutators/new/mutatorfactionsreplacer.lua" source_file="lib/mutators/basemutator"/>-->
 		<!--///NETWORKING\\\-->
 		<hook file="sc/network/base/hostnetworksession.lua" source_file="lib/network/base/hostnetworksession"/>

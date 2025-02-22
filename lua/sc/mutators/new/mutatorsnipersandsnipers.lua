@@ -12,7 +12,7 @@ MutatorSnipersAndSnipers.categories = {"enemies"}
 MutatorSnipersAndSnipers.icon_coords = {
 	2,
 	3
-}	
+}
 MutatorSnipersAndSnipers.load_priority = -10
 
 function MutatorSnipersAndSnipers:setup(data)

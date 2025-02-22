@@ -827,7 +827,19 @@ function CopBase:default_weapon_name(...)
 			self._default_weapon_id = type(tank_snipers) == "table" and table.random(tank_snipers) or tank_snipers
 		end
 	end
-	
+
+	--For UMP 4U2 mutator
+	--Female FBI units have bronco and that thing already hurts like hell
+	if not self._weapon_set and restoration and restoration.umpp then
+		if self._tweak_table == "fbi" or self._tweak_table == "fbi_vet" then
+			self._default_weapon_id = "benelli"
+			self._weapon_set = true
+		elseif self._tweak_table == "hrt" or self._tweak_table == "hrt_titan" then
+			self._default_weapon_id = "ump"
+			self._weapon_set = true
+		end
+	end
+
 	--Have White Titandozers use Grenade Launchers/AA-12s like their Reaper counterparts in Russia/Mexico heists (mostly for Holiday Effects and consistency with factions)
 	if self._tweak_table == "tank_hw" and faction == "russia" then
 		self._default_weapon_id = "m32_large"
@@ -837,7 +849,7 @@ function CopBase:default_weapon_name(...)
 		self._default_weapon_id = "aa12_dozer"
 		self._weapon_set = true
 	end
-	
+
 	if not self._weapon_set and weapon_override then
 		self._default_weapon_id = type(weapon_override) == "table" and table.random(weapon_override) or weapon_override
 		self._weapon_set = true

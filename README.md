@@ -55,6 +55,8 @@ Semi-Auto Shotgun Bulldozers spawns miniguns (`Loc.lua` was changed to reflect t
 
 Sniper Hell: Most enemies spawn with Sniper Rifles.
 
+UMP 4 U 2: FBI units use the M1014 and Hostage Rescue Teams have the UMP.
+
 # Crime Spree Modifiers:
 
 The odds of titan bulldozers are increased by 20%
