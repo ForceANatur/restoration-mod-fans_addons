@@ -831,8 +831,11 @@ function CopBase:default_weapon_name(...)
 	--For UMP 4U2 mutator
 	--Female FBI units have bronco and that thing already hurts like hell
 	if not self._weapon_set and restoration and restoration.umpp then
-		if self._tweak_table == "fbi" or self._tweak_table == "fbi_vet" then
+		if self._tweak_table == "fbi" then
 			self._default_weapon_id = "benelli"
+			self._weapon_set = true
+		elseif self._tweak_table == "fbi_vet" then
+			self._default_weapon_id = "x_raging_bull_npc"
 			self._weapon_set = true
 		elseif self._tweak_table == "hrt" or self._tweak_table == "hrt_titan" then
 			self._default_weapon_id = "ump"

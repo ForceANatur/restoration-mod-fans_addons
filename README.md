@@ -55,7 +55,7 @@ Semi-Auto Shotgun Bulldozers spawns miniguns (`Loc.lua` was changed to reflect t
 
 Sniper Hell: Most enemies spawn with Sniper Rifles.
 
-UMP 4 U 2: FBI units use the M1014 and Hostage Rescue Teams have the UMP.
+Sting like a bee: FBI units use the M1014 and Hostage Rescue Teams and ASU units have the UMP. Vet Cops have akimbo Broncos.
 
 # Crime Spree Modifiers:
 
