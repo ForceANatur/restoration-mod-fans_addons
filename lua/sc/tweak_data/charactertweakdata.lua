@@ -2829,7 +2829,7 @@ function CharacterTweakData:_init_spooc(presets)
 	self.spooc.access = "spooc"
 	self.spooc.flammable = true
 	self.spooc.dodge = presets.dodge.ninja
-	if self:get_ai_group_type() == "murkywater" then
+	if self:get_ai_group_type() == "murkywater" or self:get_ai_group_type() == "nypd" then
 		self.spooc.chatter = presets.enemy_chatter.guard	-- If someone runs the heavy security mod and picks a murkywater heist, they're in for a suprise!
 	else
 		self.spooc.chatter = presets.enemy_chatter.cloaker
