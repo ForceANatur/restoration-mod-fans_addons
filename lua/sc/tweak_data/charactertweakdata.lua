@@ -3319,7 +3319,7 @@ function CharacterTweakData:_init_marshal_shield(presets)
 	self.marshal_shield.speech_prefix_count = nil
 	self.marshal_shield.yellow_blood = nil
 	self.marshal_shield.no_asu = true
-	self.marshal_shield.custom_voicework = "bravo"
+	self.marshal_shield.custom_voicework = "marshal_shield"
 	self.marshal_shield.speech_prefix_count = nil
 	self.marshal_shield.priority_shout = "f31"
 	self.marshal_shield.access = "shield"
@@ -3360,7 +3360,7 @@ function CharacterTweakData:_init_marshal_shield(presets)
 	self.marshal_shield_break.unintimidateable = true
 	self.marshal_shield_break.no_asu = true
 	self.marshal_shield_break.heal_cooldown = 2
-	self.marshal_shield_break.damage.explosion_damage_mul = 0.9
+	self.marshal_shield_break.damage.explosion_damage_mul = 0.67
 	self.marshal_shield_break.damage.rocket_damage_mul = 0.9
 	self.marshal_shield_break.damage.fire_pool_damage_mul = 0.8
 	self.marshal_shield_break.damage.bullet_damage_mul = 0.85
@@ -18909,6 +18909,7 @@ function CharacterTweakData:character_map()
 				"ene_bulldozer_1",
 				"ene_bulldozer_2",
 				"ene_bulldozer_3",
+				"ene_bulldozer_medic",
 				"ene_bulldozer_minigun",
 				"ene_omnia_spook",
 				"ene_grenadier_1",

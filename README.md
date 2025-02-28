@@ -125,6 +125,8 @@ Murkywater Shield: Seal Team 6 (Counter Strike)
 
 Marshal Marksman: Sniper (Team Fortress 2)
 
+Marshal Shield: Nick (Left 4 Dead 2)
+
 Summers: Bill (Left 4 Dead Russian Dub)
 
 Sergeant Doc: Nick (Left 4 Dead 2 Russian Dub)
