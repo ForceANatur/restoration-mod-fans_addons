@@ -23853,16 +23853,16 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			self.owen.timers = deep_clone(self.schakal.timers)
 			self.owen.timers.reload_not_empty = 2.84
 			self.owen.CLIP_AMMO_MAX = 33
-			self.owen.AMMO_MAX = 198
+			self.owen.AMMO_MAX = 150
 			self.owen.damage_falloff = {
 				start_dist = 2000,
 				end_dist = 3000,
 				min_mult = 0.67
 			}
 			self.owen.stats = {
-				damage = 40,
-				spread = 83,
-				recoil = 92,
+				damage = 24,
+				spread = 68,
+				recoil = 82,
 				spread_moving = 6,
 				zoom = 1,
 				concealment = 24,
@@ -23882,7 +23882,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			self.m3.damage_type = "machine_gun"
 			self.m3.fire_mode_data.fire_rate = 0.13258
 			self.m3.CLIP_AMMO_MAX = 30
-			self.m3.AMMO_MAX = 90
+			self.m3.AMMO_MAX = 130
 			self.m3.kick = self.stat_info.kick_tables.even_recoil
 			self.m3.supported = true
 			self.m3.ads_speed = 0.25
@@ -23892,9 +23892,9 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				min_mult = 0.8
 			}
 			self.m3.stats = {
-				damage = 35,
-				spread = 81,
-				recoil = 75,
+				damage = 26,
+				spread = 62,
+				recoil = 85,
 				spread_moving = 4,
 				zoom = 1,
 				concealment = 27,
@@ -23905,7 +23905,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				value = 5,
 				reload = 20
 			}
-			self.m3.hs_mult = 1.11
+			self.m3.hs_mult = 1.10
 			self.m3.stats_modifiers = nil
 			self.m3.timers = deep_clone(self.m45.timers)
 			self.m3.panic_suppression_chance = 0.05
@@ -23919,7 +23919,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			self.m38a.tactical_reload = 1
 			self.m38a.fire_mode_data.fire_rate = 0.08
 			self.m38a.CLIP_AMMO_MAX = 35
-			self.m38a.AMMO_MAX = 140
+			self.m38a.AMMO_MAX = 120
 			self.m38a.kick = self.stat_info.kick_tables.even_recoil
 			self.m38a.supported = true
 			self.m38a.ads_speed = 0.15
@@ -23929,9 +23929,9 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				min_mult = 0.4
 			}
 			self.m38a.stats = {
-				damage = 44,
+				damage = 30,
 				spread = 62,
-				recoil = 52,
+				recoil = 78,
 				spread_moving = 4,
 				zoom = 1,
 				concealment = 22,
