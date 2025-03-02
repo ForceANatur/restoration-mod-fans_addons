@@ -39125,7 +39125,7 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 
 		self.parts.wpn_fps_upg_m_vecsgmt.supported = true
 		self.parts.wpn_fps_upg_m_vecsgmt.stats = deep_clone(self.parts.wpn_fps_pis_g18c_m_mag_33rnd.stats)
-		self.parts.wpn_fps_upg_m_vecsgmt.stats.extra_ammo = 21
+		self.parts.wpn_fps_upg_m_vecsgmt.stats.extra_ammo = 20
 		self.parts.wpn_fps_upg_m_vecsgmt.stats.concealment = -4
 		self.parts.wpn_fps_upg_m_vecsgmt.stats.reload = -6
 		self.parts.wpn_fps_upg_m_vecsgmt.custom_stats = { ads_speed_mult = 1.1 }
@@ -40995,12 +40995,54 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 		self.parts.wpn_fps_pis_af2011_m_ext.stats = { extra_ammo = 5, concealment = -3 }
 		-- this is really badly implemented, might need DMC for this
 		self.parts.wpn_fps_pis_af2011_a_uno.supported = true
-		self.parts.wpn_fps_pis_af2011_a_uno.stats = { damage= -25, spread = 5, total_ammo_mod = 7 }
+		self.parts.wpn_fps_pis_af2011_a_uno.stats = { damage = -25, spread = 5, total_ammo_mod = 7 }
 		self.parts.wpn_fps_pis_af2011_a_uno.custom_stats = { rays = 1,  armor_piercing_add = 0, can_shoot_through_enemy = "false", ammo_pickup_min_mul = 1, ammo_pickup_max_mul = "1.9", can_shoot_through_shield = "false", can_shoot_through_wall = "false" }
 
 		self.parts.wpn_fps_pis_af2011_a_shield.supported = true
 		self.parts.wpn_fps_pis_af2011_a_shield.stats = { damage = 25, spread = 2, total_ammo_mod = -3, recoil = -12 }
 		self.parts.wpn_fps_pis_af2011_a_shield.custom_stats = { rays = 2, armor_piercing_add = 1, ammo_pickup_min_mul = 0.5, ammo_pickup_max_mul = 0.3, can_shoot_through_enemy = "true", can_shoot_through_shield = "true", can_shoot_through_wall = "true" }
+	end
+
+	if self.parts.wpn_fps_smg_m3_body then
+		self.parts.wpn_fps_smg_m3_s_ext.supported = true
+		self.parts.wpn_fps_smg_m3_s_ext.stats = { recoil = 2, spread_moving = -2, concealment = -2 }
+		self.parts.wpn_fps_smg_m3_s_ext.custom_stats = nil
+
+		self.parts.wpn_fps_smg_m3_s_no.supported = true
+		self.parts.wpn_fps_smg_m3_s_no.stats = { recoil = -1, concealment = 2 }
+		self.parts.wpn_fps_smg_m3_s_no.custom_stats = nil
+
+		self.parts.wpn_fps_smg_m3_b_small.supported = true
+		self.parts.wpn_fps_smg_m3_b_small.stats = { spread = -1, concealment = 1 }
+		self.parts.wpn_fps_smg_m3_b_small.custom_stats = nil
+
+		self.parts.wpn_fps_smg_m3_m_short.supported = true
+		self.parts.wpn_fps_smg_m3_m_short.stats = { extra_ammo = -5, concealment = 2 }
+		self.parts.wpn_fps_smg_m3_m_short.custom_stats = nil
+
+		self.parts.wpn_fps_smg_m3_m_double.supported = true
+		self.parts.wpn_fps_smg_m3_m_double.stats = { reload = 2, concealment = -2 }
+		self.parts.wpn_fps_smg_m3_m_double.custom_stats = nil
+
+		self.parts.wpn_fps_smg_m3_m_long.supported = true
+		self.parts.wpn_fps_smg_m3_m_long.stats = { extra_ammo = 5, concealment = -2 }
+		self.parts.wpn_fps_smg_m3_m_long.custom_stats = nil
+
+		self.parts.wpn_fps_smg_m3_sling.supported = true
+		self.parts.wpn_fps_smg_m3_sling.stats = { spread_moving = -2, spread = 1, concealment = -1 }
+		self.parts.wpn_fps_smg_m3_sling.custom_stats = nil
+
+		self.parts.wpn_fps_smg_m3_sling_l = deep_clone(self.parts.wpn_fps_smg_m3_sling)
+	end
+
+	if self.parts.wpn_fps_smg_m38a_body_std then
+		self.parts.wpn_fps_smg_m38a_m_40rnd.supported = true
+		self.parts.wpn_fps_smg_m38a_m_40rnd.stats = {  extra_ammo = 5, concealment = -2, reload = -2 }
+		self.parts.wpn_fps_smg_m38a_m_40rnd.custom_stats = nil
+
+		self.parts.wpn_fps_smg_m38a_m_20rnd.supported = true
+		self.parts.wpn_fps_smg_m38a_m_20rnd.stats = { extra_ammo = -5, concealment = 2, reload = 2 }
+		self.parts.wpn_fps_smg_m38a_m_20rnd.custom_stats = nil
 	end
 -- Edits end here --
 
