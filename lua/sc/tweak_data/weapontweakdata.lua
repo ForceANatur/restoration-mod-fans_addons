@@ -23857,7 +23857,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			self.owen.damage_falloff = {
 				start_dist = 2000,
 				end_dist = 3000,
-				min_mult = 0.67
+				min_mult = 0.25
 			}
 			self.owen.stats = {
 				damage = 24,
@@ -23878,23 +23878,23 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 		if self.m3 then	-- M3 Grease Gun
 			self.m3.use_data.selection_index = 2	
 			self.m3.categories = {"smg"}
-			self.m3.recategorize = {"light_smg"}
+			self.m3.recategorize = {"heavy_smg"}
 			self.m3.damage_type = "machine_gun"
 			self.m3.fire_mode_data.fire_rate = 0.13258
 			self.m3.CLIP_AMMO_MAX = 30
-			self.m3.AMMO_MAX = 130
+			self.m3.AMMO_MAX = 120
 			self.m3.kick = self.stat_info.kick_tables.even_recoil
 			self.m3.supported = true
 			self.m3.ads_speed = 0.25
 			self.m3.damage_falloff = {
 				start_dist = 1500,
 				end_dist = 3500,
-				min_mult = 0.8
+				min_mult = 0.3
 			}
 			self.m3.stats = {
-				damage = 26,
+				damage = 30,
 				spread = 62,
-				recoil = 85,
+				recoil = 86,
 				spread_moving = 4,
 				zoom = 1,
 				concealment = 27,
@@ -23919,17 +23919,17 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			self.m38a.tactical_reload = 1
 			self.m38a.fire_mode_data.fire_rate = 0.08
 			self.m38a.CLIP_AMMO_MAX = 35
-			self.m38a.AMMO_MAX = 120
+			self.m38a.AMMO_MAX = 150
 			self.m38a.kick = self.stat_info.kick_tables.even_recoil
 			self.m38a.supported = true
 			self.m38a.ads_speed = 0.15
 			self.m38a.damage_falloff = {
 				start_dist = 2400,
 				end_dist = 4200,
-				min_mult = 0.4
+				min_mult = 0.25
 			}
 			self.m38a.stats = {
-				damage = 30,
+				damage = 24,
 				spread = 62,
 				recoil = 78,
 				spread_moving = 4,
@@ -24901,4 +24901,4 @@ Hooks:PostHook( WeaponTweakData, "init", "resmod_cap", function(self)
 		})
 
 	end
-end)	
+end)
