@@ -5676,7 +5676,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.x_maxim9.desc_id = "bm_tranq_x_maxim_sc_desc"	
 						self.x_maxim9.fire_mode_data.fire_rate = 0.08571428571
 						self.x_maxim9.single.fire_rate = 0.08571428571
-						self.x_maxim9.CLIP_AMMO_MAX = 36
+						self.x_maxim9.CLIP_AMMO_MAX = 34
 						self.x_maxim9.AMMO_MAX = 180
 						self.x_maxim9.kick = self.stat_info.kick_tables.even_recoil
 						self.x_maxim9.supported = true
@@ -6259,7 +6259,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.x_g22c.has_description = true
 						self.x_g22c.desc_id = "bm_x_g22c_sc_desc"					
 						self.x_g22c.kick = self.stat_info.kick_tables.even_recoil
-						self.x_g22c.CLIP_AMMO_MAX = 32
+						self.x_g22c.CLIP_AMMO_MAX = 30
 						self.x_g22c.AMMO_MAX = 120
 						self.x_g22c.FIRE_MODE = "single"
 						self.x_g22c.fire_mode_data = {}
@@ -6368,7 +6368,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.maxim9.desc_id = "bm_tranq_maxim_sc_desc"	
 						self.maxim9.fire_mode_data.fire_rate = 0.08571428571
 						self.maxim9.single.fire_rate = 0.08571428571
-						self.maxim9.CLIP_AMMO_MAX = 18
+						self.maxim9.CLIP_AMMO_MAX = 17
 						self.maxim9.AMMO_MAX = 90
 						self.maxim9.kick = self.stat_info.kick_tables.even_recoil
 						self.maxim9.supported = true
@@ -6844,7 +6844,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.g22c.fire_mode_data.fire_rate = 0.09523809
 						self.g22c.AMMO_MAX = 60
 						self.g22c.kick = self.stat_info.kick_tables.left_recoil
-						self.g22c.CLIP_AMMO_MAX = 16
+						self.g22c.CLIP_AMMO_MAX = 15
 						self.g22c.supported = true
 						self.g22c.ads_speed = 0.160
 						self.g22c.damage_falloff = {
@@ -7241,7 +7241,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.sub2000.has_description = true
 						self.sub2000.desc_id = "bm_sub2000_sc_desc"			
 						self.sub2000.categories = {"pistol"}
-						self.sub2000.CLIP_AMMO_MAX = 22
+						self.sub2000.CLIP_AMMO_MAX = 31
 						self.sub2000.AMMO_MAX = 80
 						self.sub2000.sounds.fire = "sub2k_fire"
 						self.sub2000.sounds.fire_single = "sub2k_fire"
@@ -20293,7 +20293,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.bolter_40k.desc_id = "bm_w_redacted_desc_sc"
 				self.bolter_40k.upgrade_blocks = nil
 				self.bolter_40k.CLIP_AMMO_MAX = 15
-				self.bolter_40k.AMMO_MAX = 30
+				self.bolter_40k.AMMO_MAX = 60
 				self.bolter_40k.muzzleflash = "effects/payday2/particles/weapons/awp_muzzle"
 				self.bolter_40k.shell_ejection = "effects/payday2/particles/weapons/shells/shell_shak"
 				self.bolter_40k.fire_mode_data.fire_rate = 0.333334
@@ -20305,7 +20305,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.bolter_40k.AUTO_BURST = true
 				self.bolter_40k.FIRE_MODE = "single"
 				self.bolter_40k.CAN_TOGGLE_FIREMODE = false
-				self.bolter_40k.sms = 0.6
+				self.bolter_40k.sms = 0.5
+				self.bolter_40k.rms = 0.75
 				self.bolter_40k.kick = deep_clone(self.stat_info.kick_tables.vertical_kick)
 				self.bolter_40k.kick_pattern = {
 					{0, self.stat_info.kick_tables.pattern_r1},
@@ -20323,7 +20324,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					min_mult = 0.5
 				}
 				self.bolter_40k.stats = {
-					damage = 120,
+					damage = 60,
 					spread = 76,
 					recoil = 5,
 					spread_moving = 8,
@@ -20341,6 +20342,11 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.bolter_40k.sounds.use_fix = nil
 				self.bolter_40k.panic_suppression_chance = 0.05
 				self.bolter_40k.use_vapor_trail = true
+				self.bolter_40k.direct_damage_percent = 2
+				self.bolter_40k.timers.reload_empty = 4.3
+				self.bolter_40k.timers.reload_exit_empty = 1.3
+				self.bolter_40k.timers.reload_not_empty = 3.15
+				self.bolter_40k.timers.reload_exit_not_empty = 1.3
 				self.bolter_40k.trail_effect = "_dmc/effects/sterwers_trail_m"
 				self.bolter_40k.trail_effect_npc = "_dmc/effects/sterwers_trail_m_npc"
 				self.bolter_40k.bullet_class = "InstantExplosiveBulletBase"
@@ -23607,6 +23613,111 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			self.perun.timers.reload_exit_empty = 1.6
 			self.perun.timers.reload_exit_not_empty = 1.6
 			self.perun.hs_mult = 1.11
+		end
+
+		--Akimbo Bubble Daryls
+		if self.x_huntsman then 
+			self.x_huntsman.recategorize = { "break_shot" }
+			self.x_huntsman.categories = { "akimbo", "shotgun" }
+			self.x_huntsman.damage_type = "shotgun"
+			self.x_huntsman.damage_type_single_ray = "anti_materiel"
+			self.x_huntsman.fire_mode_data.fire_rate = 0.15
+			self.x_huntsman.rays = 9
+			self.x_huntsman.kick = self.stat_info.kick_tables.vertical_kick
+			self.x_huntsman.kick_pattern = {
+				{0, self.stat_info.kick_tables.vertical_kick},
+				{2, self.stat_info.kick_tables.pattern_r4},
+				{3, self.stat_info.kick_tables.pattern_v4},
+			}
+			self.x_huntsman.muzzleflash = "effects/payday2/particles/weapons/big_51b_auto_fps" --"effects/particles/shotgun/shotgun_gen"
+			self.x_huntsman.BURST_FIRE = 2
+			self.x_huntsman.BURST_FIRE_RATE_MULTIPLIER = 5
+			self.x_huntsman.CAN_TOGGLE_FIREMODE = false
+			self.x_huntsman.FIRE_MODE = "single"				
+			self.x_huntsman.AMMO_MAX = 30
+			self.x_huntsman.supported = true
+			self.x_huntsman.ads_speed = 0.380
+			self.x_huntsman.damage_falloff = {
+				start_dist = 400,
+				end_dist = 1600,
+				min_mult = 0.1
+			}
+			self.x_huntsman.stats = {
+				damage = 240,
+				spread = 56,
+				recoil = 31,
+				spread_moving = 6,
+				zoom = 1,
+				concealment = 23,
+				suppression = 6,
+				alert_size = 2,
+				extra_ammo = 101,
+				total_ammo_mod = 400,
+				value = 1,
+				reload = 20
+			}
+			self.x_huntsman.stats_modifiers = nil
+			self.x_huntsman.panic_suppression_chance = 0.05
+			self.x_huntsman.reload_speed_multiplier = 0.7
+			self.x_huntsman.weapon_hold = "x_coal"
+			self.x_huntsman.animations.reload_name_id = "x_rota"
+			self.x_huntsman.use_stance = "x_pm9"
+			self.x_huntsman.timers.reload_not_empty = 2.1
+			self.x_huntsman.timers.reload_exit_not_empty = 1.4
+			self.x_huntsman.timers.reload_empty = 2.1
+			self.x_huntsman.timers.reload_exit_empty = 1.4
+		end
+
+		if self.x_coach then
+			self.x_coach.recategorize = { "break_shot" }
+			self.x_coach.categories = { "akimbo", "shotgun" }
+			self.x_coach.damage_type = "shotgun"
+			self.x_coach.damage_type_single_ray = "anti_materiel"
+			self.x_coach.fire_mode_data.fire_rate = 0.15
+			self.x_coach.rays = 9
+			self.x_coach.kick = self.stat_info.kick_tables.vertical_kick
+			self.x_coach.kick_pattern = {
+				{0, self.stat_info.kick_tables.vertical_kick},
+				{2, self.stat_info.kick_tables.pattern_r4},
+				{3, self.stat_info.kick_tables.pattern_v4},
+			}
+			self.x_coach.muzzleflash = "effects/payday2/particles/weapons/big_51b_auto_fps" --"effects/particles/shotgun/shotgun_gen"
+			self.x_coach.BURST_FIRE = 2
+			self.x_coach.BURST_FIRE_RATE_MULTIPLIER = 5
+			self.x_coach.CAN_TOGGLE_FIREMODE = false
+			self.x_coach.FIRE_MODE = "single"				
+			self.x_coach.AMMO_MAX = 30
+			self.x_coach.supported = true
+			self.x_coach.ads_speed = 0.380
+			self.x_coach.damage_falloff = {
+				start_dist = 300,
+				end_dist = 1400,
+				min_mult = 0.1
+			}
+			self.x_coach.stats = {
+				damage = 240,
+				spread = 56,
+				recoil = 31,
+				spread_moving = 6,
+				zoom = 1,
+				concealment = 23,
+				suppression = 6,
+				alert_size = 2,
+				extra_ammo = 101,
+				total_ammo_mod = 400,
+				value = 1,
+				reload = 20
+			}
+			self.x_coach.stats_modifiers = nil
+			self.x_coach.panic_suppression_chance = 0.05
+			self.x_coach.reload_speed_multiplier = 0.6
+			self.x_coach.weapon_hold = "x_coal"
+			self.x_coach.animations.reload_name_id = "x_rota"
+			self.x_coach.use_stance = "x_pm9"
+			self.x_coach.timers.reload_not_empty = 2.1
+			self.x_coach.timers.reload_exit_not_empty = 1.4
+			self.x_coach.timers.reload_empty = 2.1
+			self.x_coach.timers.reload_exit_empty = 1.4
 		end
 
 	--[[     CAP/WEAPONLIB REQUIRING THINGS     ]]	
