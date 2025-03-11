@@ -1080,8 +1080,18 @@ local crew_wep_preset = {
 		self.deagle_guard_npc.sounds.prefix = "deagle_npc"
 		
 		self.peacemaker_npc = deep_clone(self.raging_bull_npc)
-		self.peacemaker_npc.DAMAGE = 14.1
+		self.peacemaker_npc.DAMAGE = 9
+		self.peacemaker_npc.sounds.prefix = "pmkr45_npc"
 		self.peacemaker_npc.armor_piercing = false --Reno told me do it 
+
+		self.x_peacemaker_npc = deep_clone(self.peacemaker_npc)
+		self.x_peacemaker_npc.DAMAGE = 9
+		self.x_peacemaker_npc.sounds.prefix = "pmkr45_npc"
+		self.x_peacemaker_npc.armor_piercing = false	
+		self.x_peacemaker_npc.CLIP_AMMO_MAX = 12
+		self.x_peacemaker_npc.NR_CLIPS_MAX = 5
+		self.x_peacemaker_npc.hold = "akimbo_pistol"
+		self.x_peacemaker_npc.FIRE_MODE = "single"
 		
 		self.raging_bull_primary_npc = deep_clone(self.raging_bull_npc)
 		self.raging_bull_primary_npc.use_data.selection_index = 2
@@ -9629,7 +9639,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					--Brenner 21 (HK21)
 						self.hk21.categories = {
 							"lmg",
-							"smg"
+							"smg",
+							"mmg"
 						}
 						self.hk21.desc_id = "bm_hk21_sc_desc"
 						self.hk21.has_description = true
@@ -9823,8 +9834,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							"smg"
 						}
 						self.ranc_heavy_machine_gun.upgrade_blocks = nil
-						self.ranc_heavy_machine_gun.CLIP_AMMO_MAX  = 100
-						self.ranc_heavy_machine_gun.AMMO_MAX = 100
+						self.ranc_heavy_machine_gun.CLIP_AMMO_MAX  = 200
+						self.ranc_heavy_machine_gun.AMMO_MAX = 200
 						self.ranc_heavy_machine_gun.fire_mode_data.fire_rate = 0.1
 						self.ranc_heavy_machine_gun.kick = self.stat_info.kick_tables.kick_m2
 						self.ranc_heavy_machine_gun.supported = true
@@ -9853,7 +9864,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.ranc_heavy_machine_gun.can_shoot_through_enemy = true
 						self.ranc_heavy_machine_gun.can_shoot_through_shield = true
 						self.ranc_heavy_machine_gun.can_shoot_through_wall = true
-						self.ranc_heavy_machine_gun.can_shoot_through_titan_shield = true
+						self.ranc_heavy_machine_gun.can_shoot_through_titan_shield = false
 
 			--[[     MINIGUNS      ]]
 
@@ -21950,7 +21961,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				}
 				self.sickle.stats = {
 					damage = 30,
-					spread = 71,
+					spread = 61,
 					recoil = 93,
 					spread_moving = 5,
 					zoom = 1,
@@ -23644,7 +23655,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			}
 			self.x_huntsman.stats = {
 				damage = 240,
-				spread = 56,
+				spread = 46,
 				recoil = 31,
 				spread_moving = 6,
 				zoom = 1,
@@ -23657,8 +23668,9 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				reload = 20
 			}
 			self.x_huntsman.stats_modifiers = nil
+			self.x_huntsman.always_hipfire = true
 			self.x_huntsman.panic_suppression_chance = 0.05
-			self.x_huntsman.reload_speed_multiplier = 0.7
+			self.x_huntsman.reload_speed_multiplier = 0.6
 			self.x_huntsman.weapon_hold = "x_coal"
 			self.x_huntsman.animations.reload_name_id = "x_rota"
 			self.x_huntsman.use_stance = "x_pm9"
@@ -23696,7 +23708,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			}
 			self.x_coach.stats = {
 				damage = 240,
-				spread = 56,
+				spread = 46,
 				recoil = 31,
 				spread_moving = 6,
 				zoom = 1,
@@ -23709,8 +23721,9 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				reload = 20
 			}
 			self.x_coach.stats_modifiers = nil
+			self.x_coach.always_hipfire = true
 			self.x_coach.panic_suppression_chance = 0.05
-			self.x_coach.reload_speed_multiplier = 0.6
+			self.x_coach.reload_speed_multiplier = 0.5
 			self.x_coach.weapon_hold = "x_coal"
 			self.x_coach.animations.reload_name_id = "x_rota"
 			self.x_coach.use_stance = "x_pm9"
@@ -24165,18 +24178,6 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				end
 			end
 
-			if weap.use_data and weap.selection_index == 5 then
-				weap.recategorize = { "unsupported" }
-				weap.ads_speed = 1
-				weap.damage_falloff = {
-					start_dist = 0.1,
-					end_dist = 1,
-					min_mult = 0.01
-				}
-				weap.CLIP_AMMO_MAX = 0
-				weap.AMMO_MAX = 0
-			end
-
 			if weap.supported then 
 				if weap.recategorize[1] == "unsupported" then
 					weap.recategorize[1] = "wpn_special"
@@ -24545,7 +24546,18 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					end
 				end
 			end
-			self:calculate_ammo_pickup(weap)
+			self:calculate_ammo_pickup(weap, id)
+			if weap.use_data and weap.use_data.selection_index == 5 then
+				weap.recategorize = { "unsupported" }
+				weap.ads_speed = 1
+				weap.damage_falloff = {
+					start_dist = 0.1,
+					end_dist = 1,
+					min_mult = 0.01
+				}
+				weap.CLIP_AMMO_MAX = 0
+				weap.AMMO_MAX = 0
+			end
 		end
 	end
 end)
@@ -24556,7 +24568,7 @@ function WeaponTweakData:get_swap_speed_multiplier(weapon)
 	weapon.swap_speed_multiplier = swap_speed_mult
 end
 
-function WeaponTweakData:calculate_ammo_pickup(weapon)
+function WeaponTweakData:calculate_ammo_pickup(weapon, id)
 	--Define % of total ammo to pickup baseline per damage tier.
 	--More damaging guns should pick up less ammo, as a tradeoff for their higher output.
 	local damage_tiers_pickup = {
@@ -24641,6 +24653,21 @@ function WeaponTweakData:calculate_ammo_pickup(weapon)
 	--Set actual pickup values to use.
 	weapon.AMMO_PICKUP[1] = weapon.AMMO_PICKUP[1] * pickup_multiplier
 	weapon.AMMO_PICKUP[2] = weapon.AMMO_PICKUP[2] * pickup_multiplier
+
+	local exclude_ammo = {
+		"m134",
+		"shuno",
+	}
+	if id and weapon.AMMO_MAX and weapon.CLIP_AMMO_MAX and 
+	not table.contains(exclude_ammo, id) and not table.contains(weapon.categories, "minigun") then
+		if weapon.CLIP_AMMO_MAX * 2 > weapon.AMMO_MAX then
+			log(tostring( id ) .. " BEFORE " .. tostring( weapon.AMMO_PICKUP[1] ))
+			weapon.AMMO_PICKUP[1] = weapon.AMMO_PICKUP[1] * (weapon.AMMO_MAX / (weapon.CLIP_AMMO_MAX * 2))
+			log(tostring( id ) .. "AFTER " .. tostring( weapon.AMMO_PICKUP[1] ))
+			weapon.AMMO_PICKUP[2] = weapon.AMMO_PICKUP[2] * (weapon.AMMO_MAX / (weapon.CLIP_AMMO_MAX * 2))
+			weapon.AMMO_MAX = weapon.CLIP_AMMO_MAX * 2
+		end
+	end
 end
 
 WeaponTweakData.clone__create_table_structure = WeaponTweakData._create_table_structure
