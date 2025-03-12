@@ -1389,8 +1389,9 @@ function PlayerStandard:_check_action_primary_attack(t, input, params)
 	end
 
 	self:_chk_action_stop_shooting(new_action)
-		return new_action
-	end
+
+	return new_action
+end
 
 function PlayerStandard:_check_stop_shooting()
 	if self._shooting then

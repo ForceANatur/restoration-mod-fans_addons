@@ -24029,7 +24029,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				value = 5,
 				reload = 20
 			}
-			self.m3.hs_mult = 1.10
+			self.m3.hs_mult = 1.50
 			self.m3.stats_modifiers = nil
 			self.m3.timers = deep_clone(self.m45.timers)
 			self.m3.panic_suppression_chance = 0.05
