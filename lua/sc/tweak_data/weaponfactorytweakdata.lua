@@ -21305,7 +21305,7 @@ end)
 				value = 1,
 				extra_ammo = 10,
 				damage = -30,
-				total_ammo_mod = 204
+				total_ammo_mod = 202
 			}
 			
 			--Sharp Blade
@@ -21316,7 +21316,7 @@ end)
 				value = 1,
 				extra_ammo = -5,
 				damage = 30,
-				total_ammo_mod = -104
+				total_ammo_mod = -102
 			}
 			
 			--Raptor Polymer Body/Thales F88/90 Stock
@@ -37529,7 +37529,16 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 							reload = -2,
 						}
 					}
-					self.wpn_fps_pis_x_g22c.override.wpn_fps_pis_glock_m_d50 = {
+					self.wpn_fps_pis_g22c.override.wpn_fps_pis_glock_m_pmag = {
+						stats = {
+							value = 6,
+							extra_ammo = 10,
+							concealment = -2,
+							spread = -1,
+							reload = -2,
+						}
+					}
+					self.wpn_fps_pis_x_g22c.override.wpn_fps_pis_glock_m_pmag = {
 						stats = {
 							value = 6,
 							extra_ammo = 20,
