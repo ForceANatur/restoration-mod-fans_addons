@@ -9785,7 +9785,7 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 			special_type = "tank",
 			ignore_spawn_cap = true
 		}
-	--OMNIA Saiga and Skull Dozers that spawn with Spring (Ignores spawncaps)
+	--OMNIA Saiga and Vanilla Skull Dozers that spawn with Spring (Ignores spawncaps)
 	if difficulty_index <= 7 then
 		self.unit_categories.OMNIA_Tank = {
 			unit_types = {
@@ -9861,6 +9861,87 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 				fbi = {
 					Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_bulldozer/ene_zeal_bulldozer"),
 					Idstring("units/pd2_mod_omnia/characters/ene_bulldozer_2/ene_bulldozer_2")
+				}
+			},
+			access = access_type_all,
+			special_type = "tank",
+			ignore_spawn_cap = true
+		}
+	end
+	--Medic-dozers that spawn with Spring on DSPJ (Ignores spawncaps)
+	if difficulty_index <= 7 then
+		self.unit_categories.OMNIA_Tank_Medic = {
+			unit_types = {
+				america = {
+					Idstring("units/pd2_dlc_drm/characters/ene_bulldozer_medic_classic/ene_bulldozer_medic_classic"),
+					Idstring("units/pd2_dlc_drm/characters/ene_bulldozer_medic/ene_bulldozer_medic")
+				},
+				zombie = {
+					Idstring("units/pd2_dlc_drm/characters/ene_bulldozer_medic_classic/ene_bulldozer_medic_classic"),
+					Idstring("units/pd2_dlc_drm/characters/ene_bulldozer_medic/ene_bulldozer_medic")
+				},					
+				russia = {
+					Idstring("units/pd2_mod_reapers/characters/ene_bulldozer_medic/ene_bulldozer_medic")
+				},
+				murkywater = {
+					Idstring("units/pd2_mod_sharks/characters/ene_murky_fbi_tank_medic/ene_murky_fbi_tank_medic"),
+					Idstring("units/pd2_dlc_bph/characters/ene_murkywater_bulldozer_medic/ene_murkywater_bulldozer_medic")
+				},
+				federales = {
+					Idstring("units/pd2_dlc_bex/characters/ene_bulldozer_medic/ene_bulldozer_medic"),
+					Idstring("units/pd2_dlc_bex/characters/ene_swat_dozer_medic_policia_federale/ene_swat_dozer_medic_policia_federale")
+				},
+				nypd = {
+					Idstring("units/pd2_dlc_drm/characters/ene_bulldozer_medic_classic/ene_bulldozer_medic_classic"),
+					Idstring("units/pd2_dlc_drm/characters/ene_bulldozer_medic/ene_bulldozer_medic")
+				},	
+				lapd = {
+					Idstring("units/pd2_dlc_drm/characters/ene_bulldozer_medic_classic/ene_bulldozer_medic_classic"),
+					Idstring("units/pd2_dlc_drm/characters/ene_bulldozer_medic/ene_bulldozer_medic")
+				},
+				fbi = {
+					Idstring("units/pd2_dlc_drm/characters/ene_bulldozer_medic_classic/ene_bulldozer_medic_classic"),
+					Idstring("units/pd2_dlc_drm/characters/ene_bulldozer_medic/ene_bulldozer_medic")
+				}
+			},
+			access = access_type_all,
+			special_type = "tank",
+			ignore_spawn_cap = true
+		}
+	-- DS Skin
+	else
+		self.unit_categories.OMNIA_Tank_Medic = {
+			unit_types = {
+				america = {
+					Idstring("units/pd2_dlc_drm/characters/ene_bulldozer_medic_sc/ene_bulldozer_medic_sc"),
+					Idstring("units/pd2_dlc_drm/characters/ene_bulldozer_medic/ene_bulldozer_medic")
+				},
+				zombie = {
+					Idstring("units/pd2_dlc_drm/characters/ene_bulldozer_medic_sc/ene_bulldozer_medic_sc"),
+					Idstring("units/pd2_dlc_drm/characters/ene_bulldozer_medic/ene_bulldozer_medic")
+				},					
+				russia = {
+					Idstring("units/pd2_mod_reapers/characters/ene_bulldozer_medic/ene_bulldozer_medic")
+				},
+				murkywater = {
+					Idstring("units/pd2_mod_sharks/characters/ene_murky_fbi_tank_medic/ene_murky_fbi_tank_medic"),
+					Idstring("units/pd2_dlc_bph/characters/ene_murkywater_bulldozer_medic/ene_murkywater_bulldozer_medic")
+				},
+				federales = {
+					Idstring("units/pd2_dlc_bex/characters/ene_bulldozer_medic/ene_bulldozer_medic"),
+					Idstring("units/pd2_dlc_bex/characters/ene_swat_dozer_medic_policia_federale/ene_swat_dozer_medic_policia_federale")
+				},
+				nypd = {
+					Idstring("units/pd2_dlc_drm/characters/ene_bulldozer_medic_sc/ene_bulldozer_medic_sc"),
+					Idstring("units/pd2_dlc_drm/characters/ene_bulldozer_medic/ene_bulldozer_medic")
+				},	
+				lapd = {
+					Idstring("units/pd2_dlc_drm/characters/ene_bulldozer_medic_sc/ene_bulldozer_medic_sc"),
+					Idstring("units/pd2_dlc_drm/characters/ene_bulldozer_medic/ene_bulldozer_medic")
+				},
+				fbi = {
+					Idstring("units/pd2_dlc_drm/characters/ene_bulldozer_medic_sc/ene_bulldozer_medic_sc"),
+					Idstring("units/pd2_dlc_drm/characters/ene_bulldozer_medic/ene_bulldozer_medic")
 				}
 			},
 			access = access_type_all,
@@ -9964,7 +10045,7 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 		max_amount = 1,
 		access = access_type_all,
 		special_type = "headless_hatman"
-	}	
+	}
 	--Headless Titandozers that spawn with boss on Death Wish
 	self.unit_categories.HVH_Boss_Headless = {
 		unit_types = {
@@ -18447,7 +18528,7 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 		}
 	else
 		self.enemy_spawn_groups.Cap_Spring = {
-			amount = 9,
+			amount = 11,
 			force = true,
 			spawn = {
 				{
@@ -18488,7 +18569,15 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_min = 2,
 					amount_max = 2,
 					tactics = self._tactics.CS_Tazer,
-					rank = 2
+					rank = 3
+				},
+				{
+					unit = "OMNIA_Tank_Medic",
+					freq = 1,
+					amount_min = 2,
+					amount_max = 2,
+					tactics = self._tactics.Cap_spring,
+					rank = 3
 				}
 			}
 		}			
@@ -18701,7 +18790,7 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 		}	
 	else
 		self.enemy_spawn_groups.Cap_Autumn = {
-			amount = 18,
+			amount = 22,
 			force = true,
 			spawn = {
 				{
@@ -18723,18 +18812,18 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				{
 					unit = "Vip_Spooc_rifle",
 					freq = 1,
-					amount_min = 6,
-					amount_max = 6,
+					amount_min = 8,
+					amount_max = 8,
 					tactics = self._tactics.ELITE_swat_rifle,
-					rank = 2
+					rank = 3
 				},
 				{
 					unit = "Vip_Spooc_shotgun",
 					freq = 1,
-					amount_min = 6,
-					amount_max = 6,
+					amount_min = 8,
+					amount_max = 8,
 					tactics = self._tactics.ELITE_swat_shotgun,
-					rank = 2
+					rank = 3
 				}
 			}
 		}

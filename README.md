@@ -63,13 +63,13 @@ The odds of titan bulldozers are increased by 20%
 
 # DSPJ Captain Changes:
 
-Spring spawns all of this spawn groups at once.
+Spring spawns all of this spawn groups at once with 2 Medic-dozers.
 
 Winters get's his LPFs back along with the titandozers.
 
 Summers get's another Nader, Taser, Medic, and Dozer.
 
-Autumn get's 6 titan SWATs of each type.
+Autumn get's 8 titan SWATs of each type.
 
 Hatman has both cloakers and more Vet Cops.
 

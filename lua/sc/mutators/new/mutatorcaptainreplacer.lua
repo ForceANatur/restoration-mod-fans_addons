@@ -63,7 +63,7 @@ function MutatorCaptainReplacer:setup()
 	local difficulty_index = tweak_data:difficulty_to_index(difficulty)
 	local job = Global.level_data and Global.level_data.level_id
 	local pro_job = Global.game_settings and Global.game_settings.one_down
-	
+
 	local winter_preset = nil
 	local spring_preset = nil
 	local summer_preset = nil
@@ -295,7 +295,7 @@ function MutatorCaptainReplacer:setup()
 		}
 	else
 		spring_preset = {
-			amount = 9,
+			amount = 11,
 			force = true,
 			spawn = {
 				{
@@ -336,6 +336,14 @@ function MutatorCaptainReplacer:setup()
 					amount_min = 2,
 					amount_max = 2,
 					tactics = tweak_data.group_ai._tactics.CS_Tazer,
+					rank = 3
+				},
+				{
+					unit = "OMNIA_Tank_Medic",
+					freq = 1,
+					amount_min = 2,
+					amount_max = 2,
+					tactics = tweak_data.group_ai._tactics.Cap_spring,
 					rank = 3
 				}
 			}
@@ -546,10 +554,10 @@ function MutatorCaptainReplacer:setup()
 					rank = 2
 				}					
 			}
-		}	
+		}
 	else
 		autumn_preset = {
-			amount = 18,
+			amount = 22,
 			force = true,
 			spawn = {
 				{
@@ -571,16 +579,16 @@ function MutatorCaptainReplacer:setup()
 				{
 					unit = "Vip_Spooc_rifle",
 					freq = 1,
-					amount_min = 6,
-					amount_max = 6,
+					amount_min = 8,
+					amount_max = 8,
 					tactics = tweak_data.group_ai._tactics.ELITE_swat_rifle,
 					rank = 2
 				},
 				{
 					unit = "Vip_Spooc_shotgun",
 					freq = 1,
-					amount_min = 6,
-					amount_max = 6,
+					amount_min = 8,
+					amount_max = 8,
 					tactics = tweak_data.group_ai._tactics.ELITE_swat_shotgun,
 					rank = 2
 				}
@@ -588,77 +596,77 @@ function MutatorCaptainReplacer:setup()
 		}
 	end
 	--Captain Summers 
-	summer_preset = {
-		amount = 12,
-		force = true,
-		spawn = {
-			{
-				unit = "Cap_Summers",
-				freq = 1,
-				amount_min = 1,
-				amount_max = 1,
-				tactics = tweak_data.group_ai._tactics.Cap_summers,
-				rank = 4
-			},
-			{
-				unit = "medic_summers",
-				freq = 1,
-				amount_min = 1,
-				amount_max = 1,
-				tactics = tweak_data.group_ai._tactics.Cap_summers_minion,
-				rank = 1
-			},
-			{
-				unit = "boom_summers",
-				freq = 1,
-				amount_min = 1,
-				amount_max = 1,
-				tactics = tweak_data.group_ai._tactics.Cap_summers_minion,
-				rank = 1
-			},
-			{
-				unit = "taser_summers",
-				freq = 1,
-				amount_min = 1,
-				amount_max = 1,
-				tactics = tweak_data.group_ai._tactics.Cap_summers_minion,
-				rank = 1
-			},
-			{
-				unit = "summers_FBI_Tank",
-				freq = 1,
-				amount_min = 2,
-				amount_max = 2,
-				tactics = tweak_data.group_ai._tactics.GREEN_tank_DW,
-				rank = 2
-			},
-			{
-				unit = "summers_medic_M4",
-				freq = 1,
-				amount_min = 2,
-				amount_max = 2,
-				tactics = tweak_data.group_ai._tactics.FBI_medic,
-				rank = 2
-			},
-			{
-				unit = "summers_boomM4203",
-				freq = 1,
-				amount_min = 2,
-				amount_max = 2,
-				tactics = tweak_data.group_ai._tactics.ELITE_boom,
-				rank = 2
-			},
-			{
-				unit = "summers_CS_Taser",
-				freq = 1,
-				amount_min = 2,
-				amount_max = 2,
-				tactics = tweak_data.group_ai._tactics.CS_tazer,
-				rank = 2
+		summer_preset = {
+			amount = 12,
+			force = true,
+			spawn = {
+				{
+					unit = "Cap_Summers",
+					freq = 1,
+					amount_min = 1,
+					amount_max = 1,
+					tactics = tweak_data.group_ai._tactics.Cap_summers,
+					rank = 4
+				},
+				{
+					unit = "medic_summers",
+					freq = 1,
+					amount_min = 1,
+					amount_max = 1,
+					tactics = tweak_data.group_ai._tactics.Cap_summers_minion,
+					rank = 1
+				},
+				{
+					unit = "boom_summers",
+					freq = 1,
+					amount_min = 1,
+					amount_max = 1,
+					tactics = tweak_data.group_ai._tactics.Cap_summers_minion,
+					rank = 1
+				},
+				{
+					unit = "taser_summers",
+					freq = 1,
+					amount_min = 1,
+					amount_max = 1,
+					tactics = tweak_data.group_ai._tactics.Cap_summers_minion,
+					rank = 1
+				},
+				{
+					unit = "summers_FBI_Tank",
+					freq = 1,
+					amount_min = 2,
+					amount_max = 2,
+					tactics = tweak_data.group_ai._tactics.GREEN_tank_DW,
+					rank = 2
+				},
+				{
+					unit = "summers_medic_M4",
+					freq = 1,
+					amount_min = 2,
+					amount_max = 2,
+					tactics = tweak_data.group_ai._tactics.FBI_medic,
+					rank = 2
+				},
+				{
+					unit = "summers_boomM4203",
+					freq = 1,
+					amount_min = 2,
+					amount_max = 2,
+					tactics = tweak_data.group_ai._tactics.ELITE_boom,
+					rank = 2
+				},
+				{
+					unit = "summers_CS_Taser",
+					freq = 1,
+					amount_min = 2,
+					amount_max = 2,
+					tactics = tweak_data.group_ai._tactics.CS_tazer,
+					rank = 2
+				}
 			}
 		}
-	}
-else
+	else
 	--Winters 
 	if difficulty_index <= 5 then
 		winter_preset = {

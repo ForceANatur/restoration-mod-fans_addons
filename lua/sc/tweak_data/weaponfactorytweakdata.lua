@@ -23908,7 +23908,7 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 		custom_stats = {
 			falloff_end_mult = 1.16,
 			falloff_start_mult = 1.4285,
-			damage_min_mult = 0.8333333,
+			damage_min_mult = 1.041666667,
 			ads_speed_mult = 0.909091,
 			alt_ammo_pickup_min_mul = 1.294871,
 			alt_ammo_pickup_max_mul = 1.294871,
@@ -27703,6 +27703,8 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			self.parts.wpn_fps_ass_pd3_qbz191_grip.stats = {value = 0}
 			self.parts.wpn_fps_ass_pd3_qbz191_magazine.stats = {value = 0}
 			self.parts.wpn_fps_ass_pd3_qbz191_stock.stats = {value = 0}
+			self.parts.wpn_fps_ass_pd3_qbz191_flash_hider.stats = {value = 0}
+			self.parts.wpn_fps_ass_pd3_qbz191_flash_hider.custom_stats = {}
 
 			self.parts.wpn_fps_ass_pd3_qbz191_smag.supported = true
 			self.parts.wpn_fps_ass_pd3_qbz191_smag.stats = {
