@@ -134,11 +134,11 @@ function restoration:Init()
 		bluewave = restoration.captain_types.spring,  --res map bluewave
 		dwn1 = restoration.captain_types.spring, --Deep Inside
 		jambank = restoration.captain_types.spring, --Botched Bank
-		arena_club30 = restoration.captain_types.spring, -- Arena Orange 
+		arena_club30 = restoration.captain_types.spring, -- Arena Orange
+		hidden_vault = restoration.captain_types.spring, -- Hidden Vault  
 
 		--Autumn
 		alex_1 = restoration.captain_types.autumn, --Rats Day 1
-		secret_stash = restoration.captain_types.autumn, --undercover-- (Map_Add Edit)
 		rat = restoration.captain_types.autumn,	--cook off
 		welcome_to_the_jungle_1_night = restoration.captain_types.autumn, --Big Oil Day 1 Night
 		nightclub = restoration.captain_types.autumn, --Night Club
@@ -148,7 +148,6 @@ function restoration:Init()
 		framing_frame_3 = restoration.captain_types.autumn, --Powerbox simulator
 		jewelry_store = restoration.captain_types.autumn, --Jewelry Store
 		ukrainian_job = restoration.captain_types.autumn, --Ukrainian Job
-		man = restoration.captain_types.autumn, --undercover--
 		sah = restoration.captain_types.autumn, --shacklethrone auction
 		watchdogs_2 = restoration.captain_types.autumn, --Watchdogs Day 2 Night
 		watchdogs_1_night = restoration.captain_types.autumn, --Watchdogs Day 1 Night
@@ -158,14 +157,13 @@ function restoration:Init()
 		ukrainian_job_res = restoration.captain_types.autumn, --Ukrainian Job res edit version
 		hntn = restoration.captain_types.autumn, --harvest and trustee north
 		wetwork = restoration.captain_types.autumn,  --res map package wetworks
-		hwu = restoration.captain_types.autumn, --hwUwU (Avalon's Shadow)
 		amsdeal1 = restoration.captain_types.autumn,  --Armsdeal Alleyway
 		Gambling_room = restoration.captain_types.autumn,  --Underground Bargains
 		branchbank_meth = restoration.captain_types.autumn,  --Bank Heist: Meths
 		constantine_apartment_lvl = restoration.captain_types.autumn,  --Concrete Jungle 
 		tj_htsb = restoration.captain_types.autumn,  --harvest and trustee - southern branch
-		hidden_vault = restoration.captain_types.autumn, --Hidden Vault
 		Gensec_HQ = restoration.captain_types.autumn, --Gensec HQ Raid day 2
+		hwu = restoration.captain_types.autumn, -- Avalon's Shadow 
 		skm_firestarter_2 = restoration.captain_types.autumn,--FBI Holdout 
 
 		--I'm not typing out the whole name
@@ -311,7 +309,7 @@ function restoration:Init()
 		"pent", --Mountain Master Heist
 		"rvd1", --Reservoir Dogs Day 1, lots of scripted spawns and little cover
 		"sand", --The Ukrainian Prisoner
-		"deep", --Crude Awakening
+		"deep", --Crude Awakening	
 		--Skirmish heists below
 		"skm_big2",
 		"skm_mallcrasher",
@@ -370,7 +368,7 @@ function restoration:Init()
 		"peta2", --Goats day 2
 		"nail",	--Lab Rats
 		"hox_1", --Hoxout D1
-		"xmn_hox_1", --Xmas edition
+		"xmn_hox_1", --Xmas edition			
 		--Skirmish heists below
 		"skmc_mad",
 		"skm_red2",
@@ -494,8 +492,8 @@ function restoration:Init()
 	--OMNIA
 	restoration.omnia_support = {
 		"wetwork", --Wetworks
-		"bluewave" --Bluewave
-		--"wetwork_burn"
+		"bluewave", --Bluewave
+		"wetwork_burn" --Burnout
 	}
 	
 	restoration.Environment_Settings_Table = {} --leave blank, it will generate contents based on the table below
@@ -576,6 +574,11 @@ end
 restoration.assault_style = {
 	"beta_assault",
 	"alpha_assault"
+}
+
+restoration.newsfeed_style = {
+	"show_both",
+	"show_classic_newsfeed"
 }
 
 restoration.dodge_display = {
@@ -832,6 +835,7 @@ function restoration:require(file)
 	return io.file_is_readable(path) and blt.vm.dofile(path)
 end
 
+--Mission Script
 function restoration:mission_script_patches()
 	if self._mission_script_patches == nil then
 		local level_id = Global.game_settings and Global.game_settings.level_id
@@ -842,8 +846,21 @@ function restoration:mission_script_patches()
 	return self._mission_script_patches
 end
 
+--Mission script but it can touch instances
+function restoration:instance_script_patches()
+		if self._instance_script_patches == nil then
+			local level_id = Global.game_settings and Global.game_settings.level_id
 
---mission_script_add allows to add actual custom stuff to heists
+			if level_id then
+				self._instance_script_patches = self:require("instance_script/" .. level_id:gsub('_skip1$', ''):gsub('_skip2$', ''):gsub("_night$", ""):gsub("_day$", "")) or false
+			end
+		end
+
+		return self._instance_script_patches
+	end
+
+
+--Mission script but it can add new functions to heists
 function restoration:mission_script_add()
 		restoration.loaded_elements = false
 		if self._mission_script_add == nil then

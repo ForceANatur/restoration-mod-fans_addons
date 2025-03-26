@@ -16024,6 +16024,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.duke1911.damage_type = "handcannon"
 				self.duke1911.lock_slide = true
 				self.duke1911.fire_mode_data.fire_rate = 0.15
+				self.duke1911.tactical_reload = 1
 				self.duke1911.CLIP_AMMO_MAX = 8
 				self.duke1911.AMMO_MAX = 30
 				self.duke1911.kick = self.stat_info.kick_tables.right_recoil
@@ -19343,6 +19344,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.stoner63a_rifle.BURST_FIRE = false
 				self.stoner63a_rifle.CAN_TOGGLE_FIREMODE = false
 				self.stoner63a_rifle.fire_mode_data.fire_rate = 0.06666666
+				self.stoner63a_rifle.tactical_reload = 1
 				self.stoner63a_rifle.AMMO_MAX = 150
 				self.stoner63a_rifle.kick = self.stat_info.kick_tables.horizontal_recoil
 				self.stoner63a_rifle.supported = true
