@@ -625,8 +625,7 @@ function CharacterTweakData:_init_medic(presets)
 	    self.medic.custom_voicework = "murky_medic"
 	else
 		self.medic.custom_voicework = nil
-	end	
-	
+	end
 	self.medic.chatter = {
 		aggressive = true,
 		retreat = true,
