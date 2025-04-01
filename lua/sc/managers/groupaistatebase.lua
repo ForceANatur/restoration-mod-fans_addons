@@ -108,7 +108,8 @@ function GroupAIStateBase:_init_misc_data()
 		spring = true,
 		headless_hatman = true,
 		summers = true,
-		autumn = true
+		autumn = true,
+		heavygunner = true
 	}
 	
 	local diff_index = tweak_data:difficulty_to_index(Global.game_settings.difficulty)
@@ -180,7 +181,8 @@ function GroupAIStateBase:on_simulation_started()
 		spring = true,
 		headless_hatman = true,
 		summers = true,
-		autumn = true
+		autumn = true,
+		heavygunner = true
 	}
 	
 	local diff_index = tweak_data:difficulty_to_index(Global.game_settings.difficulty)

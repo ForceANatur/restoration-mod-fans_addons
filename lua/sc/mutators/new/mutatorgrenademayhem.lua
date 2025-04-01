@@ -149,6 +149,8 @@ function MutatorGrenadeMayhem:setup(data)
 		char_tweak.taser_summers.grenade_toss_chance = 0.4
 		char_tweak.medic_summers.can_throw_frag = true
 		char_tweak.medic_summers.grenade_toss_chance = 0.4
+		char_tweak.heavygunner.can_throw_frag = true
+		char_tweak.heavygunner.grenade_toss_chance = 0.8
 	end
 	
 end

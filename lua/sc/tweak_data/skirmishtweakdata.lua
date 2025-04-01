@@ -67,7 +67,8 @@ local map_scale_factor = 1
 			spring = 1,
 			headless_hatman = 1,
 			autumn = 1,
-			summers = 1
+			summers = 1,
+			heavygunner = 1
 		}
 	}
 end
@@ -641,6 +642,24 @@ function SkirmishTweakData:_init_spawn_group_weights(tweak_data)
 	--This portion of the code will need to be cut and reworked once infinite is in progress.
 	--Might be ideal to use/abuse lua virtual tables and vary them based on captain type.
 	local wave_9_captain = math.random()
+
+	--Always force the April Fools Captain on April First
+	if Month == "4" and Day == "1" then
+		self.captain = "SKM_Cap_HeavyG_W9"
+		assault_groups.SKM_HVH_Boss[10] = 5
+		assault_groups.SKM_Light_Swat[10] = 0.35
+		assault_groups.SKM_Heavy_Swat[10] = 0.25
+		assault_groups.SKM_Shields[10] = 0.06
+		assault_groups.SKM_Shields_Booms[10] = 0.04
+		assault_groups.SKM_Tazers[10] = 0.06
+		assault_groups.SKM_Booms[10] = 0.04
+		assault_groups.SKM_HRTs[10] = 0.15
+		assault_groups.SKM_BLACK_Tank[10] = 0.0
+		assault_groups.SKM_GREEN_Tank[10] = 0.0
+		assault_groups.SKM_SKULL_Tank[10] = 0.0
+		assault_groups.SKM_TIT_Tank[10] = 0.0
+		assault_groups.SKM_FBI_spoocs[10] = 0.05
+	end
 	
 	--Always force the big scary halloween guy, maybe look into a faction check down the line?
 	if job == "skm_nightmare_lvl" then
@@ -752,7 +771,7 @@ function SkirmishTweakData:_init_spawn_group_weights(tweak_data)
 				assault_groups.SKM_TIT_Tank[10] = 0.0
 				assault_groups.SKM_FBI_spoocs[10] = 0.05
 			end
-		else	
+		else
 			if wave_9_captain < 0.24 then --autumn
 				self.captain = "SKM_Cap_Autumn_W9"
 				assault_groups.SKM_Cap_Autumn[10] = 5
@@ -829,7 +848,7 @@ function SkirmishTweakData:_init_spawn_group_weights(tweak_data)
 				assault_groups.SKM_TIT_Tank[10] = 0.0
 				assault_groups.SKM_FBI_spoocs[10] = 0.025
 			end
-		end	
+		end
 	end
 
 	--Split assault group tweakdata into seperate groups for each wave.

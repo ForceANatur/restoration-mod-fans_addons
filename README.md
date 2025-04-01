@@ -5,9 +5,7 @@ These range from minor weapon tweaks to new features such as mutators.
 
 # Changes:
 
-Vanilla units spawn across most factions.
-
-Marshal Shield always uses the `bravo` voicelines, regardless of faction.
+Vanilla units spawn across most factions. Don't like the look of them? Use a mod!
 
 Increased the volume of some voicelines.
 
@@ -42,6 +40,8 @@ Akan LPFs and Enforcers spawn on mexico heists
 Marshal Shield has been buffed.
 
 Captains are a lot more meaner on Death Sentence Pro Job.
+
+A secret 6th captain only available with Everlasting Season/April 1st.
 
 # Mutators:
 

@@ -35,6 +35,11 @@ function restoration:Init()
 			icon = "guis/textures/pd2/hud_buff_halloween",
 			vs_line = "hud_assault_vip_hvh",
 			captain_warn = "hud_assault_vip_hvhwarn"
+		},
+		heavyg = {
+			spawn_group = "boss_heavygunner",
+			icon = "guis/textures/pd2/hud_buff_generic",
+			vs_line = "hud_assault_vip_heavygunner"
 		}
 	}	
 		--Defines what captains spawn on what heists.
@@ -184,7 +189,14 @@ function restoration:Init()
 				restoration.captain_spawns[heist] = restoration.captain_types.hvh
 			end
 		end		
-	end		
+	end
+
+	-- April Fools Captain replaces all the of them on April 1st
+	if Month == "4" and Day == "1" and restoration.Options:GetValue("OTHER/Holiday") then
+		for heist, captain in pairs(restoration.captain_spawns) do
+			restoration.captain_spawns[heist] = restoration.captain_types.heavyg
+		end
+	end
 	
 	--Put heist IDs in this table to disable naturally occuring captains if they're defined above as well, mostly for scripted captain encounters
 	restoration.disable_natural_captain = {	

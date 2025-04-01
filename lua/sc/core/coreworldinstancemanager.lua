@@ -46,6 +46,7 @@ local standard_spawngroups = {
 		"HVH_Boss",
 		"Cap_Autumn",
 		"Cap_Summers",
+		"boss_heavygunner",
 		--Cloakers
 		--"single_spooc",
 		"FBI_spoocs",

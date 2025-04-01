@@ -688,7 +688,8 @@
 	<texture			path="guis/textures/pd2/hud_buff_spooc" force="false" load="false"/>
     <texture			path="guis/textures/pd2/hud_buff_shield" force="true" load="false"/>   
 	<texture			path="guis/textures/pd2/hud_buff_halloween" force="false" load="false"/>   
-	<texture			path="guis/textures/pd2/hud_buff_generic" force="false" load="false"/>  
+	<texture			path="guis/textures/pd2/hud_buff_generic" force="false" load="false"/>
+	<texture			path="guis/textures/pd2/hud_buff_heavyg" force="false" load="false"/>  
 	<texture			path="guis/textures/restoration/bloodyscreen" force="false" load="false"/>
 	
 	<texture			path="guis/textures/pd2/hitconfirm_ineffective" force="false" load="false"/>
@@ -1235,7 +1236,20 @@
 	<model				path="units/payday2/characters/ene_acc_mememan_2_helmet_plate/ene_acc_mememan_2_helmet_plate" />
 	<object				path="units/payday2/characters/ene_acc_mememan_2_helmet_plate/ene_acc_mememan_2_helmet_plate"/>
 	<material_config	path="units/payday2/characters/ene_acc_mememan_2_helmet_plate/ene_acc_mememan_2_helmet_plate"/>
-	<!--MemeMan2 Mod-->	
+	<!--MemeMan2 Mod-->
+
+	<!--New Coppers heavygunner as meme captain-->
+	<object				path="units/pd2_mod_nc/characters/ene_gensec_heavygunner/ene_gensec_heavygunner" force="false"/>
+	<cooked_physics		path="units/pd2_mod_nc/characters/ene_gensec_heavygunner/ene_gensec_heavygunner" force="false"/>
+	<model				path="units/pd2_mod_nc/characters/ene_gensec_heavygunner/ene_gensec_heavygunner" force="false"/>
+	<unit				path="units/pd2_mod_nc/characters/ene_gensec_heavygunner/ene_gensec_heavygunner" force="false" load="true"/>
+	<material_config	path="units/pd2_mod_nc/characters/ene_gensec_heavygunner/ene_gensec_heavygunner" force="false"/>
+	<material_config	path="units/pd2_mod_nc/characters/ene_gensec_heavygunner/ene_gensec_heavygunner_contour" force="true"/>
+	<unit				path="units/pd2_mod_nc/characters/ene_gensec_heavygunner/ene_gensec_heavygunner_husk" force="false" load="true"/>
+	<texture			path="units/pd2_mod_nc/characters/shared_textures/body_df"/>
+	<texture			path="units/pd2_mod_nc/characters/shared_textures/body_nm"/>
+	<texture			path="units/pd2_mod_nc/characters/shared_textures/head_df"/>
+	<texture			path="units/pd2_mod_nc/characters/shared_textures/head_nm"/>
 
 	<unit path="units/pd2_dlc_usm1/weapons/wpn_npc_dmr/wpn_npc_dmr" force="true" />
 	

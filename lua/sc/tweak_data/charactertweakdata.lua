@@ -58,6 +58,7 @@ function CharacterTweakData:init(tweak_data, presets)
 	self:_init_omnia_lpf(presets)
 	self:_init_tank_biker(presets)
 	self:_init_zombie(presets)
+	self:_init_heavygunner(presets)
 	self:_process_weapon_usage_table()
 	
 	--Dozer Armor Multiplier, lower means more EHP
@@ -4194,6 +4195,59 @@ function CharacterTweakData:_init_spa_vip_hurt(presets)
 	self.spa_vip_hurt.calls_in = nil
 	self.spa_vip_hurt.ignores_aggression = true
 	self.spa_vip_hurt.no_omnia_heal = true
+end
+
+-- April Fools captain, absolute menace. Only spawns with mutator or April First
+function CharacterTweakData:_init_heavygunner(presets)
+	self.heavygunner = deep_clone(presets.base)
+	self.heavygunner.tags = {"law", "custom", "special", "captain", "customvo"}
+	self.heavygunner.move_speed = presets.move_speed.normal
+	self.heavygunner.experience = {}
+	self.heavygunner.no_retreat = true
+	self.heavygunner.no_limping = true
+	self.heavygunner.no_arrest = true
+	self.heavygunner.surrender = nil
+	self.heavygunner.weapon = deep_clone(presets.weapon.normal)
+	self.heavygunner.detection = presets.detection.normal
+	self.heavygunner.ends_assault_on_death = true
+	self.heavygunner.damage_resistance = presets.damage_resistance.none
+	self.heavygunner.headshot_dmg_mul = 2.33
+	self.heavygunner.announce_incomming = "incomming_captain"
+	self.heavygunner.priority_shout = "f45"
+	self.heavygunner.bot_priority_shout = "f45x_any"
+	self.heavygunner.priority_shout_max_dis = 3000
+	self.heavygunner.weapon_voice = "3"
+	self.heavygunner.chatter = presets.enemy_chatter.swat
+	self.heavygunner.flammable = true
+	self.heavygunner.can_be_tased = false
+	self.heavygunner.ecm_vulnerability = nil
+	self.heavygunner.immune_to_concussion = true
+	self.heavygunner.ecm_hurts = {}
+	self.heavygunner.damage.hurt_severity = presets.hurt_severities.captain
+	self.heavygunner.static_dodge_preset = true
+	self.heavygunner.no_recoil = true
+	self.heavygunner.is_special = true
+	self.heavygunner.no_asu = false
+	self.heavygunner.steal_loot = nil
+	self.heavygunner.calls_in = nil
+	self.heavygunner.use_animation_on_fire_damage = false
+	self.heavygunner.melee_weapon = "knife_1"
+	self.heavygunner.access = "swat"
+	self.heavygunner.speech_prefix_p1 = self._prefix_data_p1.heavy_swat()
+	self.heavygunner.speech_prefix_p2 = nil
+	self.heavygunner.speech_prefix_count = nil
+	self.heavygunner.yellow_blood = false
+	self.heavygunner.heal_cooldown = 60
+	self.heavygunner.suppression = nil
+	self.heavygunner.no_omnia_heal = true
+	self.heavygunner.can_be_healed = true
+	--Base health
+	self.heavygunner.HEALTH_INIT = 500
+	--Gains extra health per player, totaling to 10k~ at a full party of 4
+	self.heavygunner.player_health_scaling_mul = 1.25
+	self.heavygunner.custom_voicework = "heavygunner"
+	self.heavygunner.captain_type = restoration.captain_types.heavyg
+	table.insert(self._enemy_list, "heavygunner")
 end
 
 function CharacterTweakData:_init_zombie(presets)
@@ -19036,6 +19090,13 @@ function CharacterTweakData:character_map()
 			path = "units/pd2_mod_dave/characters/",
 			list = {
 				"ene_big_dave"
+			}
+		}
+
+		char_map.nc = {
+			path = "units/pd2_mod_nc/characters/",
+			list = {
+				"ene_gensec_heavygunner"
 			}
 		}
 		

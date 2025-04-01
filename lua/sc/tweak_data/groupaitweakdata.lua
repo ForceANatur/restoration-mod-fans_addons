@@ -10146,6 +10146,144 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 		special_type = "spooc",
 		ignore_spawn_cap = true
 	}
+	--April Fools captain
+	self.unit_categories.boss_heavygunner = {
+		unit_types = {
+			america = {
+				Idstring("units/pd2_mod_nc/characters/ene_gensec_heavygunner/ene_gensec_heavygunner")
+			},
+			russia = {
+				Idstring("units/pd2_mod_nc/characters/ene_gensec_heavygunner/ene_gensec_heavygunner")
+			},
+			zombie = {
+				Idstring("units/pd2_mod_nc/characters/ene_gensec_heavygunner/ene_gensec_heavygunner")
+			},					
+			murkywater = {
+				Idstring("units/pd2_mod_nc/characters/ene_gensec_heavygunner/ene_gensec_heavygunner")
+			},
+			federales = {
+				Idstring("units/pd2_mod_nc/characters/ene_gensec_heavygunner/ene_gensec_heavygunner")
+			},					
+			nypd = {
+				Idstring("units/pd2_mod_nc/characters/ene_gensec_heavygunner/ene_gensec_heavygunner")
+			},	
+			lapd = {
+				Idstring("units/pd2_mod_nc/characters/ene_gensec_heavygunner/ene_gensec_heavygunner")
+			},
+			fbi = {
+				Idstring("units/pd2_mod_nc/characters/ene_gensec_heavygunner/ene_gensec_heavygunner")
+			}		
+		},
+		access = access_type_all,
+		ignore_spawn_cap = true
+	}
+	--Meme men that spawn with April Fools Captain
+	self.unit_categories.meme_men_vip = {
+		unit_types = {
+			america = {
+				Idstring("units/payday2/characters/ene_mememan_1/ene_mememan_1"),
+				Idstring("units/payday2/characters/ene_mememan_2/ene_mememan_2")
+			},
+			russia = {
+				Idstring("units/payday2/characters/ene_mememan_1/ene_mememan_1"),
+				Idstring("units/payday2/characters/ene_mememan_2/ene_mememan_2")
+			},
+			zombie = {
+				Idstring("units/payday2/characters/ene_mememan_1/ene_mememan_1"),
+				Idstring("units/payday2/characters/ene_mememan_2/ene_mememan_2")
+			},
+			murkywater = {
+				Idstring("units/payday2/characters/ene_mememan_1/ene_mememan_1"),
+				Idstring("units/payday2/characters/ene_mememan_2/ene_mememan_2")
+			},
+			federales = {
+				Idstring("units/payday2/characters/ene_mememan_1/ene_mememan_1"),
+				Idstring("units/payday2/characters/ene_mememan_2/ene_mememan_2")
+			},					
+			nypd = {
+				Idstring("units/payday2/characters/ene_mememan_1/ene_mememan_1"),
+				Idstring("units/payday2/characters/ene_mememan_2/ene_mememan_2")
+			},
+			lapd = {
+				Idstring("units/payday2/characters/ene_mememan_1/ene_mememan_1"),
+				Idstring("units/payday2/characters/ene_mememan_2/ene_mememan_2")
+			},
+			fbi = {
+				Idstring("units/payday2/characters/ene_mememan_1/ene_mememan_1"),
+				Idstring("units/payday2/characters/ene_mememan_2/ene_mememan_2")
+			}
+		},
+		access = access_type_all
+	}
+	--Big Daves that spawn with April Fools Captain
+	self.unit_categories.vet_lod_vip = {
+		unit_types = {
+			america = {
+				Idstring("units/payday2/characters/ene_veteran_lod_1/ene_veteran_lod_1"),
+				Idstring("units/payday2/characters/ene_veteran_lod_2/ene_veteran_lod_2")
+			},
+			russia = {
+				Idstring("units/payday2/characters/ene_veteran_lod_1/ene_veteran_lod_1"),
+				Idstring("units/payday2/characters/ene_veteran_lod_2/ene_veteran_lod_2")
+			},
+			zombie = {
+				Idstring("units/payday2/characters/ene_veteran_lod_1/ene_veteran_lod_1"),
+				Idstring("units/payday2/characters/ene_veteran_lod_2/ene_veteran_lod_2")
+			},
+			murkywater = {
+				Idstring("units/payday2/characters/ene_veteran_lod_1/ene_veteran_lod_1"),
+				Idstring("units/payday2/characters/ene_veteran_lod_2/ene_veteran_lod_2")
+			},
+			federales = {
+				Idstring("units/payday2/characters/ene_veteran_lod_1/ene_veteran_lod_1"),
+				Idstring("units/payday2/characters/ene_veteran_lod_2/ene_veteran_lod_2")
+			},					
+			nypd = {
+				Idstring("units/payday2/characters/ene_veteran_lod_1/ene_veteran_lod_1"),
+				Idstring("units/payday2/characters/ene_veteran_lod_2/ene_veteran_lod_2")
+			},
+			lapd = {
+				Idstring("units/payday2/characters/ene_veteran_lod_1/ene_veteran_lod_1"),
+				Idstring("units/payday2/characters/ene_veteran_lod_2/ene_veteran_lod_2")
+			},
+			fbi = {
+				Idstring("units/payday2/characters/ene_veteran_lod_1/ene_veteran_lod_1"),
+				Idstring("units/payday2/characters/ene_veteran_lod_2/ene_veteran_lod_2")
+			}
+		},
+		access = access_type_all
+	}
+
+	--LOD Vets that spawn with April Fools Captain
+	self.unit_categories.vip_BIG_DAVE_YAY = {
+		unit_types = {
+			america = {
+				Idstring("units/pd2_mod_dave/characters/ene_big_dave/ene_big_dave")
+			},
+			russia = {
+				Idstring("units/pd2_mod_dave/characters/ene_big_dave/ene_big_dave")
+			},
+			zombie = {
+				Idstring("units/pd2_mod_dave/characters/ene_big_dave/ene_big_dave")
+			},
+			murkywater = {
+				Idstring("units/pd2_mod_dave/characters/ene_big_dave/ene_big_dave")
+			},
+			federales = {
+				Idstring("units/pd2_mod_dave/characters/ene_big_dave/ene_big_dave")
+			},					
+			nypd = {
+				Idstring("units/pd2_mod_dave/characters/ene_big_dave/ene_big_dave")
+			},
+			lapd = {
+				Idstring("units/pd2_mod_dave/characters/ene_big_dave/ene_big_dave")
+			},
+			fbi = {
+				Idstring("units/pd2_mod_dave/characters/ene_big_dave/ene_big_dave")
+			}
+		},
+		access = access_type_all
+	}
 
 	--mutator unit categories
 	--nothing
@@ -18900,6 +19038,87 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 		}
 	}
 
+	-- April Fools Captain
+	if difficulty_index <= 7 then
+		self.enemy_spawn_groups.boss_heavygunner = {
+			amount = 20,
+			force = true,
+			spawn = {
+				{
+					unit = "boss_heavygunner",
+					freq = 1,
+					amount_min = 1,
+					amount_max = 1,
+					tactics = self._tactics.ELITE_swat_rifle,
+					rank = 4
+				},
+				{
+					unit = "meme_men_vip",
+					freq = 1,
+					amount_min = 6,
+					amount_max = 6,
+					tactics = self._tactics.SKULL_tank,
+					rank = 1
+				},
+				{
+					unit = "vet_lod_vip",
+					freq = 1,
+					amount_min = 9,
+					amount_max = 9,
+					tactics = self._tactics.HRT_attack,
+					rank = 1
+				},
+				{
+					unit = "vip_BIG_DAVE_YAY",
+					freq = 1,
+					amount_min = 4,
+					amount_max = 4,
+					tactics = self._tactics.ELITE_suit_stealth,
+					rank = 2
+				}
+			}
+		}
+	else
+		self.enemy_spawn_groups.boss_heavygunner = {
+			amount = 25,
+			force = true,
+			spawn = {
+				{
+					unit = "boss_heavygunner",
+					freq = 1,
+					amount_min = 1,
+					amount_max = 1,
+					tactics = self._tactics.ELITE_swat_rifle,
+					rank = 4
+				},
+				{
+					unit = "meme_men_vip",
+					freq = 1,
+					amount_min = 8,
+					amount_max = 8,
+					tactics = self._tactics.SKULL_tank,
+					rank = 1
+				},
+				{
+					unit = "vet_lod_vip",
+					freq = 1,
+					amount_min = 12,
+					amount_max = 12,
+					tactics = self._tactics.HRT_attack,
+					rank = 1
+				},
+				{
+					unit = "vip_BIG_DAVE_YAY",
+					freq = 1,
+					amount_min = 4,
+					amount_max = 4,
+					tactics = self._tactics.ELITE_suit_stealth,
+					rank = 2
+				}
+			}
+		}
+	end
+
 else
 	--New Winters
 	if difficulty_index <= 5 then
@@ -19342,6 +19561,46 @@ end
 				amount_max = 1,
 				tactics = self._tactics.Cap_summers_minion,
 				rank = 1
+			}
+		}
+	}
+
+	-- April Fools Captain
+	self.enemy_spawn_groups.boss_heavygunner = {
+		amount = 16,
+		force = true,
+		spawn = {
+			{
+				unit = "boss_heavygunner",
+				freq = 1,
+				amount_min = 1,
+				amount_max = 1,
+				tactics = self._tactics.ELITE_swat_rifle,
+				rank = 4
+			},
+			{
+				unit = "meme_men_vip",
+				freq = 1,
+				amount_min = 5,
+				amount_max = 5,
+				tactics = self._tactics.SKULL_tank,
+				rank = 1
+			},
+			{
+				unit = "vet_lod_vip",
+				freq = 1,
+				amount_min = 6,
+				amount_max = 6,
+				tactics = self._tactics.HRT_attack,
+				rank = 1
+			},
+			{
+				unit = "vip_BIG_DAVE_YAY",
+				freq = 1,
+				amount_min = 4,
+				amount_max = 4,
+				tactics = self._tactics.ELITE_suit_stealth,
+				rank = 2
 			}
 		}
 	}
@@ -22102,6 +22361,7 @@ end
 			}
 		}
 	self.enemy_spawn_groups.SKM_Cap_Summers_W9 = deep_clone(self.enemy_spawn_groups.Cap_Summers)
+	self.enemy_spawn_groups.SKM_Cap_HeavyG_W9 = deep_clone(self.enemy_spawn_groups.boss_heavygunner)
 end
 
 function GroupAITweakData:_init_enemy_spawn_groups_level(tweak_data, difficulty_index)
@@ -23549,6 +23809,10 @@ function GroupAITweakData:_init_task_data(difficulty_index, difficulty)
 			sustain_only = true
 		},
 		SKM_Cap_Autumn_W9 = {
+			cooldown = captain_cooldown,
+			sustain_only = true
+		},
+		SKM_Cap_HeavyG_W9 = {
 			cooldown = captain_cooldown,
 			sustain_only = true
 		},
