@@ -9603,8 +9603,20 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.mg42.AMMO_MAX = 160
 						self.mg42.has_description = true
 						self.mg42.desc_id = "bm_wolf_brigade_sc_desc"
-						self.mg42.kick = self.stat_info.kick_tables.the_wolf_brigade
-						self.mg42.muzzleflash = "effects/payday2/particles/weapons/tkb_muzzle"
+						self.mg42.kick = self.stat_info.kick_tables.vertical_kick
+						self.mg42.kick_pattern = {
+							{0, self.stat_info.kick_tables.random_recoil},
+							{6, self.stat_info.kick_tables.pattern_r2},
+							{8, self.stat_info.kick_tables.pattern_r1},
+							{12, self.stat_info.kick_tables.even_recoil}
+						}
+						self.mg42.stance_multipliers = {
+							standing = 0.7,
+							crouching = 0.7,
+							steelsight = 1.2
+						}
+						self.mg42.muzzleflash = "_dmc/effects/heavy_muzzle"
+						self.mg42.muzzleflash_silenced = "_dmc/effects/heavy_suppressed"
 						self.mg42.shell_ejection = "effects/payday2/particles/weapons/shells/shell_762_lmg"
 						self.mg42.supported = true
 						self.mg42.ads_speed = 0.500
@@ -9654,10 +9666,18 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.hk21.BURST_FIRE_LAST_RECOIL_MULTIPLIER  = 1.1
 						self.hk21.BURST_DELAY = 0.18
 						self.hk21.fake_semi_anims = true
-						self.hk21.kick = self.stat_info.kick_tables.horizontal_right_recoil_mg
+						self.hk21.kick = self.stat_info.kick_tables.random_right_recoil
+						self.hk21.kick_pattern = {
+							{0, self.stat_info.kick_tables.random_right_recoil},
+							{15, self.stat_info.kick_tables.pattern_r2},
+							{18, self.stat_info.kick_tables.pattern_r1},
+							{20, self.stat_info.kick_tables.vertical_kick},
+							{23, self.stat_info.kick_tables.right_kick}
+						}
 						self.hk21.always_use_standing = true
 						self.hk21.panic_suppression_chance = 0.05
-						self.hk21.muzzleflash = "effects/payday2/particles/weapons/tkb_muzzle"
+						self.hk21.muzzleflash = "_dmc/effects/heavy_muzzle"
+						self.hk21.muzzleflash_silenced = "_dmc/effects/heavy_suppressed"
 						self.hk21.shell_ejection = "effects/payday2/particles/weapons/shells/shell_762_lmg"
 						self.hk21.supported = true
 						self.hk21.ads_speed = 0.520
@@ -9700,8 +9720,15 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.hcar.CLIP_AMMO_MAX = 20
 						self.hcar.AMMO_MAX = 120
 						self.hcar.fire_mode_data.fire_rate = 0.12
-						self.hcar.muzzleflash = "effects/payday2/particles/weapons/tkb_muzzle"
-						self.hcar.kick = self.stat_info.kick_tables.horizontal_right_recoil_mg
+						self.hcar.muzzleflash = "_dmc/effects/heavy_muzzle"
+						self.hcar.muzzleflash_silenced = "_dmc/effects/heavy_suppressed"
+						self.hcar.kick = self.stat_info.kick_tables.random_right_recoil
+						self.hcar.kick_pattern = {
+							{0, self.stat_info.kick_tables.random_right_recoil},
+							{10, self.stat_info.kick_tables.pattern_l2},
+							{12, self.stat_info.kick_tables.vertical_kick},
+							{16, self.stat_info.kick_tables.moderate_right_kick}
+						}
 						self.hcar.supported = true
 						self.hcar.ads_speed = 0.480
 						self.hcar.damage_falloff = {
@@ -9740,9 +9767,17 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.m60.CLIP_AMMO_MAX = 75
 						self.m60.AMMO_MAX = 120
 						self.m60.fire_mode_data.fire_rate = 0.1034482
-						self.m60.kick = self.stat_info.kick_tables.horizontal_right_recoil_mg
+						self.m60.kick = self.stat_info.kick_tables.random_right_recoil
+						self.m60.kick_pattern = {
+							{0, self.stat_info.kick_tables.random_right_recoil},
+							{13, self.stat_info.kick_tables.vertical_kick},
+							{15, self.stat_info.kick_tables.moderate_right_kick},
+							{26, self.stat_info.kick_tables.vertical_kick},
+							{30, self.stat_info.kick_tables.left_recoil}
+						}
 						self.m60.always_use_standing = true
-						self.m60.muzzleflash = "effects/payday2/particles/weapons/tkb_muzzle"
+						self.m60.muzzleflash = "_dmc/effects/heavy_muzzle"
+						self.m60.muzzleflash_silenced = "_dmc/effects/heavy_suppressed"
 						self.m60.shell_ejection = "effects/payday2/particles/weapons/shells/shell_762_lmg"
 						self.m60.supported = true
 						self.m60.ads_speed = 0.560
@@ -9776,7 +9811,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.m60.timers.reload_exit_empty = 1.4
 						self.m60.timers.reload_not_empty = 4.7
 						self.m60.timers.reload_exit_not_empty = 2.8
-			
+
 					--KSP 58
 						self.par.has_description = true
 						self.par.desc_id = "bm_par_sc_desc"				
@@ -9789,10 +9824,17 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.par.fire_mode_data.fire_rate = 0.092307
 						self.par.AMMO_MAX = 120
 						self.par.kick = {}
-						self.par.kick = self.stat_info.kick_tables.horizontal_left_recoil_mg
+						self.par.kick = self.stat_info.kick_tables.random_left_recoil
+						self.par.kick_pattern = {
+							{0, self.stat_info.kick_tables.random_left_recoil},
+							{12, self.stat_info.kick_tables.left_recoil},
+							{20, self.stat_info.kick_tables.vertical_kick},
+							{26, self.stat_info.kick_tables.moderate_left_kick}
+						}
 						self.par.always_use_standing = true
 						self.par.panic_suppression_chance = 0.05
-						self.par.muzzleflash = "effects/payday2/particles/weapons/tkb_muzzle"
+						self.par.muzzleflash = "_dmc/effects/heavy_muzzle"
+						self.par.muzzleflash_silenced = "_dmc/effects/heavy_suppressed"
 						self.par.shell_ejection = "effects/payday2/particles/weapons/shells/shell_762_lmg"
 						self.par.supported = true
 						self.par.ads_speed = 0.540
@@ -21188,6 +21230,110 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 		
 		--[[     HYLIE'S MODS     ]]--
 
+		if self.riveter then --MW2023 Riveter
+				self.riveter.categories = { 
+					"shotgun",
+					"shotgun_auto"
+				 }
+				self.riveter.recategorize = { "light_shot" }
+				self.riveter.damage_type = "shotgun"
+				self.riveter.damage_type_single_ray = "sniper"
+				self.riveter.rays = 6
+				self.riveter.muzzleflash = "effects/payday2/particles/weapons/big_51b_auto_fps" --"effects/particles/shotgun/shotgun_gen"
+				self.riveter.AMMO_MAX = 60
+				self.riveter.tactical_reload = 1		
+				self.riveter.CLIP_AMMO_MAX = 15
+				self.riveter.fire_mode_data.fire_rate = 0.15
+				self.riveter.FIRE_MODE = "auto"		
+				self.riveter.CAN_TOGGLE_FIREMODE = true
+				self.riveter.BURST_FIRE = false
+				self.riveter.kick = self.stat_info.kick_tables.right_recoil
+				self.riveter.kick_pattern = {
+					{0, self.stat_info.kick_tables.right_kick},
+					{5, self.stat_info.kick_tables.right_recoil},
+					{9, self.stat_info.kick_tables.horizontal_left_recoil},
+					{13, self.stat_info.kick_tables.right_recoil}
+				}
+				self.riveter.supported = true
+				self.riveter.ads_speed = 0.280
+				self.riveter.damage_falloff = {
+					start_dist = 1200,
+					end_dist = 3200,
+					min_mult = 0.16667
+				}
+				self.riveter.stats = {
+					damage = 90,
+					spread = 65,
+					recoil = 61,
+					zoom = 1,
+					concealment = 24,
+					suppression = 8,
+					alert_size = 2,
+					extra_ammo = 101,
+					total_ammo_mod = 400,
+					value = 1,
+					reload = 20
+				}
+				self.riveter.panic_suppression_chance = 0.05
+				self.riveter.stats_modifiers = nil
+				self.riveter.sounds.stop_fire = "saiga_stop"
+				self.riveter.timers = deep_clone(self.m16.timers)
+			end
+
+			if self.soa then --MW2023 SOA Subverter
+				self.soa.categories = { 
+					"assault_rifle",
+					"dmr_l",
+				}
+				self.soa.recategorize = { "dmr_ar" }
+				self.soa.damage_type = "sniper"
+				self.soa.nato = true
+				self.soa.tactical_reload = 1
+				self.soa.CLIP_AMMO_MAX = 20
+				self.soa.AMMO_MAX = 80
+				self.soa.FIRE_MODE = "auto"
+				self.soa.CAN_TOGGLE_FIREMODE = true
+				self.soa.fire_rate_multiplier = nil
+				self.soa.fire_mode_data.fire_rate = 0.08608
+				self.soa.kick = {}
+				self.soa.kick = self.stat_info.kick_tables.left_recoil
+				self.soa.kick_pattern = {
+					{0, self.stat_info.kick_tables.even_recoil},
+					{3, self.stat_info.kick_tables.left_recoil},
+					{7, self.stat_info.kick_tables.right_recoil},
+					{11, self.stat_info.kick_tables.horizontal_right_recoil},
+					{16, self.stat_info.kick_tables.left_recoil}
+				}
+				self.soa.supported = true
+				self.soa.ads_speed = 0.280
+				self.soa.damage_falloff = {
+					start_dist = 2400,
+					end_dist = 5800,
+					min_mult = 0.53333
+				}
+				self.soa.stats = {
+					damage = 45,
+					spread = 86,
+					recoil = 81,
+					spread_moving = 5,
+					zoom = 1,
+					concealment = 23,
+					suppression = 8,
+					alert_size = 2,
+					extra_ammo = 101,
+					total_ammo_mod = 400,
+					value = 1,
+					reload = 20
+				}
+				self.soa.stats_modifiers = nil
+				self.soa.armor_piercing_chance = 0.25
+				self.soa.panic_suppression_chance = 0.05
+				self.soa.timers.reload_empty = 2.3
+				self.soa.timers.reload_exit_empty = 0.75
+				self.soa.timers.reload_not_empty = 1.48
+				self.soa.timers.reload_exit_not_empty = 0.52
+			end
+
 			if self.toz81 then
 				self.toz81.recategorize = { "heavy_shot" }
 				self.toz81.categories = { "shotgun", "shotgun_pistol" }
@@ -22310,7 +22456,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					start_dist = 3600,
 					end_dist = 9000,
 					min_mult = 0.5
-				}	
+				}
 				self.plasmaproto.stats = {
 					damage = 60,
 					spread = 81,
@@ -24251,8 +24397,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				weap.always_play_anims = true
 				self:generate_custom_weapon_stats(weap)	
 			end
-			if weap.animations then
-				weap.animations.magazine_empty = nil 
+			if weap.animations and weap.animations.magazine_empty then
+				weap.animations.magazine_empty = ""
 			end
 
 			if weap.keep_ammo == 0 then

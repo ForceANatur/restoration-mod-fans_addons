@@ -644,6 +644,15 @@ function CharacterTweakData:_init_medic(presets)
 	self.medic.can_be_healed = true
 	self.medic.heal_cooldown = 10
 	table.insert(self._enemy_list, "medic")
+
+	--ugly heavy medic
+	self.medic_heavy = deep_clone(self.medic)
+	self.medic_heavy.HEALTH_INIT = 63
+	self.medic_heavy.headshot_dmg_mul = 1.6
+	self.medic_heavy.move_speed = presets.move_speed.normal
+	self.medic_heavy.custom_voicework = "murky_medic"
+	self.medic_heavy.dodge = presets.dodge.heavy
+	table.insert(self._enemy_list, "medic_heavy")
 	
 	self.medic_summers = deep_clone(self.medic)
 	--Base health
@@ -19096,6 +19105,7 @@ function CharacterTweakData:character_map()
 		char_map.nc = {
 			path = "units/pd2_mod_nc/characters/",
 			list = {
+				"ene_heavymedic_1",
 				"ene_gensec_heavygunner"
 			}
 		}

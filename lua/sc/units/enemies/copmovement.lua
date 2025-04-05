@@ -38,6 +38,7 @@ action_variants.meme_man_shield.hurt = ShieldActionHurt
 action_variants.meme_man_shield.turn = ShieldActionTurn
 action_variants.meme_man_shield.walk = ShieldCopActionWalk
 action_variants.heavygunner = security_variant
+action_variants.medic_heavy = security_variant
 action_variants.spring = clone(security_variant)
 action_variants.spring.walk = TankCopActionWalk
 action_variants.headless_hatman = clone(security_variant)

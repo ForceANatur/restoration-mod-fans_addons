@@ -5207,6 +5207,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 		["menu_mutator_autumn_blacklist_toggle"] = "Blacklist Autumn for \"Random\" option",
 		["menu_mutator_hvh_blacklist_toggle"] = "Blacklist HHHTDFH for \"Random\" option",
 		["menu_mutator_heavyg_blacklist_toggle"] = "Blacklist HeavyGunner for \"Random\" option",
+		["menu_mutator_bexvet_blacklist_toggle"] = "Blacklist El Chupacopra for \"Random\" option",
 		["mutator_captain_replace_desc"] = "Changes the Captain that spawns during a heist.",
 		["mutator_captain_replace_longdesc"] = "The Captain that will spawn during a heist will instead be the selected Captain.\n\nNote: Scripted Captain Encounters will be unchanged. Blacklisting all captains for \"Random\" option will sequence to use \"No Changes\" option.",
 

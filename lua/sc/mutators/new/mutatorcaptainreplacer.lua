@@ -704,11 +704,11 @@ function MutatorCaptainReplacer:setup()
 					rank = 1
 				},
 				{
-					unit = "vip_BIG_DAVE_YAY",
+					unit = "vip_heavymedic_ump",
 					freq = 1,
 					amount_min = 4,
 					amount_max = 4,
-					tactics = tweak_data.group_ai._tactics.ELITE_suit_stealth,
+					tactics = tweak_data.group_ai._tactics.FBI_medic_flank,
 					rank = 2
 				}
 			}
@@ -743,11 +743,11 @@ function MutatorCaptainReplacer:setup()
 					rank = 1
 				},
 				{
-					unit = "vip_BIG_DAVE_YAY",
+					unit = "vip_heavymedic_ump",
 					freq = 1,
 					amount_min = 4,
 					amount_max = 4,
-					tactics = tweak_data.group_ai._tactics.ELITE_suit_stealth,
+					tactics = tweak_data.group_ai._tactics.FBI_medic_flank,
 					rank = 2
 				}
 			}
@@ -1229,11 +1229,11 @@ end
 				rank = 1
 			},
 			{
-				unit = "vip_BIG_DAVE_YAY",
+				unit = "vip_heavymedic_ump",
 				freq = 1,
 				amount_min = 4,
 				amount_max = 4,
-				tactics = tweak_data.group_ai._tactics.ELITE_suit_stealth,
+				tactics = tweak_data.group_ai._tactics.FBI_medic_flank,
 				rank = 2
 			}
 		}

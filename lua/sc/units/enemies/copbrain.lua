@@ -215,6 +215,7 @@ logic_variants.meme_man_shield.attack = ShieldLogicAttack
 logic_variants.meme_man_shield.intimidated = nil
 logic_variants.meme_man_shield.flee = nil
 logic_variants.heavygunner = security_variant
+logic_variants.medic_heavy = security_variant
 logic_variants.spring = clone(security_variant)
 logic_variants.spring.attack = TankCopLogicAttack
 logic_variants.enforcer = clone(security_variant)
