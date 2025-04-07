@@ -5207,7 +5207,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 		["menu_mutator_autumn_blacklist_toggle"] = "Blacklist Autumn for \"Random\" option",
 		["menu_mutator_hvh_blacklist_toggle"] = "Blacklist HHHTDFH for \"Random\" option",
 		["menu_mutator_heavyg_blacklist_toggle"] = "Blacklist HeavyGunner for \"Random\" option",
-		["menu_mutator_bexvet_blacklist_toggle"] = "Blacklist El Chupacopra for \"Random\" option",
+		--["menu_mutator_bexvet_blacklist_toggle"] = "Blacklist El Chupacopra for \"Random\" option",	-- scrapped.
 		["mutator_captain_replace_desc"] = "Changes the Captain that spawns during a heist.",
 		["mutator_captain_replace_longdesc"] = "The Captain that will spawn during a heist will instead be the selected Captain.\n\nNote: Scripted Captain Encounters will be unchanged. Blacklisting all captains for \"Random\" option will sequence to use \"No Changes\" option.",
 
@@ -5365,6 +5365,10 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 		["MutatorSnipersAndSnipers"] = "Sniper Hell",
 		["MutatorSnipersAndSnipers_desc"] = "All enemies now spawn with Sniper Rifles.",
 		["MutatorSnipersAndSnipers_longdesc"] = "All enemies have their standard weapons replaced with Sniper Rifles.\n\nNote: Shield enemies will still spawn with their normal weapons.",
+
+		["MutatorHeavyMedics"] = "Affordable Healthcare",
+		["MutatorHeavyMedics_desc"] = "Medics with a 25% of a Heavy Medic.",
+		["MutatorHeavyMedics_longdesc"] = "Whenever a Medic of any variety spawns, there is a 25% chance that it will be replaced with a more beefy Heavy Medic.",
 		--Crime spree modifier changes
 		["cn_crime_spree_brief"] = "A Crime Spree is an endless series of randomly selected heists, executed in succession. With each heist you complete, your Rank and Reward will increase! Each 20th or 26th rank you will need to choose a modifier and each 100th rank there is an increase to the risk level, that will make the next heists harder to complete. After risk level 600, the amount of i-frames that player have starts to decrease and bravo units begin to spawn normally.\n\n##If you invite your crew, make sure they started their own Crime Spree before joining in order to gain ranks and Rewards as well.##",
 		["menu_cs_next_modifier_forced"] = "",
@@ -5396,6 +5400,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 		["menu_cs_modifier_dozerpairs"] = "Bulldozers will now always spawn in pairs.",
 		["menu_cs_modifier_spoocsquad"] = "Cloakers now tend to spawn in groups.",
 		["menu_cs_modifier_titandozer"] = "Whenever a Bulldozer of any variety spawns, there is a 20% chance that it will be replaced by a railgun weilding Titan Bulldozer.",
+		["menu_cs_modifier_heavymedics"] = "Whenever a Medic of any variety spawns, there is a 25% chance that it will be replaced with a Heavy Medic from HeavyGunner.",
 
 		["bm_menu_skill"] = "Crew Boosts",
 

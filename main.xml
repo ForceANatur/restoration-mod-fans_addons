@@ -372,6 +372,7 @@
 		<hook file="sc/modifiers/new/modifieruberchargeshields.lua" source_file="lib/modifiers/modifierenemyhealthanddamage"/>
 		<hook file="sc/modifiers/new/modifierspoocsquad.lua" source_file="lib/modifiers/basemodifier"/>
 		<hook file="sc/modifiers/new/modifiertitantanks.lua" source_file="lib/modifiers/basemodifier"/>
+		<hook file="sc/modifiers/new/modifierheavymedics.lua" source_file="lib/modifiers/basemodifier"/>
 		<!--///MUTATORS\\\-->
 		<hook file="sc/managers/mutatorsmanager.lua" source_file="lib/managers/mutatorsmanager"/>
 		<hook file="sc/mutators/mutatorcloakereffect.lua" source_file="lib/mutators/mutatorcloakereffect"/>
@@ -427,6 +428,7 @@
 		<hook file="sc/mutators/new/mutatormorespecials.lua" source_file="lib/mutators/basemutator"/>
 		<hook file="sc/mutators/new/mutatorumpforyoutoo.lua" source_file="lib/mutators/basemutator"/>
 		<hook file="sc/mutators/new/mutatorshighnoon.lua" source_file="lib/mutators/basemutator"/>
+		<hook file="sc/mutators/new/mutatorheavymedics.lua" source_file="lib/mutators/basemutator"/>
 		<!--<hook file="sc/mutators/new/mutatorfactionsreplacer.lua" source_file="lib/mutators/basemutator"/>-->
 		<!--///NETWORKING\\\-->
 		<hook file="sc/network/base/hostnetworksession.lua" source_file="lib/network/base/hostnetworksession"/>

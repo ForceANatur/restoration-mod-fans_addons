@@ -696,6 +696,13 @@ function CrimeSpreeTweakData:init_modifiers(tweak_data)
 				icon = "crime_spree_no_hurt",
 				data = {}
 			},
+			--Beefy Medics
+			{
+				id = "heavymedics",
+				class = "ModifierHeavyMedics",
+				icon = "crime_spree_more_medics",
+				data = {}
+			},
 			--No more delay on Taser tase attempts
 			{
 				id = "taser_overcharge",

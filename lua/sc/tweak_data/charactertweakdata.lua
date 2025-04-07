@@ -650,7 +650,11 @@ function CharacterTweakData:_init_medic(presets)
 	self.medic_heavy.HEALTH_INIT = 63
 	self.medic_heavy.headshot_dmg_mul = 1.6
 	self.medic_heavy.move_speed = presets.move_speed.normal
-	self.medic_heavy.custom_voicework = "murky_medic"
+	if self:get_ai_group_type() == "russia" or self:get_ai_group_type() == "federales" then
+		self.medic_heavy.custom_voicework = nil
+	else
+		self.medic_heavy.custom_voicework = "murky_medic"
+	end
 	self.medic_heavy.dodge = presets.dodge.heavy
 	table.insert(self._enemy_list, "medic_heavy")
 	

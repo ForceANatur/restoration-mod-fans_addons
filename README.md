@@ -35,7 +35,7 @@ Widomaker TX is a primary and deals more headshot damage, but has less body shot
 
 Akan LPFs and Enforcers spawn on mexico heists
 
-1 new Crime Spree modifier
+2 new Crime Spree modifiers
 
 Marshal Shield has been buffed.
 
@@ -60,6 +60,8 @@ Sting like a bee: FBI units use the M1014 and Hostage Rescue Teams and ASU units
 # Crime Spree Modifiers:
 
 The odds of titan bulldozers are increased by 20%
+
+The heavy medics from the April Fools Captain with a 25% of replacing a normal medic (Also a mutator)
 
 # DSPJ Captain Changes:
 
