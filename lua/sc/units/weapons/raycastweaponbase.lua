@@ -46,7 +46,7 @@ function RaycastWeaponBase:setup(setup_data, damage_multiplier)
 
 	local panic_mult = (managers.player:has_category_upgrade("player", "panic_suppression_mult") and managers.player:upgrade_value("player", "panic_suppression_mult")) or 0
 
-	self._panic_suppression_chance = setup_data.panic_suppression_skill and panic_mult
+	self._panic_suppression_chance = managers.player:has_category_upgrade("player", "panic_suppression") and panic_mult
 	if self._panic_suppression_chance == 0 then
 		self._panic_suppression_chance = false
 	end
@@ -316,6 +316,7 @@ function RaycastWeaponBase:add_ammo(ratio, add_amount_override)
 		--Moved from NewRaycastWeaponBase:precalculate_ammo_pickup; precalculate_ammo_pickup is first called on spawn *before* the crew bonus becomes active and renders it useless until you do something to call it again like leaving custody or using the weapon pickup mod. 
 		--Its new home is here in a function that is called *after* crew AI is active
 		--I question the validity of an additive ammo bonus done this late in the pickup calcs so I've made it multiplicative
+
 		local pickup = math.lerp(ammo_base._ammo_pickup[1], ammo_base._ammo_pickup[2], math.random()) -- * managers.player:crew_ability_upgrade_value("crew_scavenge", 1)
 		local ammo_gained_raw = add_amount_override or pickup * (ratio or 1) + (ammo_base._ammo_overflow or 0)
 		if ammo_gained_raw <= 0 then --Handle weapons with 0 pickup.
@@ -521,7 +522,7 @@ function RaycastWeaponBase:_fire_raycast(user_unit, from_pos, direction, dmg_mul
 		self._shot_fired_stats_table.hit = hit_anyone
 		self._shot_fired_stats_table.hit_count = hit_count
 
-		if not self._ammo_data or not self._ammo_data.ignore_statistic then
+		if (not self._ammo_data or not self._ammo_data.ignore_statistic) and not ignore_hit_stats then
 			managers.statistics:shot_fired(self._shot_fired_stats_table)
 		end
 	end
@@ -584,7 +585,7 @@ function RaycastWeaponBase:_check_one_shot_shotgun_achievements(...)
 end
 
 --Original mod by 90e, uploaded by DarKobalt.
---Reverb fixed by Doctor Mister Cool, aka Didn'tMeltCables, aka DinoMegaCool
+--Reverb fixed by Doctor Mister Cool, aka Didn'tMeltCables, aka DinoMegaCool, aka DMC (me) being a dumbass and making random acronyms out of the initials of my a
 --New version uploaded and maintained by Offyerrocker.
 --Totally not stolen for resmod 
 
@@ -728,7 +729,12 @@ function RaycastWeaponBase:fire(from_pos, direction, dmg_mul, shoot_player, spre
 
 	if is_player and self:weapon_tweak_data().zippy then
 		local jam = math.rand(1)
-		if jam > 0.99 then
+		if jam < 0.33 and self:ammo_base():get_ammo_remaining_in_clip() > 0 then
+			--dmg_mul = 0
+			--self:dryfire()
+			self._jammed = true
+			self._next_fire_allowed = self._next_fire_allowed + (2 / self:fire_rate_multiplier())
+		elseif jam > 0.66 then
 			dmg_mul = 0
 		end
 	end
@@ -1750,6 +1756,7 @@ end
 function RaycastWeaponBase:get_stance_id()
 	return self:weapon_tweak_data().use_stance or self:get_name_id()
 end
+
 --Autoaim function when using a controller
 function RaycastWeaponBase:check_autoaimModded(from_pos, direction, max_dist, use_aim_assist, autohit_override_data, closeSnapRayMultiplier)
 	local autohit = use_aim_assist and self._aim_assist_data or self._autohit_data
@@ -1768,17 +1775,22 @@ function RaycastWeaponBase:check_autoaimModded(from_pos, direction, max_dist, us
 	local suppression_enemies = nil
 	for u_key, enemy_data in pairs(enemies) do
 		local enemy = enemy_data.unit
+
 		if enemy:base():lod_stage() == 1 and not enemy:in_slot(16) then
 			local com = enemy:movement():m_com()
+
 			mvec3_set(tar_vec, com)
 			mvec3_sub(tar_vec, from_pos)
+
 			local tar_aim_dot = mvec3_dot(direction, tar_vec)
+
 			if tar_aim_dot > 0 and (not max_dist or tar_aim_dot < max_dist) then
 				local tar_vec_len = math_clamp(mvec3_norm(tar_vec), 1, far_dis)
 				local error_dot = mvec3_dot(direction, tar_vec)
 				local error_angle = math.acos(error_dot)
 				local dis_lerp = math.pow(tar_aim_dot / far_dis, 0.25)
 				local suppression_min_angle = math_lerp(suppression_near_angle, suppression_far_angle, dis_lerp)
+
 				if error_angle < suppression_min_angle then
 					suppression_enemies = suppression_enemies or {}
 					local percent_error = error_angle / suppression_min_angle
@@ -1788,23 +1800,30 @@ function RaycastWeaponBase:check_autoaimModded(from_pos, direction, max_dist, us
 				local autohit_min_angle = math_lerp(autohit_near_angle, autohit_far_angle, dis_lerp)
 				if error_angle < autohit_min_angle * closeSnapRayMultiplier then
 					local percent_error = error_angle / autohit_min_angle
+
 					if not closest_error or percent_error < closest_error then
 						tar_vec_len = tar_vec_len + 100
+
 						mvec3_mul(tar_vec, 20000)
 						mvec3_add(tar_vec, from_pos)
+
 						local vis_rayZ = World:raycast("ray", from_pos, tar_vec, "slot_mask", slotmask, "ignore_unit", ignore_units)
 						local vis_ray = World:raycast("ray", from_pos, tar_vec, "slot_mask", InstantBulletBase:blank_slotmask(), "ignore_unit", ignore_units)
 						local vis_ray = World:raycast("ray", from_pos, tar_vec, "slot_mask", slotmask, "ignore_unit", ignore_units)
 						if vis_ray and vis_ray.unit:key() == u_key and (not closest_error or error_angle < closest_error) then
 							closest_error = error_angle
 							closest_ray = vis_ray
+
 							mvec3_set(tmp_vec1, com)
 							mvec3_sub(tmp_vec1, from_pos)
+
 							local d = mvec3_dot(direction, tmp_vec1)
+
 							mvec3_set(tmp_vec1, direction)
 							mvec3_mul(tmp_vec1, d)
 							mvec3_add(tmp_vec1, from_pos)
 							mvec3_sub(tmp_vec1, com)
+
 							closest_ray.distance_to_aim_line = mvec3_len(tmp_vec1)
 						end
 					end
@@ -1812,5 +1831,6 @@ function RaycastWeaponBase:check_autoaimModded(from_pos, direction, max_dist, us
 			end
 		end
 	end
+
 	return closest_ray, suppression_enemies
 end

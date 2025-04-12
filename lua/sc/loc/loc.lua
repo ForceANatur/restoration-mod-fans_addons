@@ -3404,6 +3404,8 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 					--Akimbo Krinkov
 					["bm_w_x_akmsu"] = "Akimbo Krinkovs",
 					--CUSTOM ARs
+						--BO6 CETME L
+						["bm_w_modl"] = "Model L",
 						--MW2023 ARX-200
 						["bm_w_soa"] = "SOA Subverter",
 						--QBZ-191
@@ -4132,6 +4134,10 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 						["bm_w_fik22"] = "Ruger 10/22",
 						--ACR 2012
 						["bm_w_acr_2012"] = "Remington ACR",
+						--MW2023 ARX-200
+						["bm_w_soa"] = "Beretta ARX-200",
+						--BO6 CETME Model L
+						["bm_w_modl"] = "CETME Model L",
 
 				--[[DMRs]]
 					--417
@@ -4736,10 +4742,11 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 				["bm_m16_sc_desc"] = "I'll give you a clip so you can do some damage",
 				["bm_w_x_type54"] = weapon_names == 2 and "The twin colts" or "The twin crosskills",
 				["bm_akmsu_sc_desc"] = "A small rifle useful for taking down #{stat_maxed}#BIG MEN##. Not to be underestimated as this rifle can hold its own in just about any scenario.",
-				["bm_w_kedr_sc_desc"] = "'Congrats on your new PhD for repeatedly dying.' - Doctor, Typical Colors 2",
+				["bm_w_kedr_sc_desc"] = "(REFERENCE REMOVED DUE TO THE CREATOR OF THE FORK NOT LIKING THIS ONE ANYMORE DUE TO THE CREATOR DISTANCING HIMSELF FROM IT)",
 				["bm_w_rc_auto9_desc"] = "Dead or alive; you're coming with me.",
 				["bm_menu_sc_huntsman_desc"] = "The ultimate demon slaying weapon, the pinnacle of shotguns, you think 'Why didn't they call it the Double Barrel?' Because it's better, because it's super!",
 				["bm_super_sc_desc"] = "The ultimate demon slaying weapon, the pinnacle of shotguns, you think 'Why didn't they call it the Double Barrel?' Because it's better, because it's super!",
+				["menu_silence_expert_beta_sc"] = "Explosive Headshot",
 			})
 		end
 
@@ -5749,7 +5756,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 
 				--The Professional--
 				["menu_silence_expert_beta_sc"] = "The Professional",
-				["menu_silence_expert_beta_desc_sc"] = "BASIC: #{owned}#$basic##\nYour aim down sights and sprint-to-fire speeds are #{skill_color}#$skill_value_b1## faster.\n\nACE: #{owned}#$pro##\nYour aim down sights and sprint-to-fire speeds are an additional #{skill_color}#$skill_value_p1## faster.\n\nKilling special and elite enemies with non-explosive ranged weapons will make them #{skill_color}#drop an extra ammo box.##",
+				["menu_silence_expert_beta_desc_sc"] = "BASIC: #{owned}#$basic##\nYour aim down sights and sprint-to-fire speeds are #{skill_color}#$skill_value_b1## faster.\n\nACE: #{owned}#$pro##\nYour aim down sights and sprint-to-fire speeds are an additional #{skill_color}#$skill_value_p1## faster.\n\nLethal headshots against special and elite enemies with ranged weapons will make them #{skill_color}#drop an extra ammo box.##",
 
 				--Unseen Strike, formally Dire Need--
 				["menu_backstab_beta_sc"] = "Unseen Strike",
