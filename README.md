@@ -43,6 +43,8 @@ Captains are a lot more meaner on Death Sentence Pro Job.
 
 A secret 6th captain only available with Everlasting Season/April 1st.
 
+Some weapons don't have kick patterns because that would take forever to do.
+
 # Mutators:
 
 Ludicrous Mode: Enemies drop one less ammo pickup.

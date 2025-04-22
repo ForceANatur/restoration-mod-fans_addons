@@ -1357,9 +1357,12 @@ function PlayerStandard:_check_action_primary_attack(t, input, params)
 								self._spin_up_shoot = nil
 								self._already_fired = true
 							end
-							if weap_base:clip_empty() and not manual_reloads then
-								--self:_start_action_reload_enter(t)
-							end
+							
+							DelayedCalls:Add("clip_empty", 0.1, function ()
+								if weap_base:clip_empty() and not manual_reloads then
+									self:_start_action_reload_enter(t)
+								end
+							end)
 						end
 
 
@@ -2302,14 +2305,15 @@ function PlayerStandard:_update_melee_timers(t, input)
 						local is_enemy = hit_unit:in_slot(managers.slot:get_mask("enemies"))
 						local u_key = hit_unit:key()
 						local name_key = hit_unit:name():key()
+						local unit_damage = hit_unit and hit_unit.character_damage and hit_unit:character_damage() and not hit_unit:character_damage()._dead 
 						if unique_hits[u_key] then
 							use_cleave = nil
-							if not is_enemy and body_dmg_ext and name_key ~= "e050221f8707ded8" then
+							if not is_enemy and unit_damage and body_dmg_ext and name_key ~= "e050221f8707ded8" then
 								self:_do_melee_damage(t, nil, nil, nil, nil, hit_unit, col_ray, num_casts, true, true, true)
 							end
 						else
 							unique_hits[u_key] = hit_unit
-							use_cleave = is_enemy and hit_unit and hit_unit.character_damage and hit_unit:character_damage() and not hit_unit:character_damage()._dead and true
+							use_cleave = is_enemy and unit_damage and true
 							self:_do_melee_damage(t, nil, nil, nil, nil, hit_unit, col_ray, nil, true, true)
 						end
 					end
@@ -4075,6 +4079,10 @@ function PlayerStandard:_update_reload_timers(t, dt, input)
 		local reload_fix_offset = self._equipped_unit:base():weapon_tweak_data().reload_fix_offset
 		local reload_fix_offset2 = self._equipped_unit:base():weapon_tweak_data().reload_fix_offset2
 		local always_use_empty_reload = self._equipped_unit:base():weapon_tweak_data().always_use_empty_reload
+		if anim_multiplier then
+			anim_multiplier = anim_multiplier * ((self._equipped_unit:base():clip_empty() and self._equipped_unit:base()._reload_empty_anim_multiplier) or 1)
+			anim_multiplier = anim_multiplier * ((not self._equipped_unit:base():clip_empty() and self._equipped_unit:base()._reload_non_empty_anim_multiplier) or 1)
+		end
 		if reload_fix_offset then
 			self._equipped_unit:base():tweak_data_anim_stop("reload")
 		end
@@ -4189,6 +4197,10 @@ function PlayerStandard:_start_action_reload(t)
 	
 			local speed_multiplier = weapon:reload_speed_multiplier()
 			local anim_multiplier = weapon._reload_anim_multiplier or 1
+			if anim_multiplier then
+				anim_multiplier = anim_multiplier * ((weapon:clip_empty() and weapon._reload_empty_anim_multiplier) or 1)
+				anim_multiplier = anim_multiplier * ((not weapon:clip_empty() and weapon._reload_non_empty_anim_multiplier) or 1)
+			end
 			local reload_prefix = weapon:reload_prefix() or ""
 			local reload_name_id = anims_tweak.reload_name_id or weapon.name_id
 	
@@ -4216,6 +4228,10 @@ function PlayerStandard:_start_action_reload(t)
 	
 			local speed_multiplier = weapon:reload_speed_multiplier()
 			local anim_multiplier = weapon._reload_anim_multiplier or 1
+			if anim_multiplier then
+				anim_multiplier = anim_multiplier * ((weapon:clip_empty() and weapon._reload_empty_anim_multiplier) or 1)
+				anim_multiplier = anim_multiplier * ((not weapon:clip_empty() and weapon._reload_non_empty_anim_multiplier) or 1)
+			end
 			local empty_reload = weapon:clip_empty() and 1 or 0
 	
 			if weapon:use_shotgun_reload() then
