@@ -13486,17 +13486,19 @@ end)
 				}
 				self.parts.wpn_fps_ass_shak12_body_vks.custom_stats = {
 					armor_piercing_override = 1,
+					can_shoot_through_enemy = true,
+					can_shoot_through_enemy_unlim = true,
 					can_shoot_through_wall = true,
 					can_shoot_through_shield = true,
 					ignore_rof_mult_anims = true,
 					rof_mult = 0.66666,
 					ads_speed_mult = 1.277777,
 					hip_mult = 2,
-					alt_ammo_pickup_min_mul = 0.875,
-					alt_ammo_pickup_max_mul = 0.875,
-					ammo_pickup_min_mul = 0.875,
-					ammo_pickup_max_mul = 0.875,
-					sms = 0.7,
+					alt_ammo_pickup_min_mul = 0.8636,
+					alt_ammo_pickup_max_mul = 0.8636,
+					ammo_pickup_min_mul = 0.8636,
+					ammo_pickup_max_mul = 0.8636,
+					sms = 0.6,
 					alt_desc = "bm_shak12_sc_oden_desc",
 					srm = {
 						-0.1,
@@ -19297,6 +19299,10 @@ end)
 						translation = Vector3(-0.005, 3, -0.007),
 						rotation = Rotation(0.0, 0.012, 0)
 					}
+					self.parts.wpn_fps_upg_o_specter.stance_mod.wpn_fps_shot_thorhammer = {
+						translation = Vector3(-0.005, 3, -0.007),
+						rotation = Rotation(0.0, 0.012, 0)
+					}
 
 					self.parts.wpn_fps_upg_o_specter.stance_mod.wpn_fps_shot_f500 = {
 						translation = Vector3(0, 8.6, -3.36)
@@ -24050,11 +24056,11 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			ads_speed_mult = 1.263157,
 			hip_mult = 1.666666,
 			damage_min_mult = 1.25,
-			sms = 0.7,
-			alt_ammo_pickup_min_mul = 0.875,
-			alt_ammo_pickup_max_mul = 0.875,
-			ammo_pickup_min_mul = 0.875,
-			ammo_pickup_max_mul = 0.875,
+			sms = 0.6,
+			alt_ammo_pickup_min_mul = 0.8636,
+			alt_ammo_pickup_max_mul = 0.8636,
+			ammo_pickup_min_mul = 0.8636,
+			ammo_pickup_max_mul = 0.8636,
 			falloff_start_mult = 1.30,
 			falloff_end_mult = 1.30
 		},
@@ -24978,11 +24984,11 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			ignore_rof_mult_anims = true,
 			hip_mult = 1.666666,
 			damage_min_mult = 0.75,
-			sms = 0.7,
-			alt_ammo_pickup_min_mul = 0.625,
-			alt_ammo_pickup_max_mul = 0.625,
-			ammo_pickup_min_mul = 0.625,
-			ammo_pickup_max_mul = 0.625
+			sms = 0.6,
+			alt_ammo_pickup_min_mul = 0.5937,
+			alt_ammo_pickup_max_mul = 0.5937,
+			ammo_pickup_min_mul = 0.5937,
+			ammo_pickup_max_mul = 0.5937
 		},
 		perks = { "fire_mode_single" },
 		internal_part = true,
@@ -27132,7 +27138,46 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			self.wpn_fps_bow_stampede_ecs.override.wpn_fps_upg_vg_ass_smg_stubby = { recoil = 2, concealment = -1 }
 			self.wpn_fps_bow_stampede_ecs.override.wpn_fps_upg_vg_ass_smg_verticalgrip = { stats = { recoil = 2, concealment = -1 } }
 			self.wpn_fps_bow_stampede_ecs.override.wpn_fps_smg_schakal_vg_surefire = { stats = { recoil = 2, concealment = -1 } }
+		end
 
+		if self.parts.wpn_fps_shot_thorhammer_flash_hider then
+			self.parts.wpn_fps_shot_thorhammer_barrel.stats = { value = 0}
+			self.parts.wpn_fps_shot_thorhammer_barrel.custom_stats = { hip_mult = 4 }
+			self.parts.wpn_fps_shot_thorhammer_magazine.stats = { value = 0}
+			self.parts.wpn_fps_shot_thorhammer_magazine.custom_stats = nil
+			self.parts.wpn_fps_shot_thorhammer_flash_hider.stats = { value = 0}
+			self.parts.wpn_fps_shot_thorhammer_flash_hider.custom_stats = nil
+			self.parts.wpn_fps_shot_thorhammer_flash_hider.perks = nil
+
+			self.parts.wpn_fps_shot_thorhammer_irons_rear.stance_mod = {
+				wpn_fps_shot_thorhammer = {
+					translation = Vector3(0, -2, 0.67),
+					rotation = Rotation(0.04, -0.7, 0)
+				}
+			}
+
+			self.wpn_fps_shot_thorhammer.override = self.wpn_fps_shot_thorhammer.override or {}
+			self.wpn_fps_shot_thorhammer.override.wpn_fps_upg_a_slug = deep_clone(shot_ammo.a_slug_pump_override)
+			self.wpn_fps_shot_thorhammer.override.wpn_fps_upg_a_custom = deep_clone(shot_ammo.a_custom_pump_override)
+			self.wpn_fps_shot_thorhammer.override.wpn_fps_upg_a_custom_free = deep_clone(shot_ammo.a_custom_pump_override)
+			self.wpn_fps_shot_thorhammer.override.wpn_fps_upg_a_explosive = deep_clone(shot_ammo.a_explosive_pump_override)
+			self.wpn_fps_shot_thorhammer.override.wpn_fps_upg_a_rip = deep_clone(shot_ammo.a_rip_pump_override)
+			self.wpn_fps_shot_thorhammer.override.wpn_fps_upg_a_piercing = deep_clone(shot_ammo.a_piercing_pump_override)
+			self.wpn_fps_shot_thorhammer.override.wpn_fps_upg_a_dragons_breath = deep_clone(shot_ammo.a_dragons_breath_pump_override)
+
+			for i, part_id in pairs(self.wpn_fps_shot_thorhammer.uses_parts) do
+				attachment_list = {
+					"wpn_fps_upg_i_autofire",
+					"wpn_fps_upg_i_singlefire"
+				}
+				for _, remove_id in ipairs(attachment_list) do
+					if part_id == remove_id then
+						self.wpn_fps_shot_thorhammer.uses_parts[i] = "resmod_dummy"
+					end
+				end
+			end
+			self.wpn_fps_shot_thorhammer_npc.override = deep_clone(self.wpn_fps_shot_thorhammer.override)
+			self.wpn_fps_shot_thorhammer_npc.uses_parts = deep_clone(self.wpn_fps_shot_thorhammer.uses_parts)
 		end
 
 		if self.parts.wpn_fps_smg_tribune32_stock_fool then
@@ -27273,8 +27318,6 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			self.parts.wpn_fps_smg_geasy9_ammo_9x18.custom_stats = nil
 			self.parts.wpn_fps_smg_geasy9_ammo_acp.stats = {}
 			self.parts.wpn_fps_smg_geasy9_ammo_acp.custom_stats = nil
-			self.parts.wpn_fps_smg_geasy9_ammo_grom.stats = {}
-			self.parts.wpn_fps_smg_geasy9_ammo_grom.custom_stats = nil
 			self.parts.wpn_fps_smg_geasy9_barrel.stats = {}
 			self.parts.wpn_fps_smg_geasy9_barrel.custom_stats = nil
 			self.parts.wpn_fps_smg_geasy9_grip.stats = {}
@@ -27284,6 +27327,21 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			self.parts.wpn_fps_smg_geasy9_flash_hider.stats = {}
 			self.parts.wpn_fps_smg_geasy9_flash_hider.custom_stats = nil
 			self.parts.wpn_fps_smg_geasy9_flash_hider.perks = nil
+
+			self.parts.wpn_fps_smg_geasy9_ammo_grom.pcs = {}
+			self.parts.wpn_fps_smg_geasy9_ammo_grom.no_cull = true
+			self.parts.wpn_fps_smg_geasy9_ammo_grom.stats = { 
+				value = 10,
+				recoil = -6,
+				total_ammo_mod = -18
+			}
+			self.parts.wpn_fps_smg_geasy9_ammo_grom.custom_stats = {
+				rof_mult = 0.9419,
+				alt_desc = "bm_w_geasy9_desc_grom",
+				armor_piercing_add = 0.75,
+				hs_mult_desc = true,
+				hs_mult = 1.25
+			}
 
 			--BARRELS
 				--Short
@@ -32798,16 +32856,16 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			self.parts.wpn_fps_pis_zip22_magazine_drum.supported = true
 			self.parts.wpn_fps_pis_zip22_magazine_drum.stats = {
 				extra_ammo = 40,
-				reload = -8,
-				concealment = -6
+				reload = -7,
+				concealment = -5
 			}
 			self.parts.wpn_fps_pis_zip22_magazine_drum.custom_stats = { 
-				ads_speed_mult = 1.15,
+				ads_speed_mult = 1.125,
+				reload_empty_anim_mult = 1.25,
+				reload_non_empty_anim_mult = 1.3,
 				adj_timers = {
-					reload_empty = 4,
-					reload_exit_empty = 0.7,
-					reload_not_empty = 1.6,
-					reload_exit_not_empty = 1.5
+					reload_exit_empty = 0.95,
+					reload_exit_not_empty = 0.7
 				}
 			}
 
@@ -32819,11 +32877,11 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			}
 			self.parts.wpn_fps_pis_zip22_magazine_drum_110.custom_stats = { 
 				ads_speed_mult = 1.2,
+				reload_empty_anim_mult = 1.25,
+				reload_non_empty_anim_mult = 1.3,
 				adj_timers = {
-					reload_empty = 4,
-					reload_exit_empty = 0.7,
-					reload_not_empty = 1.6,
-					reload_exit_not_empty = 1.5
+					reload_exit_empty = 0.95,
+					reload_exit_not_empty = 0.7
 				}
 			}
 		end
@@ -37253,12 +37311,12 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			self.parts.wpn_fps_snp_sierra458_m_d60.supported = true
 			self.parts.wpn_fps_snp_sierra458_m_d60.stats = {
 				value = 0,
-				concealment = -6,
+				concealment = -5,
 				extra_ammo = 15,
-				reload = -8
+				reload = -7
 			}
 			self.parts.wpn_fps_snp_sierra458_m_d60.custom_stats = {
-				ads_speed_mult = 1.15
+				ads_speed_mult = 1.135
 			}
 			
 			--.50 Beowulf mags
@@ -37283,7 +37341,7 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 					alt_ammo_pickup_max_mul = 0.6,
 					ammo_pickup_min_mul = 0.6,
 					ammo_pickup_max_mul = 0.6,
-					sms = 0.9
+					sms = 0.8
 				}
 
 				self.parts.wpn_fps_snp_sierra458_m_ecr.supported = true
@@ -37308,7 +37366,7 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 					alt_ammo_pickup_max_mul = 0.6,
 					ammo_pickup_min_mul = 0.6,
 					ammo_pickup_max_mul = 0.6,
-					sms = 0.9
+					sms = 0.8
 				}
 
 				self.parts.wpn_fps_snp_sierra458_m_siege.supported = true
@@ -37335,7 +37393,7 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 					alt_ammo_pickup_max_mul = 0.6,
 					ammo_pickup_min_mul = 0.6,
 					ammo_pickup_max_mul = 0.6,
-					sms = 0.9
+					sms = 0.8
 				}
 	
 	
