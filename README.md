@@ -19,8 +19,6 @@ Added descriptions for various weapons.
 
 Half assed custom weapon support for Third Eye Railgun, UTS-15, VxWolf's HK G11, Crime Boss: Rockay City Scudomnion, PD:TH AMCAR-4, IWI TAR-21, Travis Baker's Repeater, Hawk Type 97, K3 Light Machine Gun, Owen SMG, .300 Knockout, PP-91 KEDR, AF2011, Crime Boss Handcannon, M3 Grease Gun, and Beretta Model 38A.
 
-SPAS-15 fires 12 shells instead of 9.
-
 Package data for Russia and Murkywater properlly load.
 
 Titan Cloakers spawn on mayhem and above.
@@ -28,8 +26,6 @@ Titan Cloakers spawn on mayhem and above.
 Zip .22 has a 1% chance to fail
 
 4 new mutators
-
-Scout G7 deals 25% more damage on headshots at the cost of less damage
 
 Widomaker TX is a primary and deals more headshot damage, but has less body shot damage and fires slower.
 
