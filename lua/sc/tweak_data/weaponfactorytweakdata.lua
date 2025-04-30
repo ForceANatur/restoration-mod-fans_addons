@@ -18903,7 +18903,8 @@ end)
 						translation = Vector3(0, -0.6, -3.785)
 					}
 					self.parts.wpn_fps_upg_o_specter.stance_mod.wpn_fps_snp_msr = {
-						translation = Vector3(0.007, -1.7, -3.53)
+						translation = Vector3(-0.01, -1.7, -3.525),
+						rotation = Rotation(0, 0, 0)
 					}
 					self.parts.wpn_fps_upg_o_specter.stance_mod.wpn_fps_snp_scout = {
 						translation = Vector3(-0.005, -12, 0.65),
@@ -18923,11 +18924,12 @@ end)
 						translation = Vector3(-0.012, -0.5, -3.81)
 					}
 					self.parts.wpn_fps_upg_o_specter.stance_mod.wpn_fps_snp_model70 = {
-						translation = Vector3(-0.02, 4.5, -4.03),
-						rotation = Rotation(-0.005, 0, 0)
+						translation = Vector3(-0.006, 0.6, -4.03),
+						rotation = Rotation(0, 0, 0)
 					}
 					self.parts.wpn_fps_upg_o_specter.stance_mod.wpn_fps_snp_mosin = {
-						translation = Vector3(0, -19.8, -4.28)
+						translation = Vector3(0, -19.8, -4.274),
+						rotation = Rotation(0, 0, 0)
 					}
 					self.parts.wpn_fps_upg_o_specter.stance_mod.wpn_fps_snp_desertfox = {
 						translation = Vector3(0, -6.9, -3.94),
@@ -25087,6 +25089,96 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 					value = 3,
 					zoom = 1
 				}		
+				self.parts.wpn_fps_upg_o_romeo3_pis.supported = true		
+				self.parts.wpn_fps_upg_o_romeo3_pis.desc_id = "bm_wp_upg_o_1_1"
+				self.parts.wpn_fps_upg_o_romeo3_pis.stats = {
+					value = 3,
+					zoom = 1
+				}
+			end	
+
+			if self.parts.wpn_fps_upg_o_su230_mdrs then
+				self.parts.wpn_fps_upg_o_su230_mdrs.supported = true	
+				self.parts.wpn_fps_upg_o_su230_mdrs.desc_id = "bm_wp_upg_o_4_rds"
+				self.parts.wpn_fps_upg_o_su230_mdrs.perks = {"scope"}	
+				self.parts.wpn_fps_upg_o_su230_mdrs.stats = {
+					value = 8,
+					zoom = 30
+				}
+				self.parts.wpn_fps_upg_o_su230_mdrs_switch.stats = {
+					value = 1,
+					gadget_zoom = 2
+				}
+			end		
+			
+			if self.parts.wpn_fps_upg_o_acog_rmr then
+				self.parts.wpn_fps_upg_o_acog_rmr.supported = true	
+				self.parts.wpn_fps_upg_o_acog_rmr.desc_id = "bm_wp_upg_o_4_rds"
+				self.parts.wpn_fps_upg_o_acog_rmr.perks = {"scope"}	
+				self.parts.wpn_fps_upg_o_acog_rmr.stats = {
+					value = 8,
+					zoom = 30
+				}	
+				self.parts.wpn_fps_upg_o_acog_rmr_switch.stats = {
+					value = 1,
+					gadget_zoom = 2
+				}
+			end		
+			
+			if self.parts.wpn_fps_upg_o_ta648rmr then
+				self.parts.wpn_fps_upg_o_ta648rmr.supported = true	
+				self.parts.wpn_fps_upg_o_ta648rmr.desc_id = "bm_wp_upg_o_6_rds_mount"
+				self.parts.wpn_fps_upg_o_ta648rmr.perks = {"scope"}	
+				self.parts.wpn_fps_upg_o_ta648rmr.stats = {
+					value = 8,
+					zoom = 50
+				}	
+				self.parts.wpn_fps_upg_o_ta648rmr_switch.stats = {
+					value = 1,
+					gadget_zoom = 2
+				}
+			end
+
+			if self.parts.wpn_fps_upg_o_susat then
+				self.parts.wpn_fps_upg_o_susat.supported = true	
+				self.parts.wpn_fps_upg_o_susat.desc_id = "bm_wp_upg_o_4_irons"
+				self.parts.wpn_fps_upg_o_susat.perks = {"scope"}	
+				self.parts.wpn_fps_upg_o_susat.stats = {
+					value = 8,
+					zoom = 30
+				}	
+				self.parts.wpn_fps_upg_o_susat_steelsight.stats = {
+					value = 1,
+					gadget_zoom = 1
+				}
+			end
+
+			if self.parts.wpn_fps_upg_o_horzine then
+				self.parts.wpn_fps_upg_o_horzine.supported = true
+				self.parts.wpn_fps_upg_o_horzine.desc_id = "bm_wp_upg_o_1_1_ammo"
+				self.parts.wpn_fps_upg_o_horzine.stats = {
+					value = 8,
+					zoom = 1
+				}		
+			end
+			
+			if self.parts.wpn_fps_upg_o_pk01_vi then
+				self.parts.wpn_fps_upg_o_pk01_vi.supported = true
+				self.parts.wpn_fps_upg_o_pk01_vi.desc_id = "bm_wp_upg_o_1_8_laser"
+				self.parts.wpn_fps_upg_o_pk01_vi.perks = {"scope", "gadget"}	
+				self.parts.wpn_fps_upg_o_pk01_vi.stats = {
+					value = 8,
+					zoom = 1
+				}		
+			end
+
+			if self.parts.wpn_fps_upg_o_mro then
+				self.parts.wpn_fps_upg_o_mro.supported = true
+				self.parts.wpn_fps_upg_o_mro.desc_id = "bm_wp_upg_o_1_2"
+				self.parts.wpn_fps_upg_o_mro.stats = {
+					value = 3,
+					zoom = 2
+				}
 			end	
 			
 			if self.parts.wpn_fps_upg_fl_anpeq2 then
@@ -26733,18 +26825,37 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 					tactical_reload = false
 				}
 
-				--Disabling the mags for now until I can get a workaround for the wildly differing timers between clip and mag reloads
-				self.parts.wpn_fps_upg_sks_mag_detach10.pcs = nil
 				self.parts.wpn_fps_upg_sks_mag_detach10.supported = true
-				self.parts.wpn_fps_upg_sks_mag_detach10.has_description = nil
-				self.parts.wpn_fps_upg_sks_mag_detach10.stats = { reload = -3, concealment = -1 }
-				self.parts.wpn_fps_upg_sks_mag_detach10.custom_stats = { ads_speed_mult = 1.025 }
+				self.parts.wpn_fps_upg_sks_mag_detach10.desc_id = "bm_wp_wpn_fps_ass_sks_mags_reload"
+				self.parts.wpn_fps_upg_sks_mag_detach10.has_description = true
+				self.parts.wpn_fps_upg_sks_mag_detach10.stats = { reload = -8 }
+				self.parts.wpn_fps_upg_sks_mag_detach10.custom_stats = {
+					tactical_reload = 1,
+					reload_not_empty_speed_multiplier = 3,
+					reload_non_empty_anim_mult = 0.5,
+					reload_empty_anim_mult = 1.89,
+					adj_timers = {
+						reload_exit_empty = 1.2,
+						reload_exit_not_empty = 0.7
+					}
+				}
 
-				self.parts.wpn_fps_upg_sks_mag_detach20.pcs = nil
 				self.parts.wpn_fps_upg_sks_mag_detach20.supported = true
-				self.parts.wpn_fps_upg_sks_mag_detach20.has_description = nil
-				self.parts.wpn_fps_upg_sks_mag_detach20.stats = { extra_ammo = 10, reload = -4, concealment = -2 }
-				self.parts.wpn_fps_upg_sks_mag_detach20.custom_stats = { ads_speed_mult = 1.05 }
+				self.parts.wpn_fps_upg_sks_mag_detach20.desc_id = "bm_wp_wpn_fps_ass_sks_mags_reload"
+				self.parts.wpn_fps_upg_sks_mag_detach20.has_description = true
+				self.parts.wpn_fps_upg_sks_mag_detach20.stats = { extra_ammo = 10, reload = -10, concealment = -2 }
+				self.parts.wpn_fps_upg_sks_mag_detach20.custom_stats = { 
+					tactical_reload = 1,
+					ads_speed_mult = 1.05,
+					reload_not_empty_speed_multiplier = 3,
+					reload_non_empty_anim_mult = 0.5,
+					reload_empty_anim_mult = 1.89,
+					adj_timers = {
+						reload_exit_empty = 1.2,
+						reload_exit_not_empty = 0.7
+					}
+				}
+
 
 				self.parts.wpn_fps_upg_sks_barrel_med.supported = true
 				self.parts.wpn_fps_upg_sks_barrel_med.stats = deep_clone(barrels.short_b1_stats)
@@ -36555,6 +36666,10 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			self.parts.wpn_fps_ass_kurisumasu_gb_windham.supported = true
 			self.parts.wpn_fps_ass_kurisumasu_gb_windham.stats = { value = 0 }
 			self.parts.wpn_fps_ass_kurisumasu_gb_windham.custom_stats = nil
+			
+			self.parts.wpn_fps_ass_kurisumasu_ro_buis.supported = true
+			self.parts.wpn_fps_ass_kurisumasu_ro_buis.stats = { value = 0 }
+			self.parts.wpn_fps_ass_kurisumasu_ro_buis.custom_stats = nil
 
 			self.wpn_fps_ass_kurisumasu.override = self.wpn_fps_ass_kurisumasu.override or {}
 			self.wpn_fps_ass_kurisumasu.override.wpn_fps_upg_m4_s_standard = {
@@ -38494,8 +38609,7 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			self.parts.wpn_fps_pis_czshadow_m_extended.supported = true
 			self.parts.wpn_fps_pis_czshadow_m_extended.stats = {
 				value = 4,
-				extra_ammo = 3,
-				concealment = -1,
+				extra_ammo = 1,
 				reload = -1
 			}
 			self.parts.wpn_fps_pis_czshadow_m_extended.custom_stats = {}
@@ -38518,7 +38632,7 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			self.wpn_fps_pis_czshadow.override.wpn_fps_pis_czech_m_extended = {
 				stats = {
 					reload = -4,
-					extra_ammo = 10,
+					extra_ammo = 8,
 					concealment = -2
 				},
 				a_obj = "a_m_2"
@@ -38527,7 +38641,7 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			self.wpn_fps_pis_x_czshadow.override.wpn_fps_pis_czech_m_extended = {
 				stats = {
 					reload = -4,
-					extra_ammo = 20,
+					extra_ammo = 18,
 					concealment = -2
 				},
 				a_obj = "a_m_2"
@@ -38535,8 +38649,7 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			self.wpn_fps_pis_x_czshadow.override.wpn_fps_pis_czshadow_m_extended = {
 				stats = {
 					value = 4,
-					extra_ammo = 6,
-					concealment = -1,
+					extra_ammo = 2,
 					reload = -1
 				}
 			}
