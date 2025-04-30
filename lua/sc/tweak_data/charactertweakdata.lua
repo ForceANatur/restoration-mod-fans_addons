@@ -19722,7 +19722,7 @@ function CharacterTweakData:character_map()
 				"ene_gensec_heavygunner"
 			}
 		}
-		
+
 		char_map.halloween = {
 			path = "units/pd2_mod_halloween/characters/",
 			list = {
