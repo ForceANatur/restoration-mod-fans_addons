@@ -1942,14 +1942,16 @@ local crew_wep_preset = {
 	
 	function WeaponTweakData:_init_data_dmr_npc()
 		--US Marshal DMR, less damage for higher rof
+		-- THIS SHIT AINT WORKING AAAAAAAAAAAAAAAAAAA
 		self.dmr_npc = deep_clone(self.scar_npc)
-		self.dmr_npc.DAMAGE = 4
-		self.dmr_npc.auto.fire_rate = 0.24687	-- this better not crash
+	--	self.dmr_npc.DAMAGE = 4.8	-- bandaid fix until i can increase the rof
+		self.dmr_npc.auto.fire_rate = 0.4	-- STILL THE SAME ROF WTFFF
 		self.dmr_npc.sounds.prefix = "saint_victor_npc"
 		self.dmr_npc.trail_effect = Idstring("effects/particles/weapons/titan_trail_sc")
 		self.dmr_npc.use_sniper_trail = true
 		self.dmr_npc.trail = nil
 		self.dmr_npc.suppression = 1.5
+		self.dmr_npc.FIRE_MODE = "auto"
 		
 		--Type-7
 		self.type_7_npc = deep_clone(self.scar_npc)		
@@ -1960,7 +1962,7 @@ local crew_wep_preset = {
 		--self.type_7_npc.muzzleflash =  Idstring("effects/payday2/particles/character/taser_hittarget")
 		self.type_7_npc.trail_effect = Idstring("effects/particles/weapons/akan_titan_trail_sc")
 		self.type_7_npc.use_sniper_trail = true
-	end	
+	end
 	
 	function WeaponTweakData:_init_data_m249_npc()
 		--M249

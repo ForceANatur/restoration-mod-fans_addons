@@ -1423,6 +1423,7 @@ function CharacterTweakData:_init_marshal_marksman(presets)
 	else
 		self.marshal_marksman.custom_voicework = "marshal_marksman"
 	end
+	self.marshal_marksman.HEALTH_INIT = 19.5	-- they have less hp wtffff
 	--Clones the scripted version of Titan Sniper
 	self.marshal_marksman_scripted = deep_clone(self.heavy_swat_sniper_scripted)
 	self.marshal_marksman_scripted.speech_prefix_p1 = "marshal_ass"
