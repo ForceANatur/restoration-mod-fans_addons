@@ -39,8 +39,6 @@ Captains are a lot more meaner on Death Sentence Pro Job.
 
 A secret 6th captain only available with Everlasting Season/April 1st.
 
-Some weapons don't have kick patterns because that would take forever to do.
-
 # Mutators:
 
 Ludicrous Mode: Enemies drop one less ammo pickup.
@@ -224,6 +222,8 @@ PlayBONK: Creating the shield bash animation.
 IareAwesome17: OMNIA Medic Bulldozer/Additional enemy fixes
 
 Miss Miki: PONR anti-grief fixes and other contributions/fixes
+
+MrVavlo: For the CHARMing weapon CHARM that's full of CHARM
 
 Marshie: Russian localisation
 

@@ -366,6 +366,12 @@ function TipsTweakData:init()
 			image = "enemy_winters_sc",
 			consoles = true,
 			category = "captains_res"
+		},
+		{
+			cat_index = 14,
+			image = "enemy_spring",
+			consoles = true,
+			category = "captains_res"
 		},	
 		{
 			cat_index = 1,
@@ -888,7 +894,25 @@ function TipsTweakData:init()
 			image = "enemy_akantits",
 			consoles = true,
 			category = "fluff_res"
-		}			
+		},	
+		{
+			cat_index = 26,
+			image = "generic_tip",
+			consoles = true,
+			category = "fluff_res"
+		},	
+		{
+			cat_index = 27,
+			image = "generic_tip",
+			consoles = true,
+			category = "fluff_res"
+		},	
+		{
+			cat_index = 28,
+			image = "generic_tip",
+			consoles = true,
+			category = "fluff_res"
+		}
 	}
 	self.category_totals = {}
 

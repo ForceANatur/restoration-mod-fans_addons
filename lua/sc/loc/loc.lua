@@ -1177,6 +1177,10 @@ Hooks:Add("LocalizationManagerPostInit", "ResMod_english_Localization_Init", fun
 		LocalizationManager:add_localized_strings({
 			["hud_assault_vip"] = "FACE YOUR NIGHTMARES AND WAKE UP",
 		})
+	elseif captain_type == restoration.captain_types.heavyg then
+		LocalizationManager:add_localized_strings({
+			["hud_assault_vip"] = "KILL THE WANNABE CAPTAIN TO END ASSAULT",
+		})
 	end
 
 end)
@@ -3226,7 +3230,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 					--AK Gen
 					["bm_w_vityaz"] = "AK-19-01 Tasunka",
 					--Signature SMG
-					["bm_w_shepheard"] = "FIK PC9",
+					["bm_w_shepheard"] = "Signature PC9",
 					--Compact-5/MP5
 					["bm_w_mp5"] = "Compact-5",
 					["bm_w_mp5sd"] = "Compact-5SD",
@@ -4977,7 +4981,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 		["loading_gameplay_res_16"] = "You can parry most enemy melee attacks by charging your own. This can be upgraded to work against cloaker kicks and shield bashes.",
 		["loading_gameplay_res_17"] = "Enemy melee attacks are quick and deadly. Keep your distance!",
 		["loading_gameplay_res_18"] = "You know what's better than smacking enemies with a baseball bat? Smacking them in the head with a baseball bat for headshot damage.",
-		["loading_gameplay_res_19"] = "Snipers take a brief period of time to focus before firing. Sometimes they can appear with the rest of the units! Mind their lasers!",
+		["loading_gameplay_res_19"] = "Sometimes snipers can travel with the rest of the units. The odds are 1/7 on Death Sentence when spawning with light SWATs.",
 		["loading_gameplay_res_20"] = "Your Jokers aren't safe from being kicked by Cloakers. If a Cloaker somehow gets converted, it will instantly kill any unit it kicks.",
 		["loading_gameplay_res_21"] = "Common enemies of all factions sometimes use diffrent weaponry. Some of Restoration's enemies do not use random weapons.",
 		["loading_gameplay_res_22"] = "Shotgun-wielding enemies are poor at range, but make up for it in close-quarters.",
@@ -4985,7 +4989,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 		["loading_gameplay_res_24"] = "Enemies will have different behaviors on higher difficulties.",
 		["loading_gameplay_res_25"] = "Death Sentence difficulty brings all sorts of nasty tricks to make your life hell. Don't expect them to pull their punches.",
 		["loading_gameplay_res_26"] = "Pro Jobs offer a test of one's ability by only allowing one shot at the prize, generic asset lock, and allows the spawning of Bravo units.",
-		["loading_gameplay_res_27"] = "Restoration Mod provides different voicelines for the many factions, such as Murkywater mercenaries and law enforcers from other states.",
+		["loading_gameplay_res_27"] = "This addon provides different voicelines for the many factions, such as Murkywater mercenaries and law enforcers from other states.",
 		["loading_gameplay_res_28"] = "Cloakers will make use of smoke grenades when performing take-downs on higher difficulties.",
 		--New Units Hints
 		["loading_new_units_res_title"] = "Restoration Unit Tips",
@@ -5017,13 +5021,14 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 		["loading_captains_res_4"] = "Captain Spring throws Cluster HE grenades periodically.",
 		["loading_captains_res_5"] = "Captain Spring may be dangerous due to his knockback capabilites but he is incredibly slow and has poor range.",
 		["loading_captains_res_6"] = "Captain Autumn will loudly taunt when he attacks.",
-		["loading_captains_res_7"] = "Unlike other Captains, the police will not announce Autumn's arrival as to not ruin his element of surprise. If you have a custom hud that shows captains, well...",
+		["loading_captains_res_7"] = "The police will not announce Autumn's or HeavyGunner's arrival as to not ruin their element of surprise. If you have a custom hud that shows captains, well...",
 		["loading_captains_res_8"] = "Captain Autumn will disable your deployables if he's allowed to stay active. Disabled deployables can only be restored if Autumn is defeated.",
 		["loading_captains_res_9"] = "You will probably not beat Captain Autumn in a fist fight. Don't even try.",
 		["loading_captains_res_10"] = "Captain Winters has a strong resistance to bullets and even stronger ones to explosives and fire. Despite that, he is somewhat vulnerable to melee.",
 		["loading_captains_res_11"] = "Captain Winters' shield cannot be pierced but it will break after soaking up enough damage; like Titan Shields, beware of his second phase.",
 		["loading_captains_res_12"] = "Captain Winters will wander the map, healing and overhealing nearby enemies.",
 		["loading_captains_res_13"] = "Captain Winters' shield has flashbang panels like those used by Titan Shields; just keep in mind his flashbang panels don't break after being shot.",
+		["loading_captains_res_14"] = "HeavyGunner is a variant of Spring who moves faster in exgange for not dealing knockback and losing the ability to throw grenades.",
 		--Stealth Hints
 		["loading_stealth_res_title"] = "Restoration Stealth Tips",
 		["loading_stealth_res_1"] = "The security Command Post will send guards to investigate malfunctioning cameras, allowing it to be used as a lure.",
@@ -5088,7 +5093,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 		["loading_equip_skills_res_37"] = "When aiming, optics have a recoil reduction that scales with their current magnification level to aid in shooting over longer ranges; this comes at the cost of slower aim times.",
 		["loading_equip_skills_res_38"] = "The \"Cleave\" stat for melee weapons represents how many enemies you can hit with a single attack; the shield held by Shield units does not count against cleave.",
 		--Misc Hints
-		["loading_misc_res_title"] = "Restoration Miscellaneous Tips",
+		["loading_misc_res_title"] = "FaN's Restoration Mod Addons Trivia",
 		["loading_misc_res_1"] = "This mod of a mod was made public on Jul 21, 2024.",
 		["loading_misc_res_2"] = "No, Restoration Mod doesn't have a wiki. Yet... Also please don't use FANDOM for it. That wiki hosting website sucks.",
 		["loading_misc_res_3"] = "If you are reading this, you are playing a mod of a mod. I know. A modception you can call it.",
@@ -5119,6 +5124,9 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 		["loading_fluff_res_23"] = "The Policía Federal has a special chupacabra hunting division.",
 		["loading_fluff_res_24"] = "Captains don't die, they go into custody.",
 		["loading_fluff_res_25"] = "In terms of the mod's development, the restoration crew either didn't bother or forgot Mexico's titans, yet they still bothered to make the veteran.",
+		["loading_fluff_res_26"] = "HeavyGunner spends a fortune on spray paint for his SWAT gear.",
+		["loading_fluff_res_27"] = "HeavyGunner idolizes the other captains.",
+		["loading_fluff_res_28"] = "HeavyGunner went to OMNIA and demanded to be a captain, which is why he didn't receive any augmentations or changes from OMNIA like the other captains.",
 
 		["menu_button_deploy_bipod"] = "BIPOD/ALT-FIRE",
 		["hint_short_max_pagers"] = "Neglecting pagers will significantly increase guard suspicion.",
