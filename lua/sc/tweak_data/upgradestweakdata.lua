@@ -1325,10 +1325,10 @@ Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "ResSkillsInit", function(
 
 			--Rifleman
 				--Basic/Aced
-					self.values.assault_rifle.steelsight_accuracy_inc = {0.9, 0.8}
-					self.values.snp.steelsight_accuracy_inc = {0.9, 0.8}
-					self.values.assault_rifle.steelsight_range_inc = {1.1, 1.2}
-					self.values.snp.steelsight_range_inc = {1.1, 1.2}
+					self.values.assault_rifle.steelsight_accuracy_inc = {0.875, 0.75}
+					self.values.snp.steelsight_accuracy_inc = {0.875, 0.75}
+					self.values.assault_rifle.steelsight_range_inc = {1.125, 1.25}
+					self.values.snp.steelsight_range_inc = {1.125, 1.25}
 
 					self.values.assault_rifle.enter_steelsight_speed_multiplier = {1.075}
 					self.values.snp.enter_steelsight_speed_multiplier = {1.075}
@@ -1392,7 +1392,7 @@ Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "ResSkillsInit", function(
 				}
 				self.headshot_graze_proc_cd = 0.5
 				self.values.player.headshot_no_falloff = {true}
-				self.headshot_no_falloff_cd = 0.2
+				self.headshot_no_falloff_cd = 0.0
 				
 				self.skill_descs.body_expertise = {
 					skill_value_b1 = tostring(self.values.snp.graze_damage[1].damage_factor * 100).."%", -- Minimal ricochet damage

@@ -19043,8 +19043,8 @@ end)
 						translation = Vector3(-0.005, 1.6, -3.028)
 					}
 					self.parts.wpn_fps_upg_o_specter.stance_mod.wpn_fps_smg_mp7 = {
-						translation = Vector3(0.02, 7.5, -2.72),
-						rotation = Rotation(0, -0.5, 0)
+						translation = Vector3(0.03, 7.7, -2.67),
+						rotation = Rotation(0.032, -0.2, 0)
 					}
 				
 					self.parts.wpn_fps_upg_o_specter.stance_mod.wpn_fps_smg_mp9 = {
@@ -19559,6 +19559,9 @@ end)
 					}
 					self.parts.wpn_fps_upg_o_specter.stance_mod.wpn_fps_snp_mptango41 = {
 						translation = Vector3(-0.01, 21.3, -3.805)
+					}
+					self.parts.wpn_fps_upg_o_specter.stance_mod.wpn_fps_snp_sbeta = {
+						translation = Vector3(-0.015, 1, -3.79)
 					}
 					
 					self.parts.wpn_fps_upg_o_specter.stance_mod.wpn_fps_bow_stampede_ecs = {
@@ -32837,42 +32840,146 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 					}
 				}
 			}
-
-			self.parts.wpn_fps_snp_sbeta_barrel_short.supported = true
-			self.parts.wpn_fps_snp_sbeta_barrel_short.stats = deep_clone(barrels.short_b3_stats)
-			self.parts.wpn_fps_snp_sbeta_barrel_short.stats.extra_ammo = -2
-			self.parts.wpn_fps_snp_sbeta_barrel_short.custom_stats = deep_clone(barrels.short_b3_stats)
-
-			self.parts.wpn_fps_snp_sbeta_lever_fast.supported = true
-			self.parts.wpn_fps_snp_sbeta_lever_fast.stats = {
-				spread = -2,
-				recoil = -2
+			self.parts.wpn_fps_snp_sbeta_irons.stance_mod = {
+				wpn_fps_snp_sbeta = {
+					translation = Vector3(-0.029, -4, -0.42),
+					rotation = Rotation(-0.017, 0, 0 )
+				}
 			}
-			self.parts.wpn_fps_snp_sbeta_lever_fast.custom_stats = { rof_mult = 1.073684 }
-			self.parts.wpn_fps_snp_sbeta_lever_steady.supported = true
-			self.parts.wpn_fps_snp_sbeta_lever_steady.stats = {
-				spread = 2,
-				recoil = 2
+					
+			self.parts.wpn_fps_snp_sbeta_scope.supported = true
+			self.parts.wpn_fps_snp_sbeta_scope.desc_id = "bm_wp_upg_o_3_7"
+			self.parts.wpn_fps_snp_sbeta_scope.stats = {
+				zoom = 27
+			}
+			self.parts.wpn_fps_snp_sbeta_scope.stance_mod = deep_clone(self.parts.wpn_fps_upg_o_specter.stance_mod)
 
-			}
-			self.parts.wpn_fps_snp_sbeta_lever_steady.custom_stats = { rof_mult = 0.968421 }
+			--BARRELS
+				self.parts.wpn_fps_snp_sbeta_barrel_heavy.supported = true
+				self.parts.wpn_fps_snp_sbeta_barrel_heavy.stats = deep_clone(barrels.long_b2_stats)
+				self.parts.wpn_fps_snp_sbeta_barrel_heavy.stats.concealment = -3
+				self.parts.wpn_fps_snp_sbeta_barrel_heavy.stats.extra_ammo = 2
+				self.parts.wpn_fps_snp_sbeta_barrel_heavy.custom_stats = deep_clone(barrels.long_b2_stats)
+				self.parts.wpn_fps_snp_sbeta_barrel_heavy.custom_stats.ads_speed_mult = 1.075
 
-			self.parts.wpn_fps_snp_sbeta_stock_light.supported = true
-			self.parts.wpn_fps_snp_sbeta_stock_light.stats = {
-				spread = 1,
-				recoil = -2,
-			}
-			self.parts.wpn_fps_snp_sbeta_stock_light.custom_stats = nil
-			self.parts.wpn_fps_snp_sbeta_stock_tac.supported = true
-			self.parts.wpn_fps_snp_sbeta_stock_tac.stats = {
-				spread = -1,
-				recoil = -2,
-				concealment = 2
-			}
-			self.parts.wpn_fps_snp_sbeta_stock_tac.custom_stats = { ads_speed_mult = 1.05 }
-			self.parts.wpn_fps_snp_sbeta_stock_no.supported = true
-			self.parts.wpn_fps_snp_sbeta_stock_no.stats = deep_clone(stocks.remove_fixed_stats)
-			self.parts.wpn_fps_snp_sbeta_stock_no.custom_stats = deep_clone(stocks.remove_fixed_stats)
+				self.parts.wpn_fps_snp_sbeta_barrel_sn.supported = true
+				self.parts.wpn_fps_snp_sbeta_barrel_sn.stats = deep_clone(barrels.long_b2_stats)
+				self.parts.wpn_fps_snp_sbeta_barrel_sn.custom_stats = deep_clone(barrels.long_b2_stats)
+
+				self.parts.wpn_fps_snp_sbeta_barrel_fluted.supported = true
+				self.parts.wpn_fps_snp_sbeta_barrel_fluted.stats = deep_clone(barrels.short_b1_stats)
+				self.parts.wpn_fps_snp_sbeta_barrel_fluted.custom_stats = deep_clone(barrels.short_b1_stats)
+
+				self.parts.wpn_fps_snp_sbeta_barrel_short.supported = true
+				self.parts.wpn_fps_snp_sbeta_barrel_short.stats = deep_clone(barrels.short_b3_stats)
+				self.parts.wpn_fps_snp_sbeta_barrel_short.stats.extra_ammo = -2
+				self.parts.wpn_fps_snp_sbeta_barrel_short.custom_stats = deep_clone(barrels.short_b3_stats)
+
+				self.parts.wpn_fps_snp_sbeta_barrel_sil.supported = true
+				self.parts.wpn_fps_snp_sbeta_barrel_sil.stats = deep_clone(barrels.short_b3_stats)
+				self.parts.wpn_fps_snp_sbeta_barrel_sil.stats.extra_ammo = -2
+				self.parts.wpn_fps_snp_sbeta_barrel_sil.stats.alert_size = -1
+				self.parts.wpn_fps_snp_sbeta_barrel_sil.stats.suppression = 12
+				self.parts.wpn_fps_snp_sbeta_barrel_sil.custom_stats = deep_clone(barrels.short_b3_stats)
+				self.parts.wpn_fps_snp_sbeta_barrel_sil.forbids = {
+					"wpn_fps_snp_sbeta_handguard_heavy",
+					"wpn_fps_snp_sbeta_handguard_light",
+					"wpn_fps_snp_sbeta_handguard_tac"
+				}
+				self.parts.wpn_fps_snp_sbeta_barrel_sil.override = {
+					wpn_fps_snp_sbeta_handguard = {
+						unit = "units/mods/weapons/wpn_fps_snp_sbeta_pts/wpn_fps_snp_sbeta_handguard_sil"
+					}
+				}
+
+			--HANDGUARDS
+				self.parts.wpn_fps_snp_sbeta_handguard_sil.pcs = nil
+
+				self.parts.wpn_fps_snp_sbeta_handguard_heavy.supported = true
+				self.parts.wpn_fps_snp_sbeta_handguard_heavy.stats = {
+					value = 5,
+					recoil = 6,
+					concealment = -3
+				}
+				self.parts.wpn_fps_snp_sbeta_handguard_heavy.custom_stats = { ads_speed_mult = 1.075 }
+
+				self.parts.wpn_fps_snp_sbeta_handguard_light.supported = true
+				self.parts.wpn_fps_snp_sbeta_handguard_light.stats = {
+					value = 5,
+					recoil = -2,
+					spread = 1
+				}
+				self.parts.wpn_fps_snp_sbeta_handguard_light.custom_stats = {}
+
+				self.parts.wpn_fps_snp_sbeta_handguard_tac.supported = true
+				self.parts.wpn_fps_snp_sbeta_handguard_tac.stats = {
+					value = 8,
+					recoil = -2,
+					concealment = 1
+				}
+				self.parts.wpn_fps_snp_sbeta_handguard_tac.custom_stats = { ads_speed_mult = 0.975 }
+
+			--LEVERS
+				self.parts.wpn_fps_snp_sbeta_lever_fast.supported = true
+				self.parts.wpn_fps_snp_sbeta_lever_fast.stats = {
+					spread = -2,
+					recoil = -2
+				}
+				self.parts.wpn_fps_snp_sbeta_lever_fast.custom_stats = { rof_mult = 1.073684 }
+				self.parts.wpn_fps_snp_sbeta_lever_steady.supported = true
+				self.parts.wpn_fps_snp_sbeta_lever_steady.stats = {
+					spread = 2,
+					recoil = 2
+
+				}
+				self.parts.wpn_fps_snp_sbeta_lever_steady.custom_stats = { rof_mult = 0.968421 }
+
+			--STOCKS
+				self.parts.wpn_fps_snp_sbeta_stock_light.supported = true
+				self.parts.wpn_fps_snp_sbeta_stock_light.stats = {
+					spread = 1,
+					recoil = -2,
+				}
+				self.parts.wpn_fps_snp_sbeta_stock_light.custom_stats = nil
+
+				self.parts.wpn_fps_snp_sbeta_stock_tac.supported = true
+				self.parts.wpn_fps_snp_sbeta_stock_tac.stats = {
+					spread = -1,
+					recoil = -2,
+					concealment = 2
+				}
+				self.parts.wpn_fps_snp_sbeta_stock_tac.custom_stats = { ads_speed_mult = 0.95 }
+
+				self.parts.wpn_fps_snp_sbeta_stock_no.supported = true
+				self.parts.wpn_fps_snp_sbeta_stock_no.stats = deep_clone(stocks.remove_fixed_stats)
+				self.parts.wpn_fps_snp_sbeta_stock_no.custom_stats = deep_clone(stocks.remove_fixed_stats)
+
+			--COMB
+
+				self.parts.wpn_fps_snp_sbeta_comb_heavy.supported = true
+				self.parts.wpn_fps_snp_sbeta_comb_heavy.name_id = "bm_wp_wpn_fps_snp_sbeta_comb_tac"
+				self.parts.wpn_fps_snp_sbeta_comb_heavy.stats = {
+					spread = 1,
+					recoil = 2,
+					concealment = -3
+				}
+				self.parts.wpn_fps_snp_sbeta_comb_heavy.custom_stats = { ads_speed_mult = 1.075 }
+
+				self.parts.wpn_fps_snp_sbeta_comb_tac.supported = true
+				self.parts.wpn_fps_snp_sbeta_comb_tac.name_id = "bm_wp_wpn_fps_snp_sbeta_comb_heavy"
+				self.parts.wpn_fps_snp_sbeta_comb_tac.stats = {
+					concealment = 1,
+					recoil = -2,
+				}
+				self.parts.wpn_fps_snp_sbeta_comb_tac.custom_stats = { ads_speed_mult = 0.975 }
+				
+				self.parts.wpn_fps_snp_sbeta_comb_slv.supported = true
+				self.parts.wpn_fps_snp_sbeta_comb_slv.stats = {
+					value = 2,
+					spread = -1,
+					concealment = -1,
+					reload = 5
+				}
 		end
 
 		if self.parts.wpn_fps_lmg_raid_ww2_bren_barrel_long then
@@ -36049,9 +36156,9 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 					armor_piercing_override = 0,
 					ads_speed_mult = 0.85714285,
 					srm = {
-						0.02,
-						{0.9, 1},
-						4
+						0.025,
+						{0.85, 1},
+						2
 					}
 				}
 				self.parts.wpn_fps_ass_contraband_body_mpx.forbids = nil
@@ -37348,7 +37455,7 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			end
 		end
 	
-		if self.parts.wpn_fps_snp_sierra458_bush_switch then --Tangerine and PlayBONK's FTAC Recon :^) (V4.1 minimum)
+		if self.parts.wpn_fps_snp_sierra458_bush_switch then --Tangerine and PlayBONK's FTAC Recon :^) (V5 minimum)
 	
 			self.parts.wpn_fps_snp_sierra458_body_msecho.override.wpn_fps_upg_sierra458_o_backup = {
 				unit = "units/payday2/weapons/wpn_upg_dummy/wpn_upg_dummy",
@@ -37371,12 +37478,14 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 				},
 				info_add_burst = true
 			}
+			--[[
 			self.parts.wpn_fps_snp_sierra458_body_ecr.override.wpn_fps_upg_sierra458_o_backup.stance_mod = {
 				wpn_fps_snp_sierra458 = {
 					translation = Vector3(0.0125, -6, 0.1),
 					rotation = Rotation(0.055, -0.4, 0)
 				}
 			}
+			]]
 
 			self.parts.wpn_fps_snp_sierra458_ns_scout.supported = true
 			self.parts.wpn_fps_snp_sierra458_ns_scout.stats = {
@@ -37506,13 +37615,26 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 					spread = -1,
 					reload = 3
 				}
-
 				self.parts.wpn_fps_snp_sierra458_m_siege.custom_stats = {
 					damage_min_mult = 1.3334,
 					falloff_start_mult = 0.8,
 					falloff_end_mult = 0.862068
 				}
 	
+				self.parts.wpn_fps_snp_sierra458_m_beoplus.custom_stats = {
+					alt_desc = "bm_w_sierra458_beo_desc",
+					ads_speed_mult = 1.1,
+					rof_mult = 0.6125,
+					hip_mult = 1.666666,
+					damage_min_mult = 1.11111,
+					falloff_start_mult = 0.8,
+					falloff_end_mult = 0.862068,
+					alt_ammo_pickup_min_mul = 0.6,
+					alt_ammo_pickup_max_mul = 0.6,
+					ammo_pickup_min_mul = 0.6,
+					ammo_pickup_max_mul = 0.6,
+					sms = 0.9
+				}
 	
 			self.parts.wpn_fps_upg_sierra458_o_backup.supported = true
 			self.parts.wpn_fps_upg_sierra458_o_backup.stats = { value = 0 }
