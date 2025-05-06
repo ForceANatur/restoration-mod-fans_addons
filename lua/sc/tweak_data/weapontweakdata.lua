@@ -27058,7 +27058,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 
 		--Akimbo M3 Grease Gun
 		--DISABLED - ALREADY A PRIMARY
-			self.x_m3.use_data.selection_index = 5
+	--		self.x_m3.use_data.selection_index = 5	-- baidaid fixing this
 
 	-- [[ FaN's Addons ]]
 	-- doing this because i fucking hate manually doing all the edits
