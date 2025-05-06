@@ -13386,8 +13386,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.saiga.supported = true
 						self.saiga.ads_speed = 0.340
 						self.saiga.damage_falloff = {
-							start_dist = 300,
-							end_dist = 2300,
+							start_dist = 500,
+							end_dist = 2000,
 							min_mult = 0.15
 						}
 						self.saiga.stats = {
@@ -13430,8 +13430,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.sko12.supported = true
 						self.sko12.ads_speed = 0.420
 						self.sko12.damage_falloff = {
-							start_dist = 500,
-							end_dist = 2900,
+							start_dist = 600,
+							end_dist = 2500,
 							min_mult = 0.15
 						}
 						self.sko12.stats = {
@@ -13477,8 +13477,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.aa12.supported = true
 						self.aa12.ads_speed = 0.380
 						self.aa12.damage_falloff = {
-							start_dist = 600,
-							end_dist = 3100,
+							start_dist = 700,
+							end_dist = 2900,
 							min_mult = 0.15
 						}
 						self.aa12.stats = {
@@ -13524,8 +13524,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.ultima.supported = true
 						self.ultima.ads_speed = 0.300
 						self.ultima.damage_falloff = {
-							start_dist = 700,
-							end_dist = 3000,
+							start_dist = 800,
+							end_dist = 2800,
 							min_mult = 0.15
 						}
 						self.ultima.stats = {
@@ -13581,8 +13581,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.spas12.supported = true
 						self.spas12.ads_speed = 0.340
 						self.spas12.damage_falloff = {
-							start_dist = 800,
-							end_dist = 3100,
+							start_dist = 900,
+							end_dist = 2700,
 							min_mult = 0.15
 						}
 						self.spas12.stats = {
@@ -13628,7 +13628,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.benelli.ads_speed = 0.320
 						self.benelli.damage_falloff = {
 							start_dist = 900,
-							end_dist = 3300,
+							end_dist = 3000,
 							min_mult = 0.15
 						}
 						self.benelli.stats = {
@@ -13675,8 +13675,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.basset.supported = true
 						self.basset.ads_speed = 0.340
 						self.basset.damage_falloff = {
-							start_dist = 300,
-							end_dist = 2100,
+							start_dist = 400,
+							end_dist = 1800,
 							min_mult = 0.15
 						}
 						self.basset.stats = {
@@ -13719,7 +13719,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.x_basset.supported = true
 						self.x_basset.ads_speed = 0.480
 						self.x_basset.damage_falloff = {
-							start_dist = 100,
+							start_dist = 200,
 							end_dist = 1200,
 							min_mult = 0.15
 						}
@@ -13763,8 +13763,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.striker.supported = true
 						self.striker.ads_speed = 0.300
 						self.striker.damage_falloff = {
-							start_dist = 500,
-							end_dist = 3000,
+							start_dist = 600,
+							end_dist = 2600,
 							min_mult = 0.15
 						}
 						self.striker.stats = {
@@ -13801,8 +13801,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.rota.supported = true
 						self.rota.ads_speed = 0.300
 						self.rota.damage_falloff = {
-							start_dist = 700,
-							end_dist = 3300,
+							start_dist = 800,
+							end_dist = 3000,
 							min_mult = 0.15
 						}
 						self.rota.stats = {
@@ -13840,7 +13840,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.m590.supported = true
 						self.m590.ads_speed = 0.320
 						self.m590.damage_falloff = {
-							start_dist = 600,
+							start_dist = 700,
 							end_dist = 2500,
 							min_mult = 0.1333
 						}
@@ -13899,8 +13899,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.supernova.supported = true
 						self.supernova.ads_speed = 0.300
 						self.supernova.damage_falloff = {
-							start_dist = 700,
-							end_dist = 2700,
+							start_dist = 800,
+							end_dist = 2600,
 							min_mult = 0.1333
 						}
 						self.supernova.stats = {
@@ -13943,8 +13943,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.r870.supported = true
 						self.r870.ads_speed = 0.300
 						self.r870.damage_falloff = {
-							start_dist = 800,
-							end_dist = 3000,
+							start_dist = 900,
+							end_dist = 2800,
 							min_mult = 0.1333
 						}
 						self.r870.stats = {
@@ -13983,8 +13983,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.ksg.supported = true
 						self.ksg.ads_speed = 0.340
 						self.ksg.damage_falloff = {
-							start_dist = 600,
-							end_dist = 2800,
+							start_dist = 700,
+							end_dist = 2700,
 							min_mult = 0.1333
 						}
 						self.ksg.stats = {
@@ -14040,8 +14040,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.m1897.supported = true
 						self.m1897.ads_speed = 0.280
 						self.m1897.damage_falloff = {
-							start_dist = 800,
-							end_dist = 3100,
+							start_dist = 900,
+							end_dist = 2800,
 							min_mult = 0.1333
 						}
 						self.m1897.stats = {
@@ -14078,8 +14078,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.serbu.supported = true
 						self.serbu.ads_speed = 0.260
 						self.serbu.damage_falloff = {
-							start_dist = 600,
-							end_dist = 2200,
+							start_dist = 700,
+							end_dist = 2000,
 							min_mult = 0.1333
 						}
 						self.serbu.stats = {
@@ -14136,8 +14136,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.m37.supported = true
 						self.m37.ads_speed = 0.280
 						self.m37.damage_falloff = {
-							start_dist = 700,
-							end_dist = 2800,
+							start_dist = 800,
+							end_dist = 2600,
 							min_mult = 0.1333
 						}
 						self.m37.stats = {
@@ -14175,8 +14175,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.judge.supported = true
 						self.judge.ads_speed = 0.200
 						self.judge.damage_falloff = {
-							start_dist = 400,
-							end_dist = 2000,
+							start_dist = 700,
+							end_dist = 1900,
 							min_mult = 0.1333
 						}
 						self.judge.stats = {
@@ -14185,7 +14185,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							recoil = 61,
 							spread_moving = 5,
 							zoom = 1,
-							concealment = 27,
+							concealment = 28,
 							suppression = 7,
 							alert_size = 2,
 							extra_ammo = 101,
@@ -14222,8 +14222,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.x_judge.supported = true
 						self.x_judge.ads_speed = 0.200
 						self.x_judge.damage_falloff = {
-							start_dist = 400,
-							end_dist = 2000,
+							start_dist = 700,
+							end_dist = 1900,
 							min_mult = 0.1333
 						}
 						self.x_judge.stats = {
@@ -14232,7 +14232,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							recoil = 51,
 							spread_moving = 5,
 							zoom = 1,
-							concealment = 27,
+							concealment = 28,
 							suppression = 7,
 							alert_size = 2,
 							extra_ammo = 101,
@@ -15716,8 +15716,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					self.amr12.supported = true
 					self.amr12.ads_speed = 0.400
 					self.amr12.damage_falloff = {
-						start_dist = 500,
-						end_dist = 2800,
+						start_dist = 600,
+						end_dist = 2600,
 						min_mult = 0.15
 					}
 					self.amr12.stats = {
@@ -15750,8 +15750,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					self.minibeck.supported = true
 					self.minibeck.ads_speed = 0.280
 					self.minibeck.damage_falloff = {
-						start_dist = 500,
-						end_dist = 3000,
+						start_dist = 600,
+						end_dist = 2800,
 						min_mult = 0.15
 					}
 					self.minibeck.stats = {
@@ -15803,8 +15803,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					self.beck.supported = true
 					self.beck.ads_speed = 0.320
 					self.beck.damage_falloff = {
-						start_dist = 600,
-						end_dist = 2400,
+						start_dist = 700,
+						end_dist = 2300,
 						min_mult = 0.1333
 					}
 					self.beck.stats = {
@@ -16209,8 +16209,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					self.qsho.supported = true
 					self.qsho.ads_speed = 0.400
 					self.qsho.damage_falloff = {
-						start_dist = 900,
-						end_dist = 3500,
+						start_dist = 1000,
+						end_dist = 3200,
 						min_mult = 0.1
 					}
 					self.qsho.stats = {
@@ -17739,8 +17739,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.mp153.supported = true
 				self.mp153.ads_speed = 0.400
 				self.mp153.damage_falloff = {
-					start_dist = 500,
-					end_dist = 3000,
+					start_dist = 600,
+					end_dist = 2800,
 					min_mult = 0.15
 				}
 				self.mp153.stats = {
@@ -17787,8 +17787,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.wmtx.supported = true
 				self.wmtx.ads_speed = 0.300
 				self.wmtx.damage_falloff = {
-					start_dist = 400,
-					end_dist = 2500,
+					start_dist = 500,
+					end_dist = 2300,
 					min_mult = 0.1333
 				}
 				self.wmtx.stats = {
@@ -17837,8 +17837,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.jackhammer.supported = true
 				self.jackhammer.ads_speed = 0.400
 				self.jackhammer.damage_falloff = {
-					start_dist = 300,
-					end_dist = 2000,
+					start_dist = 500,
+					end_dist = 1700,
 					min_mult = 0.1333
 				}
 				self.jackhammer.stats = {
@@ -17987,7 +17987,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.super.ads_speed = 0.360
 				self.super.damage_falloff = {
 					start_dist = 1000,
-					end_dist = 3200,
+					end_dist = 2700,
 					min_mult = 0.3333
 				}
 				self.super.stats = {
@@ -20102,7 +20102,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.fpsix.supported = true
 				self.fpsix.ads_speed = 0.300
 				self.fpsix.damage_falloff = {
-					start_dist = 500,
+					start_dist = 600,
 					end_dist = 2200,
 					min_mult = 0.1333
 				}
@@ -20145,8 +20145,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.stf12.supported = true
 				self.stf12.ads_speed = 0.280
 				self.stf12.damage_falloff = {
-					start_dist = 400,
-					end_dist = 2000,
+					start_dist = 500,
+					end_dist = 2100,
 					min_mult = 0.1333
 				}
 				self.stf12.stats = {
@@ -20443,8 +20443,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.thorhammer.supported = true
 				self.thorhammer.ads_speed = 0.300
 				self.thorhammer.damage_falloff = {
-					start_dist = 200,
-					end_dist = 1900,
+					start_dist = 400,
+					end_dist = 1700,
 					min_mult = 0.1333
 				}
 				self.thorhammer.stats = {
@@ -21949,8 +21949,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.tti_dracarys.supported = true
 				self.tti_dracarys.ads_speed = 0.400
 				self.tti_dracarys.damage_falloff = {
-					start_dist = 200,
-					end_dist = 1600,
+					start_dist = 300,
+					end_dist = 1500,
 					min_mult = 0.15
 				}
 				self.tti_dracarys.stats = {
@@ -22253,7 +22253,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.uncle12.ads_speed = 0.300
 				self.uncle12.damage_falloff = {
 					start_dist = 600,
-					end_dist = 3500,
+					end_dist = 2800,
 					min_mult = 0.15
 				}
 				self.uncle12.stats = {
@@ -22862,7 +22862,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.sig_xm250.timers.reload_exit_not_empty = 0.5
 			end
 
-			if self.ngsierra then --RJC9000, PlayBONK and Captain Hamerica's MW22 RM77
+			if self.ngsierra then --RJC9000, PlayBONK and Captain Hamerica's MW2022 RM77
 				self.ngsierra.categories = { 
 					"assault_rifle",
 					"dmr_l"
@@ -22978,6 +22978,191 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.vecho.timers.reload_not_empty = 2
 				self.vecho.timers.reload_exit_not_empty = 0.8
 			end
+
+			--MW2023 CZ Brens
+			if self.bromeo805 then --MTZ-556
+				self.bromeo805.categories = { 
+					"assault_rifle"
+				}
+				self.bromeo805.recategorize = { "light_ar" }
+				self.bromeo805.has_description = true
+				self.bromeo805.damage_type = "assault_rifle"
+				self.bromeo805.CLIP_AMMO_MAX = 30
+				self.bromeo805.AMMO_MAX = 150
+				self.bromeo805.FIRE_MODE = "auto"
+				self.bromeo805.CAN_TOGGLE_FIREMODE = true
+				self.bromeo805.fire_mode_data.fire_rate = 0.074074
+				self.bromeo805.kick = {}
+				self.bromeo805.kick = self.stat_info.kick_tables.right_recoil
+				self.bromeo805.kick_pattern = {
+					{0, self.stat_info.kick_tables.moderate_kick},
+					{2, self.stat_info.kick_tables.left_recoil},
+					{9, self.stat_info.kick_tables.even_recoil},
+					{12, self.stat_info.kick_tables.right_recoil},
+					{16, self.stat_info.kick_tables.moderate_right_kick}
+				}
+				self.bromeo805.supported = true
+				self.bromeo805.ads_speed = 0.220
+				self.bromeo805.damage_falloff = {
+					start_dist = 2000,
+					end_dist = 5800,
+					min_mult = 0.53333
+				}	
+				self.bromeo805.stats = {
+					damage = 24,
+					spread = 85,
+					recoil = 77,
+					spread_moving = 5,
+					zoom = 1,
+					concealment = 24,
+					suppression = 8,
+					alert_size = 2,
+					extra_ammo = 101,
+					total_ammo_mod = 400,
+					value = 9,
+					reload = 20
+				}
+				self.bromeo805.stats_modifiers = nil
+				self.bromeo805.panic_suppression_chance = 0.05
+			end
+			if self.bromeo2m then --MTZ-762 JAK
+				self.bromeo2m.categories = { 
+					"assault_rifle"
+				}
+				self.bromeo2m.recategorize = { "heavy_ar" }
+				self.bromeo2m.has_description = true
+				self.bromeo2m.damage_type = "assault_rifle"
+				self.bromeo2m.CLIP_AMMO_MAX = 30
+				self.bromeo2m.AMMO_MAX = 120
+				self.bromeo2m.FIRE_MODE = "auto"
+				self.bromeo2m.CAN_TOGGLE_FIREMODE = true
+				self.bromeo2m.fire_mode_data.fire_rate = 0.1
+				self.bromeo2m.kick = {}
+				self.bromeo2m.kick = self.stat_info.kick_tables.left_recoil
+				self.bromeo2m.kick_pattern = {
+					{0, self.stat_info.kick_tables.moderate_kick},
+					{3, self.stat_info.kick_tables.horizontal_left_recoil},
+					{8, self.stat_info.kick_tables.even_recoil},
+					{12, self.stat_info.kick_tables.moderate_right_kick},
+					{16, self.stat_info.kick_tables.moderate_kick},
+					{21, self.stat_info.kick_tables.left_recoil},
+					{24, self.stat_info.kick_tables.moderate_left_kick}
+				}
+				self.bromeo2m.supported = true
+				self.bromeo2m.ads_speed = 0.240
+				self.bromeo2m.damage_falloff = {
+					start_dist = 2000,
+					end_dist = 5800,
+					min_mult = 0.53333
+				}	
+				self.bromeo2m.stats = {
+					damage = 30,
+					spread = 85,
+					recoil = 77,
+					spread_moving = 5,
+					zoom = 1,
+					concealment = 24,
+					suppression = 8,
+					alert_size = 2,
+					extra_ammo = 101,
+					total_ammo_mod = 400,
+					value = 9,
+					reload = 20
+				}
+				self.bromeo2m.stats_modifiers = nil
+				self.bromeo2m.panic_suppression_chance = 0.05
+			end
+			if self.bromeo2 then --MTZ-762
+				self.bromeo2.categories = { 
+					"assault_rifle",
+					"dmr_l"
+				}
+				self.bromeo2.recategorize = { "dmr_ar" }
+				self.bromeo2.has_description = true
+				self.bromeo2.damage_type = "assault_rifle"
+				self.bromeo2.CLIP_AMMO_MAX = 20
+				self.bromeo2.AMMO_MAX = 80
+				self.bromeo2.FIRE_MODE = "auto"
+				self.bromeo2.CAN_TOGGLE_FIREMODE = true
+				self.bromeo2.fire_mode_data.fire_rate = 0.11111
+				self.bromeo2.kick = {}
+				self.bromeo2.kick = self.stat_info.kick_tables.right_recoil
+				self.bromeo2.kick_pattern = {
+					{0, self.stat_info.kick_tables.even_recoil},
+					{4, self.stat_info.kick_tables.moderate_right_kick},
+					{9, self.stat_info.kick_tables.right_recoil},
+					{13, self.stat_info.kick_tables.horizontal_right_recoil}
+				}
+				self.bromeo2.supported = true
+				self.bromeo2.ads_speed = 0.280
+				self.bromeo2.damage_falloff = {
+					start_dist = 2000,
+					end_dist = 5800,
+					min_mult = 0.53333
+				}	
+				self.bromeo2.stats = {
+					damage = 45,
+					spread = 85,
+					recoil = 77,
+					spread_moving = 5,
+					zoom = 1,
+					concealment = 24,
+					suppression = 8,
+					alert_size = 2,
+					extra_ammo = 101,
+					total_ammo_mod = 400,
+					value = 9,
+					reload = 20
+				}
+				self.bromeo2.stats_modifiers = nil
+				self.bromeo2.panic_suppression_chance = 0.05
+			end
+			if self.bromeop then --MTZ Interceptor
+				self.bromeop.categories = { 
+					"snp",
+					"semi_snp"
+				}
+				self.bromeop.recategorize = { "light_snp" }
+				self.bromeop.has_description = true
+				self.bromeop.damage_type = "assault_rifle"
+				self.bromeop.CLIP_AMMO_MAX = 10
+				self.bromeop.AMMO_MAX = 60
+				self.bromeop.FIRE_MODE = "single"
+				self.bromeop.CAN_TOGGLE_FIREMODE = false
+				self.bromeop.fire_mode_data.fire_rate = 0.288461
+				self.bromeop.kick = {}
+				self.bromeop.kick = self.stat_info.kick_tables.moderate_right_kick
+				self.bromeop.kick_pattern = {
+					{0, self.stat_info.kick_tables.vertical_kick},
+					{3, self.stat_info.kick_tables.moderate_right_kick},
+					{7, self.stat_info.kick_tables.even_recoil},
+					{10, self.stat_info.kick_tables.right_recoil},
+				}
+				self.bromeop.supported = true
+				self.bromeop.ads_speed = 0.300
+				self.bromeop.damage_falloff = {
+					start_dist = 2200,
+					end_dist = 5300,
+					min_mult = 0.53333
+				}	
+				self.bromeop.stats = {
+					damage = 30,
+					spread = 85,
+					recoil = 77,
+					spread_moving = 5,
+					zoom = 1,
+					concealment = 24,
+					suppression = 8,
+					alert_size = 2,
+					extra_ammo = 101,
+					total_ammo_mod = 400,
+					value = 9,
+					reload = 20
+				}
+				self.bromeop.stats_modifiers = nil
+				self.bromeop.panic_suppression_chance = 0.05
+			end
+
 
 			if self.doot_eternal_shotgun then
 				self.doot_eternal_shotgun.recategorize = { "break_shot" }
@@ -23639,6 +23824,56 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.madsen_mg.sms = sms_preset.lmg_120
 				self.madsen_mg.weapon_movement_penalty = sms_preset.lmg_120
 			end
+
+			if self.m416d then
+				self.m416d.nato = true
+				self.m416d.recategorize = { "light_ar" }
+				self.m416d.damage_type = "assault_rifle"
+				self.m416d.has_description = false						
+				self.m416d.tactical_reload = 1		
+				self.m416d.AMMO_MAX = 150
+				self.m416d.fire_mode_data.fire_rate = 0.08571428571
+				self.m416d.kick = self.stat_info.kick_tables.moderate_kick
+				self.m416d.kick_pattern = {
+					{0, self.stat_info.kick_tables.moderate_kick},
+					{5, self.stat_info.kick_tables.pattern_r1},
+					{6, self.stat_info.kick_tables.moderate_left_kick},
+					{10, self.stat_info.kick_tables.right_kick},
+					{12, self.stat_info.kick_tables.moderate_kick},
+					{19, self.stat_info.kick_tables.moderate_right_kick}
+				}
+				self.m416d.supported = true
+				self.m416d.ads_speed = 0.280
+				self.m416d.damage_falloff = {
+					start_dist = 2100,
+					end_dist = 6300,
+					min_mult = 0.5
+				}
+				self.m416d.stats = {
+					damage = 24,
+					spread = 81,
+					recoil = 83,
+					spread_moving = 6,
+					zoom = 1,
+					concealment = 25,
+					suppression = 8,
+					alert_size = 2,
+					extra_ammo = 101,
+					total_ammo_mod = 400,
+					value = 1,
+					reload = 20
+				}
+				self.m416d.stats_modifiers = nil
+				self.m416d.panic_suppression_chance = 0.05
+				self.m416d.keep_ammo = 1
+				self.m416d.lock_slide = true
+				self.m416d.lock_slide_offset = 0.066
+				self.m416d.timers.reload_not_empty = 1.35
+				self.m416d.timers.reload_exit_not_empty = 0.9
+				self.m416d.timers.reload_empty = 2.3
+				self.m416d.timers.reload_exit_empty = 0.7
+				self.m416d.sounds.magazine_empty = "wp_rifle_slide_lock"
+			end
 		
 		--[[     TANGERINE'S MODS     ]]--
 			if self.ar47 then --Tangerine's AR-47
@@ -23711,7 +23946,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.omni.ads_speed = 0.220
 				self.omni.damage_falloff = {
 					start_dist = 1000,
-					end_dist = 3800,
+					end_dist = 2800,
 					min_mult = 0.16667
 				}
 				self.omni.stats = {
@@ -24174,8 +24409,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.toz81.supported = true
 				self.toz81.ads_speed = 0.260
 				self.toz81.damage_falloff = {
-					start_dist = 500,
-					end_dist = 2600,
+					start_dist = 900,
+					end_dist = 2000,
 					min_mult = 0.1333
 				}
 				self.toz81.stats = {
@@ -24194,9 +24429,13 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				}
 				self.toz81.stats_modifiers = nil
 				self.toz81.panic_suppression_chance = 0.05
-				self.toz81.reload_speed_multiplier = 1.2
-				self.toz81.use_hipfire_stance = "groza"
-				self.toz81.timers = deep_clone(self.gre_m79.timers)
+				self.toz81.use_hipfire_stance = "breech"
+				self.toz81.reload_speed_multiplier = 1.1
+				self.toz81.timers.reload_empty = 2.18
+				self.toz81.timers.reload_exit_empty = 1.15
+				self.toz81.timers.reload_not_empty = 2.18
+				self.toz81.timers.reload_exit_not_empty = 1.15
+
 
 				self.x_toz81.recategorize = { "heavy_shot" }
 				self.x_toz81.categories = { "akimbo", "shotgun", "shotgun_pistol" }
@@ -24223,8 +24462,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.x_toz81.supported = true
 				self.x_toz81.ads_speed = 0.260
 				self.x_toz81.damage_falloff = {
-					start_dist = 500,
-					end_dist = 2600,
+					start_dist = 900,
+					end_dist = 2000,
 					min_mult = 0.1333
 				}
 				self.x_toz81.stats = {
@@ -24280,8 +24519,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.bp12.supported = true
 				self.bp12.ads_speed = 0.340
 				self.bp12.damage_falloff = {
-					start_dist = 400,
-					end_dist = 2600,
+					start_dist = 500,
+					end_dist = 2500,
 					min_mult = 0.15
 				}
 				self.bp12.stats = {
@@ -24332,8 +24571,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.or12.supported = true
 				self.or12.ads_speed = 0.420
 				self.or12.damage_falloff = {
-					start_dist = 500,
-					end_dist = 2800,
+					start_dist = 600,
+					end_dist = 2600,
 					min_mult = 0.15
 				}
 				self.or12.stats = {
@@ -24440,7 +24679,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.haymaker.supported = true
 				self.haymaker.ads_speed = 0.380
 				self.haymaker.damage_falloff = {
-					start_dist = 400,
+					start_dist = 600,
 					end_dist = 2600,
 					min_mult = 0.15
 				}
@@ -24721,6 +24960,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.ar23.damage_type = "assault_rifle"
 				self.ar23.CLIP_AMMO_MAX = 45
 				self.ar23.AMMO_MAX = self.ar23.CLIP_AMMO_MAX * 9
+				self.ar23.ammo_ratio = 2
 				self.ar23.fire_mode_data.fire_rate = 0.09375
 				self.ar23.sms = 0.5
 				self.ar23.tactical_reload = 1
@@ -24773,6 +25013,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.sta52.damage_type = "assault_rifle"
 				self.sta52.CLIP_AMMO_MAX = 56
 				self.sta52.AMMO_MAX = self.sta52.CLIP_AMMO_MAX * 7
+				self.sta52.ammo_ratio = 2
 				self.sta52.fire_mode_data.fire_rate = 0.07594
 				self.sta52.sms = 0.5
 				self.sta52.tactical_reload = 1
@@ -24820,6 +25061,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.br14.damage_type = "sniper"
 				self.br14.CLIP_AMMO_MAX = 30
 				self.br14.AMMO_MAX = self.br14.CLIP_AMMO_MAX * 9
+				self.br14.ammo_ratio = 2
 				self.br14.fire_mode_data.fire_rate = 0.10909
 				self.br14.sms = 0.5
 				self.br14.tactical_reload = 1
@@ -24869,6 +25111,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.reprimand.damage_type = "machine_gun"
 				self.reprimand.CLIP_AMMO_MAX = 25
 				self.reprimand.AMMO_MAX = self.reprimand.CLIP_AMMO_MAX * 10
+				self.reprimand.ammo_ratio = 2
 				self.reprimand.fire_mode_data.fire_rate = 0.12244
 				self.reprimand.sms = 0.8
 				self.reprimand.tactical_reload = 1
@@ -24922,6 +25165,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.sta11.damage_type = "machine_gun"
 				self.sta11.CLIP_AMMO_MAX = 48
 				self.sta11.AMMO_MAX = self.sta11.CLIP_AMMO_MAX * 8
+				self.sta11.ammo_ratio = 2
 				self.sta11.fire_mode_data.fire_rate = 0.0571428
 				self.sta11.sms = 0.8
 				self.sta11.tactical_reload = 1
@@ -24968,6 +25212,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.sickle.damage_type = "assault_rifle"
 				self.sickle.CLIP_AMMO_MAX = 80
 				self.sickle.AMMO_MAX = self.sickle.CLIP_AMMO_MAX * 4
+				self.sickle.ammo_ratio = 2
 				self.sickle.sms = 0.5
 				self.sickle.fire_mode_data.fire_rate = 0.08
 				self.sickle.BURST_FIRE = false
@@ -25041,6 +25286,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.r6.desc_id = "bm_ap_weapon_sc_desc"
 				self.r6.CLIP_AMMO_MAX = 6
 				self.r6.AMMO_MAX = self.r6.CLIP_AMMO_MAX * 11
+				self.r6.ammo_ratio = 2
 				self.r6.FIRE_MODE = "single"
 				self.r6.fire_mode_data = {}
 				self.r6.fire_mode_data.fire_rate = 0.9
@@ -25289,8 +25535,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.f500.supported = true
 				self.f500.ads_speed = 0.300
 				self.f500.damage_falloff = {
-					start_dist = 700,
-					end_dist = 2800,
+					start_dist = 800,
+					end_dist = 2500,
 					min_mult = 0.1333
 				}
 				self.f500.stats = {
@@ -26289,8 +26535,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			self.ashot.supported = true
 			self.ashot.ads_speed = 0.220
 			self.ashot.damage_falloff = {
-				start_dist = 400,
-				end_dist = 2500,
+				start_dist = 600,
+				end_dist = 2100,
 				min_mult = 0.1
 			}
 			self.ashot.stats = {
@@ -26336,8 +26582,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			self.spas15.supported = true
 			self.spas15.ads_speed = 0.360
 			self.spas15.damage_falloff = {
-				start_dist = 600,
-				end_dist = 3100,
+				start_dist = 700,
+				end_dist = 2800,
 				min_mult = 0.15
 			}
 			self.spas15.stats = {
@@ -26643,11 +26889,11 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			}
 			self.x_coach.stats = {
 				damage = 240,
-				spread = 46,
+				spread = 45,
 				recoil = 31,
 				spread_moving = 6,
 				zoom = 1,
-				concealment = 23,
+				concealment = 24,
 				suppression = 6,
 				alert_size = 2,
 				extra_ammo = 101,

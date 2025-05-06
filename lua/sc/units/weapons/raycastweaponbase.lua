@@ -729,12 +729,7 @@ function RaycastWeaponBase:fire(from_pos, direction, dmg_mul, shoot_player, spre
 
 	if is_player and self:weapon_tweak_data().zippy then
 		local jam = math.rand(1)
-		if jam < 0.33 and self:ammo_base():get_ammo_remaining_in_clip() > 0 then
-			--dmg_mul = 0
-			--self:dryfire()
-			self._jammed = true
-			self._next_fire_allowed = self._next_fire_allowed + (2 / self:fire_rate_multiplier())
-		elseif jam > 0.66 then
+		if jam > 0.99 then
 			dmg_mul = 0
 		end
 	end
@@ -936,6 +931,40 @@ function RaycastWeaponBase:remove_ammo(percent)
 	end
 
 	return total_ammo - ammo
+end
+
+function RaycastWeaponBase:add_ammo_from_bag(available)
+	local function process_ammo(ammo_base, amount_available)
+		if ammo_base:get_ammo_max() == ammo_base:get_ammo_total() then
+			return 0
+		end
+
+		local ammo_max = ammo_base:get_ammo_max()
+		local ammo_total = ammo_base:get_ammo_total()
+		local wanted = 1 - ammo_total / ammo_max
+		local ratio = ammo_base._ammo_ratio or 1
+		local can_have = math.min(wanted, amount_available / ratio)
+
+		ammo_base:set_ammo_total(math.min(ammo_max, ammo_total + math.ceil(can_have * ammo_max)))
+		print(wanted, can_have, math.ceil(can_have * ammo_max), ammo_base:get_ammo_total())
+
+		return can_have * ratio
+	end
+
+	local can_have = process_ammo(self, available)
+	available = available - can_have
+
+	for _, gadget in ipairs(self:get_all_override_weapon_gadgets()) do
+		if gadget and gadget.ammo_base then
+			local ammo = process_ammo(gadget:ammo_base(), available)
+			can_have = can_have + ammo
+			available = available - ammo
+
+			gadget:on_add_ammo_from_bag()
+		end
+	end
+
+	return can_have
 end
 
 function RaycastWeaponBase:tweak_data_anim_play(anim, speed_multiplier, set_offset, set_offset2)

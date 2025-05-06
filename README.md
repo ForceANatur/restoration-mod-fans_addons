@@ -27,8 +27,6 @@ Zip .22 has a 1% chance to fail
 
 4 new mutators
 
-Widomaker TX is a primary and deals more headshot damage, but has less body shot damage and fires slower.
-
 Akan LPFs and Enforcers spawn on mexico heists
 
 2 new Crime Spree modifiers
