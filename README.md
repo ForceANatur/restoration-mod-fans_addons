@@ -97,6 +97,8 @@ Heavy SWAT: Alliance (Unit: Classified)
 
 Heavy SWAT Murky: SAS (Counter Strike)
 
+Titan SWAT: Zulu Squad (Spec Ops: The Line)
+
 Spring: Robot Heavy (Team Fortress 2)
 
 Biker Bulldozer: Brute (Typical Colors 2)

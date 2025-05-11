@@ -1315,11 +1315,11 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Eng", function(loc)
 		["bm_wp_upg_a_piercing_semi_desc_sc"] = "Fires #{skill_color}#12## #{skill_color}#armor piercing## flechettes.",
 		["bm_wp_upg_a_piercing_pump_desc_sc"] = "Fires #{skill_color}#12## #{skill_color}#armor piercing## flechettes.",
 		["bm_wp_upg_a_piercing_heavy_desc_sc"] = "Fires #{skill_color}#12## #{skill_color}#armor piercing## flechettes.",
-		["bm_wp_upg_a_piercing_auto_desc_per_pellet"] = "Fires #{skill_color}#12## #{skill_color}#armor piercing## flechettes.\n#{skill_color}#Headshot damage is increased by 100% and there is no reduction to enemy headshot multipliers.##",
-		["bm_wp_upg_a_piercing_9_auto_desc_per_pellet"] = "Fires #{skill_color}#9## #{skill_color}#armor piercing## flechettes.\n#{skill_color}#Headshot damage is increased by 100% and there is no reduction to enemy headshot multipliers.##",
-		["bm_wp_upg_a_piercing_semi_desc_per_pellet"] = "Fires #{skill_color}#12## #{skill_color}#armor piercing## flechettes.\n#{skill_color}#Headshot damage is increased by 100% and there is no reduction to enemy headshot multipliers.##",
-		["bm_wp_upg_a_piercing_pump_desc_per_pellet"] = "Fires #{skill_color}#12## #{skill_color}#armor piercing## flechettes.\n#{skill_color}#Headshot damage is increased by 100% and there is no reduction to enemy headshot multipliers.##",
-		["bm_wp_upg_a_piercing_heavy_desc_per_pellet"] = "Fires #{skill_color}#12## #{skill_color}#armor piercing## flechettes.\n#{skill_color}#Headshot damage is increased by 100% and there is no reduction to enemy headshot multipliers.##",
+		["bm_wp_upg_a_piercing_auto_desc_per_pellet"] = "Fires #{skill_color}#12## #{skill_color}#armor piercing## flechettes.\n#{skill_color}#Headshot damage is increased by 200% and there is no reduction to enemy headshot multipliers.##",
+		["bm_wp_upg_a_piercing_9_auto_desc_per_pellet"] = "Fires #{skill_color}#9## #{skill_color}#armor piercing## flechettes.\n#{skill_color}#Headshot damage is increased by 200% and there is no reduction to enemy headshot multipliers.##",
+		["bm_wp_upg_a_piercing_semi_desc_per_pellet"] = "Fires #{skill_color}#12## #{skill_color}#armor piercing## flechettes.\n#{skill_color}#Headshot damage is increased by 200% and there is no reduction to enemy headshot multipliers.##",
+		["bm_wp_upg_a_piercing_pump_desc_per_pellet"] = "Fires #{skill_color}#12## #{skill_color}#armor piercing## flechettes.\n#{skill_color}#Headshot damage is increased by 200% and there is no reduction to enemy headshot multipliers.##",
+		["bm_wp_upg_a_piercing_heavy_desc_per_pellet"] = "Fires #{skill_color}#12## #{skill_color}#armor piercing## flechettes.\n#{skill_color}#Headshot damage is increased by 200% and there is no reduction to enemy headshot multipliers.##",
 
 		--Generic Optic Zoom Descriptions--
 		["bm_wp_upg_o_1_1"] = "Red dot sight.\n#{risk}#1.1x magnification.##",
@@ -1421,7 +1421,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Eng", function(loc)
 		["bm_wp_upg_bonus_sc_none_desc"] = "DISABLES BOOSTS FROM WEAPON SKINS.",
 
 		--Generic weapon descriptions (Keep for custom weapon purposes)--
-		["bm_menu_weapon_multishot_1"] = "Damage is split between",
+		["bm_menu_weapon_multishot_1"] = "Fires",
 		["bm_menu_weapon_multishot_2"] = "projectiles, each dealing",
 		["bm_menu_weapon_multishot_3"] = "damage.",
 		["bm_menu_weapon_ene_hs_mult_sub"] = "Enemy headshot multipliers are reduced to ",
@@ -2309,7 +2309,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 		--Community Frag 2
 		["bm_grenade_dada_com_desc"] = "Damage: #{risk}#800## \nRadius: #{skill_color}#5m## \nFuse: #{skill_color}#3s## \n\nThe doll's outer layers hides its explosive inner workings. A tribute to the Motherland.",
 		--Snowball
-		["bm_grenade_xmas_snowball_desc"] = "Damage: #{skill_color}#180## \nRadius: #{skill_color}#1m## \nRegen rate: #{skill_color}#1 snowball every 25s## \n\nDunk them in water, toss them in the freezer and you got yourself a deadly throwing weapon. Simple.",
+		["bm_grenade_xmas_snowball_desc"] = "Damage (Impact): #{skill_color}#90##\nDamage (Blast): #{risk}#180## \nRadius: #{skill_color}#1m## \nRegen rate: #{skill_color}#1 snowball every 25s## \n\nDunk them in water, toss them in the freezer and you got yourself a deadly throwing weapon. Simple.",
 		--Zapper
 		["bm_grenade_electric_desc"] = "Damage: #{skill_color}#400## \nRadius: #{skill_color}#5m## \nFuse: #{skill_color}#3s## \n- #{skill_color}#Electrocutes most enemies## \n\nShrapnel is all well and good but some things need to be fried, and this little beauty is a rather practical beast for dishing out some damage with high voltage.",
 		--Sticky
@@ -3231,6 +3231,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 					["bm_w_vityaz"] = "AK-19-01 Tasunka",
 					--Signature SMG
 					["bm_w_shepheard"] = "Signature PC9",
+					["bm_w_x_shepheard"] = "Akimbo Signature PC9s",
 					--Compact-5/MP5
 					["bm_w_mp5"] = "Compact-5",
 					["bm_w_mp5sd"] = "Compact-5SD",
@@ -3871,6 +3872,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 					["bm_wp_mp5_m_straight"] = "30rnd MP5 40/10 Magazine",
 					--MPX
 					["bm_w_shepheard"] = "SIG MPX",
+					["bm_w_x_shepheard"] = "Akimbo SIG MPXs",
 					--Vityaz
 					["bm_w_vityaz"] = "Kalashnikov Concern PP-19 Vityaz-SN",
 					--Bizon
@@ -5355,6 +5357,22 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 		["bm_not_cowboy_sc"] = "dude respect the hollywood wild west get up man",
 		["bm_not_cowboy_sc_desc"] = "#{important_1}#this shit is not from the 1900s##",
 
+		["mutator_vanilla_police_call"] = "Intruder Alert",
+		["mutator_vanilla_police_call_desc"] = "Enables vanilla behavior for police calls, pagers and cameras.",
+		["mutator_vanilla_police_call_longdesc"] = "Enables vanilla behavior for police calls, pagers and cameras.",
+
+		["mutator_onlyspecials"] = "Oops All Specials!",
+		["mutator_onlyspecials_desc"] = "Only special units spawn.",
+		["mutator_onlyspecials_longdesc"] = "Only special units spawn. This makes the game significantly harder.\n\nNote: Titan SWAT, Veteran Cops, and OMNIA ASUs do not spawn due to them being variants of standard units.",
+
+		["mutator_warthogs"] = "Warthogs",
+		["mutator_warthogs_desc"] = "Warthogs spawn in naturally.",
+		["mutator_warthogs_longdesc"] = "Whenever a Bulldozer of any variety spawns, there is a chance that it will be replaced by a flamethrower weilding Warthog.",
+
+		["MutatorSnipersAndSnipers"] = "Sniper Hell",
+		["MutatorSnipersAndSnipers_desc"] = "All enemies now spawn with Sniper Rifles.",
+		["MutatorSnipersAndSnipers_longdesc"] = "All enemies have their standard weapons replaced with Sniper Rifles.\n\nNote: Shield enemies will still spawn with their normal weapons.",
+
 		--Crime Spree mutators
 		["mutator_cloakercuff"] = "Conjurer",
 		["mutator_cloakercuff_desc"] = "Cloaker melee strikes will now cuff players.",
@@ -5400,25 +5418,14 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 		["mutator_spoocsquad_desc"] = "Cloakers tend to spawn in groups.",
 		["mutator_spoocsquad_longdesc"] = "Cloakers tend to spawn in groups.",
 
-		["mutator_vanilla_police_call"] = "Intruder Alert",
-		["mutator_vanilla_police_call_desc"] = "Enables vanilla behavior for police calls, pagers and cameras.",
-		["mutator_vanilla_police_call_longdesc"] = "Enables vanilla behavior for police calls, pagers and cameras.",
-
-		["mutator_onlyspecials"] = "Oops All Specials!",
-		["mutator_onlyspecials_desc"] = "Only special units spawn.",
-		["mutator_onlyspecials_longdesc"] = "Only special units spawn. This makes the game significantly harder.\n\nNote: Titan SWAT, Veteran Cops, and OMNIA ASUs do not spawn due to them being variants of standard units.",
-
-		["mutator_warthogs"] = "Warthogs",
-		["mutator_warthogs_desc"] = "Warthogs spawn in naturally.",
-		["mutator_warthogs_longdesc"] = "Whenever a Bulldozer of any variety spawns, there is a chance that it will be replaced by a flamethrower weilding Warthog.",
-
-		["MutatorSnipersAndSnipers"] = "Sniper Hell",
-		["MutatorSnipersAndSnipers_desc"] = "All enemies now spawn with Sniper Rifles.",
-		["MutatorSnipersAndSnipers_longdesc"] = "All enemies have their standard weapons replaced with Sniper Rifles.\n\nNote: Shield enemies will still spawn with their normal weapons.",
-
 		["MutatorHeavyMedics"] = "Affordable Healthcare",
 		["MutatorHeavyMedics_desc"] = "Medics with a 25% of a Heavy Medic.",
 		["MutatorHeavyMedics_longdesc"] = "Whenever a Medic of any variety spawns, there is a 25% chance that it will be replaced with a more beefy Heavy Medic.",
+
+	--	i fucking cant with the tweakdatas so this is getting sent to the cutting room floor
+	--	["mutator_aderaldozers"] = "Adrenaline Bulldozers",
+	--	["mutator_aderaldozers_desc"] = "Bulldozers move slightly faster.",
+	--	["mutator_aderaldozers_longdesc"] = "All types of Bulldozers move slightly faster. Blackdozers, Snowdozers, and Warthogs have normal move speed.",
 		--Crime spree modifier changes
 		["cn_crime_spree_brief"] = "A Crime Spree is an endless series of randomly selected heists, executed in succession. With each heist you complete, your Rank and Reward will increase! Each 20th or 26th rank you will need to choose a modifier and each 100th rank there is an increase to the risk level, that will make the next heists harder to complete. After risk level 600, the amount of i-frames that player have starts to decrease and bravo units begin to spawn normally.\n\n##If you invite your crew, make sure they started their own Crime Spree before joining in order to gain ranks and Rewards as well.##",
 		["menu_cs_next_modifier_forced"] = "",
@@ -5451,6 +5458,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 		["menu_cs_modifier_spoocsquad"] = "Cloakers now tend to spawn in groups.",
 		["menu_cs_modifier_titandozer"] = "Whenever a Bulldozer of any variety spawns, there is a 20% chance that it will be replaced by a railgun weilding Titan Bulldozer.",
 		["menu_cs_modifier_heavymedics"] = "Whenever a Medic of any variety spawns, there is a 25% chance that it will be replaced with a Heavy Medic from HeavyGunner.",
+	--	["menu_cs_modifier_fasttanks"] = "Bulldozers move slightly faster. Blackdozers have normal move speed.",
 
 		["bm_menu_skill"] = "Crew Boosts",
 
@@ -5597,7 +5605,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 
 				--Overkill
 				["menu_overkill_sc"] = "OVERKILL",
-				["menu_overkill_desc_sc"] = "BASIC: #{owned}#$basic##\nKills before falloff begins using direct damage from #{skill_color}#shotguns, flamethrowers or the OVE9000 Saw## activates this skill and grants them a #{skill_color}#$skill_value_b1## increase to their max damage for #{skill_color}#$skill_value_b2## seconds.\n\n#{risk}#NOTE: Will not be triggered by or have any effect on## #{important_1}#explosives or damage-over-time effects.##\n\nACE: #{owned}#$pro##\nThe damage increase now applies to #{skill_color}#all weapons## and instead lasts #{skill_color}#$skill_value_p1## seconds.\n\n#{risk}#NOTE: Damage bonus does not apply to## #{important_1}#Launchers.##\n\nYour draw and holster speeds for #{skill_color}#shotguns, flamethrowers and the OVE9000 Saw## are #{skill_color}#$skill_value_p2## faster.",
+				["menu_overkill_desc_sc"] = "BASIC: #{owned}#$basic##\nKills before falloff begins or lethal headshots at any range using direct damage from #{skill_color}#shotguns, flamethrowers or the OVE9000 Saw## activates this skill and grants them a #{skill_color}#$skill_value_b1## increase to their max damage for #{skill_color}#$skill_value_b2## seconds.\n\n#{risk}#NOTE: Will not be triggered by or have any effect on## #{important_1}#explosives or damage-over-time effects.##\n\nACE: #{owned}#$pro##\nThe damage increase now applies to #{skill_color}#all weapons## and instead lasts #{skill_color}#$skill_value_p1## seconds.\n\n#{risk}#NOTE: Damage bonus does not apply to## #{important_1}#Launchers.##\n\nYour draw and holster speeds for #{skill_color}#shotguns, flamethrowers and the OVE9000 Saw## are #{skill_color}#$skill_value_p2## faster.",
 
 			--[[   JUGGERNAUT SUBTREE   ]]--
 				--Stun Resistance--

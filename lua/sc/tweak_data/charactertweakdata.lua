@@ -1275,6 +1275,8 @@ function CharacterTweakData:_init_city_swat(presets)
 		self.city_swat_titan.custom_voicework = "tswat_ru"
 	elseif self:get_ai_group_type() == "zombie" then
 		self.city_swat_titan.custom_voicework = "skeleton"
+	elseif self:get_ai_group_type() == "murkywater" then
+		self.city_swat_titan.custom_voicework = "murky_tswat"
 	else
 		self.city_swat_titan.custom_voicework = "pdth"
 	end
@@ -3010,7 +3012,8 @@ function CharacterTweakData:_init_spooc(presets)
 
 			return false, t + delay_till_next_use
 		end
-	}	
+	}
+	self.spooc_gangster.custom_voicework = nil
 	table.insert(self._enemy_list, "spooc_gangster")
 end
 
@@ -3968,7 +3971,7 @@ function CharacterTweakData:_init_boom(presets)
 	self.boom_summers.custom_shout = false
 	self.boom_summers.follower = true
 	self.boom_summers.ecm_vulnerability = 0
-	self.boom_summers.ecm_hurts = {}		
+	self.boom_summers.ecm_hurts = {}
 	self.boom_summers.no_omnia_heal = true
 	self.boom_summers.can_be_healed = false
 	self.boom_summers.marshal_logic = nil
