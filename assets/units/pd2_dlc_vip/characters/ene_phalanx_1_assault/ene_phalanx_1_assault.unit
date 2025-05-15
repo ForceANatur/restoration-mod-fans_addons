@@ -1,11 +1,10 @@
 <?xml version="1.0"?>
 <unit type="being" slot="12">
 	<anim_state_machine name="anims/units/enemies/cop/cop_machine" />
-	<object file="units/pd2_dlc_vip/characters/ene_phalanx_1_assault/ene_phalanx_1_assault" />
+	<object file="units/pd2_dlc_vip/characters/ene_titan_rifle/ene_titan_rifle" />
 
 	<dependencies>
 		<depends_on bnk="soundbanks/regular_vox" />
-		<depends_on unit="units/pd2_dlc_vip/characters/ene_acc_shield_phalanx/ene_acc_shield_phalanx" />
 		<depends_on unit="units/payday2/weapons/wpn_npc_beretta92_titan/wpn_npc_beretta92_titan" />
 	</dependencies>
 
@@ -21,7 +20,7 @@
 			</var>			
 		</extension>
 		<extension name="inventory" class="CopInventory" >
-			<var name="_shield_unit_name" value="units/pd2_dlc_vip/characters/ene_acc_shield_phalanx/ene_acc_shield_phalanx" />
+			<var name="_shield_unit_name" value="units/pd2_dlc_vip/characters/ene_acc_shield_phalanx_sc/ene_acc_shield_phalanx_sc" />
 			<var name="_shield_break_data" type="table">
 				<var name="anim_global_switch" value="cop"/>
 				<var name="stats_name_switch" value="city_swat_titan_assault"/>
@@ -36,8 +35,8 @@
 		<extension name="anim_data" class="PlayerAnimationData" />
 		<extension name="character_damage" class="CopDamage">
 			<var name="_head_body_name" value="head" />
-			<var name="_head_gear_object" value="g_helmet_lod" />
-			<var name="_nr_head_gear_objects" value="3" />
+			<var name="_head_gear_object" value="g_helmet_shield_lod" />
+			<var name="_nr_head_gear_objects" value="2" />
 			<var name="_head_gear" value="units/payday2/characters/ene_acc_fbi_swat_helmet/ene_acc_fbi_swat_helmet" />
 			<var name="_head_gear_decal_mesh" value="dm_helmet" />
 		</extension>

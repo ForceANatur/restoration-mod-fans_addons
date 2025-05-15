@@ -1,21 +1,21 @@
 local difficulty = tweak_data:difficulty_to_index(Global.game_settings and Global.game_settings.difficulty or "normal")
-local bulldozer = (difficulty == 8 and "units/pd2_dlc_gitgud/characters/ene_zeal_bulldozer_3_sc/ene_zeal_bulldozer_3_sc") or ("units/pd2_mod_nypd/characters/ene_bulldozer_2/ene_bulldozer_2")
+local bulldozer = (difficulty == 8 and "units/pd2_dlc_gitgud/characters/ene_zeal_bulldozer_3_sc/ene_zeal_bulldozer_3_sc") or ("units/payday2/characters/ene_bulldozer_2_sc/ene_bulldozer_2_sc")
 local ponr_value = (difficulty <= 5 and 660 or (difficulty == 6 or difficulty == 7) and 630) or 600
 	
 local enemy_filter = {
 	values = {
 			rules = {
 				enemy_names = {
-				"units/pd2_mod_nypd/characters/ene_bulldozer_1/ene_bulldozer_1",
-				"units/pd2_mod_nypd/characters/ene_bulldozer_2/ene_bulldozer_2",
+				"units/payday2/characters/ene_bulldozer_1_sc/ene_bulldozer_1_sc",
+				"units/payday2/characters/ene_bulldozer_2_sc/ene_bulldozer_2_sc",
 				"units/pd2_dlc_gitgud/characters/ene_zeal_bulldozer_3_sc/ene_zeal_bulldozer_3_sc",
 			--captain units (for Everlasting Season mutator)
 			--Winters squad
 				"units/pd2_dlc_vip/characters/ene_vip_1/ene_vip_1",
 				"units/pd2_dlc_vip/characters/ene_phalanx_1/ene_phalanx_1",
 				"units/pd2_dlc_vip/characters/ene_titan_sniper/ene_titan_sniper",
-				"units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_1/ene_male_marshal_marksman_1",
-				"units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_2/ene_male_marshal_marksman_2",
+				"units/pd2_dlc_usm1/characters/ene_titan_sniper/ene_titan_sniper",
+				"units/pd2_dlc_usm1/characters/ene_titan_sniper_bell/ene_titan_sniper_bell",
 				"units/pd2_mod_bravo/characters/ene_bravo_dmr/ene_bravo_dmr",
 			--Autumn squad	
 				"units/pd2_dlc_vip/characters/ene_vip_autumn/ene_vip_autumn",
@@ -46,8 +46,8 @@ local enemy_filter_dozers = {
 	values = {
 		rules = {
 			enemy_names = {
-				"units/pd2_mod_nypd/characters/ene_bulldozer_1/ene_bulldozer_1",
-				"units/pd2_mod_nypd/characters/ene_bulldozer_2/ene_bulldozer_2",
+				"units/payday2/characters/ene_bulldozer_1_sc/ene_bulldozer_1_sc",
+				"units/payday2/characters/ene_bulldozer_2_sc/ene_bulldozer_2_sc",
 				"units/pd2_dlc_gitgud/characters/ene_zeal_bulldozer_3_sc/ene_zeal_bulldozer_3_sc"	
 			}
 		}

@@ -77,7 +77,7 @@ function CharacterTweakData:_init_region_america()
 		bulldozer = "bdz",
 		medic = "mdc"
 	}
-	self._speech_prefix_p2 = "d"
+	self._speech_prefix_p2 = "n"
 end
 
 function CharacterTweakData:_init_region_russia()
@@ -147,7 +147,7 @@ function CharacterTweakData:_init_region_nypd()
 		bulldozer = "bdz",
 		medic = "mdc"
 	}
-	self._speech_prefix_p2 = "d"
+	self._speech_prefix_p2 = "n"
 end
 
 function CharacterTweakData:_init_region_lapd()
@@ -161,7 +161,7 @@ function CharacterTweakData:_init_region_lapd()
 		bulldozer = "bdz",
 		medic = "mdc"
 	}
-	self._speech_prefix_p2 = "d"
+	self._speech_prefix_p2 = "n"
 end		
 
 function CharacterTweakData:_init_region_fbi()
@@ -175,7 +175,7 @@ function CharacterTweakData:_init_region_fbi()
 		bulldozer = "bdz",
 		medic = "mdc"
 	}
-	self._speech_prefix_p2 = "d"
+	self._speech_prefix_p2 = "n"
 end
 
 function CharacterTweakData:get_ai_group_type()    
@@ -1280,7 +1280,7 @@ function CharacterTweakData:_init_city_swat(presets)
 	else
 		self.city_swat_titan.custom_voicework = "pdth"
 	end
-	if self:get_ai_group_type() == "murkywater" or self:get_ai_group_type() == "russia" or self:get_ai_group_type() == "federales" then
+	if self:get_ai_group_type() == "murkywater" or self:get_ai_group_type() == "russia" or self:get_ai_group_type() == "federales" or self:get_ai_group_type() == "fbi" then
 		self.city_swat_titan.yellow_blood = false
 	else
 		self.city_swat_titan.yellow_blood = true
@@ -3834,7 +3834,7 @@ function CharacterTweakData:_init_taser(presets)
 	self.taser_titan.is_special = true	
 	self.taser_titan.no_asu = true
 	self.taser_titan.no_xmas_hat = true
-	if self:get_ai_group_type() == "russia" or self:get_ai_group_type() == "federales" then
+	if self:get_ai_group_type() == "russia" or self:get_ai_group_type() == "federales" or self:get_ai_group_type() == "fbi" then
 		self.taser_titan.yellow_blood = false
 	else
 		self.taser_titan.yellow_blood = true
@@ -19264,6 +19264,7 @@ local orig_character_map = CharacterTweakData.character_map
 function CharacterTweakData:character_map()
 	local char_map = orig_character_map()
 	--Basic
+		table.insert(char_map.basic.list, "ene_head_atlas")
 	
 		--CS Tier
 		table.insert(char_map.basic.list, "ene_bulldozer_1_sc")
@@ -19356,6 +19357,11 @@ function CharacterTweakData:character_map()
 		table.insert(char_map.ranc.list, "ene_cop_4")
 	--usm1
 		table.insert(char_map.usm1.list, "ene_male_marshal_marksman_scripted_2")
+		table.insert(char_map.usm1.list, "ene_titan_sniper")
+		table.insert(char_map.usm1.list, "ene_titan_rifle")
+		table.insert(char_map.usm1.list, "ene_titan_shotgun")
+		table.insert(char_map.usm1.list, "ene_titan_taser")
+		table.insert(char_map.usm1.list, "ene_phalanx_1_assault")
 	--Christmas
 		table.insert(char_map.cg22.list, "ene_bulldozer_snowman")
 	--vip
@@ -19617,8 +19623,10 @@ function CharacterTweakData:character_map()
 				"ene_sniper_3",
 				"ene_spook_1",
 				"ene_bulldozer_1",
+				"ene_head_atlas",
 				"ene_bulldozer_1_hard",
 				"ene_bulldozer_2",
+				"ene_bulldozer_3",
 				"ene_nypd_heavy_m4",					
 				"ene_nypd_medic",
 				"ene_tazer_1",

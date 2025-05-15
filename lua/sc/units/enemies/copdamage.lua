@@ -6,16 +6,6 @@ local ids_func = Idstring
 local table_contains = table.contains
 
 local enemies_visor = {
-	ids_func("units/payday2/characters/ene_city_guard_3/ene_city_guard_3"),
-	ids_func("units/payday2/characters/ene_city_guard_3/ene_city_guard_3_husk"),
-	ids_func("units/payday2/characters/ene_swat_heavy_1_sc/ene_swat_heavy_1_sc"),
-	ids_func("units/payday2/characters/ene_swat_heavy_1_sc/ene_swat_heavy_1_sc_husk"),
-	ids_func("units/payday2/characters/ene_fbi_heavy_1_sc/ene_fbi_heavy_1_sc"),
-	ids_func("units/payday2/characters/ene_fbi_heavy_1_sc/ene_fbi_heavy_1_sc_husk"),
-	ids_func("units/payday2/characters/ene_swat_heavy_r870_sc/ene_swat_heavy_r870_sc"),    
-	ids_func("units/payday2/characters/ene_swat_heavy_r870_sc/ene_swat_heavy_r870_sc_husk"),    
-	ids_func("units/payday2/characters/ene_city_heavy_g36_sc/ene_city_heavy_g36_sc"),
-	ids_func("units/payday2/characters/ene_city_heavy_g36_sc/ene_city_heavy_g36_sc_husk"),
 	ids_func("units/pd2_mod_halloween/characters/ene_swat_heavy_1_sc/ene_swat_heavy_1_sc"),
 	ids_func("units/pd2_mod_halloween/characters/ene_swat_heavy_1_sc/ene_swat_heavy_1_sc_husk"),
 	ids_func("units/pd2_mod_halloween/characters/ene_swat_heavy_r870_sc/ene_swat_heavy_r870_sc"),
@@ -32,10 +22,6 @@ local enemies_visor = {
 	ids_func("units/pd2_mod_halloween/characters/ene_zeal_tazer/ene_zeal_tazer_husk"),                 	
 	ids_func("units/pd2_mod_halloween/characters/ene_city_heavy_g36/ene_city_heavy_g36"),
 	ids_func("units/pd2_mod_halloween/characters/ene_city_heavy_g36/ene_city_heavy_g36_husk"),                 	
-	ids_func("units/payday2/characters/ene_shield_2_sc/ene_shield_2_sc"),
-	ids_func("units/payday2/characters/ene_shield_2_sc/ene_shield_2_sc_husk"),
-	ids_func("units/payday2/characters/ene_tazer_1_sc/ene_tazer_1_sc"),
-	ids_func("units/payday2/characters/ene_tazer_1_sc/ene_tazer_1_sc_husk"),     
 	ids_func("units/pd2_dlc_bex/characters/ene_tazer_1/ene_tazer_1"),
 	ids_func("units/pd2_dlc_bex/characters/ene_tazer_1/ene_tazer_1_husk"),                 
 	ids_func("units/pd2_dlc_bex/characters/ene_zeal_swat_heavy_sc/ene_zeal_swat_heavy_sc"),
@@ -48,8 +34,6 @@ local enemies_visor = {
 	ids_func("units/pd2_dlc_bex/characters/ene_swat_heavy_1/ene_swat_heavy_1_husk"),                 
 	ids_func("units/pd2_dlc_gitgud/characters/ene_zeal_tazer_sc/ene_zeal_tazer_sc"),
 	ids_func("units/pd2_dlc_gitgud/characters/ene_zeal_tazer_sc/ene_zeal_tazer_sc_husk"),                 
-	ids_func("units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_sc/ene_zeal_swat_heavy_sc"),
-	ids_func("units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_sc/ene_zeal_swat_heavy_sc_husk"),
 	ids_func("units/pd2_mod_reapers/characters/ene_fbi_heavy_1/ene_fbi_heavy_1"),
 	ids_func("units/pd2_mod_reapers/characters/ene_fbi_heavy_1/ene_fbi_heavy_1_husk"),
 	ids_func("units/pd2_mod_reapers/characters/ene_swat_heavy_1/ene_swat_heavy_1"),
@@ -70,8 +54,6 @@ local enemies_visor = {
 	ids_func("units/pd2_mod_lapd/characters/ene_swat_heavy_r870/ene_swat_heavy_r870_husk"),                 
 	ids_func("units/pd2_mod_lapd/characters/ene_fbi_heavy_1/ene_fbi_heavy_1"),
 	ids_func("units/pd2_mod_lapd/characters/ene_fbi_heavy_1/ene_fbi_heavy_1_husk"),                             
-	ids_func("units/pd2_mod_lapd/characters/ene_city_heavy_g36/ene_city_heavy_g36"),
-	ids_func("units/pd2_mod_lapd/characters/ene_city_heavy_g36/ene_city_heavy_g36_husk"),
 	ids_func("units/pd2_mod_sharks/characters/ene_fbi_heavy_1/ene_fbi_heavy_1"),
 	ids_func("units/pd2_mod_sharks/characters/ene_fbi_heavy_1/ene_fbi_heavy_1_husk"),                 
 	ids_func("units/pd2_mod_sharks/characters/ene_murky_tazer/ene_murky_tazer"),
@@ -84,50 +66,29 @@ local enemies_visor = {
 	ids_func("units/pd2_mod_sharks/characters/ene_murky_shield_yellow/ene_murky_shield_yellow_husk"),
 	ids_func("units/pd2_mod_sharks/characters/ene_zeal_swat_heavy/ene_zeal_swat_heavy"),
 	ids_func("units/pd2_mod_sharks/characters/ene_zeal_swat_heavy/ene_zeal_swat_heavy_husk"),
-	ids_func("units/pd2_mod_nypd/characters/ene_fbi_heavy_1/ene_fbi_heavy_1"),
-	ids_func("units/pd2_mod_nypd/characters/ene_fbi_heavy_1/ene_fbi_heavy_1_husk"),
-	ids_func("units/pd2_mod_nypd/characters/ene_city_heavy_g36/ene_city_heavy_g36"),
-	ids_func("units/pd2_mod_nypd/characters/ene_city_heavy_g36/ene_city_heavy_g36_husk"),  
 	ids_func("units/pd2_mod_omnia/characters/ene_omnia_heavy/ene_omnia_heavy"),
 	ids_func("units/pd2_mod_omnia/characters/ene_omnia_heavy/ene_omnia_heavy_husk"),	
 	ids_func("units/pd2_mod_omnia/characters/ene_grenadier_1/ene_grenadier_1"),
-	ids_func("units/pd2_mod_omnia/characters/ene_grenadier_1/ene_grenadier_1_husk"),                 	
-	ids_func("units/pd2_mod_nypd/characters/ene_fbi_heavy_r870_sc/ene_fbi_heavy_r870_sc"),
-	ids_func("units/pd2_mod_nypd/characters/ene_fbi_heavy_r870_sc/ene_fbi_heavy_r870_sc_husk"),                 	
-	ids_func("units/pd2_mod_nypd/characters/ene_nypd_heavy_m4/ene_nypd_heavy_m4"),
-	ids_func("units/pd2_mod_nypd/characters/ene_nypd_heavy_m4/ene_nypd_heavy_m4_husk"),                 
-	ids_func("units/pd2_mod_nypd/characters/ene_nypd_heavy_r870/ene_nypd_heavy_r870"),
-	ids_func("units/pd2_mod_nypd/characters/ene_nypd_heavy_r870/ene_nypd_heavy_r870_husk"),                 	
+	ids_func("units/pd2_mod_omnia/characters/ene_grenadier_1/ene_grenadier_1_husk")             	
 }
 
-local enemies_plink = {
-	ids_func("units/payday2/characters/ene_fbi_heavy_r870_sc/ene_fbi_heavy_r870_sc"),
-	ids_func("units/payday2/characters/ene_fbi_heavy_r870_sc/ene_fbi_heavy_r870_sc_husk"),
-	ids_func("units/payday2/characters/ene_city_heavy_r870_sc/ene_city_heavy_r870_sc"),
-	ids_func("units/payday2/characters/ene_city_heavy_r870_sc/ene_city_heavy_r870_sc_husk"),
-	  
+local enemies_plink = {	  
 	ids_func("units/pd2_mod_lapd/characters/ene_fbi_heavy_r870_sc/ene_fbi_heavy_r870_sc"),
 	ids_func("units/pd2_mod_lapd/characters/ene_fbi_heavy_r870_sc/ene_fbi_heavy_r870_sc_husk"),                     
 	ids_func("units/pd2_mod_lapd/characters/ene_city_heavy_r870_sc/ene_city_heavy_r870_sc"),
 	ids_func("units/pd2_mod_lapd/characters/ene_city_heavy_r870_sc/ene_city_heavy_r870_sc_husk"),
-	
-	ids_func("units/pd2_mod_nypd/characters/ene_city_heavy_r870/ene_city_heavy_r870"),
-	ids_func("units/pd2_mod_nypd/characters/ene_city_heavy_r870/ene_city_heavy_r870_husk"),   
-	
+		
 	ids_func("units/pd2_mod_reapers/characters/ene_city_heavy_r870/ene_city_heavy_r870"),
 	ids_func("units/pd2_mod_reapers/characters/ene_city_heavy_r870/ene_city_heavy_r870_husk"),   
 	
 	ids_func("units/pd2_mod_reapers/characters/ene_fbi_heavy_r870/ene_fbi_heavy_r870"),
 	ids_func("units/pd2_mod_reapers/characters/ene_fbi_heavy_r870/ene_fbi_heavy_r870_husk"),   
 	
-	ids_func("units/pd2_dlc_vip/characters/ene_phalanx_1/ene_phalanx_1"),
-	ids_func("units/pd2_dlc_vip/characters/ene_phalanx_1/ene_phalanx_1_husk"),   
+	ids_func("units/pd2_dlc_vip/characters/ene_phalanx_1_new/ene_phalanx_1_new"),
+	ids_func("units/pd2_dlc_vip/characters/ene_phalanx_1_new/ene_phalanx_1_new_husk"),   
 	
 	ids_func("units/pd2_mod_omnia/characters/ene_omnia_heavy_r870/ene_omnia_heavy_r870"),
 	ids_func("units/pd2_mod_omnia/characters/ene_omnia_heavy_r870/ene_omnia_heavy_r870_husk"),
-	
-	ids_func("units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_r870_sc/ene_zeal_swat_heavy_r870_sc"),
-	ids_func("units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_r870_sc/ene_zeal_swat_heavy_r870_sc_husk"),     
 	
 	ids_func("units/pd2_mod_halloween/characters/ene_skele_swat/ene_skele_swat"),
 	ids_func("units/pd2_mod_halloween/characters/ene_skele_swat/ene_skele_swat_husk"),
@@ -160,16 +121,10 @@ local enemies_plink = {
 }
 
 local grenadier_smash = {
-	ids_func("units/payday2/characters/ene_grenadier_1/ene_grenadier_1"),
-	ids_func("units/payday2/characters/ene_grenadier_1/ene_grenadier_1_husk"),
 	ids_func("units/pd2_mod_reapers/characters/ene_titan_taser/ene_titan_taser"),
 	ids_func("units/pd2_mod_reapers/characters/ene_titan_taser/ene_titan_taser_husk"),
-	ids_func("units/pd2_dlc_gitgud/characters/ene_grenadier_1/ene_grenadier_1"),
-	ids_func("units/pd2_dlc_gitgud/characters/ene_grenadier_1/ene_grenadier_1_husk"),     	
 	ids_func("units/pd2_dlc_bex/characters/ene_grenadier_1/ene_grenadier_1"),
 	ids_func("units/pd2_dlc_bex/characters/ene_grenadier_1/ene_grenadier_1_husk"),   
-	ids_func("units/pd2_mod_nypd/characters/ene_grenadier_1/ene_grenadier_1"),
-	ids_func("units/pd2_mod_nypd/characters/ene_grenadier_1/ene_grenadier_1_husk"),
 	ids_func("units/pd2_mod_sharks/characters/ene_grenadier_1/ene_grenadier_1"),
 	ids_func("units/pd2_mod_sharks/characters/ene_grenadier_1/ene_grenadier_1_husk")    	
 }
@@ -189,6 +144,11 @@ local armour = {
 	-- Sosa
 	[Idstring("body_vest"):key()] = true,
 	[Idstring("body_ammo"):key()] = true,
+}
+
+local impenetrable_armour = {
+	[Idstring("acc_helmet"):key()] = true,
+	[Idstring("acc_hat"):key()] = true,
 }
 
 local limbs = {
@@ -214,6 +174,10 @@ local head_hitboxes = {
     [Idstring("glass_swat"):key()] = true,
     [Idstring("glass_c"):key()] = true,
     [Idstring("glass_d"):key()] = true,
+    [Idstring("glass_l"):key()] = true,
+    [Idstring("glass_r"):key()] = true,
+    [Idstring("visor"):key()] = true,
+    [Idstring("sg_mask"):key()] = true,
     [Idstring("glass_altyn"):key()] = true,
     [Idstring("altyn_visor"):key()] = true,
     [Idstring("glass_visor"):key()] = true
@@ -342,6 +306,12 @@ function CopDamage:damage_fire(attack_data)
 	end
 
 	if self:chk_immune_to_attacker(attacker_unit) then
+		return
+	end
+	
+	local hit_body = attack_data and attack_data.col_ray and attack_data.col_ray.body
+
+	if hit_body and impenetrable_armour[hit_body:name():key()] then -- nothing
 		return
 	end
 
@@ -552,6 +522,7 @@ function CopDamage:damage_fire(attack_data)
 				self._unit:damage():run_sequence_simple("grenadier_glass_break")
 			elseif self._head_body_name then
 				local body = self._unit:body(self._head_body_name)
+
 
 				if self._unit:damage() and self._unit:damage():has_sequence("spawn_helmet")  then
 					self._unit:damage():run_sequence_simple("spawn_helmet")
@@ -902,6 +873,10 @@ function CopDamage:damage_bullet(attack_data)
 	local ignore = self._char_tweak.no_dozer_armor_resistance
 	
 	local hit_body = attack_data and attack_data.col_ray and attack_data.col_ray.body
+	
+	if hit_body and impenetrable_armour[hit_body:name():key()] then -- nothing
+		return
+	end
 
 	if armour[hit_body:name():key()] and not ignore then -- dozer armour negates damage
 		local pierce_armor = nil
@@ -1150,6 +1125,7 @@ function CopDamage:damage_bullet(attack_data)
 				if table_contains(grenadier_smash, self._unit:name()) then
 					self._unit:damage():run_sequence_simple("grenadier_glass_break")
 				else
+
 					if self._unit:damage() and self._unit:damage():has_sequence("spawn_helmet")  then
 						self._unit:damage():run_sequence_simple("spawn_helmet")
 					end
@@ -1392,6 +1368,7 @@ function CopDamage:sync_damage_bullet(attacker_unit, damage_percent, i_body, hit
 			if table_contains(grenadier_smash, self._unit:name()) then
 				self._unit:damage():run_sequence_simple("grenadier_glass_break")
 			else
+
 				if self._unit:damage() and self._unit:damage():has_sequence("spawn_helmet")  then
 					self._unit:damage():run_sequence_simple("spawn_helmet")
 				end
@@ -1519,8 +1496,8 @@ function CopDamage:damage_melee(attack_data)
 	if self._dead or self._invulnerable then
 		return
 	end
-
-	if self:is_friendly_fire(attack_data.attacker_unit) then
+	
+	if self:is_friendly_fire(attack_data.attacker_unit) and not attack_data.attacker_unit == self._unit then
 		return "friendly_fire"
 	end
 	
@@ -1547,6 +1524,11 @@ function CopDamage:damage_melee(attack_data)
 	local damage_effect = attack_data.damage_effect or attack_data.damage
 	local is_player = attack_data.attacker_unit == managers.player:player_unit() and true
 	local damage_clamp = self._char_tweak.DAMAGE_CLAMP_MELEE
+	
+	if hit_body and impenetrable_armour[hit_body:name():key()] then -- nothing
+		return
+	end
+
 
 	if is_player then
 		if self._char_tweak.priority_shout then
@@ -1686,6 +1668,7 @@ function CopDamage:damage_melee(attack_data)
 				if table_contains(grenadier_smash, self._unit:name()) then
 					self._unit:damage():run_sequence_simple("grenadier_glass_break")
 				else
+
 					if self._unit:damage() and self._unit:damage():has_sequence("spawn_helmet")  then
 						self._unit:damage():run_sequence_simple("spawn_helmet")
 					end
@@ -1897,6 +1880,8 @@ function CopDamage:sync_damage_melee(attacker_unit, damage_percent, damage_effec
 			if table_contains(grenadier_smash, self._unit:name()) then
 				self._unit:damage():run_sequence_simple("grenadier_glass_break")
 			else
+
+
 				if self._unit:damage() and self._unit:damage():has_sequence("spawn_helmet")  then
 					self._unit:damage():run_sequence_simple("spawn_helmet")
 				end
@@ -2064,6 +2049,12 @@ function CopDamage:stun_hit(attack_data)
 	if self:chk_immune_to_attacker(attack_data.attacker_unit) then
 		return
 	end
+
+	local hit_body = attack_data and attack_data.col_ray and attack_data.col_ray.body
+	
+	if hit_body and impenetrable_armour[hit_body:name():key()] then -- nothing
+		return
+	end
 	
 	if self:is_friendly_fire(attack_data.attacker_unit) then
 		return "friendly_fire"
@@ -2216,6 +2207,12 @@ function CopDamage:damage_explosion(attack_data)
 	if allow_ff then
 		damage = damage * 0.5
 	end
+	
+	local hit_body = attack_data and attack_data.col_ray and attack_data.col_ray.body
+		
+	if hit_body and impenetrable_armour[hit_body:name():key()] then -- nothing
+		return
+	end
 		
 	--Use a different damage resistance when being hit by a rocket	
 	if alive(weap_unit) then
@@ -2331,6 +2328,7 @@ function CopDamage:damage_explosion(attack_data)
 				self._unit:damage():run_sequence_simple("grenadier_glass_break")
 			elseif self._head_body_name then
 				local body = self._unit:body(self._head_body_name)
+
 
 				if self._unit:damage() and self._unit:damage():has_sequence("spawn_helmet")  then
 					self._unit:damage():run_sequence_simple("spawn_helmet")
@@ -2482,6 +2480,7 @@ function CopDamage:sync_damage_explosion(attacker_unit, damage_percent, i_attack
 		if table_contains(grenadier_smash, self._unit:name()) then
 			self._unit:damage():run_sequence_simple("grenadier_glass_break")	
 		else
+
 			if self._unit:damage() and self._unit:damage():has_sequence("spawn_helmet")  then
 				self._unit:damage():run_sequence_simple("spawn_helmet")
 			end
@@ -3062,6 +3061,12 @@ end
 
 function CopDamage:damage_dot(attack_data)
 	if self._dead or self._invulnerable then
+		return
+	end
+
+	local hit_body = attack_data and attack_data.col_ray and attack_data.col_ray.body
+	
+	if hit_body and impenetrable_armour[hit_body:name():key()] then -- nothing
 		return
 	end
 	
@@ -3713,6 +3718,21 @@ function CopDamage:taser_bag_explode()
 		sound_event = "grenade_electric_explode",
 		feedback_range = range * 2
 	}
+	
+	--Do a shit ton of damage to this dude and stun him
+	local taser_action_data = {
+		variant = "counter_tased",
+		damage = self._unit:character_damage()._HEALTH_INIT * 0.2,
+		damage_effect = self._unit:character_damage()._HEALTH_INIT * 2,
+		attacker_unit = self._unit,
+		attack_dir = -self._unit:movement()._action_common_data.fwd,
+		col_ray = {
+			position = mvector3.copy(self._unit:movement():m_head_pos()),
+			body = self._unit:body("body")
+		}
+	}
+
+	self._unit:character_damage():damage_melee(taser_action_data)	
 		
 	managers.explosion:play_sound_and_effects(pos, normal, range, custom_params)
 
@@ -3744,7 +3764,7 @@ function CopDamage:grenadier_bag_explode()
 	local custom_params = {
 		camera_shake_max_mul = 4,
 		effect = "effects/particles/explosions/explosion_flash_grenade",
-		sound_event = "concussion_explosion",
+		sound_event = "flashbang_explosion",
 		feedback_range = range * 2
 	}
 	local tweak_entry = {
@@ -3755,8 +3775,20 @@ function CopDamage:grenadier_bag_explode()
 		name_id = "bm_concussion",
 	}
 	
-	--Do a shit ton of damage to this dude
-	self._unit:character_damage():damage_mission({damage = 40})
+	--Do a shit ton of damage to this dude and stun him
+	local boom_action_data = {
+		variant = "concussion",
+		damage = self._unit:character_damage()._HEALTH_INIT * 0.2,
+		damage_effect = self._unit:character_damage()._HEALTH_INIT * 2,
+		attacker_unit = self._unit,
+		attack_dir = -self._unit:movement()._action_common_data.fwd,
+		col_ray = {
+			position = mvector3.copy(self._unit:movement():m_head_pos()),
+			body = self._unit:body("body")
+		}
+	}
+
+	self._unit:character_damage():damage_melee(boom_action_data)		
 	
 	managers.explosion:play_sound_and_effects(pos, normal, range, custom_params)	
 	
@@ -3816,6 +3848,32 @@ function CopDamage:kamikaze_bag_explode()
 
 	managers.explosion:detect_and_give_dmg(damage_params)
 	managers.network:session():send_to_peers_synched("element_explode_on_client", pos, normal, damage, range, curve_pow)
+	
+end
+
+function CopDamage:lpf_disable()	
+	if not alive(self._unit) then
+		return
+	end	
+	
+	if self._unit:base() then
+		self._unit:base():change_char_tweak("omnia_lpf_no_heal")
+	end
+	
+	if self._unit:character_damage() and self._unit:character_damage().force_hurt then
+		local attack_data = {
+			variant = "bullet",
+			type = "hurt",
+			position = self._unit:oobb():center(),
+			direction = self._unit:rotation():y(),
+			col_ray = {
+				position = self._unit:oobb():center(),
+				ray = self._unit:rotation():y()
+			}
+		}
+
+		self._unit:character_damage():force_hurt(attack_data)
+	end	
 	
 end
 

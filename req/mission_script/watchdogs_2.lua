@@ -76,5 +76,5 @@ return {
 		on_executed = {
 			{ id = 400015, delay = 20 }
 		}
-	}]]--
+	} ]]--
 }

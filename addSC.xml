@@ -26,8 +26,8 @@
 	
     <!--Security Cameras-->    
     <sequence_manager   path="units/payday2/equipment/gen_equipment_security_camera/gen_equipment_security_camera" force="true"/>
-    <model				path="units/payday2/equipment/gen_equipment_security_camera/gen_equipment_security_camera" force="true"/>
-    <object				path="units/payday2/equipment/gen_equipment_security_camera/gen_equipment_security_camera" force="true"/>
+    <object			    path="units/payday2/equipment/gen_equipment_security_camera/gen_equipment_security_camera" force="true"/>
+    <model			    path="units/payday2/equipment/gen_equipment_security_camera/gen_equipment_security_camera" force="true"/>
     <material_config	path="units/payday2/equipment/gen_equipment_security_camera/gen_equipment_security_camera" force="true"/>
     <!--texture         path="units/payday2/equipment/gen_equipment_security_camera/gen_equipment_security_camera_df" force="true"-->   
 	
@@ -264,6 +264,7 @@
 	<continent			path="levels/narratives/classics/man/world/world" force="true" unload="true"/> 
 	<continent			path="levels/narratives/classics/man/shadow_caster/shadow_caster" force="true" unload="true"/>
 	<nav_data			path="levels/narratives/classics/man/nav_manager_data" force="true" unload="true"/>	
+	
 	<cover_data			path="levels/narratives/classics/man/cover_data" force="true" unload="true"/>	
 	<sequence_manager	path="units/world/architecture/secret_stash/props/secret_stash_hack_computer_interaction" force="true"/>
 	<sequence_manager	path="units/pd2_dlc_jolly/equipment/gen_interactable_saw/gen_interactable_saw" force="true"/>
@@ -280,14 +281,6 @@
 	<continent			path="levels/narratives/classics/flat/collision/collision" force="true" unload="true"/>
 	
 	<!--Misc. Changes and Fixes to Base Game Objects-->
-	
-	<add from_db="true" 	path="units/payday2/characters/ene_security_3/ene_security_3" type="unit">
-		<unit load="true"	path="units/payday2/characters/ene_security_3/ene_security_3"/>
-		<object 			path="units/payday2/characters/ene_security_3/ene_security_3"/>
-		<material_config 	path="units/payday2/characters/ene_security_3/ene_security_3"/>
-		<unit load="true" 	path="units/payday2/characters/ene_security_3/ene_security_3_husk"/>
-	</add>
-	
 	<!-- Gensec Security: Beret Poppin' -->
 	<unit				path="units/pd2_dlc1/characters/ene_security_gensec_1/ene_security_gensec_1" load="true" force="true" />
 	<unit				path="units/pd2_dlc1/characters/ene_security_gensec_1/ene_security_gensec_1_husk" load="true" force="true" />	
@@ -299,23 +292,9 @@
 
 	<unit				path="units/pd2_dlc1/characters/ene_security_gensec_2/ene_security_gensec_2" load="true" force="true" />
 	<unit				path="units/pd2_dlc1/characters/ene_security_gensec_2/ene_security_gensec_2_husk" load="true" force="true" />	
-	<object				path="units/pd2_dlc1/characters/ene_security_gensec_2/ene_security_gensec_2" force="true" />	
-	<model				path="units/pd2_dlc1/characters/ene_security_gensec_2/ene_security_gensec_2" force="true" />	
-	<material_config	path="units/pd2_dlc1/characters/ene_security_gensec_2/ene_security_gensec_2" force="true" />	
-	<material_config	path="units/pd2_dlc1/characters/ene_security_gensec_2/ene_security_gensec_2_contour" force="true" />	
-
-	<material_config	path="units/pd2_dlc1/characters/ene_security_gensec_3/ene_security_gensec_3" />	
-	<material_config	path="units/pd2_dlc1/characters/ene_security_gensec_3/ene_security_gensec_3_contour"  />
-	<material_config	path="units/pd2_dlc1/characters/ene_security_gensec_guard_1/ene_security_gensec_guard_1" />	
-	<material_config	path="units/pd2_dlc1/characters/ene_security_gensec_guard_1/ene_security_gensec_guard_1_contour"  />	
-	<material_config	path="units/pd2_dlc1/characters/ene_security_gensec_guard_2/ene_security_gensec_guard_2" />	
-	<material_config	path="units/pd2_dlc1/characters/ene_security_gensec_guard_2/ene_security_gensec_guard_2_contour"  />
 
 	<unit				path="units/pd2_dlc1/characters/ene_security_gensec_3/ene_security_gensec_3" load="true" />
 	<unit				path="units/pd2_dlc1/characters/ene_security_gensec_3/ene_security_gensec_3_husk" load="true" />	
-	<object				path="units/pd2_dlc1/characters/ene_security_gensec_3/ene_security_gensec_3"  />	
-	<model				path="units/pd2_dlc1/characters/ene_security_gensec_3/ene_security_gensec_3"  />	
-	<cooked_physics		path="units/pd2_dlc1/characters/ene_security_gensec_3/ene_security_gensec_3"  />	
 	
 	<unit				path="units/pd2_dlc1/characters/ene_security_gensec_guard_1/ene_security_gensec_guard_1" load="true" />
 	<unit				path="units/pd2_dlc1/characters/ene_security_gensec_guard_1/ene_security_gensec_guard_1_husk" load="true" />	
@@ -455,105 +434,93 @@
 	
 	<!--epic hd cloaker eyes thanks jarey-->
 	<texture			path="units/payday2/characters/shared_textures/spook_il"/>
+	<model				path="units/payday2/characters/ene_spook_1/ene_spook_1" />	
+	<sequence_manager	path="units/payday2/characters/ene_spook_1/ene_spook_1" force="true" />	
+	<object				path="units/payday2/characters/ene_spook_1/ene_spook_1" force="true"/>	
+	
+	<texture			path="units/payday2/characters/shared_textures/swat_body_df" />
+	<texture			path="units/payday2/characters/shared_textures/swat_body_nm" />
+	<texture			path="units/payday2/characters/shared_textures/spook_heavy_df" />
+	<texture			path="units/payday2/characters/shared_textures/spook_heavy_nm" />
+	
+	<material_config	path="units/payday2/characters/ene_swat_1_sc/ene_swat_1_sc" />	
+	<material_config	path="units/payday2/characters/ene_swat_1_sc/ene_swat_1_sc_contour" />	
 
-	<!--More Cop Facial Variety (Thanks AGAIN Wekk!!!!)-->	
-	<object				path="units/payday2/characters/ene_fbi_1/ene_fbi_1" />	
-	<model				path="units/payday2/characters/ene_fbi_1/ene_fbi_1" />	
-
-	<object				path="units/payday2/characters/ene_fbi_2/ene_fbi_2" />	
-	<model				path="units/payday2/characters/ene_fbi_2/ene_fbi_2" />	
-	<model				path="units/payday2/characters/ene_fbi_3/ene_fbi_3" />		
-		
+	<!--More Cop Facial Variety (Thanks AGAIN Wekk!!!!)-->		
+	
+	<!-- cop -->
 	<model				path="units/payday2/characters/ene_cop_1/ene_cop_1" force="true" />	
 	<object				path="units/payday2/characters/ene_cop_1/ene_cop_1" force="true" />	
+	<sequence_manager	path="units/payday2/characters/ene_cop_1/ene_cop_1" force="true" />	
+	<material_config	path="units/payday2/characters/ene_cop_1/ene_cop_1" force="true" />	
+	<material_config	path="units/payday2/characters/ene_cop_1/ene_cop_1_contour" force="true" />	
 	
-	<model				path="units/payday2/characters/ene_cop_2/ene_cop_2" force="true" />	
-	<object				path="units/payday2/characters/ene_cop_2/ene_cop_2" force="true" />	
+	<unit				path="units/payday2/characters/ene_cop_2/ene_cop_2" force="true" />	
+	<unit				path="units/payday2/characters/ene_cop_2/ene_cop_2_husk" force="true" />		
 	
-	<model				path="units/payday2/characters/ene_cop_3/ene_cop_3" force="true" />	
-	<object				path="units/payday2/characters/ene_cop_3/ene_cop_3" force="true" />	
+	<unit				path="units/payday2/characters/ene_cop_3/ene_cop_3" force="true" />	
+	<unit				path="units/payday2/characters/ene_cop_3/ene_cop_3_husk" force="true" />		
 	
-	<model				path="units/payday2/characters/ene_cop_4/ene_cop_4" force="true" />	
-	<object				path="units/payday2/characters/ene_cop_4/ene_cop_4" force="true" />	
+	<unit				path="units/payday2/characters/ene_cop_4/ene_cop_4" force="true" />	
+	<unit				path="units/payday2/characters/ene_cop_4/ene_cop_4_husk" force="true" />		
 
+	<unit				path="units/payday2/characters/ene_fbi_1/ene_fbi_1" force="true" />	
+	<unit				path="units/payday2/characters/ene_fbi_1/ene_fbi_1" force="true" />	
 	<material_config	path="units/payday2/characters/ene_fbi_1/ene_fbi_1" force="true" />	
 	<material_config	path="units/payday2/characters/ene_fbi_1/ene_fbi_1_contour" force="true" />	
-	<material_config	path="units/payday2/characters/ene_fbi_2/ene_fbi_2" force="true" />	
-	<material_config	path="units/payday2/characters/ene_fbi_2/ene_fbi_2_contour" force="true" />	
-	<material_config	path="units/payday2/characters/ene_fbi_3/ene_fbi_3_contour" />	
-	<material_config	path="units/payday2/characters/ene_fbi_3/ene_fbi_3" />
 	
-	<material_config	path="units/payday2/characters/ene_cop_1/ene_cop_1" force="true" />
-	<material_config	path="units/payday2/characters/ene_cop_1/ene_cop_1_contour" force="true" />	
-	<material_config	path="units/payday2/characters/ene_cop_2/ene_cop_2" force="true" />
-	<material_config	path="units/payday2/characters/ene_cop_2/ene_cop_2_contour" force="true" />
-	<material_config	path="units/payday2/characters/ene_cop_3/ene_cop_3" force="true" />
-	<material_config	path="units/payday2/characters/ene_cop_3/ene_cop_3_contour" force="true" />	
-	<material_config	path="units/payday2/characters/ene_cop_4/ene_cop_4" force="true" />
-	<material_config	path="units/payday2/characters/ene_cop_4/ene_cop_4_contour" force="true" />
+	<unit				path="units/payday2/characters/ene_fbi_2/ene_fbi_2" force="true" />	
+	<unit				path="units/payday2/characters/ene_fbi_2/ene_fbi_2_husk" force="true" />		
+	
+	<unit				path="units/payday2/characters/ene_fbi_3/ene_fbi_3" force="true" />	
+	<unit				path="units/payday2/characters/ene_fbi_3/ene_fbi_3_husk" force="true" />		
 
-	<material_config	path="units/pd2_dlc_casino/characters/ene_secret_service_1_casino/ene_secret_service_1_casino" force="true" />
-	<material_config	path="units/pd2_dlc_casino/characters/ene_secret_service_1_casino/ene_secret_service_1_casino_contour" force="true" />	
-
-	<material_config	path="units/payday2/characters/ene_murkywater_2/ene_murkywater_2" force="true" />
-	<material_config	path="units/payday2/characters/ene_murkywater_2/ene_murkywater_2_contour" force="true" />
 	
-	<object				path="units/payday2/characters/ene_security_7/ene_security_7" />	
+	<!-- secs -->
+	<unit				path="units/payday2/characters/ene_security_1/ene_security_1" force="true" />	
+	<unit				path="units/payday2/characters/ene_security_1/ene_security_1_husk" force="true" />	
+	<material_config	path="units/payday2/characters/ene_security_1/ene_security_1"  />
+	<material_config	path="units/payday2/characters/ene_security_1/ene_security_1_contour"  />	
 	
-	<object				path="units/payday2/characters/ene_security_1/ene_security_1" />
-	<model				path="units/payday2/characters/ene_security_1/ene_security_1" />
+	<unit				path="units/payday2/characters/ene_security_2/ene_security_2" force="true" />	
+	<unit				path="units/payday2/characters/ene_security_2/ene_security_2_husk" force="true" />	
 	
-	<material_config	path="units/payday2/characters/ene_security_2/ene_security_2_contour" force="true" />	
-	<material_config	path="units/payday2/characters/ene_security_2/ene_security_2" force="true" />
-	<object				path="units/payday2/characters/ene_security_2/ene_security_2" />
-	<model				path="units/payday2/characters/ene_security_2/ene_security_2" />
+	<unit				path="units/payday2/characters/ene_security_3/ene_security_3" force="true" />	
+	<unit				path="units/payday2/characters/ene_security_3/ene_security_3_husk" force="true" />	
 	
-	<material_config	path="units/payday2/characters/ene_security_3/ene_security_3"  />
-	<object				path="units/payday2/characters/ene_security_3/ene_security_3" />	
-	<model				path="units/payday2/characters/ene_security_3/ene_security_3" />	
-	<material_config	path="units/payday2/characters/ene_security_3/ene_security_3_contour"  />	
-
+	<unit				path="units/payday2/characters/ene_security_4/ene_security_4" force="true" />	
+	<unit				path="units/payday2/characters/ene_security_4/ene_security_4_husk" force="true" />	
 	<material_config	path="units/payday2/characters/ene_security_4/ene_security_4"  />
 	<material_config	path="units/payday2/characters/ene_security_4/ene_security_4_contour"  />	
-
-	<material_config	path="units/payday2/characters/ene_security_7/ene_security_7"  />
-	<material_config	path="units/payday2/characters/ene_security_7/ene_security_7_contour"  />	
 	
-	<material_config	path="units/payday2/characters/ene_security_5/ene_security_5"  />
-	<material_config	path="units/payday2/characters/ene_security_5/ene_security_5_contour"  />	
+	<unit				path="units/payday2/characters/ene_security_5/ene_security_5" force="true" />	
+	<unit				path="units/payday2/characters/ene_security_5/ene_security_5_husk" force="true" />		
+	
+	<unit				path="units/payday2/characters/ene_security_6/ene_security_6" force="true" />	
+	<unit				path="units/payday2/characters/ene_security_6/ene_security_6_husk" force="true" />		
+	
+	<unit				path="units/payday2/characters/ene_security_7/ene_security_7" force="true" />	
+	<unit				path="units/payday2/characters/ene_security_7/ene_security_7_husk" force="true" />		
 
-	<material_config	path="units/payday2/characters/ene_security_vars/ene_security_var1" />
-	<material_config	path="units/payday2/characters/ene_security_vars/ene_security_var1_contour" />
-	<material_config	path="units/payday2/characters/ene_security_vars/ene_security_var2" />
-	<material_config	path="units/payday2/characters/ene_security_vars/ene_security_var2_contour" />
-	<material_config	path="units/payday2/characters/ene_security_vars/ene_security_var3" />
-	<material_config	path="units/payday2/characters/ene_security_vars/ene_security_var3_contour" />
-	<material_config	path="units/payday2/characters/ene_security_vars/ene_security_var4" />
-	<material_config	path="units/payday2/characters/ene_security_vars/ene_security_var4_contour" />
-	<material_config	path="units/payday2/characters/ene_security_vars/ene_security_var5" />
-	<material_config	path="units/payday2/characters/ene_security_vars/ene_security_var5_contour" />
-	<material_config	path="units/payday2/characters/ene_security_vars/ene_security_var6" />
-	<material_config	path="units/payday2/characters/ene_security_vars/ene_security_var6_contour" />
+
+	<!-- murkywater -->
+	<unit				path="units/payday2/characters/ene_murkywater_1/ene_murkywater_1" force="true" />	
+	<unit				path="units/payday2/characters/ene_murkywater_1/ene_murkywater_1_husk" force="true" />		
+	<model				path="units/payday2/characters/ene_murkywater_1/ene_murkywater_1" force="true" />	
+	<object				path="units/payday2/characters/ene_murkywater_1/ene_murkywater_1" force="true" />	
+	<sequence_manager	path="units/payday2/characters/ene_murkywater_1/ene_murkywater_1" force="true" />	
+	<material_config	path="units/payday2/characters/ene_murkywater_1/ene_murkywater_1" force="true" />	
+	<material_config	path="units/payday2/characters/ene_murkywater_1/ene_murkywater_1_contour" force="true" />	
+
+	<unit				path="units/payday2/characters/ene_murkywater_2/ene_murkywater_2" force="true" />	
+	<unit				path="units/payday2/characters/ene_murkywater_2/ene_murkywater_2_husk" force="true" />		
+
+	<unit				path="units/pd2_dlc_berry/characters/ene_murkywater_no_light/ene_murkywater_no_light" force="true" />	
+	<unit				path="units/pd2_dlc_berry/characters/ene_murkywater_no_light/ene_murkywater_no_light_husk" force="true" />		
+
 		
-	<texture			path="units/payday2/characters/shared_textures/heads_cop_df" />
-	<texture			path="units/payday2/characters/shared_textures/heads_cop_nm" />
-	<texture			path="units/payday2/characters/shared_textures/heads_cop2_df"/>
-	<texture			path="units/payday2/characters/shared_textures/heads_cop3_df"/>
-	<texture			path="units/payday2/characters/shared_textures/heads_cop3_nm"/>
-	<texture			path="units/payday2/characters/shared_textures/heads_var1_df"/>
-	<texture			path="units/payday2/characters/shared_textures/heads_var1_nm"/>
-	<texture			path="units/payday2/characters/shared_textures/heads_var2_df"/>
-	<texture			path="units/payday2/characters/shared_textures/heads_var2_nm"/>
-	<texture			path="units/payday2/characters/shared_textures/heads_var3_df"/>
-	<texture			path="units/payday2/characters/shared_textures/heads_var3_nm"/>	
-	<texture			path="units/payday2/characters/shared_textures/heads_sec_df"/>
-	<texture			path="units/payday2/characters/shared_textures/heads_fbi_df"/>
-	<texture			path="units/payday2/characters/shared_textures/heads_fbi_nm"/>
-	<texture			path="units/payday2/characters/shared_textures/murkyhead_df"/>
-	<texture			path="units/payday2/characters/shared_textures/murkyhead_nm"/>	
-	<texture			path="units/payday2/characters/shared_textures/heads_ss_lv_df"/>
-	<texture			path="units/pd2_mod_lapd/characters/shared_textures/heads_cop_la_df" />	
-	<texture			path="units/pd2_mod_lapd/characters/shared_textures/heads_cop_la_nm" />	
+	<texture			path="units/payday2/characters/shared_textures/head_new_df"/>
+	<texture			path="units/payday2/characters/shared_textures/head_new_nm"/>	
 	<texture			path="units/pd2_dlc1/characters/shared_textures/ene_security_gensec_heads_df" force="true" />	
 	
 	<!--More Cop Facial Variety END-->	
@@ -1013,25 +980,18 @@
 
 	<!--OMNIA SWAT Helmet-->
 	<unit_mat			path="units/pd2_mod_omnia/characters/ene_omnia_city_helmet/ene_omnia_city_helmet" force="false" load="true"/>
-	
-	<model				path="units/pd2_dlc_vip/characters/ene_phalanx_1/ene_phalanx_1" force="true"/>
-	<object				path="units/pd2_dlc_vip/characters/ene_phalanx_1/ene_phalanx_1" force="true"/>	
-	<unit				path="units/pd2_dlc_vip/characters/ene_phalanx_1/ene_phalanx_1" force="true" load="true"/>	
-	<unit				path="units/pd2_dlc_vip/characters/ene_phalanx_1/ene_phalanx_1_husk" force="true" load="true"/>
-	<material_config	path="units/pd2_dlc_vip/characters/ene_omnia_lpf/ene_omnia_lpf" force="false"/>
-	<material_config	path="units/pd2_dlc_vip/characters/ene_omnia_lpf/ene_omnia_lpf_lightsout" force="false"/>	
-	<material_config	path="units/pd2_dlc_vip/characters/ene_omnia_lpf/ene_omnia_lpf_contour" force="false"/>
-	<sequence_manager	path="units/pd2_dlc_vip/characters/ene_omnia_lpf/ene_omnia_lpf"/> 	
-	
-	<df_nm				path="units/pd2_dlc_vip/characters/shared_textures/ene_mask_lpf" force="false"/>
-	<df_nm				path="units/pd2_dlc_vip/characters/shared_textures/ene_omnia_lpf" force="false"/>
 	<df_nm				path="units/pd2_mod_omnia/characters/shared_textures/helmets_omnia_atlas"  force="false"/>
-	<texture			path="units/pd2_dlc_vip/characters/shared_textures/ene_mask_lpf_il" force="false" load="true"/>		
+	
+	
+
+	<!--<df_nm				path="units/pd2_dlc_vip/characters/shared_textures/ene_mask_lpf" force="false"/>
+	<df_nm				path="units/pd2_dlc_vip/characters/shared_textures/ene_omnia_lpf" force="false"/>
+	<texture			path="units/pd2_dlc_vip/characters/shared_textures/ene_mask_lpf_il" force="false" load="true"/>		-->
 	
 	<!--Phalanx Shields-->
-	<sequence_manager	path="units/pd2_dlc_vip/characters/ene_acc_shield_phalanx/ene_acc_shield_phalanx"/>	
-	<unit				path="units/pd2_dlc_vip/characters/ene_acc_shield_phalanx/ene_acc_shield_phalanx" force="true" load="true"/>
-	<unit				path="units/pd2_dlc_vip/characters/ene_acc_shield_phalanx/ene_acc_shield_phalanx_dummy" load="true"/>	
+	<unit_mat_seq		path="units/pd2_dlc_vip/characters/ene_acc_shield_phalanx_sc/ene_acc_shield_phalanx_sc" load="true"/>
+	<cooked_physics		path="units/pd2_dlc_vip/characters/ene_acc_shield_phalanx_sc/ene_acc_shield_phalanx_sc" />		
+	<unit				path="units/pd2_dlc_vip/characters/ene_acc_shield_phalanx_sc/ene_acc_shield_phalanx_sc_dummy" />		
 	
 	<!--Halloween Axe-->
 	<object				path="units/pd2_mod_halloween/weapons/wpn_mel_hw_axe/wpn_mel_hw_axe" force="false"/>
@@ -1291,13 +1251,8 @@
 	<texture			path="units/pd2_mod_dave/characters/shared_textures/taser_body_nm"/>
 	<texture			path="units/pd2_mod_dave/characters/shared_textures/heads_atlas_df"/>
 	<texture			path="units/pd2_mod_dave/characters/shared_textures/helmets_heavy_taser_atlas_df"/>
-	
-	<unit				path="units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_scripted_2/ene_male_marshal_marksman_scripted_2" load="true" force="false"/>
-	<unit				path="units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_scripted_2/ene_male_marshal_marksman_scripted_2_husk" load="true" force="false"/>
 
-	<!--Marshal Shields-->
-	<sequence_manager	path="units/pd2_dlc_usm2/characters/ene_acc_marshal_shield_1/marshal_shield_1"/>	
-	<sequence_manager	path="units/pd2_dlc_usm2/characters/ene_acc_marshal_shield_2/marshal_shield_2"/>	
+	<!--Marshal Marksman-->
 	
 	<!--LPF and Medic (over-)healing Effects-->
 	<effect path="effects/pd2_mod_omnia/particles/character/overkillpack/mega_alien_eyes"/>
@@ -1753,32 +1708,11 @@
 	<material_config	path="units/pd2_mod_bravo/characters/ene_acc_bravo_beret/ene_acc_bravo_beret" force="false"/>	
 	<model				path="units/pd2_mod_bravo/characters/ene_acc_bravo_beret/ene_acc_bravo_beret" force="false"/>	
 						
-	<!--"NYPD" murky (just soft cap guys who look more like vanilla murkies-->
-	<object				path="units/pd2_mod_nypd/characters/ene_nypd_murky_1/ene_nypd_murky_1" force="false"/>
-	<cooked_physics		path="units/pd2_mod_nypd/characters/ene_nypd_murky_1/ene_nypd_murky_1" force="false"/>
-	<model				path="units/pd2_mod_nypd/characters/ene_nypd_murky_1/ene_nypd_murky_1" force="false"/>
-	<unit				path="units/pd2_mod_nypd/characters/ene_nypd_murky_1/ene_nypd_murky_1" force="false" load="true"/>
-	<material_config	path="units/pd2_mod_nypd/characters/ene_nypd_murky_1/ene_nypd_murky_1" force="false"/>
-	<material_config	path="units/pd2_mod_nypd/characters/ene_nypd_murky_1/ene_nypd_murky_1_contour" force="false"/>
-	<unit				path="units/pd2_mod_nypd/characters/ene_nypd_murky_1/ene_nypd_murky_1_husk" force="false" load="true"/>
-	
-	<!--2-->
-	<object				path="units/pd2_mod_nypd/characters/ene_nypd_murky_2/ene_nypd_murky_2" force="false"/>
-	<cooked_physics		path="units/pd2_mod_nypd/characters/ene_nypd_murky_2/ene_nypd_murky_2" force="false"/>
-	<model				path="units/pd2_mod_nypd/characters/ene_nypd_murky_2/ene_nypd_murky_2" force="false"/>
-	<unit				path="units/pd2_mod_nypd/characters/ene_nypd_murky_2/ene_nypd_murky_2" force="false" load="true"/>
-	<material_config	path="units/pd2_mod_nypd/characters/ene_nypd_murky_2/ene_nypd_murky_2" force="false"/>
-	<material_config	path="units/pd2_mod_nypd/characters/ene_nypd_murky_2/ene_nypd_murky_2_contour" force="false"/>
-	<unit				path="units/pd2_mod_nypd/characters/ene_nypd_murky_2/ene_nypd_murky_2_husk" force="false" load="true"/>
-
 	<!--city heavy acc-->	
 	<object         	path="units/payday2/characters/ene_acc_city_heavy_helmet/ene_acc_city_heavy_helmet" force="true"/>
 	<model		        path="units/payday2/characters/ene_acc_city_heavy_helmet/ene_acc_city_heavy_helmet" force="true"/>	
-	<material_config	path="units/payday2/characters/ene_acc_city_heavy_helmet/ene_acc_city_heavy_helmet" force="true"/>	
 	
 	<!--ben guy acc-->	
-	<material_config	path="units/payday2/characters/ene_acc_benfucker/ene_acc_benfucker" />
-	<cooked_physics		path="units/payday2/characters/ene_acc_benfucker/ene_acc_benfucker" />	
 	<unit				path="units/payday2/characters/ene_acc_benfucker/ene_acc_benfucker" load="true" />		
 	<object				path="units/payday2/characters/ene_acc_benfucker/ene_acc_benfucker" />
 	<model				path="units/payday2/characters/ene_acc_benfucker/ene_acc_benfucker" />	
@@ -1826,7 +1760,6 @@
 	
 	<!--vanilla unit texture overrides and other new stuff-->
 	<texture			path="units/payday2/characters/shared_textures/helmets_atlas_df" force="true"/>
-	<texture			path="units/pd2_dlc_vip/characters/shared_textures/ene_acc_phalanx_helmet_df" force="true"/>	
 	
 	<unit				path="units/pd2_mod_bravo/weapons/wpn_npc_lmg_m249_bravo/wpn_npc_lmg_m249_bravo"  load="true"/>
 	<!-- bravos m4 -->

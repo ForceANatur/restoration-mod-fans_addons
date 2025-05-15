@@ -49,6 +49,9 @@ Hooks:PostHook( LevelsTweakData, "init", "SC_levels", function(self)
 	end
 	
 	--///MEXICAN LEVELS\\\--
+	self.mex_cooking.ai_group_type = federales 
+	self.mex_cooking.player_style = "suit_sunny"	
+	
 	self.pex.player_style = "slaughterhouse"
 	
 	self.fex.player_style = "suit_sunny"
@@ -93,9 +96,6 @@ Hooks:PostHook( LevelsTweakData, "init", "SC_levels", function(self)
 	self.kosugi.player_style = "sneak_suit"
 	
 	self.deep.ai_group_type = murkywater
-
-	self.mex_cooking.ai_group_type = murkywater -- it aint the same without murkys on cook off but bad
-	self.mex_cooking.player_style = "suit_sunny"
 	
 	--///FBI LEVELS\\\--
 	self.hox_2.player_style = "slaughterhouse"
@@ -207,6 +207,17 @@ Hooks:PostHook( LevelsTweakData, "init", "SC_levels", function(self)
 		}
 	}
 	
+	--Midland Ranch
+	self.ranc.ai_group_type = fbi
+	self.ranc.player_style = "fighterpilot"	
+	
+	--Lost in Transit
+	self.trai.ai_group_type = fbi
+	self.trai.player_style = "railroad"
+	
+	--Hostile Takeover
+	self.corp.ai_group_type = fbi	
+	
 	--///NYPD LEVELS\\\--
 	self.spa.ai_group_type = nypd
 	self.spa.package = {"packages/job_spa", "levels/narratives/h_watchdogs/stage_1/world/world"}
@@ -237,11 +248,6 @@ Hooks:PostHook( LevelsTweakData, "init", "SC_levels", function(self)
 	self.dinner.ai_group_type = nypd
 	self.dinner.package = {"packages/narr_dinner", "packages/murkywatermisc"}
 	self.dinner.player_style = "slaughterhouse"
-
-    self.trai.ai_group_type = nypd
-    self.trai.player_style = "railroad"
-	
-	self.corp.ai_group_type = nypd
 	
 	self.nmh.ai_group_type = nypd
 	self.nmh.ghost_bonus = nil
@@ -280,9 +286,6 @@ Hooks:PostHook( LevelsTweakData, "init", "SC_levels", function(self)
 	self.pent.package = {"packages/job_pent", "packages/miscassets", "levels/instances/unique/sah/sah_office/world/world"}
 	self.pent.player_style = "enforcer"
 	self.pent.max_bags = 17
-		
-	self.ranc.ai_group_type = lapd
-	self.ranc.player_style = "fighterpilot"
 	
 	--//GENSEC STUFF\\--
 	self.arm_cro.package = {"packages/narr_arm_cro", "packages/gensecmisc"}
@@ -330,7 +333,6 @@ Hooks:PostHook( LevelsTweakData, "init", "SC_levels", function(self)
 	self.election_day_1.player_style = "sneak_suit"	
 	
 	self.election_day_2.player_style = "sneak_suit"
-
 	self.election_day_2.package = {"packages/narr_election2", "packages/job_election_day", "levels/narratives/e_election_day/stage_2/world", "levels/narratives/e_election_day/stage_2/world_sounds", "levels/narratives/e_election_day/stage_2/world/world", "levels/narratives/e_election_day/stage_2/pc_only/pc_only", "levels/narratives/e_election_day/stage_2/occluder/occluder", "levels/narratives/e_election_day/stage_2/editor_only/editor_only", "levels/instances/unique/hlm_gate_base/world/world", "levels/narratives/dentist/mia/stage1/world/world"}
 	
 	self.gallery.player_style = "sneak_suit"

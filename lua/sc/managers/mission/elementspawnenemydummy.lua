@@ -1091,16 +1091,16 @@ ElementSpawnEnemyDummy.faction_mapping = {
 			},
 			security_3 = "units/pd2_mod_sharks/characters/ene_murky_security_r870/ene_murky_security_r870",
 			murky_guard = {
-				"units/pd2_mod_nypd/characters/ene_nypd_murky_1/ene_nypd_murky_1",
-				"units/pd2_mod_nypd/characters/ene_nypd_murky_2/ene_nypd_murky_2",
-				"units/pd2_mod_nypd/characters/ene_nypd_murky_1/ene_nypd_murky_1",
-				"units/pd2_mod_nypd/characters/ene_nypd_murky_2/ene_nypd_murky_2",
+				"units/payday2/characters/ene_murkywater_1/ene_murkywater_1",
+				"units/payday2/characters/ene_murkywater_2/ene_murkywater_2",
+				"units/payday2/characters/ene_murkywater_1/ene_murkywater_1",
+				"units/payday2/characters/ene_murkywater_2/ene_murkywater_2",
 				"units/pd2_mod_sharks/characters/ene_fbi_heavy_1/ene_fbi_heavy_1",
 				"units/pd2_mod_sharks/characters/ene_fbi_heavy_r870/ene_fbi_heavy_r870"
 			},
 			secret_service = {
-				"units/pd2_mod_nypd/characters/ene_nypd_murky_1/ene_nypd_murky_1",
-				"units/pd2_mod_nypd/characters/ene_nypd_murky_2/ene_nypd_murky_2"
+				"units/payday2/characters/ene_murkywater_1/ene_murkywater_1",
+				"units/payday2/characters/ene_murkywater_2/ene_murkywater_2"
 			},
 			fbi_1 = "units/pd2_mod_sharks/characters/ene_fbi_1/ene_fbi_1",
 			fbi_2 = "units/pd2_mod_sharks/characters/ene_fbi_2/ene_fbi_2",
@@ -1143,16 +1143,16 @@ ElementSpawnEnemyDummy.faction_mapping = {
 			},
 			security_3 = "units/pd2_mod_sharks/characters/ene_murky_security_r870/ene_murky_security_r870",
 			murky_guard = {
-				"units/pd2_mod_nypd/characters/ene_nypd_murky_1/ene_nypd_murky_1",
-				"units/pd2_mod_nypd/characters/ene_nypd_murky_2/ene_nypd_murky_2",
-				"units/pd2_mod_nypd/characters/ene_nypd_murky_1/ene_nypd_murky_1",
-				"units/pd2_mod_nypd/characters/ene_nypd_murky_2/ene_nypd_murky_2",
+				"units/payday2/characters/ene_murkywater_1/ene_murkywater_1",
+				"units/payday2/characters/ene_murkywater_2/ene_murkywater_2",
+				"units/payday2/characters/ene_murkywater_1/ene_murkywater_1",
+				"units/payday2/characters/ene_murkywater_2/ene_murkywater_2",
 				"units/pd2_mod_sharks/characters/ene_zeal_swat_heavy/ene_zeal_swat_heavy",
 				"units/pd2_mod_sharks/characters/ene_zeal_swat_heavy_r870/ene_zeal_swat_heavy_r870"
 			},
 			secret_service = {
-				"units/pd2_mod_nypd/characters/ene_nypd_murky_1/ene_nypd_murky_1",
-				"units/pd2_mod_nypd/characters/ene_nypd_murky_2/ene_nypd_murky_2"
+				"units/payday2/characters/ene_murkywater_1/ene_murkywater_1",
+				"units/payday2/characters/ene_murkywater_2/ene_murkywater_2"
 			},
 			fbi_1 = {
 				"units/pd2_mod_sharks/characters/ene_murky_veteran_2/ene_murky_veteran_2",
@@ -1573,6 +1573,7 @@ ElementSpawnEnemyDummy.faction_mapping = {
 			cop_2 = "units/pd2_mod_nypd/characters/ene_cop_2/ene_cop_2",
 			cop_3 = "units/pd2_mod_nypd/characters/ene_cop_3/ene_cop_3",
 			cop_4 = "units/pd2_mod_nypd/characters/ene_cop_4/ene_cop_4",
+			fbi_1 = "units/pd2_mod_nypd/characters/ene_fbi_1/ene_fbi_1",
 			fbi_2 = "units/pd2_mod_nypd/characters/ene_fbi_2/ene_fbi_2",
 			fbi_3 = "units/pd2_mod_nypd/characters/ene_fbi_3/ene_fbi_3",
 			texas_cop = {
@@ -1621,6 +1622,7 @@ ElementSpawnEnemyDummy.faction_mapping = {
 			cop_2 = "units/pd2_mod_nypd/characters/ene_cop_2/ene_cop_2",
 			cop_3 = "units/pd2_mod_nypd/characters/ene_cop_3/ene_cop_3",
 			cop_4 = "units/pd2_mod_nypd/characters/ene_cop_4/ene_cop_4",
+			fbi_1 = "units/pd2_mod_nypd/characters/ene_fbi_1/ene_fbi_1",
 			fbi_2 = "units/pd2_mod_nypd/characters/ene_fbi_2/ene_fbi_2",
 			fbi_3 = "units/pd2_mod_nypd/characters/ene_fbi_3/ene_fbi_3",
 			texas_cop = {
@@ -1662,7 +1664,7 @@ ElementSpawnEnemyDummy.faction_mapping = {
 			},
 			sniper = {
 				"units/pd2_mod_nypd/characters/ene_sniper_1/ene_sniper_1",
-				"units/payday2/characters/ene_sniper_2_sc/ene_sniper_2_sc"
+				"units/pd2_mod_nypd/characters/ene_sniper_2/ene_sniper_2"
 			}
 		},
 		--Mix of NYPD FBI+GenSec
@@ -1691,6 +1693,7 @@ ElementSpawnEnemyDummy.faction_mapping = {
 			cop_2 = "units/pd2_mod_nypd/characters/ene_cop_2/ene_cop_2",
 			cop_3 = "units/pd2_mod_nypd/characters/ene_cop_3/ene_cop_3",
 			cop_4 = "units/pd2_mod_nypd/characters/ene_cop_4/ene_cop_4",
+			fbi_1 = "units/pd2_mod_nypd/characters/ene_fbi_1/ene_fbi_1",
 			fbi_2 = "units/pd2_mod_nypd/characters/ene_fbi_2/ene_fbi_2",
 			fbi_3 = "units/pd2_mod_nypd/characters/ene_fbi_3/ene_fbi_3",
 			texas_cop = {
@@ -1722,7 +1725,7 @@ ElementSpawnEnemyDummy.faction_mapping = {
 				"units/pd2_mod_nypd/characters/ene_shield_gensec/ene_shield_gensec"
 			},
 			sniper = {
-				"units/payday2/characters/ene_sniper_2_sc/ene_sniper_2_sc",
+				"units/pd2_mod_nypd/characters/ene_sniper_2/ene_sniper_2",
 				"units/pd2_mod_nypd/characters/ene_sniper_3/ene_sniper_3"
 			},
 			taser = "units/pd2_mod_nypd/characters/ene_tazer_1/ene_tazer_1",
@@ -1733,7 +1736,7 @@ ElementSpawnEnemyDummy.faction_mapping = {
 			dozer = {
 				"units/pd2_mod_nypd/characters/ene_bulldozer_1/ene_bulldozer_1",
 				"units/pd2_mod_nypd/characters/ene_bulldozer_2/ene_bulldozer_2",
-				"units/payday2/characters/ene_bulldozer_3_sc/ene_bulldozer_3_sc"
+				"units/pd2_mod_nypd/characters/ene_bulldozer_3/ene_bulldozer_3"
 			}
 		},
 		--NYPD GenSec
@@ -1762,6 +1765,7 @@ ElementSpawnEnemyDummy.faction_mapping = {
 			cop_2 = "units/pd2_mod_nypd/characters/ene_cop_2/ene_cop_2",
 			cop_3 = "units/pd2_mod_nypd/characters/ene_cop_3/ene_cop_3",
 			cop_4 = "units/pd2_mod_nypd/characters/ene_cop_4/ene_cop_4",
+			fbi_1 = "units/pd2_mod_nypd/characters/ene_fbi_1/ene_fbi_1",
 			fbi_2 = "units/pd2_mod_nypd/characters/ene_fbi_2/ene_fbi_2",
 			fbi_3 = "units/pd2_mod_nypd/characters/ene_fbi_3/ene_fbi_3",
 			texas_cop = {
@@ -1793,7 +1797,7 @@ ElementSpawnEnemyDummy.faction_mapping = {
 			dozer = {
 				"units/pd2_mod_nypd/characters/ene_bulldozer_1/ene_bulldozer_1",
 				"units/pd2_mod_nypd/characters/ene_bulldozer_2/ene_bulldozer_2",
-				"units/payday2/characters/ene_bulldozer_3_sc/ene_bulldozer_3_sc"
+				"units/pd2_mod_nypd/characters/ene_bulldozer_3/ene_bulldozer_3"
 			}
 		},
 		--ZEAL
@@ -1823,7 +1827,7 @@ ElementSpawnEnemyDummy.faction_mapping = {
 			cop_3 = "units/pd2_mod_nypd/characters/ene_cop_3/ene_cop_3",
 			cop_4 = "units/pd2_mod_nypd/characters/ene_cop_4/ene_cop_4",
 			fbi_1 = {
-				"units/pd2_mod_nypd/characters/ene_nypd_veteran_cop_2/ene_nypd_veteran_cop_2",
+				"units/pd2_mod_nypd/characters/ene_nypd_veteran_cop_1/ene_nypd_veteran_cop_1",
 				"units/pd2_dlc_vip/characters/ene_fbi_titan_1/ene_fbi_titan_1"
 			},
 			fbi_2 = "units/pd2_dlc_gitgud/characters/ene_zeal_fbi_m4/ene_zeal_fbi_m4",
@@ -2015,6 +2019,7 @@ ElementSpawnEnemyDummy.faction_mapping = {
 				"units/pd2_mod_lapd/characters/ene_fbi_heavy_r870_sc/ene_fbi_heavy_r870_sc"
 			},
 			taser = "units/pd2_mod_lapd/characters/ene_tazer_1/ene_tazer_1",
+			grenadier = "units/pd2_mod_lapd/characters/ene_grenadier_1/ene_grenadier_1",
 			medic = "units/payday2/characters/ene_medic_mp5/ene_medic_mp5",
 			tsniper = "units/pd2_dlc_vip/characters/ene_titan_sniper/ene_titan_sniper",
 			dozer = {
@@ -2027,7 +2032,7 @@ ElementSpawnEnemyDummy.faction_mapping = {
 			},
 			sniper = {
 				"units/pd2_mod_lapd/characters/ene_sniper_1/ene_sniper_1",
-				"units/payday2/characters/ene_sniper_2_sc/ene_sniper_2_sc"
+				"units/pd2_mod_lapd/characters/ene_sniper_2/ene_sniper_2"
 			}
 		},
 		--Mix of LAPD FBI+Elites
@@ -2081,10 +2086,11 @@ ElementSpawnEnemyDummy.faction_mapping = {
 				"units/pd2_mod_lapd/characters/ene_city_shield/ene_city_shield"
 			},
 			sniper = {
-				"units/payday2/characters/ene_sniper_2_sc/ene_sniper_2_sc",
+				"units/pd2_mod_lapd/characters/ene_sniper_2/ene_sniper_2",
 				"units/pd2_mod_lapd/characters/ene_sniper_3/ene_sniper_3"
 			},
 			taser = "units/pd2_mod_lapd/characters/ene_tazer_1/ene_tazer_1",
+			grenadier = "units/pd2_mod_lapd/characters/ene_grenadier_1/ene_grenadier_1",			
 			medic = "units/payday2/characters/ene_medic_mp5/ene_medic_mp5",
 			tsniper = "units/pd2_dlc_vip/characters/ene_titan_sniper/ene_titan_sniper",
 			dozer = {
@@ -2136,6 +2142,7 @@ ElementSpawnEnemyDummy.faction_mapping = {
 				"units/payday2/characters/ene_grenadier_1/ene_grenadier_1"
 			},
 			shield = "units/pd2_mod_lapd/characters/ene_city_shield/ene_city_shield",
+			grenadier = "units/pd2_mod_lapd/characters/ene_grenadier_1/ene_grenadier_1",			
 			sniper = "units/pd2_mod_lapd/characters/ene_sniper_3/ene_sniper_3",
 			medic = "units/payday2/characters/ene_medic_mp5/ene_medic_mp5",
 			tsniper = "units/pd2_dlc_vip/characters/ene_titan_sniper/ene_titan_sniper",
@@ -2327,7 +2334,7 @@ ElementSpawnEnemyDummy.faction_mapping = {
 			},
 			taser = "units/payday2/characters/ene_tazer_1_sc/ene_tazer_1_sc",
 			medic = "units/payday2/characters/ene_medic_mp5/ene_medic_mp5",
-			tsniper = "units/pd2_dlc_vip/characters/ene_titan_sniper/ene_titan_sniper",
+			tsniper = "units/pd2_dlc_usm1/characters/ene_titan_sniper/ene_titan_sniper",
 			dozer = {
 				"units/payday2/characters/ene_bulldozer_1_sc/ene_bulldozer_1_sc",
 				"units/payday2/characters/ene_bulldozer_2_sc/ene_bulldozer_2_sc"
@@ -2380,7 +2387,7 @@ ElementSpawnEnemyDummy.faction_mapping = {
 			},
 			taser = "units/payday2/characters/ene_tazer_1_sc/ene_tazer_1_sc",
 			medic = "units/payday2/characters/ene_medic_mp5/ene_medic_mp5",
-			tsniper = "units/pd2_dlc_vip/characters/ene_titan_sniper/ene_titan_sniper",
+			tsniper = "units/pd2_dlc_usm1/characters/ene_titan_sniper/ene_titan_sniper",
 			dozer = {
 				"units/payday2/characters/ene_bulldozer_1_sc/ene_bulldozer_1_sc",
 				"units/payday2/characters/ene_bulldozer_2_sc/ene_bulldozer_2_sc",
@@ -2418,7 +2425,7 @@ ElementSpawnEnemyDummy.faction_mapping = {
 			shield = "units/pd2_mod_lapd/characters/ene_city_shield/ene_city_shield",
 			sniper = "units/pd2_mod_lapd/characters/ene_sniper_3/ene_sniper_3",
 			medic = "units/payday2/characters/ene_medic_mp5/ene_medic_mp5",
-			tsniper = "units/pd2_dlc_vip/characters/ene_titan_sniper/ene_titan_sniper",
+			tsniper = "units/pd2_dlc_usm1/characters/ene_titan_sniper/ene_titan_sniper",
 			dozer = {
 				"units/payday2/characters/ene_bulldozer_1_sc/ene_bulldozer_1_sc",
 				"units/payday2/characters/ene_bulldozer_2_sc/ene_bulldozer_2_sc",
@@ -2452,8 +2459,8 @@ ElementSpawnEnemyDummy.faction_mapping = {
 				"units/pd2_dlc_gitgud/characters/ene_zeal_city_3/ene_zeal_city_3",
 				"units/pd2_dlc_gitgud/characters/ene_zeal_city_1/ene_zeal_city_1",
 				"units/pd2_dlc_gitgud/characters/ene_zeal_city_3/ene_zeal_city_3",
-				"units/pd2_dlc_vip/characters/ene_titan_rifle/ene_titan_rifle",
-				"units/pd2_dlc_vip/characters/ene_titan_rifle/ene_titan_rifle"
+				"units/pd2_dlc_usm1/characters/ene_titan_rifle/ene_titan_rifle",
+				"units/pd2_dlc_usm1/characters/ene_titan_rifle/ene_titan_rifle"
 			},
 			swat_2 = {
 				"units/pd2_dlc_gitgud/characters/ene_zeal_city_2/ene_zeal_city_2",
@@ -2461,7 +2468,7 @@ ElementSpawnEnemyDummy.faction_mapping = {
 				"units/pd2_dlc_gitgud/characters/ene_zeal_city_2/ene_zeal_city_2",
 				"units/pd2_dlc_gitgud/characters/ene_zeal_city_2/ene_zeal_city_2",
 				"units/pd2_dlc_gitgud/characters/ene_zeal_city_2/ene_zeal_city_2",
-				"units/pd2_dlc_vip/characters/ene_titan_shotgun/ene_titan_shotgun"
+				"units/pd2_dlc_usm1/characters/ene_titan_shotgun/ene_titan_shotgun"
 			},
 			heavy_1 = {
 				"units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_sc/ene_zeal_swat_heavy_sc",
@@ -2469,7 +2476,7 @@ ElementSpawnEnemyDummy.faction_mapping = {
 				"units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_sc/ene_zeal_swat_heavy_sc",
 				"units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_sc/ene_zeal_swat_heavy_sc",
 				"units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_sc/ene_zeal_swat_heavy_sc",
-				"units/pd2_dlc_vip/characters/ene_titan_rifle/ene_titan_rifle"
+				"units/pd2_dlc_usm1/characters/ene_titan_rifle/ene_titan_rifle"
 			},
 			heavy_2 = {
 				"units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_r870_sc/ene_zeal_swat_heavy_r870_sc",
@@ -2477,7 +2484,7 @@ ElementSpawnEnemyDummy.faction_mapping = {
 				"units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_r870_sc/ene_zeal_swat_heavy_r870_sc",
 				"units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_r870_sc/ene_zeal_swat_heavy_r870_sc",
 				"units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_r870_sc/ene_zeal_swat_heavy_r870_sc",
-				"units/pd2_dlc_vip/characters/ene_titan_shotgun/ene_titan_shotgun"
+				"units/pd2_dlc_usm1/characters/ene_titan_shotgun/ene_titan_shotgun"
 			},
 			shield = {
 				"units/pd2_dlc_gitgud/characters/ene_zeal_swat_shield_sc/ene_zeal_swat_shield_sc",
@@ -2485,7 +2492,7 @@ ElementSpawnEnemyDummy.faction_mapping = {
 				"units/pd2_dlc_gitgud/characters/ene_zeal_swat_shield_sc/ene_zeal_swat_shield_sc",
 				"units/pd2_dlc_gitgud/characters/ene_zeal_swat_shield_sc/ene_zeal_swat_shield_sc",
 				"units/pd2_dlc_gitgud/characters/ene_zeal_swat_shield_sc/ene_zeal_swat_shield_sc",
-				"units/pd2_dlc_vip/characters/ene_phalanx_1_assault/ene_phalanx_1_assault"
+				"units/pd2_dlc_usm1/characters/ene_phalanx_1_assault/ene_phalanx_1_assault"
 			},
 			dozer = {
 				"units/pd2_dlc_gitgud/characters/ene_bulldozer_minigun/ene_bulldozer_minigun",
@@ -2513,8 +2520,8 @@ ElementSpawnEnemyDummy.faction_mapping = {
 				"units/pd2_dlc_gitgud/characters/ene_zeal_tazer_sc/ene_zeal_tazer_sc",
 				"units/pd2_dlc_gitgud/characters/ene_grenadier_1/ene_grenadier_1",
 				"units/pd2_dlc_gitgud/characters/ene_grenadier_1/ene_grenadier_1",
-				"units/pd2_dlc_vip/characters/ene_titan_taser/ene_titan_taser",
-				"units/pd2_dlc_vip/characters/ene_titan_taser/ene_titan_taser"
+				"units/pd2_dlc_usm1/characters/ene_titan_taser/ene_titan_taser",
+				"units/pd2_dlc_usm1/characters/ene_titan_taser/ene_titan_taser"
 			},
 			cloaker = {
 				"units/pd2_dlc_gitgud/characters/ene_zeal_cloaker_sc/ene_zeal_cloaker_sc",
@@ -2533,7 +2540,7 @@ ElementSpawnEnemyDummy.faction_mapping = {
 				"units/pd2_dlc_vip/characters/ene_titan_sniper_scripted/ene_titan_sniper_scripted"
 			},
 			grenadier = "units/pd2_dlc_gitgud/characters/ene_grenadier_1/ene_grenadier_1",
-			tsniper = "units/pd2_dlc_vip/characters/ene_titan_sniper/ene_titan_sniper"
+			tsniper = "units/pd2_dlc_usm1/characters/ene_titan_sniper/ene_titan_sniper"
 		}
 	}
 }
@@ -2566,7 +2573,7 @@ if level_id == "dinner" or level_id == "ranc" or level_id == "trai" or level_id 
 		"units/pd2_dlc_gitgud/characters/ene_zeal_sniper/ene_zeal_sniper",
 		"units/pd2_dlc_gitgud/characters/ene_zeal_sniper/ene_zeal_sniper",
 		"units/pd2_dlc_gitgud/characters/ene_zeal_sniper/ene_zeal_sniper",
-		"units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_scripted_2/ene_male_marshal_marksman_scripted_2"
+		"units/pd2_dlc_usm1/characters/ene_titan_sniper_scripted/ene_titan_sniper_scripted"
 	}
 	ElementSpawnEnemyDummy.faction_mapping.lapd.sm_wish.sniper = {
 		"units/pd2_dlc_gitgud/characters/ene_zeal_sniper/ene_zeal_sniper",
@@ -2574,16 +2581,16 @@ if level_id == "dinner" or level_id == "ranc" or level_id == "trai" or level_id 
 		"units/pd2_dlc_gitgud/characters/ene_zeal_sniper/ene_zeal_sniper",
 		"units/pd2_dlc_gitgud/characters/ene_zeal_sniper/ene_zeal_sniper",
 		"units/pd2_dlc_gitgud/characters/ene_zeal_sniper/ene_zeal_sniper",
-		"units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_scripted_2/ene_male_marshal_marksman_scripted_2"
+		"units/pd2_dlc_usm1/characters/ene_titan_sniper_scripted/ene_titan_sniper_scripted"
 	}
 	--Shields
-	ElementSpawnEnemyDummy.faction_mapping.nypd.easy_wish.tshield = "units/pd2_dlc_usm2/characters/ene_male_marshal_shield_1/ene_male_marshal_shield_1"
-	ElementSpawnEnemyDummy.faction_mapping.nypd.overkill_290.tshield = "units/pd2_dlc_usm2/characters/ene_male_marshal_shield_1/ene_male_marshal_shield_1"
-	ElementSpawnEnemyDummy.faction_mapping.nypd.sm_wish.tshield = "units/pd2_dlc_usm2/characters/ene_male_marshal_shield_2/ene_male_marshal_shield_2"
+	ElementSpawnEnemyDummy.faction_mapping.nypd.easy_wish.tshield = "units/pd2_dlc_usm1/characters/ene_phalanx_1_assault/ene_phalanx_1_assault"
+	ElementSpawnEnemyDummy.faction_mapping.nypd.overkill_290.tshield = "units/pd2_dlc_usm1/characters/ene_phalanx_1_assault/ene_phalanx_1_assault"
+	ElementSpawnEnemyDummy.faction_mapping.nypd.sm_wish.tshield = "units/pd2_dlc_usm1/characters/ene_phalanx_1_assault/ene_phalanx_1_assault"
 
-	ElementSpawnEnemyDummy.faction_mapping.lapd.easy_wish.tshield = "units/pd2_dlc_usm2/characters/ene_male_marshal_shield_1/ene_male_marshal_shield_1"
-	ElementSpawnEnemyDummy.faction_mapping.lapd.overkill_290.tshield = "units/pd2_dlc_usm2/characters/ene_male_marshal_shield_1/ene_male_marshal_shield_1"
-	ElementSpawnEnemyDummy.faction_mapping.lapd.sm_wish.tshield = "units/pd2_dlc_usm2/characters/ene_male_marshal_shield_2/ene_male_marshal_shield_2"
+	ElementSpawnEnemyDummy.faction_mapping.lapd.easy_wish.tshield = "units/pd2_dlc_usm1/characters/ene_phalanx_1_assault/ene_phalanx_1_assault"
+	ElementSpawnEnemyDummy.faction_mapping.lapd.overkill_290.tshield = "units/pd2_dlc_usm1/characters/ene_phalanx_1_assault/ene_phalanx_1_assault"
+	ElementSpawnEnemyDummy.faction_mapping.lapd.sm_wish.tshield = "units/pd2_dlc_usm1/characters/ene_phalanx_1_assault/ene_phalanx_1_assault"
 
 	ElementSpawnEnemyDummy.faction_mapping.nypd.sm_wish.shield = {
 		"units/pd2_dlc_gitgud/characters/ene_zeal_swat_shield_sc/ene_zeal_swat_shield_sc",
@@ -2591,7 +2598,7 @@ if level_id == "dinner" or level_id == "ranc" or level_id == "trai" or level_id 
 		"units/pd2_dlc_gitgud/characters/ene_zeal_swat_shield_sc/ene_zeal_swat_shield_sc",
 		"units/pd2_dlc_gitgud/characters/ene_zeal_swat_shield_sc/ene_zeal_swat_shield_sc",
 		"units/pd2_dlc_gitgud/characters/ene_zeal_swat_shield_sc/ene_zeal_swat_shield_sc",
-		"units/pd2_dlc_usm2/characters/ene_male_marshal_shield_2/ene_male_marshal_shield_2"
+		"units/pd2_dlc_usm1/characters/ene_phalanx_1_assault/ene_phalanx_1_assault"
 	}
 	ElementSpawnEnemyDummy.faction_mapping.lapd.sm_wish.shield = {
 		"units/pd2_dlc_gitgud/characters/ene_zeal_swat_shield_sc/ene_zeal_swat_shield_sc",
@@ -2599,7 +2606,7 @@ if level_id == "dinner" or level_id == "ranc" or level_id == "trai" or level_id 
 		"units/pd2_dlc_gitgud/characters/ene_zeal_swat_shield_sc/ene_zeal_swat_shield_sc",
 		"units/pd2_dlc_gitgud/characters/ene_zeal_swat_shield_sc/ene_zeal_swat_shield_sc",
 		"units/pd2_dlc_gitgud/characters/ene_zeal_swat_shield_sc/ene_zeal_swat_shield_sc",
-		"units/pd2_dlc_usm2/characters/ene_male_marshal_shield_2/ene_male_marshal_shield_2"
+		"units/pd2_dlc_usm1/characters/ene_phalanx_1_assault/ene_phalanx_1_assault"
 	}
 end
 --Bravo Sharpshooters replacing OMNIA Titan Snipers

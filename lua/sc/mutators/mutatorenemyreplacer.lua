@@ -489,7 +489,7 @@ function MutatorEnemyReplacer:_get_unit_group_tank(difficulty_index)
 						Idstring("units/payday2/characters/ene_bulldozer_3/ene_bulldozer_3"),
 						Idstring("units/pd2_mod_nypd/characters/ene_bulldozer_1/ene_bulldozer_1"),
 						Idstring("units/pd2_mod_nypd/characters/ene_bulldozer_2/ene_bulldozer_2"),
-						Idstring("units/payday2/characters/ene_bulldozer_3_sc/ene_bulldozer_3_sc"),
+						Idstring("units/pd2_mod_nypd/characters/ene_bulldozer_3/ene_bulldozer_3"),
 						Idstring("units/pd2_mod_bravo/characters/ene_bravo_bulldozer/ene_bravo_bulldozer"),
 						Idstring("units/pd2_dlc_drm/characters/ene_bulldozer_medic_classic/ene_bulldozer_medic_classic"),
 						Idstring("units/pd2_dlc_drm/characters/ene_bulldozer_medic/ene_bulldozer_medic"),
@@ -733,7 +733,7 @@ function MutatorEnemyReplacer:_get_unit_group_shield(difficulty_index)
 						Idstring("units/payday2/characters/ene_shield_2_sc/ene_shield_2_sc"),
 						Idstring("units/pd2_dlc_usm2/characters/ene_male_marshal_shield_1/ene_male_marshal_shield_1"),
 						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1_assault/ene_phalanx_1_assault"),
-						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1/ene_phalanx_1")
+						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1_new/ene_phalanx_1_new")
 					},
 					russia = {
 						Idstring("units/pd2_dlc_mad/characters/ene_akan_cs_shield_c45/ene_akan_cs_shield_c45"),
@@ -758,7 +758,7 @@ function MutatorEnemyReplacer:_get_unit_group_shield(difficulty_index)
 						Idstring("units/pd2_dlc_bph/characters/ene_murkywater_shield/ene_murkywater_shield"),
 						Idstring("units/pd2_mod_sharks/characters/ene_murky_shield_fbi/ene_murky_shield_fbi"),
 						Idstring("units/pd2_dlc_usm2/characters/ene_male_marshal_shield_2/ene_male_marshal_shield_2"),
-						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1/ene_phalanx_1")
+						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1_new/ene_phalanx_1_new")
 					},
 					federales = {
 						Idstring("units/pd2_dlc_bex/characters/ene_swat_shield_policia_federale_c45/ene_swat_shield_policia_federale_c45"),
@@ -775,7 +775,7 @@ function MutatorEnemyReplacer:_get_unit_group_shield(difficulty_index)
 						Idstring("units/pd2_mod_nypd/characters/ene_nypd_shield/ene_nypd_shield"),
 						Idstring("units/pd2_dlc_usm2/characters/ene_male_marshal_shield_1/ene_male_marshal_shield_1"),
 						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1_assault/ene_phalanx_1_assault"),
-						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1/ene_phalanx_1")
+						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1_new/ene_phalanx_1_new")
 					},
 					lapd = { 
 						Idstring("units/payday2/characters/ene_shield_1/ene_shield_1"),
@@ -784,7 +784,7 @@ function MutatorEnemyReplacer:_get_unit_group_shield(difficulty_index)
 						Idstring("units/pd2_mod_lapd/characters/ene_shield_2/ene_shield_2"),
 						Idstring("units/pd2_dlc_usm2/characters/ene_male_marshal_shield_1/ene_male_marshal_shield_1"),
 						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1_assault/ene_phalanx_1_assault"),
-						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1/ene_phalanx_1")
+						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1_new/ene_phalanx_1_new")
 					},
 					fbi = {
 						Idstring("units/payday2/characters/ene_shield_1/ene_shield_1"),
@@ -793,7 +793,7 @@ function MutatorEnemyReplacer:_get_unit_group_shield(difficulty_index)
 						Idstring("units/payday2/characters/ene_shield_2_sc/ene_shield_2_sc"),
 						Idstring("units/pd2_dlc_usm2/characters/ene_male_marshal_shield_1/ene_male_marshal_shield_1"),
 						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1_assault/ene_phalanx_1_assault"),
-						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1/ene_phalanx_1")
+						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1_new/ene_phalanx_1_new")
 					}
 				},
 				access = access_type_all
@@ -809,7 +809,7 @@ function MutatorEnemyReplacer:_get_unit_group_shield(difficulty_index)
 						Idstring("units/payday2/characters/ene_shield_gensec/ene_shield_gensec"),
 						Idstring("units/pd2_dlc_usm2/characters/ene_male_marshal_shield_1/ene_male_marshal_shield_1"),
 						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1_assault/ene_phalanx_1_assault"),
-						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1/ene_phalanx_1")
+						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1_new/ene_phalanx_1_new")
 					},
 					russia = {
 						Idstring("units/pd2_dlc_mad/characters/ene_akan_fbi_shield_sr2_smg/ene_akan_fbi_shield_sr2_smg"),
@@ -834,7 +834,7 @@ function MutatorEnemyReplacer:_get_unit_group_shield(difficulty_index)
 						Idstring("units/pd2_mod_sharks/characters/ene_murky_shield_city/ene_murky_shield_city"),
 						Idstring("units/pd2_dlc_usm2/characters/ene_male_marshal_shield_2/ene_male_marshal_shield_2"),
 						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1_assault/ene_phalanx_1_assault"),
-						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1/ene_phalanx_1")
+						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1_new/ene_phalanx_1_new")
 					},
 					federales = {
 						Idstring("units/pd2_dlc_bex/characters/ene_shield_1/ene_shield_1"),
@@ -851,7 +851,7 @@ function MutatorEnemyReplacer:_get_unit_group_shield(difficulty_index)
 						Idstring("units/pd2_mod_nypd/characters/ene_shield_gensec/ene_shield_gensec"),
 						Idstring("units/pd2_dlc_usm2/characters/ene_male_marshal_shield_1/ene_male_marshal_shield_1"),
 						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1_assault/ene_phalanx_1_assault"),
-						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1/ene_phalanx_1")
+						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1_new/ene_phalanx_1_new")
 					},
 					lapd = { 
 						Idstring("units/payday2/characters/ene_shield_1/ene_shield_1"),
@@ -860,7 +860,7 @@ function MutatorEnemyReplacer:_get_unit_group_shield(difficulty_index)
 						Idstring("units/pd2_mod_lapd/characters/ene_city_shield/ene_city_shield"),
 						Idstring("units/pd2_dlc_usm2/characters/ene_male_marshal_shield_1/ene_male_marshal_shield_1"),
 						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1_assault/ene_phalanx_1_assault"),
-						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1/ene_phalanx_1")
+						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1_new/ene_phalanx_1_new")
 					},
 					fbi = {
 						Idstring("units/payday2/characters/ene_shield_1/ene_shield_1"),
@@ -869,7 +869,7 @@ function MutatorEnemyReplacer:_get_unit_group_shield(difficulty_index)
 						Idstring("units/pd2_mod_lapd/characters/ene_city_shield/ene_city_shield"),
 						Idstring("units/pd2_dlc_usm2/characters/ene_male_marshal_shield_1/ene_male_marshal_shield_1"),
 						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1_assault/ene_phalanx_1_assault"),
-						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1/ene_phalanx_1")
+						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1_new/ene_phalanx_1_new")
 					}
 				},
 				access = access_type_all
@@ -885,7 +885,7 @@ function MutatorEnemyReplacer:_get_unit_group_shield(difficulty_index)
 						Idstring("units/payday2/characters/ene_shield_gensec/ene_shield_gensec"),
 						Idstring("units/payday2/characters/ene_shield_gensec/ene_shield_gensec"),
 						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1_assault/ene_phalanx_1_assault"),
-						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1/ene_phalanx_1")
+						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1_new/ene_phalanx_1_new")
 					},
 					russia = {
 						Idstring("units/pd2_mod_reapers/characters/ene_city_shield/ene_city_shield"),
@@ -910,7 +910,7 @@ function MutatorEnemyReplacer:_get_unit_group_shield(difficulty_index)
 						Idstring("units/pd2_mod_sharks/characters/ene_murky_shield_city/ene_murky_shield_city"),
 						Idstring("units/pd2_mod_sharks/characters/ene_murky_shield_city/ene_murky_shield_city"),
 						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1_assault/ene_phalanx_1_assault"),
-						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1/ene_phalanx_1")
+						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1_new/ene_phalanx_1_new")
 					},
 					federales = {
 						Idstring("units/pd2_dlc_bex/characters/ene_shield_gensec/ene_shield_gensec"),
@@ -927,7 +927,7 @@ function MutatorEnemyReplacer:_get_unit_group_shield(difficulty_index)
 						Idstring("units/pd2_mod_nypd/characters/ene_shield_gensec/ene_shield_gensec"),
 						Idstring("units/pd2_mod_nypd/characters/ene_shield_gensec/ene_shield_gensec"),
 						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1_assault/ene_phalanx_1_assault"),
-						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1/ene_phalanx_1")
+						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1_new/ene_phalanx_1_new")
 					},
 					lapd = { 
 						Idstring("units/pd2_mod_lapd/characters/ene_city_shield/ene_city_shield"),
@@ -936,7 +936,7 @@ function MutatorEnemyReplacer:_get_unit_group_shield(difficulty_index)
 						Idstring("units/pd2_mod_lapd/characters/ene_city_shield/ene_city_shield"),
 						Idstring("units/pd2_mod_lapd/characters/ene_city_shield/ene_city_shield"),
 						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1_assault/ene_phalanx_1_assault"),
-						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1/ene_phalanx_1")
+						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1_new/ene_phalanx_1_new")
 					},
 					fbi = {
 						Idstring("units/pd2_mod_lapd/characters/ene_city_shield/ene_city_shield"),
@@ -945,7 +945,7 @@ function MutatorEnemyReplacer:_get_unit_group_shield(difficulty_index)
 						Idstring("units/pd2_mod_lapd/characters/ene_city_shield/ene_city_shield"),
 						Idstring("units/pd2_mod_lapd/characters/ene_city_shield/ene_city_shield"),
 						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1_assault/ene_phalanx_1_assault"),
-						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1/ene_phalanx_1")
+						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1_new/ene_phalanx_1_new")
 					}
 				},
 				access = access_type_all
@@ -961,7 +961,7 @@ function MutatorEnemyReplacer:_get_unit_group_shield(difficulty_index)
 						Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_swat_shield_sc/ene_zeal_swat_shield_sc"),
 						Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_swat_shield_sc/ene_zeal_swat_shield_sc"),
 						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1_assault/ene_phalanx_1_assault"),
-						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1/ene_phalanx_1")
+						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1_new/ene_phalanx_1_new")
 					},
 					russia = {
 						Idstring("units/pd2_mod_reapers/characters/ene_zeal_swat_shield/ene_zeal_swat_shield"),
@@ -986,7 +986,7 @@ function MutatorEnemyReplacer:_get_unit_group_shield(difficulty_index)
 						Idstring("units/pd2_mod_sharks/characters/ene_zeal_swat_shield/ene_zeal_swat_shield"),
 						Idstring("units/pd2_mod_sharks/characters/ene_zeal_swat_shield/ene_zeal_swat_shield"),
 						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1_assault/ene_phalanx_1_assault"),
-						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1/ene_phalanx_1")
+						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1_new/ene_phalanx_1_new")
 						
 					},
 					federales = {
@@ -1005,7 +1005,7 @@ function MutatorEnemyReplacer:_get_unit_group_shield(difficulty_index)
 						Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_swat_shield_sc/ene_zeal_swat_shield_sc"),
 						Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_swat_shield_sc/ene_zeal_swat_shield_sc"),
 						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1_assault/ene_phalanx_1_assault"),
-						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1/ene_phalanx_1")
+						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1_new/ene_phalanx_1_new")
 					},
 					lapd = {
 						Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_swat_shield_sc/ene_zeal_swat_shield_sc"),
@@ -1014,7 +1014,7 @@ function MutatorEnemyReplacer:_get_unit_group_shield(difficulty_index)
 						Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_swat_shield_sc/ene_zeal_swat_shield_sc"),
 						Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_swat_shield_sc/ene_zeal_swat_shield_sc"),
 						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1_assault/ene_phalanx_1_assault"),
-						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1/ene_phalanx_1")
+						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1_new/ene_phalanx_1_new")
 					},
 					fbi = {
 						Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_swat_shield_sc/ene_zeal_swat_shield_sc"),
@@ -1023,7 +1023,7 @@ function MutatorEnemyReplacer:_get_unit_group_shield(difficulty_index)
 						Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_swat_shield_sc/ene_zeal_swat_shield_sc"),
 						Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_swat_shield_sc/ene_zeal_swat_shield_sc"),
 						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1_assault/ene_phalanx_1_assault"),
-						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1/ene_phalanx_1")
+						Idstring("units/pd2_dlc_vip/characters/ene_phalanx_1_new/ene_phalanx_1_new")
 					}
 				},
 				access = access_type_all
