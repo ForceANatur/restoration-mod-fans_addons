@@ -455,11 +455,11 @@ function restoration:Init()
 	--Sub Faction overrides
 	--Texas
 	restoration.yee_and_I_cannot_stress_this_enough_haw = {
-		"ranc",
-		"dinner",
-		"trai",
-		"corp",
-		--"deep",
+		"ranc", -- Midland Ranch
+		"dinner", -- Slaughterhouse
+		"trai", -- Lost in Transit
+		"corp", -- Hostile Takeover
+		--"deep", -- Crude Awakening
 		--Custom Heists--
 		"tonmapjam22l"
 	}
