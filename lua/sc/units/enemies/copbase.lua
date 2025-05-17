@@ -1113,35 +1113,11 @@ function CopBase:default_weapon_name(...)
 			self._default_weapon_id = "x_peacemaker"
 			self._weapon_set = true		
 		end
-
-		if self._tweak_table == "dave" then
-			self._default_weapon_id = "x_raging_bull_npc"
-			self._weapon_set = true
-		end
-		
-		if self._default_weapon_id == "r870" then
-			self._default_weapon_id = "mossberg"
-			self._weapon_set = true	
-		end
-		
-		if self._default_weapon_id == "ump" then
-			self._default_weapon_id = "peacemaker"
-			self._weapon_set = true	
-		end		
-		
-		if self._default_weapon_id == "m4" or self._default_weapon_id == "mp5" or self._default_weapon_id == "amcar" then
-			self._default_weapon_id = "raging_bull"
-			self._weapon_set = true	
-		end				
 	end	
 	
 	--Have White Titandozers use Grenade Launchers/AA-12s like their Reaper counterparts in Russia/Mexico heists (mostly for Holiday Effects and consistency with factions)
-	if self._tweak_table == "tank_hw" and faction == "russia" then
+	if self._tweak_table == "tank_hw" and faction == "russia" or faction == "federales" then
 		self._default_weapon_id = "m32_large"
-		self._weapon_set = true
-	end
-	if self._tweak_table == "tank_hw" and faction == "federales" or self._tweak_table == "tank_titan_assault" and faction == "federales" then
-		self._default_weapon_id = "aa12_dozer"
 		self._weapon_set = true
 	end
 
