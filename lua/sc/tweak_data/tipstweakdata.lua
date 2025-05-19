@@ -918,6 +918,12 @@ function TipsTweakData:init()
 			image = "generic_tip",
 			consoles = true,
 			category = "fluff_res"
+		},
+		{
+			cat_index = 29,
+			image = "generic_tip",
+			consoles = true,
+			category = "fluff_res"
 		}
 	}
 	self.category_totals = {}

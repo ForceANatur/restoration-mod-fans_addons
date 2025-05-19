@@ -5155,6 +5155,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 		["loading_fluff_res_26"] = "HeavyGunner spends a fortune on spray paint for his SWAT gear.",
 		["loading_fluff_res_27"] = "HeavyGunner idolizes the other captains.",
 		["loading_fluff_res_28"] = "HeavyGunner went to OMNIA and demanded to be a captain, which is why he didn't receive any augmentations or changes from OMNIA like the other captains.",
+		["loading_fluff_res_29"] = "HeavyGunner's real name is John H. Advrenge.",
 
 		["menu_button_deploy_bipod"] = "BIPOD/ALT-FIRE",
 		["hint_short_max_pagers"] = "Neglecting pagers will significantly increase guard suspicion.",
