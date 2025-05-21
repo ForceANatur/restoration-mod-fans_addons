@@ -29,9 +29,6 @@ local murky_amount = (difficulty >= 6 and 5)
 local murky_greendozer = low_murkydozers
 local murky_blackdozer = medium_murkydozers
 local murky_skulldozer = (difficulty == 8 and ds_murkydozers) or hard_murkydozers
-local murkyman_1 = ((pro_job and difficulty >= 6) and "units/pd2_mod_sharks/characters/ene_titan_rifle/ene_titan_rifle")
-local murkyman_2 = ((pro_job and difficulty >= 6) and "units/pd2_mod_sharks/characters/ene_titan_shotgun/ene_titan_shotgun")
-
 local disabled = {
 	values = {
 		enabled = false,
@@ -50,16 +47,6 @@ local murky_dozer_black = {
 local murky_dozer_skull = {
 	values = {
 		enemy = murky_skulldozer,
-	},
-}
-local elite_murky_1 = {
-	values = {
-		enemy = murkyman_1,
-	},
-}
-local elite_murky_2 = {
-	values = {
-		enemy = murkyman_2,
 	},
 }
 
@@ -199,7 +186,7 @@ return {
 	[101241] = murky_dozer_green,
 	[101242] = murky_dozer_black,
 	[101243] = murky_dozer_skull,
-	-- Security guards
+	-- genseggs security guards
 	[101375] = {
 		values = {
 			enemy = "units/pd2_mod_nypd/characters/ene_security_1/ene_security_1",
@@ -210,15 +197,6 @@ return {
 			enemy = "units/pd2_mod_nypd/characters/ene_security_2/ene_security_2",
 		},
 	},
-	-- Murky Elite Soldiers replace heli rappeling Murkies on PJ Mayhem and above
-	[103083] = elite_murky_1,
-	[103084] = elite_murky_1,
-	[103085] = elite_murky_2,
-	[103086] = elite_murky_2,
-	[103098] = elite_murky_1,
-	[103100] = elite_murky_1,
-	[103101] = elite_murky_2,
-	[103102] = elite_murky_2,
 	-- Disables the Swat Turret, it's not really needed here, eh?
 	[102484] = {
 		values = {

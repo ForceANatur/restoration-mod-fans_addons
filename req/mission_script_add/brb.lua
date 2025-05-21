@@ -1,10 +1,8 @@
 local difficulty = tweak_data:difficulty_to_index(Global.game_settings and Global.game_settings.difficulty or "normal")
-local murky_rifle = (difficulty == 8 and "units/pd2_mod_sharks/characters/ene_zeal_city_1/ene_zeal_city_1" or (difficulty == 7 or difficulty == 6) and "units/pd2_mod_sharks/characters/ene_city_swat_1/ene_city_swat_1" or (difficulty == 5 or difficulty == 4) and "units/pd2_mod_sharks/characters/ene_fbi_swat_1/ene_fbi_swat_1") or "units/pd2_mod_sharks/characters/ene_swat_1/ene_swat_1"
-local murky_shotgun = (difficulty == 8 and "units/pd2_mod_sharks/characters/ene_zeal_city_2/ene_zeal_city_2" or (difficulty == 7 or difficulty == 6) and "units/pd2_mod_sharks/characters/ene_city_swat_2/ene_city_swat_2" or (difficulty == 5 or difficulty == 4) and "units/pd2_mod_sharks/characters/ene_fbi_swat_2/ene_fbi_swat_2") or "units/pd2_mod_sharks/characters/ene_swat_2/ene_swat_2"
-local murky_smg = (difficulty == 8 and "units/pd2_mod_sharks/characters/ene_zeal_city_3/ene_zeal_city_3" or (difficulty == 7 or difficulty == 6) and "units/pd2_mod_sharks/characters/ene_city_swat_3/ene_city_swat_3" or (difficulty == 5 or difficulty == 4) and "units/pd2_mod_sharks/characters/ene_fbi_swat_3/ene_fbi_swat_3") or "units/pd2_mod_sharks/characters/ene_swat_3/ene_swat_3"
-local murky_heavy_rifle = (difficulty == 8 and "units/pd2_mod_sharks/characters/ene_zeal_swat_heavy/ene_zeal_swat_heavy" or (difficulty == 7 or difficulty == 6 or difficulty == 5 or difficulty == 4) and "units/pd2_mod_sharks/characters/ene_fbi_heavy_1/ene_fbi_heavy_1") or "units/pd2_mod_sharks/characters/ene_swat_heavy_1/ene_swat_heavy_1"
-local murky_heavy_shotgun = (difficulty == 8 and "units/pd2_mod_sharks/characters/ene_zeal_swat_heavy_r870/ene_zeal_swat_heavy_r870" or (difficulty == 7 or difficulty == 6 or difficulty == 5 or difficulty == 4) and "units/pd2_mod_sharks/characters/ene_fbi_heavy_r870/ene_fbi_heavy_r870") or "units/pd2_mod_sharks/characters/ene_swat_heavy_r870/ene_swat_heavy_r870"
-local murky_table = {murky_rifle, murky_rifle, murky_shotgun, murky_shotgun, murky_smg, murky_smg, murky_heavy_rifle, murky_heavy_rifle, murky_heavy_shotgun, murky_heavy_shotgun}
+local murkies_responders = {
+"units/payday2/characters/ene_murkywater_1/ene_murkywater_1",
+"units/payday2/characters/ene_murkywater_2/ene_murkywater_2"
+}
 
 local optsMurkywater = {
     enemy_table = murky_table,
@@ -28,11 +26,10 @@ local choose_murky_spawnpoint = {
 	amount = 2,
 	amount_random = 3,
 	on_executed = {
-		{ id = 400004, delay = 0 },
-		{ id = 400005, delay = 0 },
-		{ id = 400006, delay = 0 },
-		{ id = 400007, delay = 0 },
-		{ id = 400008, delay = 0 },
+		{ id = 400036, delay = 0 },
+		{ id = 400037, delay = 0 },
+		{ id = 400038, delay = 0 },
+		{ id = 400039, delay = 0 },
 	},
 }
 local murky_spawnpoint_1 = {
@@ -87,7 +84,7 @@ return {
 		restoration:gen_element_random(400006, "spawnpoint_3", murky_spawnpoint_3),
 		restoration:gen_element_random(400007, "spawnpoint_4", murky_spawnpoint_4),
 		restoration:gen_element_random(400008, "spawnpoint_5", murky_spawnpoint_5),
-		--Murky SWAT
+		--Murky Grunts
 		restoration:gen_dummy(400009, "murkywater_1", Vector3(789, 785, 676.187), Rotation(-180, 0, -0), optsMurkywater),
 		restoration:gen_dummy(400010, "murkywater_2", Vector3(874, 785, 676.187), Rotation(-180, 0, -0), optsMurkywater),
 		restoration:gen_dummy(400011, "murkywater_3", Vector3(965, 785, 676.187), Rotation(-180, 0, -0), optsMurkywater),
