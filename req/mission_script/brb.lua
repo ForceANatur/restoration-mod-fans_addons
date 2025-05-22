@@ -14,7 +14,7 @@ return {
 	},
 		ponr = ponr_value,
 		hunt = true
-	},
+	},--]]
 	--De-Julesfiy this mission script (they really made spawn enemies early if cut the tarp)
 	[101288] = {
 		values = {
