@@ -301,6 +301,8 @@ local choose_cop_spawnpoint = {
 }
 local cops_spawnpoint_1 = {
 	enabled = true,
+	amount = 2,
+	amount_random = 3,
 	on_executed = { 
 		{ id = 400050, delay = 0 },
 		{ id = 400051, delay = 0 },
@@ -311,6 +313,8 @@ local cops_spawnpoint_1 = {
 }
 local cops_spawnpoint_2 = {
 	enabled = true,
+	amount = 2,
+	amount_random = 3,
 	on_executed = { 
 		{ id = 400055, delay = 0 },
 		{ id = 400056, delay = 0 },
@@ -321,6 +325,8 @@ local cops_spawnpoint_2 = {
 }
 local cops_spawnpoint_3 = {
 	enabled = true,
+	amount = 2,
+	amount_random = 3,
 	on_executed = { 
 		{ id = 400060, delay = 0 },
 		{ id = 400061, delay = 0 },
