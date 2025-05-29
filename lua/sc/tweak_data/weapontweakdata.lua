@@ -28279,6 +28279,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				table.insert(weap.categories, "handcannon")
 			end
 
+			table.insert(weap.categories, "tony")
+
 			if weap.recategorize and not weap.recoil_values then
 				--YandereDev moment (this isn't run every frame though)
 				if weap.recategorize[1] == "light_pis" then
