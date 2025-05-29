@@ -4038,6 +4038,7 @@ end)
 					self.wpn_fps_pis_rsh12.override.wpn_fps_upg_i_iw_hailstorm = {
 						desc_id = "bm_wp_upg_i_iw_hailstorm_no_pen_desc",
 						custom_stats = {
+							info_lock_burst = true,
 							burst_fire = {
 								count = 3,
 								recoil_mult = 0.33,
@@ -4463,8 +4464,8 @@ end)
 						40
 					}
 					self.parts.wpn_fps_pis_m1911_sl_hardballer.supported = true
-					self.parts.wpn_fps_pis_m1911_sl_hardballer.stats = deep_clone(barrels.long_b3_stats)
-					self.parts.wpn_fps_pis_m1911_sl_hardballer.custom_stats = deep_clone(barrels.long_b3_stats)		
+					self.parts.wpn_fps_pis_m1911_sl_hardballer.stats = deep_clone(barrels.long_b2_stats)
+					self.parts.wpn_fps_pis_m1911_sl_hardballer.custom_stats = deep_clone(barrels.long_b2_stats)
 					
 					self.wpn_fps_pis_m1911.override.wpn_fps_pis_1911_co_1 = {
 						a_obj = "a_ns",
@@ -24148,6 +24149,7 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 		custom_stats = {
 			burst_fire = {
 				count = 3,
+				delay = 0.5,
 				rof_mult = 3,
 				spread_mult = 1.5
 			},
@@ -24848,6 +24850,7 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 		supported = true,
 		keep_damage = true,
 		custom_stats = {
+			info_lock_burst = true,
 			burst_fire = {
 				count = 3,
 				recoil_mult = 0.33,
@@ -37948,6 +37951,79 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			self.wpn_fps_snp_sierra458.adds.wpn_fps_snp_sierra458_m_d60 = nil
 		end
 
+		if self.parts.wpn_fps_pis_polar9_sl_short then --Tangerine's 1911's
+			self.parts.wpn_fps_pis_polar9_sl_short.supported = true
+			self.parts.wpn_fps_pis_polar9_sl_short.stats = deep_clone(barrels.short_b1_stats)
+			self.parts.wpn_fps_pis_polar9_sl_short.custom_stats = deep_clone(barrels.short_b1_stats)
+			self.parts.wpn_fps_pis_polar9_sl_long.supported = true
+			self.parts.wpn_fps_pis_polar9_sl_long.stats = deep_clone(barrels.long_b2_stats)
+			self.parts.wpn_fps_pis_polar9_sl_long.custom_stats = deep_clone(barrels.long_b2_stats)
+
+			self.parts.wpn_fps_pis_polar9_g_ergo.supported = true
+			self.parts.wpn_fps_pis_polar9_g_ergo.stats = deep_clone(grips.quickdraw_1)
+			self.parts.wpn_fps_pis_polar9_g_ergo.custom_stats = deep_clone(grips.quickdraw_1)
+			self.parts.wpn_fps_pis_polar9_g_sport.supported = true
+			self.parts.wpn_fps_pis_polar9_g_sport.stats = { 
+				value = 4, 
+				spread = -1,
+				concealment = -1,
+				reload = 2
+			}
+
+			self.parts.wpn_fps_pis_polar9_m_extended.supported = true
+			self.parts.wpn_fps_pis_polar9_m_extended.stats = {
+				value = 1, 
+				extra_ammo = 10,
+				concealment = -1,
+				reload = -3
+			}
+			self.parts.wpn_fps_pis_polar9_m_extended.custom_stats = {
+				ads_speed_mult = 1.025
+			}
+			self.wpn_fps_pis_x_polar9.override.wpn_fps_pis_polar9_m_extended.stats = {
+				value = 1, 
+				extra_ammo = 20,
+				concealment = -1,
+				reload = -3
+			}
+
+			self.parts.wpn_fps_pis_baller_b_average.supported = true
+			self.parts.wpn_fps_pis_baller_b_average.stats = deep_clone(barrels.short_b2_stats)
+			self.parts.wpn_fps_pis_baller_b_average.custom_stats = deep_clone(barrels.short_b2_stats)
+
+			self.wpn_fps_pis_baller.override.wpn_fps_pis_polar9_sl_short = {
+				stats = deep_clone(barrels.short_b3_stats),
+				custom_stats = deep_clone(barrels.short_b3_stats)
+			}
+
+			self.parts.wpn_fps_pis_baller_m_classic.supported = true
+			self.parts.wpn_fps_pis_baller_m_classic.stats = {
+				value = 2,
+				spread = -1,
+				concealment = 1,
+			}
+			self.parts.wpn_fps_pis_baller_m_extended.supported = true
+			self.parts.wpn_fps_pis_baller_m_extended.stats = {
+				extra_ammo = 4,
+				reload = -3,
+				concealment = -1,
+				value = 1
+			}
+			self.parts.wpn_fps_pis_baller_m_classic_extended.supported = true
+			self.parts.wpn_fps_pis_baller_m_classic_extended.stats = {
+				extra_ammo = 2,
+				reload = -3,
+				value = 1
+			}
+			self.wpn_fps_x_1911.override.wpn_fps_pis_baller_m_classic_extended = {
+				stats = {
+				extra_ammo = 4,
+				reload = -3,
+				value = 1
+				}
+			}
+		end
+
 		if self.parts.wpn_fps_upg_m4_hera_lower then --Tangerine's AK/AR Mod Pack
 			
 			--Hera parts
@@ -38204,7 +38280,34 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			}
 			self.parts.wpn_fps_upg_ak_m_nato.custom_stats = {
 				falloff_end_mult = 1.2,
-				damage_min_mult = 0.833333
+				damage_min_mult = 0.8
+			}
+
+			self.parts.wpn_fps_upg_ak_m_ak101.supported = true
+			self.parts.wpn_fps_upg_ak_m_ak101.has_description = false
+			self.parts.wpn_fps_upg_ak_m_ak101.desc_id = ""
+			self.parts.wpn_fps_upg_ak_m_ak101.stats = { 
+				value = 2,
+				spread = -1,
+				recoil = 2,
+				concealment = 1
+			}
+			self.parts.wpn_fps_upg_ak_m_ak101.custom_stats = {
+				falloff_end_mult = 1.2,
+				damage_min_mult = 0.8
+			}
+			
+			self.parts.wpn_fps_ass_flint_m_ak19.supported = true
+			self.parts.wpn_fps_ass_flint_m_ak19.has_description = false
+			self.parts.wpn_fps_ass_flint_m_ak19.desc_id = ""
+			self.parts.wpn_fps_ass_flint_m_ak19.stats = { 
+				value = 2,
+				spread = -1,
+				recoil = 4
+			}
+			self.parts.wpn_fps_ass_flint_m_ak19.custom_stats = {
+				falloff_end_mult = 1.2,
+				damage_min_mult = 0.8
 			}
 	
 			self.parts.wpn_fps_upg_ak_m_double.supported = true
