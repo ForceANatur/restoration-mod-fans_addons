@@ -3943,6 +3943,9 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 					["bm_w_polymer"] = "KRISS Vector SMG",
 					["bm_wp_polymer_barrel_precision"] = "CRB Barrel w/Shroud",
 					["bm_wp_polymer_ns_silencer"] = "Defiance HPS 4GSK Suppressor",
+					--Custom SMGs
+						--Scudomnion
+						["bm_w_cagnali"] = "Sci-Fi Special Weapons MP-10",
 
 				--[[MGs]]
 					--416C
