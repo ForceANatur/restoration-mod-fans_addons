@@ -1480,6 +1480,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Eng", function(loc)
 		["bm_slamfire_generic_desc"] = "Can be #{skill_color}#slamfired for an increased fire rate## at the cost of #{important_1}#more recoil, spread and the inabilty to aim down your sights.##",
 		["bm_rapidfire_generic_desc"] = "Can be #{skill_color}#rapid-fired for an increased fire rate## at the cost of #{important_1}#more recoil and reduced effective range.##",
 		["bm_ap_weapon_sc_desc"] = "#{skill_color}#Can pierce body armor, multiple enemies, shields and thin walls.##",
+		["bm_ap_clip_sc_desc"] = "This weapon reloads in clips of 5 bullets at a time and #{skill_color}#can pierce body armor, multiple enemies, shields and thin walls.##",
 		["bm_ap_weapon_semi_sc_desc"] = "#{skill_color}#Can pierce body armor, multiple enemies, shields within max damage range and thin walls.##",
 		["bm_ap_armor_weapon_sc_desc"] = "#{skill_color}#Can pierce body armor.##",
 		["bm_ap25_armor_weapon_sc_desc"] = "#{skill_color}#Weapon deals an additional 25% of its damage through armor.##",
@@ -2665,6 +2666,10 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 					["bm_w_kedr_sc_desc"] = "",
 					--MW2019 P320
 					["bm_wp_wpn_fps_pis_papa320_magazine_ext2"] = "32 Round Magazine",
+					--SR1M
+					["bm_sr1_sc_desc"] = "#{skill_color}#Deals 75% of its damage through body armor.##",
+					--Nagant Revolver
+					["bm_m1895_sc_desc"] = "A late 19th century 7-shooter and one of the only revolvers that can make use of a suppressor. #{risk}#Strangely##, this one comes with a 6-shot cylinder instead.\n\n#{skill_color}#Can pierce body armor, multiple enemies, shields and thin walls.##\n\nCan be #{skill_color}#fanned for an increased fire rate## at the cost of #{important_1}#more recoil, reduced effective range and the inabilty to aim down your sights.##",
 
 			--[[ SMGs ]]
 				--Kobus 90
@@ -2776,8 +2781,13 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 					--MW2019 PKM
 					["bm_wp_wpn_fps_lmg_pkilo_xmag"] = "Brown Ammo Box",
 					["bm_wp_wpn_fps_lmg_pkilo_xmag_large"] = "Black Ammo Box",
+					--MG3
+					["bm_mg3_sc_desc"] = "#{skill_color}#Has improved spread and recoil while hipfired.##",
+					--M1919
+					["bm_wp_wpn_fps_upg_m1919a6_mag_ext"] = "125rnd Box Magazine",
 					--Serious Sam Minigun (XM214-A)
 					["bm_wpn_fps_lmg_xm214a_desc"] = "\"Whenever you get the minigun in a Serious Sam game, you know shit's about to go down.\" - Civvie 11\n\n#{risk}#Has a brief spin-up period before firing; aiming keeps the weapon spun-up.##",
+					--K3 Light Machine Gun
 					["wpn_fps_lmg_k3_desc"] = "Strangly missing a few parts...",
 
 			--[[ SHOTGUNS ]]
@@ -3092,7 +3102,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 				["bm_ray_sc_desc"] = "Become the \"#{risk}#Grim Reaper##\" with this 4-shot #{heat_warm_color}#incendiary## rocket launcher.\n\nRockets leave behind a #{heat_warm_color}#pool of fire## and explosive damage dealt by this weapon #{skill_color}#instantly destroys turrets## and deals an extra #{skill_color}#500%## damage against non-titan Bulldozers.",
 				-- Toy weapons
 				["bm_w_toym16_sc_desc"] = "\"No full-auto in buildings.\"",
-				["bm_w_toy1911_sc_desc"] = "Airsoft pistol modified with a turbo electric motor, allowing you to #{skill_color}#switch to fully automatic fire##.\nRemember, not full-auto in buildings.",
+				["bm_w_toy1911_sc_desc"] = "Airsoft pistol modified with a turbo electric motor, allowing you to #{skill_color}#switch to fully automatic fire##.\nRemember, no full-auto in buildings.",
 
 	})
 
