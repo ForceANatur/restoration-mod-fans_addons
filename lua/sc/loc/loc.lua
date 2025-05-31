@@ -5178,7 +5178,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 		["st_menu_mastermind_single_shot"] = "Assault",
 		["st_menu_enforcer_armor"] = "Juggernaut",
 		["st_menu_enforcer_ammo"] = "Support",
-		["st_menu_technician_auto"] = "Combat Engineer",
+		["st_menu_technician_auto"] = "Marksman",
 		["st_menu_technician_breaching"] = "Breacher",
 		["st_menu_technician_sentry"] = "Fortress",
 		["st_menu_ghost_silencer"] = "Contract Killer",
