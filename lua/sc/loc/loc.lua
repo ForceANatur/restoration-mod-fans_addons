@@ -4105,6 +4105,8 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 						["bm_w_vecho"] = "Vepr-12",
 						--MW2023 Origin 12
 						["bm_w_haymaker"] = "Origin-12",
+						--SPAS-15
+						["bm_w_spas15"] = "Franchi SPAS-15",
 
 				--[[ARs]]
 					--FAMAS
