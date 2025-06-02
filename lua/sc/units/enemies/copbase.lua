@@ -321,6 +321,40 @@ Hooks:PostHook(CopBase, "post_init", "postinithooksex", function(self)
 	
 end)
 
+local enemy_variations_texas_pd_table = {
+	["units/pd2_mod_lapd/characters/ene_swat_1/ene_swat_1"] = "awesometexpd",
+	["units/pd2_mod_lapd/characters/ene_swat_2/ene_swat_2"] = "awesometexpd",
+	["units/pd2_mod_lapd/characters/ene_swat_3/ene_swat_3"] = "awesometexpd",
+	["units/pd2_mod_lapd/characters/ene_swat_heavy_1/ene_swat_heavy_1"] = "awesometexpd",
+	["units/pd2_mod_lapd/characters/ene_swat_heavy_r870/ene_swat_heavy_r870"] = "awesometexpd",
+	["units/pd2_mod_lapd/characters/ene_shield_2/ene_shield_2"] = "awesometexpd",
+	["units/pd2_mod_lapd/characters/ene_sniper_1/ene_sniper_1"] = "awesometexpd",
+	["units/pd2_mod_lapd/characters/ene_fbi_swat_1/ene_fbi_swat_1"] = "awesometexpd",
+	["units/pd2_mod_lapd/characters/ene_fbi_swat_2/ene_fbi_swat_2"] = "awesometexpd",
+	["units/pd2_mod_lapd/characters/ene_fbi_swat_3/ene_fbi_swat_3"] = "awesometexpd",
+	["units/pd2_mod_lapd/characters/ene_fbi_heavy_1/ene_fbi_heavy_1"] = "awesometexpd",
+	["units/pd2_mod_lapd/characters/ene_fbi_heavy_r870_sc/ene_fbi_heavy_r870_sc"] = "awesometexpd",
+	["units/pd2_mod_lapd/characters/ene_shield_1/ene_shield_1"] = "awesometexpd",
+	["units/pd2_mod_lapd/characters/ene_sniper_2/ene_sniper_2"] = "awesometexpd"
+}
+
+local enemy_variations_sfpd_table = {
+	["units/pd2_mod_lapd/characters/ene_swat_1/ene_swat_1"] = "awesomesfpd",
+	["units/pd2_mod_lapd/characters/ene_swat_2/ene_swat_2"] = "awesomesfpd",
+	["units/pd2_mod_lapd/characters/ene_swat_3/ene_swat_3"] = "awesomesfpd",
+	["units/pd2_mod_lapd/characters/ene_swat_heavy_1/ene_swat_heavy_1"] = "awesomesfpd",
+	["units/pd2_mod_lapd/characters/ene_swat_heavy_r870/ene_swat_heavy_r870"] = "awesomesfpd",
+	["units/pd2_mod_lapd/characters/ene_shield_2/ene_shield_2"] = "awesomesfpd",
+	["units/pd2_mod_lapd/characters/ene_sniper_1/ene_sniper_1"] = "awesomesfpd",
+	["units/pd2_mod_lapd/characters/ene_fbi_swat_1/ene_fbi_swat_1"] = "awesomesfpd",
+	["units/pd2_mod_lapd/characters/ene_fbi_swat_2/ene_fbi_swat_2"] = "awesomesfpd",
+	["units/pd2_mod_lapd/characters/ene_fbi_swat_3/ene_fbi_swat_3"] = "awesomesfpd",
+	["units/pd2_mod_lapd/characters/ene_fbi_heavy_1/ene_fbi_heavy_1"] = "awesomesfpd",
+	["units/pd2_mod_lapd/characters/ene_fbi_heavy_r870_sc/ene_fbi_heavy_r870_sc"] = "awesomesfpd",
+	["units/pd2_mod_lapd/characters/ene_shield_1/ene_shield_1"] = "awesomesfpd",
+	["units/pd2_mod_lapd/characters/ene_sniper_2/ene_sniper_2"] = "awesomesfpd"
+}
+
 local enemy_variations_clean = {
 	["units/pd2_dlc_vip/characters/ene_titan_rifle/ene_titan_rifle"] = "swat_ar",
 	["units/pd2_dlc_vip/characters/ene_titan_sniper/ene_titan_sniper"] = "swat_sniper",
