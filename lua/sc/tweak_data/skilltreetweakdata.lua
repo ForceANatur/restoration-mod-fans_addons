@@ -2607,6 +2607,7 @@ function SkillTreeTweakData:init(tweak_data)
 				"buildup_meter_terrify_2",
 				"player_buildup_meter_zack_1",
 				"player_buildup_meter_zack_2",
+				"player_buildup_meter_zack_3",
 			},
 			texture_bundle_folder = "sc",
 			icon_xy = {0, 1}
@@ -2741,6 +2742,7 @@ function SkillTreeTweakData:init(tweak_data)
 				"player_buildup_meter_zack_1",
 				"player_buildup_meter_zack_2",
 				"player_buildup_meter_zack_3",
+				"player_buildup_meter_zack_4",
 			},
 			texture_bundle_folder = "sc",
 			icon_xy = {1, 0}
