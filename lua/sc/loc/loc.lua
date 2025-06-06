@@ -5155,6 +5155,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 		["loading_misc_res_1"] = "This mod of a mod was made public on Jul 21, 2024.",
 		["loading_misc_res_2"] = "No, Restoration Mod doesn't have a wiki. Yet... Also please don't use FANDOM for it. That wiki hosting website sucks.",
 		["loading_misc_res_3"] = "If you are reading this, you are playing a mod of a mod. I know. A modception you can call it.",
+		["loading_misc_res_4"] = "A peculiar message gets logged if you try to load this mod without BeardLib. It can be seen in Core.lua",
 		--Trivia Hints
 		["loading_fluff_res_title"] = "Restoration Trivia",
 		["loading_fluff_res_1"] = "OMNIA spends a fortune reviving failed or dead weapon projects.",
