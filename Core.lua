@@ -1,5 +1,5 @@
 if not ModCore then
-	log("[RestorationMod][Error] Dude come on you know this wont work without BeardLib ya dingus...")
+	log("[RestorationMod][Error] YOU FORGOT BEARDLIB LLLLLLLLLOOOOOOOOOOOOOOOOOOOLLLLLLLLLLLLLLLL")
 	return
 end
 
@@ -1123,7 +1123,11 @@ function restoration:gen_pointofnoreturn(id, name, pos, rot, opts)
 			elements_in_instances = opts.elements_in_instances or nil,
 			on_executed = opts.on_executed or {},
 			base_delay = opts.base_delay or 0,
-			tweak_id = "noreturn",
+			tweak_id = opts.tweak_id or "noreturn",
+			min_difficulty = opts.min_difficulty or nil,
+			bravos_difficulty_threshold = opts.bravos_difficulty_threshold or nil,
+			bravos_timer = opts.bravos_timer or nil,
+			stop_bravos_on_end = opts.stop_bravos_on_end or nil,
 			time_balance_mul_include_team_ai = opts.time_balance_mul_include_team_ai,
 			time_balance_mul = opts.time_balance_mul or nil,
 			time_easy = opts.time_easy or 0,
