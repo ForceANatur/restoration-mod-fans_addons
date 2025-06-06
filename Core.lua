@@ -1,5 +1,5 @@
 if not ModCore then
-	restoration.log_shit("[ERROR] Dude come on you know this wont work without BeardLib ya dingus...")
+	restoration.log_shit("[ERROR] YOU FORGOT BEARDLIB LLLLLLLLLOOOOOOOOOOOOOOOOOOOLLLLLLLLLLLLLLLL")
 	return
 end
 

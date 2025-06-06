@@ -744,7 +744,13 @@ function TipsTweakData:init()
 			image = "generic_tip",
 			consoles = true,
 			category = "misc_res"
-		},	
+		},
+		{
+			cat_index = 4,
+			image = "generic_tip",
+			consoles = true,
+			category = "misc_res"
+		},
 		{
 			cat_index = 1,
 			image = "loading_omnia",
