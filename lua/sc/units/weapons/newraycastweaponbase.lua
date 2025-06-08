@@ -270,11 +270,11 @@ function NewRaycastWeaponBase:conditional_accuracy_multiplier(current_state)
 		end
 		
 		if self:weapon_tweak_data().always_hipfire or self.AKIMBO then
-			mul = mul * ((tweak_data.weapon.stat_info.hipfire_only_spread_increase or 1) * ((self.AKIMBO and 0.8) or 1))
+			mul = mul * ((tweak_data.weapon.stat_info.hipfire_only_spread_increase or 1) * ( (multi_ray and 0.33) or (self.AKIMBO and 1) or 1))
 		end
 
 		if self:second_sight_spread_mult() then
-			mul = mul * (self:second_sight_spread_mult() / ((multi_ray and (tweak_data.weapon.stat_info.shotgun_spread_increase * 3.5)) or 1) )
+			mul = mul * (self:second_sight_spread_mult() / ((multi_ray and (tweak_data.weapon.stat_info.shotgun_spread_increase * 3)) or 1) )
 		end
 
 		if not is_moving then
@@ -1702,6 +1702,10 @@ function NewRaycastWeaponBase:precalculate_ammo_pickup()
 
 		for _, category in ipairs(self:categories()) do
 			pickup_multiplier = pickup_multiplier + managers.player:upgrade_value(category, "pick_up_multiplier", 1) - 1
+		end
+
+		if managers.player:has_category_upgrade("player", "armor_pickup_mul") then
+			pickup_multiplier = pickup_multiplier * managers.player:body_armor_value("skill_ammo_mul", nil, 1)
 		end
 
 		--Sharpeyed Team AI bonus, since now Enduring is a base thing

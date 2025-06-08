@@ -514,14 +514,17 @@ Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "ResSkillsInit", function(
 		0.7,
 		0.6
 	}
-	self.values.player.body_armor.skill_ammo_mul = { --UNUSED, increments of 0.02
-		1,
-		1.02,
-		1.04,
-		1.06,
-		1.1,
-		1.12,
-		1.16
+	self.values.player.body_armor.skill_ammo_mul = { --repurposed to pick up mult
+		0.85,
+		0.925,
+		1.00,
+		1.05,
+		1.075,
+		1.125,
+		1.15
+	}
+	self.values.player.armor_pickup_mul = {
+		true
 	}
 	self.max_deflection = 0.60
 	self.values.player.body_armor.deflection = { --*increments of 0.05
@@ -529,9 +532,9 @@ Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "ResSkillsInit", function(
 		0.05,
 		0.10,
 		0.15,
-		0.20, --1 increment instead of 2
-		0.15, --subtract 1 increment instead of adding 1
-		0.10 --subtract 1 increment instead of adding 2
+		0.20,
+		0.175,
+		0.125
 	}
 	self.values.player.body_armor.regen_delay = { --increments of 0.25
 		2.25,
@@ -1759,7 +1762,7 @@ Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "ResSkillsInit", function(
 					self.values.team.pistol.suppression_recoil_index_addend = self.values.team.pistol.recoil_index_addend
 				--Ace
 					self.values.pistol.swap_speed_multiplier = {2}
-					self.values.akimbo.swap_speed_multiplier = {1.5}
+					self.values.akimbo.swap_speed_multiplier = {1.25}
 					
 					self.skill_descs.equilibrium = {
 					skill_value_b1 = tostring(self.values.team.pistol.recoil_index_addend[1]), -- +Stability
@@ -1774,7 +1777,7 @@ Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "ResSkillsInit", function(
 				--Ace
 					self.values.pistol.fire_rate_multiplier = {1.15}
 					self.values.pistol.ap_bullets = {1.0}
-					self.values.akimbo.ap_bullets = {0.5}
+					self.values.akimbo.ap_bullets = {0.25}
 					
 					self.skill_descs.dance_instructor = {
 						skill_value_b1 = tostring((1 - self.values.pistol.hip_fire_spread_multiplier[1]) * 100).."%", -- Reduce hipfire spread
@@ -2446,6 +2449,9 @@ Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "ResSkillsInit", function(
 			effect_max = 0.1,
 		},
 	}
+	self.values.player.buildup_meter_quickening = { --armor to base combo
+		{combo_add_mod = 1, armor_steps = 10}
+	}
 	self.values.player.buildup_meter_terrify = { --panic
 		{
 			combo_steps = 5,
@@ -3116,20 +3122,22 @@ Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "ResSkillsInit", function(
 		--perk_value_1 = "18", -- Required range to activate additional armor regen on kill (Same range as "Underdog" skill)
 		--perk_value_2 = tostring(self.values.player.killshot_close_regen_armor_bonus[1][1] * 10), -- Additional armor regen when player killed enemy in specified range
 		--perk_value_3 = tostring((self.values.player.passive_dodge_chance[2] - self.values.player.passive_dodge_chance[1]) * 100) -- Additional dodge
-		perk_value_1 = tostring(self.values.player.buildup_meter[2].combo_decay),
-		perk_value_2 = tostring(self.values.player.buildup_meter_elude[1].combo_steps),
-		perk_value_3 = tostring(self.values.player.buildup_meter_elude[1].effect * 100) .. "%",
-		perk_value_4 = tostring(self.values.player.buildup_meter_elude[1].effect_max * 100) .. "%",
-		perk_value_5 = tostring((self.values.player.passive_dodge_chance[2] - self.values.player.passive_dodge_chance[1]) * 100) -- Passive dodge increase
+		perk_value_1 = tostring(self.values.player.buildup_meter_quickening[1].combo_add_mod),
+		perk_value_2 = tostring(self.values.player.buildup_meter_quickening[1].armor_steps * 10),
+		perk_value_3 = tostring(self.values.player.buildup_meter_elude[1].combo_steps),
+		perk_value_4 = tostring(self.values.player.buildup_meter_elude[1].effect * 100) .. "%",
+		perk_value_5 = tostring(self.values.player.buildup_meter_elude[1].effect_max * 100) .. "%",
+		perk_value_6 = tostring((self.values.player.passive_dodge_chance[2] - self.values.player.passive_dodge_chance[1]) * 100), -- Passive dodge increase
 	}
 	self.specialization_descs[9][9] = {
 		--perk_value_1 = "18", -- Required range to activate panic (Same range as "Underdog" skill)
 		--perk_value_2 = tostring(self.values.player.killshot_close_panic_chance[1] * 100).."%", -- Panic chance
 		--perk_value_3 = tostring(self.killshot_close_panic_range / 100) -- Panic spread range
-		perk_value_1 = tostring(self.values.player.buildup_meter_terrify[1].combo_steps),
-		perk_value_2 = tostring(self.values.player.buildup_meter_terrify[1].effect * 100) .. "%",
-		perk_value_3 = tostring(self.killshot_close_panic_range / 100), -- Panic spread range
-		perk_value_4 = tostring(self.values.player.buildup_meter_terrify[1].effect_max * 100) .. "%"
+		perk_value_1 = tostring(self.values.player.buildup_meter[2].combo_decay),
+		perk_value_2 = tostring(self.values.player.buildup_meter_terrify[1].combo_steps),
+		perk_value_3 = tostring(self.values.player.buildup_meter_terrify[1].effect * 100) .. "%",
+		perk_value_4 = tostring(self.killshot_close_panic_range / 100), -- Panic spread range
+		perk_value_5 = tostring(self.values.player.buildup_meter_terrify[1].effect_max * 100) .. "%",
 	}
 
 	self.multi_choice_specialization_descs[9] = { [9] = {} } --table setup for last card multichoice
@@ -4048,6 +4056,15 @@ function UpgradesTweakData:_player_definitions()
 	sc_definitions (self, tweak_data)
 
 	--New Definitions, calling em here to play it safe--
+	self.definitions.player_armor_pickup_mul = {
+		name_id = "menu_player_armor_pickup_mul",
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "armor_pickup_mul",
+			category = "player"
+		}
+	}
 	self.definitions.player_detection_risk_stamina_regen = {
 		name_id = "menu_player_detection_risk_stamina_regen",
 		category = "feature",
@@ -5479,6 +5496,15 @@ function UpgradesTweakData:_player_definitions()
 		upgrade = {
 			value = 4,
 			upgrade = "buildup_meter_elude",
+			category = "player"
+		}
+	}
+	self.definitions.player_buildup_meter_quickening = {
+		name_id = "menu_player_buildup_quickening",
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "buildup_meter_quickening",
 			category = "player"
 		}
 	}
