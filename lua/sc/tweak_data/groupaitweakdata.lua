@@ -10000,33 +10000,41 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 		access = access_type_all,
 		special_type = "headless_hatman"
 	}
-	--Headless Titandozers that spawn with boss on Death Wish
+	--Headless Titandozers and Vanilla Skulldozers that spawn with boss on Death Wish
 	self.unit_categories.HVH_Boss_Headless = {
 		unit_types = {
 			america = {
+				Idstring("units/payday2/characters/ene_bulldozer_3/ene_bulldozer_3"),
 				Idstring("units/payday2/characters/ene_bulldozer_2_hw/ene_bulldozer_2_hw")
 			},
 			russia = {
+				Idstring("units/pd2_dlc_mad/characters/ene_akan_fbi_tank_rpk_lmg/ene_akan_fbi_tank_rpk_lmg"),
 				Idstring("units/payday2/characters/ene_bulldozer_2_hw/ene_bulldozer_2_hw")
 			},
 			zombie = {
+				Idstring("units/pd2_dlc_hvh/characters/ene_bulldozer_hvh_3/ene_bulldozer_hvh_3"),
 				Idstring("units/payday2/characters/ene_bulldozer_2_hw/ene_bulldozer_2_hw")
-			},					
+			},
 			murkywater = {
+				Idstring("units/pd2_dlc_bph/characters/ene_murkywater_bulldozer_4/ene_murkywater_bulldozer_4"),
 				Idstring("units/payday2/characters/ene_bulldozer_2_hw/ene_bulldozer_2_hw")
 			},
 			federales = {
+				Idstring("units/pd2_dlc_bex/characters/ene_swat_dozer_policia_federale_m249/ene_swat_dozer_policia_federale_m249"),
 				Idstring("units/payday2/characters/ene_bulldozer_2_hw/ene_bulldozer_2_hw")
-			},				
+			},
 			nypd = {
+				Idstring("units/payday2/characters/ene_bulldozer_3/ene_bulldozer_3"),
 				Idstring("units/payday2/characters/ene_bulldozer_2_hw/ene_bulldozer_2_hw")
 			},	
 			lapd = {
+				Idstring("units/payday2/characters/ene_bulldozer_3/ene_bulldozer_3"),
 				Idstring("units/payday2/characters/ene_bulldozer_2_hw/ene_bulldozer_2_hw")
 			},
 			fbi = {
+				Idstring("units/payday2/characters/ene_bulldozer_3/ene_bulldozer_3"),
 				Idstring("units/payday2/characters/ene_bulldozer_2_hw/ene_bulldozer_2_hw")
-			}			
+			}
 		},
 		access = access_type_all,
 		special_type = "tank",
