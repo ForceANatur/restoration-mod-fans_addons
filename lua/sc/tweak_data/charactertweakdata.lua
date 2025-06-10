@@ -15998,9 +15998,9 @@ function CharacterTweakData:_presets(tweak_data)
 	presets.weapon.gang_member.is_dmr.FALLOFF = {
 		{
 			r = 100,
-			acc = {0.9, 1},
+			acc = {0.7, 1},
 			dmg_mul = 1.25,
-			recoil = {0.4, 0.8},
+			recoil = {0.7, 1.2},
 			mode = {
 				1,
 				0,
@@ -16010,9 +16010,9 @@ function CharacterTweakData:_presets(tweak_data)
 		},
 		{
 			r = 500,
-			acc = {0.8, 0.9},
+			acc = {0.7, 0.9},
 			dmg_mul = 1.25,
-			recoil = {0.45, 0.8},
+			recoil = {0.7, 1.2},
 			mode = {
 				1,
 				0,
@@ -16024,7 +16024,7 @@ function CharacterTweakData:_presets(tweak_data)
 			r = 1000,
 			acc = {0.7, 0.8},
 			dmg_mul = 1.25,
-			recoil = {0.35, 0.75},
+			recoil = {0.7, 1.2},
 			mode = {
 				1,
 				0,
@@ -16036,7 +16036,7 @@ function CharacterTweakData:_presets(tweak_data)
 			r = 1800,
 			acc = {0.6, 0.7},
 			dmg_mul = 1.25,
-			recoil = {0.35, 0.75},
+			recoil = {0.9, 1.8},
 			mode = {
 				1,
 				0,
@@ -16048,7 +16048,7 @@ function CharacterTweakData:_presets(tweak_data)
 			r = 2000,
 			acc = {0.5, 0.6},
 			dmg_mul = 1.25,
-			recoil = {0.4, 1.2},
+			recoil = {0.9, 1.8},
 			mode = {
 				1,
 				0,
@@ -16297,7 +16297,7 @@ function CharacterTweakData:_presets(tweak_data)
 			}
 		}			
 	}
-	presets.weapon.gang_member.is_dmr.spread = 8
+	presets.weapon.gang_member.is_dmr.spread = 12
 	presets.weapon.gang_member.is_dmr.RELOAD_SPEED = 0.9
 	presets.weapon.gang_member.is_sniper = deep_clone(presets.weapon.gang_member.rifle)
 	presets.weapon.gang_member.is_sniper.RELOAD_SPEED = 0.9	
