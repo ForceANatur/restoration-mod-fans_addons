@@ -31430,7 +31430,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			self.temple.BURST_FIRE_RECOIL_MULTIPLIER = 0.7
 			self.temple.BURST_FIRE_LAST_RECOIL_MULTIPLIER = 1.02
 			self.temple.CAN_TOGGLE_FIREMODE = false
-			self.sideload.fire_mode_data.fire_rate = 0.1304347826086957
+			self.temple.fire_mode_data.fire_rate = 0.1304347826086957
 		--	self.temple.shell_ejection = "effects/payday2/particles/weapons/shells/shell_empty" --caseless ammo you dirt bag
 			self.temple.stats = {
 				damage = 44,
