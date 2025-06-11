@@ -1542,10 +1542,10 @@ local crew_wep_preset = {
 		self.argos_bravo_npc.sounds.prefix = "ultima_npc"
 	end
 
-	--Vanilla Deagle, less lethal (Marshal Shields)
+	--Vanilla Deagle
 	function WeaponTweakData:_init_data_deagle_npc()
 		self.deagle_npc = deep_clone(self.raging_bull_npc)
-		self.deagle_npc.DAMAGE = 3 --Slightly more damage than the standard pistol, just so Marshal shields are a bit more balanced compared to their standard Titan Shield counterpart
+		self.deagle_npc.DAMAGE = 8
 		self.deagle_npc.CLIP_AMMO_MAX = 8
 		self.deagle_npc.sounds.prefix = "deagle_npc"
 		self.deagle_npc.anim_usage = "is_pistol"
@@ -1553,12 +1553,12 @@ local crew_wep_preset = {
 		self.deagle_npc.reload = "pistol"	
 	end
 
-	--Marshal Shield Phase 2 Shotgun, less lethal
+	--Marshal Shield Phase 2 Shotgun
 	function WeaponTweakData:_init_data_sko12_conc_npc()
 		self.sko12_conc_npc.categories = clone(self.sko12.categories)
 		self.sko12_conc_npc.sounds.prefix = "sko12_npc"
 		self.sko12_conc_npc.use_data.selection_index = 2
-		self.sko12_conc_npc.DAMAGE = 1
+		self.sko12_conc_npc.DAMAGE = 5
 		self.sko12_conc_npc.muzzleflash = "effects/payday2/particles/weapons/big_762_auto"
 		self.sko12_conc_npc.shell_ejection = "effects/payday2/particles/weapons/shells/shell_slug_g2"
 		self.sko12_conc_npc.CLIP_AMMO_MAX = 25
@@ -11422,9 +11422,9 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.hajk.kick_pattern = {
 							{0, self.stat_info.kick_tables.moderate_kick},
 							{6, self.stat_info.kick_tables.moderate_right_kick},
-							{7, self.stat_info.kick_tables.moderate_kick},
-							{13, self.stat_info.kick_tables.right_recoil},
-							{20, self.stat_info.kick_tables.moderate_kick}
+							{9, self.stat_info.kick_tables.moderate_kick},
+							{14, self.stat_info.kick_tables.right_recoil},
+							{22, self.stat_info.kick_tables.moderate_kick}
 						}
 						self.hajk.categories = {
 							"assault_rifle"
@@ -12341,12 +12341,12 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							"dmr_h"
 						}
 						self.ching.FIRE_MODE = "single"
-						self.ching.fire_mode_data.fire_rate = 0.12
+						self.ching.fire_mode_data.fire_rate = 0.125
 						self.ching.CAN_TOGGLE_FIREMODE = false
 						self.ching.has_description = true
 						self.ching.desc_id = "bm_galant_sc_desc"
 						self.ching.CLIP_AMMO_MAX = 8
-						self.ching.AMMO_MAX = 60
+						self.ching.AMMO_MAX = 40
 						self.ching.CAN_TOGGLE_FIREMODE = false
 						self.ching.kick = self.stat_info.kick_tables.vertical_kick
 						self.ching.kick_pattern = {
@@ -12359,12 +12359,12 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.ching.supported = true
 						self.ching.ads_speed = 0.300
 						self.ching.damage_falloff = {
-							start_dist = 3800,
+							start_dist = 2800,
 							end_dist = 8800,
-							min_mult = 0.5
+							min_mult = 0.3333
 						}
 						self.ching.stats = {
-							damage = 60,
+							damage = 90,
 							spread = 86,
 							recoil = 61,
 							spread_moving = 6,
@@ -31712,15 +31712,15 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				--RIFLES
 				elseif table.contains(weap.categories, "assault_rifle") then
 					if weap.damage_type == "sniper" then
-						weap.object_damage_mult = 1.25
+						weap.object_damage_mult = 1.5
 					end
 				elseif table.contains(weap.categories, "snp") then
 					if weap.damage_type == "anti_materiel" then
 						weap.object_damage_mult = 4
 					elseif weap.damage_type == "sniper" then
-						weap.object_damage_mult = 1.75
+						weap.object_damage_mult = 2
 						if table.contains(weap.categories, "semi_snp") then
-							weap.object_damage_mult = 1.25
+							weap.object_damage_mult = 1.5
 						end
 					end
 				--MGs
@@ -31731,15 +31731,15 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						weap.object_damage_mult = 0.75
 					end
 					if table.contains(weap.categories, "pdw") then
-						weap.object_damage_mult = 1.25
+						weap.object_damage_mult = 1.5
 					end
 				--PISTOLS
 				elseif table.contains(weap.categories, "pistol") then
 					if weap.damage_type == "handcannon" then
-						weap.object_damage_mult = 1.25
+						weap.object_damage_mult = 1.5
 					end
 					if table.contains(weap.categories, "pdw") then
-						weap.object_damage_mult = 1.25
+						weap.object_damage_mult = 1.5
 					end
 				--SHOTGUNS
 				elseif table.contains(weap.categories, "shotgun") then
@@ -31753,9 +31753,9 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				end
 
 				if weap.damage_type_single_ray == "sniper" then
-					weap.object_damage_mult_single_ray = 1.75
+					weap.object_damage_mult_single_ray = 2
 					if table.contains(weap.recategorize, "light_shot") then
-						weap.object_damage_mult_single_ray = 1.25
+						weap.object_damage_mult_single_ray = 1.5
 					end
 				elseif weap.damage_type_single_ray == "anti_materiel" then
 					weap.object_damage_mult_single_ray = 4
@@ -32157,11 +32157,11 @@ function WeaponTweakData:calculate_ammo_pickup(weapon, id)
 			shotgun_heavy = 1.00, --Light
 			shotgun_break = 1.08, --Heavy
 			shotgun_super = 1.11,
-		--assault_rifle = 1,
-			dmr_l = 0.9,
-			dmr_h = 0.9,
-			--snp = 1,
-				semi_snp = 0.75,
+		assault_rifle = 1,
+			dmr_l = 0.98,
+			dmr_h = 0.98,
+			snp = 0.965,
+				semi_snp = 0.8,
 				amr = 0.96,
 		saw = 1.25, --Compensate for jankiness.
 		bow = 0.6, --Compensate for picking arrows back up.
