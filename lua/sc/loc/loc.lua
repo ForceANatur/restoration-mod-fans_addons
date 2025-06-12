@@ -3840,6 +3840,9 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 					["bm_w_amt"] = ".44 Auto Mag",
 					["bm_w_p99"] = "Walther P99",
 					["bm_w_hpb"] = "Browning Hi-Power",
+					--CUSTOM PISTOLS
+					--ZiP 22
+					["bm_w_zip22"] = "USFA ZiP .22",
 
 				--[[SMGs]]
 					--P90

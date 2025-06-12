@@ -729,8 +729,11 @@ function RaycastWeaponBase:fire(from_pos, direction, dmg_mul, shoot_player, spre
 
 	if is_player and self:weapon_tweak_data().zippy then
 		local jam = math.rand(1)
-		if jam > 0.99 then
-			dmg_mul = 0
+		if jam < 0.99 and self:ammo_base():get_ammo_remaining_in_clip() > 0 then
+			--dmg_mul = 0
+			--self:dryfire()
+			self._jammed = true
+			self._next_fire_allowed = self._next_fire_allowed + (2 / self:fire_rate_multiplier())
 		end
 	end
 
