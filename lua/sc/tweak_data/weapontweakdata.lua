@@ -1550,7 +1550,7 @@ local crew_wep_preset = {
 		self.deagle_npc.sounds.prefix = "deagle_npc"
 		self.deagle_npc.anim_usage = "is_pistol"
 		self.deagle_npc.hold = "pistol"
-		self.deagle_npc.reload = "pistol"	
+		self.deagle_npc.reload = "pistol"
 	end
 
 	--Marshal Shield Phase 2 Shotgun
@@ -8488,7 +8488,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.hailstorm.fire_mode_data.volley.armor_piercing_chance = 1
 						self.hailstorm.fire_mode_data.volley.muzzleflash = "effects/payday2/particles/weapons/hailstorm_volley_effect"
 						self.hailstorm.fire_mode_data.volley.muzzleflash_silenced = "effects/payday2/particles/weapons/hailstorm_suppressed_volley"
-						self.hailstorm.fire_mode_data.volley.object_damage_mult = 0.75
+						self.hailstorm.object_damage_mult_volley = 0.75
 						self.hailstorm.fire_mode_data.toggable = {
 							"volley",
 							"auto"

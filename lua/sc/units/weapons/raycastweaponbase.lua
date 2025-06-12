@@ -238,13 +238,11 @@ end
 local ids_volley = Idstring("volley")
 function RaycastWeaponBase:get_object_damage_mult()
 	if self._fire_mode and self._fire_mode == ids_volley then
-		local fire_mode_data = self:weapon_tweak_data().fire_mode_data
-		local volley_fire_mode = fire_mode_data and fire_mode_data.volley
-		return volley_fire_mode and volley_fire_mode.object_damage_mult or 0.75
-	elseif self._rays and self._rays == 1 and self:weapon_tweak_data().object_damage_mult_single_ray then
-		return self:weapon_tweak_data().object_damage_mult_single_ray
+		return self._object_damage_mult_volley
+	elseif self._rays and self._rays == 1 and self._object_damage_mult_single_ray then
+		return self._object_damage_mult_single_ray
 	else
-		return self:weapon_tweak_data().object_damage_mult or 1
+		return self._object_damage_mult
 	end
 end
 
@@ -716,8 +714,11 @@ function RaycastWeaponBase:fire(from_pos, direction, dmg_mul, shoot_player, spre
 
 	if is_player and self:weapon_tweak_data().zippy then
 		local jam = math.rand(1)
-		if jam > 0.99 then
-			dmg_mul = 0
+		if jam < 0.99 and self:ammo_base():get_ammo_remaining_in_clip() > 0 then
+			--dmg_mul = 0
+			--self:dryfire()
+			self._jammed = true
+			self._next_fire_allowed = self._next_fire_allowed + (2 / self:fire_rate_multiplier())
 		end
 	end
 
