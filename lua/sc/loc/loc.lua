@@ -2656,7 +2656,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 					--Px4 Storm
 					["bm_wp_wpn_fps_upg_px4_barrel_sd"] = "SD Long Barrel",
 					--Zippy
-					["bm_zippy_sc_desc"] = "The ultimate weapon, in ejection failures and misfires. You'll be lucky to get two shots out of this thing without blowing off your fingers.",
+					["bm_zippy_sc_desc"] = "The ultimate weapon, in ejection failures and misfires. You'll be lucky to get two shots out of this thing without blowing off your fingers... Is what we would say if OMNIA just so happen to fitted with a ZIPPY Fix-it Kit! Now it only jams 1% of the time!",
 					--Auto-9
 					["bm_wp_rc_auto9_cartoon"] = "Animated Series Tracers",
 					["bm_wp_rc_auto9_cartoon_desc"] = "Party like it's 1988!",
