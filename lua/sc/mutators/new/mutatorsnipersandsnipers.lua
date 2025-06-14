@@ -6,7 +6,9 @@ MutatorSnipersAndSnipers.reductions = {
 	money = 0,
 	exp = 0
 }
-MutatorSnipersAndSnipers.incompatibility_tags = {}		
+MutatorSnipersAndSnipers.incompatibility_tags = {
+	"replaces_weapons"
+}		
 MutatorSnipersAndSnipers.disables_achievements = true
 MutatorSnipersAndSnipers.categories = {"enemies"}
 MutatorSnipersAndSnipers.icon_coords = {

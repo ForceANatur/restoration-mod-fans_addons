@@ -192,11 +192,11 @@ function MutatorEnemyReplacer:setup()
 	local difficulty_index = tweak_data:difficulty_to_index(difficulty)
 
 	self:modify_unit_categories(tweak_data.group_ai, difficulty_index)
-	
+
 	if not PackageManager:loaded("packages/miscassetsmutators") then
 		PackageManager:load("packages/miscassetsmutators")
 	end
-	
+
 	--Make Snipers be able to use SOs with SWAT access
 	tweak_data.character.sniper.access = {
 		"swat",

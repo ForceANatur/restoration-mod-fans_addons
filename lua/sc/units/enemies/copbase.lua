@@ -851,6 +851,43 @@ function CopBase:default_weapon_name(...)
 			self._default_weapon_id = "ump"
 			self._weapon_set = true
 		end
+
+		if self._tweak_table == "medic" then
+			if faction == "america" or faction == "zombie" or faction == "nypd" or faction == "lapd" or faction == "fbi" then
+				self._default_weapon_id = "bravo_lmg"
+				self._weapon_set = true
+			elseif faction == "russia" then
+				self._default_weapon_id = "bravo_rpk74"
+				self._weapon_set = true
+			elseif faction == "murkywater" then
+				self._default_weapon_id = "m60_om"
+				self._weapon_set = true
+			elseif faction == "federales" then
+				self._default_weapon_id = "hk21_bravo_npc"
+				self._weapon_set = true
+			end
+		end
+
+		if self._tweak_table == "spooc" then
+			if faction == "america" or faction == "zombie" or faction == "nypd" or faction == "lapd" or faction == "fbi" then
+				self._default_weapon_id = "bravo_rifle"
+				self._weapon_set = true
+			elseif faction == "russia" then
+				self._default_weapon_id = "bravo_ak17"
+				self._weapon_set = true
+			elseif faction == "murkywater" then
+				self._default_weapon_id = "oicw"
+				self._weapon_set = true
+			elseif faction == "federales" then
+				self._default_weapon_id = "hk33_bravo"
+				self._weapon_set = true
+			end
+		end
+		-- suffer
+		if self._tweak_table == "medic_heavy" then
+			self._default_weapon_id = "m32"
+			self._weapon_set = true
+		end
 	end
 
 	--For High Noon mutator

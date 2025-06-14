@@ -3907,13 +3907,7 @@ function CharacterTweakData:_init_boom(presets)
 	self.boom.priority_shout_max_dis = 3000
 	self.boom.custom_shout = true
 	self.boom.deathguard = true
-	self.boom.chatter = {
-		aggressive = true,
-		retreat = true,
-		go_go = true,
-		contact = true,
-		entrance = true
-	}
+	self.boom.chatter = presets.enemy_chatter.swat
 	self.boom.announce_incomming = "incomming_gren"
 	self.boom.steal_loot = nil
 	if self:get_ai_group_type() == "federales" then
@@ -3928,8 +3922,8 @@ function CharacterTweakData:_init_boom(presets)
 	else
 		self.boom.custom_voicework = "grenadier"
 	end
-	self.boom.is_special = true	
-	self.boom.no_asu = true	
+	self.boom.is_special = true
+	self.boom.no_asu = true
 	self.boom.marshal_logic = true
 	self.boom.heal_cooldown = 7.5
 	table.insert(self._enemy_list, "boom")

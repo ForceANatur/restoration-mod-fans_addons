@@ -27366,6 +27366,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			self.cagnali.has_description = true
 			self.cagnali.weapon_hold = "cagnali"
 			self.cagnali.desc_id = "bm_w_cagnali_desc"
+			self.cagnali.tactical_reload = 1
 			self.cagnali.shell_ejection = "effects/payday2/particles/weapons/shells/shell_9mm"
 			self.cagnali.damage_falloff = {
 				start_dist = 1100,
@@ -27423,6 +27424,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			}
 			self.amcar4.reload_speed_multiplier = 0.88
 			self.amcar4.panic_suppression_chance = 0.05
+			self.amcar4.tactical_reload = 1
 		end
 
 		if self.baker then -- Travis Baker's Repeater
@@ -27461,6 +27463,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			self.baker.fire_rate_multiplier = 1.714285
 			self.baker.timers = deep_clone(self.winchester1874.timers)
 			self.baker.panic_suppression_chance = 0.05
+			self.baker.tactical_reload = 1
 		end
 
 		if self.thirdeye then --Third Eye Railgun
@@ -27528,6 +27531,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			}
 			self.hawk12.stats_modifiers = nil
 			self.hawk12.panic_suppression_chance = 0.05
+			self.hawk12.tactical_reload = 1
 			self.hawk12.timers = deep_clone(self.saiga.timers)
 		end
 
@@ -27572,6 +27576,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			self.knockout.can_shoot_through_shield = true
 			self.knockout.can_shoot_through_wall = true
 			self.knockout.can_shoot_through_titan_shield = true
+			self.knockout.tactical_reload = 1
 		end
 
 		if self.kedr then
@@ -27606,6 +27611,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			}
 			self.kedr.stats_modifiers = nil
 			self.kedr.panic_suppression_chance = 0.05
+			self.kedr.tactical_reload = 1
 			self.kedr.timers = deep_clone(self.tec9.timers)
 		end
 
@@ -27642,6 +27648,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			}
 			self.af2011.stats_modifiers = nil
 			self.af2011.panic_suppression_chance = 0.05
+			self.af2011.tactical_reload = 2
 			self.af2011.timers = deep_clone(self.b92fs.timers)
 		end
 
@@ -27681,6 +27688,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			self.perun.timers.reload_exit_empty = 1.6
 			self.perun.timers.reload_exit_not_empty = 1.6
 			self.perun.hs_mult = 1.11
+			self.perun.tactical_reload = 1
 		end
 
 		if self.sideload then --UTS-15
@@ -27727,6 +27735,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			self.sideload.reload_fix_offset2 = 0.025
 			self.sideload.reload_fix_mult2 = 1.08
 			self.sideload.reload_speed_multiplier = 0.9
+			self.sideload.tactical_reload = 1
 			self.sideload.timers = deep_clone(self.ksg.timers)
 		end
 
@@ -27806,6 +27815,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			self.tar21.timers = deep_clone(self.vhs.timers)
 			self.tar21.panic_suppression_chance = 0.05
 			self.tar21.reload_speed_multiplier = 1.15
+			self.tar21.tactical_reload = 1
 		end
 
 		if self.k3 then
@@ -27887,6 +27897,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				value = 2,
 				reload = 20
 			}
+			self.owen.tactical_reload = 1
 		end
 
 		if self.m3 then	-- M3 Grease Gun
@@ -27959,6 +27970,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			self.m38a.stats_modifiers = nil
 			self.m38a.timers = deep_clone(self.m45.timers)
 			self.m38a.panic_suppression_chance = 0.05
+			self.m38a.tactical_reload = 1
 		end
 
 	--Automatically generate reasonableish stats for custom weapons.
