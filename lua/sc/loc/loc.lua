@@ -5360,8 +5360,8 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 		["mutator_morespecials_whywhywhy_longdesc"] = "Sets the special unit cap to 99.\n\nyoure making a huge mistake lol",
 
 		["MutatorUMP4U2"] = "Sting Like A Bee",
-		["MutatorUMP4U2_desc"] = "FBI units have better guns.",
-		["MutatorUMP4U2_longdesc"] = "FBI units use the M1014 and Hostage Rescue Teams and ASU units have the UMP. Vet Cops have akimbo Broncos.",
+		["MutatorUMP4U2_desc"] = "Some units have better guns.",
+		["MutatorUMP4U2_longdesc"] = "FBI units use the M1014 and Hostage Rescue Teams and ASU units have the UMP. Vet Cops have akimbo Broncos. Medics have their bravo related LMGs and Clokers have their bravo related rifles.",
 
 		["menu_cg22_post_objective_1_desc"] = "Kill 200 enemies with any sniper rifle.",
 		["menu_cg22_post_objective_2_desc"] = "Kill 15 Cloakers with the North Star rifle on Very Hard or above.",

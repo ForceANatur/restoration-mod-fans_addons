@@ -77,7 +77,7 @@ function CharacterTweakData:_init_region_america()
 		bulldozer = "bdz",
 		medic = "mdc"
 	}
-	self._speech_prefix_p2 = "n"
+	self._speech_prefix_p2 = "d"
 end
 
 function CharacterTweakData:_init_region_russia()
@@ -147,7 +147,7 @@ function CharacterTweakData:_init_region_nypd()
 		bulldozer = "bdz",
 		medic = "mdc"
 	}
-	self._speech_prefix_p2 = "n"
+	self._speech_prefix_p2 = "d"
 end
 
 function CharacterTweakData:_init_region_lapd()
@@ -161,7 +161,7 @@ function CharacterTweakData:_init_region_lapd()
 		bulldozer = "bdz",
 		medic = "mdc"
 	}
-	self._speech_prefix_p2 = "n"
+	self._speech_prefix_p2 = "d"
 end		
 
 function CharacterTweakData:_init_region_fbi()
@@ -175,7 +175,7 @@ function CharacterTweakData:_init_region_fbi()
 		bulldozer = "bdz",
 		medic = "mdc"
 	}
-	self._speech_prefix_p2 = "n"
+	self._speech_prefix_p2 = "d"
 end
 
 function CharacterTweakData:get_ai_group_type()    
@@ -1280,7 +1280,7 @@ function CharacterTweakData:_init_city_swat(presets)
 	else
 		self.city_swat_titan.custom_voicework = "pdth"
 	end
-	if self:get_ai_group_type() == "murkywater" or self:get_ai_group_type() == "russia" or self:get_ai_group_type() == "federales" or self:get_ai_group_type() == "fbi" then
+	if self:get_ai_group_type() == "murkywater" or self:get_ai_group_type() == "russia" or self:get_ai_group_type() == "federales" then
 		self.city_swat_titan.yellow_blood = false
 	else
 		self.city_swat_titan.yellow_blood = true
@@ -3834,7 +3834,7 @@ function CharacterTweakData:_init_taser(presets)
 	self.taser_titan.is_special = true	
 	self.taser_titan.no_asu = true
 	self.taser_titan.no_xmas_hat = true
-	if self:get_ai_group_type() == "russia" or self:get_ai_group_type() == "federales" or self:get_ai_group_type() == "fbi" then
+	if self:get_ai_group_type() == "russia" or self:get_ai_group_type() == "federales" then
 		self.taser_titan.yellow_blood = false
 	else
 		self.taser_titan.yellow_blood = true
@@ -3907,13 +3907,7 @@ function CharacterTweakData:_init_boom(presets)
 	self.boom.priority_shout_max_dis = 3000
 	self.boom.custom_shout = true
 	self.boom.deathguard = true
-	self.boom.chatter = {
-		aggressive = true,
-		retreat = true,
-		go_go = true,
-		contact = true,
-		entrance = true
-	}
+	self.boom.chatter = presets.enemy_chatter.swat
 	self.boom.announce_incomming = "incomming_gren"
 	self.boom.steal_loot = nil
 	if self:get_ai_group_type() == "federales" then
@@ -3928,8 +3922,8 @@ function CharacterTweakData:_init_boom(presets)
 	else
 		self.boom.custom_voicework = "grenadier"
 	end
-	self.boom.is_special = true	
-	self.boom.no_asu = true	
+	self.boom.is_special = true
+	self.boom.no_asu = true
 	self.boom.marshal_logic = true
 	self.boom.heal_cooldown = 7.5
 	table.insert(self._enemy_list, "boom")
@@ -15998,9 +15992,9 @@ function CharacterTweakData:_presets(tweak_data)
 	presets.weapon.gang_member.is_dmr.FALLOFF = {
 		{
 			r = 100,
-			acc = {0.7, 1},
+			acc = {0.9, 1},
 			dmg_mul = 1.25,
-			recoil = {0.7, 1.2},
+			recoil = {0.4, 0.8},
 			mode = {
 				1,
 				0,
@@ -16010,9 +16004,9 @@ function CharacterTweakData:_presets(tweak_data)
 		},
 		{
 			r = 500,
-			acc = {0.7, 0.9},
+			acc = {0.8, 0.9},
 			dmg_mul = 1.25,
-			recoil = {0.7, 1.2},
+			recoil = {0.45, 0.8},
 			mode = {
 				1,
 				0,
@@ -16024,7 +16018,7 @@ function CharacterTweakData:_presets(tweak_data)
 			r = 1000,
 			acc = {0.7, 0.8},
 			dmg_mul = 1.25,
-			recoil = {0.7, 1.2},
+			recoil = {0.35, 0.75},
 			mode = {
 				1,
 				0,
@@ -16036,7 +16030,7 @@ function CharacterTweakData:_presets(tweak_data)
 			r = 1800,
 			acc = {0.6, 0.7},
 			dmg_mul = 1.25,
-			recoil = {0.9, 1.8},
+			recoil = {0.35, 0.75},
 			mode = {
 				1,
 				0,
@@ -16048,7 +16042,7 @@ function CharacterTweakData:_presets(tweak_data)
 			r = 2000,
 			acc = {0.5, 0.6},
 			dmg_mul = 1.25,
-			recoil = {0.9, 1.8},
+			recoil = {0.4, 1.2},
 			mode = {
 				1,
 				0,
@@ -16297,7 +16291,7 @@ function CharacterTweakData:_presets(tweak_data)
 			}
 		}			
 	}
-	presets.weapon.gang_member.is_dmr.spread = 12
+	presets.weapon.gang_member.is_dmr.spread = 8
 	presets.weapon.gang_member.is_dmr.RELOAD_SPEED = 0.9
 	presets.weapon.gang_member.is_sniper = deep_clone(presets.weapon.gang_member.rifle)
 	presets.weapon.gang_member.is_sniper.RELOAD_SPEED = 0.9	
@@ -19264,7 +19258,6 @@ local orig_character_map = CharacterTweakData.character_map
 function CharacterTweakData:character_map()
 	local char_map = orig_character_map()
 	--Basic
-		table.insert(char_map.basic.list, "ene_head_atlas")
 	
 		--CS Tier
 		table.insert(char_map.basic.list, "ene_bulldozer_1_sc")
@@ -19357,11 +19350,6 @@ function CharacterTweakData:character_map()
 		table.insert(char_map.ranc.list, "ene_cop_4")
 	--usm1
 		table.insert(char_map.usm1.list, "ene_male_marshal_marksman_scripted_2")
-		table.insert(char_map.usm1.list, "ene_titan_sniper")
-		table.insert(char_map.usm1.list, "ene_titan_rifle")
-		table.insert(char_map.usm1.list, "ene_titan_shotgun")
-		table.insert(char_map.usm1.list, "ene_titan_taser")
-		table.insert(char_map.usm1.list, "ene_phalanx_1_assault")
 	--Christmas
 		table.insert(char_map.cg22.list, "ene_bulldozer_snowman")
 	--vip
@@ -19623,10 +19611,8 @@ function CharacterTweakData:character_map()
 				"ene_sniper_3",
 				"ene_spook_1",
 				"ene_bulldozer_1",
-				"ene_head_atlas",
 				"ene_bulldozer_1_hard",
 				"ene_bulldozer_2",
-				"ene_bulldozer_3",
 				"ene_nypd_heavy_m4",					
 				"ene_nypd_medic",
 				"ene_tazer_1",

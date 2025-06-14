@@ -16,7 +16,8 @@ MutatorHighNoon.icon_coords = {
 MutatorHighNoon.incompatibility_tags = {
 	"replaces_gamemode",
 	"replaces_units",
-	"replaces_boss"
+	"replaces_boss",
+	"replaces_weapons"
 }
 
 MutatorHighNoon.track_overrides = {

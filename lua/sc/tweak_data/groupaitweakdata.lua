@@ -7757,53 +7757,6 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 			}
 		},
 		access = access_type_all
-	}		
-
-	--US Marshals, used on Texas heists
-	self.unit_categories.marshal_marksman = {
-		unit_types = {
-			america = {
-				Idstring("units/pd2_dlc_vip/characters/ene_titan_sniper/ene_titan_sniper"),
-				Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_1/ene_male_marshal_marksman_1"),
-				Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_2/ene_male_marshal_marksman_2"),
-				Idstring("units/pd2_dlc_drm/characters/ene_zeal_swat_heavy_sniper/ene_zeal_swat_heavy_sniper")
-			},
-			russia = {
-				Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_2/ene_male_marshal_marksman_2")
-			},
-			zombie = {
-				Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_2/ene_male_marshal_marksman_2")
-			},					
-			murkywater = {
-				Idstring("units/pd2_dlc_vip/characters/ene_titan_sniper/ene_titan_sniper"),
-				Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_1/ene_male_marshal_marksman_1"),
-				Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_2/ene_male_marshal_marksman_2")
-			},
-			federales = {
-				Idstring("units/pd2_dlc_vip/characters/ene_titan_sniper/ene_titan_sniper"),
-				Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_1/ene_male_marshal_marksman_1"),
-				Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_2/ene_male_marshal_marksman_2")
-			},				
-			nypd = {
-				Idstring("units/pd2_dlc_vip/characters/ene_titan_sniper/ene_titan_sniper"),
-				Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_1/ene_male_marshal_marksman_1"),
-				Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_2/ene_male_marshal_marksman_2"),
-				Idstring("units/pd2_dlc_drm/characters/ene_zeal_swat_heavy_sniper/ene_zeal_swat_heavy_sniper")
-			},	
-			lapd = {
-				Idstring("units/pd2_dlc_vip/characters/ene_titan_sniper/ene_titan_sniper"),
-				Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_1/ene_male_marshal_marksman_1"),
-				Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_2/ene_male_marshal_marksman_2"),
-				Idstring("units/pd2_dlc_drm/characters/ene_zeal_swat_heavy_sniper/ene_zeal_swat_heavy_sniper")
-			},
-			fbi = {
-				Idstring("units/pd2_dlc_usm1/characters/ene_titan_sniper/ene_titan_sniper"),
-				Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_1/ene_male_marshal_marksman_1"),
-				Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_2/ene_male_marshal_marksman_2"),
-				Idstring("units/pd2_dlc_drm/characters/ene_zeal_swat_heavy_sniper/ene_zeal_swat_heavy_sniper")
-			}	
-		},
-		access = access_type_all
 	}
 	
 	-- Beat Cop overrides
@@ -10243,6 +10196,43 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 	--mutator unit categories
 	--nothing
 	self.unit_categories.null = {}
+
+	--US Marshals, used for Red Dead: The Heist
+	self.unit_categories.marshal_marksman = {
+		unit_types = {
+			america = {
+				Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_1/ene_male_marshal_marksman_1"),
+				Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_2/ene_male_marshal_marksman_2")
+			},
+			russia = {
+				Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_2/ene_male_marshal_marksman_2")
+			},
+			zombie = {
+				Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_2/ene_male_marshal_marksman_2")
+			},
+			murkywater = {
+				Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_1/ene_male_marshal_marksman_1"),
+				Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_2/ene_male_marshal_marksman_2")
+			},
+			federales = {
+				Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_2/ene_male_marshal_marksman_2")
+			},
+			nypd = {
+				Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_1/ene_male_marshal_marksman_1"),
+				Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_2/ene_male_marshal_marksman_2")
+			},
+			lapd = {
+				Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_1/ene_male_marshal_marksman_1"),
+				Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_2/ene_male_marshal_marksman_2")
+			},
+			fbi = {
+				Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_1/ene_male_marshal_marksman_1"),
+				Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_2/ene_male_marshal_marksman_2")
+			}
+		},
+		access = access_type_all
+	}
+
 	--BBF
 	if difficulty_index <= 4 then
 			self.unit_categories.All_Tanks = {
