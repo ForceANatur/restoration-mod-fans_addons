@@ -2075,6 +2075,8 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Eng", function(loc)
 		["bm_menu_pickup"] = "Ammo Pickup",
 		["bm_menu_ads_speed"] = "Aim Time",
 		["bm_menu_reload"] = "Reload Time",
+		["bm_menu_reserve"] = "Spare Mags",
+		["bm_menu_reserve_rounds"] = "Spare Rounds",
 		["bm_menu_damage"] = "Damage", -- I gotta find out WHO KILLED MY DA- how to spoof the damage readout for melee ["bm_menu_damage"] = "Damage Max",
 		["bm_menu_standing_range"] = "Falloff Start",
 		["bm_menu_damage_min"] = "Damage Min",
@@ -2679,6 +2681,8 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 					["bm_wp_upg_af2011_a_uno_desc"] = "Internal modification that makes the barrels fire separately rather than simultaneously.",
 					--Triad
 					["bm_triad_sc_desc"] = "#{skill_color}#Can pierce body armor, multiple enemies, shields within max damage range and thin walls.##\n\nAlt-fire fires #{skill_color}#all 3 barrels at once## at the cost of #{important_1}#more recoil and spread.##",
+					--Taurus Cruve
+					["bm_curve_sc_desc"] = "Subcompact .380 pistol, maximizing concealability by adopting a shape that blends in with the human body's natural curves. Features an #{skill_color}#integrated flashlight and laser module##.\n\n#{stats_positive}#Deals 120 damage over 4 seconds with tranquilizer rounds.##\n#{risk}#Duration diminishes over range.##",
 
 			--[[ SMGs ]]
 				--Kobus 90
@@ -2846,6 +2850,9 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 					["bm_wp_wpn_fps_shot_wmtx_mag_ext"] = "Extended Magazine",
 					["bm_wp_wpn_fps_upg_wmtx_gastube_burst"] = "Burst Fire System",
 					["bm_wp_wpn_fps_upg_wmtx_gastube_burst_desc"] = "Adds a ##{skill_color}#2 round burst-fire## toggle.",
+					--DP12
+					["bm_dp12_sc_desc"] = "Shotgun taking the compact yet high capacity design of the Raven and adding a second barrel on top of it. This particular model has been modified to fire #{skill_color}#both barrels at the same time.##",
+					--Doom Super Shotgun (Blank for secret text)
 					["bm_super_sc_desc"] = "",
 					--Chiappa Triple Threat
 					["wpn_fps_shot_triple_desc"] = "If two barrels won't kill whoever you're shooting, then the 3rd one will.",
@@ -3019,6 +3026,8 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 					["bm_w_rmary2"] = "Goblin Mk2",
 					["bm_wp_chf_50_desc"] = "#{skill_color}#Headshots ignore damage falloff.##",
 					["bm_w_rmary2_desc"] = "Proof of concept prototype designed by a Royal Military College Duntroon cadet.\n\n#{skill_color}#Deals 75% of its damage through body armor and can pierce multiple enemies.##",
+					--Madsen LAR
+					["bm_w_madsen_lar"] = "Post WW2 Danish battle rifle chambered in 7.62x51mm to seek a market in NATO militaries.\n\n#{skill_color}#Deals 50% of its damage through body armor and can pierce enemies.##",
 
 			--[[ SNIPERS ]]
 				--MSR
@@ -3083,8 +3092,14 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 					["bm_hmcar_sc_desc"] = "Before being phased out by law-enforcement, you managed to swipe a case full of these conversion kits.\n\nShoots #{stat_maxed}#titan-sniper rounds## capable of #{skill_color}#piercing multiple enemies, their body armor, shields within max damage range and thin walls;## Alt-fire shoots a #{event_color}#full power sniper round## for #{skill_color}#twice the ammo and power## that also adds the abilty to #{skill_color}#pierce titan-shields.##",
 					["bm_wp_hmcar_hd_kit"] = "32bit 8K HD Kit",
 					["bm_wp_hmcar_hd_kit_desc"] = "Application has crashed: C++ exception\nCould not load texture because IDirect3D9::CreateTexture call failed.\nDirect3D could not allocate sufficient memory to complete the call.\n\n\n\n\n\n\n ",
+					--De Lisle
+					["bm_wp_upg_a_dl_a_cyanide"] = "Cyanide Rounds",
+					["bm_wp_upg_a_dl_a_cyanide_desc"] = "Cyanide-laced bullets inspired by an alleged WW2-era German suppressed bolt-action rifle.\n\nRounds #{skill_color}#deal 350 damage, 5 seconds after impact.##\n\n#{important_1}#No longer deal extra headshot damage and can no longer pierce through enemies.##",
+					["bm_dl_cyanide_desc"] = "#{stats_positive}#Fires cyanide-laced rounds that deal heavy damage after a few seconds## and #{skill_color}#can pierce body armor, shields and thin walls.##",
+					--SVT-40
+					["bm_wp_upg_i_avt40_desc"] = "Modified internals capable of #{risk}#fully automatic fire##.\nAnd you thought the M308 was hard to control.",
 					--Travis Baker's Repeater
-					["wpn_fps_snp_baker_desc_sc"] = "A Winchester gilded in a gold pattern, fit for an upcoming candyman king...\n\n#{skill_color}#Can pierce multiple enemies and shields.##",
+					["wpn_fps_snp_baker_desc_sc"] = "#{skill_color}#Can pierce multiple enemies and shields.##",	-- this desc fucking sucks
 					--.300 Knockout
 					["bm_w_knockout_sc_desc"] = "Anti-materiel varaint of the Rattlesnake. Much like other anti-materiel rifles, using this on living targets is probably a warcrime.\n\nComes #{skill_color}#integrally suppressed## and #{skill_color}#can pierce body armor, multiple enemies, shields, titan-shields and thin walls.##",
 
