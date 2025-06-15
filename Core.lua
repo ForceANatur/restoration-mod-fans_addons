@@ -223,7 +223,6 @@ function restoration:Init()
 	-- Disable Bravos spawning on PONRs for these heists, usually for heists that have PONRs that go on/off. Also kills forced 1 diff and music changes on Pro Job
 	-- TODO: make use of new PONR element functionality instead of this table
 	restoration.alternate_ponr_behavior = {
-		"sand",  -- The Ukrainian Prisoner
 		"trai",  -- Lost in Transit
 		"fuel",  -- Fueled Feuds
 	}
@@ -1393,6 +1392,28 @@ function restoration:gen_element_random(id, name, opts)
 			on_executed = opts.on_executed or {},
 			base_delay = opts.base_delay or 0,
 			enabled = opts.enabled ~= false,
+		},
+	}
+end
+
+function restoration:gen_ai_global_event(id, name, pos, rot, opts)
+	opts = opts or {}
+	return {
+		id = id,
+		editor_name = name,
+		class = "ElementAiGlobalEvent",
+		values = {
+			execute_on_startup = opts.execute_on_startup or false,
+			ignore_disabled = opts.ignore_disabled or false,
+			trigger_times = opts.trigger_times or 0,
+			position = pos,
+			rotation = rot,
+			on_executed = opts.on_executed or {},
+			base_delay = opts.base_delay or 0,
+			enabled = opts.enabled or false,
+			wave_mode = opts.wave_mode or "none",
+			blame = opts.blame or "none",
+			AI_event = opts.AI_event or "none",
 		},
 	}
 end
