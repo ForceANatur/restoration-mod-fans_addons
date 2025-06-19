@@ -2478,6 +2478,9 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 				--Glock
 				["bm_wp_upg_i_csglock"] = "T-Side Burst Kit",
 				["bm_wp_upg_i_csglock_desc"] = "#{risk}#Adds a fire selector##, permitting this weapon to switch to a #{skill_color}#1200 RPM 3-round burst## setting, at the cost of a lower semi-auto fire rate.",
+				--SG552
+				["bm_wp_upg_i_krieg"] = "Krieg Commando Kit",
+				["bm_wp_upg_i_krieg_desc"] = "#{important_1}#Removes burst-fire## in exchange for an #{risk}#altered full-auto fire rate.##",
 				--AK12
 				["bm_wp_upg_i_abakan"] = "Abakan Kit",
 				["bm_wp_upg_i_abakan_desc"] = "Allows this weapon to fire a #{risk}#hyperburst## with each trigger pull at the cost of a slower base fire rate.",
@@ -2676,6 +2679,8 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 					["bm_wp_wpn_fps_pis_papa320_magazine_ext2"] = "32 Round Magazine",
 					--SR1M
 					["bm_sr1_sc_desc"] = "#{skill_color}#Deals 75% of its damage through body armor.##",
+					--GSh18
+					["bm_gsh18_sc_desc"] = "#{skill_color}#Deals 50% of its damage through body armor.##",
 					--Nagant Revolver
 					["bm_m1895_sc_desc"] = "A late 19th century 7-shooter and one of the only revolvers that can make use of a suppressor. #{risk}#Strangely##, this one comes with a 6-shot cylinder instead.\n\n#{skill_color}#Can pierce body armor, multiple enemies, shields and thin walls.##\n\nCan be #{skill_color}#fanned for an increased fire rate## at the cost of #{important_1}#more recoil, reduced effective range and the inabilty to aim down your sights.##",
 					--AF2011
