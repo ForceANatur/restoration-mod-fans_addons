@@ -5519,6 +5519,10 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 		["MutatorHeavyMedics_desc"] = "Medics with a 25% of a Heavy Medic.",
 		["MutatorHeavyMedics_longdesc"] = "Whenever a Medic of any variety spawns, there is a 25% chance that it will be replaced with a more beefy Heavy Medic.",
 
+		["mutator_rocketgunts"] = "RPG Grunts",
+		["mutator_rocketgunts_desc"] = "RPG Grunts from Meltdown. Suffer",
+		["mutator_rocketgunts_longdesc"] = "RPG Grunts from the Meltdown heist have a chance to spawn. They have a chance to replace a Titan Sniper.\n\nNote: This mutator does nothing if Titan Snipers can not spawn.",
+
 	--	i fucking cant with the tweakdatas so this is getting sent to the cutting room floor
 	--	["mutator_aderaldozers"] = "Adrenaline Bulldozers",
 	--	["mutator_aderaldozers_desc"] = "Bulldozers move slightly faster.",

@@ -4268,6 +4268,22 @@ function CharacterTweakData:_init_zombie(presets)
 
 end
 
+--RPG Grunts, Less HP, Less HS Multi, moves slower
+--suffer
+function CharacterTweakData:_init_city_swat_rpg(presets)
+	self.city_swat_rpg = deep_clone(self.city_swat_titan)
+	self.city_swat_rpg.dodge = presets.dodge.poor
+	self.city_swat_rpg.move_speed = presets.move_speed.slow_plus
+	self.city_swat_rpg.yellow_blood = false
+	self.city_swat_rpg.HEALTH_INIT = 20
+	self.city_swat_rpg.headshot_dmg_mul = 1.9
+	self.city_swat_rpg.damage.bullet_damage_mul = 1
+	self.city_swat_rpg.damage.explosion_damage_mul = 1
+	self.city_swat_rpg.damage.tase_damage_mul = 1
+	self.city_swat_rpg.custom_voicework = "rpg_grunt"
+	table.insert(self._enemy_list, "city_swat_rpg")
+end
+
 function CharacterTweakData:_presets(tweak_data)
 	local presets = {}
 	presets.enemy_chatter = {

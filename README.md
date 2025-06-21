@@ -131,6 +131,10 @@ Sergeant Doc: Nick (Left 4 Dead 2 Russian Dub)
 
 Major Molly: Rochelle (Left 4 Dead 2 Russian Dub)
 
+RPG Grunt: Soldier (Team Fortess 2)
+
+Mememen: Vinesauce Joel (Soon)
+
 # Credits
 
 Rhynne: Helped in development of the Restoration HUD and was the original project lead. Creating Major Heist Edits.

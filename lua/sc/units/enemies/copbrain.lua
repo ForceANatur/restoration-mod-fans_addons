@@ -253,6 +253,7 @@ logic_variants.spooc_titan.attack = SpoocLogicAttack
 logic_variants.taser_titan = clone(security_variant)
 logic_variants.autumn = clone(security_variant)	
 logic_variants.boom_titan = clone(security_variant)
+logic_variants.city_swat_rpg = security_variant
 
 logic_variants.heavy_swat_sniper = clone(security_variant)
 logic_variants.heavy_swat_sniper.attack = MarshalLogicAttack
