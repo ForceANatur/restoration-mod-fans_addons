@@ -19432,7 +19432,9 @@ end)
 					}
 
 					self.parts.wpn_fps_upg_o_specter.stance_mod.wpn_fps_ass_ar23 = {
-						translation = Vector3(0.015, -3, -3.655)
+						--translation = Vector3(0.015, -3, -3.655)
+						translation = Vector3(-0.042, -6.7, -3.59),
+						rotation = Rotation(-0.054, -0.036, 0.02)
 					}
 					self.parts.wpn_fps_upg_o_specter.stance_mod.wpn_fps_ass_ar18 = {
 						translation = Vector3(0.012, 5, -3.525)
@@ -19482,8 +19484,8 @@ end)
 						translation = Vector3(-0.02, 4.3, -3.48)
 					}
 					self.parts.wpn_fps_upg_o_specter.stance_mod.wpn_fps_ass_ar32 = {
-						translation = Vector3(1.825, -8.5, -4.63),
-						rotation = Rotation(-0.02, -0.02, 0)
+						translation = Vector3(0.01, -8.5, -1.96),
+						rotation = Rotation(-0.04, 0.02, 0)
 					}
 
 
@@ -29200,6 +29202,133 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 
 
 	--[[ RJC9000'S MODS ]]
+		if self.parts.wpn_fps_ass_bromeo2_magazine then
+			--MTZ-556
+				attachment_list = {}
+				for i, part_id in pairs(self.wpn_fps_ass_bromeo805.default_blueprint) do
+					if self.parts[part_id].pcs then
+						self.parts[part_id .. "_vanilla"] = deep_clone(self.parts[part_id])
+						self.parts[part_id .. "_vanilla"].pcs = nil
+						self.parts[part_id .. "_vanilla"].stats = { value = 1 }
+						self.parts[part_id .. "_vanilla"].custom_stats = {}
+						table.insert(attachment_list, part_id)
+					end
+					for _, modify_id in ipairs(attachment_list) do
+						if part_id == modify_id then
+							self.wpn_fps_ass_bromeo805.default_blueprint[i] = tostring(part_id) .. "_vanilla"
+						end
+					end
+				end
+				for i, part_id in pairs(self.wpn_fps_ass_bromeo805.uses_parts) do
+					for _, modify_id in ipairs(attachment_list) do
+						if part_id == modify_id then
+							self.wpn_fps_ass_bromeo805.uses_parts[i] = tostring(part_id) .. "_vanilla"
+						end
+					end
+					if self.parts[part_id] and self.parts[part_id].type then
+						if self.parts[part_id].pcs then
+							if ((self.parts[part_id].global_value and self.parts[part_id].global_value ~= "bromeo805mod" 
+								and self.parts[part_id].global_value ~= "bromeo805mememod") 
+								or not self.parts[part_id].global_value) and
+								(self.parts[part_id].type == "magazine") then
+
+								self.wpn_fps_ass_bromeo805.uses_parts[i] = "resmod_dummy"
+							end
+						end
+					end
+				end
+
+				self.wpn_fps_ass_bromeo805_npc.default_blueprint = deep_clone(self.wpn_fps_ass_bromeo805.default_blueprint)
+				self.wpn_fps_ass_bromeo805_npc.uses_parts = deep_clone(self.wpn_fps_ass_bromeo805.uses_parts)
+
+			--MTZ JAK
+				attachment_list = {}
+				for i, part_id in pairs(self.wpn_fps_ass_bromeo2m.default_blueprint) do
+					if self.parts[part_id].pcs then
+						self.parts[part_id .. "_vanilla"] = deep_clone(self.parts[part_id])
+						self.parts[part_id .. "_vanilla"].pcs = nil
+						self.parts[part_id .. "_vanilla"].stats = { value = 1 }
+						self.parts[part_id .. "_vanilla"].custom_stats = {}
+						table.insert(attachment_list, part_id)
+					end
+					for _, modify_id in ipairs(attachment_list) do
+						if part_id == modify_id then
+							self.wpn_fps_ass_bromeo2m.default_blueprint[i] = tostring(part_id) .. "_vanilla"
+						end
+					end
+				end
+				for i, part_id in pairs(self.wpn_fps_ass_bromeo2m.uses_parts) do
+					for _, modify_id in ipairs(attachment_list) do
+						if part_id == modify_id then
+							self.wpn_fps_ass_bromeo2m.uses_parts[i] = tostring(part_id) .. "_vanilla"
+						end
+					end
+				end
+				self.wpn_fps_ass_bromeo2m_npc.default_blueprint = deep_clone(self.wpn_fps_ass_bromeo2m.default_blueprint)
+				self.wpn_fps_ass_bromeo2m_npc.uses_parts = deep_clone(self.wpn_fps_ass_bromeo2m.uses_parts)
+
+			--MTZ-762
+				attachment_list = {}
+				for i, part_id in pairs(self.wpn_fps_ass_bromeo2.default_blueprint) do
+					if self.parts[part_id].pcs then
+						self.parts[part_id .. "_vanilla"] = deep_clone(self.parts[part_id])
+						self.parts[part_id .. "_vanilla"].pcs = nil
+						self.parts[part_id .. "_vanilla"].stats = { value = 1 }
+						self.parts[part_id .. "_vanilla"].custom_stats = {}
+						table.insert(attachment_list, part_id)
+					end
+					for _, modify_id in ipairs(attachment_list) do
+						if part_id == modify_id then
+							self.wpn_fps_ass_bromeo2.default_blueprint[i] = tostring(part_id) .. "_vanilla"
+						end
+					end
+				end
+				for i, part_id in pairs(self.wpn_fps_ass_bromeo2.uses_parts) do
+					for _, modify_id in ipairs(attachment_list) do
+						if part_id == modify_id then
+							self.wpn_fps_ass_bromeo2.uses_parts[i] = tostring(part_id) .. "_vanilla"
+						end
+					end
+				end
+				self.wpn_fps_ass_bromeo2_npc.default_blueprint = deep_clone(self.wpn_fps_ass_bromeo2.default_blueprint)
+				self.wpn_fps_ass_bromeo2_npc.uses_parts = deep_clone(self.wpn_fps_ass_bromeo2.uses_parts)
+
+			--MTZ Interceptor
+				--BARRELS
+				self.parts.wpn_fps_snp_bromeop_barrel_xlong.supported = true
+				self.parts.wpn_fps_snp_bromeop_barrel_xlong.stats = deep_clone(barrels.short_b1_stats)
+				self.parts.wpn_fps_snp_bromeop_barrel_xlong.custom_stats = deep_clone(barrels.short_b1_stats)
+
+				self.parts.wpn_fps_snp_bromeop_barrel_long.supported = true
+				self.parts.wpn_fps_snp_bromeop_barrel_long.stats = deep_clone(barrels.short_b2_stats)
+				self.parts.wpn_fps_snp_bromeop_barrel_long.custom_stats = deep_clone(barrels.short_b2_stats)
+
+				attachment_list = {}
+				for i, part_id in pairs(self.wpn_fps_snp_bromeop.default_blueprint) do
+					if self.parts[part_id].pcs then
+						self.parts[part_id .. "_vanilla"] = deep_clone(self.parts[part_id])
+						self.parts[part_id .. "_vanilla"].pcs = nil
+						self.parts[part_id .. "_vanilla"].stats = { value = 1 }
+						self.parts[part_id .. "_vanilla"].custom_stats = {}
+						table.insert(attachment_list, part_id)
+					end
+					for _, modify_id in ipairs(attachment_list) do
+						if part_id == modify_id then
+							self.wpn_fps_snp_bromeop.default_blueprint[i] = tostring(part_id) .. "_vanilla"
+						end
+					end
+				end
+				for i, part_id in pairs(self.wpn_fps_snp_bromeop.uses_parts) do
+					for _, modify_id in ipairs(attachment_list) do
+						if part_id == modify_id then
+							self.wpn_fps_snp_bromeop.uses_parts[i] = tostring(part_id) .. "_vanilla"
+						end
+					end
+				end
+				self.wpn_fps_snp_bromeop_npc.default_blueprint = deep_clone(self.wpn_fps_snp_bromeop.default_blueprint)
+				self.wpn_fps_snp_bromeop_npc.uses_parts = deep_clone(self.wpn_fps_snp_bromeop.uses_parts)
+
+		end
 
 		if self.parts.wpn_fps_bow_stampede_ecs_bolt then
 			self.parts.wpn_fps_bow_stampede_ecs_ammo_poison.no_cull = true
@@ -43590,11 +43719,11 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			}
 		end
 
-		if self.parts.wpn_fps_ass_ar32_ammo_concussion then
+		if self.parts.wpn_fps_ass_ar32_ammo_concussion then --AR-32 (v2)
 			self.parts.wpn_fps_ass_ar32_optic.stance_mod = deep_clone(self.parts.wpn_fps_upg_o_specter.stance_mod)
 			for i, weap in pairs(self.parts.wpn_fps_ass_ar32_optic.stance_mod) do
 				if weap and weap.translation then
-					weap.translation = weap.translation + Vector3(0, -2, -0.8)
+					weap.translation = weap.translation + Vector3(-0.09, -2, -0.8)
 				end
 			end
 
@@ -43610,14 +43739,27 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			self.parts.wpn_fps_ass_ar32_ammo_concussion.custom_stats = {
 				natascha = 3000
 			}
+
+			for i, part_id in pairs(self.wpn_fps_ass_ar32.uses_parts) do
+				if self.parts[part_id] and self.parts[part_id].type then
+					if self.parts[part_id].pcs then
+						if ((self.parts[part_id].global_value and self.parts[part_id].global_value ~= "forceoflaw_mod") or not self.parts[part_id].global_value) and
+							(self.parts[part_id].type == "sight" or self.parts[part_id].type == "barrel_ext" or self.parts[part_id].type == "custom" or self.parts[part_id].type == "second_sight") then
+							self.wpn_fps_ass_ar32.uses_parts[i] = "resmod_dummy"
+						end
+					end
+				end
+			end
+			self.wpn_fps_ass_ar32_npc.uses_parts = deep_clone(self.wpn_fps_ass_ar32.uses_parts)
 		end
-		--Helldivers 2 AR-23 (v4)
+
+		--Helldivers 2 AR-23 (v5)
 		if self.parts.wpn_fps_ass_ar23_body then
 			--AR-23 Optic
 			self.parts.wpn_fps_ass_ar23_optic_2.stance_mod = deep_clone(self.parts.wpn_fps_upg_o_specter.stance_mod)
 			for i, weap in pairs(self.parts.wpn_fps_ass_ar23_optic_2.stance_mod) do
 				if weap and weap.translation then
-					weap.translation = weap.translation + Vector3(0, -5, 0.95)
+					weap.translation = weap.translation + Vector3(0.015, 0, 0.965)
 				end
 			end
 
@@ -43631,7 +43773,7 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			self.parts.wpn_fps_ass_ar23_optic_3.stance_mod = deep_clone(self.parts.wpn_fps_upg_o_specter.stance_mod)
 			for i, weap in pairs(self.parts.wpn_fps_ass_ar23_optic_3.stance_mod) do
 				if weap and weap.translation then
-					weap.translation = weap.translation + Vector3(0.04, -18, 1.45)
+					weap.translation = weap.translation + Vector3(0.04, -5, 1.45)
 				end
 			end
 			self.parts.wpn_fps_ass_ar23_optic_3.stats = {
@@ -43645,7 +43787,7 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			self.parts.wpn_fps_ass_ar23_o_carbine.stance_mod = deep_clone(self.parts.wpn_fps_upg_o_specter.stance_mod)
 			for i, weap in pairs(self.parts.wpn_fps_ass_ar23_o_carbine.stance_mod) do
 				if weap and weap.translation then
-					weap.translation = weap.translation + Vector3(-0.01, -24, 0.75)
+					weap.translation = weap.translation + Vector3(0, -1, 0.75)
 				end
 			end
 			self.parts.wpn_fps_ass_ar23_o_carbine.stats = {
@@ -43699,7 +43841,7 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			self.parts.wpn_fps_ass_ar23_ck_penetrator.stats = {
 				value = 10,
 				recoil = -4,
-				total_ammo_mod = -47,
+				--total_ammo_mod = -47,
 				zoom = 20,
 				concealment = -3
 			}
@@ -43707,7 +43849,7 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 				alt_desc = "bm_wp_ck_penetrator_desc",
 				hs_mult = 2,
 				hs_mult_desc = true,
-				armor_piercing_override = 1,
+				armor_piercing_override = 05,
 				falloff_start_mult = 0.70,
 				falloff_end_mult = 0.70
 			}
@@ -43721,7 +43863,7 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			self.parts.wpn_fps_ass_ar23_ck_concussive.keep_damage = true
 			self.parts.wpn_fps_ass_ar23_ck_concussive.stats = {
 				value = 10,
-				extra_ammo = 15,
+				extra_ammo = 0,
 				total_ammo_mod = 12,
 				recoil = -14,
 				zoom = -5,
@@ -43729,7 +43871,7 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			}
 			self.parts.wpn_fps_ass_ar23_ck_concussive.custom_stats = {
 				alt_desc = "bm_wp_ck_concussive_desc",
-				rof_mult = 0.5,
+				rof_mult = 0.625,
 				ignore_rof_mult_anims = true,
 				block_burst = true,
 				info_burst_to_auto = true,
@@ -43752,16 +43894,22 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			self.wpn_fps_ass_ar23.override.wpn_fps_ass_ar23_optic_3_ck = { custom_stats = {} }
 			self.wpn_fps_ass_ar23.override.wpn_fps_upg_ar23_o_promo = { custom_stats = {} }
 
+
 			for i, part_id in pairs(self.wpn_fps_ass_ar23.uses_parts) do
 				if self.parts[part_id] and self.parts[part_id].type then
 					if self.parts[part_id].pcs then
-						if ((self.parts[part_id].global_value and self.parts[part_id].global_value ~= "fiery_hylie_mod") or not self.parts[part_id].global_value) and
+						if ((self.parts[part_id].global_value and (self.parts[part_id].global_value ~= "helldivers2_mod"
+							and self.parts[part_id].global_value ~= "helldivers2sv_mod"
+							and self.parts[part_id].global_value ~= "helldivers2vc_mod")
+							) or not self.parts[part_id].global_value) and
 							(self.parts[part_id].type == "sight" or self.parts[part_id].type == "barrel_ext" or self.parts[part_id].type == "custom" or self.parts[part_id].type == "second_sight") then
 							self.wpn_fps_ass_ar23.uses_parts[i] = "resmod_dummy"
 						end
 					end
 				end
 			end
+			table.insert(self.wpn_fps_ass_ar23.uses_parts, "wpn_fps_upg_o_specter")
+			table.insert(self.wpn_fps_ass_ar23.uses_parts, "wpn_fps_upg_o_eotech")
 			self.wpn_fps_ass_ar23_npc.uses_parts = deep_clone(self.wpn_fps_ass_ar23.uses_parts)
 		end
 
