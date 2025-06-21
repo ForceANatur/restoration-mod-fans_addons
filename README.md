@@ -28,7 +28,7 @@ Titan Cloakers spawn on mayhem and above.
 
 Zip .22 has a 1% chance to fail
 
-4 new mutators
+5 new mutators
 
 Akan LPFs and Enforcers spawn on mexico heists
 
@@ -53,6 +53,8 @@ Semi-Auto Shotgun Bulldozers spawns miniguns (`Loc.lua` was changed to reflect t
 Sniper Hell: Most enemies spawn with Sniper Rifles.
 
 Sting like a bee: FBI units use the M1014 and Hostage Rescue Teams and ASU units have the UMP. Vet Cops have akimbo Broncos.
+
+RPG Grunts: The unused RPG grunts got a 9 to 5 job of beating your ass. They made a deal with the titan snipers to help them. suffer
 
 # Crime Spree Modifiers:
 
