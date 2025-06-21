@@ -59,6 +59,7 @@ function CharacterTweakData:init(tweak_data, presets)
 	self:_init_tank_biker(presets)
 	self:_init_zombie(presets)
 	self:_init_heavygunner(presets)
+	self:_init_city_swat_rpg(presets)
 	self:_process_weapon_usage_table()
 	
 	--Dozer Armor Multiplier, lower means more EHP
@@ -1317,7 +1318,7 @@ function CharacterTweakData:_init_city_swat(presets)
 	table.insert(self._enemy_list, "city_swat_titan_assault")
 
 	--Weekend LMG
-	self.weekend_lmg = deep_clone(self.city_swat_titan)		
+	self.weekend_lmg = deep_clone(self.city_swat_titan)
 	if self:get_ai_group_type() == "russia" then
 		self.weekend_lmg.custom_voicework = "bravo_elite_ru"
 	elseif self:get_ai_group_type() == "murkywater" then
@@ -1356,10 +1357,9 @@ function CharacterTweakData:_init_city_swat(presets)
 		self.weekend_elite_guard.access = "security"
 	end
 	table.insert(self._enemy_list, "weekend_elite_guard")
-	
 end
 
-function CharacterTweakData:_init_sniper(presets)	
+function CharacterTweakData:_init_sniper(presets)
 	self.sniper = deep_clone(presets.base)
 	self.sniper.tags = {"law", "sniper", "special"}
 	self.sniper.experience = {}
@@ -4260,6 +4260,22 @@ function CharacterTweakData:_init_heavygunner(presets)
 	self.heavygunner.custom_voicework = "heavygunner"
 	self.heavygunner.captain_type = restoration.captain_types.heavyg
 	table.insert(self._enemy_list, "heavygunner")
+end
+
+--RPG Grunts, Less HP, Less HS Multi, moves slower
+--suffer
+function CharacterTweakData:_init_city_swat_rpg(presets)
+	self.city_swat_rpg = deep_clone(self.city_swat_titan)
+	self.city_swat_rpg.dodge = presets.dodge.poor
+	self.city_swat_rpg.move_speed = presets.move_speed.slow_plus
+	self.city_swat_rpg.yellow_blood = false
+	self.city_swat_rpg.HEALTH_INIT = 20
+	self.city_swat_rpg.headshot_dmg_mul = 1.9
+	self.city_swat_rpg.damage.bullet_damage_mul = 1
+	self.city_swat_rpg.damage.explosion_damage_mul = 1
+	self.city_swat_rpg.damage.tase_damage_mul = 1
+	self.city_swat_rpg.custom_voicework = "rpg_grunt"
+	table.insert(self._enemy_list, "city_swat_rpg")
 end
 
 function CharacterTweakData:_init_zombie(presets)

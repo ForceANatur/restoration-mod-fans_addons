@@ -7711,7 +7711,7 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 			special_type = "medic"
 		}
 	end
-		
+
 	--Titan Snipers, generic
 	self.unit_categories.titan_sniper = {
 		unit_types = {

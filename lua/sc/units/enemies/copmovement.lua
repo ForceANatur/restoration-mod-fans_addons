@@ -77,6 +77,7 @@ action_variants.autumn = security_variant
 action_variants.taser_titan = clone(security_variant)
 action_variants.taser_titan_reaper = clone(security_variant)
 action_variants.boom_titan = clone(security_variant)
+action_variants.city_swat_rpg = security_variant
 
 function CopMovement:post_init()
 	local unit = self._unit
