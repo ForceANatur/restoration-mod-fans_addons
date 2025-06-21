@@ -10012,13 +10012,14 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					self.m249.kick = self.stat_info.kick_tables.random_left_recoil
 					self.m249.kick_pattern = {
 						{0, self.stat_info.kick_tables.random_left_recoil},
-						{13, self.stat_info.kick_tables.horizontal_recoil},
-						{21, self.stat_info.kick_tables.left_recoil},
-						{25, self.stat_info.kick_tables.even_recoil},
+						{8, self.stat_info.kick_tables.random_right_recoil},
+						{13, self.stat_info.kick_tables.left_recoil},
+						{21, self.stat_info.kick_tables.horizontal_recoil},
+						{25, self.stat_info.kick_tables.right_recoil},
 						{28, self.stat_info.kick_tables.moderate_right_kick},
-						{29, self.stat_info.kick_tables.right_recoil},
+						{29, self.stat_info.kick_tables.even_recoil},
 						{34, self.stat_info.kick_tables.horizontal_right_recoil},
-						{48, self.stat_info.kick_tables.horizontal_left_recoil}
+						{48, self.stat_info.kick_tables.left_recoil}
 					}
 					self.m249.always_use_standing = true
 					self.m249.muzzleflash = "_dmc/effects/heavy_muzzle"
@@ -10033,7 +10034,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					self.m249.stats = {
 						damage = 24,
 						spread = 56,
-						recoil = 79,
+						recoil = 77,
 						spread_moving = 5,
 						zoom = 1,
 						concealment = 18,
@@ -10092,7 +10093,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					self.kacchainsaw.stats = {
 						damage = 24,
 						spread = 51,
-						recoil = 79,
+						recoil = 73,
 						spread_moving = 5,
 						zoom = 1,
 						concealment = 21,
@@ -10181,9 +10182,9 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					self.rpk.kick = self.stat_info.kick_tables.random_recoil
 					self.rpk.kick_pattern = {
 						{0, self.stat_info.kick_tables.right_kick},
-						{3, self.stat_info.kick_tables.random_recoil},
-						{11, self.stat_info.kick_tables.right_kick},
-						{17, self.stat_info.kick_tables.random_recoil},
+						{4, self.stat_info.kick_tables.random_recoil},
+						{10, self.stat_info.kick_tables.left_recoil},
+						{17, self.stat_info.kick_tables.horizontal_recoil},
 						{28, self.stat_info.kick_tables.right_recoil}
 					}
 					self.rpk.always_use_standing = true
@@ -25677,8 +25678,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.acr_2012.lock_slide = true
 				self.acr_2012.lock_slide_alt = true
 				self.acr_2012.sounds.magazine_empty = "wp_rifle_slide_lock"
-				self.acr_2012.timers.reload_empty = 2.58
-				self.acr_2012.timers.reload_exit_empty = 0.7
+				self.acr_2012.timers.reload_empty = 2.51
+				self.acr_2012.timers.reload_exit_empty = 0.75
 				self.acr_2012.timers.reload_not_empty = 1.65
 				self.acr_2012.timers.reload_exit_not_empty = 0.85
 			end
@@ -27442,6 +27443,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.bromeo805.recategorize = { "light_ar" }
 				self.bromeo805.has_description = true
 				self.bromeo805.damage_type = "assault_rifle"
+				self.bromeo805.tactical_reload = 1
 				self.bromeo805.CLIP_AMMO_MAX = 30
 				self.bromeo805.AMMO_MAX = 150
 				self.bromeo805.FIRE_MODE = "auto"
@@ -27452,6 +27454,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.bromeo805.kick_pattern = {
 					{0, self.stat_info.kick_tables.moderate_kick},
 					{2, self.stat_info.kick_tables.left_recoil},
+					{5, self.stat_info.kick_tables.moderate_left_kick},
 					{9, self.stat_info.kick_tables.even_recoil},
 					{12, self.stat_info.kick_tables.right_recoil},
 					{16, self.stat_info.kick_tables.moderate_right_kick}
@@ -27459,17 +27462,17 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.bromeo805.supported = true
 				self.bromeo805.ads_speed = 0.240
 				self.bromeo805.damage_falloff = {
-					start_dist = 2000,
-					end_dist = 5800,
-					min_mult = 0.53333
+					start_dist = 2600,
+					end_dist = 4700,
+					min_mult = 0.5
 				}
 				self.bromeo805.stats = {
 					damage = 24,
-					spread = 85,
+					spread = 81,
 					recoil = 77,
 					spread_moving = 5,
 					zoom = 1,
-					concealment = 24,
+					concealment = 23,
 					suppression = 8,
 					alert_size = 2,
 					extra_ammo = 101,
@@ -27483,8 +27486,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.bromeo805.sounds.magazine_empty = "wp_rifle_slide_lock"
 				self.bromeo805.lock_slide = true
 				self.bromeo805.animations.magazine_empty = nil
-				self.bromeo805.reload_speed_multiplier = 0.85
-				self.bromeo805.reload_not_empty_speed_multiplier = 1.1
+				self.bromeo805.reload_speed_multiplier = 0.65
+				self.bromeo805.reload_not_empty_speed_multiplier = 1.12
 				self.bromeo805.timers.reload_not_empty = 1.18
 				self.bromeo805.timers.reload_exit_not_empty = 0.45
 				self.bromeo805.timers.reload_empty = 1.52
@@ -27497,6 +27500,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.bromeo2m.recategorize = { "heavy_ar" }
 				self.bromeo2m.has_description = true
 				self.bromeo2m.damage_type = "assault_rifle"
+				self.bromeo2m.tactical_reload = 1
 				self.bromeo2m.CLIP_AMMO_MAX = 30
 				self.bromeo2m.AMMO_MAX = 120
 				self.bromeo2m.FIRE_MODE = "auto"
@@ -27516,17 +27520,17 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.bromeo2m.supported = true
 				self.bromeo2m.ads_speed = 0.300
 				self.bromeo2m.damage_falloff = {
-					start_dist = 2000,
-					end_dist = 5800,
-					min_mult = 0.53333
+					start_dist = 3100,
+					end_dist = 4300,
+					min_mult = 0.6
 				}
 				self.bromeo2m.stats = {
 					damage = 30,
-					spread = 85,
-					recoil = 77,
+					spread = 78,
+					recoil = 71,
 					spread_moving = 5,
 					zoom = 1,
-					concealment = 24,
+					concealment = 21,
 					suppression = 8,
 					alert_size = 2,
 					extra_ammo = 101,
@@ -27540,8 +27544,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.bromeo2m.sounds.magazine_empty = "wp_rifle_slide_lock"
 				self.bromeo2m.lock_slide = true
 				self.bromeo2m.animations.magazine_empty = nil
-				self.bromeo2m.reload_speed_multiplier = 0.75
-				self.bromeo2m.reload_not_empty_speed_multiplier = 1.15
+				self.bromeo2m.reload_speed_multiplier = 0.53
+				self.bromeo2m.reload_not_empty_speed_multiplier = 1.2
 				self.bromeo2m.timers.reload_not_empty = 1.18
 				self.bromeo2m.timers.reload_exit_not_empty = 0.45
 				self.bromeo2m.timers.reload_empty = 1.42
@@ -27555,6 +27559,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.bromeo2.recategorize = { "dmr_ar" }
 				self.bromeo2.has_description = true
 				self.bromeo2.damage_type = "assault_rifle"
+				self.bromeo2.tactical_reload = 1
 				self.bromeo2.CLIP_AMMO_MAX = 20
 				self.bromeo2.AMMO_MAX = 80
 				self.bromeo2.FIRE_MODE = "auto"
@@ -27571,17 +27576,17 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.bromeo2.supported = true
 				self.bromeo2.ads_speed = 0.340
 				self.bromeo2.damage_falloff = {
-					start_dist = 2000,
-					end_dist = 5800,
+					start_dist = 1900,
+					end_dist = 4400,
 					min_mult = 0.53333
 				}
 				self.bromeo2.stats = {
 					damage = 45,
 					spread = 85,
-					recoil = 77,
+					recoil = 61,
 					spread_moving = 5,
 					zoom = 1,
-					concealment = 24,
+					concealment = 20,
 					suppression = 8,
 					alert_size = 2,
 					extra_ammo = 101,
@@ -27591,12 +27596,13 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				}
 				self.bromeo2.stats_modifiers = nil
 				self.bromeo2.panic_suppression_chance = 0.05
+				self.bromeo2.armor_piercing_chance = 0.25
 				self.bromeo2.nato = true
 				self.bromeo2.sounds.magazine_empty = "wp_rifle_slide_lock"
 				self.bromeo2.lock_slide = true
 				self.bromeo2.animations.magazine_empty = nil
-				self.bromeo2.reload_speed_multiplier = 0.75
-				self.bromeo2.reload_not_empty_speed_multiplier = 1.15
+				self.bromeo2.reload_speed_multiplier = 0.53
+				self.bromeo2.reload_not_empty_speed_multiplier = 1.2
 				self.bromeo2.timers.reload_not_empty = 1.18
 				self.bromeo2.timers.reload_exit_not_empty = 0.45
 				self.bromeo2.timers.reload_empty = 1.42
@@ -27609,7 +27615,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				}
 				self.bromeop.recategorize = { "light_snp" }
 				self.bromeop.has_description = true
-				self.bromeop.damage_type = "assault_rifle"
+				self.bromeop.damage_type = "sniper"
+				self.bromeop.tactical_reload = 1
 				self.bromeop.CLIP_AMMO_MAX = 10
 				self.bromeop.AMMO_MAX = 60
 				self.bromeop.FIRE_MODE = "single"
@@ -27628,15 +27635,15 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.bromeop.damage_falloff = {
 					start_dist = 2200,
 					end_dist = 5300,
-					min_mult = 0.53333
+					min_mult = 0.5
 				}
 				self.bromeop.stats = {
 					damage = 60,
-					spread = 85,
-					recoil = 77,
+					spread = 91,
+					recoil = 51,
 					spread_moving = 5,
 					zoom = 1,
-					concealment = 24,
+					concealment = 18,
 					suppression = 8,
 					alert_size = 2,
 					extra_ammo = 101,
@@ -27646,12 +27653,14 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				}
 				self.bromeop.stats_modifiers = nil
 				self.bromeop.panic_suppression_chance = 0.05
+				self.bromeop.sms = sms_preset.semi_snp_light
+				self.bromeop.armor_piercing_chance = 1
 				self.bromeop.nato = true
 				self.bromeop.sounds.magazine_empty = "wp_rifle_slide_lock"
 				self.bromeop.lock_slide = true
 				self.bromeop.animations.magazine_empty = nil
-				self.bromeop.reload_speed_multiplier = 0.75
-				self.bromeop.reload_not_empty_speed_multiplier = 1.15
+				self.bromeop.reload_speed_multiplier = 0.57
+				self.bromeop.reload_not_empty_speed_multiplier = 1.16
 				self.bromeop.timers.reload_not_empty = 1.18
 				self.bromeop.timers.reload_exit_not_empty = 0.45
 				self.bromeop.timers.reload_empty = 1.42
@@ -34272,6 +34281,23 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						weap.damage_falloff.start_dist = math.floor(((weap.damage_falloff.start_dist / 100) * 0.8)) * 100
 					end
 				end
+				if table.contains(weap.categories, "pistol") then
+					weap.damage_falloff.start_dist = math.floor(((weap.damage_falloff.start_dist / 100) * 0.9)) * 100
+					weap.damage_falloff.end_dist = math.floor(((weap.damage_falloff.end_dist / 100) * 0.9)) * 100
+				end
+			end
+
+			if table.contains(weap.categories, "assault_rifle") or table.contains(weap.categories, "snp") then
+				weap.reload_speed_multiplier = (weap.reload_speed_multiplier or 1) * 0.95
+			end
+
+			if table.contains(weap.categories, "lmg") or table.contains(weap.categories, "minigun") then
+				weap.innate_panic = 0.025
+			end
+
+			if table.contains(weap.categories, "amr") then
+				weap.force_shake = true
+				weap.innate_panic = 0.05
 			end
 
 			if weap.damage_type and not weap.object_damage_mult then
@@ -34352,11 +34378,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				weap.trail_effect = "effects/payday2/particles/weapons/hailstorm_streak"
 			end
 
-			if table.contains(weap.categories, "amr") then
-				weap.force_shake = true
-			end
-
-			if table.contains(weap.categories, "dmr_l") or table.contains(weap.categories, "dmr_h") and weap.CAN_TOGGLE_FIREMODE then
+			if table.contains(weap.categories, "dmr_l") or table.contains(weap.categories, "dmr_h") and weap.CAN_TOGGLE_FIREMODE == true then
 				weap.SINGLE_FIRE_AP_ADD = 0.25
 			end
 
@@ -34736,7 +34758,7 @@ function WeaponTweakData:calculate_ammo_pickup(weapon, id)
 		tranq = 0.7,
 		--Custom weapon pickup
 		raygun = 1.3,
-		sweet_liberty = 0.06,
+		sweet_liberty = 0.04,
 		battery = 0
 	}
 
