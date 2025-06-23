@@ -10116,6 +10116,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					self.kacchainsaw.timers.reload_exit_empty = 0.9
 					self.kacchainsaw.timers.reload_not_empty = 4.92
 					self.kacchainsaw.timers.reload_exit_not_empty = 1.1
+					self.kacchainsaw.ign_ts = true
 				--Flamethrower
 					self.kacchainsaw_flamethrower.categories = {
 						"flamethrower",
@@ -10166,6 +10167,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					self.kacchainsaw_flamethrower.timers.reload_exit_not_empty = 0.8
 					self.kacchainsaw_flamethrower.weapon_movement_penalty = sms_preset.lmg_48
 					self.kacchainsaw_flamethrower.shake.bypass_global_shake = true
+					self.kacchainsaw_flamethrower.ign_ts = true
 
 				--RPK
 					self.rpk.desc_id = "bm_rpk_sc_desc"
@@ -10663,6 +10665,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					self.shuno.sounds.no_fix = true
 					self.shuno.sounds.spin_start = "turret_spin_start"
 					self.shuno.sounds.spin_end = "turret_spin_stop"
+					self.shuno.ign_ts = true
 
 				--Minigun
 					self.m134.categories = {
@@ -10726,6 +10729,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					self.m134.sounds.no_fix = true
 					self.m134.sounds.spin_start = "swatturret_spin_start"
 					self.m134.sounds.spin_end = "swatturret_spin_stop"
+					self.m134.ign_ts = true
 
 		--[[     RIFLES     ]]--
 
@@ -26487,7 +26491,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			end
 
 			if self.sbeta then
-				self.sbeta.recategorize = {"light_snp"}
+				self.sbeta.recategorize = {"heavy_snp"}
 				self.sbeta.damage_type = "sniper"
 				self.sbeta.always_play_anims = true
 				self.sbeta.tactical_reload = 1
@@ -30266,7 +30270,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					"snp",
 					"sweet_liberty"
 				}
-				self.r6.recategorize = {"light_snp"}
+				self.r6.recategorize = {"heavy_snp"}
 				self.r6.damage_type = "sniper"
 				self.r6.always_play_anims = true
 				self.r6.BURST_FIRE = false
@@ -30274,7 +30278,6 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.r6.sms = 0.5
 				self.r6.tactical_reload = 1
 				self.r6.has_description = true
-				self.r6.desc_id = "bm_ap_weapon_sc_desc"
 				self.r6.CLIP_AMMO_MAX = 6
 				self.r6.AMMO_MAX = self.r6.CLIP_AMMO_MAX * 11
 				self.r6.ammo_ratio = 2

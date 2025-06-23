@@ -1367,13 +1367,13 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Eng", function(loc)
 		["bm_wp_upg_o_2_szholot"] = "Thermal holographic sight.\n#{risk}#2x magnification.##\n#{skill_color}#Automatically marks## guards, elites and special enemies when you aim at them.\n\n#{risk}#NOTE: Guards can only be marked during stealth.##",
 		["bm_wp_upg_o_2_5"] = "Low-powered scope.\n#{risk}#2.5x magnification.##",
 		["bm_wp_upg_o_3"] = "Mid-range scope.\n#{risk}#3x magnification.##",
-		["bm_wp_upg_o_3_range"] = "Mid-range scope with a built-in #{skill_color}#rangefinder.##\n#{risk}#3x magnification.##",
+		["bm_wp_upg_o_3_range"] = "Mid-range scope with a built-in #{skill_color}#rangefinder.##\n#{risk}#3x magnification.##\n#{skill_color}#Automatically marks## guards, elites and special enemies when you aim at them.\n\n#{risk}#NOTE: Guards can only be marked during stealth.##",
 		["bm_wp_upg_o_3_rds"] = "Mid-range scope with a top-mounted red-dot sight.\n#{risk}#1.1-3x magnification.##\n\nPress #{skill_color}#$BTN_GADGET## while aiming to switch between sights.",
 		["bm_wp_upg_o_3_4"] = "Mid-range scope.\n#{risk}#3.4x magnification.##",
 		["bm_wp_upg_o_3_5"] = "Mid-range scope.\n#{risk}#3.5x magnification.##",
 		["bm_wp_upg_o_4"] = "Mid-range scope.\n#{risk}#4x magnification.##",
 		["bm_wp_upg_o_4_cod"] = "Mid-range scope.\nWhere's #{skill_color}#Stopping Power## when you need it?\n#{risk}#4x magnification.##",
-		["bm_wp_upg_o_4_range"] = "Mid-range scope with a built-in #{skill_color}#rangefinder.##\n#{risk}#4x magnification.##",
+		["bm_wp_upg_o_4_range"] = "Mid-range scope with a built-in #{skill_color}#rangefinder.##\n#{risk}#4x magnification.##\n#{skill_color}#Automatically marks## guards, elites and special enemies when you aim at them.\n\n#{risk}#NOTE: Guards can only be marked during stealth.##",
 		["bm_wp_upg_o_4_irons"] = "Mid-range scope with back-up iron sights.\n#{risk}#1-4x magnification.##\n\nPress #{skill_color}#$BTN_GADGET## while aiming to switch between sights.",
 		["bm_wp_upg_o_4_rds"] = "Mid-range scope with an integral red-dot sight.\n#{risk}#1.1-4x magnification.##\n\nPress #{skill_color}#$BTN_GADGET## while aiming to switch between sights.",
 		["bm_wp_upg_o_4_rds_mount"] = "Mid-range LPVO with a top-mounted red-dot sight.\n#{risk}#1.1-2-4x magnification.##\n\nPress #{skill_color}#$BTN_GADGET## while aiming to switch between zoom levels and sights.",
@@ -1387,7 +1387,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Eng", function(loc)
 		["bm_wp_upg_o_6_range"] = "Long-range scope with a built-in #{skill_color}#rangefinder.##\n#{risk}#6x magnification.##",
 		["bm_wp_upg_o_6_rds_mount"] = "Long-range scope with a top-mounted red-dot sight.\n#{risk}#1.1-6x magnification.##",
 		["bm_wp_upg_o_8"] = "Long-range scope.\n#{risk}#8x magnification.##",
-		["bm_wp_upg_o_8_range"] = "Long-range scope with a built-in #{skill_color}#rangefinder.##\n#{risk}#8x magnification.##",
+		["bm_wp_upg_o_8_range"] = "Long-range scope with a built-in #{skill_color}#rangefinder.##\n#{risk}#8x magnification.##\n#{skill_color}#Automatically marks## guards, elites and special enemies when you aim at them.\n\n#{risk}#NOTE: Guards can only be marked during stealth.##",
 
 		["bm_wp_upg_fl_flashlight"] = "Toggle the flashlight on/off by pressing #{skill_color}#$BTN_GADGET.##",
 		["bm_wp_upg_fl_laser"] = "Toggle the laser on/off by pressing #{skill_color}#$BTN_GADGET.##",
@@ -2944,6 +2944,8 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 					--MW2023 STG-44 (FUCK YOU, SLEDGEHAMMER)
 					["bm_w_stango44"] = "\"STG-44\"",
 					["bm_wp_wpn_fps_ass_stango44_magazine_40"] = "30 Round Magazine",
+					--HD2 AR-32
+					["bm_w_ar32_desc"] = "A large-capacity assault rifle firing humane #{skill_color}#stun rounds.## Reports of lethal incidents have been thoroughly debunked.\n\n#{skill_color}#Penetrates armor## to apply its stunning effects.\n#{skill_color}#Stun rounds stagger enemies up to 30 meters away.##\n#{risk}#Stagger range cannot be modified.##",
 					--HD2 AR-23
 					["bm_w_ar23_carbine"] = "AR-23A Liberator Carbine",
 					["bm_wp_ck_carbine_desc"] = "A compact version of the Liberator designed for increased viability in close quarters. Has an #{skill_color}#increased fire rate## at the cost of #{important_1}#higher spread.##",
@@ -3094,6 +3096,8 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 				--Thanatos--
 				["bm_m95_sc_desc"] = "Anti-materiel rifle used to combat small vehicles. Using this on organic targets is probably a war crime.\n\n#{skill_color}#Can pierce multiple enemies, their body armor, shields, titan-shields and thin walls.##",
 				--Custom Snipers
+					--HD2 R-6 Deadeye
+					["bm_w_r6_desc"] = "A mighty rifle with a signature lever-action enabling single round reload. Powerful precision suited to mid- and long-range combat.\n\n#{skill_color}#Can pierce body armor, multiple enemies, shields and thin walls.##",
 					--M107
 					["bm_m107cq_sc_desc"] = "If the Thanatos wasn't up to speed, then the Mors will deliver what you want as a fine, red mist.\n\n#{skill_color}#Can pierce multiple enemies, their body armor, shields, titan-shields and thin walls.##",
 					--M200

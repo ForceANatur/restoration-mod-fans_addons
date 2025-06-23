@@ -1127,7 +1127,8 @@ function InstantBulletBase:on_collision(col_ray, weapon_unit, user_unit, damage,
 		if body_dmg_ext then
 			local object_damage_mult = weapon_unit and weapon_unit.base and weapon_unit:base().get_object_damage_mult and weapon_unit:base():get_object_damage_mult() or 1
 
-			if hit_unit.base and hit_unit:base().has_tag and (hit_unit:base():has_tag("taser") or hit_unit:base():has_tag("boom"))then
+			local unit_base = body_dmg_ext._unit and body_dmg_ext._unit.base and body_dmg_ext._unit:base()
+			if unit_base and unit_base.has_tag and (unit_base:has_tag("taser") or unit_base:has_tag("boom")) then 
 				object_damage_mult = object_damage_mult * 3 --cheese method to negate the extra endurance that taser/grenadier bags have
 			end
 
@@ -1186,6 +1187,22 @@ function InstantBulletBase:on_collision(col_ray, weapon_unit, user_unit, damage,
 			end
 
 			result = self:give_impact_damage(col_ray, weapon_unit, user_unit, damage, armor_piercing, false, knock_down, stagger, variant)
+
+			--[[
+			if (weap_base._natascha and col_ray.distance and col_ray.distance <= weap_base._natascha) and 
+				result and result.attack_data and result.attack_data.damage and result.attack_data.damage > 0 then
+				hit_dmg_ext:stun_hit({
+					variant = "stun",
+					damage = 0,
+					attacker_unit = user_unit,
+					weapon_unit = weapon_unit,
+					col_ray = col_ray or {
+						position = hit_unit:position(),
+						ray = Vector3(0, 0, 1)
+					}
+				})
+			end
+			--]]
 
 			if result ~= "friendly_fire" then
 				local has_died = hit_dmg_ext:dead()
@@ -1330,8 +1347,9 @@ function FlameBulletBase:on_collision(col_ray, weapon_unit, user_unit, damage, b
 		if body_dmg_ext then
 			local rays = weapon_unit and weapon_unit.base and ((not weapon_unit:base():weapon_tweak_data().alt_shotgunraycast and weapon_unit:base()._rays) or 1)
 			local object_damage_mult = (weapon_unit and weapon_unit.base and weapon_unit:base().get_object_damage_mult and weapon_unit:base():get_object_damage_mult() or 1) / rays
-
-			if hit_unit.base and hit_unit:base().has_tag and (hit_unit:base():has_tag("taser") or hit_unit:base():has_tag("boom"))then
+			
+			local unit_base = body_dmg_ext._unit and body_dmg_ext._unit.base and body_dmg_ext._unit:base()
+			if unit_base and unit_base.has_tag and (unit_base:has_tag("taser") or unit_base:has_tag("boom")) then
 				object_damage_mult = object_damage_mult * 3 --cheese method to negate the extra endurance that taser/grenadier bags have
 			end
 

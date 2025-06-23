@@ -545,6 +545,7 @@ function CharacterTweakData:_init_fbi(presets)
 	self.meme_man.use_animation_on_fire_damage = false
 	self.meme_man.move_speed = presets.move_speed.lightning
 	self.meme_man.surrender = nil
+	self.meme_man.custom_voicework = "meme_man"
 	self.meme_man.is_special = true
 	self.meme_man.no_asu = true
 	self.meme_man.heal_cooldown = 22.5
