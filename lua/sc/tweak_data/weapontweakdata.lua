@@ -17171,6 +17171,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.sonny.recategorize = { "heavy_pis" }
 				self.sonny.damage_type = "heavy_pistol"
 				self.sonny.fire_mode_data.fire_rate = 0.1263157894
+				self.sonny.tactical_reload = 1
 				self.sonny.CLIP_AMMO_MAX = 10
 				self.sonny.AMMO_MAX = 40
 				self.sonny.kick = self.stat_info.kick_tables.right_recoil
@@ -24589,7 +24590,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.bootl1911.panic_suppression_chance = 0.05
 				self.bootl1911.timers = deep_clone(self.pl14.timers)
 
-					self.x_bootl1911.recategorize = {"light_pis"}
+					self.x_bootl1911.recategorize = {"heavy_pis"}
 					self.x_bootl1911.categories = {
 						"akimbo",
 						"pistol"
@@ -27665,8 +27666,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.bromeop.animations.magazine_empty = nil
 				self.bromeop.reload_speed_multiplier = 0.57
 				self.bromeop.reload_not_empty_speed_multiplier = 1.16
-				self.bromeop.timers.reload_not_empty = 1.18
-				self.bromeop.timers.reload_exit_not_empty = 0.45
+				self.bromeop.timers.reload_not_empty = 1.16
+				self.bromeop.timers.reload_exit_not_empty = 0.48
 				self.bromeop.timers.reload_empty = 1.42
 				self.bromeop.timers.reload_exit_empty = 0.44
 			end
