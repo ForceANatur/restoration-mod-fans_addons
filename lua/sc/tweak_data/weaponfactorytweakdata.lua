@@ -7722,29 +7722,29 @@ end)
 					self.wpn_fps_smg_sterling.stock_adapter = "wpn_fps_smg_shepheard_s_adapter"
 					self.wpn_fps_smg_sterling_npc.stock_adapter = "wpn_fps_smg_shepheard_s_adapter"
 
+					for i, part_id in pairs(self.wpn_fps_smg_sterling.uses_parts) do
+						attachment_list = {
+							"wpn_fps_upg_i_singlefire",
+							"wpn_fps_upg_i_autofire"
+						}
+						for _, remove_id in ipairs(attachment_list) do
+							if part_id == remove_id then
+								self.wpn_fps_smg_sterling.uses_parts[i] = "resmod_dummy"
+							end
+						end
+					end
+
+					table.insert(self.wpn_fps_smg_sterling.uses_parts, "wpn_fps_upg_m4_s_standard")
+					table.insert(self.wpn_fps_smg_sterling.uses_parts, "wpn_fps_upg_m4_s_pts")
+					table.insert(self.wpn_fps_smg_sterling.uses_parts, "wpn_fps_upg_m4_s_crane")
+					table.insert(self.wpn_fps_smg_sterling.uses_parts, "wpn_fps_upg_m4_s_mk46")
+					table.insert(self.wpn_fps_smg_sterling.uses_parts, "wpn_fps_snp_victor_s_mod0")
+					table.insert(self.wpn_fps_smg_sterling.uses_parts, "wpn_fps_upg_m4_s_ubr")
+					table.insert(self.wpn_fps_smg_sterling.uses_parts, "wpn_fps_snp_tti_s_vltor")
+
 					self.wpn_fps_smg_sterling.override = self.wpn_fps_smg_sterling.override or {}
 
-					self.wpn_fps_smg_sterling.override.wpn_fps_upg_o_specter = { forbids = {"wpn_fps_gre_arbiter_o_standard"} }
-					self.wpn_fps_smg_sterling.override.wpn_fps_upg_o_aimpoint = { forbids = {"wpn_fps_gre_arbiter_o_standard"} }
-					self.wpn_fps_smg_sterling.override.wpn_fps_upg_o_aimpoint_2 = { forbids = {"wpn_fps_gre_arbiter_o_standard"} }
-					self.wpn_fps_smg_sterling.override.wpn_fps_upg_o_docter = { forbids = {"wpn_fps_gre_arbiter_o_standard"} }
-					self.wpn_fps_smg_sterling.override.wpn_fps_upg_o_eotech = { forbids = {"wpn_fps_gre_arbiter_o_standard"} }
-					self.wpn_fps_smg_sterling.override.wpn_fps_upg_o_t1micro = { forbids = {"wpn_fps_gre_arbiter_o_standard"} }
-					self.wpn_fps_smg_sterling.override.wpn_fps_upg_o_cmore = { forbids = {"wpn_fps_gre_arbiter_o_standard"} }
-					self.wpn_fps_smg_sterling.override.wpn_fps_upg_o_acog = { forbids = {"wpn_fps_gre_arbiter_o_standard"} }
-					self.wpn_fps_smg_sterling.override.wpn_fps_upg_o_cs = { forbids = {"wpn_fps_gre_arbiter_o_standard"} }
-					self.wpn_fps_smg_sterling.override.wpn_fps_upg_o_eotech_xps = { forbids = {"wpn_fps_gre_arbiter_o_standard"} }
-					self.wpn_fps_smg_sterling.override.wpn_fps_upg_o_reflex = { forbids = {"wpn_fps_gre_arbiter_o_standard"} }
-					self.wpn_fps_smg_sterling.override.wpn_fps_upg_o_rx01 = { forbids = {"wpn_fps_gre_arbiter_o_standard"} }
-					self.wpn_fps_smg_sterling.override.wpn_fps_upg_o_rx30 = { forbids = {"wpn_fps_gre_arbiter_o_standard"} }
-					self.wpn_fps_smg_sterling.override.wpn_fps_upg_o_spot = { forbids = {"wpn_fps_gre_arbiter_o_standard"} }
-					self.wpn_fps_smg_sterling.override.wpn_fps_upg_o_bmg = { forbids = {"wpn_fps_gre_arbiter_o_standard"} }
-					self.wpn_fps_smg_sterling.override.wpn_fps_upg_o_uh = { forbids = {"wpn_fps_gre_arbiter_o_standard"} }
-					self.wpn_fps_smg_sterling.override.wpn_fps_upg_o_fc1 = { forbids = {"wpn_fps_gre_arbiter_o_standard"} }
-					self.wpn_fps_smg_sterling.override.wpn_fps_upg_o_tf90 = { forbids = {"wpn_fps_gre_arbiter_o_standard"} }
-					self.wpn_fps_smg_sterling.override.wpn_fps_upg_o_poe = { forbids = {"wpn_fps_gre_arbiter_o_standard"} }
-					-- VMP sight(s)
-					self.wpn_fps_smg_sterling.override.wpn_fps_upg_o_cqb = { forbids = {"wpn_fps_gre_arbiter_o_standard"} }
+					--Sight forbid override are in the "universal" section (text search "universal-ly" without the "-")
 
 					self.wpn_fps_smg_sterling.override.wpn_fps_upg_m4_s_standard = {
 						stats = deep_clone(stocks.folder_to_adj_acc1_stats),
@@ -7802,26 +7802,7 @@ end)
 						}
 					}
 
-					for i, part_id in pairs(self.wpn_fps_smg_sterling.uses_parts) do
-						attachment_list = {
-							"wpn_fps_upg_i_singlefire",
-							"wpn_fps_upg_i_autofire"
-						}
-						for _, remove_id in ipairs(attachment_list) do
-							if part_id == remove_id then
-								self.wpn_fps_smg_sterling.uses_parts[i] = "resmod_dummy"
-							end
-						end
-					end
-
-					table.insert(self.wpn_fps_smg_sterling.uses_parts, "wpn_fps_upg_m4_s_standard")
-					table.insert(self.wpn_fps_smg_sterling.uses_parts, "wpn_fps_upg_m4_s_pts")
-					table.insert(self.wpn_fps_smg_sterling.uses_parts, "wpn_fps_upg_m4_s_crane")
-					table.insert(self.wpn_fps_smg_sterling.uses_parts, "wpn_fps_upg_m4_s_mk46")
-					table.insert(self.wpn_fps_smg_sterling.uses_parts, "wpn_fps_snp_victor_s_mod0")
-					table.insert(self.wpn_fps_smg_sterling.uses_parts, "wpn_fps_upg_m4_s_ubr")
-					table.insert(self.wpn_fps_smg_sterling.uses_parts, "wpn_fps_snp_tti_s_vltor")
-
+					self.wpn_fps_smg_sterling_npc.override = deep_clone(self.wpn_fps_smg_sterling.override)
 					self.wpn_fps_smg_sterling_npc.uses_parts = deep_clone(self.wpn_fps_smg_sterling.uses_parts)
 
 					--]]
@@ -11383,7 +11364,7 @@ end)
 							unit = "units/payday2/weapons/wpn_fps_ass_amcar_pts/wpn_fps_amcar_uupg_fg_amcar",
 							third_unit = "units/payday2/weapons/wpn_third_ass_amcar_pts/wpn_third_amcar_uupg_fg_amcar",
 							adds = {"wpn_fps_m4_uupg_fg_rail_m4a1"},
-							forbids = {"wpn_fps_ass_m16_os_frontsight"},
+							forbids = {"wpn_fps_ass_m16_os_frontsight", "wpn_fps_ass_m4_os_frontsight"},
 							override = {
 								wpn_fps_ass_m4_ns_frontsight = {
 									parent = "exclusive_set",
@@ -11395,7 +11376,7 @@ end)
 							unit = "units/payday2/weapons/wpn_fps_ass_m4_pts/wpn_fps_m4_uupg_fg_rail",
 							third_unit = "units/payday2/weapons/wpn_third_ass_m4_pts/wpn_third_m4_uupg_fg_rail",
 							adds = {"wpn_fps_m4_uupg_fg_rail_m4a1"},
-							forbids = {"wpn_fps_ass_m16_os_frontsight"},
+							forbids = {"wpn_fps_ass_m16_os_frontsight", "wpn_fps_ass_m4_os_frontsight"},
 							override = {
 								wpn_fps_ass_m4_ns_frontsight = {
 									parent = "exclusive_set",
@@ -11406,7 +11387,7 @@ end)
 						wpn_fps_upg_smg_olympic_fg_lr300 = {
 							unit = "units/payday2/weapons/wpn_fps_ass_m4_pts/wpn_fps_m4_uupg_fg_lr300",
 							third_unit = "units/payday2/weapons/wpn_third_ass_m4_pts/wpn_third_m4_uupg_fg_lr300",
-							forbids = {"wpn_fps_ass_m16_os_frontsight"},
+							forbids = {"wpn_fps_ass_m16_os_frontsight", "wpn_fps_ass_m4_os_frontsight"},
 							override = {
 								wpn_fps_ass_m16_o_handle_sight = {
 									unit = "units/payday2/weapons/wpn_fps_ass_m4_pts/wpn_fps_m4_uupg_o_flipup",
@@ -24429,6 +24410,7 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 				last_recoil_mult = 1.1,
 				lock = true
 			},
+			hey_kiddo = true,
 			rof_mult = 2.0408163,
 			alt_desc = "bm_wally_desc",
 		},
@@ -50906,6 +50888,16 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 	end
 	self.wpn_fps_ass_vhs_npc.override = deep_clone(self.wpn_fps_ass_vhs.override)
 	self.wpn_fps_ass_vhs_npc.uses_parts = deep_clone(self.wpn_fps_ass_vhs.uses_parts)
+
+	--Sterling optic forbids
+	for i, part_id in pairs(self.wpn_fps_smg_sterling.uses_parts) do
+		if self.parts[part_id] and self.parts[part_id].type then
+			if self.parts[part_id].type == "sight" and self.parts[part_id].stats and self.parts[part_id].stats.zoom then
+				self.wpn_fps_smg_sterling.override[part_id] = { forbids = {"wpn_fps_gre_arbiter_o_standard"} }
+			end
+		end
+	end
+	self.wpn_fps_smg_sterling_npc.override = deep_clone(self.wpn_fps_smg_sterling.override)
 
 --GEN 1 LEGENDARY STUFF--
 	--Vlad's Rodina--
