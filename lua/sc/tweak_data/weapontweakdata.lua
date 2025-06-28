@@ -12521,6 +12521,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							count = 1,
 							rof_mult = 1.5,
 							auto_burst = true,
+							no_ads = true,
 							slamfire = true,
 							spread_mult = 1.5,
 							ads_spread_mult = 18,
@@ -12902,6 +12903,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							count = 1,
 							rof_mult = 1.5,
 							auto_burst = true,
+							no_ads = true,
 							slamfire = true,
 							spread_mult = 1.5,
 							ads_spread_mult = 18,
@@ -34283,6 +34285,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				}
 			end
 
+			--temp until I get around to doing these per weapon
 			if weap.damage_falloff then
 				if table.contains(weap.recategorize, "light_smg") or table.contains(weap.recategorize, "heavy_smg") then
 					weap.damage_falloff.start_dist = math.floor(((weap.damage_falloff.start_dist / 100) * 0.8)) * 100
@@ -34296,6 +34299,10 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					weap.damage_falloff.end_dist = math.floor(((weap.damage_falloff.end_dist / 100) * 0.9)) * 100
 				end
 			end
+			if (table.contains(weap.recategorize, "light_ar") or table.contains(weap.recategorize, "heavy_ar") or table.contains(weap.recategorize, "dmr_ar")) and weap.ads_speed < 0.340 then
+				weap.ads_speed = weap.ads_speed + 0.02
+			end
+
 
 			if table.contains(weap.categories, "assault_rifle") or table.contains(weap.categories, "snp") then
 				weap.reload_speed_multiplier = (weap.reload_speed_multiplier or 1) * 0.95
