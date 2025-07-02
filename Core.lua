@@ -451,6 +451,10 @@ function restoration:Init()
 		--Custom Heists--
 		"the_factory" --eclipse research facility
 	}
+	-- Heists to disable enemy smoke/flash grenades on
+	restoration.no_smokes_or_flashes = table.list_to_set({
+		"haunted",  -- Safehouse Nightmare
+	})
 
 	--Sub Faction overrides
 	--Texas
