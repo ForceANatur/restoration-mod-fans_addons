@@ -1,3 +1,6 @@
+-- TODO: investigate unplayable scripted Dozer spam
+do return end
+
 local cloaker_ds_table = {
 	"units/pd2_dlc_gitgud/characters/ene_zeal_cloaker_sc/ene_zeal_cloaker_sc",
 	"units/pd2_dlc_gitgud/characters/ene_zeal_cloaker_sc/ene_zeal_cloaker_sc",
@@ -58,7 +61,17 @@ return {
 				name = "such_a_nice_car",
 				force = 2,
 				position = Vector3(675, -1200, 875)
-			}
-		}
+			},
+			{
+				name = "such_an_ugly_car",
+				force = 2,
+				position = Vector3(300, 1300, 1200),
+			},
+			{
+				name = "redeyes",
+				force = 2,
+				position = Vector3(3000, -900, 900),
+			},
+		},
 	}
 }
