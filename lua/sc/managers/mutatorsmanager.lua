@@ -56,6 +56,7 @@ function MutatorsManager:init()
 		MutatorSpoocSquad:new(self),
 		MutatorOnlyTitans:new(self),
 		MutatorVanillaPoliceCall:new(self),
+		--MutatorFactionsReplacer:new(self),
 		MutatorBirthday:new(self),
 		MutatorReloadMarathon:new(self),
 		MutatorMagazineMartyr:new(self),
