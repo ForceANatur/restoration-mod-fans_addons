@@ -7,8 +7,6 @@ These range from minor weapon tweaks to new features such as mutators.
 
 Vanilla units spawn across most factions. Don't like the look of them? Use a mod!
 
-Increased the volume of some voicelines.
-
 Medics, Medic-dozers, and OMNIA LPFs can heal eachother.
 
 fbi_1, and Big Dave spawn natrually.
