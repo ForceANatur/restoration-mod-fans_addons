@@ -2206,9 +2206,9 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Eng", function(loc)
 			["st_menu_firemode_burst_autoburst"] = "AUTOBURST",
 		["st_menu_firemode_volley"] = "VOLLEY",
 
-		["menu_reticle_dmc_eotech"] = "TECopt Full",
-		["menu_reticle_dmc_eotech_moa"] = "TECopt MOA Dot",
-		["menu_reticle_dmc_eotech_seggs"] = "TECopt Segmented",
+		["menu_reticle_dmc_eotech"] = "TECopt 0-Reticle",
+		["menu_reticle_dmc_eotech_moa"] = "TECopt 2-Reticle",
+		["menu_reticle_dmc_eotech_seggs"] = "TECopt 0-Reticle (Segmented)",
 		["menu_reticle_dmc_ebr_cqb"] = "Maelstrom EBR-CQB",
 		["menu_reticle_dmc_trijicon_chevron"] = "Trigonom Chevron",
 		["menu_reticle_dmc_ncstar"] = "Reconnaissance Cross",
@@ -2789,6 +2789,10 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 				["bm_wp_hk51b_magazine_belt_80"] = "80 Round Belt",
 				--Buzzsaw/Mg42
 				["bm_wolf_brigade_sc_desc"] = "\"We are not men disguised as mere dogs.\nWe are #{important_1}#wolves## disguised as mere men.\"\n\n#{skill_color}#Has improved spread and recoil while hipfired.##",
+				["bm_wp_mg42_m_75"] = "75rnd Drum",
+				["bm_wp_mg42_m_75_desc"] = "Holds more rounds than physically possible by using the same technology to fit legs into jet engines.",
+				["bm_wp_mg42_m_100"] = "100rnd Drum",
+				["bm_wp_mg42_m_100_desc"] = "Holds even more rounds than physically possible by using the same technology to fit legs into jet engines.",
 				["bm_wp_mg42_b_vg38"] = "BlasTech DLT-19 Barrel",
 				["bm_wp_mg42_b_vg38_desc_sc"] = "Tech said to have come from #{skill_color}#a galaxy far, far away## converts this weapon to #{risk}#fire bolts of plasma## and utilize a #{skill_color}#recharging magazine.##\n\nRecharge delay: #{skill_color}#3s##\nRecharge rate: #{skill_color}#9/s## #{important_1}#(Halved while overheated)##\nOverheat penalty: #{important_1}#4s##",
 				--M134
@@ -2865,6 +2869,8 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 				--Custom Shotguns
 					--BO6 ASG-89
 					["bm_wp_upg_i_autousas"] = "Battlefield-Tested Internals",
+					["bm_wp_upg_i_burstusas"] = "Systems Corp Internals",
+					["bm_wp_upg_i_burstusas_desc"] = "Locks firemode to a #{risk}#3-round burst## at #{skill_color}#800 RPM##.",
 					--Reinbeck M1
 					["bm_w_beck_desc"] = "The criminal underworld's most popular shotgun has returned from its grave to reclaim its rightful place in the shotgun hierarchy. Originally used in the 2011 Crimewave, this shotgun has been proven extremely reliable in just about any close range situation.",
 					--Doomstic
@@ -3167,7 +3173,17 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 				-- Toy weapons
 				["bm_w_toym16_sc_desc"] = "\"No full-auto in buildings.\"",
 				["bm_w_toy1911_sc_desc"] = "\"No full-auto in buildings.\"",
-
+				
+			--[[ OTHER ]]
+				--soosh's Blue Archive skins 😭💢
+					["bm_w_tecci_ibuki"] = "Yay, Bang Bang!",
+					["bm_w_ben_hoshino"] = "Eye of Horus",
+					["bm_w_mg42_hinature"] = "Destroyer of Denouement",
+					["bm_w_mg42_hinature_desc"] = "#{stat_maxed}#Blows away school rule violators and degenerates with its ruthlessly destructive power.##",
+					["bm_w_m4_azusa"] = "Et Omnia Vanitas",
+					["bm_w_m4_azusa_desc"] = "#{risk}#Vanity of vanities: All is in vain.##",
+					["bm_w_m4_saori"] = "Arius Assault Rifle",
+					["bm_w_c96_satsuki"] = "NK Delta",
 	})
 
 	--[[
@@ -4619,6 +4635,14 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 						["bm_wpn_fps_upg_o_sig"] = "SIG Juliet3 Magnifier",
 
 						["bm_wp_upg_o_mbus_rear"] = "Magpul MBUS Back-up Sights",
+
+						["menu_reticle_dmc_eotech"] = "EOTech 0-Reticle",
+						["menu_reticle_dmc_eotech_moa"] = "EOTech 2-Reticle",
+						["menu_reticle_dmc_eotech_seggs"] = "EOTech 0-Reticle (Segmented)",
+						["menu_reticle_dmc_ebr_cqb"] = "Vortex EBR-CQB",
+						["menu_reticle_dmc_trijicon_chevron"] = "Trijicon Chevron",
+						["menu_reticle_dmc_ncstar"] = "NcStar Cross",
+						["menu_reticle_dmc_cross_holotherm"] = "Steiner CQT Cross",
 
 					--Vertical Grips
 						["bm_wp_upg_vg_tac"] = "Knights Armament Co. VFG",

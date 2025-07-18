@@ -6001,6 +6001,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							self.x_lemming.CLIP_AMMO_MAX = 40
 							self.x_lemming.AMMO_MAX = 180
 							self.x_lemming.fire_mode_data.fire_rate = 0.1
+							self.x_lemming.lock_slide_alt = true
 							self.x_lemming.kick = self.stat_info.kick_tables.moderate_kick
 							self.x_lemming.kick_pattern = {
 								{0, self.stat_info.kick_tables.even_recoil},
@@ -18170,6 +18171,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.m712.damage_type = "heavy_pistol"
 				self.m712.tactical_reload = 1
 				self.m712.fire_mode_data.fire_rate = 0.06
+				self.m712.lock_slide = true
+				self.m712.lock_slide_alt = true
 				self.m712.CAN_TOGGLE_FIREMODE = true
 				self.m712.CLIP_AMMO_MAX = 20
 				self.m712.AMMO_MAX = 40
@@ -21080,6 +21083,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				}
 				self.ultimax.muzzleflash = "_dmc/effects/heavy_muzzle"
 				self.ultimax.muzzleflash_silenced = "_dmc/effects/heavy_suppressed"
+				self.ultimax.shell_ejection = "effects/payday2/particles/weapons/shells/shell_556"
 				self.ultimax.supported = true
 				self.ultimax.ads_speed = 0.380
 				self.ultimax.damage_falloff = {
@@ -22079,11 +22083,11 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.triad.fire_mode_data.fire_rate = 0.2
 				self.triad.BURST_FIRE = {
 					count = 3,
-					delay = 1,
+					delay = 0.5,
 					rof_mult = 20,
 					recoil_mult = 0,
 					spread_mult = 1.5,
-					last_recoil_mult = 3
+					last_recoil_mult = 1.8
 				}
 				self.triad.kick = self.stat_info.kick_tables.moderate_kick
 				self.triad.kick_pattern = {
@@ -23826,6 +23830,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.fakedefy.AMMO_MAX = 120
 				self.fakedefy.fire_mode_data.fire_rate = 0.1
 				self.fakedefy.auto.fire_rate = 0.1
+				self.fakedefy.lock_slide = true
+				self.fakedefy.sounds.magazine_empty = "wp_rifle_slide_lock"
 				self.fakedefy.kick = self.stat_info.kick_tables.moderate_right_kick
 				self.fakedefy.kick_pattern = {
 					{0, self.stat_info.kick_tables.right_kick},
@@ -25871,7 +25877,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.m4_usasoc.supported = true
 				self.m4_usasoc.ads_speed = 0.340
 				self.m4_usasoc.damage_falloff = {
-					start_dist = 1700,
+					start_dist = 1500,
 					end_dist = 6000,
 					min_mult = 0.4
 				}
@@ -28580,6 +28586,13 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			end
 
 		--[[     TANGERINE'S MODS     ]]--
+			if self.scar16 then
+				self.scar16.timers.reload_empty = 3.1
+				self.scar16.timers.reload_exit_empty = 0.8
+				self.scar16.timers.reload_not_empty = 2.23
+				self.scar16.timers.reload_exit_not_empty = 0.8
+			end
+
 			if self.s556 then
 				self.s556.recategorize = { "heavy_ar" }
 				self.s556.damage_type = "assault_rifle"
@@ -28617,7 +28630,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.s556.stats = {
 					damage = 30,
 					spread = 86,
-					recoil = 75,
+					recoil = 77,
 					spread_moving = 6,
 					zoom = 1,
 					concealment = 23,
@@ -28808,7 +28821,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.sierra458.BURST_FIRE = false
 				self.sierra458.CAN_TOGGLE_FIREMODE = true
 				self.sierra458.FIRE_MODE = "single"
-				self.sierra458.fire_mode_data.fire_rate = 0.15
+				self.sierra458.fire_mode_data.fire_rate = 0.12
 				self.sierra458.kick = self.stat_info.kick_tables.even_recoil
 				self.sierra458.kick_pattern = {
 					{0, self.stat_info.kick_tables.right_recoil},
