@@ -220,7 +220,7 @@ function restoration:Init()
 	restoration.civ_death_diff_increase = true
 	restoration.high_noon = false
 
-	-- Disable Bravos spawning on PONRs for these heists, usually for heists that have PONRs that go on/off.
+	-- Disable Bravos spawning on PONRs for these heists, usually for heists that have PONRs that go on/off
 	-- Also kills forced 1 diff and music changes on Pro Job
 	-- TODO: make use of new PONR element functionality instead of this table
 	restoration.alternate_ponr_behavior = {
@@ -437,34 +437,47 @@ function restoration:Init()
 		"santas_hardware_store", --Hardware Store but Xmas
 		"santa_pain"
 	}
-	--heists to remove infinite assaults from
+
+	-- Heists to remove endless assaults from
+	-- TODO: move to mission script patches instead of using this table
 	restoration.fuck_hunt = {
-		"kenaz", --ggc
-		"pines", --white xmas
-		"jolly", --aftershock
-		"born", --biker heist D1
-		"chca", --black cat
-		"pent", --Mountain Master
-		"lvl_friday", --Mallbank / Crashing Capitol
-		--"hox_1", --Hoxout D1
-		--"xmn_hox_1" --Xmas edition
-		--Custom Heists--
-		"the_factory" --eclipse research facility
+		"pines",  -- White Xmas
+		"jolly",  -- Aftershock
+		"born",  -- Biker Heist day 1
+		"chca",  -- Black Cat
+		"pent",  -- Mountain Master
+		"lvl_friday",  -- Crashing Capitol (Mallbank)
+		-- "hox_1",  -- Hoxton Breakout day 1
+		-- "xmn_hox_1"  -- Hoxton Breakout day 1 (Christmas)
+		-- Custom Heists --
+		"the_factory",  -- Eclipse Research Facility
 	}
+
 	-- Heists to disable enemy smoke/flash grenades on
 	restoration.no_smokes_or_flashes = table.list_to_set({
 		"haunted",  -- Safehouse Nightmare
+	})
+
+	-- Heists to disable automatic drill reinforcements on
+	restoration.no_automatic_drill_reinforce = table.list_to_set({
+		"arm_fac",  -- Transport: Harbor
+		"arm_par",  -- Transport: Park
+		"arm_hcm",  -- Transport: Downtown
+		"arm_und",  -- Transport: Underpass
+		"arm_cro",  -- Transport: Crossroads
+		"arm_for",  -- Transport: Train
+		"arm_for_restoration",  -- Transport: Train (Res edit)
 	})
 
 	-- When playing Pro Jobs, heists in this table enable Bravos when the specified diff threshold would be exceeded
 	-- This should be reserved only for infinite loot heists or other special cases where Bravos should spawn but PONRs won't work
 	-- Threshold = 0 will activate on the first diff increase, threshold = 1 will activate after the fourth assault if no civs killed
 	restoration.natural_mode_13 = {
-		pnes = 1,  -- White Xmas
+		pines = 1,  -- White Xmas
 		rat = 1,  -- Cook Off
 		nail = 1,  -- Lab Rats
 		cane = 1,  -- Santa's Workshop
-	--	pal = 1,  -- Counterfeit
+		-- pal = 1,  -- Counterfeit
 		help = 1,  -- Prison Nightmare
 		mex_cooking = 1,  -- Border Crystals
 	}
@@ -1151,6 +1164,7 @@ function restoration:gen_pointofnoreturn(id, name, pos, rot, opts)
 			base_delay = opts.base_delay or 0,
 			tweak_id = opts.tweak_id or "noreturn",
 			min_difficulty = opts.min_difficulty or nil,
+			difficulty_add = opts.difficulty_add or nil,
 			bravos_difficulty_threshold = opts.bravos_difficulty_threshold or nil,
 			bravos_timer = opts.bravos_timer or nil,
 			bravos_forbidden = opts.bravos_forbidden or nil,
