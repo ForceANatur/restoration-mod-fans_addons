@@ -138,7 +138,9 @@ Major Molly: Rochelle (Left 4 Dead 2 Russian Dub)
 
 RPG Grunt: Soldier (Team Fortess 2)
 
-Mememen: Vinesauce Joel (Soon)
+Mememen: Vinesauce Joel (https://gamebanana.com/sounds/46534)
+
+Heavy Medic: Mezz (https://gamebanana.com/sounds/69020)
 
 # Credits
 
