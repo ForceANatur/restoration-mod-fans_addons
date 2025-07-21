@@ -133,6 +133,8 @@ RPG Grunt: Soldier (Team Fortess 2)
 
 Mememen: Vinesauce Joel (https://gamebanana.com/sounds/46534)
 
+Heavy Medic: Mezz (https://gamebanana.com/sounds/69020)
+
 # Credits
 
 Rhynne: Helped in development of the Restoration HUD and was the original project lead. Creating Major Heist Edits.
