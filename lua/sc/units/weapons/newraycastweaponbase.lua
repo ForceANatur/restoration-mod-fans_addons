@@ -1583,6 +1583,10 @@ end
 function NewRaycastWeaponBase:tweak_data_anim_play(anim, speed_multiplier, set_offset, set_offset2)
 	if anim ~= "deploy" and anim ~= "undeploy" and self._starwars and not self._starwars.can_reload then return end
 
+	if anim == "reload_slap" then
+		speed_multiplier = self._current_reload_speed_multiplier or self:reload_speed_multiplier()
+	end
+
 	local active_burst = self:in_burst_mode() and self._burst_rounds_remaining and self._burst_rounds_remaining > 0
 	local no_burst_anims = active_burst and self._burst_no_anim
 	if no_burst_anims then return end
@@ -2118,12 +2122,10 @@ function NewRaycastWeaponBase:get_damage_falloff(damage, col_ray, user_unit, dot
 	--Initialize base info.
 
 	local has_mindblown_ace = managers.player:has_category_upgrade("player", "headshot_no_falloff") and self:is_single_shot() and self:is_category("assault_rifle", "snp") and check_col_ray_head --and (managers.player._last_no_falloff_headshot_t or 0) < self._unit:timer():time()
-	log(tostring(has_mindblown_ace))
 	if (self._chf and check_col_ray_head) or --[[not self:in_burst_mode() and not is_rapidfire and]] (self._ammo_data and (self._ammo_data.bullet_class == "InstantExplosiveBulletBase")) or has_mindblown_ace then
 		--if has_mindblown_ace then
 			--managers.player._last_no_falloff_headshot_t = self._unit:timer():time() + (tweak_data.upgrades.headshot_no_falloff_cd or 0)
 		--end
-		log("asddddddadadas")
 		return damage
 	end
 
@@ -2587,6 +2589,26 @@ function NewRaycastWeaponBase:_set_parts_visible(visible)
 	end
 
 	self:_chk_charm_upd_state()
+end
+
+
+local g3_niphen = restoration.Options:GetValue("WEAPONS/WEAPONANIMS/g3_niphen")
+function NewRaycastWeaponBase:weapon_tweak_data()
+	local wtd = NewRaycastWeaponBase.super.weapon_tweak_data(self)
+
+    if not self._parts then
+        return wtd
+    end
+
+    if not g3_niphen and BeardLib.Utils:FindMod("JustAnotherG3 Reload") and self._name_id == "g3" then
+		if self._parts.wpn_fps_ass_g3_b_sniper then 
+			wtd.animations.reload_name_id = "g3_psg"
+		elseif self._parts.wpn_fps_ass_g3_b_long or self._parts.wpn_fps_ass_g3_b_short then
+			wtd.animations.reload_name_id = "g3_long"
+		end
+	end
+
+    return wtd
 end
 
 if OWLFBullpupWeaponBase then

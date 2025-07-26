@@ -14105,6 +14105,7 @@ end)
 					self.parts.wpn_fps_ass_g3_fg_retro_plastic.unit = "units/pd2_dlc_gage_assault/weapons/wpn_fps_ass_g3_niphen_pts/wpn_fps_ass_g3_fg_retro_plastic"
 					self.parts.wpn_fps_ass_g3_m_mag.unit = "units/pd2_dlc_gage_assault/weapons/wpn_fps_ass_g3_niphen_pts/wpn_fps_ass_g3_m_mag"
 					self.parts.wpn_fps_ass_g3_m_psg.unit = "units/pd2_dlc_gage_assault/weapons/wpn_fps_ass_g3_niphen_pts/wpn_fps_ass_g3_m_mag_psg"
+					self.parts.wpn_fps_ass_g3_body_upper.unit = "units/pd2_dlc_gage_assault/weapons/wpn_fps_ass_g3_niphen_pts/wpn_fps_ass_g3_body_upper"
 				end
 
 				self.wpn_fps_ass_g3_npc.adds = deep_clone(self.wpn_fps_ass_g3.adds)
@@ -19092,7 +19093,10 @@ end)
 						translation = Vector3(0, -8, -2.77)
 					}
 					self.parts.wpn_fps_upg_o_specter.stance_mod.wpn_fps_ass_g3 = {
-						translation = Vector3(0.01, 2.5, -3.395)
+						translation = (
+							(cwakey and cwakey.Options:GetValue("g3_cwa_toggle") and Vector3(-0.0, -1.3, -3.38))
+							or Vector3(0.01, 2.5, -3.395)
+						)
 					}
 					self.parts.wpn_fps_upg_o_specter.stance_mod.wpn_fps_ass_shak12 = {
 						translation = Vector3(0, -10, 1.585),
