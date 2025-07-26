@@ -26,6 +26,7 @@ Hooks:OverrideFunction(ElementSpawnEnemyGroup, "on_executed", function (self, in
 	ElementSpawnEnemyGroup.super.on_executed(self, instigator)
 end)
 
+-- TODO: move fully to mission script patches
 local standard_spawngroups = {
 	["standard"] = {
 		--All Blue units
@@ -474,7 +475,7 @@ local standard_spawngroups = {
 		"GS_swats",
 		"FBI_heavys",
 		"FBI_heavys_boom",
-		"GS_heavys",
+		"GS_Heavys",
 		"GS_heavys_boom",
 		"GREEN_tanks",
 		"BLACK_tanks",
@@ -506,7 +507,7 @@ local standard_spawngroups = {
 		"FBI_heavys",
 		"FBI_heavys_boom",
 		"GS_swats",
-		"GS_heavys",
+		"GS_Heavys",
 		"GS_heavys_boom",
 		"FBI_spoocs",
 		"FBI_defend_b",
@@ -533,7 +534,7 @@ local standard_spawngroups = {
 		"GS_defend_c",
 		"FBI_heavys",
 		"FBI_heavys_boom",
-		"GS_heavys",
+		"GS_Heavys",
 		"GS_heavys_boom",
 		"GREEN_tanks",
 		"BLACK_tanks",
@@ -566,7 +567,7 @@ local standard_spawngroups = {
 		"GS_swats",
 		"FBI_heavys",
 		"FBI_heavys_boom",
-		"GS_heavys",
+		"GS_Heavys",
 		"GS_heavys_boom",
 		"GREEN_tanks",
 		"BLACK_tanks",
@@ -609,7 +610,7 @@ local standard_spawngroups = {
 		"FBI_spoocs",
 		"FBI_heavys",
 		"FBI_heavys_boom",
-		"GS_heavys",
+		"GS_Heavys",
 		"GS_heavys_boom"
 	},
 	["proprietary_election_day"] = {
@@ -632,7 +633,7 @@ local standard_spawngroups = {
 		"CS_stealth_a",
 		"FBI_heavys",
 		"FBI_heavys_boom",
-		"GS_heavys",
+		"GS_Heavys",
 		"GS_heavys_boom",
 		"FBI_swats",
 		"GS_swats",
@@ -647,7 +648,7 @@ local standard_spawngroups = {
 		"GS_swats",
 		"FBI_heavys",
 		"FBI_heavys_boom",
-		"GS_heavys",
+		"GS_Heavys",
 		"GS_heavys_boom",
 		"CS_heavys",
 		"CS_defend_c",
@@ -698,7 +699,7 @@ local standard_spawngroups = {
 		"TIT_tanks",
 		"FBI_heavys",
 		"FBI_heavys_boom",
-		"GS_heavys",
+		"GS_Heavys",
 		"GS_heavys_boom",
 		"FBI_spoocs",
 		"FBI_defend_b",
@@ -731,7 +732,7 @@ local standard_spawngroups = {
 		"TIT_tanks",
 		"FBI_heavys",
 		"FBI_heavys_boom",
-		"GS_heavys",
+		"GS_Heavys",
 		"GS_heavys_boom",
 		"FBI_spoocs",
 		"FBI_defend_b",
@@ -761,7 +762,7 @@ local standard_spawngroups = {
 		"GS_swats",
 		"FBI_heavys",
 		"FBI_heavys_boom",
-		"GS_heavys",
+		"GS_Heavys",
 		"GS_heavys_boom",
 		"FBI_spoocs",
 		"FBI_defend_b",
@@ -798,7 +799,7 @@ local standard_spawngroups = {
 		"HVH_Boss",
 		"FBI_heavys",
 		"FBI_heavys_boom",
-		"GS_heavys",
+		"GS_Heavys",
 		"GS_heavys_boom",
 		"FBI_swats",
 		"GS_swats"
@@ -831,7 +832,7 @@ local standard_spawngroups = {
 		"GS_swats",
 		"FBI_heavys",
 		"FBI_heavys_boom",
-		"GS_heavys",
+		"GS_Heavys",
 		"GS_heavys_boom",
 		"GREEN_tanks",
 		"BLACK_tanks",
@@ -891,7 +892,7 @@ local standard_spawngroups = {
 		"GS_swats",
 		"FBI_heavys",
 		"FBI_heavys_boom",
-		"GS_heavys",
+		"GS_Heavys",
 		"GS_heavys_boom",
 		"GREEN_tanks",
 		"BLACK_tanks",
@@ -927,7 +928,7 @@ local standard_spawngroups = {
 		"CS_stealth_a",
 		"FBI_heavys",
 		"FBI_heavys_boom",
-		"GS_heavys",
+		"GS_Heavys",
 		"GS_heavys_boom",
 		"FBI_defend_b",
 		"GS_defend_b",
@@ -968,7 +969,7 @@ local standard_spawngroups = {
 		"CS_heavys",
 		"FBI_heavys",
 		"FBI_heavys_boom",
-		"GS_heavys",
+		"GS_Heavys",
 		"GS_heavys_boom",
 		"Cap_Winters",
 		"Cap_Autumn",
@@ -1000,7 +1001,7 @@ local standard_spawngroups = {
 		"GS_swats",
 		"FBI_heavys",
 		"FBI_heavys_boom",
-		"GS_heavys",
+		"GS_Heavys",
 		"GS_heavys_boom",
 		"FBI_spoocs",
 		"FBI_defend_b",
@@ -1026,7 +1027,7 @@ local standard_spawngroups = {
 		"GS_swats",
 		"FBI_heavys",
 		"FBI_heavys_boom",
-		"GS_heavys",
+		"GS_Heavys",
 		"GS_heavys_boom",
 		"FBI_spoocs",
 		"FBI_defend_b",
@@ -1076,7 +1077,7 @@ local standard_spawngroups = {
 		"GS_swats",
 		"FBI_heavys",
 		"FBI_heavys_boom",
-		"GS_heavys",
+		"GS_Heavys",
 		"GS_heavys_boom",
 		"FBI_defend_b",
 		"GS_defend_b",
@@ -4601,15 +4602,15 @@ local exclude_spawngroups = {
 }
 
 Hooks:PostHook(ElementSpawnEnemyGroup, "_finalize_values", "revert_spawnpoint_delays_finalize_values", function(self)
-	local level = Global.level_data and Global.level_data.level_id or ''
-	level = level:gsub('_skip1$', ''):gsub('_skip2$', ''):gsub('_night$', ''):gsub('_day$', '') -- bugger off please
+	local level = Global.level_data and Global.level_data.level_id or ""
+	level = level:gsub("_skip1$", ""):gsub("_skip2$", ""):gsub("_night$", ""):gsub("_day$", "") -- bugger off please
 
-	if level == 'branchbank' or level == 'branchbank_cash' or level == 'branchbank_deposit' or level == 'branchbank_gold' or level == 'branchbank_gold_prof' or level == 'branchbank_prof' then
+	if level == "branchbank" or level == "branchbank_cash" or level == "branchbank_deposit" or level == "branchbank_gold" or level == "branchbank_gold_prof" or level == "branchbank_prof" then
 		level = "firestarter_3"
 	elseif level == "gallery" then
 		level = "framing_frame_1"
 	elseif level == "rat" then
-		level = "alex_1"	
+		level = "alex_1"
 	end
 
 	local groups = self._values.preferred_spawn_groups
@@ -4617,12 +4618,22 @@ Hooks:PostHook(ElementSpawnEnemyGroup, "_finalize_values", "revert_spawnpoint_de
 	if element then
 		self._values.interval = element.interval
 		self._values.preferred_spawn_groups = element.preferred_spawn_groups
-	elseif groups and #groups > 0 and not table.contains_all(exclude_spawngroups, groups) then
+	elseif not self._values.ignore_replace_preferred and groups and #groups > 0 and not table.contains_all(exclude_spawngroups, groups) then
 		self._values.preferred_spawn_groups = {}
 
 		for name in pairs(tweak_data.group_ai.enemy_spawn_groups) do
 			if not table.contains(exclude_spawngroups, name) then
 				table.insert(self._values.preferred_spawn_groups, name)
+			end
+		end
+
+		if self._values.interval == 0 then
+			for _, id in pairs(self._values.elements) do
+				local spawn_point = self:get_mission_element(id)
+				if spawn_point and spawn_point._values.spawn_action then
+					self._values.interval = 5
+					break
+				end
 			end
 		end
 	end
