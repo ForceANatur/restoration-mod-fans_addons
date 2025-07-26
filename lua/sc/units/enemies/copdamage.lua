@@ -234,6 +234,9 @@ Hooks:PostHook(CopDamage, "init", "res_init", function(self, unit)
 end)
 
 Hooks:PostHook(CopDamage, "convert_to_criminal", "convert_to_criminal_mutator_no_outlines", function(self, health_multiplier)
+	--Disable LPF overheal effect for jokers
+	self._unit:base():disable_lpf_buff()
+	--Special effect for jokers with No Outlines mutator
 	if managers.mutators:modify_value("CopDamage:DisableEnemyOutlines", false) then
 		self._unit:base():converted_enemy_effect(true)
 	end
@@ -2015,7 +2018,7 @@ function CopDamage:die(attack_data)
 	end
 	
 	if self._unit:base() then
-		self._unit:base():disable_lpf_buff(true)
+		self._unit:base():disable_lpf_buff()
 		self._unit:base():disable_asu_laser(true)
 		self._unit:base():converted_enemy_effect(false)
 	end
