@@ -40480,6 +40480,21 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			}
 		end
 
+		if self.parts.wpn_fps_sho_ksg_b_25 then
+			self.parts.wpn_fps_sho_ksg_b_25.supported = true
+			self.parts.wpn_fps_sho_ksg_b_25.stats = {
+				value = 4,
+				-- damage = 30,
+				extra_ammo = 10,
+				concealment = -7
+			}
+			self.parts.wpn_fps_sho_ksg_b_25.custom_stats = {
+				falloff_start_mult = 1.3,
+				falloff_end_mult = 1.3,
+				ads_speed_mult = 1.175
+			}
+		end
+
 	--[[ SILENT ENFORCER'S MODS ]]
 
 		if self.parts.wpn_fps_ass_qbz95_body_standard then
@@ -43534,26 +43549,52 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 		self.parts.wpn_fps_smg_kedr_g_wood.stats = { concealment = -1, recoil = 1 }
 	end
 
-	if self.parts.wpn_fps_pis_af2011_g_bling then
-		self.parts.wpn_fps_pis_af2011_g_bling.supported = true
-		self.parts.wpn_fps_pis_af2011_g_bling.stats = { recoil = 1, concealment = -1 }
-
-		self.parts.wpn_fps_pis_af2011_g_wood.supported = true
-		self.parts.wpn_fps_pis_af2011_g_wood.stats = { spread = 1, concealment = -1 }
-		
-		self.parts.wpn_fps_pis_af2011_b_silver.supported = true
-		self.parts.wpn_fps_pis_af2011_b_silver.stats = { recoil = 1, concealment = -1 }
-
+	if self.parts.wpn_fps_pis_af2011_m_ext then
 		self.parts.wpn_fps_pis_af2011_m_ext.supported = true
-		self.parts.wpn_fps_pis_af2011_m_ext.stats = { extra_ammo = 5, concealment = -3 }
-		-- this is really badly implemented, might need DMC for this
-		self.parts.wpn_fps_pis_af2011_a_uno.supported = true
-		self.parts.wpn_fps_pis_af2011_a_uno.stats = { damage = -25, spread = 5, total_ammo_mod = 7 }
-		self.parts.wpn_fps_pis_af2011_a_uno.custom_stats = { rays = 1,  armor_piercing_add = 0, can_shoot_through_enemy = "false", ammo_pickup_min_mul = 1, ammo_pickup_max_mul = "1.9", can_shoot_through_shield = "false", can_shoot_through_wall = "false" }
+		self.parts.wpn_fps_pis_af2011_m_ext.stats = {
+			value = 3,
+			concealment = -2,
+			extra_ammo = 8,
+			reload = -3
+		}
 
-		self.parts.wpn_fps_pis_af2011_a_shield.supported = true
-		self.parts.wpn_fps_pis_af2011_a_shield.stats = { damage = 25, spread = 2, total_ammo_mod = -3, recoil = -12 }
-		self.parts.wpn_fps_pis_af2011_a_shield.custom_stats = { rays = 2, armor_piercing_add = 1, ammo_pickup_min_mul = 0.5, ammo_pickup_max_mul = 0.3, can_shoot_through_enemy = "true", can_shoot_through_shield = "true", can_shoot_through_wall = "true" }
+		self.parts.wpn_fps_pis_af2011_parts.supported = true
+		self.parts.wpn_fps_pis_af2011_parts.stats = {
+			spread_multi = {1.5, 0.75}
+		}
+
+		self.parts.wpn_fps_pis_af2011_a_uno.supported = true
+		self.parts.wpn_fps_pis_af2011_a_uno.type = "custom"
+		self.parts.wpn_fps_pis_af2011_a_uno.alt_icon = "guis/textures/pd2/blackmarket/icons/mods/wpn_fps_upg_i_autofire"
+		self.parts.wpn_fps_pis_af2011_a_uno.name_id = self.parts.wpn_fps_upg_i_singlefire.name_id
+		self.parts.wpn_fps_pis_af2011_a_uno.has_description = true
+		self.parts.wpn_fps_pis_af2011_a_uno.desc_id = "bm_wp_upg_af2011_a_uno_desc"
+		self.parts.wpn_fps_pis_af2011_a_uno.stats = { spread_multi = {1, 1} }
+		self.parts.wpn_fps_pis_af2011_a_uno.custom_stats = {
+			burst_fire = false,
+			info_lock_semi = true,
+			rof_mult = 1.16666666666
+		}
+
+		self.parts.wpn_fps_pis_af2011_g_bling.supported = true
+		self.parts.wpn_fps_pis_af2011_g_bling.has_description = false
+		self.parts.wpn_fps_pis_af2011_g_bling.stats = deep_clone(grips.recoil_1)
+		self.parts.wpn_fps_pis_af2011_g_wood.supported = true
+		self.parts.wpn_fps_pis_af2011_g_wood.has_description = false
+		self.parts.wpn_fps_pis_af2011_g_wood.stats = deep_clone(grips.recoil_acc)
+
+		self.parts.wpn_fps_pis_af2011_b_silver.supported = true
+		self.parts.wpn_fps_pis_af2011_b_silver.stats = { value = 0 }
+		self.parts.wpn_fps_pis_af2011_b_silver.custom_stats = nil
+
+		table.insert(self.wpn_fps_pis_af2011.uses_parts, "wpn_fps_upg_fl_pis_perst")
+		self.wpn_fps_pis_af2011.adds.wpn_fps_upg_fl_pis_perst = {
+			"wpn_fps_pis_af2011_rail"
+		}
+		table.insert(self.wpn_fps_pis_x_af2011.uses_parts, "wpn_fps_upg_fl_pis_perst")
+		self.wpn_fps_pis_x_af2011.adds.wpn_fps_upg_fl_pis_perst = {
+			"wpn_fps_pis_af2011_rail"
+		}
 	end
 
 	if self.parts.wpn_fps_smg_m3_body then
