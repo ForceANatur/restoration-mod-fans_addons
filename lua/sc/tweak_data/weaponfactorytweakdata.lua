@@ -40482,17 +40482,11 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 
 		if self.parts.wpn_fps_sho_ksg_b_25 then
 			self.parts.wpn_fps_sho_ksg_b_25.supported = true
-			self.parts.wpn_fps_sho_ksg_b_25.stats = {
-				value = 4,
-				-- damage = 30,
-				extra_ammo = 10,
-				concealment = -7
-			}
-			self.parts.wpn_fps_sho_ksg_b_25.custom_stats = {
-				falloff_start_mult = 1.3,
-				falloff_end_mult = 1.3,
-				ads_speed_mult = 1.175
-			}
+			self.parts.wpn_fps_sho_ksg_b_25.stats = deep_clone(barrels.long_b3_stats)
+			self.parts.wpn_fps_sho_ksg_b_25.stats.extra_ammo = 10
+			self.parts.wpn_fps_sho_ksg_b_25.stats.concealment = -5
+			self.parts.wpn_fps_sho_ksg_b_25.custom_stats = deep_clone(barrels.long_b3_stats)
+			self.parts.wpn_fps_sho_ksg_b_25.custom_stats.ads_speed_mult = 1.125
 		end
 
 	--[[ SILENT ENFORCER'S MODS ]]
