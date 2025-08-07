@@ -1318,7 +1318,7 @@ function CharacterTweakData:_init_city_swat(presets)
 	if self:get_ai_group_type() == "russia" then
 		self.weekend_lmg.custom_voicework = "bravo_elite_ru"
 	elseif self:get_ai_group_type() == "murkywater" then
-		self.weekend_lmg.custom_voicework = "bravo_elite_murky"	
+		self.weekend_lmg.custom_voicework = "bravo_elite_murky"
 	elseif self:get_ai_group_type() == "federales" then
 		self.weekend_lmg.custom_voicework = "bravo_elite_mex"
 	else
@@ -4271,6 +4271,7 @@ function CharacterTweakData:_init_city_swat_rpg(presets)
 	self.city_swat_rpg = deep_clone(self.city_swat_titan)
 	self.city_swat_rpg.dodge = presets.dodge.poor
 	self.city_swat_rpg.move_speed = presets.move_speed.slow_plus
+	self.city_swat_titan.dodge = presets.dodge.poor
 	self.city_swat_rpg.yellow_blood = false
 	self.city_swat_rpg.HEALTH_INIT = 20
 	self.city_swat_rpg.headshot_dmg_mul = 1.9
