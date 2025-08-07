@@ -1134,7 +1134,7 @@ function PlayerManager:get_deflection_from_skills()
 	addend = addend + self:upgrade_value("player", "deflection_addend", 0)
 
 	if self:has_activate_temporary_upgrade("temporary", "doctor_bag_health_regen") then	
-		addend = addend + tweak_data.upgrade.values.temporary.doctor_bag_health_regen_deflection_addend
+		addend = addend + tweak_data.upgrades.values.temporary.doctor_bag_health_regen_deflection_addend
 	end
 
 	return addend
@@ -1353,7 +1353,7 @@ function PlayerManager:_trigger_sharpshooter(unit, attack_data)
 	local attacker_unit = attack_data.attacker_unit
 	local variant = attack_data.variant
 
-	if attacker_unit == self:player_unit() and variant == "bullet" and weapon_unit and weapon_unit:base():fire_mode() == "single" and weapon_unit:base():is_category("assault_rifle", "snp") and attack_data.result.type == "death" then
+	if attacker_unit == self:player_unit() and variant == "bullet" and weapon_unit --[[and weapon_unit:base():fire_mode() == "single"]] and weapon_unit:base():is_category("assault_rifle", "snp") and attack_data.result.type == "death" then
 		self:activate_temporary_upgrade("temporary", "headshot_fire_rate_mult")
 	end
 end
