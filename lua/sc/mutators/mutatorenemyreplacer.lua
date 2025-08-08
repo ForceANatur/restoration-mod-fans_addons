@@ -2155,7 +2155,8 @@ function MutatorEnemyReplacer:_get_unit_group_sniper(difficulty_index)
 						Idstring("units/pd2_mod_bravo/characters/ene_bravo_dmr/ene_bravo_dmr"),
 						Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_1/ene_male_marshal_marksman_1"),
 						Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_2/ene_male_marshal_marksman_2"),
-						Idstring("units/payday2/characters/ene_sniper_1_sc/ene_sniper_1_sc")
+						Idstring("units/payday2/characters/ene_sniper_1_sc/ene_sniper_1_sc"),
+						Idstring("units/pd2_mod_ng/characters/ene_ntl_groundsniper/ene_ntl_groundsniper")
 					},
 					russia = {
 						Idstring("units/pd2_dlc_mad/characters/ene_akan_cs_swat_sniper_svd_snp/ene_akan_cs_swat_sniper_svd_snp"),
@@ -2189,7 +2190,8 @@ function MutatorEnemyReplacer:_get_unit_group_sniper(difficulty_index)
 						Idstring("units/pd2_mod_bravo/characters/ene_bravo_dmr/ene_bravo_dmr"),
 						Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_1/ene_male_marshal_marksman_1"),
 						Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_2/ene_male_marshal_marksman_2"),
-						Idstring("units/pd2_mod_nypd/characters/ene_sniper_1/ene_sniper_1")
+						Idstring("units/pd2_mod_nypd/characters/ene_sniper_1/ene_sniper_1"),
+						Idstring("units/pd2_mod_ng/characters/ene_ntl_groundsniper/ene_ntl_groundsniper")
 					},
 					lapd = { 
 						Idstring("units/payday2/characters/ene_sniper_1/ene_sniper_1"),
@@ -2198,7 +2200,8 @@ function MutatorEnemyReplacer:_get_unit_group_sniper(difficulty_index)
 						Idstring("units/pd2_mod_bravo/characters/ene_bravo_dmr/ene_bravo_dmr"),
 						Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_1/ene_male_marshal_marksman_1"),
 						Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_2/ene_male_marshal_marksman_2"),
-						Idstring("units/pd2_mod_lapd/characters/ene_sniper_1/ene_sniper_1")
+						Idstring("units/pd2_mod_lapd/characters/ene_sniper_1/ene_sniper_1"),
+						Idstring("units/pd2_mod_ng/characters/ene_ntl_groundsniper/ene_ntl_groundsniper")
 					},
 					fbi = {
 						Idstring("units/payday2/characters/ene_sniper_1/ene_sniper_1"),
@@ -2207,7 +2210,8 @@ function MutatorEnemyReplacer:_get_unit_group_sniper(difficulty_index)
 						Idstring("units/pd2_mod_bravo/characters/ene_bravo_dmr/ene_bravo_dmr"),
 						Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_1/ene_male_marshal_marksman_1"),
 						Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_2/ene_male_marshal_marksman_2"),
-						Idstring("units/payday2/characters/ene_sniper_1_sc/ene_sniper_1_sc")
+						Idstring("units/payday2/characters/ene_sniper_1_sc/ene_sniper_1_sc"),
+						Idstring("units/pd2_mod_ng/characters/ene_ntl_groundsniper/ene_ntl_groundsniper")
 					}
 				},
 				access = access_type_all
@@ -2225,7 +2229,8 @@ function MutatorEnemyReplacer:_get_unit_group_sniper(difficulty_index)
 						Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_1/ene_male_marshal_marksman_1"),
 						Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_2/ene_male_marshal_marksman_2"),
 						Idstring("units/payday2/characters/ene_sniper_1_sc/ene_sniper_1_sc"),
-						Idstring("units/payday2/characters/ene_sniper_2_sc/ene_sniper_2_sc")
+						Idstring("units/payday2/characters/ene_sniper_2_sc/ene_sniper_2_sc"),
+						Idstring("units/pd2_mod_ng/characters/ene_ntl_groundsniper/ene_ntl_groundsniper")
 					},
 					russia = {
 						Idstring("units/pd2_dlc_mad/characters/ene_akan_cs_swat_sniper_svd_snp/ene_akan_cs_swat_sniper_svd_snp"),
@@ -2267,7 +2272,8 @@ function MutatorEnemyReplacer:_get_unit_group_sniper(difficulty_index)
 						Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_1/ene_male_marshal_marksman_1"),
 						Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_2/ene_male_marshal_marksman_2"),
 						Idstring("units/pd2_mod_nypd/characters/ene_sniper_1/ene_sniper_1"),
-						Idstring("units/payday2/characters/ene_sniper_2_sc/ene_sniper_2_sc")
+						Idstring("units/payday2/characters/ene_sniper_2_sc/ene_sniper_2_sc"),
+						Idstring("units/pd2_mod_ng/characters/ene_ntl_groundsniper/ene_ntl_groundsniper")
 					},
 					lapd = { 
 						Idstring("units/payday2/characters/ene_sniper_1/ene_sniper_1"),
@@ -2278,7 +2284,8 @@ function MutatorEnemyReplacer:_get_unit_group_sniper(difficulty_index)
 						Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_1/ene_male_marshal_marksman_1"),
 						Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_2/ene_male_marshal_marksman_2"),
 						Idstring("units/pd2_mod_lapd/characters/ene_sniper_1/ene_sniper_1"),
-						Idstring("units/payday2/characters/ene_sniper_2_sc/ene_sniper_2_sc")
+						Idstring("units/payday2/characters/ene_sniper_2_sc/ene_sniper_2_sc"),
+						Idstring("units/pd2_mod_ng/characters/ene_ntl_groundsniper/ene_ntl_groundsniper")
 					},
 					fbi = {
 						Idstring("units/payday2/characters/ene_sniper_1/ene_sniper_1"),
@@ -2289,7 +2296,8 @@ function MutatorEnemyReplacer:_get_unit_group_sniper(difficulty_index)
 						Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_1/ene_male_marshal_marksman_1"),
 						Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_2/ene_male_marshal_marksman_2"),
 						Idstring("units/payday2/characters/ene_sniper_1_sc/ene_sniper_1_sc"),
-						Idstring("units/payday2/characters/ene_sniper_2_sc/ene_sniper_2_sc")
+						Idstring("units/payday2/characters/ene_sniper_2_sc/ene_sniper_2_sc"),
+						Idstring("units/pd2_mod_ng/characters/ene_ntl_groundsniper/ene_ntl_groundsniper")
 					}
 				},
 				access = access_type_all
@@ -2307,7 +2315,8 @@ function MutatorEnemyReplacer:_get_unit_group_sniper(difficulty_index)
 						Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_1/ene_male_marshal_marksman_1"),
 						Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_2/ene_male_marshal_marksman_2"),
 						Idstring("units/payday2/characters/ene_sniper_2_sc/ene_sniper_2_sc"),
-						Idstring("units/payday2/characters/ene_sniper_3/ene_sniper_3")
+						Idstring("units/payday2/characters/ene_sniper_3/ene_sniper_3"),
+						Idstring("units/pd2_mod_ng/characters/ene_ntl_groundsniper/ene_ntl_groundsniper")
 					},
 					russia = {
 						Idstring("units/pd2_dlc_mad/characters/ene_akan_cs_swat_sniper_svd_snp/ene_akan_cs_swat_sniper_svd_snp"),
@@ -2344,7 +2353,8 @@ function MutatorEnemyReplacer:_get_unit_group_sniper(difficulty_index)
 						Idstring("units/pd2_dlc_vip/characters/ene_titan_sniper/ene_titan_sniper"),
 						Idstring("units/pd2_mod_bravo/characters/ene_bravo_dmr/ene_bravo_dmr"),
 						Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_2/ene_male_marshal_marksman_2"),
-						Idstring("units/payday2/characters/ene_sniper_2_sc/ene_sniper_2_sc")
+						Idstring("units/payday2/characters/ene_sniper_2_sc/ene_sniper_2_sc"),
+						Idstring("units/pd2_mod_ng/characters/ene_ntl_groundsniper/ene_ntl_groundsniper")
 					},
 					lapd = { 
 						Idstring("units/payday2/characters/ene_sniper_1/ene_sniper_1"),
@@ -2353,7 +2363,8 @@ function MutatorEnemyReplacer:_get_unit_group_sniper(difficulty_index)
 						Idstring("units/pd2_dlc_vip/characters/ene_titan_sniper/ene_titan_sniper"),
 						Idstring("units/pd2_mod_bravo/characters/ene_bravo_dmr/ene_bravo_dmr"),
 						Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_2/ene_male_marshal_marksman_2"),
-						Idstring("units/payday2/characters/ene_sniper_2_sc/ene_sniper_2_sc")
+						Idstring("units/payday2/characters/ene_sniper_2_sc/ene_sniper_2_sc"),
+						Idstring("units/pd2_mod_ng/characters/ene_ntl_groundsniper/ene_ntl_groundsniper")
 					},
 					fbi = {
 						Idstring("units/payday2/characters/ene_sniper_1/ene_sniper_1"),
@@ -2362,7 +2373,8 @@ function MutatorEnemyReplacer:_get_unit_group_sniper(difficulty_index)
 						Idstring("units/pd2_dlc_vip/characters/ene_titan_sniper/ene_titan_sniper"),
 						Idstring("units/pd2_mod_bravo/characters/ene_bravo_dmr/ene_bravo_dmr"),
 						Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_2/ene_male_marshal_marksman_2"),
-						Idstring("units/payday2/characters/ene_sniper_2_sc/ene_sniper_2_sc")
+						Idstring("units/payday2/characters/ene_sniper_2_sc/ene_sniper_2_sc"),
+						Idstring("units/pd2_mod_ng/characters/ene_ntl_groundsniper/ene_ntl_groundsniper")
 					}
 				},
 				access = access_type_all
@@ -2378,7 +2390,8 @@ function MutatorEnemyReplacer:_get_unit_group_sniper(difficulty_index)
 						Idstring("units/pd2_dlc_vip/characters/ene_titan_sniper/ene_titan_sniper"),
 						Idstring("units/pd2_mod_bravo/characters/ene_bravo_dmr/ene_bravo_dmr"),
 						Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_2/ene_male_marshal_marksman_2"),
-						Idstring("units/payday2/characters/ene_sniper_3/ene_sniper_3")
+						Idstring("units/payday2/characters/ene_sniper_3/ene_sniper_3"),
+						Idstring("units/pd2_mod_ng/characters/ene_ntl_groundsniper/ene_ntl_groundsniper")
 					},
 					russia = {
 						Idstring("units/pd2_dlc_mad/characters/ene_akan_cs_swat_sniper_svd_snp/ene_akan_cs_swat_sniper_svd_snp"),
@@ -2414,7 +2427,8 @@ function MutatorEnemyReplacer:_get_unit_group_sniper(difficulty_index)
 						Idstring("units/pd2_dlc_vip/characters/ene_titan_sniper/ene_titan_sniper"),
 						Idstring("units/pd2_mod_bravo/characters/ene_bravo_dmr/ene_bravo_dmr"),
 						Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_2/ene_male_marshal_marksman_2"),
-						Idstring("units/pd2_mod_nypd/characters/ene_sniper_3/ene_sniper_3")
+						Idstring("units/pd2_mod_nypd/characters/ene_sniper_3/ene_sniper_3"),
+						Idstring("units/pd2_mod_ng/characters/ene_ntl_groundsniper/ene_ntl_groundsniper")
 					},
 					lapd = { 
 						Idstring("units/payday2/characters/ene_sniper_1/ene_sniper_1"),
@@ -2423,7 +2437,8 @@ function MutatorEnemyReplacer:_get_unit_group_sniper(difficulty_index)
 						Idstring("units/pd2_dlc_vip/characters/ene_titan_sniper/ene_titan_sniper"),
 						Idstring("units/pd2_mod_bravo/characters/ene_bravo_dmr/ene_bravo_dmr"),
 						Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_2/ene_male_marshal_marksman_2"),
-						Idstring("units/pd2_mod_lapd/characters/ene_sniper_3/ene_sniper_3")
+						Idstring("units/pd2_mod_lapd/characters/ene_sniper_3/ene_sniper_3"),
+						Idstring("units/pd2_mod_ng/characters/ene_ntl_groundsniper/ene_ntl_groundsniper")
 					},
 					fbi = {
 						Idstring("units/payday2/characters/ene_sniper_1/ene_sniper_1"),
@@ -2432,7 +2447,8 @@ function MutatorEnemyReplacer:_get_unit_group_sniper(difficulty_index)
 						Idstring("units/pd2_dlc_vip/characters/ene_titan_sniper/ene_titan_sniper"),
 						Idstring("units/pd2_mod_bravo/characters/ene_bravo_dmr/ene_bravo_dmr"),
 						Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_2/ene_male_marshal_marksman_2"),
-						Idstring("units/payday2/characters/ene_sniper_3/ene_sniper_3")
+						Idstring("units/payday2/characters/ene_sniper_3/ene_sniper_3"),
+						Idstring("units/pd2_mod_ng/characters/ene_ntl_groundsniper/ene_ntl_groundsniper")
 					}
 				},
 				access = access_type_all
@@ -2449,7 +2465,8 @@ function MutatorEnemyReplacer:_get_unit_group_sniper(difficulty_index)
 						Idstring("units/pd2_mod_bravo/characters/ene_bravo_dmr/ene_bravo_dmr"),
 						Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_1/ene_male_marshal_marksman_1"),
 						Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_2/ene_male_marshal_marksman_2"),
-						Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_sniper/ene_zeal_sniper")
+						Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_sniper/ene_zeal_sniper"),
+						Idstring("units/pd2_mod_ng/characters/ene_ntl_groundsniper/ene_ntl_groundsniper")
 					},
 					russia = {
 						Idstring("units/pd2_dlc_mad/characters/ene_akan_cs_swat_sniper_svd_snp/ene_akan_cs_swat_sniper_svd_snp"),
@@ -2487,7 +2504,8 @@ function MutatorEnemyReplacer:_get_unit_group_sniper(difficulty_index)
 						Idstring("units/pd2_mod_bravo/characters/ene_bravo_dmr/ene_bravo_dmr"),
 						Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_1/ene_male_marshal_marksman_1"),
 						Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_2/ene_male_marshal_marksman_2"),
-						Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_sniper/ene_zeal_sniper")
+						Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_sniper/ene_zeal_sniper"),
+						Idstring("units/pd2_mod_ng/characters/ene_ntl_groundsniper/ene_ntl_groundsniper")
 					},
 					lapd = { 
 						Idstring("units/payday2/characters/ene_sniper_1/ene_sniper_1"),
@@ -2497,7 +2515,8 @@ function MutatorEnemyReplacer:_get_unit_group_sniper(difficulty_index)
 						Idstring("units/pd2_mod_bravo/characters/ene_bravo_dmr/ene_bravo_dmr"),
 						Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_1/ene_male_marshal_marksman_1"),
 						Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_2/ene_male_marshal_marksman_2"),
-						Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_sniper/ene_zeal_sniper")
+						Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_sniper/ene_zeal_sniper"),
+						Idstring("units/pd2_mod_ng/characters/ene_ntl_groundsniper/ene_ntl_groundsniper")
 					},
 					fbi = {
 						Idstring("units/payday2/characters/ene_sniper_1/ene_sniper_1"),
@@ -2507,7 +2526,8 @@ function MutatorEnemyReplacer:_get_unit_group_sniper(difficulty_index)
 						Idstring("units/pd2_mod_bravo/characters/ene_bravo_dmr/ene_bravo_dmr"),
 						Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_1/ene_male_marshal_marksman_1"),
 						Idstring("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_2/ene_male_marshal_marksman_2"),
-						Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_sniper/ene_zeal_sniper")
+						Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_sniper/ene_zeal_sniper"),
+						Idstring("units/pd2_mod_ng/characters/ene_ntl_groundsniper/ene_ntl_groundsniper")
 					}
 				},
 				access = access_type_all

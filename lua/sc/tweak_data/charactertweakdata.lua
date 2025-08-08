@@ -60,6 +60,9 @@ function CharacterTweakData:init(tweak_data, presets)
 	self:_init_zombie(presets)
 	self:_init_heavygunner(presets)
 	self:_init_city_swat_rpg(presets)
+--	self:_init_weekend_vanilla(presets)
+--	self:_init_weekend_vanilla_heavy(presets)
+	self:_init_weekend_vanilla_snp(presets)
 	self:_process_weapon_usage_table()
 	
 	--Dozer Armor Multiplier, lower means more EHP
@@ -1214,7 +1217,7 @@ function CharacterTweakData:_init_city_swat(presets)
 	self.city_swat_guard.melee_weapon = "baton"
 	self.city_swat_guard.use_radio = nil
 	table.insert(self._enemy_list, "city_swat_guard")
-			
+
 	--Weekend
 	self.weekend = deep_clone(self.city_swat)
 	if self:get_ai_group_type() == "russia" then
@@ -4279,7 +4282,31 @@ end
 function CharacterTweakData:_init_zombie(presets)
 	self.zombie_light = deep_clone(self.swat)
 	table.insert(self._enemy_list, "zombie_light")	
+end
 
+-- New Coppers National Gaurd stuff
+-- this stuff is wip. im working on the ground snipers for now
+-- Mooks
+--[[function CharacterTweakData:_init_weekend_vanilla(presets)
+	self.weekend_vanilla = deep_clone(self.weekend)
+	self.weekend_vanilla.custom_voicework = "bruce"
+end]]--
+
+-- Heavies
+--[[function CharacterTweakData:_init_weekend_vanilla_heavy(presets)
+	self.weekend_vanilla_heavy = deep_clone(self.weekend)
+	self.weekend_vanilla_heavy.custom_voicework = "murky_vet"
+end]]--
+
+-- Ground Snipers
+function CharacterTweakData:_init_weekend_vanilla_snp(presets)
+	self.weekend_vanilla_snp = deep_clone(self.weekend_dmr_scripted)
+	self.weekend_vanilla_snp.chatter = presets.enemy_chatter.swat
+	self.weekend_vanilla_snp.marshal_logic = true
+	self.weekend_vanilla_snp.can_throw_frag = true
+	self.weekend_vanilla_snp.HEALTH_INIT = 19
+	self.weekend_vanilla_snp.headshot_dmg_mul = 2
+	self.weekend_vanilla_snp.custom_voicework = "marshal_marksman"
 end
 
 function CharacterTweakData:_presets(tweak_data)
@@ -19732,6 +19759,20 @@ function CharacterTweakData:character_map()
 			list = {
 				"ene_heavymedic_1",
 				"ene_gensec_heavygunner"
+			}
+		}
+
+		char_map.ng = {
+			path = "units/pd2_mod_ng/characters/",
+			list = {
+				"ene_ntl_groundsniper"
+			--	"ene_ntl_heavyshotgun",
+			--	"ene_ntl_heavyswat",
+			--	"ene_ntl_swat_1",
+			--	"ene_ntl_swat_2",
+			--	"ene_ntl_swat_3",
+			--	"ene_ntl_medic"
+			--	"ene_ntl_taser",
 			}
 		}
 

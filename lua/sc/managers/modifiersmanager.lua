@@ -384,8 +384,15 @@ else
 		--Bravo DMR
 		["units/pd2_dlc_vip/characters/ene_titan_sniper/ene_titan_sniper"] = "units/pd2_mod_bravo/characters/ene_bravo_dmr/ene_bravo_dmr",
 		["units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_1/ene_male_marshal_marksman_1"] = "units/pd2_mod_bravo/characters/ene_bravo_dmr/ene_bravo_dmr",
-		["units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_2/ene_male_marshal_marksman_2"] = "units/pd2_mod_bravo/characters/ene_bravo_dmr/ene_bravo_dmr"
-	}	
+		["units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_2/ene_male_marshal_marksman_2"] = "units/pd2_mod_bravo/characters/ene_bravo_dmr/ene_bravo_dmr",
+
+		--Vanilla Bravo
+		["units/payday2/characters/ene_sniper_1/ene_sniper_1"] = "units/pd2_mod_ng/characters/ene_ntl_groundsniper/ene_ntl_groundsniper",
+		["units/payday2/characters/ene_sniper_2/ene_sniper_2"] = "units/pd2_mod_ng/characters/ene_ntl_groundsniper/ene_ntl_groundsniper",
+		["units/payday2/characters/ene_medic_mp5/ene_medic_mp5"] = "units/pd2_mod_ng/characters/ene_ntl_medic/ene_ntl_medic",
+		["units/payday2/characters/ene_medic_m4/ene_medic_m4"] = "units/pd2_mod_ng/characters/ene_ntl_medic/ene_ntl_medic",
+		["units/payday2/characters/ene_medic_r870/ene_medic_r870"] = "units/pd2_mod_ng/characters/ene_ntl_medic/ene_ntl_medic"
+	}
 end
 --this table is for robots. don't edit this one
 local unit_table = {}

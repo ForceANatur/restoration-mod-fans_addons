@@ -903,6 +903,11 @@ function CopBase:default_weapon_name(...)
 			self._default_weapon_id = "x_raging_bull_npc"
 			self._weapon_set = true
 		end
+
+		if self._tweak_table == "heavygunner" then
+			self._default_weapon_id = "mossberg"
+			self._weapon_set = true
+		end
 		
 		if self._default_weapon_id == "r870" then
 			self._default_weapon_id = "mossberg"
