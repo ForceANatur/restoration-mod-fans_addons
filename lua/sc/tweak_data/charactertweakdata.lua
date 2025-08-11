@@ -60,8 +60,8 @@ function CharacterTweakData:init(tweak_data, presets)
 	self:_init_zombie(presets)
 	self:_init_heavygunner(presets)
 	self:_init_city_swat_rpg(presets)
---	self:_init_weekend_vanilla(presets)
---	self:_init_weekend_vanilla_heavy(presets)
+	self:_init_weekend_vanilla(presets)
+	self:_init_weekend_vanilla_heavy(presets)
 	self:_init_weekend_vanilla_snp(presets)
 	self:_process_weapon_usage_table()
 	
@@ -657,6 +657,7 @@ function CharacterTweakData:_init_medic(presets)
 	self.medic_heavy.move_speed = presets.move_speed.normal
 	self.medic_heavy.custom_voicework = "heavy_medic"
 	self.medic_heavy.dodge = presets.dodge.heavy
+	self.medic_heavy.no_asu = true
 	table.insert(self._enemy_list, "medic_heavy")
 	
 	self.medic_summers = deep_clone(self.medic)
@@ -1150,7 +1151,7 @@ function CharacterTweakData:_init_fbi_heavy_swat(presets)
 	table.insert(self._enemy_list, "fbi_heavy_swat")
 end
 
-function CharacterTweakData:_init_city_swat(presets)	
+function CharacterTweakData:_init_city_swat(presets)
 	self.city_swat = deep_clone(presets.base)
 	self.city_swat.tags = {"law", "city_swat"}
 	self.city_swat.experience = {}
@@ -4262,13 +4263,42 @@ function CharacterTweakData:_init_heavygunner(presets)
 	table.insert(self._enemy_list, "heavygunner")
 end
 
+-- New Coppers National Gaurd stuff
+-- Mooks
+function CharacterTweakData:_init_weekend_vanilla(presets)
+	self.weekend_vanilla = deep_clone(self.weekend)
+	self.weekend_vanilla.custom_voicework = "murky_shield"
+	table.insert(self._enemy_list, "weekend_vanilla")
+end
+
+-- Heavies
+function CharacterTweakData:_init_weekend_vanilla_heavy(presets)
+	self.weekend_vanilla_heavy = deep_clone(self.weekend)
+	self.weekend_vanilla_heavy.HEALTH_INIT = 36
+	self.weekend_vanilla_heavy.headshot_dmg_mul = 3.75
+	self.weekend_vanilla_heavy.can_throw_frag = true
+	self.weekend_vanilla_heavy.custom_voicework = "heavygunner"
+	table.insert(self._enemy_list, "weekend_vanilla_heavy")
+end
+
+-- Ground Snipers
+function CharacterTweakData:_init_weekend_vanilla_snp(presets)
+	self.weekend_vanilla_snp = deep_clone(self.weekend_dmr_scripted)
+	self.weekend_vanilla_snp.chatter = presets.enemy_chatter.swat
+	self.weekend_vanilla_snp.marshal_logic = true
+	self.weekend_vanilla_snp.can_throw_frag = true
+	self.weekend_vanilla_snp.HEALTH_INIT = 19
+	self.weekend_vanilla_snp.headshot_dmg_mul = 2
+	self.weekend_vanilla_snp.custom_voicework = "marshal_marksman"
+	table.insert(self._enemy_list, "weekend_vanilla_snp")
+end
+
 --RPG Grunts, Less HP, Less HS Multi, moves slower
 --suffer
 function CharacterTweakData:_init_city_swat_rpg(presets)
 	self.city_swat_rpg = deep_clone(self.city_swat_titan)
-	self.city_swat_rpg.dodge = presets.dodge.poor
 	self.city_swat_rpg.move_speed = presets.move_speed.slow_plus
-	self.city_swat_rpg.dodge = presets.dodge.poor
+	self.city_swat_rpg.dodge = presets.dodge.average
 	self.city_swat_rpg.yellow_blood = false
 	self.city_swat_rpg.HEALTH_INIT = 20
 	self.city_swat_rpg.headshot_dmg_mul = 1.9
@@ -4282,31 +4312,6 @@ end
 function CharacterTweakData:_init_zombie(presets)
 	self.zombie_light = deep_clone(self.swat)
 	table.insert(self._enemy_list, "zombie_light")	
-end
-
--- New Coppers National Gaurd stuff
--- this stuff is wip. im working on the ground snipers for now
--- Mooks
---[[function CharacterTweakData:_init_weekend_vanilla(presets)
-	self.weekend_vanilla = deep_clone(self.weekend)
-	self.weekend_vanilla.custom_voicework = "bruce"
-end]]--
-
--- Heavies
---[[function CharacterTweakData:_init_weekend_vanilla_heavy(presets)
-	self.weekend_vanilla_heavy = deep_clone(self.weekend)
-	self.weekend_vanilla_heavy.custom_voicework = "murky_vet"
-end]]--
-
--- Ground Snipers
-function CharacterTweakData:_init_weekend_vanilla_snp(presets)
-	self.weekend_vanilla_snp = deep_clone(self.weekend_dmr_scripted)
-	self.weekend_vanilla_snp.chatter = presets.enemy_chatter.swat
-	self.weekend_vanilla_snp.marshal_logic = true
-	self.weekend_vanilla_snp.can_throw_frag = true
-	self.weekend_vanilla_snp.HEALTH_INIT = 19
-	self.weekend_vanilla_snp.headshot_dmg_mul = 2
-	self.weekend_vanilla_snp.custom_voicework = "marshal_marksman"
 end
 
 function CharacterTweakData:_presets(tweak_data)
@@ -19765,14 +19770,14 @@ function CharacterTweakData:character_map()
 		char_map.ng = {
 			path = "units/pd2_mod_ng/characters/",
 			list = {
-				"ene_ntl_groundsniper"
-			--	"ene_ntl_heavyshotgun",
-			--	"ene_ntl_heavyswat",
-			--	"ene_ntl_swat_1",
-			--	"ene_ntl_swat_2",
-			--	"ene_ntl_swat_3",
-			--	"ene_ntl_medic"
-			--	"ene_ntl_taser",
+				"ene_ntl_benelli",
+				"ene_ntl_groundsniper",
+				"ene_ntl_heavyshotgun",
+				"ene_ntl_heavyswat",
+				"ene_ntl_swat_1",
+				"ene_ntl_swat_2",
+				"ene_ntl_swat_3",
+				"ene_ntl_medic"
 			}
 		}
 

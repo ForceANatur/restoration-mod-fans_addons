@@ -364,34 +364,49 @@ else
 		["units/payday2/characters/ene_city_swat_1_sc/ene_city_swat_1_sc"] = "units/pd2_mod_bravo/characters/ene_bravo_rifle/ene_bravo_rifle",
 		["units/pd2_mod_lapd/characters/ene_city_swat_1/ene_city_swat_1"] = "units/pd2_mod_bravo/characters/ene_bravo_rifle/ene_bravo_rifle",
 		["units/pd2_dlc_gitgud/characters/ene_zeal_city_1/ene_zeal_city_1"] = "units/pd2_mod_bravo/characters/ene_bravo_rifle/ene_bravo_rifle",
-		
-		["units/payday2/characters/ene_fbi_swat_3/ene_fbi_swat_3"] = "units/pd2_mod_bravo/characters/ene_bravo_rifle/ene_bravo_rifle",
-		["units/pd2_mod_lapd/characters/ene_fbi_swat_3/ene_fbi_swat_3"] = "units/pd2_mod_bravo/characters/ene_bravo_rifle/ene_bravo_rifle",
-		["units/payday2/characters/ene_city_swat_3_sc/ene_city_swat_3_sc"] = "units/pd2_mod_bravo/characters/ene_bravo_rifle/ene_bravo_rifle",
-		["units/pd2_mod_lapd/characters/ene_city_swat_3/ene_city_swat_3"] = "units/pd2_mod_bravo/characters/ene_bravo_rifle/ene_bravo_rifle",
-		["units/pd2_dlc_gitgud/characters/ene_zeal_city_3/ene_zeal_city_3"] = "units/pd2_mod_bravo/characters/ene_bravo_rifle/ene_bravo_rifle",		
-		
+
+		--Ntl UMP
+		["units/payday2/characters/ene_fbi_swat_3/ene_fbi_swat_3"] = "units/pd2_mod_ng/characters/ene_ntl_swat_3/ene_ntl_swat_3",
+		["units/pd2_mod_lapd/characters/ene_fbi_swat_3/ene_fbi_swat_3"] = "units/pd2_mod_ng/characters/ene_ntl_swat_3/ene_ntl_swat_3",
+		["units/payday2/characters/ene_city_swat_3_sc/ene_city_swat_3_sc"] = "units/pd2_mod_ng/characters/ene_ntl_swat_3/ene_ntl_swat_3",
+		["units/pd2_mod_lapd/characters/ene_city_swat_3/ene_city_swat_3"] = "units/pd2_mod_ng/characters/ene_ntl_swat_3/ene_ntl_swat_3",
+		["units/pd2_dlc_gitgud/characters/ene_zeal_city_3/ene_zeal_city_3"] = "units/pd2_mod_ng/characters/ene_ntl_swat_3/ene_ntl_swat_3",
+
 		--Bravo Shotgun
 		["units/pd2_mod_lapd/characters/ene_fbi_swat_2/ene_fbi_swat_2"] = "units/pd2_mod_bravo/characters/ene_bravo_shotgun/ene_bravo_shotgun",
 		["units/payday2/characters/ene_fbi_swat_2_sc/ene_fbi_swat_2_sc"] = "units/pd2_mod_bravo/characters/ene_bravo_shotgun/ene_bravo_shotgun",
 		["units/payday2/characters/ene_city_swat_2_sc/ene_city_swat_2_sc"] = "units/pd2_mod_bravo/characters/ene_bravo_shotgun/ene_bravo_shotgun",
 		["units/pd2_mod_lapd/characters/ene_city_swat_2/ene_city_swat_2"] = "units/pd2_mod_bravo/characters/ene_bravo_shotgun/ene_bravo_shotgun",
 		["units/pd2_dlc_gitgud/characters/ene_zeal_city_2/ene_zeal_city_2"] = "units/pd2_mod_bravo/characters/ene_bravo_shotgun/ene_bravo_shotgun",
-		
+
 		--Bravo LMG
-		["units/pd2_dlc_vip/characters/ene_titan_rifle/ene_titan_rifle"] = "units/pd2_mod_bravo/characters/ene_bravo_lmg/ene_bravo_lmg",			
-		
+		["units/pd2_dlc_vip/characters/ene_titan_rifle/ene_titan_rifle"] = "units/pd2_mod_bravo/characters/ene_bravo_lmg/ene_bravo_lmg",
+
 		--Bravo DMR
 		["units/pd2_dlc_vip/characters/ene_titan_sniper/ene_titan_sniper"] = "units/pd2_mod_bravo/characters/ene_bravo_dmr/ene_bravo_dmr",
 		["units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_1/ene_male_marshal_marksman_1"] = "units/pd2_mod_bravo/characters/ene_bravo_dmr/ene_bravo_dmr",
 		["units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_2/ene_male_marshal_marksman_2"] = "units/pd2_mod_bravo/characters/ene_bravo_dmr/ene_bravo_dmr",
 
 		--Vanilla Bravo
+		--Some Resmod units get bravo too I guess
+		["units/payday2/characters/ene_fbi_swat_1/ene_fbi_swat_1"] = "units/pd2_mod_ng/characters/ene_ntl_swat_1/ene_ntl_swat_1",
+		["units/payday2/characters/ene_city_swat_1/ene_city_swat_1"] = "units/pd2_mod_ng/characters/ene_ntl_swat_1/ene_ntl_swat_1",
+		["units/pd2_dlc_gitgud/characters/ene_zeal_swat/ene_zeal_swat"] = "units/pd2_mod_ng/characters/ene_ntl_swat_1/ene_ntl_swat_1",
+		["units/payday2/characters/ene_fbi_swat_2/ene_fbi_swat_2"] = "units/pd2_mod_ng/characters/ene_ntl_benelli/ene_ntl_benelli",
+		["units/payday2/characters/ene_city_swat_2/ene_city_swat_2"] = "units/pd2_mod_ng/characters/ene_ntl_benelli/ene_ntl_benelli",
+	--	["units/pd2_dlc_gitgud/characters/ene_zeal_swat_2/ene_zeal_swat_2"] = "units/pd2_mod_ng/characters/ene_ntl_benelli/ene_ntl_benelli",
+		["units/payday2/characters/ene_fbi_heavy_1/ene_fbi_heavy_1"] = "units/pd2_mod_ng/characters/ene_ntl_heavyswat/ene_ntl_heavyswat",
+		["units/payday2/characters/ene_city_heavy_g36/ene_city_heavy_g36"] = "units/pd2_mod_ng/characters/ene_ntl_heavyswat/ene_ntl_heavyswat",
+		["units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy/ene_zeal_swat_heavy"] = "units/pd2_mod_ng/characters/ene_ntl_heavyswat/ene_ntl_heavyswat",
+		["units/payday2/characters/ene_fbi_heavy_r870/ene_fbi_heavy_r870"] = "units/pd2_mod_ng/characters/ene_ntl_heavyshotgun/ene_ntl_heavyshotgun",
+		["units/payday2/characters/ene_city_heavy_r870/ene_city_heavy_r870"] = "units/pd2_mod_ng/characters/ene_ntl_heavyshotgun/ene_ntl_heavyshotgun",
+	--	["units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_2/ene_zeal_swat_heavy_2"] = "units/pd2_mod_ng/characters/ene_ntl_heavyshotgun/ene_ntl_heavyshotgun",	-- i'll try to port the shotgun zeal heavy from sh
 		["units/payday2/characters/ene_sniper_1/ene_sniper_1"] = "units/pd2_mod_ng/characters/ene_ntl_groundsniper/ene_ntl_groundsniper",
 		["units/payday2/characters/ene_sniper_2/ene_sniper_2"] = "units/pd2_mod_ng/characters/ene_ntl_groundsniper/ene_ntl_groundsniper",
 		["units/payday2/characters/ene_medic_mp5/ene_medic_mp5"] = "units/pd2_mod_ng/characters/ene_ntl_medic/ene_ntl_medic",
 		["units/payday2/characters/ene_medic_m4/ene_medic_m4"] = "units/pd2_mod_ng/characters/ene_ntl_medic/ene_ntl_medic",
-		["units/payday2/characters/ene_medic_r870/ene_medic_r870"] = "units/pd2_mod_ng/characters/ene_ntl_medic/ene_ntl_medic"
+		["units/payday2/characters/ene_medic_r870/ene_medic_r870"] = "units/pd2_mod_ng/characters/ene_ntl_medic/ene_ntl_medic",
+		["units/pd2_dlc_gitgud/characters/ene_zeal_medic/ene_zeal_medic"] = "units/pd2_mod_ng/characters/ene_ntl_medic/ene_ntl_medic"
 	}
 end
 --this table is for robots. don't edit this one

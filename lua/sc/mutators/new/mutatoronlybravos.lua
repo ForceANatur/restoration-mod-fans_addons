@@ -18,6 +18,22 @@ MutatorBravosOnly.icon_coords = {
 	3
 }
 
+-- very ugly get around for this
+MutatorBravosOnly.shotguns = {
+	Idstring("units/pd2_mod_ng/characters/ene_ntl_benelli/ene_ntl_benelli")
+}
+
+function MutatorBravosOnly:modify_value(id, value)
+	if id == "GroupAIStateBesiege:SpawningUnit" then
+		local shotgun_bravo = table.contains(MutatorBravosOnly.shotguns, value)
+		
+		if shotgun_bravo and math.random(0,2) <= 1 then
+			return Idstring("units/pd2_mod_ng/characters/ene_ntl_swat_2/ene_ntl_swat_2")
+		end
+	end
+	return value
+end
+
 function MutatorBravosOnly:register_values(mutator_manager)
 	self:register_value("bravo_replacement", "all", "br")
 	self:register_value("bravo_replacement_chance", 0.25, "brc")

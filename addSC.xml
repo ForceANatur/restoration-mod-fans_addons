@@ -1277,42 +1277,8 @@
 	<texture			path="units/pd2_mod_nc/characters/shared_textures/gasmask_df"/>
 	<texture			path="units/pd2_mod_nc/characters/shared_textures/gasmask_nm"/>
 
-	<!--New Coppers Bravos so vanilla units don't get left out(Temp package placement)-->
-
-	<!--Normal-->
-	<!--Heavies-->
-	<!--Impossible to port. Someone throw me a bone so I can stop loosing my shit in the discord-->
-	<!-- <object				path="units/pd2_mod_ng/characters/ene_ntl_medic/ene_ntl_medic" force="false"/>
-	<cooked_physics		path="units/pd2_mod_ng/characters/ene_ntl_medic/ene_ntl_medic" force="false"/>
-	<model				path="units/pd2_mod_ng/characters/ene_ntl_medic/ene_ntl_medic" force="false"/>
-	<unit				path="units/pd2_mod_ng/characters/ene_ntl_medic/ene_ntl_medic" force="false" load="true"/>
-	<material_config	path="units/pd2_mod_ng/characters/ene_ntl_medic/ene_ntl_medic" force="false"/>
-	<material_config	path="units/pd2_mod_ng/characters/ene_ntl_medic/ene_ntl_medic_contour" force="true"/>
-	<unit				path="units/pd2_mod_ng/characters/ene_ntl_medic/ene_ntl_medic_husk" force="false" load="true"/>
-	-->
-
-	<!--Snipers-->
-	<object				path="units/pd2_mod_ng/characters/ene_ntl_groundsniper/ene_ntl_groundsniper" force="false"/>
-	<cooked_physics		path="units/pd2_mod_ng/characters/ene_ntl_groundsniper/ene_ntl_groundsniper" force="false"/>
-	<model				path="units/pd2_mod_ng/characters/ene_ntl_groundsniper/ene_ntl_groundsniper" force="false"/>
-	<unit				path="units/pd2_mod_ng/characters/ene_ntl_groundsniper/ene_ntl_groundsniper" force="false" load="true"/>
-	<material_config	path="units/pd2_mod_ng/characters/ene_ntl_groundsniper/ene_ntl_groundsniper" force="false"/>
-	<material_config	path="units/pd2_mod_ng/characters/ene_ntl_groundsniper/ene_ntl_groundsniper_contour" force="true"/>
-	<unit				path="units/pd2_mod_ng/characters/ene_ntl_groundsniper/ene_ntl_groundsniper_husk" force="false" load="true"/>
-
-	<!--Unit Textures(Temp package placement)-->
-	<texture			path="units/pd2_mod_ng/characters/shared_textures/national_guard_face_nm"/>
-	<texture			path="units/pd2_mod_ng/characters/shared_textures/national_guard_face_df"/>
-	<texture			path="units/pd2_mod_ng/characters/shared_textures/ntl_helmet_nm"/>
-	<texture			path="units/pd2_mod_ng/characters/shared_textures/ntl_medic_helmet_df"/>
-	<texture			path="units/pd2_mod_ng/characters/shared_textures/national_guard_1_df"/>
-	<texture			path="units/pd2_mod_ng/characters/shared_textures/national_guard_1_nm"/>
-	<texture			path="units/pd2_mod_ng/characters/shared_textures/national_guard_face_2_df"/>
-	<texture			path="units/pd2_mod_ng/characters/shared_textures/national_guard_2_df"/>
-	<texture			path="units/pd2_mod_ng/characters/shared_textures/national_guard_medic_df"/>
-
 	<unit path="units/pd2_dlc_usm1/weapons/wpn_npc_dmr/wpn_npc_dmr" force="true" />
-	
+
 	<!--Big Dave-->
 	<object				path="units/pd2_mod_dave/characters/ene_big_dave/ene_big_dave" force="false"/>
 	<cooked_physics		path="units/pd2_mod_dave/characters/ene_big_dave/ene_big_dave" force="false"/>

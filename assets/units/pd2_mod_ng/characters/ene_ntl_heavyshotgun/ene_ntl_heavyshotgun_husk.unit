@@ -1,17 +1,19 @@
 <?xml version="1.0"?>
 <unit type="being" slot="12">
 	<anim_state_machine name="anims/units/enemies/cop/cop_machine" />
-	<object file="units/pd2_mod_ng/ene_ntl_heavyshotgun/ene_ntl_heavyshotgun" />
+	<object file="units/pd2_mod_ng/characters/ene_ntl_heavyshotgun/ene_ntl_heavyshotgun" />
 	<dependencies>
 		<depends_on bnk="soundbanks/regular_vox" />
 		<depends_on unit="units/payday2/characters/ene_acc_swat_helmet/ene_acc_swat_helmet" />
+		<depends_on unit="units/pd2_mod_bravo/weapons/wpn_npc_bayou/wpn_npc_bayou" />
+		<depends_on unit="units/payday2/weapons/wpn_npc_bravo_frag/wpn_npc_bravo_frag" />
 	</dependencies>
 
 	<extensions>
 		<extension name="unit_data" class="ScriptUnitData" />
 		<extension name="base" class="HuskCopBase" >
-			<var name="_tweak_table" value="fbi_heavy_swat" />
-			<var name="_default_weapon_id" value="r870" />
+			<var name="_tweak_table" value="weekend_vanilla_heavy" />
+			<var name="_default_weapon_id" value="bravo_shotgun" />
 		</extension>
 		<extension name="inventory" class="HuskCopInventory" />
 		<extension name="brain" class="HuskCopBrain" />

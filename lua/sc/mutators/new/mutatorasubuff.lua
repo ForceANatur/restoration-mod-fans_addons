@@ -56,6 +56,8 @@ function MutatorASUBuff:setup(data)
 	char_tweak.taser.no_asu = false
 	char_tweak.taser_titan.no_asu = false
 	char_tweak.taser_titan_reaper.no_asu = false
+--	char_tweak.city_swat_rpg = false	-- AH HA!
+	char_tweak.medic_heavy.no_asu = false
 	
 	if captains_asu_buff then
 	char_tweak.phalanx_vip.no_asu = false
@@ -65,6 +67,7 @@ function MutatorASUBuff:setup(data)
 	char_tweak.boom_summers.no_asu = false
 	char_tweak.taser_summers.no_asu = false
 	char_tweak.medic_summers.no_asu = false
+	char_tweak.heavygunner.no_asu = false
 	end
 	
 end
