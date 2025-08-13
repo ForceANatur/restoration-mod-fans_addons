@@ -411,7 +411,7 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 			access = access_type_all,
 			special_type = "spooc"
 		}
-	elseif difficulty_index <= 6 then
+	elseif difficulty_index <= 77 then
 		self.unit_categories.spooc = {
 			unit_types = {
 				america = {

@@ -1233,6 +1233,11 @@ function CopBase:default_weapon_name(...)
 			self._default_weapon_id = "x_raging_bull_npc"
 			self._weapon_set = true
 		end
+
+		if self._tweak_table == "heavygunner" then
+			self._default_weapon_id = "mossberg"
+			self._weapon_set = true
+		end
 	end
 	
 	-- Have White Titandozers use Grenade Launchers/AA-12s like their Reaper counterparts in Russia/Mexico heists (mostly for Holiday Effects and consistency with factions)

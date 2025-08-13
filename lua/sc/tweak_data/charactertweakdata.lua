@@ -59,6 +59,9 @@ function CharacterTweakData:init(tweak_data, presets)
 	self:_init_tank_biker(presets)
 	self:_init_zombie(presets)
 	self:_init_heavygunner(presets)
+	self:_init_weekend_vanilla(presets)
+	self:_init_weekend_vanilla_heavy(presets)
+	self:_init_weekend_vanilla_snp(presets)
 	self:_process_weapon_usage_table()
 	
 	--Dozer Armor Multiplier, lower means more EHP
@@ -4259,10 +4262,42 @@ function CharacterTweakData:_init_heavygunner(presets)
 	table.insert(self._enemy_list, "heavygunner")
 end
 
-function CharacterTweakData:_init_zombie(presets)
-	self.zombie_light = deep_clone(self.swat)
-	table.insert(self._enemy_list, "zombie_light")	
+-- New Coppers National Gaurd stuff
+-- Standard Units have slightly more speed but less hp and hs multu
+function CharacterTweakData:_init_weekend_vanilla(presets)
+	self.weekend_vanilla = deep_clone(self.weekend)
+	self.weekend_vanilla.HEALTH_INIT = 16.8
+	self.weekend_vanilla.headshot_dmg_mul = 2.85
+	self.weekend_vanilla.move_speed = presets.move_speed.very_fast_plus
+	self.weekend_vanilla.custom_voicework = "swat_pd3"
+	table.insert(self._enemy_list, "weekend_vanilla")
+end
 
+-- Heavies are slower than normal heavies with an even lower hs multi
+-- more harder to convert too
+function CharacterTweakData:_init_weekend_vanilla_heavy(presets)
+	self.weekend_vanilla_heavy = deep_clone(self.weekend)
+	self.weekend_vanilla_heavy.HEALTH_INIT = 36
+	self.weekend_vanilla_heavy.headshot_dmg_mul = 1.8
+	self.weekend_vanilla_heavy.can_throw_frag = true
+	self.weekend_vanilla_heavy.move_speed = presets.move_speed.normal
+	self.weekend_vanilla_heavy.custom_voicework = "heavygunner"
+	self.weekend_vanilla_heavy.surrender = presets.surrender.bravo_hard
+	self.weekend_vanilla_heavy.damage_resistance = presets.damage_resistance.heavy_swat
+	table.insert(self._enemy_list, "weekend_vanilla_heavy")
+end
+
+-- Ground Snipers throw grenades a lot more
+function CharacterTweakData:_init_weekend_vanilla_snp(presets)
+	self.weekend_vanilla_snp = deep_clone(self.weekend_dmr_scripted)
+	self.weekend_vanilla_snp.chatter = presets.enemy_chatter.swat
+	self.weekend_vanilla_snp.marshal_logic = true
+	self.weekend_vanilla_snp.can_throw_frag = true
+	self.weekend_vanilla_snp.grenade_toss_chance = 0.7
+	self.weekend_vanilla_snp.HEALTH_INIT = 19
+	self.weekend_vanilla_snp.headshot_dmg_mul = 2
+	self.weekend_vanilla_snp.custom_voicework = "marshal_marksman"
+	table.insert(self._enemy_list, "weekend_vanilla_snp")
 end
 
 --RPG Grunts, Less HP, Less HS Multi, moves slower
@@ -4280,6 +4315,12 @@ function CharacterTweakData:_init_city_swat_rpg(presets)
 	self.city_swat_rpg.damage.tase_damage_mul = 1
 	self.city_swat_rpg.custom_voicework = "rpg_grunt"
 	table.insert(self._enemy_list, "city_swat_rpg")
+end
+
+function CharacterTweakData:_init_zombie(presets)
+	self.zombie_light = deep_clone(self.swat)
+	table.insert(self._enemy_list, "zombie_light")	
+
 end
 
 function CharacterTweakData:_presets(tweak_data)
@@ -18034,7 +18075,66 @@ function CharacterTweakData:_presets(tweak_data)
 					}
 				}
 			}
-		}	
+		},
+		very_fast_plus = {
+			stand = {
+				walk = {
+					ntl = {
+						fwd = 160,
+						strafe = 130,
+						bwd = 120
+					},
+					hos = {
+						fwd = 342,
+						strafe = 342,
+						bwd = 342
+					},
+					cbt = {
+						fwd = 342,
+						strafe = 342,
+						bwd = 342
+					}
+				},
+				run = {
+					hos = {
+						fwd = 556,
+						strafe = 342,
+						bwd = 342
+					},
+					cbt = {
+						fwd = 556,
+						strafe = 342,
+						bwd = 342
+					}
+				}
+			},
+			crouch = {
+				walk = {
+					hos = {
+						fwd = 223,
+						strafe = 223,
+						bwd = 223
+					},
+					cbt = {
+						fwd = 223,
+						strafe = 223,
+						bwd = 223
+					}
+				},
+				run = {
+					hos = {
+						fwd = 350,
+						strafe = 223,
+						bwd = 223
+					},
+					cbt = {
+						fwd = 350,
+						strafe = 223,
+						bwd = 223
+					}
+				}
+			}
+		}
 	}
 	for speed_preset_name, poses in pairs(presets.move_speed) do
 		for pose, hastes in pairs(poses) do
@@ -18119,7 +18219,32 @@ function CharacterTweakData:_presets(tweak_data)
 				[300] = 0.2
 			}
 		}
-	}	
+	}
+	-- somehow even lower than special
+	presets.surrender.bravo_hard = {
+		base_chance = 0.25,
+		significant_chance = 0.3,
+		violence_timeout = 1.5,
+		reasons = {
+			health = {
+				[1] = 0.2,
+				[0.75] = 0.4,
+				[0.5] = 0.6,
+			},
+			weapon_down = 0.5,
+			pants_down = 1,
+			isolated = 0.12
+		},
+		factors = {
+			flanked = 0.03,
+			unaware_of_aggressor = 0.1,
+			enemy_weap_cold = 0.11,
+			aggressor_dis = {
+				[1000] = 0,
+				[300] = 0.2
+			}
+		}
+	}
 	presets.surrender.special = {
 		base_chance = 0.25,
 		significant_chance = 0.35,
@@ -19732,6 +19857,20 @@ function CharacterTweakData:character_map()
 			list = {
 				"ene_heavymedic_1",
 				"ene_gensec_heavygunner"
+			}
+		}
+
+		char_map.ng = {
+			path = "units/pd2_mod_ng/characters/",
+			list = {
+				"ene_ntl_benelli",
+				"ene_ntl_groundsniper",
+				"ene_ntl_heavyshotgun",
+				"ene_ntl_heavyswat",
+				"ene_ntl_swat_1",
+				"ene_ntl_swat_2",
+				"ene_ntl_swat_3",
+				"ene_ntl_medic"
 			}
 		}
 
