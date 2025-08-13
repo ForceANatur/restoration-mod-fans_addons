@@ -281,8 +281,8 @@ function PlayerManager:_check_resmod_sociopath(player_unit, killed_unit, variant
 	local function check_refresh(refresh, aubrey, time)
 		if refresh then
 			if aubrey then
-				if self._buildup_meter == 0 then
-					self._buildup_meter_t = (self._buildup_meter > 0 and time) or self._buildup_meter_t
+				if self._buildup_meter > 0 then
+					self._buildup_meter_t = time
 					managers.hud:start_buff("sociopath", self._buildup_meter_t)
 				else
 					local combo_t_add = self:upgrade_value("player", "buildup_meter_aubrey", 0).combo_t_add
@@ -293,7 +293,7 @@ function PlayerManager:_check_resmod_sociopath(player_unit, killed_unit, variant
 				buildup_add = math.floor((self:upgrade_value("player", "buildup_meter_aubrey", 0).combo_add + buildup_add_mod) * enemy_unit_mult())
 				self._buildup_meter = math.clamp((self._buildup_meter or 0) + buildup_add, 0, self._buildup_meter_max)
 				managers.hud:set_stacks("sociopath", self._buildup_meter)
-			else	
+			else
 				if self._buildup_meter > 0 then
 					self._buildup_meter_t = time
 					managers.hud:start_buff("sociopath", self._buildup_meter_t)
@@ -421,9 +421,11 @@ function PlayerManager:on_killshot(killed_unit, variant, headshot, weapon_id)
 
 	if self._saw_panic_when_kill and variant ~= "melee" then
 		local equipped_unit = self:get_current_state()._equipped_unit:base()
+		local check_id = equipped_unit and equipped_unit._name_id
 
 		--Allow all special weapons to spread panic with skill.
-		if equipped_unit:is_category("saw") or equipped_unit:is_category("grenade_launcher") or equipped_unit:is_category("bow") or equipped_unit:is_category("crossbow") then
+		if weapon_id == check_id and 
+			(equipped_unit:is_category("saw") or equipped_unit:is_category("grenade_launcher") or equipped_unit:is_category("bow") or equipped_unit:is_category("crossbow")) then
 			local pos = player_unit:position()
 			local skill = self:upgrade_value("saw", "panic_when_kill")
 

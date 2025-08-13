@@ -5318,6 +5318,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 
 	recat = { "deagle", "x_deagle", "model3", "x_model3", "rsh12", "new_raging_bull", "x_rage", "peacemaker", "mateba", "x_2006m", "chinchilla", "x_chinchilla", "korth","x_korth" }
 	for i, wep_id in ipairs(recat) do
+		table.insert(self[ wep_id ].categories, "handcannon")
 		self[ wep_id ].recategorize = { "heavy_pis", "handcannon" }
 		self[ wep_id ].damage_type = "handcannon"
 	end
@@ -7334,10 +7335,12 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							{3, self.stat_info.kick_tables.vertical_kick},
 							{4, self.stat_info.kick_tables.right_kick}
 						}
-						--if restoration.Options:GetValue("OTHER/ComboSounds") then
+						if restoration.Options:GetValue("WEAPONS/WEAPONSOUNDS/ComboSoundsRSH12") > 1 then
 							self.rsh12.sounds.fire = "ching_fire"
-							self.rsh12.sounds.fire2 = "b682_fire"
-						--end
+							if restoration.Options:GetValue("WEAPONS/WEAPONSOUNDS/ComboSoundsRSH12") == 3 then
+								self.rsh12.sounds.fire2 = "b682_fire"
+							end
+						end
 						self.rsh12.supported = true
 						self.rsh12.ads_speed = 0.220
 						self.rsh12.damage_falloff = {
@@ -7904,10 +7907,11 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						}
 						self.korth.stats_modifiers = nil
 						self.korth.armor_piercing_chance = 0.5
-						self.korth.swap_speed_multiplier = 0.65
 						self.korth.can_shoot_through_enemy = true
 						self.korth.panic_suppression_chance = 0.05
 						self.korth.reload_speed_multiplier = 0.92
+						self.korth.swap_speed_multiplier = 0.65
+						self.korth.timers.equip = 0.9
 						self.korth.timers.reload_empty = 2.3
 						self.korth.timers.reload_exit_empty = 1.6
 						self.korth.timers.reload_not_empty = 2.3
@@ -8465,7 +8469,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.peacemaker.timers.shotgun_reload_exit_empty = 0.7
 						self.peacemaker.timers.shotgun_reload_exit_not_empty = 0.7
 						self.peacemaker.use_unequip_swap = true
-						self.peacemaker.swap_speed_multiplier = 0.8
+						self.peacemaker.swap_speed_multiplier = 0.65
 
 		--[[     MGs     ]]--
 
@@ -12219,10 +12223,10 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							{9, self.stat_info.kick_tables.even_recoil},
 							{12, self.stat_info.kick_tables.vertical_kick},
 							{16, self.stat_info.kick_tables.moderate_right_kick}
-						}
-						--if restoration.Options:GetValue("OTHER/ComboSounds") then
+						}						
+						if restoration.Options:GetValue("WEAPONS/WEAPONSOUNDS/ComboSoundsSHAK12") then
 							self.shak12.sounds.fire2 = "mp5_fire_single"
-						--end
+						end
 						self.shak12.supported = true
 						self.shak12.ads_speed = 0.360
 						self.shak12.damage_falloff = {
@@ -15332,10 +15336,12 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			self.shatters_fury.damage_type = "handcannon"
 			self.shatters_fury.fire_mode_data.fire_rate = 0.2142857
 			self.shatters_fury.muzzleflash = "effects/payday2/particles/weapons/big_51b_auto_fps"
-			--if restoration.Options:GetValue("OTHER/ComboSounds") then
-				self.shatters_fury.sounds.fire_single = "pmkr45_fire"
-				self.shatters_fury.sounds.stop_fire = "b682_fire" --"hajk_x_fire_single
-			--end
+			if restoration.Options:GetValue("WEAPONS/WEAPONSOUNDS/ComboSoundsSW500") > 1 then
+			self.shatters_fury.sounds.fire_single = "pmkr45_fire"
+				if restoration.Options:GetValue("WEAPONS/WEAPONSOUNDS/ComboSoundsSW500") == 3 then
+					self.shatters_fury.sounds.stop_fire = "b682_fire"
+				end
+			end
 			self.shatters_fury.weapon_hold = "model3"
 			self.shatters_fury.AMMO_MAX = 40
 			self.shatters_fury.CLIP_AMMO_MAX = 5
@@ -15990,9 +15996,10 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					self.bs23.recategorize = { "break_shot" }
 					self.bs23.damage_type = "shotgun_heavy"
 					self.bs23.damage_type_single_ray = "anti_materiel"
+					self.bs23.use_data.selection_index = 1
 					self.bs23.always_play_anims = true
 					self.bs23.tactical_reload = 1
-					self.bs23.AMMO_MAX = 30
+					self.bs23.AMMO_MAX = 15
 					self.bs23.CLIP_AMMO_MAX = 3
 					self.bs23.reload_speed_multiplier = 1.3
 					self.bs23.fire_rate_multiplier = 1.20
@@ -16022,6 +16029,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						reload = 20
 					}
 					self.bs23.stats_modifiers = nil
+					self.bs23.descope_on_fire = true
 					self.bs23.panic_suppression_chance = 0.05
 					self.bs23.timers.unequip = 0.6
 					self.bs23.timers.equip = 1
@@ -16443,6 +16451,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			end
 
 			if self.limafive then -- Deagle L5
+				self.limafive.categories = {"pistol", "handcannon"}
 				self.limafive.recategorize = {"heavy_pis"}
 				self.limafive.damage_type = "handcannon"
 				self.limafive.fire_mode_data.fire_rate = 0.1428
@@ -16640,6 +16649,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			end
 
 			if self.lapd then --Carl's M2019 Blaster
+				self.lapd.categories = {"pistol", "handcannon"}
 				self.lapd.recategorize = {"heavy_pis", "handcannon"}
 				self.lapd.damage_type = "handcannon"
 				self.lapd.desc_id = "thatgun_desc"
@@ -17113,6 +17123,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			end
 
 			if self.mr96 then
+				self.mr96.categories = {"pistol", "handcannon"}
 				self.mr96.recategorize = {"heavy_pis", "handcannon"}
 				self.mr96.has_description = true
 				self.mr96.desc_id = "bm_ap_armor_50_weapon_sc_desc"
@@ -17153,6 +17164,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.mr96.can_shoot_through_enemy_unlim = true
 				self.mr96.timers = deep_clone(self.new_raging_bull.timers)
 
+				self.x_mr96.categories = {"akimbo", "pistol", "handcannon"}
 				self.x_mr96.recategorize = {"heavy_pis", "handcannon"}
 				self.x_mr96.has_description = true
 				self.x_mr96.desc_id = "bm_ap_armor_50_weapon_sc_desc"
@@ -18182,6 +18194,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			end
 
 			if self.mars then --Pawcio's Mars Automatic
+				self.mars.categories = {"pistol", "handcannon"}
 				self.mars.recategorize = { "heavy_pis", "handcannon" }
 				self.mars.desc_id = "bm_ap_armor_50_weapon_sc_desc"
 				self.mars.has_description = true
@@ -18573,6 +18586,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			end
 
 			if self.duke1911 then --Pawcio's Duke Nukem 1911
+				self.duke1911.categories = {"pistol", "handcannon"}
 				self.duke1911.recategorize = {"heavy_pis"}
 				self.duke1911.has_description = true
 				self.duke1911.damage_type = "handcannon"
@@ -18618,6 +18632,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			end
 
 			if self.zenith then
+				self.zenith.categories = {"pistol", "handcannon"}
 				self.zenith.recategorize = { "heavy_pis" }
 				self.zenith.damage_type = "handcannon"
 				self.zenith.fire_mode_data.fire_rate = 0.3
@@ -19064,9 +19079,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.ks23.has_description = false
 				self.ks23.always_play_anims = true
 				self.ks23.use_data.selection_index = 2
-				self.ks23.categories = {
-						"shotgun"
-				}
+				self.ks23.categories = { "shotgun" }
 				self.ks23.recategorize = { "break_shot" }
 				self.ks23.damage_type = "shotgun_heavy"
 				self.ks23.damage_type_single_ray = "anti_materiel"
@@ -19100,6 +19113,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					reload = 20
 				}
 				self.ks23.armor_piercing_chance = 1
+				self.ks23.descope_on_fire = true
 				self.ks23.panic_suppression_chance = 0.05
 				self.ks23.stats_modifiers = nil
 				self.ks23.timers.unequip = 0.6
@@ -21680,6 +21694,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.toz66.stats_modifiers = nil
 				self.toz66.reload_speed_multiplier = 1.1
 				self.toz66.panic_suppression_chance = 0.05
+				self.toz66.sounds.stop_fire = "judge_x_fire"
 				self.toz66.timers = deep_clone(self.huntsman.timers)
 				if BeardLib.Utils:FindMod("Restored Mosconi Reload Animation") then
 					self.toz66.animations.ignore_nonemptyreload = true
@@ -23705,7 +23720,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			end
 
 			if self.cssdeagle then --PlayBONK and Mira's CS Deagle
-				table.insert(self.cssdeagle.categories, "cs_spread")
+				self.cssdeagle.categories = {"pistol", "handcannon", "cs_spread"}
 				self.cssdeagle.recategorize = { "heavy_pis", "handcannon" }
 				self.cssdeagle.damage_type = "handcannon"
 				self.cssdeagle.desc_id = "bm_ap_armor_75_weapon_sc_desc"
@@ -24871,37 +24886,35 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.howa_type20.damage_type = "assault_rifle"
 				self.howa_type20.nato = true
 				self.howa_type20.tactical_reload = 1
-				self.howa_type20.fire_mode_data.fire_rate = 0.088235294
+				self.howa_type20.fire_mode_data.fire_rate = 0.0888889
 				self.howa_type20.CLIP_AMMO_MAX = 30
 				self.howa_type20.AMMO_MAX = 150
 				self.howa_type20.CAN_TOGGLE_FIREMODE = true
 				self.howa_type20.FIRE_MODE = "auto"
 				self.howa_type20.kick = {}
-				self.howa_type20.kick = self.stat_info.kick_tables.moderate_kick
+				self.howa_type20.kick = self.stat_info.kick_tables.moderate_right_kick
 				self.howa_type20.kick_pattern = {
-					{0, self.stat_info.kick_tables.left_recoil},
-					{4, self.stat_info.kick_tables.moderate_left_kick},
-					{9, self.stat_info.kick_tables.even_recoil},
-					{12, self.stat_info.kick_tables.moderate_right_kick},
-					{17, self.stat_info.kick_tables.even_recoil},
-					{21, self.stat_info.kick_tables.moderate_left_kick},
-					{25, self.stat_info.kick_tables.even_recoil}
-				}
+					{0, self.stat_info.kick_tables.right_recoil},
+					{4, self.stat_info.kick_tables.moderate_right_kick},
+					{9, self.stat_info.kick_tables.moderate_kick},
+					{18, self.stat_info.kick_tables.moderate_right_kick},
+					{22, self.stat_info.kick_tables.right_recoil}
+                }
 				self.howa_type20.supported = true
 				self.howa_type20.ads_speed = 0.300
 				self.howa_type20.damage_falloff = {
-					start_dist = 2600,
-					end_dist = 6000,
+					start_dist = 2700,
+					end_dist = 7000,
 					min_mult = 0.5
 				}
 				self.howa_type20.stats = {
 					damage = 24,
-					spread = 86,
-					recoil = 89,
-					spread_moving = 5,
+					spread = 81,
+					recoil = 77,
+					spread_moving = 6,
 					zoom = 1,
-					concealment = 24,
-					suppression = 10,
+					concealment = 26,
+					suppression = 9,
 					alert_size = 2,
 					extra_ammo = 101,
 					total_ammo_mod = 400,
@@ -25681,7 +25694,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			end
 
 			if self.m6d then --RJC9000 and Offyerrocker's M6D
-				table.insert(self.m6d.categories, "no_shake")
+				self.m6d.categories = {"pistol", "handcannon", "no_shake", "samurai"}
 				self.m6d.recategorize = { "heavy_pis", "handcannon" }
 				self.m6d.damage_type = "handcannon"
 				self.m6d.has_description = true
@@ -26581,6 +26594,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			end
 
 			if self.malorian_3516 then --RJC9000 and PlayBONK's 2077 Silverhand
+				self.malorian_3516.categories = { "pistol", "handcannon", "samurai" }
 				self.malorian_3516.recategorize = { "heavy_pis", "handcannon" }
 				self.malorian_3516.desc_id = "whydoyoucome"
 				self.malorian_3516.has_description = true
@@ -26742,6 +26756,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			end
 
 			if self.swhiskey then --RJC9000 and PlayBONK's MW2022 SW500
+				self.swhiskey.categories = {"pistol", "handcannon"}
 				self.swhiskey.recategorize = { "heavy_pis", "handcannon" }
 				self.swhiskey.damage_type = "handcannon"
 				self.swhiskey.fire_mode_data.fire_rate = 0.4195804
@@ -28704,6 +28719,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			end
 
 			if self.korth_prs then
+				self.korth_prs.categories = {"pistol", "handcannon"}
 				self.korth_prs.recategorize = {"heavy_pis"}
 				self.korth_prs.damage_type = "handcannon"
 				self.korth_prs.lock_slide = true
@@ -29731,6 +29747,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.toz81.panic_suppression_chance = 0.05
 				self.toz81.use_hipfire_stance = "breech"
 				self.toz81.reload_speed_multiplier = 1.02
+				self.toz81.sounds.stop_fire = "judge_x_fire"
 				self.toz81.timers.reload_empty = 2.18
 				self.toz81.timers.reload_exit_empty = 1.15
 				self.toz81.timers.reload_not_empty = 2.18
@@ -29781,6 +29798,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				}
 				self.x_toz81.stats_modifiers = nil
 				self.x_toz81.panic_suppression_chance = 0.05
+				self.x_toz81.sounds.stop_fire = "judge_x_fire"
 				self.x_toz81.timers = deep_clone(self.x_judge.timers)
 			end
 
@@ -29904,6 +29922,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			end
 
 			if self.bk500 then
+				self.bk500.categories = {"pistol", "handcannon"}
 				self.bk500.recategorize = { "heavy_pis", "handcannon" }
 				self.bk500.damage_type = "handcannon"
 				self.bk500.fire_mode_data.fire_rate = 0.5454
@@ -32054,6 +32073,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 		end
 
 		if self.amt then --Matthelzor, Gambyt, >:3, and Alcat's Automag .44
+			self.amt.categories = {"pistol", "handcannon"}
 			self.amt.recategorize = { "heavy_pis", "handcannon" }
 			self.amt.damage_type = "handcannon"
 			self.amt.tactical_reload = 1

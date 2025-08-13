@@ -159,6 +159,53 @@ Hooks:Add("LocalizationManagerPostInit", "ResMod_english_Localization_Init", fun
 				["RestorationModManualReloadsTitleID"] = "Manual Reloads",
 				["RestorationModManualReloadsDescID"] = "Disables automatic reloads when your magazine is empty. NOTE: Setting is ignored if the \"Reload Marathon\" mutator is active.",
 
+			["RestorationModWEAPONSOUNDSOptionsButtonTitleID"] = "Sound Options",
+			["RestorationModWEAPONSOUNDSOptionsButtonDescID"] = "Options for weapon sounds.",
+					["RestorationModResSoundscapingTitleID"] = "Alternate Weapon Reverb Effects",
+					["RestorationModResSoundscapingDescID"] = "Changes reverb effects to use louder alternatives. Disable to use vanilla effects or modded ones using the vanilla setup",
+					["RestorationModComboSoundsTitleID"] = "===Weapon Sounds===",
+					["RestorationModComboSoundsDescID"] = "Options for alternative weapon sounds.\nChanges apply after a restart.",
+						["RestorationModComboSoundsSW500TitleID"] = "Phoenix .500 (SW 500)",
+						["RestorationModComboSoundsSW500DescID"] = "Changes the sound of the Phoenix .500.",
+							["snd_sw500_vanilla"] = "Default Sound (Bronco .44)",
+							["snd_sw500_peacemaker"] = "Peacemaker .45",
+							["snd_sw500_combo"] = "Peacemaker + Joceline",
+						["RestorationModComboSoundsRSH12TitleID"] = "RUS-12 (RSh-12)",
+						["RestorationModComboSoundsRSH12DescID"] = "Changes the sound of the RUS-12. NOTE: The RUS-12 lacks suppressed audio; suppressed M1 Galant audio will be used instead regardless of setting.",
+							["snd_rsh_vanilla"] = "Vanilla Sound (M1 Galant When Suppressed)",
+							["snd_rsh_garand"] = "M1 Galant",
+							["snd_rsh_combo"] = "Galant + Joceline",
+						["RestorationModComboSoundsSHAK12TitleID"] = "KS12 (ShAK-12)",
+						["RestorationModComboSoundsSHAK12DescID"] = "Changes the sound of the KS12.",
+							["snd_shak_vanilla"] = "Vanilla Only",
+							["snd_shak_combo"] = "Vanilla + Compact-5",
+						["RestorationModComboSoundsRPKTitleID"] = "RPK",
+						["RestorationModComboSoundsRPKDescID"] = "Changes the sound of the RPK.",
+							["snd_rpk_vanilla"] = "Vanilla Sound",
+							["snd_rpk_akmDMR"] = "DMR Kit AK.762",
+					["RestorationModComboSoundsAttachmentsTitleID"] = "===Attachment Sounds===",
+					["RestorationModComboSoundsAttachmentsDescID"] = "Options for alternative weapon sounds made via attachments.\nChanges apply after a restart.",
+						["RestorationModComboSoundsFMGCKTitleID"] = "Wasp-DS",
+						["RestorationModComboSoundsFMGCKDescID"] = "Changes the sound of the Wasp-DS when its Exclusive Set is in use.",
+							["snd_fmg_vanilla"] = "Vanilla Sound",
+							["snd_fmg_g17"] = "Chimano 88",
+						["RestorationModComboSoundsPatriotTitleID"] = "AMCAR",
+						["RestorationModComboSoundsPatriotDescID"] = "Changes the sound of the AMCAR when the \"The Patriot\" attachment is in use.",
+							["snd_patriot_vanilla"] = "Vanilla Sound",
+							["snd_patriot_fal"] = "Falcon",
+						["RestorationModComboSoundsKrink74TitleID"] = "Krinkov",
+						["RestorationModComboSoundsKrink74DescID"] = "Changes the sound of the Krinkov when the \"AK 5.45 Kit\" attachment is in use.",
+							["snd_krink74_vanilla"] = "Vanilla Sound",
+							["snd_krink74_ak74"] = "AK (AK74)",
+						["RestorationModComboSoundsJiisuriTitleID"] = "Gewehr-3",
+						["RestorationModComboSoundsJiisuriDescID"] = "Changes the sound of the Gewehr-3 when the \"Präzision Internals\" attachment is in use.",
+							["snd_jiisuri_vanilla"] = "Vanilla Only",
+							["snd_jiisuri_combo"] = "Vanilla + Galant",
+						["RestorationModComboSoundsRPK74TitleID"] = "RPK",
+						["RestorationModComboSoundsRPK74DescID"] = "Changes the sound of the RPK when the \"AK 5.45 Kit\" attachment is in use;\nDMR Kit audio is used if the RPK is set to use the AK.762 audio.",
+							["snd_rpk74_vanilla"] = "Vanilla Sound",
+							["snd_rpk74_ak74"] = "AK (AK74)",
+
 			["RestorationModWEAPONANIMSOptionsButtonTitleID"] = "Viewmodel & Animation Options",
 			["RestorationModWEAPONANIMSOptionsButtonDescID"] = "Options for weapon viewmodels and animations",
 					["RestorationModStaticAimTitleID"] = "No Weapon Movement While ADS",
@@ -182,12 +229,12 @@ Hooks:Add("LocalizationManagerPostInit", "ResMod_english_Localization_Init", fun
 					["RestorationModRunAndShootAnimsDescID"] = "Enable/Disable sprinting animations when a \"Shoot While Sprinting\" skill is active.",
 					["RestorationModToggleAnimsTitleID"] = "===Animation Replacers===",
 					["RestorationModToggleAnimsDescID"] = "Toggles for use of animation replacers; Disable to use vanilla or custom Beardlib animations.\nChanges apply after a restart.",
-					--Pistols
-					["RestorationModm1911_foleyTitleID"] = "M1911 Reload Foley",
-					["RestorationModm1911_foleyDescID"] = "Changes the reload anim on the M1911 (Crosskill Chunky) to use the foley from the Jericho 941 (Baby Deagle) anim.",
-					--Rifles
-					["RestorationModg3_niphenTitleID"] = "G3 U65 Reload Animations",
-					["RestorationModg3_niphenDescID"] = "Changes the reload anim on the G3 (Gewehr 3) to use its Update 65 anim.",
+						--Pistols
+						["RestorationModm1911_foleyTitleID"] = "M1911 Reload Foley",
+						["RestorationModm1911_foleyDescID"] = "Changes the reload anim on the M1911 (Crosskill Chunky) to use the foley from the Jericho 941 (Baby Deagle) anim.",
+						--Rifles
+						["RestorationModg3_niphenTitleID"] = "G3 U65 Reload Animations",
+						["RestorationModg3_niphenDescID"] = "Changes the reload anim on the G3 (Gewehr 3) to use its Update 65 anim.",
 
 
 			["RestorationModPerformanceOptionsButtonTitleID"] = "++ Impact FX Settings ++",
@@ -2377,16 +2424,16 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 		["bm_grenade_dada_com_desc"] = "Damage: #{risk}#800## \nRadius: #{skill_color}#5m## \nFuse: #{skill_color}#3s## \n\nThe doll's outer layers hides its explosive inner workings. A tribute to the Motherland.",
 		--Snowball
 		["bm_grenade_xmas_snowball"] = "Snowball", --there is a fucking space at the end of the original string
-		["bm_grenade_xmas_snowball_desc"] = "Damage (Impact): #{skill_color}#90##\nDamage (Blast): #{risk}#180## \nRadius: #{skill_color}#1m## \nRegen rate: #{skill_color}#1 snowball every 25s## \n\nDunk them in water, toss them in the freezer and you got yourself a deadly throwing weapon. Simple.",
+		["bm_grenade_xmas_snowball_desc"] = "Damage (Impact): #{skill_color}#90##\nDamage (Blast): #{risk}#180## \nRadius: #{skill_color}#1m## \nFuse: #{skill_color}#Impact## \nRegen rate: #{skill_color}#1 snowball every 25s## \n\nDunk them in water, toss them in the freezer and you got yourself a deadly throwing weapon. Simple.",
 		--Zapper
 		["bm_grenade_electric_desc"] = "Damage: #{skill_color}#400## \nRadius: #{skill_color}#5m## \nFuse: #{skill_color}#3s## \n- #{skill_color}#Electrocutes most enemies## \n\nShrapnel is all well and good but some things need to be fried, and this little beauty is a rather practical beast for dishing out some damage with high voltage.",
 		--Sticky
 		["bm_grenade_sticky_grenade"] = "Semtex Grenade",
 		["bm_grenade_sticky_grenade_desc"] = "Damage: #{risk}#800## \nRadius: #{skill_color}#4m## \nFuse: #{skill_color}#2.5s## \n\nThrowable explosive compound that will stick to most surfaces, including people!",
 		--Molotov
-		["bm_grenade_molotov_desc"] = "Damage (Fire Pool): #{heat_warm_color}#1200 over 10s##\nDamage (Burn): #{heat_warm_color}#60 over 3s## \nDamage (Blast): #{heat_warm_color}#30## \nRadius (Fire Pool): #{skill_color}#3.75m## \nRadius (Blast): #{skill_color}#3m## \nFuse: #{skill_color}#Impact detonation## \n- Has a #{skill_color}#50%## chance to #{heat_warm_color}#ignite## enemies, causing most to panic. \n \nA breakable bottle of flammable liquid with a burning rag. It is cheap, simple and highly effective. Burn it all down.",
+		["bm_grenade_molotov_desc"] = "Damage (Blast): #{heat_warm_color}#30## \nDamage (Burn): #{heat_warm_color}#180 over 3s## \nRadius (Blast): #{skill_color}#3m## \nFuse: #{skill_color}#Impact## \nDamage (Fire Pool): #{heat_warm_color}#1200 over 10s## \nRadius (Fire Pool): #{skill_color}#3.75m## \n- The fire pool has a #{skill_color}#50%## chance to #{heat_warm_color}#ignite## enemies, causing most to panic. \n \nA breakable bottle of flammable liquid with a burning rag. It is cheap, simple and highly effective. Burn it all down.",
 		--Incendiary
-		["bm_grenade_fir_com_desc"] = "Damage (Fire Pool): #{heat_warm_color}#1440 over 12s##\nDamage (Burn): #{heat_warm_color}#120 over 6s## \nDamage (Blast): #{heat_warm_color}#30## \nRadius (Fire Pool): #{skill_color}#3.75m## \nRadius (Blast): #{skill_color}#4.5m## \nFuse: #{skill_color}#2.5s## \n- #{skill_color}#50%## chance to #{heat_warm_color}#ignite## enemies, causing most to panic.\n\nA self igniting phosphorus container. Perfect for bouncing off walls and around corners towards your enemies.",
+		["bm_grenade_fir_com_desc"] = "Damage (Blast): #{heat_warm_color}#120## \nRadius (Blast): #{skill_color}#4.5m## \nFuse: #{skill_color}#2.5s## \nDamage (Fire Pool): #{heat_warm_color}#1440 over 12s## \nRadius (Fire Pool): #{skill_color}#3.75m## \n- The fire pool has a #{skill_color}#50%## chance to #{heat_warm_color}#ignite## enemies, causing most to panic.\n\nA self igniting phosphorus container. Perfect for bouncing off walls and around corners towards your enemies.",
 		--Concussion
 		["bm_concussion_desc"] = "Radius: #{skill_color}#10m## \n- Stuns enemies for up to #{skill_color}#4s##\n- Enemy accuracy reduced by #{skill_color}#50%## for #{skill_color}#7s## \n- #{important_1}#Titan-Shields, Titan-Bulldozers and Captains are immune to its stunning effects## \n\nThis stunning little beauty will take everyone's breath away, giving you that extra moment to kill them.",
 		--Gas
