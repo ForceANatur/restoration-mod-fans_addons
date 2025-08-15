@@ -28,19 +28,7 @@ local function find_key(page, str)
 end
 
 local function setup_discord_link(gold_key)
-	local is_gold = false
-	
-	if gold_key == current_key then
-		is_gold = true
-	end
-	
-	local user_resmod_version = ""
-
-	if is_gold then
-		user_resmod_version = "Gold"
-	else
-		user_resmod_version = "Dev"
-	end
+	local user_resmod_version = "FaN Scout (Dev branch)
 
 	DiscordLink:set_attributes({
 		channel_id = "584795639309664375",
