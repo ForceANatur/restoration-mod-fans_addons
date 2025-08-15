@@ -28,7 +28,7 @@ local function find_key(page, str)
 end
 
 local function setup_discord_link(gold_key)
-	local user_resmod_version = "FaN Scout (Dev branch)
+	local user_resmod_version = "FaN Scout (Dev branch)"
 
 	DiscordLink:set_attributes({
 		channel_id = "584795639309664375",
