@@ -34,7 +34,7 @@ local function setup_discord_link(gold_key)
 		channel_id = "584795639309664375",
 		channel_name = "looking-for-games",
 		server_name = "Restoration Mod",
-		version_identifier = "FaN Scout (Pre-Dev Epicness Merge)",
+		version_identifier = user_resmod_version,
 	})
 end
 
