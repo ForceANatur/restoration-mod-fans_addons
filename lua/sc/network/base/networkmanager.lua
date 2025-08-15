@@ -28,25 +28,13 @@ local function find_key(page, str)
 end
 
 local function setup_discord_link(gold_key)
-	local is_gold = false
-	
-	if gold_key == current_key then
-		is_gold = true
-	end
-	
-	local user_resmod_version = ""
-
-	if is_gold then
-		user_resmod_version = "Gold"
-	else
-		user_resmod_version = "Dev"
-	end
+	local user_resmod_version = "FaN Scout (Pre-Dev Epicness Merge)"
 
 	DiscordLink:set_attributes({
 		channel_id = "584795639309664375",
 		channel_name = "looking-for-games",
 		server_name = "Restoration Mod",
-		version_identifier = user_resmod_version,
+		version_identifier = "FaN Scout (Pre-Dev Epicness Merge)",
 	})
 end
 
