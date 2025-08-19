@@ -31,13 +31,13 @@ Akan LPFs and Enforcers spawn on mexico heists
 
 Marshal Shield has been buffed.
 
-Captains are a lot more meaner on Death Sentence Pro Job.
+Captain spawns are a lot more meaner on Death Sentence Pro Job.
 
 A secret 6th captain only available with Everlasting Season/April 1st.
 
-# Mutators:
+Vanilla units have bravo units. Assets borrowed from new coppers again.
 
-Ludicrous Mode: Enemies drop one less ammo pickup.
+# Mutators:
 
 Warthogs: All types of bulldozers have a chance to spawn a flamethrower weilding Warthog.
 
@@ -48,6 +48,8 @@ Semi-Auto Shotgun Bulldozers spawns miniguns (`Loc.lua` was changed to reflect t
 Sniper Hell: Most enemies spawn with Sniper Rifles.
 
 Sting like a bee: FBI units use the M1014 and Hostage Rescue Teams and ASU units have the UMP. Vet Cops have akimbo Broncos.
+
+RPG Grunts: Spawns an unused enemy for the Meltdown heist. suffer
 
 # Crime Spree Modifiers:
 
