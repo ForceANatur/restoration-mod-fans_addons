@@ -423,7 +423,8 @@
 		<hook file="sc/mutators/new/mutatormarathonreload.lua" source_file="lib/mutators/basemutator"/>
 		<hook file="sc/mutators/new/mutatorcitadelmags.lua" source_file="lib/mutators/basemutator"/>
 		<hook file="sc/mutators/new/mutatorshighnoon.lua" source_file="lib/mutators/basemutator"/>
-		<hook file="sc/mutators/new/mutatornoammo.lua" source_file="lib/mutators/basemutator"/>
+		<hook file="sc/mutators/new/mutatornoammodrop.lua" source_file="lib/mutators/basemutator"/>
+		<!--<hook file="sc/mutators/new/mutatornoammo.lua" source_file="lib/mutators/basemutator"/>-->
 		<hook file="sc/mutators/new/mutatorsoopsallspecials.lua" source_file="lib/mutators/basemutator"/>
 		<hook file="sc/mutators/new/mutatorwarthogs.lua" source_file="lib/mutators/basemutator"/>
 		<hook file="sc/mutators/new/mutatorsnipersandsnipers.lua" source_file="lib/mutators/basemutator"/>

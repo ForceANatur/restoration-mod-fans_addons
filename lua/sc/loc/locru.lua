@@ -5012,6 +5012,13 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills", function(loc)
 		["mutator_letthesleepinggoddie_longdesc"] = "Upon a non-empty reload, ammo from the previous magazine is lost.\n\nNote: Weapons that retain their ammo during their reload (per-round loading, retention reloads, etc.) as well as reloads triggered by skills are exempt from the effects of this mutator.",
 		["mutator_letthesleepinggoddie_no_effect"] = "Unaffected by the \"Magazine Martyr\" mutator.",
 
+		["mutator_no_ammo_drops"] = "Дефицит патронов",
+		["menu_mutator_ammo_drop_chance"] = "Шанс выпадения патронов (в %)",
+		["menu_mutator_ammo_drop_chance_ingame"] = "шанс выпадения патронов",
+		["menu_mutator_no_ammo_drops"] = "Без выпадения патронов",
+		["mutator_no_ammo_drops_desc"] = "Позволяет отключить коробки патронов с врагов, или изменить процент их выпадения.",
+		["mutator_no_ammo_drops_longdesc"] = "Позволяет отключить коробки патронов с врагов, или изменить процент их выпадения.",
+
 		["menu_cg22_post_objective_1_desc"] = "Убить 200 врагов из любой снайперской винтовки.",
 		["menu_cg22_post_objective_2_desc"] = "Убить 15 Клокеров из винтовки 'Полярная Звезда' на сложности 'Очень Сложно' или выше.",
 		["menu_cg22_post_objective_3_desc"] = "Сделать 50 двойных убийств из винтовки 'Полярная Звезда' на любой сложности.",
