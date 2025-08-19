@@ -292,5 +292,101 @@
 	<!--textures-->
 	<texture			path="units/pd2_mod_bravo/characters/shared_textures/bravo_body_nm"/>
 	<texture			path="units/pd2_mod_bravo/characters/shared_textures/bravo_body_df"/>
+
+	<!--New Coppers Bravos so vanilla units don't get left out-->
+	<!--Load helmet before anything-->
+	<object				path="units/pd2_mod_nc/characters/ene_acc_zeal_swat_helmet/ene_acc_zeal_swat_helmet" force="false"/>
+	<cooked_physics		path="units/pd2_mod_nc/characters/ene_acc_zeal_swat_helmet/ene_acc_zeal_swat_helmet" force="false"/>
+	<model				path="units/pd2_mod_nc/characters/ene_acc_zeal_swat_helmet/ene_acc_zeal_swat_helmet" force="false"/>
+	<unit				path="units/pd2_mod_nc/characters/ene_acc_zeal_swat_helmet/ene_acc_zeal_swat_helmet" force="false" load="true"/>
+	<material_config	path="units/pd2_mod_nc/characters/ene_acc_zeal_swat_helmet/ene_acc_zeal_swat_helmet" force="false"/>
+
+	<!--Normal-->
+	<object				path="units/pd2_mod_ng/characters/ene_ntl_swat_1/ene_ntl_swat_1" force="false"/>
+	<cooked_physics		path="units/pd2_mod_ng/characters/ene_ntl_swat_1/ene_ntl_swat_1" force="false"/>
+	<model				path="units/pd2_mod_ng/characters/ene_ntl_swat_1/ene_ntl_swat_1" force="false"/>
+	<unit				path="units/pd2_mod_ng/characters/ene_ntl_swat_1/ene_ntl_swat_1" force="false" load="true"/>
+	<material_config	path="units/pd2_mod_ng/characters/ene_ntl_swat_1/ene_ntl_swat_1" force="false"/>
+	<material_config	path="units/pd2_mod_ng/characters/ene_ntl_swat_1/ene_ntl_swat_1_contour" force="true"/>
+	<unit				path="units/pd2_mod_ng/characters/ene_ntl_swat_1/ene_ntl_swat_1_husk" force="false" load="true"/>
+
+	<object				path="units/pd2_mod_ng/characters/ene_ntl_swat_2/ene_ntl_swat_2" force="false"/>
+	<cooked_physics		path="units/pd2_mod_ng/characters/ene_ntl_swat_2/ene_ntl_swat_2" force="false"/>
+	<model				path="units/pd2_mod_ng/characters/ene_ntl_swat_2/ene_ntl_swat_2" force="false"/>
+	<unit				path="units/pd2_mod_ng/characters/ene_ntl_swat_2/ene_ntl_swat_2" force="false" load="true"/>
+	<material_config	path="units/pd2_mod_ng/characters/ene_ntl_swat_2/ene_ntl_swat_2" force="false"/>
+	<material_config	path="units/pd2_mod_ng/characters/ene_ntl_swat_2/ene_ntl_swat_2_contour" force="true"/>
+	<unit				path="units/pd2_mod_ng/characters/ene_ntl_swat_2/ene_ntl_swat_2_husk" force="false" load="true"/>
+
+	<object				path="units/pd2_mod_ng/characters/ene_ntl_swat_3/ene_ntl_swat_3" force="false"/>
+	<cooked_physics		path="units/pd2_mod_ng/characters/ene_ntl_swat_3/ene_ntl_swat_3" force="false"/>
+	<model				path="units/pd2_mod_ng/characters/ene_ntl_swat_3/ene_ntl_swat_3" force="false"/>
+	<unit				path="units/pd2_mod_ng/characters/ene_ntl_swat_3/ene_ntl_swat_3" force="false" load="true"/>
+	<material_config	path="units/pd2_mod_ng/characters/ene_ntl_swat_3/ene_ntl_swat_3" force="false"/>
+	<material_config	path="units/pd2_mod_ng/characters/ene_ntl_swat_3/ene_ntl_swat_3_contour" force="true"/>
+	<unit				path="units/pd2_mod_ng/characters/ene_ntl_swat_3/ene_ntl_swat_3_husk" force="false" load="true"/>
+
+	<object				path="units/pd2_mod_ng/characters/ene_ntl_benelli/ene_ntl_benelli" force="false"/>
+	<cooked_physics		path="units/pd2_mod_ng/characters/ene_ntl_benelli/ene_ntl_benelli" force="false"/>
+	<model				path="units/pd2_mod_ng/characters/ene_ntl_benelli/ene_ntl_benelli" force="false"/>
+	<unit				path="units/pd2_mod_ng/characters/ene_ntl_benelli/ene_ntl_benelli" force="false" load="true"/>
+	<material_config	path="units/pd2_mod_ng/characters/ene_ntl_benelli/ene_ntl_benelli" force="false"/>
+	<material_config	path="units/pd2_mod_ng/characters/ene_ntl_benelli/ene_ntl_benelli_contour" force="true"/>
+	<unit				path="units/pd2_mod_ng/characters/ene_ntl_benelli/ene_ntl_benelli_husk" force="false" load="true"/>
+
+	<!--Heavies-->
+	<object				path="units/pd2_mod_ng/characters/ene_ntl_heavyswat/ene_ntl_heavyswat" force="false"/>
+	<cooked_physics		path="units/pd2_mod_ng/characters/ene_ntl_heavyswat/ene_ntl_heavyswat" force="false"/>
+	<model				path="units/pd2_mod_ng/characters/ene_ntl_heavyswat/ene_ntl_heavyswat" force="false"/>
+	<unit				path="units/pd2_mod_ng/characters/ene_ntl_heavyswat/ene_ntl_heavyswat" force="false" load="true"/>
+	<material_config	path="units/pd2_mod_ng/characters/ene_ntl_heavyswat/ene_ntl_heavyswat" force="false"/>
+	<material_config	path="units/pd2_mod_ng/characters/ene_ntl_heavyswat/ene_ntl_heavyswat_contour" force="true"/>
+	<unit				path="units/pd2_mod_ng/characters/ene_ntl_heavyswat/ene_ntl_heavyswat_husk" force="false" load="true"/>
+
+	<object				path="units/pd2_mod_ng/characters/ene_ntl_heavyshotgun/ene_ntl_heavyshotgun" force="false"/>
+	<cooked_physics		path="units/pd2_mod_ng/characters/ene_ntl_heavyshotgun/ene_ntl_heavyshotgun" force="false"/>
+	<model				path="units/pd2_mod_ng/characters/ene_ntl_heavyshotgun/ene_ntl_heavyshotgun" force="false"/>
+	<unit				path="units/pd2_mod_ng/characters/ene_ntl_heavyshotgun/ene_ntl_heavyshotgun" force="false" load="true"/>
+	<material_config	path="units/pd2_mod_ng/characters/ene_ntl_heavyshotgun/ene_ntl_heavyshotgun" force="false"/>
+	<material_config	path="units/pd2_mod_ng/characters/ene_ntl_heavyshotgun/ene_ntl_heavyshotgun_contour" force="true"/>
+	<unit				path="units/pd2_mod_ng/characters/ene_ntl_heavyshotgun/ene_ntl_heavyshotgun_husk" force="false" load="true"/>
+
+	<!--Akiko Npriko threw me a bone. thanks-->
+	<object				path="units/pd2_mod_ng/characters/ene_ntl_medic/ene_ntl_medic" force="false"/>
+	<cooked_physics		path="units/pd2_mod_ng/characters/ene_ntl_medic/ene_ntl_medic" force="false"/>
+	<model				path="units/pd2_mod_ng/characters/ene_ntl_medic/ene_ntl_medic" force="false"/>
+	<unit				path="units/pd2_mod_ng/characters/ene_ntl_medic/ene_ntl_medic" force="false" load="true"/>
+	<material_config	path="units/pd2_mod_ng/characters/ene_ntl_medic/ene_ntl_medic" force="false"/>
+	<material_config	path="units/pd2_mod_ng/characters/ene_ntl_medic/ene_ntl_medic_contour" force="true"/>
+	<unit				path="units/pd2_mod_ng/characters/ene_ntl_medic/ene_ntl_medic_husk" force="false" load="true"/>
+
+	<!--Sniper-->
+	<object				path="units/pd2_mod_ng/characters/ene_ntl_groundsniper/ene_ntl_groundsniper" force="false"/>
+	<cooked_physics		path="units/pd2_mod_ng/characters/ene_ntl_groundsniper/ene_ntl_groundsniper" force="false"/>
+	<model				path="units/pd2_mod_ng/characters/ene_ntl_groundsniper/ene_ntl_groundsniper" force="false"/>
+	<unit				path="units/pd2_mod_ng/characters/ene_ntl_groundsniper/ene_ntl_groundsniper" force="false" load="true"/>
+	<material_config	path="units/pd2_mod_ng/characters/ene_ntl_groundsniper/ene_ntl_groundsniper" force="false"/>
+	<material_config	path="units/pd2_mod_ng/characters/ene_ntl_groundsniper/ene_ntl_groundsniper_contour" force="true"/>
+	<unit				path="units/pd2_mod_ng/characters/ene_ntl_groundsniper/ene_ntl_groundsniper_husk" force="false" load="true"/>
+
+	<!--Unit Textures-->
+	<texture			path="units/pd2_mod_ng/characters/shared_textures/national_guard_face_nm"/>
+	<texture			path="units/pd2_mod_ng/characters/shared_textures/national_guard_face_df"/>
+	<texture			path="units/pd2_mod_ng/characters/shared_textures/ntl_helmet_df"/>
+	<texture			path="units/pd2_mod_ng/characters/shared_textures/ntl_helmet_nm"/>
+	<texture			path="units/pd2_mod_ng/characters/shared_textures/helmets_atlas_df"/>
+	<texture			path="units/pd2_mod_ng/characters/shared_textures/ntl_medic_helmet_df"/>
+	<texture			path="units/pd2_mod_ng/characters/shared_textures/national_guard_1_df"/>
+	<texture			path="units/pd2_mod_ng/characters/shared_textures/national_guard_1_nm"/>
+	<texture			path="units/pd2_mod_ng/characters/shared_textures/national_guard_face_2_df"/>
+	<texture			path="units/pd2_mod_ng/characters/shared_textures/national_guard_2_df"/>
+	<texture			path="units/pd2_mod_ng/characters/shared_textures/national_guard_3_df"/>
+	<texture			path="units/pd2_mod_ng/characters/shared_textures/national_guard_medic_df"/>
+	<texture			path="units/pd2_mod_nc/characters/shared_textures/sgt_head_nm"/>
+	<texture			path="units/pd2_mod_nc/characters/shared_textures/sgt_head_df"/>
+	<texture 			path="units/pd2_mod_ng/characters/shared_textures/ntl_hat_nm"/>
+	<texture 			path="units/pd2_mod_ng/characters/shared_textures/ntl_hat_df"/>
+	<texture 			path="units/pd2_mod_ng/characters/shared_textures/s10_nm"/>
+	<texture 			path="units/pd2_mod_ng/characters/shared_textures/s10_df"/>
 	<!-- bravos	end -->
 </table>
