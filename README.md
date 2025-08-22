@@ -94,6 +94,8 @@ Russian Bravo Elite: Soldier (Team Fortess 2: Russian Dub)
 
 Murkywater Vet: Trooper (Typical Colors 2)
 
+Mexico Vet: Bill (Left 4 Dead Spanish Dub)
+
 Cop Female: Female Spy (Team Fortress 2)
 
 Grenadier: Annihilator (Typical Colors 2)

@@ -5524,11 +5524,11 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 				federales = {
 					Idstring("units/pd2_dlc_bex/characters/ene_fbi_swat_2/ene_fbi_swat_2"),
 					Idstring("units/pd2_dlc_bex/characters/ene_fbi_swat_3/ene_fbi_swat_3"),
-					Idstring("units/pd2_dlc_bph/characters/ene_murkywater_light_fbi_r870/ene_murkywater_light_fbi_r870"),
+					Idstring("units/pd2_dlc_bex/characters/ene_swat_policia_federale_r870/ene_swat_policia_federale_r870"),
 					Idstring("units/pd2_dlc_bex/characters/ene_fbi_swat_3/ene_fbi_swat_3"),
 					Idstring("units/pd2_dlc_bex/characters/ene_fbi_swat_2/ene_fbi_swat_2"),
 					Idstring("units/pd2_dlc_bex/characters/ene_fbi_swat_3/ene_fbi_swat_3"),
-					Idstring("units/pd2_dlc_bph/characters/ene_murkywater_light_fbi_r870/ene_murkywater_light_fbi_r870"),
+					Idstring("units/pd2_dlc_bex/characters/ene_swat_policia_federale_r870/ene_swat_policia_federale_r870"),
 					Idstring("units/pd2_dlc_bex/characters/ene_fbi_swat_3/ene_fbi_swat_3"),
 					Idstring("units/pd2_mod_dave/characters/ene_big_dave/ene_big_dave"),
 					Idstring("units/pd2_dlc_bex/characters/ene_swat_policia_sniper/ene_swat_policia_sniper"),
