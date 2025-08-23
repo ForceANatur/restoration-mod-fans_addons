@@ -491,7 +491,7 @@ function CharacterTweakData:_init_fbi(presets)
 	elseif self:get_ai_group_type() == "murkywater" then
 		self.fbi_vet.custom_voicework = "murky_vet"
 	elseif self:get_ai_group_type() == "federales" then
-		self.fbi_vet.custom_voicework = "murky_vet"
+		self.fbi_vet.custom_voicework = "mexico_vet"
 	else
 		self.fbi_vet.custom_voicework = "bruce"
 	end
