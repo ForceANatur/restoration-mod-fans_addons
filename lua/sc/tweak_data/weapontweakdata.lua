@@ -28021,6 +28021,40 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			self.m38a.tactical_reload = 1
 		end
 
+		if self.toz194 then	-- TOZ-194 (Clone of Mossberg 590)
+			self.toz194.muzzleflash = "effects/payday2/particles/weapons/big_51b_auto_fps" --"effects/particles/shotgun/shotgun_gen"
+			self.toz194.rays = 8
+			self.toz194.CLIP_AMMO_MAX = 7
+			self.toz194.kick = self.stat_info.kick_tables.vertical_kick
+			self.toz194.fire_mode_data.fire_rate = 0.5
+			self.toz194.fire_rate_multiplier = 0.9
+			self.toz194.AMMO_MAX = 40
+			self.toz194.supported = true
+			self.toz194.ads_speed = 0.320
+			self.toz194.damage_falloff = {
+				start_dist = 700,
+				end_dist = 2500,
+				min_mult = 0.1333
+			}
+			self.toz194.stats = {
+				damage = 180,
+				spread = 60,
+				recoil = 43,
+				spread_moving = 6,
+				zoom = 1,
+				concealment = 25,
+				suppression = 7,
+				alert_size = 2,
+				extra_ammo = 101,
+				total_ammo_mod = 400,
+				value = 1,
+				reload = 20
+			}
+			self.toz194.stats_modifiers = nil
+			self.toz194.panic_suppression_chance = 0.05
+			self.toz194.timers = deep_clone(self.m590.timers)
+		end
+
 	--Automatically generate reasonableish stats for custom weapons.
 	--Someone please help me fix this for the new stat indexes -DMC
 	for id, weap in pairs(self) do
