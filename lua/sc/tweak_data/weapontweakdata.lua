@@ -6919,6 +6919,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.x_breech.stats_modifiers = nil
 						self.x_breech.panic_suppression_chance = 0.05
 						self.x_breech.reload_speed_multiplier = 1.1
+						self.x_breech.weapon_movement_penalty = 1.10
 						self.x_breech.timers.reload_empty = 3
 						self.x_breech.timers.reload_exit_empty = 1.55
 						self.x_breech.timers.reload_not_empty = 1.8
@@ -10731,7 +10732,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						value = 9,
 						reload = 20
 					}
-					self.m134.stats_modifiers = {}
+					self.m134.stats_modifiers = nil
 					self.m134.jab_range = 50
 					self.m134.ads_spool = true
 					self.m134.spin_up_anims = true
@@ -11706,6 +11707,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							reload = 20
 						}
 						self.groza.stats_modifiers = nil
+						self.groza.has_underbarrel = true
 						self.groza.reload_speed_multiplier = 1
 						if SystemFS:exists("assets/mod_overrides/Groza Animation Overhaul") then
 							self.groza.timers.reload_empty = 2.55
@@ -12164,6 +12166,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							value = 1,
 							reload = 20
 						}
+						self.contraband.has_underbarrel = true
 						self.contraband.stats_modifiers = nil
 						self.contraband.panic_suppression_chance = 0.05
 						self.contraband.can_shoot_through_enemy = false
@@ -17519,14 +17522,14 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.vsk94.has_description = true
 				self.vsk94.fire_mode_data.fire_rate = 0.08571428
 				self.vsk94.auto.fire_rate = 0.08571428
-				self.vsk94.kick = self.stat_info.kick_tables.moderate_right_kick
+				self.vsk94.kick = self.stat_info.kick_tables.moderate_kick
 				self.vsk94.kick_pattern = {
 					{0, self.stat_info.kick_tables.moderate_kick},
 					{4, self.stat_info.kick_tables.right_kick},
 					{6, self.stat_info.kick_tables.right_recoil},
 					{7, self.stat_info.kick_tables.right_kick},
-					{11, self.stat_info.kick_tables.vertical_kick},
-					{12, self.stat_info.kick_tables.right_kick}
+					{11, self.stat_info.kick_tables.moderate_kick},
+					{16, self.stat_info.kick_tables.right_recoil}
 				}
 				self.vsk94.supported = true
 				self.vsk94.ads_speed = 0.280
@@ -17538,8 +17541,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				}
 				self.vsk94.stats = {
 					damage = 45,
-					spread = 65,
-					recoil = 75,
+					spread = 69,
+					recoil = 67,
 					spread_moving = 6,
 					zoom = 1,
 					concealment = 29,
@@ -19576,6 +19579,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					value = 1,
 					reload = 20
 				}
+				self.xeno.has_underbarrel = true
 				self.xeno.stats_modifiers = nil
 				self.xeno.armor_piercing_chance = 0.25
 				self.xeno.can_shoot_through_enemy = false
@@ -20338,6 +20342,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.m107cq.stats_modifiers = nil
 				self.m107cq.panic_suppression_chance = 0.05
 				self.m107cq.reload_speed_multiplier = 0.9
+				self.m107cq.sounds.fire2 = "lakner_lever_release"
 				self.m107cq.timers.reload_empty = 4.5
 				self.m107cq.timers.reload_exit_empty = 0.95
 				self.m107cq.timers.reload_not_empty = 2.8
@@ -21499,6 +21504,10 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			end
 
 			if self.sr3m then
+				self.sr3m.categories = {
+					"assault_rifle",
+					"dmr_l",
+				}
 				self.sr3m.warsaw = true
 				self.sr3m.recategorize = { "dmr_ar" }
 				self.sr3m.damage_type = "assault_rifle"
@@ -21509,14 +21518,14 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.sr3m.has_description = true
 				self.sr3m.fire_mode_data.fire_rate = 0.06666666666
 				self.sr3m.auto.fire_rate = 0.06666666666
-				self.sr3m.kick = self.stat_info.kick_tables.moderate_right_kick
+				self.sr3m.kick = self.stat_info.kick_tables.moderate_kick
 				self.sr3m.kick_pattern = {
 					{0, self.stat_info.kick_tables.moderate_kick},
 					{4, self.stat_info.kick_tables.right_kick},
 					{6, self.stat_info.kick_tables.right_recoil},
 					{7, self.stat_info.kick_tables.right_kick},
-					{11, self.stat_info.kick_tables.vertical_kick},
-					{12, self.stat_info.kick_tables.right_kick}
+					{11, self.stat_info.kick_tables.moderate_kick},
+					{16, self.stat_info.kick_tables.right_recoil}
 				}
 				self.sr3m.supported = true
 				self.sr3m.ads_speed = 0.320
@@ -21528,7 +21537,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				}
 				self.sr3m.stats = {
 					damage = 45,
-					spread = 72,
+					spread = 74,
 					recoil = 69,
 					spread_moving = 6,
 					zoom = 1,
@@ -24287,6 +24296,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					value = 1,
 					reload = 20
 				}
+				self.kurisumasu.has_underbarrel = true
 				self.kurisumasu.stats_modifiers = nil
 				self.kurisumasu.panic_suppression_chance = 0.05
 				self.kurisumasu.lock_slide = true
@@ -24882,6 +24892,58 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 
 		--[[     RJC9000'S MODS     ]]--
 
+			if self.ak15 then
+				self.ak15.warsaw = true
+				self.ak15.recategorize = { "heavy_ar" }
+				self.ak15.damage_type = "assault_rifle"
+				self.ak15.tactical_reload = 1
+				self.ak15.CLIP_AMMO_MAX = 30
+				self.ak15.AMMO_MAX = 120
+				self.ak15.fire_mode_data.fire_rate = 0.08571428
+				self.ak15.BURST_FIRE = {
+					count = 2,
+					delay = 0.15,
+					rof_mult = 1.07142,
+					recoil_mult = 0.4,
+					last_recoil_mult = 1.05
+				}
+				self.ak15.kick = self.stat_info.kick_tables.moderate_left_kick
+				self.ak15.kick_pattern = {
+					{0, self.stat_info.kick_tables.left_recoil},
+					{6, self.stat_info.kick_tables.moderate_kick},
+					{10, self.stat_info.kick_tables.right_recoil},
+					{14, self.stat_info.kick_tables.moderate_kick},
+					{22, self.stat_info.kick_tables.moderate_right_kick}
+				}
+				self.ak15.supported = true
+				self.ak15.ads_speed = 0.340
+				self.ak15.damage_falloff = {
+					start_dist = 1900,
+					end_dist = 4800,
+					min_mult = 0.6
+				}
+				self.ak15.stats = {
+					damage = 30,
+					spread = 81,
+					recoil = 67,
+					spread_moving = 6,
+					zoom = 1,
+					concealment = 25,
+					suppression = 8,
+					alert_size = 2,
+					extra_ammo = 101,
+					total_ammo_mod = 400,
+					value = 1,
+					reload = 20
+				}
+				self.ak15.stats_modifiers = nil
+				self.ak15.panic_suppression_chance = 0.05
+				self.ak15.timers.reload_empty = 3.1
+				self.ak15.timers.reload_exit_empty = 1.08
+				self.ak15.timers.reload_not_empty = 2.05
+				self.ak15.timers.reload_exit_not_empty = 1.2
+			end
+
 			if self.howa_type89 then --AR-18 but Japanese
 				self.howa_type89.categories = { "assault_rifle" }
 				self.howa_type89.recategorize = { "light_ar" }
@@ -24892,6 +24954,12 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.howa_type89.CLIP_AMMO_MAX = 30
 				self.howa_type89.AMMO_MAX = 150
 				self.howa_type89.CAN_TOGGLE_FIREMODE = true
+				self.howa_type89.BURST_FIRE = {
+					count = 3,
+					delay = 0.18,
+					recoil_mult = 0.8,
+					last_recoil_mult = 1.05
+				}
 				self.howa_type89.FIRE_MODE = "auto"
 				self.howa_type89.kick = {}
 				self.howa_type89.kick = self.stat_info.kick_tables.moderate_right_kick
@@ -29482,6 +29550,50 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 
 		--[[     HYLIE'S MODS     ]]--
 
+			if self.ak19 then
+				self.ak19.nato = true
+				self.ak19.recategorize = { "light_ar" }
+				self.ak19.damage_type = "assault_rifle"
+				self.ak19.tactical_reload = 1
+				self.ak19.CLIP_AMMO_MAX = 30
+				self.ak19.AMMO_MAX = 150
+				self.ak19.fire_mode_data.fire_rate = 0.08571428
+				self.ak19.kick = self.stat_info.kick_tables.moderate_right_kick
+				self.ak19.kick_pattern = {
+					{0, self.stat_info.kick_tables.right_kick},
+					{6, self.stat_info.kick_tables.moderate_left_kick},
+					{10, self.stat_info.kick_tables.moderate_kick},
+					{12, self.stat_info.kick_tables.moderate_right_kick},
+					{18, self.stat_info.kick_tables.moderate_kick},
+					{22, self.stat_info.kick_tables.moderate_right_kick}
+				}
+				self.ak19.supported = true
+				self.ak19.ads_speed = 0.320
+				self.ak19.damage_falloff = {
+					start_dist = 2500,
+					end_dist = 6000,
+					min_mult = 0.5
+				}
+				self.ak19.stats = {
+					damage = 24,
+					spread = 82,
+					recoil = 77,
+					spread_moving = 6,
+					zoom = 1,
+					concealment = 25,
+					suppression = 9,
+					alert_size = 2,
+					extra_ammo = 101,
+					total_ammo_mod = 400,
+					value = 1,
+					reload = 20
+				}
+				self.ak19.stats_modifiers = nil
+				self.ak19.panic_suppression_chance = 0.05
+				self.ak19.timers.reload_exit_empty = 0.8
+				self.ak19.timers.reload_exit_not_empty = 1.4
+			end
+
 			if self.m1918 then --RAID WW2 BAR
 				self.m1918.categories = {
 					"assault_rifle",
@@ -31659,7 +31771,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				}
 				self.nothing.stats_modifiers = nil
 				self.nothing.swap_speed_multiplier = 2
-				self.nothing.weapon_movement_penalty = 1.07
+				self.nothing.weapon_movement_penalty = 1.14
 				self.nothing.timers = {
 					reload_not_empty = 0,
 					reload_empty = 0,
@@ -31700,7 +31812,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				}
 				self.nothing2.stats_modifiers = nil
 				self.nothing2.swap_speed_multiplier = 2
-				self.nothing2.weapon_movement_penalty = 1.07
+				self.nothing2.weapon_movement_penalty = 1.14
 				self.nothing2.timers = {
 					reload_not_empty = 0,
 					reload_empty = 0,
@@ -32482,7 +32594,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			self.iuhTTIPlus.upgrade_blocks = nil
 			self.iuhTTIPlus.tactical_reload = 1
 			self.iuhTTIPlus.CLIP_AMMO_MAX = 20
-			self.iuhTTIPlus.AMMO_MAX = 40 --60
+			self.iuhTTIPlus.AMMO_MAX = 48 --60
 			self.iuhTTIPlus.FIRE_MODE = "single"
 			self.iuhTTIPlus.CAN_TOGGLE_FIREMODE = false
 			self.iuhTTIPlus.fire_mode_data.fire_rate = 0.193548
@@ -33835,6 +33947,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				value = 4,
 				reload = 20
 			}
+			self.mdr_308.has_underbarrel = true
 			self.mdr_308.stats_modifiers = nil
 			self.mdr_308.is_bullpup = true
 			self.mdr_308.panic_suppression_chance = 0.05
@@ -34149,6 +34262,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				"pistol",
 			}
 			self.p38.fire_mode_data.fire_rate = 0.0882352
+			self.p38.tactical_reload = 1
 			self.p38.CLIP_AMMO_MAX = 8
 			self.p38.AMMO_MAX = 60
 			self.p38.kick = self.stat_info.kick_tables.left_kick
@@ -34180,6 +34294,9 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			}
 			self.p38.stats_modifiers = nil
 			self.p38.panic_suppression_chance = 0.05
+			self.p38.lock_slide = true
+			self.p38.weapon_hold = "colt_1911"
+			self.p38.sounds.fire = "legacy_fire"
 			self.p38.weapon_movement_penalty = 1.08
 			self.p38.timers = deep_clone(self.b92fs.timers)
 		end
@@ -34869,6 +34986,40 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			self.m38a.tactical_reload = 1
 		end
 
+		if self.toz194 then	-- TOZ-194 (Clone of Mossberg 590)
+			self.toz194.muzzleflash = "effects/payday2/particles/weapons/big_51b_auto_fps" --"effects/particles/shotgun/shotgun_gen"
+			self.toz194.rays = 8
+			self.toz194.CLIP_AMMO_MAX = 7
+			self.toz194.kick = self.stat_info.kick_tables.vertical_kick
+			self.toz194.fire_mode_data.fire_rate = 0.5
+			self.toz194.fire_rate_multiplier = 0.9
+			self.toz194.AMMO_MAX = 40
+			self.toz194.supported = true
+			self.toz194.ads_speed = 0.320
+			self.toz194.damage_falloff = {
+				start_dist = 700,
+				end_dist = 2500,
+				min_mult = 0.1333
+			}
+			self.toz194.stats = {
+				damage = 180,
+				spread = 60,
+				recoil = 43,
+				spread_moving = 6,
+				zoom = 1,
+				concealment = 25,
+				suppression = 7,
+				alert_size = 2,
+				extra_ammo = 101,
+				total_ammo_mod = 400,
+				value = 1,
+				reload = 20
+			}
+			self.toz194.stats_modifiers = nil
+			self.toz194.panic_suppression_chance = 0.05
+			self.toz194.timers = deep_clone(self.m590.timers)
+		end
+
 	--Automatically generate reasonableish stats for custom weapons.
 	--Someone please help me fix this for the new stat indexes -DMC
 	for id, weap in pairs(self) do
@@ -35368,7 +35519,7 @@ function WeaponTweakData:calculate_ammo_pickup(weapon, id)
 
 	--Determine the damage tier the gun falls under.
 	weapon.AMMO_PICKUP = {0, 0}
-	local damage_mul = weapon.stats_modifiers and weapon.stats_modifiers.damage or 1
+	local damage_mul = (weapon.stats_modifiers and weapon.stats_modifiers.damage) or 1
 	for i, pickup_tier in ipairs(damage_tiers_pickup) do
 		weapon.AMMO_PICKUP[1] = pickup_tier.pickup[1]
 		weapon.AMMO_PICKUP[2] = pickup_tier.pickup[2]
@@ -35431,14 +35582,29 @@ function WeaponTweakData:calculate_ammo_pickup(weapon, id)
 		"m134",
 		"shuno",
 	}
-	if id and weapon.AMMO_MAX and weapon.CLIP_AMMO_MAX and
-	not table.contains(exclude_ammo, id) and not table.contains(weapon.categories, "minigun") and not table.contains(weapon.categories, "saw") then
-		local mag_clamp = math.min(100, weapon.CLIP_AMMO_MAX / ((table.contains(weapon.categories, "akimbo") and 2) or 1) )
-		if mag_clamp * 2 > weapon.AMMO_MAX then
-			weapon.AMMO_PICKUP[1] = weapon.AMMO_PICKUP[1] * (weapon.AMMO_MAX / (mag_clamp * 2))
-			weapon.AMMO_PICKUP[2] = weapon.AMMO_PICKUP[2] * (weapon.AMMO_MAX / (mag_clamp * 2))
-			weapon.AMMO_MAX = mag_clamp * 2
-			weapon.stats.concealment = weapon.stats.concealment - 1
+	if id and weapon.AMMO_MAX and weapon.CLIP_AMMO_MAX then
+		--Ugly as fuck but it works
+		local exclude_calcs = table.contains(weapon.categories, "grenade_launcher") or 
+			table.contains(weapon.categories, "rocket_launcher") or 
+			table.contains(weapon.categories, "bow") or 
+			table.contains(weapon.categories, "crossbow")
+		local hs_mul = weapon.hs_mult or 1
+		local true_shotgun = table.contains(weapon.categories, "shotgun") and not table.contains(weapon.categories, "flamethrower")
+		local has_dot = table.contains(weapon.categories, "flamethrower") or table.contains(weapon.categories, "tranq")
+		local total_dmg_mul = 1 * (((hs_mul > 1) and 1.2) or 1) * 
+			(((weapon.has_underbarrel or has_dot) and 0.8) or 1) * 
+			((table.contains(weapon.categories, "minigun") and 3.3333) or ((table.contains(weapon.categories, "lmg") or true_shotgun) and 2) or 1)
+		damage_mul = (not exclude_calcs and (damage_mul * 2)) or damage_mul
+		weapon.AMMO_MAX = math.ceil((3600 * ((weapon.use_data.selection_index == 2 and 2) or 1) * total_dmg_mul)) / ((weapon.stats.damage * damage_mul) * hs_mul)
+		--Try to provide at least one full reload from empty (up to 100 round mags)
+		if not table.contains(exclude_ammo, id) and not table.contains(weapon.categories, "minigun") and not table.contains(weapon.categories, "saw") then
+			local mag_clamp = math.min(100, weapon.CLIP_AMMO_MAX / ((table.contains(weapon.categories, "akimbo") and 2) or 1) )
+			if mag_clamp * 2 > weapon.AMMO_MAX then
+				weapon.AMMO_PICKUP[1] = weapon.AMMO_PICKUP[1] * (weapon.AMMO_MAX / (mag_clamp * 2))
+				weapon.AMMO_PICKUP[2] = weapon.AMMO_PICKUP[2] * (weapon.AMMO_MAX / (mag_clamp * 2))
+				weapon.AMMO_MAX = mag_clamp * 2
+				weapon.stats.concealment = weapon.stats.concealment - 1
+			end
 		end
 	end
 end
