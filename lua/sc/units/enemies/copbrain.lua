@@ -257,6 +257,8 @@ logic_variants.city_swat_rpg = security_variant
 logic_variants.weekend_vanilla = security_variant
 logic_variants.weekend_vanilla_heavy = security_variant
 logic_variants.weekend_vanilla_snp = security_variant
+logic_variants.spooc_swole = security_variant
+logic_variants.medic_buff = security_variant
 
 logic_variants.heavy_swat_sniper = clone(security_variant)
 logic_variants.heavy_swat_sniper.attack = MarshalLogicAttack

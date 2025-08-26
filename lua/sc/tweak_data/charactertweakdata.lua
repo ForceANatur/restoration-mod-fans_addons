@@ -660,6 +660,15 @@ function CharacterTweakData:_init_medic(presets)
 	self.medic_heavy.custom_voicework = "heavy_medic"
 	self.medic_heavy.dodge = presets.dodge.heavy
 	table.insert(self._enemy_list, "medic_heavy")
+
+	--BUFF MEDIC
+	self.medic_buff = deep_clone(self.medic)
+	self.medic_buff.HEALTH_INIT = 1000
+	self.medic_buff.headshot_dmg_mul = 1
+	self.medic_buff.damage_resistance = presets.damage_resistance.swolen
+	self.medic_buff.use_animation_on_fire_damage = false
+	self.medic_buff.heal_cooldown = 0
+	table.insert(self._enemy_list, "medic_buff")
 	
 	self.medic_summers = deep_clone(self.medic)
 	--Base health
@@ -2941,6 +2950,17 @@ function CharacterTweakData:_init_spooc(presets)
 	self.spooc_titan.cloak_on_fire_damage_chance = 0.5
 	self.spooc_titan.cloak_on_explosive_damage_chance = 0	
 	table.insert(self._enemy_list, "spooc_titan")
+
+	--SWOLE CLOAKER
+	self.spooc_swole = deep_clone(self.spooc)
+	self.spooc_swole.kick_damage = 16
+	self.spooc_swole.HEALTH_INIT = 1000
+	self.spooc_swole.headshot_dmg_mul = 1
+	self.spooc_swole.damage_resistance = presets.damage_resistance.swolen
+	self.spooc_swole.special_deaths = nil
+	self.spooc_swole.charging_detect = true
+	self.spooc_swole.use_animation_on_fire_damage = false
+	table.insert(self._enemy_list, "spooc_swole")
 
 	--Kung Fu Master/Test Subject
 	self.spooc_gangster = deep_clone(self.spooc)	
@@ -5312,7 +5332,19 @@ function CharacterTweakData:_presets(tweak_data)
 		blunt = 1,
 		sharp = 1
 	}
-	
+	presets.damage_resistance.swolen = {
+		assault_rifle = 0.1,
+		sniper = 0.1,
+		anti_materiel = 0.1,
+		shotgun = 0.1,
+		machine_gun = 0.1, 
+		pdw = 0.1,
+		pistol = 0.1, 
+		heavy_pistol = 0.1,
+		blunt = 0.1,
+		sharp = 0.1
+	}
+
 	presets.base = {}
 	presets.base.HEALTH_INIT = 2
 	presets.base.headshot_dmg_mul = 2
@@ -19461,6 +19493,8 @@ function CharacterTweakData:character_map()
 		table.insert(char_map.basic.list, "ene_hoxton_breakout_responder_2")
 		table.insert(char_map.basic.list, "ene_cop_1_forest")
 		table.insert(char_map.basic.list, "ene_cop_2_forest")
+		table.insert(char_map.basic.list, "ene_swole_spook_1")
+		table.insert(char_map.basic.list, "ene_swole_medic_m249")
 			
 	--dlc1
 		table.insert(char_map.dlc1.list, "ene_security_gensec_guard_1")
