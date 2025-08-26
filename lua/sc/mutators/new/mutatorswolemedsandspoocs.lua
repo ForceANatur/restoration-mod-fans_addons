@@ -10,8 +10,8 @@ MutatorSWOLENBOYS.reductions = {
 MutatorSWOLENBOYS.disables_achievements = false
 MutatorSWOLENBOYS.categories = {"crime_spree"}
 MutatorSWOLENBOYS.icon_coords = {
-	6,
-	4
+	8,
+	3
 }
 
 MutatorSWOLENBOYS.default_value = "spawn_chance"

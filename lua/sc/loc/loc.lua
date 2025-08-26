@@ -5423,6 +5423,10 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 		["MutatorSnipersAndSnipers_desc"] = "All enemies now spawn with Sniper Rifles.",
 		["MutatorSnipersAndSnipers_longdesc"] = "All enemies have their standard weapons replaced with Sniper Rifles.\n\nNote: Shield enemies will still spawn with their normal weapons.",
 
+		["MutatorSWOLENBOYS"] = "We fight like MEN!",
+		["MutatorSWOLENBOYS_desc"] = "Medics and Cloakers are BUFF and SWOLE.",
+		["MutatorSWOLENBOYS_longdesc"] = "Medics and Cloakers are BUFF and SWOLE.\n\nWaning: Literally unplayable. Really.",
+
 		--Crime Spree mutators
 		["mutator_cloakercuff"] = "Conjurer",
 		["mutator_cloakercuff_desc"] = "Cloaker melee strikes will now cuff players.",
