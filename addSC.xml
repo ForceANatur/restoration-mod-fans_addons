@@ -402,7 +402,7 @@
 
 	<!--LPF's S552-->
 	<unit				path="units/payday2/weapons/wpn_npc_s552_sc/wpn_npc_s552_sc" force="false" load="false"/>
-		
+
 	<!--HK21-->
 	<material_config	path="units/payday2/weapons/wpn_npc_hk21_sc/wpn_npc_hk21_sc" force="false"/>
 	<model				path="units/payday2/weapons/wpn_npc_hk21_sc/wpn_npc_hk21_sc" force="false"/>
@@ -1227,7 +1227,7 @@
 	<unit				path="units/payday2/characters/ene_mememan_2/ene_mememan_2" force="false" load="true"/>
 	<material_config	path="units/payday2/characters/ene_mememan_2/ene_mememan_2" force="false"/>
 	<material_config	path="units/payday2/characters/ene_mememan_2/ene_mememan_2_contour" force="false"/>
-	<unit				path="units/payday2/characters/ene_mememan_2/ene_mememan_2_husk" force="false" load="true"/>	
+	<unit				path="units/payday2/characters/ene_mememan_2/ene_mememan_2_husk" force="false" load="true"/>
 	
 	<unit				path="units/payday2/weapons/wpn_npc_mini/x_mini_npc" load="true" force="false"/>
 
@@ -1276,6 +1276,28 @@
 	<texture			path="units/pd2_mod_nc/characters/shared_textures/heavymedic_head_df"/>
 	<texture			path="units/pd2_mod_nc/characters/shared_textures/gasmask_df"/>
 	<texture			path="units/pd2_mod_nc/characters/shared_textures/gasmask_nm"/>
+
+	<!--S W O L E  C L O A K E R-->
+	<object				path="units/payday2/characters/ene_swole_spook_1/ene_swole_spook_1" force="false"/>
+	<sequence_manager	path="units/payday2/characters/ene_swole_spook_1/ene_swole_spook_1" force="false"/>
+	<cooked_physics		path="units/payday2/characters/ene_swole_spook_1/ene_swole_spook_1" force="false"/>
+	<model				path="units/payday2/characters/ene_swole_spook_1/ene_swole_spook_1" force="false"/>
+	<unit				path="units/payday2/characters/ene_swole_spook_1/ene_swole_spook_1" force="false" load="true"/>
+	<material_config	path="units/payday2/characters/ene_swole_spook_1/ene_swole_spook_1" force="false"/>
+	<material_config	path="units/payday2/characters/ene_swole_spook_1/ene_swole_spook_1_contour" force="false"/>
+	<unit				path="units/payday2/characters/ene_swole_spook_1/ene_swole_spook_1_husk" force="false" load="true"/>
+
+	<!--B U F F  M E D I C-->
+	<object				path="units/payday2/characters/ene_swole_medic_m249/ene_swole_medic_m249" force="false"/>
+	<sequence_manager	path="units/payday2/characters/ene_swole_medic_m249/ene_swole_medic_m249" force="false"/>
+	<cooked_physics		path="units/payday2/characters/ene_swole_medic_m249/ene_swole_medic_m249" force="false"/>
+	<model				path="units/payday2/characters/ene_swole_medic_m249/ene_swole_medic_m249" force="false"/>
+	<unit				path="units/payday2/characters/ene_swole_medic_m249/ene_swole_medic_m249" force="false" load="true"/>
+	<material_config	path="units/payday2/characters/ene_swole_medic_m249/ene_swole_medic_m249" force="false"/>
+	<material_config	path="units/payday2/characters/ene_swole_medic_m249/ene_swole_medic_m249_contour" force="false"/>
+	<unit				path="units/payday2/characters/ene_swole_medic_m249/ene_swole_medic_m249_husk" force="false" load="true"/>
+	<texture			path="units/payday2/characters/shared_textures/ene_swole_medic_nm"/>
+	<texture			path="units/payday2/characters/shared_textures/ene_swole_medic_df"/>
 
 	<unit path="units/pd2_dlc_usm1/weapons/wpn_npc_dmr/wpn_npc_dmr" force="true" />
 

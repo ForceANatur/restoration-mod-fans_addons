@@ -56,6 +56,8 @@ Sting like a bee: FBI units use the M1014 and Hostage Rescue Teams and ASU units
 
 RPG Grunts: The unused RPG grunts got a 9 to 5 job of beating your ass. They made a deal with the titan snipers to help them. suffer
 
+We fight like MEN!: Medics and Cloakers are BUFF and SWOLE
+
 # Crime Spree Modifiers:
 
 The odds of titan bulldozers are increased by 20%
