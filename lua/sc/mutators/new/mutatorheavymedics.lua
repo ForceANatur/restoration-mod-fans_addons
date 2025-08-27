@@ -8,10 +8,10 @@ MutatorHeavyMedics.reductions = {
 	exp = 0
 }
 MutatorHeavyMedics.disables_achievements = false
-MutatorHeavyMedics.categories = {"crime_spree"}
+MutatorHeavyMedics.categories = {"enemies"}
 MutatorHeavyMedics.icon_coords = {
-	6,
-	4
+	8,
+	3
 }
 
 MutatorHeavyMedics.default_value = "spawn_chance"
