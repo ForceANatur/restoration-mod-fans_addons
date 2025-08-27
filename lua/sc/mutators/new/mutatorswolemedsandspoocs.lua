@@ -8,7 +8,7 @@ MutatorSWOLENBOYS.reductions = {
 	exp = 0
 }
 MutatorSWOLENBOYS.disables_achievements = false
-MutatorSWOLENBOYS.categories = {"crime_spree"}
+MutatorSWOLENBOYS.categories = {"enemies"}
 MutatorSWOLENBOYS.icon_coords = {
 	8,
 	3
@@ -36,7 +36,8 @@ MutatorSWOLENBOYS.medics = {
 	Idstring("units/pd2_mod_halloween/characters/ene_zeal_medic/ene_zeal_medic"),
 	Idstring("units/pd2_dlc_bex/characters/ene_medic_mp5/ene_medic_mp5"),
 	Idstring("units/pd2_dlc_bex/characters/ene_swat_medic_policia_federale/ene_swat_medic_policia_federale"),
-	Idstring("units/pd2_dlc_bex/characters/ene_swat_medic_policia_federale_r870/ene_swat_medic_policia_federale_r870")
+	Idstring("units/pd2_dlc_bex/characters/ene_swat_medic_policia_federale_r870/ene_swat_medic_policia_federale_r870"),
+	Idstring("units/pd2_mod_ng/characters/ene_ntl_medic/ene_ntl_medic")
 }
 MutatorSWOLENBOYS.spoocs = {
 	Idstring("units/payday2/characters/ene_spook_1/ene_spook_1"),
