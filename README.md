@@ -80,6 +80,8 @@ Hatman has both cloakers and more Vet Cops.
 
 ASU: Coach (L4D2)
 
+ATF Unit: Mechanic (Typical Colors 2) (Placeholder) https://modworkshop.net/mod/38787
+
 Autumm: Robot Spy (Team Fortress 2)
 
 Bravo DMR: GSG9 (Counter Strike)

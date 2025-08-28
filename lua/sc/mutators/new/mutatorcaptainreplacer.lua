@@ -688,6 +688,14 @@ function MutatorCaptainReplacer:setup()
 					rank = 4
 				},
 				{
+					unit = "boss_heavygunner_buddy",
+					freq = 1,
+					amount_min = 1,
+					amount_max = 1,
+					tactics = tweak_data.group_ai._tactics.marshal_marksman,
+					rank = 4
+				},
+				{
 					unit = "meme_men_vip",
 					freq = 1,
 					amount_min = 6,
@@ -698,8 +706,8 @@ function MutatorCaptainReplacer:setup()
 				{
 					unit = "vet_lod_vip",
 					freq = 1,
-					amount_min = 9,
-					amount_max = 9,
+					amount_min = 8,
+					amount_max = 8,
 					tactics = tweak_data.group_ai._tactics.HRT_attack,
 					rank = 1
 				},
@@ -715,7 +723,7 @@ function MutatorCaptainReplacer:setup()
 		}
 	else
 		heavyg_preset = {
-			amount = 25,
+			amount = 26,
 			force = true,
 			spawn = {
 				{
@@ -724,6 +732,14 @@ function MutatorCaptainReplacer:setup()
 					amount_min = 1,
 					amount_max = 1,
 					tactics = tweak_data.group_ai._tactics.ELITE_swat_rifle,
+					rank = 4
+				},
+				{
+					unit = "boss_heavygunner_buddy",
+					freq = 1,
+					amount_min = 1,
+					amount_max = 1,
+					tactics = tweak_data.group_ai._tactics.marshal_marksman,
 					rank = 4
 				},
 				{
@@ -1213,6 +1229,14 @@ end
 				rank = 4
 			},
 			{
+				unit = "boss_heavygunner_buddy",
+				freq = 1,
+				amount_min = 1,
+				amount_max = 1,
+				tactics = tweak_data.group_ai._tactics.marshal_marksman,
+				rank = 4
+			},
+			{
 				unit = "meme_men_vip",
 				freq = 1,
 				amount_min = 5,
@@ -1223,8 +1247,8 @@ end
 			{
 				unit = "vet_lod_vip",
 				freq = 1,
-				amount_min = 6,
-				amount_max = 6,
+				amount_min = 5,
+				amount_max = 5,
 				tactics = tweak_data.group_ai._tactics.HRT_attack,
 				rank = 1
 			},

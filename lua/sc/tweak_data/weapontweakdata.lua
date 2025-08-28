@@ -1947,7 +1947,18 @@ local crew_wep_preset = {
 		self.dmr_npc.trail_effect = Idstring("effects/particles/weapons/titan_trail_sc")
 		self.dmr_npc.use_sniper_trail = true
 		self.dmr_npc.trail = nil
-		
+
+		--ATF DDM4V7, less damage but higher rate of fire
+		--The rate of fire is handled in the charactertweakdata
+		self.ddm4v7_npc = deep_clone(self.scar_npc)
+		self.ddm4v7_npc.DAMAGE = 3
+		self.ddm4v7_npc.CLIP_AMMO_MAX = 40
+		self.ddm4v7_npc.NR_CLIPS_MAX = 10
+		self.ddm4v7_npc.sounds.prefix = "m1873_npc"
+		self.ddm4v7_npc.trail_effect = Idstring("effects/particles/weapons/sniper_trail_marshal")
+		self.ddm4v7_npc.use_sniper_trail = false
+		self.ddm4v7_npc.trail = nil
+
 		--Type-7
 		self.type_7_npc = deep_clone(self.scar_npc)		
 		self.type_7_npc.DAMAGE = 1
