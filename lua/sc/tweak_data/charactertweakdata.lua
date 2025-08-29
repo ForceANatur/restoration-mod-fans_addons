@@ -18793,6 +18793,9 @@ Hooks:PostHook(CharacterTweakData, "_create_table_structure", "remod_create_tabl
 	table.insert(self.weap_ids, "x_peacemaker")
 	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_peacemaker/wpn_x_npc_peacemaker"))
 
+	--ATF DDM4 V7
+	table.insert(self.weap_ids, "atf_ddm4v7")
+	table.insert(self.weap_unit_names, Idstring("units/pd2_dlc_usm1/weapons/wpn_npc_ddm4v7/wpn_npc_ddm4v7"))
 end)
 
 function CharacterTweakData:_set_easy()
@@ -19665,6 +19668,7 @@ function CharacterTweakData:character_map()
 		table.insert(char_map.ranc.list, "ene_cop_4")
 	--usm1
 		table.insert(char_map.usm1.list, "ene_male_marshal_marksman_scripted_2")
+		table.insert(char_map.usm1.list, "ene_atf_field_agent_1")
 	--Christmas
 		table.insert(char_map.cg22.list, "ene_bulldozer_snowman")
 	--vip
@@ -20188,3 +20192,4 @@ function CharacterTweakData:character_map()
 
 	return char_map
 end
+
