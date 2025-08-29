@@ -1958,7 +1958,8 @@ local crew_wep_preset = {
 		self.ddm4v7_npc.trail_effect = Idstring("effects/particles/weapons/sniper_trail_marshal")
 		self.ddm4v7_npc.use_sniper_trail = false
 		self.ddm4v7_npc.trail = nil
-		self.ddm4v7_npc.auto.fire_rate = 0.08571428571
+		--Slows downfire rate as temp fix (unless u wanna suffer)
+		self.ddm4v7_npc.auto.fire_rate = 0.5
 		--Cheap fix idk what value is actually causing it to be automatic (Forced to Recat as something else) :c
 		--self.ddm4v7_npc.usage = "is_smg"
 		self.ddm4v7_npc.usage = "is_lmg"
