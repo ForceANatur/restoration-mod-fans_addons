@@ -59,6 +59,7 @@ function CharacterTweakData:init(tweak_data, presets)
 	self:_init_tank_biker(presets)
 	self:_init_zombie(presets)
 	self:_init_heavygunner(presets)
+	self:_init_atf_marksman(presets)
 	self:_init_city_swat_rpg(presets)
 	self:_init_weekend_vanilla(presets)
 	self:_init_weekend_vanilla_heavy(presets)
@@ -4283,6 +4284,66 @@ function CharacterTweakData:_init_heavygunner(presets)
 	self.heavygunner.custom_voicework = "heavygunner"
 	self.heavygunner.captain_type = restoration.captain_types.heavyg
 	table.insert(self._enemy_list, "heavygunner")
+end
+
+-- ATF Agent, best friends with April Fools captain
+-- Titan Sniper with lower damage, but high rate of fire
+function CharacterTweakData:_init_atf_marksman(presets)
+	self.atf_marksman = deep_clone(presets.base)
+	self.atf_marksman.tags = {"law", "sniper", "custom", "special", "captain", "customvo"}
+	self.atf_marksman.move_speed = presets.move_speed.fast
+	self.atf_marksman.immune_to_knock_down = true
+	self.atf_marksman.experience = {}
+	self.atf_marksman.no_retreat = true
+	self.atf_marksman.no_limping = true
+	self.atf_marksman.no_arrest = true
+	self.atf_marksman.surrender = nil
+	self.atf_marksman.dodge = presets.dodge.elite
+	self.atf_marksman.weapon = deep_clone(presets.weapon.atf)
+	self.atf_marksman.detection = presets.detection.normal
+	self.atf_marksman.damage_resistance = presets.damage_resistance.none
+--	self.atf_marksman.damage.explosion_damage_mul = 1.5
+--	self.atf_marksman.damage.rocket_damage_mul = 2
+--	self.atf_marksman.damage.fire_pool_damage_mul = 0.5
+--	self.atf_marksman.damage.bullet_damage_mul = 0.75
+--	self.atf_marksman.damage.fire_damage_mul = 0.5
+	self.atf_marksman.headshot_dmg_mul = 2
+	self.atf_marksman.priority_shout = "f34"
+	self.atf_marksman.bot_priority_shout = "f34x_any"
+	self.atf_marksman.priority_shout_max_dis = 4000
+	self.atf_marksman.weapon_voice = "2"
+	self.atf_marksman.chatter = presets.enemy_chatter.guard
+	self.atf_marksman.flammable = true
+	self.atf_marksman.can_be_tased = false
+	self.atf_marksman.ecm_vulnerability = nil
+	self.atf_marksman.immune_to_concussion = true
+	self.atf_marksman.ecm_hurts = {}
+	self.atf_marksman.damage.hurt_severity = presets.hurt_severities.captain
+	self.atf_marksman.static_dodge_preset = true
+	self.atf_marksman.no_recoil = true
+	self.atf_marksman.is_special = true
+	self.atf_marksman.no_asu = false
+	self.atf_marksman.steal_loot = true
+	self.atf_marksman.use_animation_on_fire_damage = false
+	self.atf_marksman.melee_weapon = nil
+	self.atf_marksman.melee_weapon_dmg_multiplier = 3
+	self.atf_marksman.access = "swat"
+	self.atf_marksman.speech_prefix_p1 = nil
+	self.atf_marksman.speech_prefix_p2 = nil
+	self.atf_marksman.speech_prefix_count = nil
+	self.atf_marksman.yellow_blood = false
+	self.atf_marksman.heal_cooldown = 40
+	self.atf_marksman.suppression = nil
+	self.atf_marksman.no_omnia_heal = true
+	self.atf_marksman.can_be_healed = true
+	self.atf_marksman.HEALTH_INIT = 350
+	self.atf_marksman.player_health_scaling_mul = 1.2
+	self.atf_marksman.custom_voicework = "atf_agent"
+	self.atf_marksman.can_throw_frag = true
+	self.atf_marksman.rescue_hostages = true
+	self.atf_marksman.marshal_logic = true
+	self.atf_marksman.grenade_toss_chance = 1
+	table.insert(self._enemy_list, "atf_marksman")
 end
 
 -- New Coppers National Gaurd stuff
@@ -9839,7 +9900,85 @@ function CharacterTweakData:_presets(tweak_data)
 				0
 			}
 		}
-	}			
+	}
+	--DMR for ATF
+	presets.weapon.atf = deep_clone(presets.weapon.normal)
+	presets.weapon.atf.is_lmg.autofire_rounds = {20, 40}
+	--I feel like falloff has nothing to do with firerate but keep here for damage
+	presets.weapon.atf.is_lmg.FALLOFF = {
+		{
+			r = 650,
+			acc = {0.3, 0.6},
+			dmg_mul = 1,
+			recoil = {0.4, 0.4},
+			mode = {
+				1,
+				0,
+				0,
+				0
+			}
+		},
+		{
+			r = 1000,
+			acc = {0.6, 0.9},
+			dmg_mul = 1,
+			recoil = {0.4, 0.4},
+			mode = {
+				1,
+				0,
+				0,
+				0
+			}
+		},
+		{
+			r = 2000,
+			acc = {0.6, 0.9},
+			dmg_mul = 1,
+			recoil = {0.4, 0.4},
+			mode = {
+				1,
+				0,
+				0,
+				0
+			}
+		},
+		{
+			r = 4000,
+			acc = {0.5, 0.85},
+			dmg_mul = 1,
+			recoil = {0.6, 0.65},
+			mode = {
+				1,
+				0,
+				0,
+				0
+			}
+		},
+		{
+			r = 6000,
+			acc = {0.5, 0.8},
+			dmg_mul = 1,
+			recoil = {0.6, 0.65},
+			mode = {
+				1,
+				0,
+				0,
+				0
+			}
+		},
+		{
+			r = 8000,
+			acc = {0.5, 0.7},
+			dmg_mul = 1,
+			recoil = {0.6, 0.8},
+			mode = {
+				1,
+				0,
+				0,
+				0
+			}
+		}
+	}
 	
 	presets.weapon.expert = deep_clone(presets.weapon.good)
 	presets.weapon.expert.is_pistol.aim_delay = {0.15, 0.15}

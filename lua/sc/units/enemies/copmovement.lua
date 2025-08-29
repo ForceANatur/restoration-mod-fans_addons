@@ -83,6 +83,7 @@ action_variants.weekend_vanilla_heavy = security_variant
 action_variants.weekend_vanilla_snp = security_variant
 action_variants.spooc_swole = security_variant
 action_variants.medic_buff = security_variant
+action_variants.atf_marksman = security_variant
 
 function CopMovement:post_init()
 	local unit = self._unit

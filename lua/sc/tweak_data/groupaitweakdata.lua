@@ -10082,6 +10082,37 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 		access = access_type_all,
 		ignore_spawn_cap = true
 	}
+	--April Fools captain friend :)
+	self.unit_categories.boss_heavygunner_buddy = {
+		unit_types = {
+			america = {
+				Idstring("units/pd2_dlc_usm1/characters/ene_atf_field_agent_1/ene_atf_field_agent_1")
+			},
+			russia = {
+				Idstring("units/pd2_dlc_usm1/characters/ene_atf_field_agent_1/ene_atf_field_agent_1")
+			},
+			zombie = {
+				Idstring("units/pd2_dlc_usm1/characters/ene_atf_field_agent_1/ene_atf_field_agent_1")
+			},					
+			murkywater = {
+				Idstring("units/pd2_dlc_usm1/characters/ene_atf_field_agent_1/ene_atf_field_agent_1")
+			},
+			federales = {
+				Idstring("units/pd2_dlc_usm1/characters/ene_atf_field_agent_1/ene_atf_field_agent_1")
+			},					
+			nypd = {
+				Idstring("units/pd2_dlc_usm1/characters/ene_atf_field_agent_1/ene_atf_field_agent_1")
+			},	
+			lapd = {
+				Idstring("units/pd2_dlc_usm1/characters/ene_atf_field_agent_1/ene_atf_field_agent_1")
+			},
+			fbi = {
+				Idstring("units/pd2_dlc_usm1/characters/ene_atf_field_agent_1/ene_atf_field_agent_1")
+			}		
+		},
+		access = access_type_all,
+		ignore_spawn_cap = true
+	}
 	--Meme men that spawn with April Fools Captain
 	self.unit_categories.meme_men_vip = {
 		unit_types = {
@@ -18998,6 +19029,14 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					rank = 4
 				},
 				{
+					unit = "boss_heavygunner_buddy",
+					freq = 1,
+					amount_min = 1,
+					amount_max = 1,
+					tactics = self._tactics.marshal_marksman,
+					rank = 4
+				},
+				{
 					unit = "meme_men_vip",
 					freq = 1,
 					amount_min = 6,
@@ -19008,8 +19047,8 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				{
 					unit = "vet_lod_vip",
 					freq = 1,
-					amount_min = 9,
-					amount_max = 9,
+					amount_min = 8,
+					amount_max = 8,
 					tactics = self._tactics.HRT_attack,
 					rank = 1
 				},
@@ -19025,7 +19064,7 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 		}
 	else
 		self.enemy_spawn_groups.boss_heavygunner = {
-			amount = 25,
+			amount = 26,
 			force = true,
 			spawn = {
 				{
@@ -19034,6 +19073,14 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_min = 1,
 					amount_max = 1,
 					tactics = self._tactics.ELITE_swat_rifle,
+					rank = 4
+				},
+				{
+					unit = "boss_heavygunner_buddy",
+					freq = 1,
+					amount_min = 1,
+					amount_max = 1,
+					tactics = self._tactics.marshal_marksman,
 					rank = 4
 				},
 				{
@@ -19524,6 +19571,14 @@ end
 				rank = 4
 			},
 			{
+				unit = "boss_heavygunner_buddy",
+				freq = 1,
+				amount_min = 1,
+				amount_max = 1,
+				tactics = self._tactics.marshal_marksman,
+				rank = 4
+			},
+			{
 				unit = "meme_men_vip",
 				freq = 1,
 				amount_min = 5,
@@ -19534,8 +19589,8 @@ end
 			{
 				unit = "vet_lod_vip",
 				freq = 1,
-				amount_min = 6,
-				amount_max = 6,
+				amount_min = 5,
+				amount_max = 5,
 				tactics = self._tactics.HRT_attack,
 				rank = 1
 			},

@@ -261,6 +261,8 @@ logic_variants.spooc_swole = clone(security_variant)
 logic_variants.spooc_swole.idle = SpoocLogicIdle
 logic_variants.spooc_swole.attack = SpoocLogicAttack
 logic_variants.medic_buff = security_variant
+logic_variants.atf_marksman = clone(security_variant)
+logic_variants.atf_marksman.attack = MarshalLogicAttack
 
 logic_variants.heavy_swat_sniper = clone(security_variant)
 logic_variants.heavy_swat_sniper.attack = MarshalLogicAttack

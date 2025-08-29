@@ -1239,6 +1239,25 @@
 	<texture			path="units/pd2_mod_nc/characters/shared_textures/gasmask_df"/>
 	<texture			path="units/pd2_mod_nc/characters/shared_textures/gasmask_nm"/>
 
+	<!--HeavyGunner deserves a friend-->
+	<object				path="units/pd2_dlc_usm1/characters/ene_atf_field_agent_1/ene_atf_field_agent_1" force="false"/>
+	<cooked_physics		path="units/pd2_dlc_usm1/characters/ene_atf_field_agent_1/ene_atf_field_agent_1" force="false"/>
+	<model				path="units/pd2_dlc_usm1/characters/ene_atf_field_agent_1/ene_atf_field_agent_1" force="false"/>
+	<unit				path="units/pd2_dlc_usm1/characters/ene_atf_field_agent_1/ene_atf_field_agent_1" force="false" load="true"/>
+	<material_config	path="units/pd2_dlc_usm1/characters/ene_atf_field_agent_1/ene_atf_field_agent_1" force="false"/>
+	<material_config	path="units/pd2_dlc_usm1/characters/ene_atf_field_agent_1/ene_atf_field_agent_1_contour" force="false"/>
+	<unit				path="units/pd2_dlc_usm1/characters/ene_atf_field_agent_1/ene_atf_field_agent_1_husk" force="false" load="true"/>
+	<texture			path="units/pd2_dlc_usm1/characters/shared_textures/ene_atf_body_nm"/>
+	<texture			path="units/pd2_dlc_usm1/characters/shared_textures/ene_atf_body_df"/>
+
+	<unit				path="units/pd2_dlc_usm1/weapons/wpn_npc_ddm4v7/wpn_npc_ddm4v7" force="false"/>
+	<object				path="units/pd2_dlc_usm1/weapons/wpn_npc_ddm4v7/wpn_npc_ddm4v7" force="false"/>
+	<model				path="units/pd2_dlc_usm1/weapons/wpn_npc_ddm4v7/wpn_npc_ddm4v7" force="false"/>
+	<material_config	path="units/pd2_dlc_usm1/weapons/wpn_npc_ddm4v7/wpn_npc_ddm4v7" force="false"/>
+	<cooked_physics		path="units/pd2_dlc_usm1/weapons/wpn_npc_ddm4v7/wpn_npc_ddm4v7" force="false"/>
+	<texture			path="units/pd2_dlc_usm1/weapons/wpn_npc_ddm4v7/mat_wpn_npc_ddm4v7_df" />
+	<texture			path="units/pd2_dlc_usm1/weapons/wpn_npc_ddm4v7/mat_wpn_npc_ddm4v7_nm" />
+
 	<!--S W O L E  C L O A K E R-->
 	<object				path="units/payday2/characters/ene_swole_spook_1/ene_swole_spook_1" force="false"/>
 	<cooked_physics		path="units/payday2/characters/ene_swole_spook_1/ene_swole_spook_1" force="false"/>
