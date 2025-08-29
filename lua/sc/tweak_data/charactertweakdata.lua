@@ -9900,7 +9900,9 @@ function CharacterTweakData:_presets(tweak_data)
 	}
 	--DMR for ATF
 	presets.weapon.atf = deep_clone(presets.weapon.normal)
-	presets.weapon.atf.is_dmr.FALLOFF = {
+	presets.weapon.atf.is_lmg.autofire_rounds = {20, 40}
+	--I feel like falloff has nothing to do with firerate but keep here for damage
+	presets.weapon.atf.is_lmg.FALLOFF = {
 		{
 			r = 650,
 			acc = {0.3, 0.6},
