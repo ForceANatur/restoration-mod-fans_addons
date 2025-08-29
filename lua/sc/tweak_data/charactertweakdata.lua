@@ -4298,7 +4298,7 @@ function CharacterTweakData:_init_atf_marksman(presets)
 	self.atf_marksman.no_arrest = true
 	self.atf_marksman.surrender = nil
 	self.atf_marksman.dodge = presets.dodge.elite
-	self.atf_marksman.weapon = deep_clone(presets.weapon.expert)
+	self.atf_marksman.weapon = deep_clone(presets.weapon.atf)
 	self.atf_marksman.detection = presets.detection.normal
 	self.atf_marksman.damage_resistance = presets.damage_resistance.none
 --	self.atf_marksman.damage.explosion_damage_mul = 1.5
@@ -9899,81 +9899,81 @@ function CharacterTweakData:_presets(tweak_data)
 		}
 	}
 	--DMR for ATF
-	--reached an impasse, disbale
---	presets.weapon.atf.is_dmr.FALLOFF = {
---		{
---			r = 650,
---			acc = {0.3, 0.6},
---			dmg_mul = 1,
---			recoil = {0.4, 0.4},
---			mode = {
---				1,
---				0,
---				0,
---				0
---			}
---		},
---		{
---			r = 1000,
---			acc = {0.6, 0.9},
---			dmg_mul = 1,
---			recoil = {0.4, 0.4},
---			mode = {
---				1,
---				0,
---				0,
---				0
---			}
---		},
---		{
---			r = 2000,
---			acc = {0.6, 0.9},
---			dmg_mul = 1,
---			recoil = {0.4, 0.4},
---			mode = {
---				1,
---				0,
---				0,
---				0
---			}
---		},
---		{
---			r = 4000,
---			acc = {0.5, 0.85},
---			dmg_mul = 1,
---			recoil = {0.6, 0.65},
---			mode = {
---				1,
---				0,
---				0,
---				0
---			}
---		},
---		{
---			r = 6000,
---			acc = {0.5, 0.8},
---			dmg_mul = 1,
---			recoil = {0.6, 0.65},
---			mode = {
---				1,
---				0,
---				0,
---				0
---			}
---		},
---		{
---			r = 8000,
---			acc = {0.5, 0.7},
---			dmg_mul = 1,
---			recoil = {0.6, 0.8},
---			mode = {
---				1,
---				0,
---				0,
---				0
---			}
---		}
---	}
+	presets.weapon.atf = deep_clone(presets.weapon.normal)
+	presets.weapon.atf.is_dmr.FALLOFF = {
+		{
+			r = 650,
+			acc = {0.3, 0.6},
+			dmg_mul = 1,
+			recoil = {0.4, 0.4},
+			mode = {
+				1,
+				0,
+				0,
+				0
+			}
+		},
+		{
+			r = 1000,
+			acc = {0.6, 0.9},
+			dmg_mul = 1,
+			recoil = {0.4, 0.4},
+			mode = {
+				1,
+				0,
+				0,
+				0
+			}
+		},
+		{
+			r = 2000,
+			acc = {0.6, 0.9},
+			dmg_mul = 1,
+			recoil = {0.4, 0.4},
+			mode = {
+				1,
+				0,
+				0,
+				0
+			}
+		},
+		{
+			r = 4000,
+			acc = {0.5, 0.85},
+			dmg_mul = 1,
+			recoil = {0.6, 0.65},
+			mode = {
+				1,
+				0,
+				0,
+				0
+			}
+		},
+		{
+			r = 6000,
+			acc = {0.5, 0.8},
+			dmg_mul = 1,
+			recoil = {0.6, 0.65},
+			mode = {
+				1,
+				0,
+				0,
+				0
+			}
+		},
+		{
+			r = 8000,
+			acc = {0.5, 0.7},
+			dmg_mul = 1,
+			recoil = {0.6, 0.8},
+			mode = {
+				1,
+				0,
+				0,
+				0
+			}
+		}
+	}
 	
 	presets.weapon.expert = deep_clone(presets.weapon.good)
 	presets.weapon.expert.is_pistol.aim_delay = {0.15, 0.15}

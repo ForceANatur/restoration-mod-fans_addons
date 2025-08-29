@@ -19617,8 +19617,8 @@ end
 			{
 				unit = "meme_men_vip",
 				freq = 1,
-				amount_min = 4,
-				amount_max = 4,
+				amount_min = 5,
+				amount_max = 5,
 				tactics = self._tactics.SKULL_tank,
 				rank = 1
 			},
