@@ -692,7 +692,7 @@ function MutatorCaptainReplacer:setup()
 					freq = 1,
 					amount_min = 1,
 					amount_max = 1,
-					tactics = tweak_data.group_ai._tactics.marshal_marksman,
+					tactics = tweak_data.group_ai._tactics.HRT_attack,
 					rank = 4
 				},
 				{
@@ -739,7 +739,7 @@ function MutatorCaptainReplacer:setup()
 					freq = 1,
 					amount_min = 1,
 					amount_max = 1,
-					tactics = tweak_data.group_ai._tactics.marshal_marksman,
+					tactics = tweak_data.group_ai._tactics.HRT_attack,
 					rank = 4
 				},
 				{
@@ -1233,7 +1233,7 @@ end
 				freq = 1,
 				amount_min = 1,
 				amount_max = 1,
-				tactics = tweak_data.group_ai._tactics.marshal_marksman,
+				tactics = tweak_data.group_ai._tactics.HRT_attack,
 				rank = 4
 			},
 			{

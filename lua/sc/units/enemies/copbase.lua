@@ -1349,20 +1349,29 @@ local gensec = {
 	shotgun = {
 		"r870",
 		"saiga",
-		"benelli"
+		"benelli",
+		"spas12",
+		"ksg"
 	}
 }
 --ZEAL
 local zeal = {
 	rifle_light = {
+		"m4",
 		"mp5",
-		"ump"
+		"ump",
+		"shepheard"
 	},
 	rifle_heavy = {
 		"m4",
 		"g36",
 		"ump",
-		"m249"
+		"m249",
+		"r870",
+		"saiga",
+		"benelli",
+		"spas12",
+		"ksg"
 	},
 }
 --Russian Reapers
@@ -1387,13 +1396,14 @@ local murkywater = {
 		"m4",
 		"scar_murky",
 		"ump",
-		"scar_npc"
+		"scar_npc",
+		"shepheard"
 	},
 	rifle_heavy = {
 		"m4",
 		"scar_murky",
 		"ump",
-		"scar_npc",
+		"shepheard",
 		"m249",
 		"m249",
 		"m249",
@@ -1402,7 +1412,9 @@ local murkywater = {
 	shotgun = {
 		"r870",
 		"benelli",
-		"saiga"
+		"saiga",
+		"spas12",
+		"ksg"
 	}
 }
 --Policia Federal
@@ -1410,16 +1422,16 @@ local federales = {
 	rifle_light = {
 		"mp5",
 		"m4",
-		"ump"
+		"ump",
+		"shepheard"
 	},
 	rifle_heavy = {
 		"m4",
-	--	"hk33",	-- weapon doesn't exist
 		"ump",
 		"m249"
 	},
 	shotgun = {
-	--	"m500",	-- weapon doesn't exist
+		"ksg",
 		"r870",
 		"benelli",
 		"saiga"
@@ -1441,10 +1453,14 @@ local dave = {
 	--	"deagle",
 	--	"lmg_titan",
 	--	"aa12_npc",
-	--	"beretta92",
+		"mateba_ap",
 		"m14_sniper_npc",
-	--	"sko12_conc",
+		"atf_ddm4v7",
 		"saiga",
+		"hk21_sc",
+		"shepheard",
+		"spas12",
+		"ksg"
 	--	"mini", -- funny, but i think it's too goofy
 	--	"railgun_npc"
 	}

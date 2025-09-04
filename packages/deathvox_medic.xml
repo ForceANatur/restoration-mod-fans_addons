@@ -1,0 +1,15 @@
+<table directory="assets">	
+
+	<!--The Medic from Crackdown-->
+	<!--His weapon is in addSC.xml for big dave reasons-->
+	<object				path="units/pd2_dlc_gitgud/characters/ene_deathvox_medic/ene_deathvox_medic" force="false"/>
+	<cooked_physics		path="units/pd2_dlc_gitgud/characters/ene_deathvox_medic/ene_deathvox_medic" force="false"/>
+	<model				path="units/pd2_dlc_gitgud/characters/ene_deathvox_medic/ene_deathvox_medic" force="false"/>
+	<unit				path="units/pd2_dlc_gitgud/characters/ene_deathvox_medic/ene_deathvox_medic" force="false" load="true"/>
+	<material_config	path="units/pd2_dlc_gitgud/characters/ene_deathvox_medic/ene_deathvox_medic" force="false"/>
+	<material_config	path="units/pd2_dlc_gitgud/characters/ene_deathvox_medic/ene_deathvox_medic_contour" force="false"/>
+	<unit				path="units/pd2_dlc_gitgud/characters/ene_deathvox_medic/ene_deathvox_medic_husk" force="false" load="true"/>
+	<texture			path="units/pd2_dlc_gitgud/characters/ene_deathvox_medic/ene_medic_df"/>
+	<texture			path="units/pd2_dlc_gitgud/characters/ene_deathvox_medic/ene_medic_head_df"/>
+
+</table>

@@ -434,6 +434,7 @@
 		<hook file="sc/mutators/new/mutatorheavymedics.lua" source_file="lib/mutators/basemutator"/>
 		<hook file="sc/mutators/new/mutatorteamfortresssoldiers.lua" source_file="lib/mutators/basemutator"/>
 		<hook file="sc/mutators/new/mutatorswolemedsandspoocs.lua" source_file="lib/mutators/basemutator"/>
+		<hook file="sc/mutators/new/mutatordeathvoxmedic.lua" source_file="lib/mutators/basemutator"/>
 		<!--<hook file="sc/mutators/new/mutatorfactionsreplacer.lua" source_file="lib/mutators/basemutator"/>-->
 		<!--///NETWORKING\\\-->
 		<hook file="sc/network/base/hostnetworksession.lua" source_file="lib/network/base/hostnetworksession"/>
@@ -881,4 +882,6 @@
 	<Package id="packages/skm_sc_murkywater" file="packages/murkywater_diff/skm_sc_murkywater.xml"/>
     <Package id="packages/skm_sc_federales" file="packages/federales_diff/skm_sc_federales.xml"/>
 
+	<!-- ///MUTATOR EXCLUSIVE ENEMIES\\\ -->
+	<Package id="packages/deathvox_medic" file="packages/deathvox_medic.xml"/>
 </mod>

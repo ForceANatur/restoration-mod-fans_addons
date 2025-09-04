@@ -19033,7 +19033,7 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					freq = 1,
 					amount_min = 1,
 					amount_max = 1,
-					tactics = self._tactics.marshal_marksman,
+					tactics = self._tactics.HRT_attack,
 					rank = 4
 				},
 				{
@@ -19080,7 +19080,7 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					freq = 1,
 					amount_min = 1,
 					amount_max = 1,
-					tactics = self._tactics.marshal_marksman,
+					tactics = self._tactics.HRT_attack,
 					rank = 4
 				},
 				{
@@ -19575,7 +19575,7 @@ end
 				freq = 1,
 				amount_min = 1,
 				amount_max = 1,
-				tactics = self._tactics.marshal_marksman,
+				tactics = self._tactics.HRT_attack,
 				rank = 4
 			},
 			{
