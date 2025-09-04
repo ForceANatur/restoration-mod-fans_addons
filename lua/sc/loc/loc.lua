@@ -5484,6 +5484,10 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 		["mutator_rocketgunts_desc"] = "RPG Grunts from Meltdown. Suffer",
 		["mutator_rocketgunts_longdesc"] = "RPG Grunts from the Meltdown heist have a chance to spawn. They have a chance to replace a Titan Sniper.\n\nNote: This mutator does nothing if Titan Snipers can not spawn.",
 
+		["MutatorDeathvoxMedics"] = "Mysterious Benefactor",
+		["MutatorDeathvoxMedics_desc"] = "Do you remember Crackdown?",
+		["MutatorDeathvoxMedics_longdesc"] = "Whenever a Medic of any variety spawns, there is a 50% chance that it will be replaced with a Medic from Crackdown. \n\nNote: This medic does not have the Area Of Effect heal.",
+
 	--	i fucking cant with the tweakdatas so this is getting sent to the cutting room floor
 	--	["mutator_aderaldozers"] = "Adrenaline Bulldozers",
 	--	["mutator_aderaldozers_desc"] = "Bulldozers move slightly faster.",
@@ -5744,7 +5748,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 
 				--Bulletproof--
 				["menu_iron_man_sc"] = "Bulletproof",
-				["menu_iron_man_desc_sc"] = "BASIC: #{owned}#$basic##\nBlocks the excess damage of Snipers, Titan Dozers, fire and explosives that break your armor continuing through to your health.\n\n#{risk}#NOTE: Does not protect against self damage or the direct health damage taken from Cloaker kicks and Taser shocks.##\n\nACE: #{owned}#$pro##\nWhile your armor is full, damage taken is reduced by a number of points equal to #{skill_color}#$skill_value_p1## of your maximum armor.\n\nYour armor recovers #{skill_color}#$skill_value_p2## faster. $anarc_disable",
+				["menu_iron_man_desc_sc"] = "BASIC: #{owned}#$basic##\nBlocks the excess damage of Snipers, Titan Dozers, Crackdown Medics, fire, and explosives that break your armor continuing through to your health.\n\n#{risk}#NOTE: Does not protect against self damage or the direct health damage taken from Cloaker kicks and Taser shocks.##\n\nACE: #{owned}#$pro##\nWhile your armor is full, damage taken is reduced by a number of points equal to #{skill_color}#$skill_value_p1## of your maximum armor.\n\nYour armor recovers #{skill_color}#$skill_value_p2## faster. $anarc_disable",
 
 			--[[   BREACHER SUBTREE   ]]--
 				--Silent Drilling--

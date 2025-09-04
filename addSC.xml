@@ -748,6 +748,31 @@
 	<texture			path="units/payday2/weapons/wpn_npc_sawnoff_shotgun/sawnoff_df" force="true"/>
 	<texture			path="units/payday2/weapons/wpn_npc_sawnoff_shotgun/sawnoff_nm" force="true"/>
 
+	<!--SH NPC Weapons-->
+	<material_config	path="units/payday2/weapons/wpn_npc_ksg/wpn_npc_ksg" force="false"/>
+	<model				path="units/payday2/weapons/wpn_npc_ksg/wpn_npc_ksg" force="false"/>
+	<object				path="units/payday2/weapons/wpn_npc_ksg/wpn_npc_ksg" force="false"/>
+	<cooked_physics		path="units/payday2/weapons/wpn_npc_ksg/wpn_npc_ksg" force="false"/>
+	<unit				path="units/payday2/weapons/wpn_npc_ksg/wpn_npc_ksg" force="false"/>
+	<texture			path="units/payday2/weapons/wpn_npc_ksg/ksg_df" force="true"/>
+	<texture			path="units/payday2/weapons/wpn_npc_ksg/ksg_nm" force="true"/>
+
+	<material_config	path="units/payday2/weapons/wpn_npc_spas12/wpn_npc_spas12" force="false"/>
+	<model				path="units/payday2/weapons/wpn_npc_spas12/wpn_npc_spas12" force="false"/>
+	<object				path="units/payday2/weapons/wpn_npc_spas12/wpn_npc_spas12" force="false"/>
+	<cooked_physics		path="units/payday2/weapons/wpn_npc_spas12/wpn_npc_spas12" force="false"/>
+	<unit				path="units/payday2/weapons/wpn_npc_spas12/wpn_npc_spas12" force="false"/>
+	<texture			path="units/payday2/weapons/wpn_npc_spas12/spas12_df" force="true"/>
+	<texture			path="units/payday2/weapons/wpn_npc_spas12/spas12_nm" force="true"/>
+
+	<material_config	path="units/payday2/weapons/wpn_npc_shepheard/wpn_npc_shepheard" force="false"/>
+	<model				path="units/payday2/weapons/wpn_npc_shepheard/wpn_npc_shepheard" force="false"/>
+	<object				path="units/payday2/weapons/wpn_npc_shepheard/wpn_npc_shepheard" force="false"/>
+	<cooked_physics		path="units/payday2/weapons/wpn_npc_shepheard/wpn_npc_shepheard" force="false"/>
+	<unit				path="units/payday2/weapons/wpn_npc_shepheard/wpn_npc_shepheard" force="false"/>
+	<texture			path="units/payday2/weapons/wpn_npc_shepheard/shepheard_df" force="true"/>
+	<texture			path="units/payday2/weapons/wpn_npc_shepheard/shepheard_nm" force="true"/>
+
 	<!--Unshootable Flashbangs-->
 	<sequence_manager	path="units/payday2/weapons/wpn_frag_sc_flashbang/wpn_frag_sc_flashbang" force="false"/>
 	<model				path="units/payday2/weapons/wpn_frag_sc_flashbang/wpn_frag_sc_flashbang" force="false"/>
@@ -1330,6 +1355,16 @@
 	<texture			path="units/pd2_mod_dave/characters/shared_textures/taser_body_nm"/>
 	<texture			path="units/pd2_mod_dave/characters/shared_textures/heads_atlas_df"/>
 	<texture			path="units/pd2_mod_dave/characters/shared_textures/helmets_heavy_taser_atlas_df"/>
+
+	<!--Mateba Model 6-->
+	<material_config	path="units/payday2/weapons/wpn_npc_matever/wpn_npc_matever" force="false"/>
+	<material_config	path="units/payday2/weapons/wpn_npc_matever/wpn_npc_matever_contour" force="false"/>
+	<model				path="units/payday2/weapons/wpn_npc_matever/wpn_npc_matever" force="false"/>
+	<object				path="units/payday2/weapons/wpn_npc_matever/wpn_npc_matever" force="false"/>
+	<cooked_physics		path="units/payday2/weapons/wpn_npc_matever/wpn_npc_matever" force="false"/>
+	<unit				path="units/payday2/weapons/wpn_npc_matever/wpn_npc_matever" force="false"/>
+	<texture			path="units/payday2/weapons/wpn_npc_matever/wpn_npc_matever_df" force="true"/>
+	<texture			path="units/payday2/weapons/wpn_npc_matever/wpn_npc_matever_nm" force="true"/>
 	
 	<unit				path="units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_scripted_2/ene_male_marshal_marksman_scripted_2" load="true" force="false"/>
 	<unit				path="units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_scripted_2/ene_male_marshal_marksman_scripted_2_husk" load="true" force="false"/>

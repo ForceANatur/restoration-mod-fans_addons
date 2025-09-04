@@ -1102,7 +1102,13 @@ local crew_wep_preset = {
 		self.x_raging_bull_npc.CLIP_AMMO_MAX = 12
 		self.x_raging_bull_npc.NR_CLIPS_MAX = 5
 		self.x_raging_bull_npc.hold = "akimbo_pistol"
-		self.x_raging_bull_npc.FIRE_MODE = "single"		
+		self.x_raging_bull_npc.FIRE_MODE = "single"
+
+		self.matever_ap_npc = deep_clone(self.raging_bull_npc)
+		self.matever_ap_npc.DAMAGE = 10
+		self.matever_ap_npc.sounds.prefix = "mateba_npc"
+		self.matever_ap_npc.armor_piercing = true
+		self.matever_ap_npc.suppression = 6.4
 	end
 	
 	function WeaponTweakData:_init_data_m4_npc()
@@ -1298,6 +1304,11 @@ local crew_wep_preset = {
 		self.r870_taser_npc.sounds.prefix = "keltec_npc"
 		self.r870_taser_npc.DAMAGE = 5
 		self.r870_taser_npc.CLIP_AMMO_MAX = 8
+
+		self.ksg_npc = deep_clone(self.r870_npc)
+		self.ksg_npc.sounds.prefix = "keltec_npc"
+		self.ksg_npc.DAMAGE = 5
+		self.ksg_npc.CLIP_AMMO_MAX = 14
 	
 		self.m500_npc = deep_clone(self.r870_npc)
 		self.m500_npc.sounds.prefix = "m590_npc"
@@ -1381,6 +1392,13 @@ local crew_wep_preset = {
 		
 		self.akmsu_tactical_smg_npc = deep_clone(self.mp5_tactical_npc)
 		self.akmsu_tactical_smg_npc.has_suppressor = "suppressed_c"
+
+		--MPX
+		self.shepheard_npc = deep_clone(self.mp5_npc)
+		self.shepheard_npc.sounds.prefix = "shepheard_npc"
+		self.shepheard_npc.auto.fire_rate = 0.14117647058
+		self.shepheard_npc.DAMAGE = 2.8
+		self.shepheard_npc.suppression = 3.2
 	
 		--Autumn MPX
 		self.mpx_npc = deep_clone(self.mp5_tactical_npc)
@@ -1529,6 +1547,16 @@ local crew_wep_preset = {
 		self.benelli_npc.FIRE_MODE = "single"
 		self.benelli_npc.usage = "is_shotgun_semi"
 		self.benelli_npc.anim_usage = "is_shotgun_pump"
+
+		self.spas12_npc = deep_clone(self.saiga_npc)
+		self.spas12_npc.sounds.prefix = "spas_npc"
+		self.spas12_npc.auto.fire_rate = 0.064
+		self.spas12_npc.DAMAGE = 4
+		self.spas12_npc.CLIP_AMMO_MAX = 8
+		self.spas12_npc.suppression = 2
+		self.spas12_npc.FIRE_MODE = "single"
+		self.spas12_npc.usage = "is_shotgun_semi"
+		self.spas12_npc.anim_usage = "is_shotgun_pump"
 		
 		self.bayou_npc = deep_clone(self.benelli_npc)
 		self.bayou_npc.sounds.prefix = "spas_npc"
@@ -1954,7 +1982,7 @@ local crew_wep_preset = {
 		self.ddm4v7_npc.DAMAGE = 3
 		self.ddm4v7_npc.CLIP_AMMO_MAX = 40
 		self.ddm4v7_npc.NR_CLIPS_MAX = 10
-		self.ddm4v7_npc.sounds.prefix = "m1873_npc"
+		--self.ddm4v7_npc.sounds.prefix = "saint_victor_npc"	--needs a better sound
 		self.ddm4v7_npc.trail_effect = Idstring("effects/particles/weapons/sniper_trail_marshal")
 		self.ddm4v7_npc.use_sniper_trail = false
 		self.ddm4v7_npc.trail = nil

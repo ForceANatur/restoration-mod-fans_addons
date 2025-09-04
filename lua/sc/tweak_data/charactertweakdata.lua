@@ -597,7 +597,7 @@ function CharacterTweakData:_init_fbi(presets)
 	self.vetlod.speech_prefix_p1 = "buge"
 	self.vetlod.speech_prefix_p2 = nil
 	self.vetlod.speech_prefix_count = nil		
-	self.vetlod.custom_voicework = "tdozer"
+	self.vetlod.custom_voicework = "bruce_bitcrushed"
 	self.vetlod.access = "fbi"
 	table.insert(self._enemy_list, "vetlod")							
 end
@@ -657,6 +657,7 @@ function CharacterTweakData:_init_medic(presets)
 	self.medic_heavy = deep_clone(self.medic)
 	self.medic_heavy.HEALTH_INIT = 63
 	self.medic_heavy.headshot_dmg_mul = 1.6
+	self.medic_heavy.damage_resistance = presets.damage_resistance.heavy_swat
 	self.medic_heavy.move_speed = presets.move_speed.normal
 	self.medic_heavy.custom_voicework = "heavy_medic"
 	self.medic_heavy.dodge = presets.dodge.heavy
@@ -671,6 +672,15 @@ function CharacterTweakData:_init_medic(presets)
 	self.medic_buff.use_animation_on_fire_damage = false
 	self.medic_buff.heal_cooldown = 0
 	table.insert(self._enemy_list, "medic_buff")
+
+	--Crackdown Medic
+	self.medic_deathvox = deep_clone(self.medic)
+	self.medic_deathvox.HEALTH_INIT = 45
+	self.medic_deathvox.headshot_dmg_mul = 1
+	self.medic_deathvox.no_asu = false
+	self.medic_deathvox.move_speed = presets.move_speed.very_fast_plus
+	--self.medic_deathvox.custom_voicework = "murky_medic"	--buggy
+	table.insert(self._enemy_list, "medic_deathvox")
 
 	self.medic_summers = deep_clone(self.medic)
 	--Base health
@@ -18724,7 +18734,7 @@ Hooks:PostHook(CharacterTweakData, "_create_table_structure", "remod_create_tabl
 	--DRAK Titan Taser Gauss Rifle
 	table.insert(self.weap_ids, "gauss_gun")
 	table.insert(self.weap_unit_names, Idstring("units/pd2_mod_reapers/weapons/wpn_npc_basscannon/wpn_npc_basscannon"))
-	
+
 	--Titandozer M32
 	table.insert(self.weap_ids, "m32_large")
 	table.insert(self.weap_unit_names, Idstring("units/pd2_mod_reapers/weapons/wpn_npc_m32_large/wpn_npc_m32_large"))		
@@ -18793,6 +18803,22 @@ Hooks:PostHook(CharacterTweakData, "_create_table_structure", "remod_create_tabl
 	--ATF DDM4 V7
 	table.insert(self.weap_ids, "atf_ddm4v7")
 	table.insert(self.weap_unit_names, Idstring("units/pd2_dlc_usm1/weapons/wpn_npc_ddm4v7/wpn_npc_ddm4v7"))
+
+	--MPX
+	table.insert(self.weap_ids, "shepheard")
+	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_shepheard/wpn_npc_shepheard"))
+
+	--SPAS 12
+	table.insert(self.weap_ids, "spas12")
+	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_spas12/wpn_npc_spas12"))
+
+	--KelTec KSG
+	table.insert(self.weap_ids, "ksg")
+	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_ksg/wpn_npc_ksg"))
+
+	--Mateba Model 6
+	table.insert(self.weap_ids, "mateba_ap")
+	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_matever/wpn_npc_matever"))
 end)
 
 function CharacterTweakData:_set_easy()
@@ -19722,7 +19748,8 @@ function CharacterTweakData:character_map()
 				"ene_zeal_fbi_mp5",
 				"ene_zeal_swat_heavy_sc",
 				"ene_zeal_swat_heavy_r870_sc",
-				"ene_zeal_swat_heavy_benelli"
+				"ene_zeal_swat_heavy_benelli",
+				"ene_deathvox_medic"
 			}
 		}
 	--drm
