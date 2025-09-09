@@ -1366,13 +1366,15 @@ local zeal = {
 		"m4",
 		"g36",
 		"ump",
-		"m249",
+		"m249"
+	},
+	shotgun_heavy = {
 		"r870",
 		"saiga",
 		"benelli",
 		"spas12",
 		"ksg"
-	},
+	}
 }
 --Russian Reapers
 local russia = {
@@ -1498,6 +1500,7 @@ local weapon_mapping = {
 -- ZEAL
 	[("units/pd2_dlc_gitgud/characters/ene_zeal_swat/ene_zeal_swat"):key()] = zeal.rifle_light,
 	[("units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy/ene_zeal_swat_heavy"):key()] = zeal.rifle_heavy,
+	[("units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_2/ene_zeal_swat_heavy_2"):key()] = zeal.shotgun_heavy,
 -- Russia
 	[("units/pd2_dlc_mad/characters/ene_akan_cs_swat_ak47_ass/ene_akan_cs_swat_ak47_ass"):key()] = russia.rifle_light,
 	[("units/pd2_dlc_mad/characters/ene_akan_cs_heavy_ak47_ass/ene_akan_cs_heavy_ak47_ass"):key()] = russia.rifle_light,

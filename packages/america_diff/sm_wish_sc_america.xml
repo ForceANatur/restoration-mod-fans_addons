@@ -106,6 +106,15 @@
 	<cooked_physics		path="units/pd2_dlc_gitgud/characters/ene_acc_zeal_swat_heavy_helmet_sc/ene_acc_zeal_swat_heavy_helmet_sc"/>
 	<material_config	path="units/pd2_dlc_gitgud/characters/ene_acc_zeal_swat_heavy_helmet_sc/ene_acc_zeal_swat_heavy_helmet_sc"/>
 
+	<!--SH Zeal Heavy shotgunner-->
+	<object				path="units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_2/ene_zeal_swat_heavy_2" force="false"/>
+	<cooked_physics		path="units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_2/ene_zeal_swat_heavy_2" force="false"/>
+	<model				path="units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_2/ene_zeal_swat_heavy_2" force="false"/>
+	<unit				path="units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_2/ene_zeal_swat_heavy_2" force="false" load="true"/>
+	<material_config	path="units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_2/ene_zeal_swat_heavy_2" force="false"/>
+	<material_config	path="units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_2/ene_zeal_swat_heavy_2_contour" force="false"/>
+	<unit				path="units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_2/ene_zeal_swat_heavy_2_husk" force="false" load="true"/>
+
 	<!-- jeffy -->
 	<model				path="units/payday2/characters/ene_bulldozer_1_sc/ene_bulldozer_1_sc" />	
 	<object				path="units/payday2/characters/ene_bulldozer_1_sc/ene_bulldozer_1_sc" />
