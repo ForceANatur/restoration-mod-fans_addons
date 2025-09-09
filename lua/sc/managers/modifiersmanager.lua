@@ -315,7 +315,7 @@ elseif ai_type == ny then
 		["units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy/ene_zeal_swat_heavy"] = "units/pd2_mod_ng/characters/ene_ntl_heavyswat/ene_ntl_heavyswat",
 		["units/payday2/characters/ene_fbi_heavy_r870/ene_fbi_heavy_r870"] = "units/pd2_mod_ng/characters/ene_ntl_heavyshotgun/ene_ntl_heavyshotgun",
 		["units/payday2/characters/ene_city_heavy_r870/ene_city_heavy_r870"] = "units/pd2_mod_ng/characters/ene_ntl_heavyshotgun/ene_ntl_heavyshotgun",
-	--	["units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_2/ene_zeal_swat_heavy_2"] = "units/pd2_mod_ng/characters/ene_ntl_heavyshotgun/ene_ntl_heavyshotgun",	-- i'll try to port the shotgun zeal heavy from sh
+		["units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_2/ene_zeal_swat_heavy_2"] = "units/pd2_mod_ng/characters/ene_ntl_heavyshotgun/ene_ntl_heavyshotgun",
 		["units/payday2/characters/ene_sniper_1/ene_sniper_1"] = "units/pd2_mod_ng/characters/ene_ntl_groundsniper/ene_ntl_groundsniper",
 		["units/payday2/characters/ene_sniper_2/ene_sniper_2"] = "units/pd2_mod_ng/characters/ene_ntl_groundsniper/ene_ntl_groundsniper",
 		["units/payday2/characters/ene_medic_mp5/ene_medic_mp5"] = "units/pd2_mod_ng/characters/ene_ntl_medic/ene_ntl_medic",
@@ -419,7 +419,7 @@ else
 		["units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy/ene_zeal_swat_heavy"] = "units/pd2_mod_ng/characters/ene_ntl_heavyswat/ene_ntl_heavyswat",
 		["units/payday2/characters/ene_fbi_heavy_r870/ene_fbi_heavy_r870"] = "units/pd2_mod_ng/characters/ene_ntl_heavyshotgun/ene_ntl_heavyshotgun",
 		["units/payday2/characters/ene_city_heavy_r870/ene_city_heavy_r870"] = "units/pd2_mod_ng/characters/ene_ntl_heavyshotgun/ene_ntl_heavyshotgun",
-	--	["units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_2/ene_zeal_swat_heavy_2"] = "units/pd2_mod_ng/characters/ene_ntl_heavyshotgun/ene_ntl_heavyshotgun",	-- i'll try to port the shotgun zeal heavy from sh
+		["units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_2/ene_zeal_swat_heavy_2"] = "units/pd2_mod_ng/characters/ene_ntl_heavyshotgun/ene_ntl_heavyshotgun",
 		["units/payday2/characters/ene_sniper_1/ene_sniper_1"] = "units/pd2_mod_ng/characters/ene_ntl_groundsniper/ene_ntl_groundsniper",
 		["units/payday2/characters/ene_sniper_2/ene_sniper_2"] = "units/pd2_mod_ng/characters/ene_ntl_groundsniper/ene_ntl_groundsniper",
 		["units/payday2/characters/ene_medic_mp5/ene_medic_mp5"] = "units/pd2_mod_ng/characters/ene_ntl_medic/ene_ntl_medic",
