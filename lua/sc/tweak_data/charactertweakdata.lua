@@ -19128,6 +19128,8 @@ function CharacterTweakData:_set_overkill_145()
 end
 
 function CharacterTweakData:_set_easy_wish()
+	self.tank_hw_black.headshot_dmg_mul = 4.4
+
 	if SystemInfo:platform() == Idstring("PS3") then
 		self:_multiply_all_hp(1.5, 1)
 	else
@@ -19197,6 +19199,8 @@ function CharacterTweakData:_set_easy_wish()
 end
 
 function CharacterTweakData:_set_overkill_290()
+	self.tank_hw_black.headshot_dmg_mul = 2.75
+
 	if SystemInfo:platform() == Idstring("PS3") then
 		self:_multiply_all_hp(1.75, 0.801)
 	else
@@ -19283,6 +19287,7 @@ function CharacterTweakData:_set_sm_wish()
 	self.city_swat_titan_assault.headshot_dmg_mul = 2.5
 	self.weekend_lmg.headshot_dmg_mul = 3.125
 	]]--
+	self.tank_hw_black.headshot_dmg_mul = 2.75
 
 	if SystemInfo:platform() == Idstring("PS3") then
 		self:_multiply_all_hp(2, 0.915)
