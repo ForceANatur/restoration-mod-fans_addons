@@ -1276,6 +1276,17 @@ local crew_wep_preset = {
 		self.railgun_npc.trail_effect = Idstring("effects/particles/weapons/sniper_trail_sc")		
 		self.railgun_npc.use_sniper_trail = true		
 		--self.railgun_npc.sounds.prefix = "barrett_npc"
+
+		--so called sniper captain barrett
+		--[[
+		self.m95_npc = deep_clone(self.m14_sniper_npc)
+		self.m95_npc.sounds.prefix = "barrett_npc"
+		self.m95_npc.muzzleflash = "effects/payday2/particles/weapons/50cal_auto"
+		self.m95_npc.shell_ejection = "effects/payday2/particles/weapons/shells/shell_sniper_m95"
+		self.m95_npc.DAMAGE = 9
+		self.m95_npc.CLIP_AMMO_MAX = 4
+		self.m95_npc.suppression = 7
+		]]--
 	end
 	
 	function WeaponTweakData:_init_data_heavy_snp_npc()
