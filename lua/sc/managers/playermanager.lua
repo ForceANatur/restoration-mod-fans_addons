@@ -478,7 +478,9 @@ function PlayerManager:on_killshot(killed_unit, variant, headshot, weapon_id)
 	if self:has_activate_temporary_upgrade("temporary", "copr_ability") then
 		local kill_life_leech = self:upgrade_value_nil("player", "copr_kill_life_leech")
 		local static_damage_ratio = self:upgrade_value_nil("player", "copr_static_damage_ratio")
-
+		local static_damage_ratio_mult = self:upgrade_value_nil("player", "copr_static_damage_ratio_mult") or 1
+		static_damage_ratio = static_damage_ratio * static_damage_ratio_mult
+		
 		if kill_life_leech and static_damage_ratio and damage_ext then
 			self._copr_kill_life_leech_num = (self._copr_kill_life_leech_num or 0) + 1
 
@@ -494,7 +496,7 @@ function PlayerManager:on_killshot(killed_unit, variant, headshot, weapon_id)
 				end
 			end
 		end
-	end	
+	end
 
 	--Yakuza dodge meter generation.
 	if damage_ext:health_ratio() < 1 then
@@ -1295,7 +1297,10 @@ function PlayerManager:_internal_load()
 	--Removed armor kit weirdness.
 
 	--Fully loaded aced checks
-	self._throwable_chance_data = self:upgrade_value("player", "regain_throwable_from_ammo", {chance = 0.01, chance_inc = 0})
+	local throw_tweak = tweak_data.blackmarket.projectiles[managers.blackmarket:equipped_grenade()]
+	local base_pickup_chance = (throw_tweak and throw_tweak.base_pickup_chance) or 0.01
+	local skill_pickup_chance = self:upgrade_value("player", "regain_throwable_from_ammo", {chance = 0, chance_inc = 0})
+	self._throwable_chance_data = {chance = base_pickup_chance + skill_pickup_chance.chance, chance_inc = 0 + skill_pickup_chance.chance_inc}
 	self._throwable_chance = self._throwable_chance_data.chance
 
 	--Reset when players are spawned, just in case.
@@ -1671,14 +1676,19 @@ end
 
 --Replacement for vanilla fully loaded throwable coroutine. The vanilla code has 0 benefits from being a coroutine, and it seems to have issues resetting the chance or firing at all.
 function PlayerManager:regain_throwable_from_ammo()
-	local roll = math.random()
-	
-	if self._throwable_chance then --Fixes bizzare startup crash
-		if roll < self._throwable_chance then
-			self._throwable_chance = self._throwable_chance_data.chance
-			self:add_grenade_amount(1, true)
-		else
-			self._throwable_chance = self._throwable_chance + self._throwable_chance_data.chance_inc
+	local throw_tweak = tweak_data.blackmarket.projectiles[managers.blackmarket:equipped_grenade()]
+	if throw_tweak and throw_tweak.pickup_cooldown_t then
+		managers.player:speed_up_grenade_cooldown(throw_tweak.pickup_cooldown_t)
+	else
+		local roll = math.random()
+		
+		if self._throwable_chance then --Fixes bizzare startup crash
+			if roll < self._throwable_chance then
+				self._throwable_chance = self._throwable_chance_data.chance
+				self:add_grenade_amount(1, true)
+			else
+				self._throwable_chance = self._throwable_chance + self._throwable_chance_data.chance_inc
+			end
 		end
 	end
 end
