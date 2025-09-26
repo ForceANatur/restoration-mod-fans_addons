@@ -3312,7 +3312,8 @@ function CharacterTweakData:_init_marshal_shield(presets)
 	self.marshal_shield = deep_clone(presets.base)
 	self.marshal_shield.tags = {
 		"law",
-		"shield"
+		"shield", 
+		"shield_titan" -- added tag so that the shield of the marshal shield is considered a titan-shield
 	}
 	self.marshal_shield.experience = {}
 	self.marshal_shield.weapon = deep_clone(presets.weapon.normal)
