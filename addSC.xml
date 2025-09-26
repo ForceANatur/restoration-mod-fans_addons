@@ -1276,6 +1276,14 @@
 	<material_config	path="units/payday2/characters/ene_acc_mememan_2_helmet_plate/ene_acc_mememan_2_helmet_plate"/>
 	<!--MemeMan2 Mod-->
 
+	<!--Load helmet before anything related to new coppers-->
+	<!--This helmet is agony for anything new coppers related. Fuck this helmet. - FaN Scout-->
+	<object				path="units/pd2_mod_nc/characters/ene_acc_zeal_swat_helmet/ene_acc_zeal_swat_helmet" force="false"/>
+	<cooked_physics		path="units/pd2_mod_nc/characters/ene_acc_zeal_swat_helmet/ene_acc_zeal_swat_helmet" force="false"/>
+	<model				path="units/pd2_mod_nc/characters/ene_acc_zeal_swat_helmet/ene_acc_zeal_swat_helmet" force="false"/>
+	<unit				path="units/pd2_mod_nc/characters/ene_acc_zeal_swat_helmet/ene_acc_zeal_swat_helmet" force="false" load="true"/>
+	<material_config	path="units/pd2_mod_nc/characters/ene_acc_zeal_swat_helmet/ene_acc_zeal_swat_helmet" force="false"/>
+
 	<!--New Coppers heavygunner as meme captain-->
 	<object				path="units/pd2_mod_nc/characters/ene_gensec_heavygunner/ene_gensec_heavygunner" force="false"/>
 	<cooked_physics		path="units/pd2_mod_nc/characters/ene_gensec_heavygunner/ene_gensec_heavygunner" force="false"/>
@@ -1340,6 +1348,21 @@
 	<unit				path="units/payday2/characters/ene_swole_medic_m249/ene_swole_medic_m249_husk" force="false" load="true"/>
 	<texture			path="units/payday2/characters/shared_textures/ene_swole_medic_nm"/>
 	<texture			path="units/payday2/characters/shared_textures/ene_swole_medic_df"/>
+
+	<!--GenSec Sergeant-->
+	<object				path="units/pd2_mod_nc/characters/ene_gensec_sgt/ene_gensec_sgt" force="false"/>
+	<cooked_physics		path="units/pd2_mod_nc/characters/ene_gensec_sgt/ene_gensec_sgt" force="false"/>
+	<model				path="units/pd2_mod_nc/characters/ene_gensec_sgt/ene_gensec_sgt" force="false"/>
+	<unit				path="units/pd2_mod_nc/characters/ene_gensec_sgt/ene_gensec_sgt" force="false" load="true"/>
+	<material_config	path="units/pd2_mod_nc/characters/ene_gensec_sgt/ene_gensec_sgt" force="false"/>
+	<material_config	path="units/pd2_mod_nc/characters/ene_gensec_sgt/ene_gensec_sgt_contour" force="true"/>
+	<unit				path="units/pd2_mod_nc/characters/ene_gensec_sgt/ene_gensec_sgt_husk" force="false" load="true"/>
+	<texture			path="units/pd2_mod_nc/characters/shared_textures/sgt_head_df"/>
+	<texture			path="units/pd2_mod_nc/characters/shared_textures/sgt_head_nm"/>
+	<texture			path="units/pd2_mod_nc/characters/shared_textures/sgt_body_df"/>
+	<texture			path="units/pd2_mod_nc/characters/shared_textures/sgt_body_nm"/>
+	<texture			path="units/pd2_mod_nc/characters/shared_textures/sgt_gasmask_df"/>
+	<texture			path="units/pd2_mod_nc/characters/shared_textures/sgt_gasmask_nm"/>
 
 	<unit path="units/pd2_dlc_usm1/weapons/wpn_npc_dmr/wpn_npc_dmr" force="true" />
 

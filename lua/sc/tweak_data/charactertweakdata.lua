@@ -64,6 +64,7 @@ function CharacterTweakData:init(tweak_data, presets)
 	self:_init_weekend_vanilla(presets)
 	self:_init_weekend_vanilla_heavy(presets)
 	self:_init_weekend_vanilla_snp(presets)
+	self:_init_city_swat_sergeant(presets)
 	self:_process_weapon_usage_table()
 	
 	--Dozer Armor Multiplier, lower means more EHP
@@ -4374,7 +4375,7 @@ function CharacterTweakData:_init_weekend_vanilla_heavy(presets)
 	self.weekend_vanilla_heavy.headshot_dmg_mul = 1.8
 	self.weekend_vanilla_heavy.can_throw_frag = true
 	self.weekend_vanilla_heavy.move_speed = presets.move_speed.normal
-	self.weekend_vanilla_heavy.custom_voicework = "heavygunner"
+	self.weekend_vanilla_heavy.custom_voicework = "bravo_heavy"
 	self.weekend_vanilla_heavy.surrender = presets.surrender.bravo_hard
 	self.weekend_vanilla_heavy.damage_resistance = presets.damage_resistance.heavy_swat
 	table.insert(self._enemy_list, "weekend_vanilla_heavy")
@@ -4407,6 +4408,50 @@ function CharacterTweakData:_init_city_swat_rpg(presets)
 	self.city_swat_rpg.damage.tase_damage_mul = 1
 	self.city_swat_rpg.custom_voicework = "rpg_grunt"
 	table.insert(self._enemy_list, "city_swat_rpg")
+end
+
+--GenSec Sergeant, Mix of Vet Cop, ASU, and SWAT, Less HS Multu the higher the diff
+function CharacterTweakData:_init_city_swat_sergeant(presets)
+	self.city_swat_sergeant = deep_clone(self.city_swat)
+	self.city_swat_sergeant.tags = {"law", "custom", "special"}
+	self.city_swat_sergeant.HEALTH_INIT = 15
+	self.city_swat_sergeant.priority_shout_max_dis = 3000
+	self.city_swat_sergeant.priority_shout = "g29"
+	self.city_swat_sergeant.bot_priority_shout = "g29"
+	self.city_swat_sergeant.is_special = true
+	self.city_swat_sergeant.custom_shout = true
+	self.city_swat_sergeant.can_shoot_while_dodging = true
+	self.city_swat_sergeant.can_slide_on_suppress = true
+	self.city_swat_sergeant.move_speed = presets.move_speed.fast
+	self.city_swat_sergeant.custom_voicework = "swat_pd3"
+	self.city_swat_sergeant.melee_weapon = "buzzer_summer"
+	self.city_swat_sergeant.melee_weapon_dmg_multiplier = 1
+	self.city_swat_sergeant.tase_on_melee = true
+	self.city_swat_sergeant.surrender = nil
+	self.city_swat_sergeant.dodge = presets.dodge.elite
+	self.city_swat_sergeant.steal_loot = true
+	self.city_swat_sergeant.do_asu = true
+	self.city_swat_sergeant.no_asu = true
+	self.city_swat_sergeant.immune_to_knock_down = true
+	self.city_swat_sergeant.headshot_dmg_mul = 3
+	self.city_swat_sergeant.damage.bullet_dodge_chance = 10
+	self.city_swat_sergeant.dodge_with_grenade = {
+		smoke = {duration = {
+			6,
+			6
+		}},
+		check = function (t, nr_grenades_used)
+			local delay_till_next_use = 20
+			local chance = 0.05
+
+			if math.random() < chance then
+				return true, t + delay_till_next_use
+			end
+
+			return false, t + delay_till_next_use
+		end
+	}
+	table.insert(self._enemy_list, "city_swat_sergeant")
 end
 
 function CharacterTweakData:_init_zombie(presets)
@@ -18820,7 +18865,7 @@ Hooks:PostHook(CharacterTweakData, "_create_table_structure", "remod_create_tabl
 	table.insert(self.weap_ids, "mateba_ap")
 	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_matever/wpn_npc_matever"))
 end)
-
+-- EASY (UNUSED) --
 function CharacterTweakData:_set_easy()
 	self:_multiply_all_hp(0.75, 1)
 	self:_multiply_weapon_delay(self.presets.weapon.normal, 0)
@@ -18872,7 +18917,7 @@ function CharacterTweakData:_set_easy()
 	self.presets.gang_member_damage.BLEED_OUT_HEALTH_INIT = 25
 	self:_multiply_all_speeds(1, 1)
 end
-
+-- NORMAL --
 function CharacterTweakData:_set_normal()
 	self:_multiply_all_hp(0.75, 1)
 	self:_multiply_weapon_delay(self.presets.weapon.normal, 0)
@@ -18935,7 +18980,7 @@ function CharacterTweakData:_set_normal()
 	self.presets.gang_member_damage.BLEED_OUT_HEALTH_INIT = 50
 	self:_multiply_all_speeds(1, 1)
 end
-
+-- HARD --
 function CharacterTweakData:_set_hard()
 	self:_multiply_all_hp(1, 1)
 	self:_multiply_weapon_delay(self.presets.weapon.normal, 0)
@@ -18998,7 +19043,7 @@ function CharacterTweakData:_set_hard()
 	self.presets.gang_member_damage.BLEED_OUT_HEALTH_INIT = 75
 	self:_multiply_all_speeds(1, 1)
 end
-
+-- VERY HARD --
 function CharacterTweakData:_set_overkill()
 	self:_multiply_all_hp(1, 1)
 	self:_multiply_weapon_delay(self.presets.weapon.normal, 0)
@@ -19061,7 +19106,7 @@ function CharacterTweakData:_set_overkill()
 	self.presets.gang_member_damage.BLEED_OUT_HEALTH_INIT = 100
 	self:_multiply_all_speeds(1, 1)	
 end
-
+-- OVERKILL --
 function CharacterTweakData:_set_overkill_145()
 	if SystemInfo:platform() == Idstring("PS3") then
 		self:_multiply_all_hp(1, 1)
@@ -19123,7 +19168,7 @@ function CharacterTweakData:_set_overkill_145()
 	self.presets.gang_member_damage.BLEED_OUT_HEALTH_INIT = 125
 	self:_multiply_all_speeds(1, 1)
 end
-
+-- MAYHEM --
 function CharacterTweakData:_set_easy_wish()
 	if SystemInfo:platform() == Idstring("PS3") then
 		self:_multiply_all_hp(1.5, 1)
@@ -19135,6 +19180,9 @@ function CharacterTweakData:_set_easy_wish()
 	self:_multiply_weapon_delay(self.presets.weapon.expert, 0)
 	self:_multiply_weapon_delay(self.presets.weapon.deathwish, 0)
 	self:_multiply_weapon_delay(self.presets.weapon.gang_member, 0)
+
+--	self.city_swat_sergeant.headshot_dmg_mul = 2.5
+--	self.city_swat_sergeant.damage.bullet_dodge_chance = 15
 	
 	--Tankier Dozer Armor
 	self.tank_armor_damage_mul = 0.8
@@ -19192,7 +19240,7 @@ function CharacterTweakData:_set_easy_wish()
 	self.concussion_multiplier = 1
 	self:_multiply_all_speeds(1, 1)
 end
-
+-- DEATH WISH --
 function CharacterTweakData:_set_overkill_290()
 	if SystemInfo:platform() == Idstring("PS3") then
 		self:_multiply_all_hp(1.75, 0.801)
@@ -19209,7 +19257,10 @@ function CharacterTweakData:_set_overkill_290()
 	self:_set_characters_melee_preset("2.5", "2")
 	self.fbi.can_shoot_while_dodging = true
 	self.swat.can_shoot_while_dodging = true	
-	self.hrt.can_shoot_while_dodging = true		
+	self.hrt.can_shoot_while_dodging = true
+
+--	self.city_swat_sergeant.headshot_dmg_mul = 2
+--	self.city_swat_sergeant.damage.bullet_dodge_chance = 20
 	
 	--Tankier Dozer Armor
 	self.tank_armor_damage_mul = 0.5
@@ -19266,7 +19317,7 @@ function CharacterTweakData:_set_overkill_290()
 	self.concussion_multiplier = 1
 	self:_multiply_all_speeds(1, 1.05)
 end
-
+-- DEATH SENTENCE --
 function CharacterTweakData:_set_sm_wish()
 	--Harder heads base, not sure if needed anymore tbh
 	--[[
@@ -19279,6 +19330,8 @@ function CharacterTweakData:_set_sm_wish()
 	self.city_swat_titan.headshot_dmg_mul = 2.5
 	self.city_swat_titan_assault.headshot_dmg_mul = 2.5
 	self.weekend_lmg.headshot_dmg_mul = 3.125
+	self.city_swat_sergeant.headshot_dmg_mul = 1.6
+	self.city_swat_sergeant.damage.bullet_dodge_chance = 25
 	]]--
 
 	if SystemInfo:platform() == Idstring("PS3") then
@@ -19486,7 +19539,7 @@ function CharacterTweakData:_set_sm_wish()
 	
 	self.spring.dt_suppress = {
 		range = 3000
-	}	
+	}
 end
 
 function CharacterTweakData:is_special_unit(enemy_tweak)
@@ -20061,7 +20114,8 @@ function CharacterTweakData:character_map()
 			path = "units/pd2_mod_nc/characters/",
 			list = {
 				"ene_heavymedic_1",
-				"ene_gensec_heavygunner"
+				"ene_gensec_heavygunner",
+				"ene_gensec_sgt"
 			}
 		}
 

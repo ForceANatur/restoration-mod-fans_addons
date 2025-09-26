@@ -232,6 +232,8 @@ Miss Miki: PONR anti-grief fixes and other contributions/fixes
 
 MrVavlo: For the CHARMing weapon CHARM that's full of CHARM
 
+Keithy: New Coppers' Assets
+
 Marshie: Russian localisation
 
 LR_Daring: Chinese localisation

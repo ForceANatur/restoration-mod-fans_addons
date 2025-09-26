@@ -85,6 +85,7 @@ action_variants.spooc_swole = security_variant
 action_variants.medic_buff = security_variant
 action_variants.atf_marksman = security_variant
 action_variants.medic_deathvox = security_variant
+action_variants.city_swat_sergeant = security_variant
 
 function CopMovement:post_init()
 	local unit = self._unit
