@@ -18825,7 +18825,6 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 			}
 		}		
 	end
-end
 	
 	--Captain Summers
 	self.enemy_spawn_groups.Cap_Summers = {
