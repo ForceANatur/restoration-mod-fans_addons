@@ -19119,6 +19119,14 @@ function CharacterTweakData:_set_overkill_145()
 	self:_multiply_weapon_delay(self.presets.weapon.deathwish, 0)
 	self:_multiply_weapon_delay(self.presets.weapon.gang_member, 0)
 	self:_set_characters_weapon_preset("expert", "good")
+
+	if pro_job then
+		self.city_swat_sergeant.headshot_dmg_mul = 2.5
+		self.city_swat_sergeant.damage.bullet_dodge_chance = 15
+	else
+		self.city_swat_sergeant.headshot_dmg_mul = 3
+		self.city_swat_sergeant.damage.bullet_dodge_chance = 10
+	end
 	
 	self.city_swat.weapon = deep_clone(self.presets.weapon.good)
 	self.city_swat.dodge = self.presets.dodge.athletic_very_hard
@@ -19181,8 +19189,13 @@ function CharacterTweakData:_set_easy_wish()
 	self:_multiply_weapon_delay(self.presets.weapon.deathwish, 0)
 	self:_multiply_weapon_delay(self.presets.weapon.gang_member, 0)
 
---	self.city_swat_sergeant.headshot_dmg_mul = 2.5
---	self.city_swat_sergeant.damage.bullet_dodge_chance = 15
+	if pro_job then
+		self.city_swat_sergeant.headshot_dmg_mul = 2
+		self.city_swat_sergeant.damage.bullet_dodge_chance = 20
+	else
+		self.city_swat_sergeant.headshot_dmg_mul = 2.5
+		self.city_swat_sergeant.damage.bullet_dodge_chance = 15
+	end
 	
 	--Tankier Dozer Armor
 	self.tank_armor_damage_mul = 0.8
@@ -19259,8 +19272,13 @@ function CharacterTweakData:_set_overkill_290()
 	self.swat.can_shoot_while_dodging = true	
 	self.hrt.can_shoot_while_dodging = true
 
---	self.city_swat_sergeant.headshot_dmg_mul = 2
---	self.city_swat_sergeant.damage.bullet_dodge_chance = 20
+	if pro_job then
+		self.city_swat_sergeant.headshot_dmg_mul = 1.6
+		self.city_swat_sergeant.damage.bullet_dodge_chance = 25
+	else
+		self.city_swat_sergeant.headshot_dmg_mul = 2
+		self.city_swat_sergeant.damage.bullet_dodge_chance = 20
+	end
 	
 	--Tankier Dozer Armor
 	self.tank_armor_damage_mul = 0.5
@@ -19330,9 +19348,15 @@ function CharacterTweakData:_set_sm_wish()
 	self.city_swat_titan.headshot_dmg_mul = 2.5
 	self.city_swat_titan_assault.headshot_dmg_mul = 2.5
 	self.weekend_lmg.headshot_dmg_mul = 3.125
-	self.city_swat_sergeant.headshot_dmg_mul = 1.6
-	self.city_swat_sergeant.damage.bullet_dodge_chance = 25
 	]]--
+
+	if pro_job then
+		self.city_swat_sergeant.headshot_dmg_mul = 1
+		self.city_swat_sergeant.damage.bullet_dodge_chance = 30
+	else
+		self.city_swat_sergeant.headshot_dmg_mul = 1.6
+		self.city_swat_sergeant.damage.bullet_dodge_chance = 25
+	end
 
 	if SystemInfo:platform() == Idstring("PS3") then
 		self:_multiply_all_hp(2, 0.915)

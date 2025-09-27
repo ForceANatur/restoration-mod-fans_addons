@@ -952,36 +952,36 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 		},
 		access = access_type_all
 	}
---	self.unit_categories.omnia_LPF = {	-- why do i have a dupe???
---		unit_types = {
---			america = {
---				Idstring("units/pd2_dlc_vip/characters/ene_omnia_lpf/ene_omnia_lpf")
---			},
---			russia = {
---				Idstring("units/pd2_mod_reapers/characters/ene_subject_enforcer/ene_subject_enforcer")
---			},
---			zombie = {
---				Idstring("units/pd2_mod_halloween/characters/ene_omnia_lpf/ene_omnia_lpf")
---			},
---			murkywater = {
---				Idstring("units/pd2_dlc_vip/characters/ene_omnia_lpf/ene_omnia_lpf")
---			},
---			federales = {
---				Idstring("units/pd2_mod_reapers/characters/ene_akan_lpf/ene_akan_lpf"),
---				Idstring("units/pd2_mod_reapers/characters/ene_subject_enforcer/ene_subject_enforcer")
---			},				
---			nypd = {
---				Idstring("units/pd2_dlc_vip/characters/ene_omnia_lpf/ene_omnia_lpf")
---			},		
---			lapd = {
---				Idstring("units/pd2_dlc_vip/characters/ene_omnia_lpf/ene_omnia_lpf")
---			},
---			fbi = {
---				Idstring("units/pd2_dlc_vip/characters/ene_omnia_lpf/ene_omnia_lpf")
---			}
---		},
---		access = access_type_all
---  }
+	--[[self.unit_categories.omnia_LPF = {	-- why do i have a dupe???
+		unit_types = {
+			america = {
+				Idstring("units/pd2_dlc_vip/characters/ene_omnia_lpf/ene_omnia_lpf")
+			},
+			russia = {
+				Idstring("units/pd2_mod_reapers/characters/ene_subject_enforcer/ene_subject_enforcer")
+			},
+			zombie = {
+				Idstring("units/pd2_mod_halloween/characters/ene_omnia_lpf/ene_omnia_lpf")
+			},
+			murkywater = {
+				Idstring("units/pd2_dlc_vip/characters/ene_omnia_lpf/ene_omnia_lpf")
+			},
+			federales = {
+				Idstring("units/pd2_mod_reapers/characters/ene_akan_lpf/ene_akan_lpf"),
+				Idstring("units/pd2_mod_reapers/characters/ene_subject_enforcer/ene_subject_enforcer")
+			},				
+			nypd = {
+				Idstring("units/pd2_dlc_vip/characters/ene_omnia_lpf/ene_omnia_lpf")
+			},		
+			lapd = {
+				Idstring("units/pd2_dlc_vip/characters/ene_omnia_lpf/ene_omnia_lpf")
+			},
+			fbi = {
+				Idstring("units/pd2_dlc_vip/characters/ene_omnia_lpf/ene_omnia_lpf")
+			}
+		},
+		access = access_type_all
+  }]]
 	if difficulty_index <= 6 then
 		self.unit_categories.fbi_vet = {
 			unit_types = {
@@ -15406,9 +15406,40 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 		access = access_type_all,
 		ignore_spawn_cap = true
 	}
-	
+
+	--Sergeants
+	--To do: Find Sergeant models to 'borrow' for other factions
+	self.unit_categories.gensec_sgt = {
+		unit_types = {
+			america = {
+				Idstring("units/pd2_mod_nc/characters/ene_gensec_sgt/ene_gensec_sgt")
+			},
+			russia = {
+				Idstring("units/pd2_mod_nc/characters/ene_gensec_sgt/ene_gensec_sgt")
+			},
+			zombie = {
+				Idstring("units/pd2_mod_nc/characters/ene_gensec_sgt/ene_gensec_sgt")
+			},
+			murkywater = {
+				Idstring("units/pd2_mod_nc/characters/ene_gensec_sgt/ene_gensec_sgt")
+			},
+			federales = {
+				Idstring("units/pd2_mod_nc/characters/ene_gensec_sgt/ene_gensec_sgt")
+			},
+			nypd = {
+				Idstring("units/pd2_mod_nc/characters/ene_gensec_sgt/ene_gensec_sgt")
+			},
+			lapd = {
+				Idstring("units/pd2_mod_nc/characters/ene_gensec_sgt/ene_gensec_sgt")
+			},
+			fbi = {
+				Idstring("units/pd2_mod_nc/characters/ene_gensec_sgt/ene_gensec_sgt")
+			}
+		},
+		access = access_type_all
+	}
 end
-	
+
 function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 	--The below summarizes the functions of new or revised tactics in Restoration.
 	
@@ -19110,9 +19141,57 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				"GS_shields_boom",
 				"GS_Booms"
 			})
-		}	
-	end		
-	
+		}
+	end
+
+	if difficulty_index >= 5 then
+		self.enemy_spawn_groups.sergeants = {
+			spawn_cooldown = 15,
+			max_nr_simultaneous_groups = 2,
+			initial_spawn_delay = 60,
+			amount = {
+				1,
+				1
+			},
+			spawn = {
+				{
+					respawn_cooldown = 15,
+					amount_min = 1,
+					amount_max = 4,
+					rank = 1,
+					freq = 1,
+					unit = "gensec_sgt",
+					tactics = self._tactics.FBI_suit
+				}
+			},
+			spawn_point_chk_ref = table.list_to_set({
+				"FBI_Booms",
+				"FBI_defend_a",
+				"FBI_defend_b",
+				"FBI_defend_c",
+				"FBI_defend_d",
+				"FBI_stealth_a",
+				"FBI_stealth_a_boom",
+				"FBI_stealth_b",
+				"FBI_stealth_c",
+				"FBI_swats",
+				"FBI_heavys",
+				"FBI_heavys_boom",
+				"FBI_shields",
+				"FBI_shields_boom",
+				"GS_defend_b",
+				"GS_defend_c",
+				"GS_defend_d",
+				"GS_swats",
+				"GS_Heavys",
+				"GS_heavys_boom",
+				"GS_shields",
+				"GS_shields_boom",
+				"GS_Booms"
+			})
+		}
+	end
+
 	self.enemy_spawn_groups.snowman_boss = {
 		amount = {
 			1,
@@ -23207,4 +23286,5 @@ function GroupAITweakData:_init_task_data(difficulty_index, difficulty)
 		respawn_delay = 120
 	}
 	self.safehouse = deep_clone(self.besiege)	
+end
 end
