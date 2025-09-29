@@ -15418,13 +15418,14 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 				Idstring("units/pd2_mod_nc/characters/ene_gensec_sgt/ene_gensec_sgt")
 			},
 			zombie = {
-				Idstring("units/pd2_mod_nc/characters/ene_gensec_sgt/ene_gensec_sgt")
+				--Idstring("units/pd2_mod_halloween/characters/ene_gensec_sgt/ene_gensec_sgt")
+				Idstring("units/pd2_mod_nc/characters/ene_gensec_sgt/ene_gensec_sgt")	-- temp until i make texture for it
 			},
 			murkywater = {
 				Idstring("units/pd2_mod_nc/characters/ene_gensec_sgt/ene_gensec_sgt")
 			},
 			federales = {
-				Idstring("units/pd2_mod_nc/characters/ene_gensec_sgt/ene_gensec_sgt")
+				Idstring("units/pd2_dlc_bex/characters/ene_policia_sgt/ene_policia_sgt")
 			},
 			nypd = {
 				Idstring("units/pd2_mod_nc/characters/ene_gensec_sgt/ene_gensec_sgt")

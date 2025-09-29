@@ -4423,7 +4423,13 @@ function CharacterTweakData:_init_city_swat_sergeant(presets)
 	self.city_swat_sergeant.can_shoot_while_dodging = true
 	self.city_swat_sergeant.can_slide_on_suppress = true
 	self.city_swat_sergeant.move_speed = presets.move_speed.fast
-	self.city_swat_sergeant.custom_voicework = "swat_pd3"
+	if self:get_ai_group_type() == "federales" then
+		self.city_swat_sergeant.custom_voicework = "mexico_vet"
+	elseif self:get_ai_group_type() == "murkywater" then
+		self.city_swat_sergeant.custom_voicework = "murky_vet"
+	else
+		self.city_swat_sergeant.custom_voicework = "swat_pd3"
+	end
 	self.city_swat_sergeant.melee_weapon = "buzzer_summer"
 	self.city_swat_sergeant.melee_weapon_dmg_multiplier = 1
 	self.city_swat_sergeant.tase_on_melee = true
@@ -19900,6 +19906,7 @@ function CharacterTweakData:character_map()
 				"ene_policia_02",
 				"ene_policia_03",
 				"ene_policia_04",
+				"ene_policia_sgt",
 				"ene_fbi_1",
 				"ene_fbi_2",
 				"ene_fbi_3",
