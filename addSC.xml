@@ -1388,10 +1388,10 @@
 	<effect				path="effects/particles/weapons/vapor_trail_4" force="false"/>
 	<effect				path="effects/particles/weapons/vapor_trail_5" force="false"/>
 	<effect				path="effects/particles/weapons/vapor_trail_sc" force="false"/>
-
+	
 	<!--Remove tracer sparks from hornet GL ammo-->
 	<effect				path="effects/payday2/particles/weapons/shotgun/sho_muzzleflash_hornet" load="false"/>
-	
+
 	<!--Bullet casings effects-->
     <effect				path="_dmc/effects/shell_lmg_down" force="false" load="true" unload="true" reload="true"/>
     <effect				path="_dmc/effects/shell_shak_smol" force="false" load="true" unload="true" reload="true"/>
@@ -1449,7 +1449,7 @@
     <effect				path="_dmc/effects/parts/concussion_streak" force="false" load="true" unload="true" reload="true"/>
     <effect				path="_dmc/effects/heavy_suppressed" force="false" load="true" unload="true" reload="true"/>
     <effect				path="_dmc/effects/heavy_muzzle" force="false" load="true" unload="true" reload="true"/>
-	<effect				path="_dmc/effects/heavy_muzzle_ring" force="false" load="true" unload="true" reload="true"/>
+    <effect				path="_dmc/effects/heavy_muzzle_ring" force="false" load="true" unload="true" reload="true"/>
 
 	<!--Snowball-->
 	<effect				path="effects/payday2/particles/impacts/snowball_impact" load="true"/>
@@ -1595,13 +1595,14 @@
 
 	<material_config	path="units/pd2_dlc_pxp3/weapons/wpn_fps_upg_o_northtac/wpn_fps_upg_o_northtac_scope_cc" load="false"/>
 	<material_config	path="units/pd2_dlc_pxp3/weapons/wpn_fps_upg_o_northtac/wpn_fps_upg_o_northtac_scope_cc_thq" load="false"/>
+	<!--for w/e reason the reticle is severely misaligned when using a parallax enabled reticle-->
+	<!--material_config	path="units/pd2_dlc_pxp3/weapons/wpn_fps_upg_o_northtac/wpn_fps_upg_o_northtac_reddot" load="false"/-->
 
 	<!--Weapon Unit Overrides-->
 	<unit				path="units/pd2_dlc_tawp/weapons/wpn_fps_pis_rsh12/wpn_fps_pis_rsh12" load="false"/>
 	<unit				path="units/pd2_dlc_osa/weapons/wpn_fps_sho_x_judge/wpn_fps_pis_x_judge" load="false"/>
 	<unit				path="units/pd2_dlc_osa/weapons/wpn_fps_pis_x_rage/wpn_fps_pis_x_rage" load="false"/>
-
-	<unit				path="units/mods/weapons/wpn_fps_pis_p38/wpn_fps_pis_p38" force="true" load="false"/>
+	<unit				path="units/pd2_dlc_khp/weapons/wpn_fps_pis_legacy/wpn_fps_pis_legacy" load="true" force="true"/>
 	
 	<object				path="units/pd2_dlc_gage_snp/weapons/wpn_fps_snp_msr_pts/wpn_fps_snp_msr_ns_suppressor" load="false"/>
 

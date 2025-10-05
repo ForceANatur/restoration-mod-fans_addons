@@ -18,6 +18,20 @@ return {
 			{id = 400055, delay = 15, delay_rand = 10,},
 		},
 	},
+	-- Starting up these guys first
+	[100018] = {
+		on_executed = {
+			{id = 400065, delay = 0,},
+			{id = 400066, delay = 0,},
+		},
+	},
+	-- Garage ambush
+	[102022] = {
+		on_executed = {
+			{id = 400061, delay = 0, }, 
+			{id = 400063, delay = 0, }, 
+		},
+	},
 	[100109] = { -- Atrium, always active
 		reinforce = {
 			{
@@ -29,6 +43,39 @@ return {
 				name = "archive_counter",
 				force = 2,
 				position = Vector3 (1300, 4300,-500),
+			},
+		},
+	},
+		[100732] = { -- Activate operations room reinforce when the players are doing objectives
+		reinforce = {
+			{
+				name = "operations_room",
+				force = 3,
+				position = Vector3(-200, 300, 0),
+			},
+		},
+	},
+	[100733] = {
+		reinforce = {
+			{ name = "operations_room" },
+		},
+	},
+	[104460] = { -- Corridors around the operations room
+		reinforce = {
+			{
+				name = "corridor1",
+				force = 2,
+				position = Vector3(1800, -150, -100),
+			},
+			{
+				name = "corridor2",
+				force = 2,
+				position = Vector3(600, 2225, -100)
+			},
+			{
+				name = "corridor3",
+				force = 2,
+				position = Vector3(-1000, 2225, -100)
 			},
 		},
 	},

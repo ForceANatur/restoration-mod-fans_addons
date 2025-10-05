@@ -2452,15 +2452,15 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 		["bm_grenade_poison_gas_grenade_desc_short"] = "Damage: #{stats_positive}#300 over 10s## \nRadius: #{skill_color}#6m## \nDuration (Gas Cloud): #{skill_color}#12s## \nFuse: #{skill_color}#1s after remaining stationary##\nAmmo Box Pickup Chance: #{skill_color}#$pickup## \n- #{skill_color}#100%## chance to stun most enemies in range of the gas\n- #{important_1}#Shields, Bulldozers, Medics, Grenadiers and Captains are immune to its stunning effects##\n- #{important_1}#Enemies cannot be poisoned by the same gas cloud more than once##",
 
 		--Throwing Cards
-		["bm_wpn_prj_ace_desc"] = "Damage: #{skill_color}#$damage##\nAmmo Box Pickup Chance: #{skill_color}#$pickup## \n- #{skill_color}#Can be retrieved## \n\nThrowing cards with added weight and a razor edge. A real killer hand of cards.",
-		--Throwing Stars
-		["bm_wpn_prj_four_desc"] = "Damage (Impact): #{skill_color}#$damage## \nDamage (Poison): #{stats_positive}#120 over 4s##\nAmmo Box Pickup Chance: #{skill_color}#$pickup## \n- #{skill_color}#Can be retrieved##\n- #{skill_color}#50%## chance to stun most enemies every #{skill_color}#0.5s##\n- #{important_1}#Shields, Bulldozers, Grenadiers and Captains are immune to its stunning effects.## \n\nThe throwing star has a long history filled with blood and battle. These poison coated stainless steel stars will pose a lethal threat to anyone in your way.",
+		["bm_wpn_prj_ace_desc"] = "Damage: #{skill_color}#$damage##\nAmmo Box Pickup Chance: #{skill_color}#$pickup## \n- #{skill_color}#Can be retrieved##\n- #{skill_color}#Hits and kills trigger melee skills## \n\nThrowing cards with added weight and a razor edge. A real killer hand of cards.",
+		--Throwing Stars/Shuriken
+		["bm_wpn_prj_four_desc"] = "Damage (Impact): #{skill_color}#$damage## \nDamage (Poison): #{stats_positive}#120 over 4s##\nAmmo Box Pickup Chance: #{skill_color}#$pickup## \n- #{skill_color}#Can be retrieved##\n- #{risk}#Direct## #{skill_color}#hits and kills trigger melee skills##\n- #{skill_color}#50%## chance to stun most enemies every #{skill_color}#0.5s##\n- #{important_1}#Shields, Bulldozers, Grenadiers and Captains are immune to its stunning effects.## \n\nThe throwing star has a long history filled with blood and battle. These poison coated stainless steel stars will pose a lethal threat to anyone in your way.",
 		--Javelin
-		["bm_wpn_prj_jav_desc"] = "Damage: #{skill_color}#$damage##\nAmmo Box Pickup Chance: #{skill_color}#$pickup## \n- #{skill_color}#Can be retrieved## \n\nWith its origins lost in cloudy pre-history, the javelin is a simple weapon. After all, it's a thrown stick with a pointy end that ruins someone's day.",
+		["bm_wpn_prj_jav_desc"] = "Damage: #{skill_color}#$damage##\nAmmo Box Pickup Chance: #{skill_color}#$pickup## \n- #{skill_color}#Can be retrieved##\n- #{skill_color}#Hits and kills trigger melee skills## \n\nWith its origins lost in cloudy pre-history, the javelin is a simple weapon. After all, it's a thrown stick with a pointy end that ruins someone's day.",
 		--Throwing Axe
-		["bm_wpn_prj_hur_desc"] = "Damage: #{skill_color}#$damage##\nAmmo Box Pickup Chance: #{skill_color}#$pickup## \n- #{skill_color}#Can be retrieved## \n\nThey say a sharp axe is never wrong. A thrown sharp axe couldn't be any more right.",
+		["bm_wpn_prj_hur_desc"] = "Damage: #{skill_color}#$damage##\nAmmo Box Pickup Chance: #{skill_color}#$pickup## \n- #{skill_color}#Can be retrieved##\n- #{skill_color}#Hits and kills trigger melee skills## \n\nThey say a sharp axe is never wrong. A thrown sharp axe couldn't be any more right.",
 		--Throwing Knife
-		["bm_wpn_prj_target_desc"] = "Damage: #{skill_color}#$damage##\nAmmo Box Pickup Chance: #{skill_color}#$pickup## \n- #{skill_color}#Can be retrieved## \n\nA solid backup plan and a reliable tactic for a precise and silent kill.",
+		["bm_wpn_prj_target_desc"] = "Damage: #{skill_color}#$damage##\nAmmo Box Pickup Chance: #{skill_color}#$pickup## \n- #{skill_color}#Can be retrieved##\n- #{skill_color}#Hits and kills trigger melee skills## \n\nA solid backup plan and a reliable tactic for a precise and silent kill.",
 
 		--Perk Deck Throwables
 		["bm_grenade_copr_ability"] = "Ampule",
@@ -4985,11 +4985,13 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 			LocalizationManager:add_localized_strings({
 				["bm_w_huntsman"] = "Bubble Daryl",
 				["bm_w_deagle"] = "Big Pistol",
+				["bm_w_ching"] = "This Machine",
+				["bm_galant_sc_desc"] = "#{risk}#\"Well This Machine Kills Commies\"##",
 				["bm_w_m16"] = weapon_names == 2 and "is that a famas" or "is that a clarion",
 				["bm_m16_sc_desc"] = "I'll give you a clip so you can do some damage",
 				["bm_w_x_type54"] = weapon_names == 2 and "The twin colts" or "The twin crosskills",
 				["bm_akmsu_sc_desc"] = "A small rifle useful for taking down #{stat_maxed}#BIG MEN##. Not to be underestimated as this rifle can hold its own in just about any scenario.",
-				["bm_w_kedr_sc_desc"] = "(REFERENCE REMOVED DUE TO THE CREATOR OF THE FORK NOT LIKING THIS ONE ANYMORE DUE TO THE CREATOR DISTANCING HIMSELF FROM IT)",
+				["bm_w_kedr_sc_desc"] = "who the hell put smg components inside a pistol",
 				["bm_w_rc_auto9_desc"] = "Dead or alive; you're coming with me.",
 				["bm_menu_sc_huntsman_desc"] = "The ultimate demon slaying weapon, the pinnacle of shotguns, you think 'Why didn't they call it the Double Barrel?' Because it's better, because it's super!",
 				["bm_super_sc_desc"] = "The ultimate demon slaying weapon, the pinnacle of shotguns, you think 'Why didn't they call it the Double Barrel?' Because it's better, because it's super!",

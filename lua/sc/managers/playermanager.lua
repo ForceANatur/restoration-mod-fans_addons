@@ -231,125 +231,6 @@ function PlayerManager:movement_speed_multiplier(speed_state, bonus_multiplier, 
 	return multiplier
 end
 
-
-function PlayerManager:_check_resmod_sociopath(player_unit, killed_unit, variant, headshot, weapon_id)
-	if not player_unit then
-		return 0
-	end
-	self._buildup_meter = self._buildup_meter or 0 --Glass earthing this; no clue why it's returning nil sometimes given its in the init
-	local damage_ext = player_unit:character_damage()
-	local new_socio_panic = 0
-	local buildup_stats = self:upgrade_value("player", "buildup_meter", 0)
-	local buildup_meter_variant = (variant == "melee" and "melee") or ((variant == "bullet" or variant == "fire_bullet") and "bullet") or nil
-	local direct_variant = variant == "bullet" or variant == "fire_bullet"
-
-	local combo_t_mod = (self:has_category_upgrade("player", "buildup_meter_zack") and self:upgrade_value("player", "buildup_meter_zack", 0).combo_t_mod) or 0
-	local combo_t = self:upgrade_value("player", "buildup_meter", 0).combo_t + combo_t_mod
-
-	local has_swan = self:has_category_upgrade("player", "buildup_meter_swan") 
-
-	local has_aubrey = self:has_category_upgrade("player", "buildup_meter_aubrey")
-	--local aubrey_refresh = has_aubrey and (self._buildup_meter_aubrey_kills and self._buildup_meter_aubrey_kills >= self:upgrade_value("player", "buildup_meter_aubrey", 0).non_melee_kills - 1)
-	local can_refresh = self:has_category_upgrade("player", "buildup_meter_refresh")
-
-	local function enemy_unit_mult()
-		local ene_mult = nil
-		if killed_unit.base and killed_unit:base() and killed_unit:base().has_tag then
-			local check_order = deep_clone(self:upgrade_value("player", "buildup_meter", 0).combo_ene_mult)
-			for i, priority in pairs(check_order) do
-				for tag, v in pairs(priority) do
-					if killed_unit:base():has_tag(tag) then
-						ene_mult = self:upgrade_value("player", "buildup_meter", 0).combo_ene_mult[i][tag]
-						break
-					end
-				end
-				if ene_mult then
-					break
-				end
-			end
-			return ene_mult or 1
-		end
-		return 1
-	end
-
-	local buildup_add_mod = (self:has_category_upgrade("player", "buildup_meter_rick") and self:upgrade_value("player", "buildup_meter_rick", 0).combo_add_mod) or 0
-	if self:has_category_upgrade("player", "buildup_meter_quickening") then
-		local armor = tweak_data.player.damage.ARMOR_INIT + managers.player:body_armor_value("armor")
-		buildup_add_mod = buildup_add_mod + ( math.floor( armor / self:upgrade_value("player", "buildup_meter_quickening", 0).armor_steps ) * self:upgrade_value("player", "buildup_meter_quickening", 0).combo_add_mod )
-	end
-	local buildup_add = math.floor((self:upgrade_value("player", "buildup_meter", 0).combo_add + buildup_add_mod) * enemy_unit_mult())
-
-	local function check_refresh(refresh, aubrey, time)
-		if refresh then
-			if aubrey then
-				if self._buildup_meter and self._buildup_meter <= 0 then
-					self._buildup_meter_t = time
-					managers.hud:start_buff("sociopath", self._buildup_meter_t)
-				else
-					local combo_t_add = self:upgrade_value("player", "buildup_meter_aubrey", 0).combo_t_add
-					local add_t = math.min(combo_t - self._buildup_meter_t, combo_t_add)
-					self._buildup_meter_t = self._buildup_meter_t + add_t
-					managers.hud:change_cooldown("sociopath", add_t)
-				end
-				buildup_add = math.floor((self:upgrade_value("player", "buildup_meter_aubrey", 0).combo_add + buildup_add_mod) * enemy_unit_mult())
-				self._buildup_meter = math.clamp((self._buildup_meter or 0) + buildup_add, 0, self._buildup_meter_max)
-				managers.hud:set_stacks("sociopath", self._buildup_meter)
-			else
-				if self._buildup_meter and self._buildup_meter > 0 then
-					self._buildup_meter_t = time
-					managers.hud:start_buff("sociopath", self._buildup_meter_t)
-				end
-			end
-		end
-	end
-
-	if has_swan then
-		if buildup_meter_variant == "melee" or buildup_meter_variant == "bullet" then
-			if not self._buildup_meter_last_kill or self._buildup_meter_last_kill ~= buildup_meter_variant then
-				buildup_add = math.floor((self:upgrade_value("player", "buildup_meter_swan", 0).combo_add + buildup_add_mod) * enemy_unit_mult())
-				log(tostring( buildup_add ))
-				self._buildup_meter = math.clamp((self._buildup_meter or 0) + buildup_add, 0, self._buildup_meter_max)
-				self._buildup_meter_t = combo_t
-				managers.hud:start_buff("sociopath", self._buildup_meter_t)
-				managers.hud:set_stacks("sociopath", self._buildup_meter)
-			end
-			check_refresh(can_refresh, nil, combo_t)
-			self._buildup_meter_last_kill = buildup_meter_variant
-		end
-	else
-		if variant == "melee" then
-			self._buildup_meter = math.clamp((self._buildup_meter or 0) + buildup_add, 0, self._buildup_meter_max)
-			self._buildup_meter_t = (self._buildup_meter > 0 and combo_t) or 0
-			managers.hud:start_buff("sociopath", self._buildup_meter_t)
-			managers.hud:set_stacks("sociopath", self._buildup_meter)
-		else
-			if has_aubrey and not direct_variant then
-				can_refresh = nil
-			end
-			check_refresh(can_refresh, has_aubrey, combo_t)
-		end
-	end
-	if direct_variant or variant == "melee" then
-		if variant == "melee" then
-			player_unit:movement():add_stamina(player_unit:movement():_max_stamina() * self:upgrade_value("player", "melee_kill_stamina", 0))
-			if self:has_category_upgrade("player", "buildup_meter_hysteria") then
-				local healing_stats = self:upgrade_value("player", "buildup_meter_hysteria", 0)
-				damage_ext:restore_health(math.min(healing_stats.effect_max, math.floor(self._buildup_meter / healing_stats.combo_steps) * healing_stats.effect), true)
-			end
-		end
-		if self:has_category_upgrade("player", "buildup_meter_terrify") then
-			local panic_stats = self:upgrade_value("player", "buildup_meter_terrify", 0)
-			new_socio_panic = (math.min(panic_stats.effect_max, math.floor(self._buildup_meter / panic_stats.combo_steps) * panic_stats.effect )) * ((variant == "melee" and panic_stats.melee_mult) or 1)
-		end
-		if self:has_category_upgrade("player", "buildup_meter_elude") and not self:has_category_upgrade("player", "buildup_meter_mark") then
-			local dodge_stats = self:upgrade_value("player", "buildup_meter_elude", 0)
-			local dodge_on_kill = (damage_ext:get_dodge_points() * math.min(dodge_stats.effect_max, math.floor(self._buildup_meter / dodge_stats.combo_steps) * dodge_stats.effect)) * ((variant == "melee" and dodge_stats.melee_mult) or 1)
-			damage_ext:fill_dodge_meter(dodge_on_kill)
-		end
-	end
-	return new_socio_panic
-end
-
 function PlayerManager:on_killshot(killed_unit, variant, headshot, weapon_id)
 	local player_unit = self:player_unit()
 
@@ -361,7 +242,14 @@ function PlayerManager:on_killshot(killed_unit, variant, headshot, weapon_id)
 		return
 	end
 
-	local weapon_melee = weapon_id and tweak_data.blackmarket and tweak_data.blackmarket.melee_weapons and tweak_data.blackmarket.melee_weapons[weapon_id] and true
+	local twb = tweak_data.blackmarket
+
+	local weapon_melee = weapon_id and twb.melee_weapons and twb.melee_weapons[weapon_id] and true
+
+	local weapon_proj = weapon_id and twb.projectiles and twb.projectiles[weapon_id]
+	if weapon_proj and weapon_proj.count_as_melee and variant == "bullet" then
+		variant = "melee"
+	end
 
 	if killed_unit:brain().surrendered and killed_unit:brain():surrendered() and (variant == "melee" or weapon_melee) then
 		managers.custom_safehouse:award("daily_honorable")
@@ -513,15 +401,17 @@ function PlayerManager:on_killshot(killed_unit, variant, headshot, weapon_id)
 		if self:has_category_upgrade("player", "biker_armor_regen") then
 			damage_ext:tick_biker_armor_regen(self:upgrade_value("player", "biker_armor_regen")[3])
 		end
-		--Boxing Glove Stamina Restore
-		local melee_weapon = tweak_data.blackmarket.melee_weapons[managers.blackmarket:equipped_melee_weapon()]
-		if melee_weapon.special_weapon and melee_weapon.special_weapon == "stamina_restore" then
-			player_unit:movement():add_stamina(player_unit:movement():_max_stamina())
-		end
-		if melee_weapon.special_weapon and melee_weapon.special_weapon == "charger" then
-			local current_state = self:get_current_state()
-			if current_state and current_state._state_data and current_state._state_data._charger_melee_active then
-				player_unit:movement():add_stamina(player_unit:movement():_max_stamina() * 0.1)
+		if weapon_melee then
+			--Boxing Glove Stamina Restore
+			local melee_weapon = tweak_data.blackmarket.melee_weapons[managers.blackmarket:equipped_melee_weapon()]
+			if melee_weapon.special_weapon and melee_weapon.special_weapon == "stamina_restore" then
+				player_unit:movement():add_stamina(player_unit:movement():_max_stamina())
+			end
+			if melee_weapon.special_weapon and melee_weapon.special_weapon == "charger" then
+				local current_state = self:get_current_state()
+				if current_state and current_state._state_data and current_state._state_data._charger_melee_active then
+					player_unit:movement():add_stamina(player_unit:movement():_max_stamina() * 0.1)
+				end
 			end
 		end
 	end
@@ -618,8 +508,136 @@ function PlayerManager:on_killshot(killed_unit, variant, headshot, weapon_id)
 	end
 end
 
+function PlayerManager:_check_resmod_sociopath(player_unit, killed_unit, variant, headshot, weapon_id)
+	if not player_unit then
+		return 0
+	end
+	self._buildup_meter = self._buildup_meter or 0 --Glass earthing this; no clue why it's returning nil sometimes given its in the init
+	local damage_ext = player_unit:character_damage()
+	local new_socio_panic = 0
+	local buildup_stats = self:upgrade_value("player", "buildup_meter", 0)
+	local buildup_meter_variant = (variant == "melee" and "melee") or ((variant == "bullet" or variant == "fire_bullet") and "bullet") or nil
+	local direct_variant = variant == "bullet" or variant == "fire_bullet"
+
+	local combo_t_mod = (self:has_category_upgrade("player", "buildup_meter_zack") and self:upgrade_value("player", "buildup_meter_zack", 0).combo_t_mod) or 0
+	local combo_t = self:upgrade_value("player", "buildup_meter", 0).combo_t + combo_t_mod
+
+	local has_swan = self:has_category_upgrade("player", "buildup_meter_swan") 
+
+	local has_aubrey = self:has_category_upgrade("player", "buildup_meter_aubrey")
+	--local aubrey_refresh = has_aubrey and (self._buildup_meter_aubrey_kills and self._buildup_meter_aubrey_kills >= self:upgrade_value("player", "buildup_meter_aubrey", 0).non_melee_kills - 1)
+	local can_refresh = self:has_category_upgrade("player", "buildup_meter_refresh")
+
+	local function enemy_unit_mult()
+		local ene_mult = nil
+		if killed_unit.base and killed_unit:base() and killed_unit:base().has_tag then
+			local check_order = deep_clone(self:upgrade_value("player", "buildup_meter", 0).combo_ene_mult)
+			for i, priority in pairs(check_order) do
+				for tag, v in pairs(priority) do
+					if killed_unit:base():has_tag(tag) then
+						ene_mult = self:upgrade_value("player", "buildup_meter", 0).combo_ene_mult[i][tag]
+						break
+					end
+				end
+				if ene_mult then
+					break
+				end
+			end
+			return ene_mult or 1
+		end
+		return 1
+	end
+
+	local buildup_add_mod = (self:has_category_upgrade("player", "buildup_meter_rick") and self:upgrade_value("player", "buildup_meter_rick", 0).combo_add_mod) or 0
+	if self:has_category_upgrade("player", "buildup_meter_quickening") then
+		local armor = tweak_data.player.damage.ARMOR_INIT + managers.player:body_armor_value("armor")
+		buildup_add_mod = buildup_add_mod + ( math.floor( armor / self:upgrade_value("player", "buildup_meter_quickening", 0).armor_steps ) * self:upgrade_value("player", "buildup_meter_quickening", 0).combo_add_mod )
+	end
+	local buildup_add = math.floor((self:upgrade_value("player", "buildup_meter", 0).combo_add + buildup_add_mod) * enemy_unit_mult())
+
+	local function check_refresh(refresh, aubrey, time)
+		if refresh then
+			if aubrey then
+				if self._buildup_meter and self._buildup_meter <= 0 then
+					self._buildup_meter_t = time
+					managers.hud:start_buff("sociopath", self._buildup_meter_t)
+				else
+					local combo_t_add = self:upgrade_value("player", "buildup_meter_aubrey", 0).combo_t_add
+					local add_t = math.min(combo_t - self._buildup_meter_t, combo_t_add)
+					self._buildup_meter_t = self._buildup_meter_t + add_t
+					managers.hud:change_cooldown("sociopath", add_t)
+				end
+				buildup_add = math.floor((self:upgrade_value("player", "buildup_meter_aubrey", 0).combo_add + buildup_add_mod) * enemy_unit_mult())
+				self._buildup_meter = math.clamp((self._buildup_meter or 0) + buildup_add, 0, self._buildup_meter_max)
+				managers.hud:set_stacks("sociopath", self._buildup_meter)
+			else
+				if self._buildup_meter and self._buildup_meter > 0 then
+					self._buildup_meter_t = time
+					managers.hud:start_buff("sociopath", self._buildup_meter_t)
+				end
+			end
+		end
+	end
+
+	if has_swan then
+		if buildup_meter_variant == "melee" or buildup_meter_variant == "bullet" then
+			if not self._buildup_meter_last_kill or self._buildup_meter_last_kill ~= buildup_meter_variant then
+				buildup_add = math.floor((self:upgrade_value("player", "buildup_meter_swan", 0).combo_add + buildup_add_mod) * enemy_unit_mult())
+				log(tostring( buildup_add ))
+				self._buildup_meter = math.clamp((self._buildup_meter or 0) + buildup_add, 0, self._buildup_meter_max)
+				self._buildup_meter_t = combo_t
+				managers.hud:start_buff("sociopath", self._buildup_meter_t)
+				managers.hud:set_stacks("sociopath", self._buildup_meter)
+			end
+			check_refresh(can_refresh, nil, combo_t)
+			self._buildup_meter_last_kill = buildup_meter_variant
+		end
+	else
+		if variant == "melee" then
+			self._buildup_meter = math.clamp((self._buildup_meter or 0) + buildup_add, 0, self._buildup_meter_max)
+			self._buildup_meter_t = (self._buildup_meter > 0 and combo_t) or 0
+			managers.hud:start_buff("sociopath", self._buildup_meter_t)
+			managers.hud:set_stacks("sociopath", self._buildup_meter)
+		else
+			if has_aubrey and not direct_variant then
+				can_refresh = nil
+			end
+			check_refresh(can_refresh, has_aubrey, combo_t)
+		end
+	end
+	if direct_variant or variant == "melee" then
+		if variant == "melee" then
+			player_unit:movement():add_stamina(player_unit:movement():_max_stamina() * self:upgrade_value("player", "melee_kill_stamina", 0))
+			if self:has_category_upgrade("player", "buildup_meter_hysteria") then
+				local healing_stats = self:upgrade_value("player", "buildup_meter_hysteria", 0)
+				damage_ext:restore_health(math.min(healing_stats.effect_max, math.floor(self._buildup_meter / healing_stats.combo_steps) * healing_stats.effect), true)
+			end
+		end
+		if self:has_category_upgrade("player", "buildup_meter_terrify") then
+			local panic_stats = self:upgrade_value("player", "buildup_meter_terrify", 0)
+			new_socio_panic = (math.min(panic_stats.effect_max, math.floor(self._buildup_meter / panic_stats.combo_steps) * panic_stats.effect )) * ((variant == "melee" and panic_stats.melee_mult) or 1)
+		end
+		if self:has_category_upgrade("player", "buildup_meter_elude") and not self:has_category_upgrade("player", "buildup_meter_mark") then
+			local dodge_stats = self:upgrade_value("player", "buildup_meter_elude", 0)
+			local dodge_on_kill = (damage_ext:get_dodge_points() * math.min(dodge_stats.effect_max, math.floor(self._buildup_meter / dodge_stats.combo_steps) * dodge_stats.effect)) * ((variant == "melee" and dodge_stats.melee_mult) or 1)
+			damage_ext:fill_dodge_meter(dodge_on_kill)
+		end
+	end
+	return new_socio_panic
+end
+
 function PlayerManager:_check_damage_to_hot(t, unit, damage_info)
 	local player_unit = self:player_unit()
+
+	--Stuff to trigger Infiltrator HP regen for throwables that count as melee
+	--This stuff is here as "_check_damage_to_hot" is basically an "on damage dealt" check and I don't want to modify a currently vanilla function to have this stuff in it
+	local twb = tweak_data.blackmarket
+	local weapon_id = damage_info and damage_info.weapon_unit and damage_info.weapon_unit.base and damage_info.weapon_unit:base()._tweak_projectile_entry
+	local weapon_proj = weapon_id and twb and twb.projectiles and twb.projectiles[weapon_id]
+
+	if weapon_proj and weapon_proj.count_as_melee and damage_info.variant == "bullet" then
+		damage_info.variant = "melee"
+	end
 
 	--Allow healing over time to be applied to select non-grinder perks using dummy heal_over_time upgrade.
 	if not self:has_category_upgrade("player", "damage_to_hot") and not self:has_category_upgrade("player", "heal_over_time") then
@@ -1832,14 +1850,109 @@ Hooks:PostHook(PlayerManager, "sync_tag_team", "sync_tag_team_sound_effect", fun
 	end
 end)
 
--- Make cooldown for picking up bags consistent instead of random
-local drop_carry_original = PlayerManager.drop_carry
+-- Disables Bag Anti Cheat
+-- I will end you
+function PlayerManager:verify_carry(peer, carry_id)
+	return true
+end
+
+function PlayerManager:register_carry(peer, carry_id)
+	return true
+end
+
+-- Carry Stacker stuff inbound
+
+local master_PlayerManager_set_carry = PlayerManager.set_carry
+local master_PlayerManager_drop_carry = PlayerManager.drop_carry
+local master_PlayerManager_can_carry = PlayerManager.can_carry
+
+--[[
+	This function will be called to check whether the player can carry 
+	a bag.
+]]
+function PlayerManager:can_carry(carry_id, logger)
+	logger = logger or BLT_CarryStacker.Log
+	logger("Request to check whether the player can carry " ..
+		tostring(carry_id))
+	if BLT_CarryStacker:GetModState() == BLT_CarryStacker.STATES.DISABLED then
+		return BLT_CarryStacker.DoMasterFunction(false,
+			master_PlayerManager_can_carry, self, carry_id)
+	end
+	logger("Returning the result of BLT_CarryStacker:CanCarry")
+	return BLT_CarryStacker:CanCarry(carry_id, logger)
+end
+
+--[[
+	This function will be called when the player wants to carry a bag.
+]]
 function PlayerManager:drop_carry(...)
+	local logger = BLT_CarryStacker.Log
+	logger("Request to drop a carry")
+	if BLT_CarryStacker:GetModState() == BLT_CarryStacker.STATES.DISABLED then
+		BLT_CarryStacker.DoMasterFunction(false,
+			master_PlayerManager_drop_carry, self, ...)
+		return
+	end
+
+	if #BLT_CarryStacker.stack == 0 then
+        logger("WARNING: Request to drop carry, but the stack is empty")
+        -- If the mod was disabled and the player picked a carry, the 
+        -- mod will not be aware of it. This is, even if #stack == 0, 
+        -- the player could be carrying a bag
+        -- return
+    end
+
+    local cdata = BLT_CarryStacker.stack[#BLT_CarryStacker.stack]
+    if cdata then
+        logger("The carry being dropped is: " .. tostring(cdata.carry_id))
+    else
+        logger("The mod has no data on the carry being dropped")
+    end
+    master_PlayerManager_drop_carry(self, ...)
+	
+	--Makes the Drop cooldown consistent
 	local carry_data = self:get_my_carry_data()
-
-	drop_carry_original(self, ...)
-
+	
 	if carry_data then
 		self._carry_blocked_cooldown_t = Application:time() + 0.5
+	end	
+	
+    logger("The carry has been dropped")
+    -- The Carry has to be removed from the stack after master 
+    -- drop_carry. This is so that the mod's state is updated 
+    -- afterwards. Therefore, the anticheat engine wont detect cheating
+    -- when dropping the carry
+    BLT_CarryStacker:RemoveCarry()
+    -- If there are more carries in the stack, the top-most has to be 
+    -- set using master set_carry so the game registers it for the next 
+    -- drop
+    if #BLT_CarryStacker.stack > 0 then
+        logger("Since there are more items in the stack, " ..
+                "using master set_carry with the current top-most carry")
+        cdata = BLT_CarryStacker.stack[#BLT_CarryStacker.stack]
+        master_PlayerManager_set_carry(self, cdata.carry_id, 
+                cdata.multiplier or 1, cdata.dye_initiated, 
+                cdata.has_dye_pack, cdata.dye_value_multiplier)
+    end
+end
+
+--[[
+	This function will be called after player is done picking up a bag.
+]]
+function PlayerManager:set_carry(...)
+	local logger = BLT_CarryStacker.Log
+	logger("Request to set a new carry")
+	if BLT_CarryStacker:GetModState() == BLT_CarryStacker.STATES.DISABLED then
+		BLT_CarryStacker.DoMasterFunction(false,
+			master_PlayerManager_set_carry, self, ...)
+		return
 	end
+
+	logger("Setting the carry with master set_carry and " ..
+		"adding the item to the stack")
+	master_PlayerManager_set_carry(self, ...)
+	BLT_CarryStacker:AddCarry(self:get_my_carry_data())
+	-- This will be used to prevent the player from picking a new bag
+	-- within the next 0.1 sec
+	PlayerStandard:block_use_item()
 end
