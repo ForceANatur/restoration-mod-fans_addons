@@ -1446,6 +1446,8 @@ function CharacterTweakData:_init_marshal_marksman(presets)
 		self.marshal_marksman.custom_voicework = "marshal_marksman_bex"
 	elseif self:get_ai_group_type() == "russia" then
 		self.marshal_marksman.custom_voicework = "marshal_marksman_ru"
+	elseif self:get_ai_group_type() == "zombie" then
+		self.marshal_marksman.custom_voicework = "marshal_marksman_hvh"
 	else
 		self.marshal_marksman.custom_voicework = "marshal_marksman"
 	end
@@ -1460,6 +1462,8 @@ function CharacterTweakData:_init_marshal_marksman(presets)
 		self.marshal_marksman_scripted.custom_voicework = "marshal_marksman_bex"
 	elseif self:get_ai_group_type() == "russia" then
 		self.marshal_marksman_scripted.custom_voicework = "marshal_marksman_ru"
+	elseif self:get_ai_group_type() == "zombie" then
+		self.marshal_marksman_scripted.custom_voicework = "marshal_marksman_hvh"
 	else
 		self.marshal_marksman_scripted.custom_voicework = "marshal_marksman"
 	end
@@ -2778,7 +2782,7 @@ function CharacterTweakData:_init_tank(presets)
 	--Halloween Bulldozer (Black)
 	self.tank_hw_black = deep_clone(self.tank_black)
 	self.tank_hw_black.weapon = deep_clone(presets.weapon.normal)
-	self.tank_hw_black.custom_voicework = "tdozer"
+	self.tank_hw_black.custom_voicework = "dozer_nypd_hvh"
 	--Dozerish head health, lowered to account for no visor so they're about the same head health
 	self.tank_hw_black.headshot_dmg_mul = 5.5
 	self.tank_hw_black.ignore_headshot = false
@@ -2793,7 +2797,7 @@ function CharacterTweakData:_init_tank(presets)
 	self.tank_hw.weapon = deep_clone(presets.weapon.normal)
 	self.tank_hw.ignore_headshot = false
 	self.tank_hw.melee_anims = nil
-	self.tank_hw.custom_voicework = "tdozer"
+	self.tank_hw.custom_voicework = "dozer_nypd_hvh"
 	table.insert(self._enemy_list, "tank_hw")
 	
 	--Halloween Bulldozer, captain minion variant with LMG (Used only for Winters' Squad on DSPJ)
@@ -2801,6 +2805,7 @@ function CharacterTweakData:_init_tank(presets)
 	self.tank_hw_minion.weapon = deep_clone(presets.weapon.normal)
 	self.tank_hw_minion.ignore_headshot = false
 	self.tank_hw_minion.melee_anims = nil
+	self.tank_hw_minion.custom_voicework = "dozer_nypd_hvh"
 	table.insert(self._enemy_list, "tank_hw_minion")
 	
 	--Benelli (Bravo) Dozer
@@ -3545,6 +3550,20 @@ function CharacterTweakData:_init_spring(presets)
 	self.headless_hatman.captain_type = restoration.captain_types.hvh
 	self.headless_hatman.no_dozer_armor_resistance = true
 	table.insert(self._enemy_list, "headless_hatman")
+
+	-- Sniper Bulldozer Captain
+	self.tank_captain = deep_clone(self.spring)
+	self.tank_captain.HEALTH_INIT = 1500
+	self.tank_captain.headshot_dmg_mul = 4
+	self.tank_captain.can_throw_frag = false
+	self.tank_captain.custom_voicework = nil
+	self.tank_captain.captain_type = restoration.captain_types.dzr_snp
+	self.tank_captain.announce_incomming = "incomming_captain"
+	self.tank_captain.damage.hurt_severity = presets.hurt_severities.elite
+	self.tank_captain.move_speed = presets.move_speed.slow_plus
+	self.tank_captain.rage_move_speed = presets.move_speed.fast
+	table.insert(self.tank_captain.tags, "medic")
+	table.insert(self._enemy_list, "tank_captain")
 end
 
 function CharacterTweakData:_init_summers(presets)	
@@ -18870,6 +18889,10 @@ Hooks:PostHook(CharacterTweakData, "_create_table_structure", "remod_create_tabl
 	--Mateba Model 6
 	table.insert(self.weap_ids, "mateba_ap")
 	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_matever/wpn_npc_matever"))
+
+	--HK G3A3
+	table.insert(self.weap_ids, "g3a3_npc")
+	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_g3a3/wpn_npc_g3a3"))
 end)
 -- EASY (UNUSED) --
 function CharacterTweakData:_set_easy()
@@ -19777,6 +19800,8 @@ function CharacterTweakData:character_map()
 		table.insert(char_map.usm1.list, "ene_atf_field_agent_1")
 	--Christmas
 		table.insert(char_map.cg22.list, "ene_bulldozer_snowman")
+	--HvH
+		table.insert(char_map.hvh.list, "ene_bulldozer_minigun_classic")
 	--vip
 		char_map.vip = {
 			path = "units/pd2_dlc_vip/characters/",
@@ -20137,7 +20162,8 @@ function CharacterTweakData:character_map()
 		char_map.dave = {
 			path = "units/pd2_mod_dave/characters/",
 			list = {
-				"ene_big_dave"
+				"ene_big_dave",
+				"ene_dave_hvh"
 			}
 		}
 
@@ -20161,6 +20187,13 @@ function CharacterTweakData:character_map()
 				"ene_ntl_swat_2",
 				"ene_ntl_swat_3",
 				"ene_ntl_medic"
+			}
+		}
+
+		char_map.caps = {
+			path = "units/pd2_mod_caps/characters/",
+			list = {
+				"ene_bulldozer_captain"
 			}
 		}
 
@@ -20222,7 +20255,10 @@ function CharacterTweakData:character_map()
 				"ene_titan_sniper_scripted",
 				"ene_titan_taser",
 				"ene_veteran_cop_1",
-				"ene_phalanx_1_assault"
+				"ene_phalanx_1_assault",
+				"ene_gensec_sgt",
+				"ene_heavymedic_1",
+				"ene_marshal_marksman_1"
 			}
 		}
 		

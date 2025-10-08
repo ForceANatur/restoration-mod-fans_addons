@@ -265,6 +265,8 @@ logic_variants.atf_marksman = clone(security_variant)
 logic_variants.atf_marksman.attack = MarshalLogicAttack
 logic_variants.medic_deathvox = security_variant
 logic_variants.city_swat_sergeant = security_variant
+logic_variants.tank_captain = clone(security_variant)
+logic_variants.tank_captain.attack = TankCopLogicAttack
 
 logic_variants.heavy_swat_sniper = clone(security_variant)
 logic_variants.heavy_swat_sniper.attack = MarshalLogicAttack

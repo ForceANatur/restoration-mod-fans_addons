@@ -244,7 +244,7 @@ Hooks:PostHook(CopBase, "post_init", "postinithooksex", function(self)
 
 	if self._tweak_table == "spooc" then
 		self._unit:damage():run_sequence_simple("turn_on_spook_lights")
-	elseif self._tweak_table == "phalanx_vip" or self._tweak_table == "spring" or self._tweak_table == "summers" or self._tweak_table == "headless_hatman" or self._tweak_table == "autumn" or self._tweak_table == "heavygunner" then
+	elseif self._tweak_table == "phalanx_vip" or self._tweak_table == "spring" or self._tweak_table == "summers" or self._tweak_table == "headless_hatman" or self._tweak_table == "autumn" or self._tweak_table == "heavygunner" or self._tweak_table == "tank_captain" then
 		GroupAIStateBesiege:set_assault_endless(true)
 		managers.hud:set_buff_enabled("vip", true)		
 		
@@ -1033,6 +1033,7 @@ local fbi = {
 local gensec = {
 	rifle_heavy = {
 		"g36",
+		"g3a3_npc",
 		"m249"
 	},
 	shotgun = {
@@ -1055,6 +1056,7 @@ local zeal = {
 		"m4",
 		"g36",
 		"ump",
+		"g3a3_npc",
 		"m249"
 	},
 	shotgun_heavy = {
@@ -1095,6 +1097,8 @@ local murkywater = {
 		"scar_murky",
 		"ump",
 		"shepheard",
+		"g3a3_npc",
+		"m249",
 		"m249",
 		"m249",
 		"m249",
@@ -1119,6 +1123,7 @@ local federales = {
 	rifle_heavy = {
 		"m4",
 		"ump",
+		"g3a3_npc",
 		"m249"
 	},
 	shotgun = {
@@ -1139,7 +1144,7 @@ local dave = {
 		"m4",
 		"g36",
 		"m249",
-	--	"scar_murky",
+		"g3a3_npc",
 	--	"m1911_npc",
 	--	"deagle",
 	--	"lmg_titan",
@@ -1154,6 +1159,12 @@ local dave = {
 		"ksg"
 	--	"mini", -- funny, but i think it's too goofy
 	--	"railgun_npc"
+	}
+}
+local bravo_heavy = {
+	rifle_heavy = {
+		"bravo_rifle",
+		"g3a3_npc"
 	}
 }
 local weapon_mapping = {
@@ -1245,7 +1256,10 @@ local weapon_mapping = {
 	[("units/pd2_dlc_bex/characters/ene_swat_heavy_policia_federale_r870/ene_swat_heavy_policia_federale_r870"):key()] = federales.shotgun,
 	[("units/pd2_dlc_bex/characters/ene_swat_heavy_policia_federale_fbi_r870/ene_swat_heavy_policia_federale_fbi_r870"):key()] = federales.shotgun,
 -- Dave's guns
-	[("units/pd2_mod_dave/characters/ene_big_dave/ene_big_dave"):key{}] = dave.all_the_guns
+	[("units/pd2_mod_dave/characters/ene_big_dave/ene_big_dave"):key{}] = dave.all_the_guns,
+	[("units/pd2_mod_dave/characters/ene_dave_hvh/ene_dave_hvh"):key{}] = dave.all_the_guns,
+-- Bravo Heavy
+	[("units/pd2_mod_ng/characters/ene_ntl_heavyswat/ene_ntl_heavyswat"):key{}] = bravo_heavy.rifle_heavy
 }
 
 Hooks:PreHook(CopBase, "post_init", "MIX_post_init", function(self)

@@ -2245,7 +2245,8 @@ function MutatorEnemyReplacer:_get_unit_group_sniper(difficulty_index)
 						Idstring("units/pd2_mod_halloween/characters/ene_titan_sniper/ene_titan_sniper"),
 						Idstring("units/pd2_mod_bravo/characters/ene_bravo_dmr/ene_bravo_dmr"),
 						Idstring("units/pd2_mod_halloween/characters/ene_sniper_1/ene_sniper_1"),
-						Idstring("units/pd2_mod_halloween/characters/ene_sniper_2/ene_sniper_2")
+						Idstring("units/pd2_mod_halloween/characters/ene_sniper_2/ene_sniper_2"),
+						Idstring("units/pd2_mod_halloween/characters/ene_marshal_marksman_1/ene_marshal_marksman_1")
 					},
 					murkywater = {
 						Idstring("units/pd2_dlc_bph/characters/ene_murkywater_sniper/ene_murkywater_sniper"),
@@ -2329,7 +2330,8 @@ function MutatorEnemyReplacer:_get_unit_group_sniper(difficulty_index)
 						Idstring("units/pd2_dlc_hvh/characters/ene_sniper_hvh_2/ene_sniper_hvh_2"),
 						Idstring("units/pd2_mod_halloween/characters/ene_titan_sniper/ene_titan_sniper"),
 						Idstring("units/pd2_mod_halloween/characters/ene_sniper_2/ene_sniper_2"),
-						Idstring("units/pd2_mod_halloween/characters/ene_sniper_3/ene_sniper_3")
+						Idstring("units/pd2_mod_halloween/characters/ene_sniper_3/ene_sniper_3"),
+						Idstring("units/pd2_mod_halloween/characters/ene_marshal_marksman_1/ene_marshal_marksman_1")
 					},
 					murkywater = {
 						Idstring("units/pd2_dlc_bph/characters/ene_murkywater_sniper/ene_murkywater_sniper"),
@@ -2403,7 +2405,8 @@ function MutatorEnemyReplacer:_get_unit_group_sniper(difficulty_index)
 					zombie = {
 						Idstring("units/pd2_dlc_hvh/characters/ene_sniper_hvh_2/ene_sniper_hvh_2"),
 						Idstring("units/pd2_mod_halloween/characters/ene_titan_sniper/ene_titan_sniper"),
-						Idstring("units/pd2_mod_halloween/characters/ene_sniper_3/ene_sniper_3")
+						Idstring("units/pd2_mod_halloween/characters/ene_sniper_3/ene_sniper_3"),
+						Idstring("units/pd2_mod_halloween/characters/ene_marshal_marksman_1/ene_marshal_marksman_1")
 					},
 					murkywater = {
 						Idstring("units/pd2_dlc_bph/characters/ene_murkywater_sniper/ene_murkywater_sniper"),
@@ -2478,7 +2481,8 @@ function MutatorEnemyReplacer:_get_unit_group_sniper(difficulty_index)
 					zombie = {
 						Idstring("units/pd2_dlc_hvh/characters/ene_sniper_hvh_2/ene_sniper_hvh_2"),
 						Idstring("units/pd2_mod_halloween/characters/ene_titan_sniper/ene_titan_sniper"),
-						Idstring("units/pd2_mod_halloween/characters/ene_zeal_sniper/ene_zeal_sniper")
+						Idstring("units/pd2_mod_halloween/characters/ene_zeal_sniper/ene_zeal_sniper"),
+						Idstring("units/pd2_mod_halloween/characters/ene_marshal_marksman_1/ene_marshal_marksman_1")
 					},
 					murkywater = {
 						Idstring("units/pd2_dlc_bph/characters/ene_murkywater_sniper/ene_murkywater_sniper"),

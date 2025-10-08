@@ -1199,6 +1199,15 @@ local crew_wep_preset = {
 		--AK102
 		self.ak102_npc = deep_clone(self.amcar_npc)
 		self.ak102_npc.sounds.prefix = "ak74_npc"	
+
+		--HK G3A3
+		self.gewehr3_npc = deep_clone(self.m4_npc)
+		self.gewehr3_npc.sounds.prefix = "g3_npc"
+		self.gewehr3_npc.DAMAGE = 3.2
+		self.gewehr3_npc.CLIP_AMMO_MAX = 15
+		self.gewehr3_npc.suppression = 1.3
+		self.gewehr3_npc.auto.fire_rate = 0.1
+		self.gewehr3_npc.usage = "is_lmg"
 	end
 	
 	function WeaponTweakData:_init_data_m4_yellow_npc()
