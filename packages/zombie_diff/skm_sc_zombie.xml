@@ -862,4 +862,50 @@
 	<material_config	path="units/pd2_dlc_hvh/characters/ene_bulldozer_minigun_classic/ene_bulldozer_minigun_classic" force="true" />
 	<material_config	path="units/pd2_dlc_hvh/characters/ene_bulldozer_minigun_classic/ene_bulldozer_minigun_classic_contour" force="true" />
 	<texture			path="units/pd2_dlc_hvh/characters/ene_bulldozer_minigun_classic/ene_bulldozer_minigun_df"/>
+
+	<!-- Zombie Medic Bulldozer Parts -->
+	<model path="units/pd2_dlc_hvh/characters/ene_acc_bulldozer_medic_throat/ene_acc_bulldozer_medic_throat"  force="false"/>
+	<model path="units/pd2_dlc_hvh/characters/ene_acc_bulldozer_medic_stomache/ene_acc_bulldozer_medic_stomache"  force="false"/>
+	<model path="units/pd2_dlc_hvh/characters/ene_acc_bulldozer_medic_neck/ene_acc_bulldozer_medic_neck"  force="false"/>
+	<model path="units/pd2_dlc_hvh/characters/ene_acc_bulldozer_medic_helmet_plate/ene_acc_bulldozer_medic_helmet_plate"  force="false"/>
+	<model path="units/pd2_dlc_hvh/characters/ene_acc_bulldozer_medic_chest/ene_acc_bulldozer_medic_chest"  force="false"/>
+	<model path="units/pd2_dlc_hvh/characters/ene_acc_bulldozer_medic_back/ene_acc_bulldozer_medic_back"  force="false"/>
+
+	<material_config path="units/pd2_dlc_hvh/characters/ene_acc_bulldozer_medic_throat/ene_acc_bulldozer_medic_throat" force="false"/>
+	<material_config path="units/pd2_dlc_hvh/characters/ene_acc_bulldozer_medic_stomache/ene_acc_bulldozer_medic_stomache" force="false"/>
+	<material_config path="units/pd2_dlc_hvh/characters/ene_acc_bulldozer_medic_neck/ene_acc_bulldozer_medic_neck" force="false"/>
+	<material_config path="units/pd2_dlc_hvh/characters/ene_acc_bulldozer_medic_helmet_plate/ene_acc_bulldozer_medic_helmet_plate" force="false"/>
+	<material_config path="units/pd2_dlc_hvh/characters/ene_acc_bulldozer_medic_chest/ene_acc_bulldozer_medic_chest" force="false"/>
+	<material_config path="units/pd2_dlc_hvh/characters/ene_acc_bulldozer_medic_back/ene_acc_bulldozer_medic_back" force="false"/>
+
+	<object path="units/pd2_dlc_hvh/characters/ene_acc_bulldozer_medic_throat/ene_acc_bulldozer_medic_throat" force="false"/>
+	<object path="units/pd2_dlc_hvh/characters/ene_acc_bulldozer_medic_stomache/ene_acc_bulldozer_medic_stomache" force="false"/>
+	<object path="units/pd2_dlc_hvh/characters/ene_acc_bulldozer_medic_neck/ene_acc_bulldozer_medic_neck" force="false"/>
+	<object path="units/pd2_dlc_hvh/characters/ene_acc_bulldozer_medic_helmet_plate/ene_acc_bulldozer_medic_helmet_plate" force="false"/>
+	<object path="units/pd2_dlc_hvh/characters/ene_acc_bulldozer_medic_chest/ene_acc_bulldozer_medic_chest" force="false"/>
+	<object path="units/pd2_dlc_hvh/characters/ene_acc_bulldozer_medic_back/ene_acc_bulldozer_medic_back" force="false"/>
+
+	<cooked_physics path="units/pd2_dlc_hvh/characters/ene_acc_bulldozer_medic_throat/ene_acc_bulldozer_medic_throat" force="false"/>
+	<cooked_physics path="units/pd2_dlc_hvh/characters/ene_acc_bulldozer_medic_stomache/ene_acc_bulldozer_medic_stomache" force="false"/>
+	<cooked_physics path="units/pd2_dlc_hvh/characters/ene_acc_bulldozer_medic_neck/ene_acc_bulldozer_medic_neck" force="false"/>
+	<cooked_physics path="units/pd2_dlc_hvh/characters/ene_acc_bulldozer_medic_helmet_plate/ene_acc_bulldozer_medic_helmet_plate" force="false"/>
+	<cooked_physics path="units/pd2_dlc_hvh/characters/ene_acc_bulldozer_medic_chest/ene_acc_bulldozer_medic_chest" force="false"/>
+	<cooked_physics path="units/pd2_dlc_hvh/characters/ene_acc_bulldozer_medic_back/ene_acc_bulldozer_medic_back" force="false"/>
+
+	<unit path="units/pd2_dlc_hvh/characters/ene_acc_bulldozer_medic_throat/ene_acc_bulldozer_medic_throat" force="false" load="true"/>
+	<unit path="units/pd2_dlc_hvh/characters/ene_acc_bulldozer_medic_stomache/ene_acc_bulldozer_medic_stomache" force="false" load="true"/>
+	<unit path="units/pd2_dlc_hvh/characters/ene_acc_bulldozer_medic_neck/ene_acc_bulldozer_medic_neck" force="false" load="true"/>
+	<unit path="units/pd2_dlc_hvh/characters/ene_acc_bulldozer_medic_helmet_plate/ene_acc_bulldozer_medic_helmet_plate" force="false" load="true"/>
+	<unit path="units/pd2_dlc_hvh/characters/ene_acc_bulldozer_medic_chest/ene_acc_bulldozer_medic_chest" force="false" load="true"/>
+	<unit path="units/pd2_dlc_hvh/characters/ene_acc_bulldozer_medic_back/ene_acc_bulldozer_medic_back" force="false" load="true"/>
+
+	<!-- Zombie Medic Bulldozer -->
+	<texture			path="units/pd2_dlc_hvh/characters/ene_bulldozer_medic/ene_bulldozer_medic_df"/>
+	<material_config	path="units/pd2_dlc_hvh/characters/ene_bulldozer_medic/ene_bulldozer_medic" force="false"/>
+	<material_config	path="units/pd2_dlc_hvh/characters/ene_bulldozer_medic/ene_bulldozer_medic_contour" force="false"/>
+	<model				path="units/pd2_dlc_hvh/characters/ene_bulldozer_medic/ene_bulldozer_medic" force="false"/>
+	<unit				path="units/pd2_dlc_hvh/characters/ene_bulldozer_medic/ene_bulldozer_medic" force="false" load="true"/>
+	<unit				path="units/pd2_dlc_hvh/characters/ene_bulldozer_medic/ene_bulldozer_medic_husk" force="false" load="true"/>
+	<object				path="units/pd2_dlc_hvh/characters/ene_bulldozer_medic/ene_bulldozer_medic" force="false"/>
+	<sequence_manager	path="units/pd2_dlc_hvh/characters/ene_bulldozer_medic/ene_bulldozer_medic" force="false"/>
 </table>

@@ -19802,6 +19802,7 @@ function CharacterTweakData:character_map()
 		table.insert(char_map.cg22.list, "ene_bulldozer_snowman")
 	--HvH
 		table.insert(char_map.hvh.list, "ene_bulldozer_minigun_classic")
+		table.insert(char_map.hvh.list, "ene_bulldozer_medic")
 	--vip
 		char_map.vip = {
 			path = "units/pd2_dlc_vip/characters/",
