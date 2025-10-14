@@ -426,6 +426,28 @@
 	<texture			path="units/pd2_mod_reapers/characters/shared_textures/k63_nm" force="false"/>
 	<texture			path="units/pd2_mod_reapers/characters/shared_textures/heads_dozer_il" force="false"/>
 
+	<!-- reaper silverman -->
+	<unit				path="units/pd2_mod_reapers/characters/ene_subject_enforcer/ene_subject_enforcer" load="true"/>
+	<unit				path="units/pd2_mod_reapers/characters/ene_subject_enforcer/ene_subject_enforcer_husk" load="true"/>
+	<model				path="units/pd2_mod_reapers/characters/ene_subject_enforcer/ene_subject_enforcer" />
+	<object				path="units/pd2_mod_reapers/characters/ene_subject_enforcer/ene_subject_enforcer"/>
+	<sequence_manager	path="units/pd2_mod_reapers/characters/ene_subject_enforcer/ene_subject_enforcer"/>
+	<material_config	path="units/pd2_mod_reapers/characters/ene_subject_enforcer/ene_subject_enforcer"/>
+	<material_config	path="units/pd2_mod_reapers/characters/ene_subject_enforcer/ene_subject_enforcer_contour"/>
+
+	<df_nm				path="units/pd2_mod_reapers/characters/ene_subject_enforcer/ene_subject_enforcer"/>
+	<texture			path="units/pd2_mod_reapers/characters/ene_subject_enforcer/coat_op"/>
+
+	<unit_obj			path="units/pd2_mod_reapers/characters/ene_subject_enforcer/debris/ene_subject_enforcer_helmet_debris" load="false" force="false"/>
+	
+	<unit_obj			path="units/pd2_mod_reapers/characters/ene_subject_enforcer/debris/ene_subject_enforcer_arm_debris" load="false" force="false"/>
+	
+	<unit_obj_seq		path="units/pd2_mod_reapers/characters/ene_subject_enforcer/debris/ene_subject_enforcer_head_debris" load="false" force="false"/>
+	
+	<add from_db="true" path="effects/payday2/environment/parts/thermal_fire" type="effect">
+		<effect load="true" path="effects/payday2/environment/parts/thermal_fire" unload="true"/>
+	</add>
+
     <!--Titan Sniper-->	
 	<unit				path="units/pd2_mod_reapers/characters/ene_titan_sniper/ene_titan_sniper" force="false" load="true"/>
 	<unit				path="units/pd2_mod_reapers/characters/ene_titan_sniper/ene_titan_sniper_husk" force="false" load="true"/>

@@ -637,5 +637,38 @@
 	<texture			path="units/pd2_mod_bravo/characters/shared_textures/heads_atlas_df"/>
 	<texture			path="units/pd2_mod_bravo/characters/shared_textures/heads_atlas_nm"/>
 	<texture			path="units/pd2_mod_sharks/characters/shared_textures/murky_grenadier_helm_df" />
-	<!-- bravoss squad end-->	
+	<!-- bravoss squad end-->
+
+	<!--Murkywater Enforcer-->
+	<!--The model is from Crackdown-->
+	<cooked_physics		path="units/pd2_dlc_bph/characters/ene_acc_murky_helmet/ene_acc_murky_helmet" force="false"/>
+	<material_config	path="units/pd2_dlc_bph/characters/ene_acc_murky_helmet/ene_acc_murky_helmet" force="false"/>
+	<model				path="units/pd2_dlc_bph/characters/ene_acc_murky_helmet/ene_acc_murky_helmet" force="false"/>
+	<object				path="units/pd2_dlc_bph/characters/ene_acc_murky_helmet/ene_acc_murky_helmet" force="false"/>
+	<unit				path="units/pd2_dlc_bph/characters/ene_acc_murky_helmet/ene_acc_murky_helmet" force="false" load="true"/>
+
+	<object				path="units/pd2_dlc_bph/characters/ene_murky_heavyg/ene_murky_heavyg" />
+	<cooked_physics		path="units/pd2_dlc_bph/characters/ene_murky_heavyg/ene_murky_heavyg" />
+	<model				path="units/pd2_dlc_bph/characters/ene_murky_heavyg/ene_murky_heavyg" />
+	<unit				path="units/pd2_dlc_bph/characters/ene_murky_heavyg/ene_murky_heavyg"  load="true"/>
+	<material_config	path="units/pd2_dlc_bph/characters/ene_murky_heavyg/ene_murky_heavyg" />
+	<material_config	path="units/pd2_dlc_bph/characters/ene_murky_heavyg/ene_murky_heavyg_contour" />
+	<unit				path="units/pd2_dlc_bph/characters/ene_murky_heavyg/ene_murky_heavyg_husk"  load="true"/>
+
+	<texture			path="units/pd2_dlc_bph/characters/ene_murky_heavyg/fbi_heads_atlas_df"/>
+	<texture			path="units/pd2_dlc_bph/characters/ene_murky_heavyg/fbi_helmets_atlas_df"/>
+	<texture			path="units/pd2_dlc_bph/characters/ene_murky_heavyg/spook_heavy_df" />
+
+	<!--Murkywater Sergeants-->
+	<!--The model is from Hyper Heisting-->
+	<object				path="units/pd2_dlc_bph/characters/ene_murky_sgt/ene_murky_sgt" />
+	<cooked_physics		path="units/pd2_dlc_bph/characters/ene_murky_sgt/ene_murky_sgt" />
+	<model				path="units/pd2_dlc_bph/characters/ene_murky_sgt/ene_murky_sgt" />
+	<unit				path="units/pd2_dlc_bph/characters/ene_murky_sgt/ene_murky_sgt"  load="true"/>
+	<material_config	path="units/pd2_dlc_bph/characters/ene_murky_sgt/ene_murky_sgt" />
+	<material_config	path="units/pd2_dlc_bph/characters/ene_murky_sgt/ene_murky_sgt_contour" />
+	<unit				path="units/pd2_dlc_bph/characters/ene_murky_sgt/ene_murky_sgt_husk"  load="true"/>
+
+	<texture			path="units/pd2_dlc_bph/characters/ene_murky_sgt/heads_atlas_df"/>
+	<texture			path="units/pd2_dlc_bph/characters/ene_murky_sgt/murky_light_df"/>
 </table>

@@ -5072,7 +5072,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 		["loading_captains_res_11"] = "Captain Winters' shield cannot be pierced but it will break after soaking up enough damage; like Titan Shields, beware of his second phase.",
 		["loading_captains_res_12"] = "Captain Winters will wander the map, healing and overhealing nearby enemies.",
 		["loading_captains_res_13"] = "Captain Winters' shield has flashbang panels like those used by Titan Shields; just keep in mind his flashbang panels don't break after being shot.",
-		["loading_captains_res_14"] = "HeavyGunner is a variant of Spring who moves faster in exgange for not dealing knockback and losing the ability to throw grenades.",
+		["loading_captains_res_14"] = "HeavyGunner is a variant of Spring who moves faster in exchange for not dealing knockback and losing the ability to throw grenades.",
 		--Stealth Hints
 		["loading_stealth_res_title"] = "Restoration Stealth Tips",
 		["loading_stealth_res_1"] = "The security Command Post will send guards to investigate malfunctioning cameras, allowing it to be used as a lure.",

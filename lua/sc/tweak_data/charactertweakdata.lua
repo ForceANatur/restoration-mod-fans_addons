@@ -1571,7 +1571,23 @@ function CharacterTweakData:_init_gangster(presets)
 	self.enforcer_assault.access = "swat"
 	self.enforcer_assault.speech_prefix_p1 = self._prefix_data_p1.cloaker()
 	self.enforcer_assault.speech_prefix_count = nil
-	table.insert(self._enemy_list, "enforcer_assault")	
+	table.insert(self._enemy_list, "enforcer_assault")
+
+	self.enforcer_swat = deep_clone(self.enforcer_assault)
+	self.enforcer_swat.HEALTH_INIT = 200
+	self.enforcer_swat.headshot_dmg_mul = 2.345
+	self.enforcer_swat.move_speed = presets.move_speed.normal
+	self.enforcer_swat.speech_prefix_p1 = nil
+	if self:get_ai_group_type() == "federales" then
+		self.enforcer_swat.custom_voicework = nil
+	elseif self:get_ai_group_type() == "zombie" then
+		self.enforcer_swat.custom_voicework = "heavygunner_hvh"
+	elseif self:get_ai_group_type() == "murkywater" then
+		self.enforcer_swat.custom_voicework = "murky_heavygunner"
+	else
+		self.enforcer_swat.custom_voicework = "heavygunner"
+	end
+	table.insert(self._enemy_list, "enforcer_swat")
 end
 
 function CharacterTweakData:_init_biker(presets)
@@ -4410,6 +4426,7 @@ function CharacterTweakData:_init_weekend_vanilla_snp(presets)
 	self.weekend_vanilla_snp.HEALTH_INIT = 19
 	self.weekend_vanilla_snp.headshot_dmg_mul = 2
 	self.weekend_vanilla_snp.custom_voicework = "marshal_marksman"
+	self.weekend_vanilla_snp.die_sound_event_2 = nil
 	table.insert(self._enemy_list, "weekend_vanilla_snp")
 end
 
@@ -18473,14 +18490,14 @@ function CharacterTweakData:_presets(tweak_data)
 	}
 	-- somehow even lower than special
 	presets.surrender.bravo_hard = {
-		base_chance = 0.25,
+		base_chance = 0.2,
 		significant_chance = 0.3,
 		violence_timeout = 1.5,
 		reasons = {
 			health = {
 				[1] = 0.2,
-				[0.75] = 0.4,
-				[0.5] = 0.6,
+				[0.75] = 0.3,
+				[0.5] = 0.4,
 			},
 			weapon_down = 0.5,
 			pants_down = 1,
@@ -19803,6 +19820,12 @@ function CharacterTweakData:character_map()
 	--HvH
 		table.insert(char_map.hvh.list, "ene_bulldozer_minigun_classic")
 		table.insert(char_map.hvh.list, "ene_bulldozer_medic")
+		table.insert(char_map.hvh.list, "ene_zeal_swat")
+		table.insert(char_map.hvh.list, "ene_zeal_swat_heavy")
+		table.insert(char_map.hvh.list, "ene_zeal_swat_heavy_2")
+	--bph
+		table.insert(char_map.bph.list, "ene_murky_heavyg")
+		table.insert(char_map.bph.list, "ene_murky_sgt")
 	--vip
 		char_map.vip = {
 			path = "units/pd2_dlc_vip/characters/",
@@ -19842,6 +19865,7 @@ function CharacterTweakData:character_map()
 				"ene_zeal_cloaker",
 				"ene_zeal_cloaker_sc",
 				"ene_zeal_swat",
+				"ene_zeal_swat_2",
 				"ene_zeal_city_1",
 				"ene_zeal_city_2",
 				"ene_zeal_city_3",
@@ -20172,6 +20196,7 @@ function CharacterTweakData:character_map()
 			path = "units/pd2_mod_nc/characters/",
 			list = {
 				"ene_heavymedic_1",
+				"ene_police_heavygunner",
 				"ene_gensec_heavygunner",
 				"ene_gensec_sgt"
 			}
@@ -20181,6 +20206,19 @@ function CharacterTweakData:character_map()
 			path = "units/pd2_mod_ng/characters/",
 			list = {
 				"ene_ntl_benelli",
+				"ene_ntl_groundsniper",
+				"ene_ntl_heavyshotgun",
+				"ene_ntl_heavyswat",
+				"ene_ntl_swat_1",
+				"ene_ntl_swat_2",
+				"ene_ntl_swat_3",
+				"ene_ntl_medic"
+			}
+		}
+
+		char_map.ngvh = {
+			path = "units/pd2_mod_ngvh/characters/",
+			list = {
 				"ene_ntl_groundsniper",
 				"ene_ntl_heavyshotgun",
 				"ene_ntl_heavyswat",
@@ -20259,7 +20297,8 @@ function CharacterTweakData:character_map()
 				"ene_phalanx_1_assault",
 				"ene_gensec_sgt",
 				"ene_heavymedic_1",
-				"ene_marshal_marksman_1"
+				"ene_marshal_marksman_1",
+				"ene_police_heavygunner"
 			}
 		}
 		

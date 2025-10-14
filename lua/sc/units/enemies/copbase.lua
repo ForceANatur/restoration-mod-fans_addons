@@ -768,6 +768,8 @@ function CopBase:default_weapon_name(...)
 			[Idstring("units/pd2_dlc_hvh/characters/ene_bulldozer_hvh_1/ene_bulldozer_hvh_1"):key()] = {"m14_sniper_npc"},
 			[Idstring("units/pd2_dlc_hvh/characters/ene_bulldozer_hvh_2/ene_bulldozer_hvh_2"):key()] = {"m14_sniper_npc"},
 			[Idstring("units/pd2_dlc_hvh/characters/ene_bulldozer_hvh_3/ene_bulldozer_hvh_3"):key()] = {"m14_sniper_npc"},
+			[Idstring("units/pd2_dlc_hvh/characters/ene_bulldozer_minigun_classic/ene_bulldozer_minigun_classic"):key()] = {"m14_sniper_npc"},
+			[Idstring("units/pd2_dlc_hvh/characters/ene_bulldozer_medic/ene_bulldozer_medic"):key()] = {"m14_sniper_npc"},
 			-- BPH
 			[Idstring("units/pd2_dlc_bph/characters/ene_murkywater_bulldozer_2/ene_murkywater_bulldozer_2"):key()] = {"m14_sniper_npc"},
 			[Idstring("units/pd2_dlc_bph/characters/ene_murkywater_bulldozer_3/ene_murkywater_bulldozer_3"):key()] = {"m14_sniper_npc"},
@@ -1229,6 +1231,10 @@ local weapon_mapping = {
 	[("units/pd2_dlc_hvh/characters/ene_fbi_swat_hvh_2/ene_fbi_swat_hvh_2"):key()] = fbi.shotgun,
 	[("units/pd2_dlc_hvh/characters/ene_fbi_heavy_hvh_r870/ene_fbi_heavy_hvh_r870"):key()] = fbi.shotgun,
 	[("units/pd2_dlc_hvh/characters/ene_medic_hvh_r870/ene_medic_hvh_r870"):key()] = fbi.shotgun_medic,
+	[("units/pd2_dlc_gitgud/characters/ene_zeal_swat/ene_zeal_swat"):key()] = zeal.rifle_light,
+	[("units/pd2_dlc_gitgud/characters/ene_zeal_swat_2/ene_zeal_swat_2"):key()] = zeal.shotgun_heavy,
+	[("units/pd2_dlc_hvh/characters/ene_zeal_swat_heavy/ene_zeal_swat_heavy"):key()] = zeal.rifle_heavy,
+	[("units/pd2_dlc_hvh/characters/ene_zeal_swat_heavy_2/ene_zeal_swat_heavy_2"):key()] = zeal.shotgun_heavy,
 -- Murkywater
 	[("units/pd2_dlc_bph/characters/ene_murkywater_light/ene_murkywater_light"):key()] = murkywater.rifle_light,
 	[("units/pd2_dlc_bph/characters/ene_murkywater_heavy/ene_murkywater_heavy"):key()] = murkywater.rifle_light,
@@ -1259,7 +1265,8 @@ local weapon_mapping = {
 	[("units/pd2_mod_dave/characters/ene_big_dave/ene_big_dave"):key{}] = dave.all_the_guns,
 	[("units/pd2_mod_dave/characters/ene_dave_hvh/ene_dave_hvh"):key{}] = dave.all_the_guns,
 -- Bravo Heavy
-	[("units/pd2_mod_ng/characters/ene_ntl_heavyswat/ene_ntl_heavyswat"):key{}] = bravo_heavy.rifle_heavy
+	[("units/pd2_mod_ng/characters/ene_ntl_heavyswat/ene_ntl_heavyswat"):key{}] = bravo_heavy.rifle_heavy,
+	[("units/pd2_mod_ngvh/characters/ene_ntl_heavyswat/ene_ntl_heavyswat"):key{}] = bravo_heavy.rifle_heavy
 }
 
 Hooks:PreHook(CopBase, "post_init", "MIX_post_init", function(self)
