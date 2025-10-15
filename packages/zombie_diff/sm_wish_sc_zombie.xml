@@ -751,6 +751,12 @@
 	<texture			path="units/pd2_mod_halloween/characters/ene_police_heavygunner/swat_body_df"/>
 
 	<!-- Vanilla Zeal -->
+	<object				path="units/pd2_dlc_hvh/characters/ene_acc_zeal_swat_helmet/ene_acc_zeal_swat_helmet" force="false"/>
+	<cooked_physics		path="units/pd2_dlc_hvh/characters/ene_acc_zeal_swat_helmet/ene_acc_zeal_swat_helmet" force="false"/>
+	<model				path="units/pd2_dlc_hvh/characters/ene_acc_zeal_swat_helmet/ene_acc_zeal_swat_helmet" force="false"/>
+	<unit				path="units/pd2_dlc_hvh/characters/ene_acc_zeal_swat_helmet/ene_acc_zeal_swat_helmet" force="false" load="true"/>
+	<material_config	path="units/pd2_dlc_hvh/characters/ene_acc_zeal_swat_helmet/ene_acc_zeal_swat_helmet" force="false"/>
+
 	<cooked_physics		path="units/pd2_dlc_hvh/characters/ene_zeal_swat/ene_zeal_swat" force="false"/>
 	<material_config	path="units/pd2_dlc_hvh/characters/ene_zeal_swat/ene_zeal_swat" force="false"/>
 	<material_config	path="units/pd2_dlc_hvh/characters/ene_zeal_swat/ene_zeal_swat_contour" force="false"/>
@@ -793,4 +799,13 @@
 	<texture			path="units/pd2_dlc_hvh/characters/shared_textures/zeal_swat_heavy_head_df"/>
 	<texture			path="units/pd2_dlc_hvh/characters/shared_textures/zeal_swat_heavy_nm"/>
 	<texture			path="units/pd2_dlc_hvh/characters/shared_textures/zeal_swat_heavy_head_nm"/>
+
+	<!-- Vanilla Zeal Shield -->
+	<cooked_physics		path="units/pd2_dlc_hvh/characters/ene_zeal_swat_shield/ene_zeal_swat_shield" force="false"/>
+	<material_config	path="units/pd2_dlc_hvh/characters/ene_zeal_swat_shield/ene_zeal_swat_shield" force="false"/>
+	<material_config	path="units/pd2_dlc_hvh/characters/ene_zeal_swat_shield/ene_zeal_swat_shield_contour" force="false"/>
+	<model				path="units/pd2_dlc_hvh/characters/ene_zeal_swat_shield/ene_zeal_swat_shield" force="false"/>
+	<unit				path="units/pd2_dlc_hvh/characters/ene_zeal_swat_shield/ene_zeal_swat_shield" force="false" load="true"/>
+	<unit				path="units/pd2_dlc_hvh/characters/ene_zeal_swat_shield/ene_zeal_swat_shield_husk" force="false" load="true"/>
+	<object				path="units/pd2_dlc_hvh/characters/ene_zeal_swat_shield/ene_zeal_swat_shield" force="false"/>
 </table>

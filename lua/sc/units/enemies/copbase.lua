@@ -1231,8 +1231,8 @@ local weapon_mapping = {
 	[("units/pd2_dlc_hvh/characters/ene_fbi_swat_hvh_2/ene_fbi_swat_hvh_2"):key()] = fbi.shotgun,
 	[("units/pd2_dlc_hvh/characters/ene_fbi_heavy_hvh_r870/ene_fbi_heavy_hvh_r870"):key()] = fbi.shotgun,
 	[("units/pd2_dlc_hvh/characters/ene_medic_hvh_r870/ene_medic_hvh_r870"):key()] = fbi.shotgun_medic,
-	[("units/pd2_dlc_gitgud/characters/ene_zeal_swat/ene_zeal_swat"):key()] = zeal.rifle_light,
-	[("units/pd2_dlc_gitgud/characters/ene_zeal_swat_2/ene_zeal_swat_2"):key()] = zeal.shotgun_heavy,
+	[("units/pd2_dlc_hvh/characters/ene_zeal_swat/ene_zeal_swat"):key()] = zeal.rifle_light,
+	[("units/pd2_dlc_hvh/characters/ene_zeal_swat_2/ene_zeal_swat_2"):key()] = zeal.shotgun_heavy,
 	[("units/pd2_dlc_hvh/characters/ene_zeal_swat_heavy/ene_zeal_swat_heavy"):key()] = zeal.rifle_heavy,
 	[("units/pd2_dlc_hvh/characters/ene_zeal_swat_heavy_2/ene_zeal_swat_heavy_2"):key()] = zeal.shotgun_heavy,
 -- Murkywater

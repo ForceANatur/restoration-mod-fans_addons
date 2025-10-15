@@ -19820,7 +19820,9 @@ function CharacterTweakData:character_map()
 	--HvH
 		table.insert(char_map.hvh.list, "ene_bulldozer_minigun_classic")
 		table.insert(char_map.hvh.list, "ene_bulldozer_medic")
+		table.insert(char_map.hvh.list, "ene_zeal_swat_shield")
 		table.insert(char_map.hvh.list, "ene_zeal_swat")
+		table.insert(char_map.hvh.list, "ene_zeal_swat_2")
 		table.insert(char_map.hvh.list, "ene_zeal_swat_heavy")
 		table.insert(char_map.hvh.list, "ene_zeal_swat_heavy_2")
 	--bph
