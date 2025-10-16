@@ -3,6 +3,9 @@
 This is a couple of edits to Restoration Mod fitted for my liking.
 These range from minor weapon tweaks to new features such as mutators.
 
+This branch is a build of the addons before the dev-epicness merge.
+Branch will likly be abandoned when Restoration Mod 13.0 comes out.
+
 # Changes:
 
 Vanilla units spawn across most factions. Don't like the look of them? Use a mod!
@@ -23,7 +26,7 @@ Titan Cloakers spawn on mayhem and above.
 
 Zip .22 has a 1% chance to fail
 
-4 new mutators
+5 new mutators
 
 Akan LPFs and Enforcers spawn on mexico heists
 
@@ -47,7 +50,9 @@ Sniper Hell: Most enemies spawn with Sniper Rifles.
 
 Sting like a bee: FBI units use the M1014 and Hostage Rescue Teams and ASU units have the UMP. Vet Cops have akimbo Broncos.
 
-RPG Grunts: Spawns an unused enemy for the Meltdown heist. suffer
+RPG Grunts: The unused RPG grunts got a 9 to 5 job of beating your ass. They made a deal with the titan snipers to help them. suffer
+
+We fight like MEN!: Medics and Cloakers are BUFF and SWOLE
 
 # Crime Spree Modifiers:
 
@@ -222,6 +227,8 @@ IareAwesome17: OMNIA Medic Bulldozer/Additional enemy fixes
 Miss Miki: PONR anti-grief fixes and other contributions/fixes
 
 MrVavlo: For the CHARMing weapon CHARM that's full of CHARM
+
+Keithy: New Coppers' Assets
 
 Marshie: Russian localisation
 

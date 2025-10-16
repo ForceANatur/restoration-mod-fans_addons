@@ -34809,6 +34809,54 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 
 	-- [[ FaN's Addons ]]
 	-- doing this because i fucking hate manually doing all the edits
+
+		-- spy has a gun
+		if self.tf2_revolver then
+			self.tf2_revolver.recategorize = {"heavy_pis", "handcannon"}
+			self.tf2_revolver.has_description = true
+			self.tf2_revolver.desc_id = "bm_ap_armor_50_weapon_sc_desc"
+			self.tf2_revolver.CLIP_AMMO_MAX = 6
+			self.tf2_revolver.AMMO_MAX = 30
+			self.tf2_revolver.fire_mode_data.fire_rate = 0.5
+			self.tf2_revolver.no_auto_anims = true
+			self.tf2_revolver.FIRE_MODE = "auto"	-- all tf2 weapons technically are
+			self.tf2_revolver.kick = self.stat_info.kick_tables.moderate_kick
+			self.tf2_revolver.kick_pattern = {
+				{0, self.stat_info.kick_tables.right_kick},
+				{2, self.stat_info.kick_tables.vertical_kick},
+				{4, self.stat_info.kick_tables.moderate_right_kick}
+			}
+			self.tf2_revolver.supported = true
+			self.tf2_revolver.ads_speed = 0.200
+			self.tf2_revolver.damage_falloff = {
+				start_dist = 1100,
+				end_dist = 3600,
+				min_mult = 0.3333
+			}
+			self.tf2_revolver.stats = {
+				damage = 60,
+				spread = 86,
+				recoil = 51,
+				spread_moving = 5,
+				zoom = 1,
+				concealment = 24,
+				suppression = 8,
+				alert_size = 2,
+				extra_ammo = 101,
+				total_ammo_mod = 400,
+				value = 1,
+				reload = 20
+			}
+			self.tf2_revolver.stats_modifiers = nil
+			self.tf2_revolver.panic_suppression_chance = 0.05
+			self.tf2_revolver.armor_piercing_chance = 0.5
+			self.tf2_revolver.can_shoot_through_enemy = true
+			self.tf2_revolver.can_shoot_through_enemy_unlim = true
+			self.tf2_revolver.sounds.fire_single = "tf2_revolver_fire"
+			self.tf2_revolver.sounds.fire_auto = "tf2_revolver_fire"
+			self.tf2_revolver.timers = deep_clone(self.chinchilla.timers)
+		end
+
 		if self.cagnali then	--Crime Boss Scudomnion
 			--Moved to primary
 			self.cagnali.use_data.selection_index = 2	
@@ -35041,6 +35089,79 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			self.knockout.can_shoot_through_wall = true
 			self.knockout.can_shoot_through_titan_shield = true
 			self.knockout.tactical_reload = 1
+		end
+
+		if self.kedr then
+			self.kedr.desc_id = "bm_w_kedr_sc_desc"
+			self.kedr.has_description = true
+			self.kedr.categories = { "pistol" }
+			self.kedr.recategorize = {"light_pis"}
+			self.kedr.AMMO_MAX = 160
+			self.kedr.CLIP_AMMO_MAX = 32
+			self.kedr.fire_mode_data.fire_rate = 0.1
+			self.kedr.kick = self.stat_info.kick_tables.left_recoil
+			self.kedr.supported = true
+			self.kedr.ads_speed = 0.120
+			self.kedr.damage_falloff = {
+				start_dist = 1000,
+				end_dist = 2600,
+				min_mult = 0.2
+			}
+			self.kedr.stats = {
+				damage = 30,
+				spread = 67,
+				recoil = 87,
+				spread_moving = 4,
+				zoom = 1,
+				concealment = 28,
+				suppression = 11,
+				alert_size = 2,
+				extra_ammo = 101,
+				total_ammo_mod = 400,
+				value = 7,
+				reload = 20
+			}
+			self.kedr.stats_modifiers = nil
+			self.kedr.panic_suppression_chance = 0.05
+			self.kedr.tactical_reload = 1
+			self.kedr.timers = deep_clone(self.tec9.timers)
+		end
+
+		if self.af2011 then
+			--Moved to primary
+			self.af2011.rays = 2
+			self.af2011.damage_type = "shotgun"
+			self.af2011.use_data.selection_index = 2
+			self.af2011.categories = { "pistol" }
+			self.af2011.CLIP_AMMO_MAX = 10
+			self.af2011.AMMO_MAX = 70
+			self.af2011.fire_mode_data.fire_rate = 0.0882352
+			self.af2011.kick = self.stat_info.kick_tables.even_recoil
+			self.af2011.supported = true
+			self.af2011.ads_speed = 0.140
+			self.af2011.damage_falloff = {
+				start_dist = 1100,
+				end_dist = 3200,
+				min_mult = 0.44
+			}
+			self.af2011.stats = {
+				damage = 48,
+				spread = 61,
+				recoil = 85,
+				spread_moving = 5,
+				zoom = 1,
+				concealment = 30,
+				suppression = 11,
+				alert_size = 2,
+				extra_ammo = 101,
+				total_ammo_mod = 400,
+				value = 1,
+				reload = 20
+			}
+			self.af2011.stats_modifiers = nil
+			self.af2011.panic_suppression_chance = 0.05
+			self.af2011.tactical_reload = 2
+			self.af2011.timers = deep_clone(self.b92fs.timers)
 		end
 
 		if self.perun then	-- Crime Boss' Cursed Handcannon

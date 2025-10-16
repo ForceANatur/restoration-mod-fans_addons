@@ -1624,7 +1624,6 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Eng", function(loc)
 		["bm_hint_titan_10"] = "The Titandozer leaves in 10 seconds!",
 		["bm_hint_titan_end"] = "The Titandozer left to haunt another world!",
 
-		["bm_hint_titan_end"] = "The Titandozer left to haunt another world!",
 		["bm_menu_gadget_plural"] = "Gadgets",
 		["menu_pistol_carbine"] = "Pistol Carbine",
 		["menu_battle_rifle"] = "Battle Rifle",
@@ -2705,10 +2704,6 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 				--Baby Deagle--
 				["bm_sparrow_sc_desc"] = "SEE YOU SPACE COWBOY...",
 				["bm_w_sparrow_sc_g_cowboy_desc"] = "YOU'RE GONNA CARRY THAT WEIGHT.",
-				--socom deez nuts--
-				["bm_w_socom_desc"] = "Jackal's sidearm of choice. A reliable and powerful .45 ACP handgun with a stylish design.",
-				["bm_wp_wpn_fps_upg_fl_pis_socomlam"] = "Ra Combined Module",
-				["bm_wp_wpn_fps_upg_fl_pis_socomlam_desc"] = "Turn it on/off by pressing #{skill_color}#$BTN_GADGET##",
 				--Crosskill
 				["bm_1911_sc_desc"] = "When 9mm isn't enough, reach for this custom 1911A1 chambered in the powerful .45ACP. Top shelf brutality.",
 				["bm_x_1911_sc_desc"] = "While it doesn't have demonic powers, the carnage will certainly leave people screaming in terror.",
@@ -3264,6 +3259,8 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 					["bm_w_c96_satsuki"] = "NK Delta",
 					["bm_w_mpx_yuuka"] = "Logic",
 					["bm_w_x_mpx_yuuka"] = "Logic & Reason",
+					["bm_w_toy1911_sc_desc"] = "Airsoft pistol modified with a turbo electric motor, allowing you to #{skill_color}#switch to fully automatic fire##.\nRemember, not full-auto in buildings.",
+
 	})
 
 	--[[
@@ -3905,7 +3902,6 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 					["bm_wp_p226_m_extended"] = "22rnd P226 Magazine",
 					["bm_wp_p226_b_equinox"] = "Equinox Duo-Tone Slide",
 					["bm_wp_p226_b_long"] = "Brushed Long Slide",
-					["bm_wp_p226_co_comp_2"] = "SJC Compensator .40",
 					--Chimano Custom
 					["bm_w_g22c"] = "Glock 22C",
 					["bm_w_x_g22c"] = "Akimbo Glock 22Cs",
@@ -4228,7 +4224,6 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 					["bm_w_r870"] = "Remington Model 870",
 					["bm_wp_r870_m_extended"] = "2rnd Tube Extension",
 					["bm_wp_r870_fg_wood"] = "Wooden Pump",
-					["bm_wp_r870_s_folding"] = "No Stock",
 					["bm_wp_r870_s_folding_ext"] = "Remington Wingmaster Folding Stock",
 					["bm_wp_r870_s_folding"] = "Remington Wingmaster Folded Stock",
 					["bm_wp_r870_s_nostock_big"] = "No Stock w/Full Length Rail",
@@ -4813,7 +4808,6 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 					["bm_melee_detector"] = "Garrett Handheld Metal Detector",
 					["bm_melee_taser"] = "ZAP Stun Baton",
 					["bm_melee_cqc"] = "Kunai",
-					["bm_melee_twins"] = "Sais",
 					["bm_melee_tiger"] = "Tekko-Kagi",
 					["bm_melee_pugio"] = "Extrema Ratio Pugio SE",
 					["bm_melee_gator"] = "Gerber Gator Machete Pro",
@@ -5483,12 +5477,14 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 		["menu_mutator_captain_replace_summer"] = "Summers",
 		["menu_mutator_captain_replace_hvh"] = "HHHTDFH",
 		["menu_mutator_captain_replace_heavyg"] = "HeavyGunner",
+		["menu_mutator_captain_replace_dzr_snp"] = "Mr. Cruel T",
 		["menu_mutator_winter_blacklist_toggle"] = "Blacklist Winters for \"Random\" option",
 		["menu_mutator_spring_blacklist_toggle"] = "Blacklist Spring for \"Random\" option",
 		["menu_mutator_summer_blacklist_toggle"] = "Blacklist Summers for \"Random\" option",
 		["menu_mutator_autumn_blacklist_toggle"] = "Blacklist Autumn for \"Random\" option",
 		["menu_mutator_hvh_blacklist_toggle"] = "Blacklist HHHTDFH for \"Random\" option",
 		["menu_mutator_heavyg_blacklist_toggle"] = "Blacklist HeavyGunner for \"Random\" option",
+		["menu_mutator_dzr_snp_blacklist_toggle"] = "Blacklist Mr. Cruel T for \"Random\" option",
 		--["menu_mutator_bexvet_blacklist_toggle"] = "Blacklist El Chupacopra for \"Random\" option",	-- scrapped.
 		["mutator_captain_replace_desc"] = "Changes the Captain that spawns during a heist.",
 		["mutator_captain_replace_longdesc"] = "The Captain that will spawn during a heist will instead be the selected Captain.\n\nNote: Scripted Captain Encounters will be unchanged. Blacklisting all captains for \"Random\" option will sequence to use \"No Changes\" option.",

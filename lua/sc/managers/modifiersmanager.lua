@@ -207,9 +207,9 @@ local replacement_table = {
 	["units/pd2_mod_halloween/characters/ene_fbi_swat_2/ene_fbi_swat_2"] = "units/pd2_mod_bravo/characters/ene_bravo_shotgun/ene_bravo_shotgun",
 	["units/pd2_mod_halloween/characters/ene_city_swat_2/ene_city_swat_2"] = "units/pd2_mod_bravo/characters/ene_bravo_shotgun/ene_bravo_shotgun",
 	["units/pd2_mod_halloween/characters/ene_zeal_city_2/ene_zeal_city_2"] = "units/pd2_mod_bravo/characters/ene_bravo_shotgun/ene_bravo_shotgun",
-	["units/pd2_mod_halloween/characters/ene_fbi_swat_3/ene_fbi_swat_3"] = "units/pd2_mod_ng/characters/ene_ntl_swat_3/ene_ntl_swat_3",
-	["units/pd2_mod_halloween/characters/ene_city_swat_3/ene_city_swat_3"] = "units/pd2_mod_ng/characters/ene_ntl_swat_3/ene_ntl_swat_3",
-	["units/pd2_mod_halloween/characters/ene_zeal_city_3/ene_zeal_city_3"] = "units/pd2_mod_ng/characters/ene_ntl_swat_3/ene_ntl_swat_3",
+	["units/pd2_mod_halloween/characters/ene_fbi_swat_3/ene_fbi_swat_3"] = "units/pd2_mod_ngvh/characters/ene_ntl_swat_3/ene_ntl_swat_3",
+	["units/pd2_mod_halloween/characters/ene_city_swat_3/ene_city_swat_3"] = "units/pd2_mod_ngvh/characters/ene_ntl_swat_3/ene_ntl_swat_3",
+	["units/pd2_mod_halloween/characters/ene_zeal_city_3/ene_zeal_city_3"] = "units/pd2_mod_ngvh/characters/ene_ntl_swat_3/ene_ntl_swat_3",
 	-- Murkywater
 	["units/pd2_mod_sharks/characters/ene_fbi_swat_2/ene_fbi_swat_2"] = "units/pd2_mod_bravo/characters/ene_bravo_shotgun_murky/ene_bravo_shotgun_murky",
 	["units/pd2_mod_sharks/characters/ene_city_swat_2/ene_city_swat_2"] = "units/pd2_mod_bravo/characters/ene_bravo_shotgun_murky/ene_bravo_shotgun_murky",
@@ -301,7 +301,27 @@ local replacement_table = {
 	["units/payday2/characters/ene_medic_mp5/ene_medic_mp5"] = "units/pd2_mod_ng/characters/ene_ntl_medic/ene_ntl_medic",
 	["units/payday2/characters/ene_medic_m4/ene_medic_m4"] = "units/pd2_mod_ng/characters/ene_ntl_medic/ene_ntl_medic",
 	["units/payday2/characters/ene_medic_r870/ene_medic_r870"] = "units/pd2_mod_ng/characters/ene_ntl_medic/ene_ntl_medic",
-	["units/pd2_dlc_gitgud/characters/ene_zeal_medic/ene_zeal_medic"] = "units/pd2_mod_ng/characters/ene_ntl_medic/ene_ntl_medic"
+	["units/pd2_dlc_gitgud/characters/ene_zeal_medic/ene_zeal_medic"] = "units/pd2_mod_ng/characters/ene_ntl_medic/ene_ntl_medic",
+
+	--Zombie Units
+	["units/pd2_dlc_hvh/characters/ene_fbi_swat_hvh_1/ene_fbi_swat_hvh_1"] = "units/pd2_mod_ngvh/characters/ene_ntl_swat_1/ene_ntl_swat_1",
+	["units/pd2_dlc_hvh/characters/ene_city_swat_1/ene_city_swat_1"] = "units/pd2_mod_ngvh/characters/ene_ntl_swat_1/ene_ntl_swat_1",
+	["units/pd2_dlc_hvh/characters/ene_zeal_swat/ene_zeal_swat"] = "units/pd2_mod_ngvh/characters/ene_ntl_swat_1/ene_ntl_swat_1",
+	["units/pd2_dlc_hvh/characters/ene_fbi_swat_hvh_2/ene_fbi_swat_hvh_2"] = "units/pd2_mod_ngvh/characters/ene_ntl_swat_2/ene_ntl_swat_2",
+	["units/pd2_dlc_hvh/characters/ene_city_swat_2/ene_city_swat_2"] = "units/pd2_mod_ngvh/characters/ene_ntl_swat_2/ene_ntl_swat_2",
+	["units/pd2_dlc_hvh/characters/ene_city_swat_3/ene_city_swat_3"] = "units/pd2_mod_ngvh/characters/ene_ntl_swat_3/ene_ntl_swat_3",
+	["units/pd2_dlc_hvh/characters/ene_zeal_swat_2/ene_zeal_swat_2"] = "units/pd2_mod_ngvh/characters/ene_ntl_swat_2/ene_ntl_swat_2",
+	["units/pd2_dlc_hvh/characters/ene_fbi_heavy_hvh_1/ene_fbi_heavy_hvh_1"] = "units/pd2_mod_ngvh/characters/ene_ntl_heavyswat/ene_ntl_heavyswat",
+	["units/pd2_dlc_hvh/characters/ene_city_heavy_g36/ene_city_heavy_g36"] = "units/pd2_mod_ngvh/characters/ene_ntl_heavyswat/ene_ntl_heavyswat",
+	["units/pd2_dlc_hvh/characters/ene_zeal_swat_heavy/ene_zeal_swat_heavy"] = "units/pd2_mod_ngvh/characters/ene_ntl_heavyswat/ene_ntl_heavyswat",
+	["units/pd2_dlc_hvh/characters/ene_fbi_heavy_hvh_r870/ene_fbi_heavy_hvh_r870"] = "units/pd2_mod_ngvh/characters/ene_ntl_heavyshotgun/ene_ntl_heavyshotgun",
+	["units/pd2_dlc_hvh/characters/ene_city_heavy_r870/ene_city_heavy_r870"] = "units/pd2_mod_ngvh/characters/ene_ntl_heavyshotgun/ene_ntl_heavyshotgun",
+	["units/pd2_dlc_hvh/characters/ene_zeal_swat_heavy_2/ene_zeal_swat_heavy_2"] = "units/pd2_mod_ngvh/characters/ene_ntl_heavyshotgun/ene_ntl_heavyshotgun",
+	["units/pd2_dlc_hvh/characters/ene_sniper_hvh_2/ene_sniper_hvh_2"] = "units/pd2_mod_ngvh/characters/ene_ntl_groundsniper/ene_ntl_groundsniper",
+	["units/pd2_mod_halloween/characters/ene_medic_mp5/ene_medic_mp5"] = "units/pd2_mod_ngvh/characters/ene_ntl_medic/ene_ntl_medic",
+	["units/pd2_dlc_hvh/characters/ene_medic_hvh_m4/ene_medic_hvh_m4"] = "units/pd2_mod_ngvh/characters/ene_ntl_medic/ene_ntl_medic",
+	["units/pd2_dlc_hvh/characters/ene_medic_hvh_r870/ene_medic_hvh_r870"] = "units/pd2_mod_ngvh/characters/ene_ntl_medic/ene_ntl_medic",
+	["units/pd2_mod_halloween/characters/ene_zeal_medic/ene_zeal_medic"] = "units/pd2_mod_ngvh/characters/ene_ntl_medic/ene_ntl_medic"
 }
 
 -- This table is for robots, don't edit this one

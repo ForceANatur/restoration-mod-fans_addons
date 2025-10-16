@@ -246,7 +246,7 @@ end)
 Hooks:PostHook(CopBase, "post_init", "postinithooksex", function(self)
 	if self._tweak_table == "spooc" then
 		self._unit:damage():run_sequence_simple("turn_on_spook_lights")
-	elseif self._tweak_table == "phalanx_vip" or self._tweak_table == "spring" or self._tweak_table == "summers" or self._tweak_table == "headless_hatman" or self._tweak_table == "autumn" or self._tweak_table == "heavygunner" then
+	elseif self._tweak_table == "phalanx_vip" or self._tweak_table == "spring" or self._tweak_table == "summers" or self._tweak_table == "headless_hatman" or self._tweak_table == "autumn" or self._tweak_table == "heavygunner" or self._tweak_table == "tank_captain" then
 		GroupAIStateBesiege:set_assault_endless(true)
 		managers.hud:set_buff_enabled("vip", true)		
 		
@@ -1098,6 +1098,8 @@ function CopBase:default_weapon_name(...)
 			[Idstring("units/pd2_dlc_hvh/characters/ene_bulldozer_hvh_1/ene_bulldozer_hvh_1"):key()] = {"m14_sniper_npc"},
 			[Idstring("units/pd2_dlc_hvh/characters/ene_bulldozer_hvh_2/ene_bulldozer_hvh_2"):key()] = {"m14_sniper_npc"},
 			[Idstring("units/pd2_dlc_hvh/characters/ene_bulldozer_hvh_3/ene_bulldozer_hvh_3"):key()] = {"m14_sniper_npc"},
+			[Idstring("units/pd2_dlc_hvh/characters/ene_bulldozer_minigun_classic/ene_bulldozer_minigun_classic"):key()] = {"m14_sniper_npc"},
+			[Idstring("units/pd2_dlc_hvh/characters/ene_bulldozer_medic/ene_bulldozer_medic"):key()] = {"m14_sniper_npc"},
 			-- BPH
 			[Idstring("units/pd2_dlc_bph/characters/ene_murkywater_bulldozer_2/ene_murkywater_bulldozer_2"):key()] = {"m14_sniper_npc"},
 			[Idstring("units/pd2_dlc_bph/characters/ene_murkywater_bulldozer_3/ene_murkywater_bulldozer_3"):key()] = {"m14_sniper_npc"},
@@ -1238,6 +1240,11 @@ function CopBase:default_weapon_name(...)
 			self._default_weapon_id = "mossberg"
 			self._weapon_set = true
 		end
+		
+		if self._default_weapon_id == "r870" then
+			self._default_weapon_id = "mossberg"
+			self._weapon_set = true
+		end
 	end
 	
 	-- Have White Titandozers use Grenade Launchers/AA-12s like their Reaper counterparts in Russia/Mexico heists (mostly for Holiday Effects and consistency with factions)
@@ -1342,8 +1349,14 @@ local fbi = {
 }
 --GenSec
 local gensec = {
+	rifle_light = {
+		"g36",
+		"m4",
+		"shepheard"
+	},
 	rifle_heavy = {
 		"g36",
+		"g3a3_npc",
 		"m249"
 	},
 	shotgun = {
@@ -1366,6 +1379,7 @@ local zeal = {
 		"m4",
 		"g36",
 		"ump",
+		"g3a3_npc",
 		"m249"
 	},
 	shotgun_heavy = {
@@ -1406,6 +1420,8 @@ local murkywater = {
 		"scar_murky",
 		"ump",
 		"shepheard",
+		"g3a3_npc",
+		"m249",
 		"m249",
 		"m249",
 		"m249",
@@ -1430,6 +1446,7 @@ local federales = {
 	rifle_heavy = {
 		"m4",
 		"ump",
+		"g3a3_npc",
 		"m249"
 	},
 	shotgun = {
@@ -1450,7 +1467,7 @@ local dave = {
 		"m4",
 		"g36",
 		"m249",
-	--	"scar_murky",
+		"g3a3_npc",
 	--	"m1911_npc",
 	--	"deagle",
 	--	"lmg_titan",
@@ -1465,6 +1482,12 @@ local dave = {
 		"ksg"
 	--	"mini", -- funny, but i think it's too goofy
 	--	"railgun_npc"
+	}
+}
+local bravo_heavy = {
+	rifle_heavy = {
+		"bravo_rifle",
+		"g3a3_npc"
 	}
 }
 local weapon_mapping = {
@@ -1487,7 +1510,7 @@ local weapon_mapping = {
 	[("units/payday2/characters/ene_fbi_2/ene_fbi_2"):key()] = fbi.rifle_agent,
 	[("units/payday2/characters/ene_fbi_3/ene_fbi_3"):key()] = fbi.rifle_agent,
 	[("units/payday2/characters/ene_fbi_swat_1/ene_fbi_swat_1"):key()] = fbi.rifle_light,
-	[("units/payday2/characters/ene_medic_m4/ene_medic_m4"):key()] = fbi.rifle_light,
+--	[("units/payday2/characters/ene_medic_m4/ene_medic_m4"):key()] = fbi.rifle_light,
 	[("units/payday2/characters/ene_fbi_heavy_1/ene_fbi_heavy_1"):key()] = fbi.rifle_heavy,
 	[("units/payday2/characters/ene_fbi_swat_2/ene_fbi_swat_2"):key()] = fbi.shotgun,
 	[("units/payday2/characters/ene_fbi_heavy_r870/ene_fbi_heavy_r870"):key()] = fbi.shotgun,
@@ -1524,11 +1547,19 @@ local weapon_mapping = {
 	[("units/pd2_dlc_hvh/characters/ene_fbi_hvh_2/ene_fbi_hvh_2"):key()] = fbi.rifle_agent,
 	[("units/pd2_dlc_hvh/characters/ene_fbi_hvh_3/ene_fbi_hvh_3"):key()] = fbi.rifle_agent,
 	[("units/pd2_dlc_hvh/characters/ene_fbi_swat_hvh_1/ene_fbi_swat_hvh_1"):key()] = fbi.rifle_light,
-	[("units/pd2_dlc_hvh/characters/ene_medic_hvh_m4/ene_medic_hvh_m4"):key()] = fbi.rifle_light,
+--	[("units/pd2_dlc_hvh/characters/ene_medic_hvh_m4/ene_medic_hvh_m4"):key()] = fbi.rifle_light,
 	[("units/pd2_dlc_hvh/characters/ene_fbi_heavy_hvh_1/ene_fbi_heavy_hvh_1"):key()] = fbi.rifle_heavy,
 	[("units/pd2_dlc_hvh/characters/ene_fbi_swat_hvh_2/ene_fbi_swat_hvh_2"):key()] = fbi.shotgun,
 	[("units/pd2_dlc_hvh/characters/ene_fbi_heavy_hvh_r870/ene_fbi_heavy_hvh_r870"):key()] = fbi.shotgun,
 	[("units/pd2_dlc_hvh/characters/ene_medic_hvh_r870/ene_medic_hvh_r870"):key()] = fbi.shotgun_medic,
+	[("units/pd2_dlc_hvh/characters/ene_city_swat_1/ene_city_swat_1"):key()] = gensec.rifle_light,
+	[("units/pd2_dlc_hvh/characters/ene_city_swat_2/ene_city_swat_2"):key()] = gensec.shotgun,
+	[("units/pd2_dlc_hvh/characters/ene_city_heavy_g36/ene_city_heavy_g36"):key()] = gensec.rifle_heavy,
+	[("units/pd2_dlc_hvh/characters/ene_city_heavy_r870/ene_city_heavy_r870"):key()] = gensec.shotgun,
+	[("units/pd2_dlc_hvh/characters/ene_zeal_swat/ene_zeal_swat"):key()] = zeal.rifle_light,
+	[("units/pd2_dlc_hvh/characters/ene_zeal_swat_2/ene_zeal_swat_2"):key()] = zeal.shotgun_heavy,
+	[("units/pd2_dlc_hvh/characters/ene_zeal_swat_heavy/ene_zeal_swat_heavy"):key()] = zeal.rifle_heavy,
+	[("units/pd2_dlc_hvh/characters/ene_zeal_swat_heavy_2/ene_zeal_swat_heavy_2"):key()] = zeal.shotgun_heavy,
 -- Murkywater
 	[("units/pd2_dlc_bph/characters/ene_murkywater_light/ene_murkywater_light"):key()] = murkywater.rifle_light,
 	[("units/pd2_dlc_bph/characters/ene_murkywater_heavy/ene_murkywater_heavy"):key()] = murkywater.rifle_light,
@@ -1556,7 +1587,11 @@ local weapon_mapping = {
 	[("units/pd2_dlc_bex/characters/ene_swat_heavy_policia_federale_r870/ene_swat_heavy_policia_federale_r870"):key()] = federales.shotgun,
 	[("units/pd2_dlc_bex/characters/ene_swat_heavy_policia_federale_fbi_r870/ene_swat_heavy_policia_federale_fbi_r870"):key()] = federales.shotgun,
 -- Dave's guns
-	[("units/pd2_mod_dave/characters/ene_big_dave/ene_big_dave"):key{}] = dave.all_the_guns
+	[("units/pd2_mod_dave/characters/ene_big_dave/ene_big_dave"):key{}] = dave.all_the_guns,
+	[("units/pd2_mod_dave/characters/ene_dave_hvh/ene_dave_hvh"):key{}] = dave.all_the_guns,
+-- Bravo Heavy
+	[("units/pd2_mod_ng/characters/ene_ntl_heavyswat/ene_ntl_heavyswat"):key{}] = bravo_heavy.rifle_heavy,
+	[("units/pd2_mod_ngvh/characters/ene_ntl_heavyswat/ene_ntl_heavyswat"):key{}] = bravo_heavy.rifle_heavy
 }
 
 Hooks:PreHook(CopBase, "post_init", "MIX_post_init", function(self)

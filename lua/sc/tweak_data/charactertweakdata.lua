@@ -64,6 +64,7 @@ function CharacterTweakData:init(tweak_data, presets)
 	self:_init_weekend_vanilla(presets)
 	self:_init_weekend_vanilla_heavy(presets)
 	self:_init_weekend_vanilla_snp(presets)
+	self:_init_city_swat_sergeant(presets)
 	self:_process_weapon_usage_table()
 	
 	--Dozer Armor Multiplier, lower means more EHP
@@ -661,6 +662,7 @@ function CharacterTweakData:_init_medic(presets)
 	self.medic_heavy.move_speed = presets.move_speed.normal
 	self.medic_heavy.custom_voicework = "heavy_medic"
 	self.medic_heavy.dodge = presets.dodge.heavy
+	self.medic_heavy.no_asu = true
 	table.insert(self._enemy_list, "medic_heavy")
 
 	--BUFF MEDIC
@@ -680,7 +682,6 @@ function CharacterTweakData:_init_medic(presets)
 	self.medic_deathvox.move_speed = presets.move_speed.very_fast_plus
 	--self.medic_deathvox.custom_voicework = "murky_medic"	--buggy
 	table.insert(self._enemy_list, "medic_deathvox")
-	
 	self.medic_summers = deep_clone(self.medic)
 	--Base health
 	self.medic_summers.HEALTH_INIT = 60
@@ -1172,7 +1173,7 @@ function CharacterTweakData:_init_fbi_heavy_swat(presets)
 	table.insert(self._enemy_list, "fbi_heavy_swat")
 end
 
-function CharacterTweakData:_init_city_swat(presets)	
+function CharacterTweakData:_init_city_swat(presets)
 	self.city_swat = deep_clone(presets.base)
 	self.city_swat.tags = {"law", "city_swat"}
 	self.city_swat.experience = {}
@@ -1239,7 +1240,7 @@ function CharacterTweakData:_init_city_swat(presets)
 	self.city_swat_guard.melee_weapon = "baton"
 	self.city_swat_guard.use_radio = nil
 	table.insert(self._enemy_list, "city_swat_guard")
-			
+
 	--Weekend
 	self.weekend = deep_clone(self.city_swat)
 	if self:get_ai_group_type() == "russia" then
@@ -1261,7 +1262,7 @@ function CharacterTweakData:_init_city_swat(presets)
 		self.weekend.yellow_blood = true
 	else	
 		self.weekend.yellow_blood = false
-	end	
+	end
 	self.weekend.can_throw_frag = true
 	self.weekend.surrender = presets.surrender.bravo
 	table.insert(self._enemy_list, "weekend")	
@@ -1340,7 +1341,7 @@ function CharacterTweakData:_init_city_swat(presets)
 	table.insert(self._enemy_list, "city_swat_titan_assault")
 
 	--Weekend LMG
-	self.weekend_lmg = deep_clone(self.city_swat_titan)		
+	self.weekend_lmg = deep_clone(self.city_swat_titan)
 	if self:get_ai_group_type() == "russia" then
 		self.weekend_lmg.custom_voicework = "bravo_elite_ru"
 	elseif self:get_ai_group_type() == "murkywater" then
@@ -1365,7 +1366,7 @@ function CharacterTweakData:_init_city_swat(presets)
 	table.insert(self._enemy_list, "weekend_lmg")
 	
 	--Weekend LMG (Guard Variant)
-	self.weekend_elite_guard = deep_clone(self.weekend_lmg)	
+	self.weekend_elite_guard = deep_clone(self.weekend_lmg)
 	self.weekend_elite_guard.tags = {"law", "city_swat"}
 	self.weekend_elite_guard.dt_suppress = nil
 	self.weekend_elite_guard.silent_priority_shout = "f37"
@@ -1379,10 +1380,9 @@ function CharacterTweakData:_init_city_swat(presets)
 		self.weekend_elite_guard.access = "security"
 	end
 	table.insert(self._enemy_list, "weekend_elite_guard")
-	
 end
 
-function CharacterTweakData:_init_sniper(presets)	
+function CharacterTweakData:_init_sniper(presets)
 	self.sniper = deep_clone(presets.base)
 	self.sniper.tags = {"law", "sniper", "special"}
 	self.sniper.experience = {}
@@ -1445,6 +1445,8 @@ function CharacterTweakData:_init_marshal_marksman(presets)
 		self.marshal_marksman.custom_voicework = "marshal_marksman_bex"
 	elseif self:get_ai_group_type() == "russia" then
 		self.marshal_marksman.custom_voicework = "marshal_marksman_ru"
+	elseif self:get_ai_group_type() == "zombie" then
+		self.marshal_marksman.custom_voicework = "marshal_marksman_hvh"
 	else
 		self.marshal_marksman.custom_voicework = "marshal_marksman"
 	end
@@ -1459,6 +1461,8 @@ function CharacterTweakData:_init_marshal_marksman(presets)
 		self.marshal_marksman_scripted.custom_voicework = "marshal_marksman_bex"
 	elseif self:get_ai_group_type() == "russia" then
 		self.marshal_marksman_scripted.custom_voicework = "marshal_marksman_ru"
+	elseif self:get_ai_group_type() == "zombie" then
+		self.marshal_marksman_scripted.custom_voicework = "marshal_marksman_hvh"
 	else
 		self.marshal_marksman_scripted.custom_voicework = "marshal_marksman"
 	end
@@ -1566,7 +1570,23 @@ function CharacterTweakData:_init_gangster(presets)
 	self.enforcer_assault.access = "swat"
 	self.enforcer_assault.speech_prefix_p1 = self._prefix_data_p1.cloaker()
 	self.enforcer_assault.speech_prefix_count = nil
-	table.insert(self._enemy_list, "enforcer_assault")	
+	table.insert(self._enemy_list, "enforcer_assault")
+
+	self.enforcer_swat = deep_clone(self.enforcer_assault)
+	self.enforcer_swat.HEALTH_INIT = 200
+	self.enforcer_swat.headshot_dmg_mul = 2.345
+	self.enforcer_swat.move_speed = presets.move_speed.normal
+	self.enforcer_swat.speech_prefix_p1 = nil
+	if self:get_ai_group_type() == "federales" then
+		self.enforcer_swat.custom_voicework = nil
+	elseif self:get_ai_group_type() == "zombie" then
+		self.enforcer_swat.custom_voicework = "heavygunner_hvh"
+	elseif self:get_ai_group_type() == "murkywater" then
+		self.enforcer_swat.custom_voicework = "murky_heavygunner"
+	else
+		self.enforcer_swat.custom_voicework = "heavygunner"
+	end
+	table.insert(self._enemy_list, "enforcer_swat")
 end
 
 function CharacterTweakData:_init_biker(presets)
@@ -2777,7 +2797,7 @@ function CharacterTweakData:_init_tank(presets)
 	--Halloween Bulldozer (Black)
 	self.tank_hw_black = deep_clone(self.tank_black)
 	self.tank_hw_black.weapon = deep_clone(presets.weapon.normal)
-	self.tank_hw_black.custom_voicework = "tdozer"
+	self.tank_hw_black.custom_voicework = "dozer_nypd_hvh"
 	--Dozerish head health, lowered to account for no visor so they're about the same head health
 	self.tank_hw_black.headshot_dmg_mul = 5.5
 	self.tank_hw_black.ignore_headshot = false
@@ -2792,7 +2812,7 @@ function CharacterTweakData:_init_tank(presets)
 	self.tank_hw.weapon = deep_clone(presets.weapon.normal)
 	self.tank_hw.ignore_headshot = false
 	self.tank_hw.melee_anims = nil
-	self.tank_hw.custom_voicework = "tdozer"
+	self.tank_hw.custom_voicework = "dozer_nypd_hvh"
 	table.insert(self._enemy_list, "tank_hw")
 	
 	--Halloween Bulldozer, captain minion variant with LMG (Used only for Winters' Squad on DSPJ)
@@ -2800,6 +2820,7 @@ function CharacterTweakData:_init_tank(presets)
 	self.tank_hw_minion.weapon = deep_clone(presets.weapon.normal)
 	self.tank_hw_minion.ignore_headshot = false
 	self.tank_hw_minion.melee_anims = nil
+	self.tank_hw_minion.custom_voicework = "dozer_nypd_hvh"
 	table.insert(self._enemy_list, "tank_hw_minion")
 	
 	--Benelli (Bravo) Dozer
@@ -2959,8 +2980,18 @@ function CharacterTweakData:_init_spooc(presets)
 
 	self.spooc_titan.cloak_on_bullet_damage_chance = 0.5
 	self.spooc_titan.cloak_on_fire_damage_chance = 0.5
-	self.spooc_titan.cloak_on_explosive_damage_chance = 0	
-	table.insert(self._enemy_list, "spooc_titan")
+	self.spooc_titan.cloak_on_explosive_damage_chance = 0
+
+	--SWOLE CLOAKER
+	self.spooc_swole = deep_clone(self.spooc)
+	self.spooc_swole.kick_damage = 16
+	self.spooc_swole.HEALTH_INIT = 1000
+	self.spooc_swole.headshot_dmg_mul = 1
+	self.spooc_swole.damage_resistance = presets.damage_resistance.swolen
+	self.spooc_swole.special_deaths = nil
+	self.spooc_swole.charging_detect = true
+	self.spooc_swole.use_animation_on_fire_damage = false
+	table.insert(self._enemy_list, "spooc_swole")
 
 	--SWOLE CLOAKER
 	self.spooc_swole = deep_clone(self.spooc)
@@ -3546,6 +3577,20 @@ function CharacterTweakData:_init_spring(presets)
 	self.headless_hatman.captain_type = restoration.captain_types.hvh
 	self.headless_hatman.no_dozer_armor_resistance = true
 	table.insert(self._enemy_list, "headless_hatman")
+
+	-- Sniper Bulldozer Captain
+	self.tank_captain = deep_clone(self.spring)
+	self.tank_captain.HEALTH_INIT = 1500
+	self.tank_captain.headshot_dmg_mul = 4
+	self.tank_captain.can_throw_frag = false
+	self.tank_captain.custom_voicework = nil
+	self.tank_captain.captain_type = restoration.captain_types.dzr_snp
+	self.tank_captain.announce_incomming = "incomming_captain"
+	self.tank_captain.damage.hurt_severity = presets.hurt_severities.elite
+	self.tank_captain.move_speed = presets.move_speed.slow_plus
+	self.tank_captain.rage_move_speed = presets.move_speed.fast
+	table.insert(self.tank_captain.tags, "medic")
+	table.insert(self._enemy_list, "tank_captain")
 end
 
 function CharacterTweakData:_init_summers(presets)	
@@ -4376,7 +4421,7 @@ function CharacterTweakData:_init_weekend_vanilla_heavy(presets)
 	self.weekend_vanilla_heavy.headshot_dmg_mul = 1.8
 	self.weekend_vanilla_heavy.can_throw_frag = true
 	self.weekend_vanilla_heavy.move_speed = presets.move_speed.normal
-	self.weekend_vanilla_heavy.custom_voicework = "heavygunner"
+	self.weekend_vanilla_heavy.custom_voicework = "bravo_heavy"
 	self.weekend_vanilla_heavy.surrender = presets.surrender.bravo_hard
 	self.weekend_vanilla_heavy.damage_resistance = presets.damage_resistance.heavy_swat
 	table.insert(self._enemy_list, "weekend_vanilla_heavy")
@@ -4392,6 +4437,7 @@ function CharacterTweakData:_init_weekend_vanilla_snp(presets)
 	self.weekend_vanilla_snp.HEALTH_INIT = 19
 	self.weekend_vanilla_snp.headshot_dmg_mul = 2
 	self.weekend_vanilla_snp.custom_voicework = "marshal_marksman"
+	self.weekend_vanilla_snp.die_sound_event_2 = nil
 	table.insert(self._enemy_list, "weekend_vanilla_snp")
 end
 
@@ -4399,9 +4445,8 @@ end
 --suffer
 function CharacterTweakData:_init_city_swat_rpg(presets)
 	self.city_swat_rpg = deep_clone(self.city_swat_titan)
-	self.city_swat_rpg.dodge = presets.dodge.poor
 	self.city_swat_rpg.move_speed = presets.move_speed.slow_plus
-	self.city_swat_rpg.dodge = presets.dodge.poor
+	self.city_swat_rpg.dodge = presets.dodge.average
 	self.city_swat_rpg.yellow_blood = false
 	self.city_swat_rpg.HEALTH_INIT = 20
 	self.city_swat_rpg.headshot_dmg_mul = 1.9
@@ -4412,10 +4457,59 @@ function CharacterTweakData:_init_city_swat_rpg(presets)
 	table.insert(self._enemy_list, "city_swat_rpg")
 end
 
+--GenSec Sergeant, Mix of Vet Cop, ASU, and SWAT, Less HS Multu the higher the diff
+function CharacterTweakData:_init_city_swat_sergeant(presets)
+	self.city_swat_sergeant = deep_clone(self.city_swat)
+	self.city_swat_sergeant.tags = {"law", "custom", "special"}
+	self.city_swat_sergeant.HEALTH_INIT = 15
+	self.city_swat_sergeant.priority_shout_max_dis = 3000
+	self.city_swat_sergeant.priority_shout = "g29"
+	self.city_swat_sergeant.bot_priority_shout = "g29"
+	self.city_swat_sergeant.is_special = true
+	self.city_swat_sergeant.custom_shout = true
+	self.city_swat_sergeant.can_shoot_while_dodging = true
+	self.city_swat_sergeant.can_slide_on_suppress = true
+	self.city_swat_sergeant.move_speed = presets.move_speed.fast
+	if self:get_ai_group_type() == "federales" then
+		self.city_swat_sergeant.custom_voicework = "mexico_vet"
+	elseif self:get_ai_group_type() == "murkywater" then
+		self.city_swat_sergeant.custom_voicework = "murky_vet"
+	else
+		self.city_swat_sergeant.custom_voicework = "swat_pd3"
+	end
+	self.city_swat_sergeant.melee_weapon = "buzzer_summer"
+	self.city_swat_sergeant.melee_weapon_dmg_multiplier = 1
+	self.city_swat_sergeant.tase_on_melee = true
+	self.city_swat_sergeant.surrender = nil
+	self.city_swat_sergeant.dodge = presets.dodge.elite
+	self.city_swat_sergeant.steal_loot = true
+	self.city_swat_sergeant.do_asu = true
+	self.city_swat_sergeant.no_asu = true
+	self.city_swat_sergeant.immune_to_knock_down = true
+	self.city_swat_sergeant.headshot_dmg_mul = 3
+	self.city_swat_sergeant.damage.bullet_dodge_chance = 10
+	self.city_swat_sergeant.dodge_with_grenade = {
+		smoke = {duration = {
+			6,
+			6
+		}},
+		check = function (t, nr_grenades_used)
+			local delay_till_next_use = 20
+			local chance = 0.05
+
+			if math.random() < chance then
+				return true, t + delay_till_next_use
+			end
+
+			return false, t + delay_till_next_use
+		end
+	}
+	table.insert(self._enemy_list, "city_swat_sergeant")
+end
+
 function CharacterTweakData:_init_zombie(presets)
 	self.zombie_light = deep_clone(self.swat)
 	table.insert(self._enemy_list, "zombie_light")	
-
 end
 
 function CharacterTweakData:_presets(tweak_data)
@@ -5416,7 +5510,7 @@ function CharacterTweakData:_presets(tweak_data)
 		blunt = 0.1,
 		sharp = 0.1
 	}
-
+	
 	presets.base = {}
 	presets.base.HEALTH_INIT = 2
 	presets.base.headshot_dmg_mul = 2
@@ -18407,14 +18501,14 @@ function CharacterTweakData:_presets(tweak_data)
 	}
 	-- somehow even lower than special
 	presets.surrender.bravo_hard = {
-		base_chance = 0.25,
+		base_chance = 0.2,
 		significant_chance = 0.3,
 		violence_timeout = 1.5,
 		reasons = {
 			health = {
 				[1] = 0.2,
-				[0.75] = 0.4,
-				[0.5] = 0.6,
+				[0.75] = 0.3,
+				[0.5] = 0.4,
 			},
 			weapon_down = 0.5,
 			pants_down = 1,
@@ -18823,8 +18917,12 @@ Hooks:PostHook(CharacterTweakData, "_create_table_structure", "remod_create_tabl
 	--Mateba Model 6
 	table.insert(self.weap_ids, "mateba_ap")
 	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_matever/wpn_npc_matever"))
-end)
 
+	--HK G3A3
+	table.insert(self.weap_ids, "g3a3_npc")
+	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_g3a3/wpn_npc_g3a3"))
+end)
+-- EASY (UNUSED) --
 function CharacterTweakData:_set_easy()
 	self:_multiply_all_hp(0.75, 1)
 	self:_multiply_weapon_delay(self.presets.weapon.normal, 0)
@@ -18876,7 +18974,7 @@ function CharacterTweakData:_set_easy()
 	self.presets.gang_member_damage.BLEED_OUT_HEALTH_INIT = 25
 	self:_multiply_all_speeds(1, 1)
 end
-
+-- NORMAL --
 function CharacterTweakData:_set_normal()
 	self:_multiply_all_hp(0.75, 1)
 	self:_multiply_weapon_delay(self.presets.weapon.normal, 0)
@@ -18939,7 +19037,7 @@ function CharacterTweakData:_set_normal()
 	self.presets.gang_member_damage.BLEED_OUT_HEALTH_INIT = 50
 	self:_multiply_all_speeds(1, 1)
 end
-
+-- HARD --
 function CharacterTweakData:_set_hard()
 	self:_multiply_all_hp(1, 1)
 	self:_multiply_weapon_delay(self.presets.weapon.normal, 0)
@@ -19002,7 +19100,7 @@ function CharacterTweakData:_set_hard()
 	self.presets.gang_member_damage.BLEED_OUT_HEALTH_INIT = 75
 	self:_multiply_all_speeds(1, 1)
 end
-
+-- VERY HARD --
 function CharacterTweakData:_set_overkill()
 	self:_multiply_all_hp(1, 1)
 	self:_multiply_weapon_delay(self.presets.weapon.normal, 0)
@@ -19065,7 +19163,7 @@ function CharacterTweakData:_set_overkill()
 	self.presets.gang_member_damage.BLEED_OUT_HEALTH_INIT = 100
 	self:_multiply_all_speeds(1, 1)	
 end
-
+-- OVERKILL --
 function CharacterTweakData:_set_overkill_145()
 	if SystemInfo:platform() == Idstring("PS3") then
 		self:_multiply_all_hp(1, 1)
@@ -19078,6 +19176,14 @@ function CharacterTweakData:_set_overkill_145()
 	self:_multiply_weapon_delay(self.presets.weapon.deathwish, 0)
 	self:_multiply_weapon_delay(self.presets.weapon.gang_member, 0)
 	self:_set_characters_weapon_preset("expert", "good")
+
+	if pro_job then
+		self.city_swat_sergeant.headshot_dmg_mul = 2.5
+		self.city_swat_sergeant.damage.bullet_dodge_chance = 15
+	else
+		self.city_swat_sergeant.headshot_dmg_mul = 3
+		self.city_swat_sergeant.damage.bullet_dodge_chance = 10
+	end
 	
 	self.city_swat.weapon = deep_clone(self.presets.weapon.good)
 	self.city_swat.dodge = self.presets.dodge.athletic_very_hard
@@ -19127,7 +19233,7 @@ function CharacterTweakData:_set_overkill_145()
 	self.presets.gang_member_damage.BLEED_OUT_HEALTH_INIT = 125
 	self:_multiply_all_speeds(1, 1)
 end
-
+-- MAYHEM --
 function CharacterTweakData:_set_easy_wish()
 	self.tank_hw_black.headshot_dmg_mul = 4.4
 
@@ -19141,6 +19247,14 @@ function CharacterTweakData:_set_easy_wish()
 	self:_multiply_weapon_delay(self.presets.weapon.expert, 0)
 	self:_multiply_weapon_delay(self.presets.weapon.deathwish, 0)
 	self:_multiply_weapon_delay(self.presets.weapon.gang_member, 0)
+
+	if pro_job then
+		self.city_swat_sergeant.headshot_dmg_mul = 2
+		self.city_swat_sergeant.damage.bullet_dodge_chance = 20
+	else
+		self.city_swat_sergeant.headshot_dmg_mul = 2.5
+		self.city_swat_sergeant.damage.bullet_dodge_chance = 15
+	end
 	
 	--Tankier Dozer Armor
 	self.tank_armor_damage_mul = 0.8
@@ -19198,7 +19312,7 @@ function CharacterTweakData:_set_easy_wish()
 	self.concussion_multiplier = 1
 	self:_multiply_all_speeds(1, 1)
 end
-
+-- DEATH WISH --
 function CharacterTweakData:_set_overkill_290()
 	self.tank_hw_black.headshot_dmg_mul = 2.75
 
@@ -19217,7 +19331,15 @@ function CharacterTweakData:_set_overkill_290()
 	self:_set_characters_melee_preset("2.5", "2")
 	self.fbi.can_shoot_while_dodging = true
 	self.swat.can_shoot_while_dodging = true	
-	self.hrt.can_shoot_while_dodging = true		
+	self.hrt.can_shoot_while_dodging = true
+
+	if pro_job then
+		self.city_swat_sergeant.headshot_dmg_mul = 1.6
+		self.city_swat_sergeant.damage.bullet_dodge_chance = 25
+	else
+		self.city_swat_sergeant.headshot_dmg_mul = 2
+		self.city_swat_sergeant.damage.bullet_dodge_chance = 20
+	end
 	
 	--Tankier Dozer Armor
 	self.tank_armor_damage_mul = 0.5
@@ -19274,7 +19396,7 @@ function CharacterTweakData:_set_overkill_290()
 	self.concussion_multiplier = 1
 	self:_multiply_all_speeds(1, 1.05)
 end
-
+-- DEATH SENTENCE --
 function CharacterTweakData:_set_sm_wish()
 	--Harder heads base, not sure if needed anymore tbh
 	--[[
@@ -19289,6 +19411,14 @@ function CharacterTweakData:_set_sm_wish()
 	self.weekend_lmg.headshot_dmg_mul = 3.125
 	]]--
 	self.tank_hw_black.headshot_dmg_mul = 2.75
+
+	if pro_job then
+		self.city_swat_sergeant.headshot_dmg_mul = 1
+		self.city_swat_sergeant.damage.bullet_dodge_chance = 30
+	else
+		self.city_swat_sergeant.headshot_dmg_mul = 1.6
+		self.city_swat_sergeant.damage.bullet_dodge_chance = 25
+	end
 
 	if SystemInfo:platform() == Idstring("PS3") then
 		self:_multiply_all_hp(2, 0.915)
@@ -19495,7 +19625,7 @@ function CharacterTweakData:_set_sm_wish()
 	
 	self.spring.dt_suppress = {
 		range = 3000
-	}	
+	}
 end
 
 function CharacterTweakData:is_special_unit(enemy_tweak)
@@ -19670,7 +19800,6 @@ function CharacterTweakData:character_map()
 		table.insert(char_map.basic.list, "ene_cop_2_forest")
 		table.insert(char_map.basic.list, "ene_swole_spook_1")
 		table.insert(char_map.basic.list, "ene_swole_medic_m249")
-			
 	--dlc1
 		table.insert(char_map.dlc1.list, "ene_security_gensec_guard_1")
 		table.insert(char_map.dlc1.list, "ene_security_gensec_guard_2")
@@ -19710,6 +19839,22 @@ function CharacterTweakData:character_map()
 		
 	--Christmas
 		table.insert(char_map.cg22.list, "ene_bulldozer_snowman")
+	--HvH
+		table.insert(char_map.hvh.list, "ene_bulldozer_minigun_classic")
+		table.insert(char_map.hvh.list, "ene_bulldozer_medic")
+		table.insert(char_map.hvh.list, "ene_city_swat_1")
+		table.insert(char_map.hvh.list, "ene_city_swat_2")
+		table.insert(char_map.hvh.list, "ene_city_swat_3")
+		table.insert(char_map.hvh.list, "ene_city_heavy_g36")
+		table.insert(char_map.hvh.list, "ene_city_heavy_r870")
+		table.insert(char_map.hvh.list, "ene_zeal_swat_shield")
+		table.insert(char_map.hvh.list, "ene_zeal_swat")
+		table.insert(char_map.hvh.list, "ene_zeal_swat_2")
+		table.insert(char_map.hvh.list, "ene_zeal_swat_heavy")
+		table.insert(char_map.hvh.list, "ene_zeal_swat_heavy_2")
+	--bph
+		table.insert(char_map.bph.list, "ene_murky_heavyg")
+		table.insert(char_map.bph.list, "ene_murky_sgt")
 	--vip
 		char_map.vip = {
 			path = "units/pd2_dlc_vip/characters/",
@@ -19749,6 +19894,7 @@ function CharacterTweakData:character_map()
 				"ene_zeal_cloaker",
 				"ene_zeal_cloaker_sc",
 				"ene_zeal_swat",
+				"ene_zeal_swat_2",
 				"ene_zeal_city_1",
 				"ene_zeal_city_2",
 				"ene_zeal_city_3",
@@ -19839,6 +19985,7 @@ function CharacterTweakData:character_map()
 				"ene_policia_02",
 				"ene_policia_03",
 				"ene_policia_04",
+				"ene_policia_sgt",
 				"ene_fbi_1",
 				"ene_fbi_2",
 				"ene_fbi_3",
@@ -20072,7 +20219,8 @@ function CharacterTweakData:character_map()
 		char_map.dave = {
 			path = "units/pd2_mod_dave/characters/",
 			list = {
-				"ene_big_dave"
+				"ene_big_dave",
+				"ene_dave_hvh"
 			}
 		}
 
@@ -20080,7 +20228,43 @@ function CharacterTweakData:character_map()
 			path = "units/pd2_mod_nc/characters/",
 			list = {
 				"ene_heavymedic_1",
-				"ene_gensec_heavygunner"
+				"ene_police_heavygunner",
+				"ene_gensec_heavygunner",
+				"ene_gensec_sgt"
+			}
+		}
+
+		char_map.ng = {
+			path = "units/pd2_mod_ng/characters/",
+			list = {
+				"ene_ntl_benelli",
+				"ene_ntl_groundsniper",
+				"ene_ntl_heavyshotgun",
+				"ene_ntl_heavyswat",
+				"ene_ntl_swat_1",
+				"ene_ntl_swat_2",
+				"ene_ntl_swat_3",
+				"ene_ntl_medic"
+			}
+		}
+
+		char_map.ngvh = {
+			path = "units/pd2_mod_ngvh/characters/",
+			list = {
+				"ene_ntl_groundsniper",
+				"ene_ntl_heavyshotgun",
+				"ene_ntl_heavyswat",
+				"ene_ntl_swat_1",
+				"ene_ntl_swat_2",
+				"ene_ntl_swat_3",
+				"ene_ntl_medic"
+			}
+		}
+
+		char_map.caps = {
+			path = "units/pd2_mod_caps/characters/",
+			list = {
+				"ene_bulldozer_captain"
 			}
 		}
 
@@ -20156,7 +20340,11 @@ function CharacterTweakData:character_map()
 				"ene_titan_sniper_scripted",
 				"ene_titan_taser",
 				"ene_veteran_cop_1",
-				"ene_phalanx_1_assault"
+				"ene_phalanx_1_assault",
+				"ene_gensec_sgt",
+				"ene_heavymedic_1",
+				"ene_marshal_marksman_1",
+				"ene_police_heavygunner"
 			}
 		}
 		

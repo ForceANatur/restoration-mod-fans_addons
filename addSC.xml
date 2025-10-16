@@ -387,7 +387,7 @@
 
 	<!--LPF's S552-->
 	<unit				path="units/payday2/weapons/wpn_npc_s552_sc/wpn_npc_s552_sc" force="false" load="false"/>
-		
+
 	<!--HK21-->
 	<material_config	path="units/payday2/weapons/wpn_npc_hk21_sc/wpn_npc_hk21_sc" force="false"/>
 	<model				path="units/payday2/weapons/wpn_npc_hk21_sc/wpn_npc_hk21_sc" force="false"/>
@@ -743,6 +743,15 @@
 	<unit				path="units/payday2/weapons/wpn_npc_shepheard/wpn_npc_shepheard" force="false"/>
 	<texture			path="units/payday2/weapons/wpn_npc_shepheard/shepheard_df" force="true"/>
 	<texture			path="units/payday2/weapons/wpn_npc_shepheard/shepheard_nm" force="true"/>
+
+	<!--HK G3A3-->
+	<material_config	path="units/payday2/weapons/wpn_npc_g3a3/wpn_npc_g3a3" force="false"/>
+	<model				path="units/payday2/weapons/wpn_npc_g3a3/wpn_npc_g3a3" force="false"/>
+	<object				path="units/payday2/weapons/wpn_npc_g3a3/wpn_npc_g3a3" force="false"/>
+	<cooked_physics		path="units/payday2/weapons/wpn_npc_g3a3/wpn_npc_g3a3" force="false"/>
+	<unit				path="units/payday2/weapons/wpn_npc_g3a3/wpn_npc_g3a3" force="false"/>
+	<texture			path="units/payday2/weapons/wpn_npc_g3a3/wpn_npc_sniper_p1_df" force="true"/>
+	<texture			path="units/payday2/weapons/wpn_npc_g3a3/wpn_npc_sniper_p1_nm" force="true"/>
 
 	<!--Unshootable Flashbangs-->
 	<sequence_manager	path="units/payday2/weapons/wpn_frag_sc_flashbang/wpn_frag_sc_flashbang" force="false"/>
@@ -1216,7 +1225,7 @@
 	<unit				path="units/payday2/characters/ene_mememan_2/ene_mememan_2" force="false" load="true"/>
 	<material_config	path="units/payday2/characters/ene_mememan_2/ene_mememan_2" force="false"/>
 	<material_config	path="units/payday2/characters/ene_mememan_2/ene_mememan_2_contour" force="false"/>
-	<unit				path="units/payday2/characters/ene_mememan_2/ene_mememan_2_husk" force="false" load="true"/>	
+	<unit				path="units/payday2/characters/ene_mememan_2/ene_mememan_2_husk" force="false" load="true"/>
 	
 	<unit				path="units/payday2/weapons/wpn_npc_mini/x_mini_npc" load="true" force="false"/>
 
@@ -1239,6 +1248,14 @@
 	<object				path="units/payday2/characters/ene_acc_mememan_2_helmet_plate/ene_acc_mememan_2_helmet_plate"/>
 	<material_config	path="units/payday2/characters/ene_acc_mememan_2_helmet_plate/ene_acc_mememan_2_helmet_plate"/>
 	<!--MemeMan2 Mod-->
+
+	<!--Load helmet before anything related to new coppers-->
+	<!--This helmet is agony for anything new coppers related. Fuck this helmet. - FaN Scout-->
+	<object				path="units/pd2_mod_nc/characters/ene_acc_zeal_swat_helmet/ene_acc_zeal_swat_helmet" force="false"/>
+	<cooked_physics		path="units/pd2_mod_nc/characters/ene_acc_zeal_swat_helmet/ene_acc_zeal_swat_helmet" force="false"/>
+	<model				path="units/pd2_mod_nc/characters/ene_acc_zeal_swat_helmet/ene_acc_zeal_swat_helmet" force="false"/>
+	<unit				path="units/pd2_mod_nc/characters/ene_acc_zeal_swat_helmet/ene_acc_zeal_swat_helmet" force="false" load="true"/>
+	<material_config	path="units/pd2_mod_nc/characters/ene_acc_zeal_swat_helmet/ene_acc_zeal_swat_helmet" force="false"/>
 
 	<!--New Coppers heavygunner as meme captain-->
 	<object				path="units/pd2_mod_nc/characters/ene_gensec_heavygunner/ene_gensec_heavygunner" force="false"/>
@@ -1265,6 +1282,19 @@
 	<texture			path="units/pd2_mod_nc/characters/shared_textures/heavymedic_head_df"/>
 	<texture			path="units/pd2_mod_nc/characters/shared_textures/gasmask_df"/>
 	<texture			path="units/pd2_mod_nc/characters/shared_textures/gasmask_nm"/>
+
+	<!--Zombie Heavy Medic-->
+	<object				path="units/pd2_mod_halloween/characters/ene_heavymedic_1/ene_heavymedic_1" force="false"/>
+	<cooked_physics		path="units/pd2_mod_halloween/characters/ene_heavymedic_1/ene_heavymedic_1" force="false"/>
+	<model				path="units/pd2_mod_halloween/characters/ene_heavymedic_1/ene_heavymedic_1" force="false"/>
+	<unit				path="units/pd2_mod_halloween/characters/ene_heavymedic_1/ene_heavymedic_1" force="false" load="true"/>
+	<material_config	path="units/pd2_mod_halloween/characters/ene_heavymedic_1/ene_heavymedic_1" force="false"/>
+	<material_config	path="units/pd2_mod_halloween/characters/ene_heavymedic_1/ene_heavymedic_1_contour" force="true"/>
+	<unit				path="units/pd2_mod_halloween/characters/ene_heavymedic_1/ene_heavymedic_1_husk" force="false" load="true"/>
+	<texture			path="units/pd2_mod_halloween/characters/ene_heavymedic_1/heavymedic_head_df"/>
+	<texture			path="units/pd2_mod_halloween/characters/ene_heavymedic_1/heavymedic_body_df"/>
+	<texture			path="units/pd2_mod_halloween/characters/ene_heavymedic_1/gasmask_df"/>
+	<texture			path="units/pd2_mod_halloween/characters/ene_heavymedic_1/sam_head_df"/>
 
 	<!--HeavyGunner deserves a friend-->
 	<object				path="units/pd2_dlc_usm1/characters/ene_atf_field_agent_1/ene_atf_field_agent_1" force="false"/>
@@ -1305,8 +1335,73 @@
 	<texture			path="units/payday2/characters/shared_textures/ene_swole_medic_nm"/>
 	<texture			path="units/payday2/characters/shared_textures/ene_swole_medic_df"/>
 
+	<!--GenSec Sergeant-->
+	<object				path="units/pd2_mod_nc/characters/ene_gensec_sgt/ene_gensec_sgt" force="false"/>
+	<cooked_physics		path="units/pd2_mod_nc/characters/ene_gensec_sgt/ene_gensec_sgt" force="false"/>
+	<model				path="units/pd2_mod_nc/characters/ene_gensec_sgt/ene_gensec_sgt" force="false"/>
+	<unit				path="units/pd2_mod_nc/characters/ene_gensec_sgt/ene_gensec_sgt" force="false" load="true"/>
+	<material_config	path="units/pd2_mod_nc/characters/ene_gensec_sgt/ene_gensec_sgt" force="false"/>
+	<material_config	path="units/pd2_mod_nc/characters/ene_gensec_sgt/ene_gensec_sgt_contour" force="true"/>
+	<unit				path="units/pd2_mod_nc/characters/ene_gensec_sgt/ene_gensec_sgt_husk" force="false" load="true"/>
+	<texture			path="units/pd2_mod_nc/characters/shared_textures/sgt_head_df"/>
+	<texture			path="units/pd2_mod_nc/characters/shared_textures/sgt_head_nm"/>
+	<texture			path="units/pd2_mod_nc/characters/shared_textures/sgt_body_df"/>
+	<texture			path="units/pd2_mod_nc/characters/shared_textures/sgt_body_nm"/>
+	<texture			path="units/pd2_mod_nc/characters/shared_textures/sgt_gasmask_df"/>
+	<texture			path="units/pd2_mod_nc/characters/shared_textures/sgt_gasmask_nm"/>
+
+	<!-- ZEAL Dozer Captain Parts -->
+	<model path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_throat/ene_acc_bulldozer_throat"  force="false"/>
+	<model path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_stomache/ene_acc_bulldozer_stomache"  force="false"/>
+	<model path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_neck/ene_acc_bulldozer_neck"  force="false"/>
+	<model path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_helmet_plate/ene_acc_bulldozer_helmet_plate"  force="false"/>
+	<model path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_chest/ene_acc_bulldozer_chest"  force="false"/>
+	<model path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_back/ene_acc_bulldozer_back"  force="false"/>
+
+	<material_config path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_throat/ene_acc_bulldozer_throat" force="false"/>
+	<material_config path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_stomache/ene_acc_bulldozer_stomache" force="false"/>
+	<material_config path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_neck/ene_acc_bulldozer_neck" force="false"/>
+	<material_config path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_helmet_plate/ene_acc_bulldozer_helmet_plate" force="false"/>
+	<material_config path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_chest/ene_acc_bulldozer_chest" force="false"/>
+	<material_config path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_back/ene_acc_bulldozer_back" force="false"/>
+
+	<object path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_throat/ene_acc_bulldozer_throat" force="false"/>
+	<object path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_stomache/ene_acc_bulldozer_stomache" force="false"/>
+	<object path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_neck/ene_acc_bulldozer_neck" force="false"/>
+	<object path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_helmet_plate/ene_acc_bulldozer_helmet_plate" force="false"/>
+	<object path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_chest/ene_acc_bulldozer_chest" force="false"/>
+	<object path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_back/ene_acc_bulldozer_back" force="false"/>
+
+	<cooked_physics path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_throat/ene_acc_bulldozer_throat" force="false"/>
+	<cooked_physics path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_stomache/ene_acc_bulldozer_stomache" force="false"/>
+	<cooked_physics path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_neck/ene_acc_bulldozer_neck" force="false"/>
+	<cooked_physics path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_helmet_plate/ene_acc_bulldozer_helmet_plate" force="false"/>
+	<cooked_physics path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_chest/ene_acc_bulldozer_chest" force="false"/>
+	<cooked_physics path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_back/ene_acc_bulldozer_back" force="false"/>
+
+	<unit path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_throat/ene_acc_bulldozer_throat" force="false" load="true"/>
+	<unit path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_stomache/ene_acc_bulldozer_stomache" force="false" load="true"/>
+	<unit path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_neck/ene_acc_bulldozer_neck" force="false" load="true"/>
+	<unit path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_helmet_plate/ene_acc_bulldozer_helmet_plate" force="false" load="true"/>
+	<unit path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_chest/ene_acc_bulldozer_chest" force="false" load="true"/>
+	<unit path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_back/ene_acc_bulldozer_back" force="false" load="true"/>
+
+	<texture path= "units/pd2_mod_caps/characters/ene_bulldozer_captain/debris_generic_df"/>
+
+	<!-- ZEAL LMG Dozer Captain -->
+	<texture			path="units/pd2_mod_caps/characters/ene_bulldozer_captain/bulldozer_df"/>
+	<texture			path="units/pd2_mod_caps/characters/ene_bulldozer_captain/bulldozer_1_nm"/>
+	<texture			path="units/pd2_mod_caps/characters/ene_bulldozer_captain/lmg_head_il"/>
+	<material_config	path="units/pd2_mod_caps/characters/ene_bulldozer_captain/ene_bulldozer_captain" force="false"/>
+	<material_config	path="units/pd2_mod_caps/characters/ene_bulldozer_captain/ene_bulldozer_captain_contour" force="false"/>
+	<model				path="units/pd2_mod_caps/characters/ene_bulldozer_captain/ene_bulldozer_captain" force="false"/>
+	<unit				path="units/pd2_mod_caps/characters/ene_bulldozer_captain/ene_bulldozer_captain" force="false" load="true"/>
+	<unit				path="units/pd2_mod_caps/characters/ene_bulldozer_captain/ene_bulldozer_captain_husk" force="false" load="true"/>
+	<object				path="units/pd2_mod_caps/characters/ene_bulldozer_captain/ene_bulldozer_captain" force="false"/>
+	<sequence_manager	path="units/pd2_mod_caps/characters/ene_bulldozer_captain/ene_bulldozer_captain" force="false"/>
+
 	<unit path="units/pd2_dlc_usm1/weapons/wpn_npc_dmr/wpn_npc_dmr" force="true" />
-	
+
 	<!--Big Dave-->
 	<object				path="units/pd2_mod_dave/characters/ene_big_dave/ene_big_dave" force="false"/>
 	<cooked_physics		path="units/pd2_mod_dave/characters/ene_big_dave/ene_big_dave" force="false"/>
@@ -1319,6 +1414,19 @@
 	<texture			path="units/pd2_mod_dave/characters/shared_textures/taser_body_nm"/>
 	<texture			path="units/pd2_mod_dave/characters/shared_textures/heads_atlas_df"/>
 	<texture			path="units/pd2_mod_dave/characters/shared_textures/helmets_heavy_taser_atlas_df"/>
+
+	<!--Mateba Model 6-->
+	<material_config	path="units/payday2/weapons/wpn_npc_matever/wpn_npc_matever" force="false"/>
+	<material_config	path="units/payday2/weapons/wpn_npc_matever/wpn_npc_matever_contour" force="false"/>
+	<model				path="units/payday2/weapons/wpn_npc_matever/wpn_npc_matever" force="false"/>
+	<object				path="units/payday2/weapons/wpn_npc_matever/wpn_npc_matever" force="false"/>
+	<cooked_physics		path="units/payday2/weapons/wpn_npc_matever/wpn_npc_matever" force="false"/>
+	<unit				path="units/payday2/weapons/wpn_npc_matever/wpn_npc_matever" force="false"/>
+	<texture			path="units/payday2/weapons/wpn_npc_matever/wpn_npc_matever_df" force="true"/>
+	<texture			path="units/payday2/weapons/wpn_npc_matever/wpn_npc_matever_nm" force="true"/>
+	
+	<unit				path="units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_scripted_2/ene_male_marshal_marksman_scripted_2" load="true" force="false"/>
+	<unit				path="units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_scripted_2/ene_male_marshal_marksman_scripted_2_husk" load="true" force="false"/>
 
 	<!--Mateba Model 6-->
 	<material_config	path="units/payday2/weapons/wpn_npc_matever/wpn_npc_matever" force="false"/>

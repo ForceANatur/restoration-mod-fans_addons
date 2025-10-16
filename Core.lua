@@ -40,9 +40,14 @@ function restoration:Init()
 			spawn_group = "boss_heavygunner",
 			icon = "guis/textures/pd2/hud_buff_heavyg",
 			vs_line = "hud_assault_vip_heavygunner"
+		},
+		dzr_snp = {
+			spawn_group = "Cap_Cruel_T",
+			icon = "guis/textures/pd2/hud_buff_generic",
+			vs_line = "hud_assault_vip_heavygunner"
 		}
 	}
-		--Defines what captains spawn on what heists.
+	--Defines what captains spawn on what heists.
 	restoration.captain_spawns = {
 		--Winters
 		arena = restoration.captain_types.winter, --Alesso

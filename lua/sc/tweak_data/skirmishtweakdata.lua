@@ -68,7 +68,8 @@ local map_scale_factor = 1
 			headless_hatman = 1,
 			autumn = 1,
 			summers = 1,
-			heavygunner = 1
+			heavygunner = 1,
+			tank_captain = 1
 		}
 	}
 end
