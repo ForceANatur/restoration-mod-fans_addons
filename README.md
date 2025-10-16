@@ -31,9 +31,7 @@ Akan LPFs and Enforcers spawn on mexico heists
 
 Marshal Shield has been buffed.
 
-Captain spawns are a lot more meaner on Death Sentence Pro Job.
-
-A secret 6th captain only available with Everlasting Season/April 1st.
+A secret 6th and 7th captain only available with April 1st/Everlasting Season.
 
 Vanilla units have bravo units. Assets borrowed from new coppers again.
 
@@ -57,18 +55,6 @@ The odds of titan bulldozers are increased by 20%
 
 The heavy medics from the April Fools Captain with a 25% of replacing a normal medic (Also a mutator)
 
-# DSPJ Captain Changes:
-
-Spring spawns all of this spawn groups at once with 2 Medic-dozers.
-
-Winters get's his LPFs back along with the titandozers.
-
-Summers get's another Nader, Taser, Medic, and Dozer.
-
-Autumn get's 8 titan SWATs of each type.
-
-Hatman has both cloakers and more Vet Cops.
-
 # Voicelines:
 
 ASU: Coach (L4D2)
@@ -82,6 +68,8 @@ Bravo DMR: GSG9 (Counter Strike)
 Bravo DMR Murky: Phoenix (Counter Strike)
 
 Bravo Elite: Mercenary (Open Fortress)
+
+Bravo Heavy: GunStrikerFMJ (Placeholder, he'll finish those on his own terms)
 
 Murkywater Bravo Elite: Anarchist (Counter Strike)
 
