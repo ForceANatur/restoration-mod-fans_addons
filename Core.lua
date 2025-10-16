@@ -1732,25 +1732,7 @@ function BLT_CarryStacker:getWeightForType(carry_id, logger)
     local movement_penalty = nil
 	logger("Using local movement penalties")
 	
-	local solo_boon = 1
-	
-	if Global.game_settings.single_player then
-		solo_boon = 0.5
-	end
-	
-    self.settings.movement_penalties = {
-        light = 35 * solo_boon,
-        coke_light = 35 * solo_boon,
-        medium = 35 * solo_boon,
-        heavy = 35 * solo_boon,
-        very_heavy = 60 * solo_boon,
-        mega_heavy = 75 * solo_boon,
-
-        being = 45 * solo_boon,
-        slightly_very_heavy = 45 * solo_boon
-    }		
-	
-	movement_penalty = self.settings.movement_penalties[carry_type]
+	movement_penalty = tweak_data.carry.types[carry_type].weight
     local result = movement_penalty ~= nil 
         and ((100 -movement_penalty) / 100) 
         or 1
@@ -1785,9 +1767,14 @@ function BLT_CarryStacker:CanCarry(carry_id, logger)
     logger("Request to check whether the player can " ..
         "carry " .. tostring(carry_id))
     local check_weight = self.weight * self:getWeightForType(carry_id, logger)
+	local max_weight = tweak_data.player.max_carry_weight
+
+	if managers.player:has_category_upgrade("carry", "increased_carry_weight") then
+		max_weight = max_weight - managers.player:upgrade_value("carry", "increased_carry_weight", 1)
+	end
     logger("The current weight is " .. tostring(self.weight) .. 
         " and the new weight is " .. tostring(check_weight))
-    local result = check_weight >= 0.25
+    local result = check_weight >= max_weight
     logger("The player can carry a bag: " .. tostring(result))
     return result
 end
