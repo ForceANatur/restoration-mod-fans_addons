@@ -4675,21 +4675,21 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 				},
 				zombie = {
 					Idstring("units/pd2_mod_halloween/characters/ene_city_swat_1/ene_city_swat_1"),
+					Idstring("units/pd2_dlc_hvh/characters/ene_city_swat_1/ene_city_swat_1"),
 					Idstring("units/pd2_mod_halloween/characters/ene_city_swat_1/ene_city_swat_1"),
+					Idstring("units/pd2_dlc_hvh/characters/ene_city_swat_1/ene_city_swat_1"),
 					Idstring("units/pd2_mod_halloween/characters/ene_city_swat_1/ene_city_swat_1"),
+					Idstring("units/pd2_dlc_hvh/characters/ene_city_swat_1/ene_city_swat_1"),
 					Idstring("units/pd2_mod_halloween/characters/ene_city_swat_1/ene_city_swat_1"),
+					Idstring("units/pd2_dlc_hvh/characters/ene_city_swat_1/ene_city_swat_1"),
 					Idstring("units/pd2_mod_halloween/characters/ene_city_swat_1/ene_city_swat_1"),
+					Idstring("units/pd2_dlc_hvh/characters/ene_city_swat_1/ene_city_swat_1"),
 					Idstring("units/pd2_mod_halloween/characters/ene_city_swat_1/ene_city_swat_1"),
+					Idstring("units/pd2_dlc_hvh/characters/ene_city_swat_1/ene_city_swat_1"),
 					Idstring("units/pd2_mod_halloween/characters/ene_city_swat_1/ene_city_swat_1"),
+					Idstring("units/pd2_dlc_hvh/characters/ene_city_swat_1/ene_city_swat_1"),
 					Idstring("units/pd2_mod_halloween/characters/ene_city_swat_1/ene_city_swat_1"),
-					Idstring("units/pd2_mod_halloween/characters/ene_city_swat_1/ene_city_swat_1"),
-					Idstring("units/pd2_mod_halloween/characters/ene_city_swat_1/ene_city_swat_1"),
-					Idstring("units/pd2_mod_halloween/characters/ene_city_swat_1/ene_city_swat_1"),
-					Idstring("units/pd2_mod_halloween/characters/ene_city_swat_1/ene_city_swat_1"),
-					Idstring("units/pd2_mod_halloween/characters/ene_city_swat_1/ene_city_swat_1"),
-					Idstring("units/pd2_mod_halloween/characters/ene_city_swat_1/ene_city_swat_1"),
-					Idstring("units/pd2_mod_halloween/characters/ene_city_swat_1/ene_city_swat_1"),
-					Idstring("units/pd2_mod_halloween/characters/ene_city_swat_1/ene_city_swat_1"),
+					Idstring("units/pd2_dlc_hvh/characters/ene_city_swat_1/ene_city_swat_1"),
 					Idstring("units/pd2_mod_halloween/characters/ene_city_swat_1/ene_city_swat_1"),
 					Idstring("units/pd2_mod_dave/characters/ene_dave_hvh/ene_dave_hvh"),
 					Idstring("units/pd2_dlc_hvh/characters/ene_sniper_hvh_2/ene_sniper_hvh_2"),
@@ -5623,12 +5623,12 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 				zombie = {
 					Idstring("units/pd2_mod_halloween/characters/ene_city_swat_2/ene_city_swat_2"),
 					Idstring("units/pd2_mod_halloween/characters/ene_city_swat_3/ene_city_swat_3"),
+					Idstring("units/pd2_dlc_hvh/characters/ene_city_swat_2/ene_city_swat_2"),
+					Idstring("units/pd2_dlc_hvh/characters/ene_city_swat_3/ene_city_swat_3"),
 					Idstring("units/pd2_mod_halloween/characters/ene_city_swat_2/ene_city_swat_2"),
 					Idstring("units/pd2_mod_halloween/characters/ene_city_swat_3/ene_city_swat_3"),
-					Idstring("units/pd2_mod_halloween/characters/ene_city_swat_2/ene_city_swat_2"),
-					Idstring("units/pd2_mod_halloween/characters/ene_city_swat_3/ene_city_swat_3"),
-					Idstring("units/pd2_mod_halloween/characters/ene_city_swat_2/ene_city_swat_2"),
-					Idstring("units/pd2_mod_halloween/characters/ene_city_swat_3/ene_city_swat_3"),
+					Idstring("units/pd2_dlc_hvh/characters/ene_city_swat_2/ene_city_swat_2"),
+					Idstring("units/pd2_dlc_hvh/characters/ene_city_swat_3/ene_city_swat_3"),
 					Idstring("units/pd2_mod_dave/characters/ene_dave_hvh/ene_dave_hvh"),
 					Idstring("units/pd2_mod_halloween/characters/ene_skele_swat_2/ene_skele_swat_2"),
 					Idstring("units/pd2_mod_halloween/characters/ene_skele_swat_2/ene_skele_swat_2")
@@ -5950,6 +5950,7 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 					Idstring("units/pd2_mod_reapers/characters/ene_city_heavy_g36/ene_city_heavy_g36")
 				},
 				zombie = {
+					Idstring("units/pd2_dlc_hvh/characters/ene_city_heavy_g36/ene_city_heavy_g36"),
 					Idstring("units/pd2_mod_halloween/characters/ene_city_heavy_g36/ene_city_heavy_g36")
 				},
 				murkywater = {
@@ -6027,6 +6028,7 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 					Idstring("units/pd2_mod_reapers/characters/ene_city_heavy_r870/ene_city_heavy_r870")
 				},
 				zombie = {
+					Idstring("units/pd2_dlc_hvh/characters/ene_city_heavy_r870/ene_city_heavy_r870"),
 					Idstring("units/pd2_mod_halloween/characters/ene_city_heavy_r870_sc/ene_city_heavy_r870_sc")
 				},
 				murkywater = {
@@ -11737,21 +11739,21 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 			},
 			zombie = {
 				Idstring("units/pd2_mod_halloween/characters/ene_city_swat_1/ene_city_swat_1"),
+				Idstring("units/pd2_dlc_hvh/characters/ene_city_swat_1/ene_city_swat_1"),
 				Idstring("units/pd2_mod_halloween/characters/ene_city_swat_1/ene_city_swat_1"),
+				Idstring("units/pd2_dlc_hvh/characters/ene_city_swat_1/ene_city_swat_1"),
 				Idstring("units/pd2_mod_halloween/characters/ene_city_swat_1/ene_city_swat_1"),
+				Idstring("units/pd2_dlc_hvh/characters/ene_city_swat_1/ene_city_swat_1"),
 				Idstring("units/pd2_mod_halloween/characters/ene_city_swat_1/ene_city_swat_1"),
+				Idstring("units/pd2_dlc_hvh/characters/ene_city_swat_1/ene_city_swat_1"),
 				Idstring("units/pd2_mod_halloween/characters/ene_city_swat_1/ene_city_swat_1"),
+				Idstring("units/pd2_dlc_hvh/characters/ene_city_swat_1/ene_city_swat_1"),
 				Idstring("units/pd2_mod_halloween/characters/ene_city_swat_1/ene_city_swat_1"),
+				Idstring("units/pd2_dlc_hvh/characters/ene_city_swat_1/ene_city_swat_1"),
 				Idstring("units/pd2_mod_halloween/characters/ene_city_swat_1/ene_city_swat_1"),
+				Idstring("units/pd2_dlc_hvh/characters/ene_city_swat_1/ene_city_swat_1"),
 				Idstring("units/pd2_mod_halloween/characters/ene_city_swat_1/ene_city_swat_1"),
-				Idstring("units/pd2_mod_halloween/characters/ene_city_swat_1/ene_city_swat_1"),
-				Idstring("units/pd2_mod_halloween/characters/ene_city_swat_1/ene_city_swat_1"),
-				Idstring("units/pd2_mod_halloween/characters/ene_city_swat_1/ene_city_swat_1"),
-				Idstring("units/pd2_mod_halloween/characters/ene_city_swat_1/ene_city_swat_1"),
-				Idstring("units/pd2_mod_halloween/characters/ene_city_swat_1/ene_city_swat_1"),
-				Idstring("units/pd2_mod_halloween/characters/ene_city_swat_1/ene_city_swat_1"),
-				Idstring("units/pd2_mod_halloween/characters/ene_city_swat_1/ene_city_swat_1"),
-				Idstring("units/pd2_mod_halloween/characters/ene_city_swat_1/ene_city_swat_1"),
+				Idstring("units/pd2_dlc_hvh/characters/ene_city_swat_1/ene_city_swat_1"),
 				Idstring("units/pd2_mod_halloween/characters/ene_city_swat_1/ene_city_swat_1"),
 				Idstring("units/pd2_mod_dave/characters/ene_dave_hvh/ene_dave_hvh"),
 				Idstring("units/pd2_dlc_hvh/characters/ene_sniper_hvh_2/ene_sniper_hvh_2"),
@@ -11998,12 +12000,12 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 			zombie = {
 				Idstring("units/pd2_mod_halloween/characters/ene_city_swat_2/ene_city_swat_2"),
 				Idstring("units/pd2_mod_halloween/characters/ene_city_swat_3/ene_city_swat_3"),
+				Idstring("units/pd2_dlc_hvh/characters/ene_city_swat_2/ene_city_swat_2"),
+				Idstring("units/pd2_dlc_hvh/characters/ene_city_swat_3/ene_city_swat_3"),
 				Idstring("units/pd2_mod_halloween/characters/ene_city_swat_2/ene_city_swat_2"),
 				Idstring("units/pd2_mod_halloween/characters/ene_city_swat_3/ene_city_swat_3"),
-				Idstring("units/pd2_mod_halloween/characters/ene_city_swat_2/ene_city_swat_2"),
-				Idstring("units/pd2_mod_halloween/characters/ene_city_swat_3/ene_city_swat_3"),
-				Idstring("units/pd2_mod_halloween/characters/ene_city_swat_2/ene_city_swat_2"),
-				Idstring("units/pd2_mod_halloween/characters/ene_city_swat_3/ene_city_swat_3"),
+				Idstring("units/pd2_dlc_hvh/characters/ene_city_swat_2/ene_city_swat_2"),
+				Idstring("units/pd2_dlc_hvh/characters/ene_city_swat_3/ene_city_swat_3"),
 				Idstring("units/pd2_mod_dave/characters/ene_dave_hvh/ene_dave_hvh"),
 				Idstring("units/pd2_dlc_hvh/characters/ene_sniper_hvh_2/ene_sniper_hvh_2"),
 				Idstring("units/pd2_mod_halloween/characters/ene_skele_swat_2/ene_skele_swat_2"),
@@ -12205,6 +12207,7 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 				Idstring("units/pd2_mod_reapers/characters/ene_city_heavy_g36/ene_city_heavy_g36")
 			},
 			zombie = {
+				Idstring("units/pd2_dlc_hvh/characters/ene_city_heavy_g36/ene_city_heavy_g36"),
 				Idstring("units/pd2_mod_halloween/characters/ene_city_heavy_g36/ene_city_heavy_g36")
 			},
 			murkywater = {
@@ -12281,6 +12284,7 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 				Idstring("units/pd2_mod_reapers/characters/ene_city_heavy_r870/ene_city_heavy_r870")
 			},
 			zombie = {
+				Idstring("units/pd2_dlc_hvh/characters/ene_city_heavy_r870/ene_city_heavy_r870"),
 				Idstring("units/pd2_mod_halloween/characters/ene_city_heavy_r870_sc/ene_city_heavy_r870_sc")
 			},
 			murkywater = {

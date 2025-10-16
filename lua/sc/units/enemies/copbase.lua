@@ -1033,6 +1033,11 @@ local fbi = {
 }
 --GenSec
 local gensec = {
+	rifle_light = {
+		"g36",
+		"m4",
+		"shepheard"
+	},
 	rifle_heavy = {
 		"g36",
 		"g3a3_npc",
@@ -1231,6 +1236,10 @@ local weapon_mapping = {
 	[("units/pd2_dlc_hvh/characters/ene_fbi_swat_hvh_2/ene_fbi_swat_hvh_2"):key()] = fbi.shotgun,
 	[("units/pd2_dlc_hvh/characters/ene_fbi_heavy_hvh_r870/ene_fbi_heavy_hvh_r870"):key()] = fbi.shotgun,
 	[("units/pd2_dlc_hvh/characters/ene_medic_hvh_r870/ene_medic_hvh_r870"):key()] = fbi.shotgun_medic,
+	[("units/pd2_dlc_hvh/characters/ene_city_swat_1/ene_city_swat_1"):key()] = gensec.rifle_light,
+	[("units/pd2_dlc_hvh/characters/ene_city_swat_2/ene_city_swat_2"):key()] = gensec.shotgun,
+	[("units/pd2_dlc_hvh/characters/ene_city_heavy_g36/ene_city_heavy_g36"):key()] = gensec.rifle_heavy,
+	[("units/pd2_dlc_hvh/characters/ene_city_heavy_r870/ene_city_heavy_r870"):key()] = gensec.shotgun,
 	[("units/pd2_dlc_hvh/characters/ene_zeal_swat/ene_zeal_swat"):key()] = zeal.rifle_light,
 	[("units/pd2_dlc_hvh/characters/ene_zeal_swat_2/ene_zeal_swat_2"):key()] = zeal.shotgun_heavy,
 	[("units/pd2_dlc_hvh/characters/ene_zeal_swat_heavy/ene_zeal_swat_heavy"):key()] = zeal.rifle_heavy,
