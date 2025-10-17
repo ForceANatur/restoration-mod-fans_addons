@@ -1226,6 +1226,8 @@
 	<material_config	path="units/payday2/characters/ene_mememan_2/ene_mememan_2" force="false"/>
 	<material_config	path="units/payday2/characters/ene_mememan_2/ene_mememan_2_contour" force="false"/>
 	<unit				path="units/payday2/characters/ene_mememan_2/ene_mememan_2_husk" force="false" load="true"/>
+
+	<texture			path="units/payday2/characters/ene_mememan_2/material_df"/>
 	
 	<unit				path="units/payday2/weapons/wpn_npc_mini/x_mini_npc" load="true" force="false"/>
 

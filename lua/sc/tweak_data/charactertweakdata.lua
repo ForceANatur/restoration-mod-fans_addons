@@ -19871,6 +19871,7 @@ function CharacterTweakData:character_map()
 				"ene_phalanx_taser",
 				"ene_phalanx_1",
 				"ene_phalanx_1_assault",
+				"ene_phalanx_1_new",
 				"ene_titan_shotgun",
 				"ene_titan_rifle",
 				"ene_omnia_lpf",
