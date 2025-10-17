@@ -2981,17 +2981,7 @@ function CharacterTweakData:_init_spooc(presets)
 	self.spooc_titan.cloak_on_bullet_damage_chance = 0.5
 	self.spooc_titan.cloak_on_fire_damage_chance = 0.5
 	self.spooc_titan.cloak_on_explosive_damage_chance = 0
-
-	--SWOLE CLOAKER
-	self.spooc_swole = deep_clone(self.spooc)
-	self.spooc_swole.kick_damage = 16
-	self.spooc_swole.HEALTH_INIT = 1000
-	self.spooc_swole.headshot_dmg_mul = 1
-	self.spooc_swole.damage_resistance = presets.damage_resistance.swolen
-	self.spooc_swole.special_deaths = nil
-	self.spooc_swole.charging_detect = true
-	self.spooc_swole.use_animation_on_fire_damage = false
-	table.insert(self._enemy_list, "spooc_swole")
+	table.insert(self._enemy_list, "spooc_titan")
 
 	--SWOLE CLOAKER
 	self.spooc_swole = deep_clone(self.spooc)
@@ -20266,20 +20256,6 @@ function CharacterTweakData:character_map()
 			path = "units/pd2_mod_caps/characters/",
 			list = {
 				"ene_bulldozer_captain"
-			}
-		}
-
-		char_map.ng = {
-			path = "units/pd2_mod_ng/characters/",
-			list = {
-				"ene_ntl_benelli",
-				"ene_ntl_groundsniper",
-				"ene_ntl_heavyshotgun",
-				"ene_ntl_heavyswat",
-				"ene_ntl_swat_1",
-				"ene_ntl_swat_2",
-				"ene_ntl_swat_3",
-				"ene_ntl_medic"
 			}
 		}
 

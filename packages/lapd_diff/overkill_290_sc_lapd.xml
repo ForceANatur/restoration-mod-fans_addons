@@ -68,10 +68,11 @@
 	<texture			path="units/pd2_mod_nypd/characters/shared_textures/swat_gear_body_df" />	
 	<texture			path="units/pd2_mod_nypd/characters/shared_textures/swat_gear_body_nm" />
 
+
 	<!--for scripted spawns and such-->
 	<unit				path="units/payday2/characters/ene_hoxton_breakout_responder_1/ene_hoxton_breakout_responder_1" load="true"/>	
 	<unit				path="units/payday2/characters/ene_hoxton_breakout_responder_1/ene_hoxton_breakout_responder_1_husk" load="true"/>
-
+	
 	<unit				path="units/payday2/characters/ene_hoxton_breakout_responder_2/ene_hoxton_breakout_responder_2" load="true"/>	
 	<unit				path="units/payday2/characters/ene_hoxton_breakout_responder_2/ene_hoxton_breakout_responder_2_husk" load="true"/>
 
@@ -364,15 +365,7 @@
 
 	<!--textures-->	
 	<texture			path="units/pd2_mod_bravo/characters/shared_textures/bravo_body_nm"/>
-	<texture			path="units/pd2_mod_bravo/characters/shared_textures/bravo_dmr_df"/>
-	<texture			path="units/pd2_mod_bravo/characters/shared_textures/bravo_lmg_df"/>
-	<texture			path="units/pd2_mod_bravo/characters/shared_textures/bravo_rifle_df"/>
-	<texture			path="units/pd2_mod_bravo/characters/shared_textures/bravo_shotgun_df"/>
-	<texture			path="units/pd2_mod_bravo/characters/shared_textures/heads_atlas_df"/>
-	<texture			path="units/pd2_mod_bravo/characters/shared_textures/heads_atlas_nm"/>
-	<texture			path="units/pd2_mod_bravo/characters/shared_textures/helmets_atlas_df"/>
-	<texture			path="units/pd2_mod_bravo/characters/shared_textures/helmets_atlas_nm"/>
-
+	<texture			path="units/pd2_mod_bravo/characters/shared_textures/bravo_body_df"/>
 	<!--New Coppers Bravos so vanilla units don't get left out-->
 	<!--Normal-->
 	<object				path="units/pd2_mod_ng/characters/ene_ntl_swat_1/ene_ntl_swat_1" force="false"/>
@@ -461,7 +454,6 @@
 	<texture 			path="units/pd2_mod_ng/characters/shared_textures/ntl_hat_df"/>
 	<texture 			path="units/pd2_mod_ng/characters/shared_textures/s10_nm"/>
 	<texture 			path="units/pd2_mod_ng/characters/shared_textures/s10_df"/>
-	<!-- bravos	end -->
 
 	<!--Police Enforcer-->
 	<object				path="units/pd2_mod_nc/characters/ene_police_heavygunner/ene_police_heavygunner" force="false"/>

@@ -1430,16 +1430,6 @@
 	<unit				path="units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_scripted_2/ene_male_marshal_marksman_scripted_2" load="true" force="false"/>
 	<unit				path="units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_scripted_2/ene_male_marshal_marksman_scripted_2_husk" load="true" force="false"/>
 
-	<!--Mateba Model 6-->
-	<material_config	path="units/payday2/weapons/wpn_npc_matever/wpn_npc_matever" force="false"/>
-	<material_config	path="units/payday2/weapons/wpn_npc_matever/wpn_npc_matever_contour" force="false"/>
-	<model				path="units/payday2/weapons/wpn_npc_matever/wpn_npc_matever" force="false"/>
-	<object				path="units/payday2/weapons/wpn_npc_matever/wpn_npc_matever" force="false"/>
-	<cooked_physics		path="units/payday2/weapons/wpn_npc_matever/wpn_npc_matever" force="false"/>
-	<unit				path="units/payday2/weapons/wpn_npc_matever/wpn_npc_matever" force="false"/>
-	<texture			path="units/payday2/weapons/wpn_npc_matever/wpn_npc_matever_df" force="true"/>
-	<texture			path="units/payday2/weapons/wpn_npc_matever/wpn_npc_matever_nm" force="true"/>
-
 	<!--Marshal Marksman-->
 	
 	<!--LPF and Medic (over-)healing Effects-->

@@ -114,43 +114,6 @@
 	<material_config	path="units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_2/ene_zeal_swat_heavy_2" force="false"/>
 	<material_config	path="units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_2/ene_zeal_swat_heavy_2_contour" force="false"/>
 	<unit				path="units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_2/ene_zeal_swat_heavy_2_husk" force="false" load="true"/>
-	
-	<!--Jarey_ zeals shit below-->
-	<!--GREEN-->
-	<texture			path="units/pd2_dlc_gitgud/characters/ene_zeal_bulldozer_2/bulldozer_2_df" />	
-	<model				path="units/pd2_dlc_gitgud/characters/ene_zeal_bulldozer_2_sc/ene_zeal_bulldozer_2_sc"/>
-	<cooked_physics		path="units/pd2_dlc_gitgud/characters/ene_zeal_bulldozer_2_sc/ene_zeal_bulldozer_2_sc"/>	
-	<object				path="units/pd2_dlc_gitgud/characters/ene_zeal_bulldozer_2_sc/ene_zeal_bulldozer_2_sc"/>	
-	<sequence_manager	path="units/pd2_dlc_gitgud/characters/ene_zeal_bulldozer_2_sc/ene_zeal_bulldozer_2_sc"/>	
-	<unit	            path="units/pd2_dlc_gitgud/characters/ene_zeal_bulldozer_2_sc/ene_zeal_bulldozer_2_sc" load="true"/>	
-	<unit	            path="units/pd2_dlc_gitgud/characters/ene_zeal_bulldozer_2_sc/ene_zeal_bulldozer_2_sc_husk" load="true"/>	
-	
-	<unit_mat			path="units/pd2_dlc_gitgud/characters/ene_zeal_bulldozer_2_sc/debris/ene_acc_bulldozer_back/ene_acc_bulldozer_back" force="false"/>
-	<cooked_physics		path="units/pd2_dlc_gitgud/characters/ene_zeal_bulldozer_2_sc/debris/ene_acc_bulldozer_back/ene_acc_bulldozer_back" force="false"/>
-	
-	<unit_obj			path="units/pd2_dlc_gitgud/characters/ene_zeal_bulldozer_2_sc/debris/ene_acc_bulldozer_chest/ene_acc_bulldozer_chest" force="false"/>
-	<cooked_physics		path="units/pd2_dlc_gitgud/characters/ene_zeal_bulldozer_2_sc/debris/ene_acc_bulldozer_chest/ene_acc_bulldozer_chest" force="false"/>
-	
-	<unit_obj			path="units/pd2_dlc_gitgud/characters/ene_zeal_bulldozer_2_sc/debris/ene_acc_bulldozer_helmet_plate/ene_acc_bulldozer_helmet_plate" force="false"/>
-	<cooked_physics		path="units/pd2_dlc_gitgud/characters/ene_zeal_bulldozer_2_sc/debris/ene_acc_bulldozer_helmet_plate/ene_acc_bulldozer_helmet_plate" force="false"/>
-	
-	<unit_obj			path="units/pd2_dlc_gitgud/characters/ene_zeal_bulldozer_2_sc/debris/ene_acc_bulldozer_neck/ene_acc_bulldozer_neck" force="false"/>
-	<cooked_physics		path="units/pd2_dlc_gitgud/characters/ene_zeal_bulldozer_2_sc/debris/ene_acc_bulldozer_neck/ene_acc_bulldozer_neck" force="false"/>
-	
-	<unit_obj			path="units/pd2_dlc_gitgud/characters/ene_zeal_bulldozer_2_sc/debris/ene_acc_bulldozer_stomache/ene_acc_bulldozer_stomache" force="false"/>
-	<cooked_physics		path="units/pd2_dlc_gitgud/characters/ene_zeal_bulldozer_2_sc/debris/ene_acc_bulldozer_stomache/ene_acc_bulldozer_stomache" force="false"/>
-	
-	<unit_obj			path="units/pd2_dlc_gitgud/characters/ene_zeal_bulldozer_2_sc/debris/ene_acc_bulldozer_throat/ene_acc_bulldozer_throat" force="false"/>
-	<cooked_physics		path="units/pd2_dlc_gitgud/characters/ene_zeal_bulldozer_2_sc/debris/ene_acc_bulldozer_throat/ene_acc_bulldozer_throat" force="false"/>
-
-	<!--SH Zeal Heavy shotgunner-->
-	<object				path="units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_2/ene_zeal_swat_heavy_2" force="false"/>
-	<cooked_physics		path="units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_2/ene_zeal_swat_heavy_2" force="false"/>
-	<model				path="units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_2/ene_zeal_swat_heavy_2" force="false"/>
-	<unit				path="units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_2/ene_zeal_swat_heavy_2" force="false" load="true"/>
-	<material_config	path="units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_2/ene_zeal_swat_heavy_2" force="false"/>
-	<material_config	path="units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_2/ene_zeal_swat_heavy_2_contour" force="false"/>
-	<unit				path="units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_2/ene_zeal_swat_heavy_2_husk" force="false" load="true"/>
 
 	<!-- jeffy -->
 	<model				path="units/payday2/characters/ene_bulldozer_1_sc/ene_bulldozer_1_sc" />	
@@ -642,6 +605,7 @@
 	<texture 			path="units/pd2_mod_ng/characters/shared_textures/ntl_hat_df"/>
 	<texture 			path="units/pd2_mod_ng/characters/shared_textures/s10_nm"/>
 	<texture 			path="units/pd2_mod_ng/characters/shared_textures/s10_df"/>
+	<!-- bravos	end -->
 
 	<!--Police Enforcer-->
 	<object				path="units/pd2_mod_nc/characters/ene_police_heavygunner/ene_police_heavygunner" force="false"/>
