@@ -1984,9 +1984,6 @@ function CopDamage:die(attack_data)
 	local mutator_ammo_drop_chance = managers.mutators:modify_value("CopDamage:NoAmmoDropChance", 1)
 	local mutator_ammo_drop_chance_bot_kill = 1 - mutator_ammo_drop_chance
 
-	local mutator_ammo_drop_chance = managers.mutators:modify_value("CopDamage:NoAmmoDropChance", 1)
-	local mutator_ammo_drop_chance_bot_kill = 1 - mutator_ammo_drop_chance
-
 	if not self._char_tweak.always_drop and self._pickup == "ammo" then
 		local attacker_unit = attack_data.attacker_unit
 
@@ -2000,14 +1997,14 @@ function CopDamage:die(attack_data)
 				if roll >= ammo_chance then
 					self:set_pickup()
 				end
-			end
+			end	
 			if mutator_ammo_drop_chance ~= 1 then
 				local no_ammo_roll = math.random()
 				if no_ammo_roll >= mutator_ammo_drop_chance then
 					self:set_pickup()
 				end
-			end
-		end
+			end	
+		end	
 	end
 
 	old_death(self, attack_data)
