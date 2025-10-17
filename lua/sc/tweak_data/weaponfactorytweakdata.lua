@@ -42556,14 +42556,7 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			}
 		end
 
-		if self.parts.wpn_fps_sho_ksg_b_25 then
-			self.parts.wpn_fps_sho_ksg_b_25.supported = true
-			self.parts.wpn_fps_sho_ksg_b_25.stats = deep_clone(barrels.long_b3_stats)
-			self.parts.wpn_fps_sho_ksg_b_25.stats.extra_ammo = 10
-			self.parts.wpn_fps_sho_ksg_b_25.stats.concealment = -5
-			self.parts.wpn_fps_sho_ksg_b_25.custom_stats = deep_clone(barrels.long_b3_stats)
-			self.parts.wpn_fps_sho_ksg_b_25.custom_stats.ads_speed_mult = 1.125
-		end
+
 
 	--[[ SILENT ENFORCER'S MODS ]]
 
@@ -45526,86 +45519,6 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 	end
 
 	-- Edits here --
-	if self.parts.wpn_fps_pis_tf2_revolver_festivizer then
-		self.parts.wpn_fps_pis_tf2_revolver_festivizer.supported = true
-		self.parts.wpn_fps_pis_tf2_revolver_festivizer.stats = {
-			value = 99
-		}
-		self.parts.wpn_fps_pis_tf2_revolver_australium.supported = true
-		self.parts.wpn_fps_pis_tf2_revolver_australium.stats = {
-			value = 99
-		}
-
-		self.parts.wpn_fps_pis_tf2_revolver_aim.supported = true
-		self.parts.wpn_fps_pis_tf2_revolver_aim.stats = {
-			value = 0
-		}
-
-		-- ambassador should be reverted
-		-- anyone who says otherwise is objectively wrong
-		-- mfw when receiver and doer exists
-		-- Amby doesnt need its nerf reverted. Fight me. -FaN Scout
-		self.parts.wpn_fps_pis_ambassador_frame.supported = true
-		self.parts.wpn_fps_pis_ambassador_frame.keep_damage = true
-		self.parts.wpn_fps_pis_ambassador_frame.desc_id = "bm_korth_r8"
-		self.parts.wpn_fps_pis_ambassador_frame.has_description = true
-		self.parts.wpn_fps_pis_ambassador_frame.stats = {
-			value = 0,
-			damage = -15,
-			recoil = -20
-		}
-		self.parts.wpn_fps_pis_ambassador_frame.custom_stats = {
-			hs_mult = 2,
-			hs_mult_desc = true,
-			rof_mult = 0.8
-		}
-
-		self.parts.wpn_fps_pis_diamondback_frame.supported = true
-		self.parts.wpn_fps_pis_diamondback_frame.desc_id = "bm_wp_chf_50_desc"
-		self.parts.wpn_fps_pis_diamondback_frame.has_description = true
-		self.parts.wpn_fps_pis_diamondback_frame.keep_damage = true
-		self.parts.wpn_fps_pis_diamondback_frame.stats = {
-			value = 0,
-			damage = -15
-		}
-		self.parts.wpn_fps_pis_diamondback_frame.custom_stats = {
-			chf = true
-		}
-
-		self.parts.wpn_fps_pis_letranger_frame.supported = true
-		self.parts.wpn_fps_pis_letranger_frame.keep_damage = true
-		self.parts.wpn_fps_pis_letranger_frame.stats = {
-			value = 0,
-			damage = -15,
-			concealment = 8
-		}
-		self.parts.wpn_fps_pis_letranger_frame.custom_stats = {
-		}
-
-		self.parts.wpn_fps_pis_enforcer_frame.supported = true
-		self.parts.wpn_fps_pis_enforcer_frame.keep_damage = true
-		self.parts.wpn_fps_pis_enforcer_frame.has_description = true
-		self.parts.wpn_fps_pis_enforcer_frame.desc_id = "bm_ap_weapon_sc_desc"
-		self.parts.wpn_fps_pis_enforcer_frame.alt_desc = "bm_ap_weapon_sc_desc"
-		self.parts.wpn_fps_pis_enforcer_frame.stats = {
-			value = 0,
-		}
-		self.parts.wpn_fps_pis_enforcer_frame.custom_stats = {
-			rof_mult = 0.8,
-			armor_piercing_add = 1,
-			can_shoot_through_enemy = true,
-			can_shoot_through_shield = true,
-			can_shoot_through_wall = true
-		}
-
-		self.parts.wpn_fps_pis_big_kill_frame.supported = true
-		self.parts.wpn_fps_pis_big_kill_frame.stats = {
-			value = 0,
-		}
-		self.parts.wpn_fps_pis_big_kill_frame.custom_stats = {
-		}
-	end
-
 	if self.parts.wpn_fps_smg_cagnali_stock_fold then
 		self.parts.wpn_fps_smg_cagnali_stock_fold.supported = true
 		self.parts.wpn_fps_smg_cagnali_stock_fold.stats = { value = 4, recoil = -4, concealment = 3 }
@@ -45724,54 +45637,6 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 
 		self.parts.wpn_fps_smg_kedr_g_wood.supported = true
 		self.parts.wpn_fps_smg_kedr_g_wood.stats = { concealment = -1, recoil = 1 }
-	end
-
-	if self.parts.wpn_fps_pis_af2011_m_ext then
-		self.parts.wpn_fps_pis_af2011_m_ext.supported = true
-		self.parts.wpn_fps_pis_af2011_m_ext.stats = {
-			value = 3,
-			concealment = -2,
-			extra_ammo = 8,
-			reload = -3
-		}
-
-		self.parts.wpn_fps_pis_af2011_parts.supported = true
-		self.parts.wpn_fps_pis_af2011_parts.stats = {
-			spread_multi = {1.5, 0.75}
-		}
-
-		self.parts.wpn_fps_pis_af2011_a_uno.supported = true
-		self.parts.wpn_fps_pis_af2011_a_uno.type = "custom"
-		self.parts.wpn_fps_pis_af2011_a_uno.alt_icon = "guis/textures/pd2/blackmarket/icons/mods/wpn_fps_upg_i_autofire"
-		self.parts.wpn_fps_pis_af2011_a_uno.name_id = self.parts.wpn_fps_upg_i_singlefire.name_id
-		self.parts.wpn_fps_pis_af2011_a_uno.has_description = true
-		self.parts.wpn_fps_pis_af2011_a_uno.desc_id = "bm_wp_upg_af2011_a_uno_desc"
-		self.parts.wpn_fps_pis_af2011_a_uno.stats = { spread_multi = {1, 1} }
-		self.parts.wpn_fps_pis_af2011_a_uno.custom_stats = {
-			burst_fire = false,
-			info_lock_semi = true,
-			rof_mult = 1.16666666666
-		}
-
-		self.parts.wpn_fps_pis_af2011_g_bling.supported = true
-		self.parts.wpn_fps_pis_af2011_g_bling.has_description = false
-		self.parts.wpn_fps_pis_af2011_g_bling.stats = deep_clone(grips.recoil_1)
-		self.parts.wpn_fps_pis_af2011_g_wood.supported = true
-		self.parts.wpn_fps_pis_af2011_g_wood.has_description = false
-		self.parts.wpn_fps_pis_af2011_g_wood.stats = deep_clone(grips.recoil_acc)
-
-		self.parts.wpn_fps_pis_af2011_b_silver.supported = true
-		self.parts.wpn_fps_pis_af2011_b_silver.stats = { value = 0 }
-		self.parts.wpn_fps_pis_af2011_b_silver.custom_stats = nil
-
-		table.insert(self.wpn_fps_pis_af2011.uses_parts, "wpn_fps_upg_fl_pis_perst")
-		self.wpn_fps_pis_af2011.adds.wpn_fps_upg_fl_pis_perst = {
-			"wpn_fps_pis_af2011_rail"
-		}
-		table.insert(self.wpn_fps_pis_x_af2011.uses_parts, "wpn_fps_upg_fl_pis_perst")
-		self.wpn_fps_pis_x_af2011.adds.wpn_fps_upg_fl_pis_perst = {
-			"wpn_fps_pis_af2011_rail"
-		}
 	end
 
 	if self.parts.wpn_fps_smg_m3_body then
