@@ -2748,7 +2748,7 @@ function CharacterTweakData:_init_tank(presets)
 	self.tank_titan.weapon = deep_clone(presets.weapon.normal)
 	self.tank_titan.tags = {"law", "tank", "special", "tank_titan", "customvo"}	
 	self.tank_titan.move_speed = presets.move_speed.very_slow
-	self.tank_titan.damage.hurt_severity = presets.hurt_severities.titan	
+	self.tank_titan.damage.hurt_severity = presets.hurt_severities.titan
 	self.tank_titan.no_omnia_heal = true
 	self.tank_titan.dt_suppress = {
 		range = 500
@@ -2832,7 +2832,19 @@ function CharacterTweakData:_init_tank(presets)
 	self.tank_mini.can_throw_frag = true
 	self.tank_mini.grenade_toss_chance = 0.4
 	self.tank_mini.spawn_sound_event = self._prefix_data_p1.bulldozer() .. "_entrance_elite"
-	table.insert(self._enemy_list, "tank_mini")	
+	table.insert(self._enemy_list, "tank_mini")
+
+	--The Safehouse Nightmare Experience
+	self.tank_undeadtitan = deep_clone(self.tank_titan_assault)
+	self.tank_undeadtitan.tags = {"law", "custom", "special"}
+	self.tank_undeadtitan.HEALTH_INIT = 4815
+	self.tank_undeadtitan.headshot_dmg_mul = 16.2342
+	self.tank_undeadtitan.damage.hurt_severity = presets.hurt_severities.no_hurts
+	self.tank_undeadtitan.custom_voicework = "dozer_nypd_hvh"
+	self.tank_undeadtitan.move_speed = presets.move_speed.extremely_slow
+	self.tank_undeadtitan.priority_shout = "g29"
+	self.tank_undeadtitan.bot_priority_shout = "g29"
+	table.insert(self._enemy_list, "tank_undeadtitan")
 end
 
 function CharacterTweakData:_init_tank_biker(presets)
@@ -18402,6 +18414,66 @@ function CharacterTweakData:_presets(tweak_data)
 					}
 				}
 			}
+		},
+		-- only for secret zombie unit
+		extremely_slow = {
+			stand = {
+				walk = {
+					ntl = {
+						strafe = 60,
+						fwd = 72,
+						bwd = 56
+					},
+					hos = {
+						strafe = 60,
+						fwd = 72,
+						bwd = 56
+					},
+					cbt = {
+						strafe = 60,
+						fwd = 72,
+						bwd = 56
+					}
+				},
+				run = {
+					hos = {
+						strafe = 70,
+						fwd = 72,
+						bwd = 56
+					},
+					cbt = {
+						strafe = 50,
+						fwd = 72,
+						bwd = 60
+					}
+				}
+			},
+			crouch = {
+				walk = {
+					hos = {
+						strafe = 60,
+						fwd = 72,
+						bwd = 56
+					},
+					cbt = {
+						strafe = 60,
+						fwd = 72,
+						bwd = 56
+					}
+				},
+				run = {
+					hos = {
+						strafe = 65,
+						fwd = 72,
+						bwd = 56
+					},
+					cbt = {
+						strafe = 50,
+						fwd = 72,
+						bwd = 60
+					}
+				}
+			}
 		}
 	}
 	for speed_preset_name, poses in pairs(presets.move_speed) do
@@ -20305,7 +20377,8 @@ function CharacterTweakData:character_map()
 				"ene_gensec_sgt",
 				"ene_heavymedic_1",
 				"ene_marshal_marksman_1",
-				"ene_police_heavygunner"
+				"ene_police_heavygunner",
+				"ene_undead_titan"
 			}
 		}
 		

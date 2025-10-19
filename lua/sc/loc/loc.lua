@@ -5429,6 +5429,12 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 		["MutatorSWOLENBOYS_desc"] = "Medics and Cloakers are BUFF and SWOLE.",
 		["MutatorSWOLENBOYS_longdesc"] = "Medics and Cloakers are BUFF and SWOLE.\n\nWaning: Literally unplayable. Really.",
 
+		["mutator_deadtitans"] = "The Safehouse Nightmare Experience",
+		["mutator_deadtitans_desc"] = "The undead titans will claim your soul...",
+		["mutator_deadtitans_longdesc"] = "Most special units are replaced with an undead titan bulldozer. This can make the ammo economy crash.",
+	--	["puzzle 1_desc"] = "N Z GUxrBvyBgL VVUPaiiZd Xx F aabLgAk (Hint: What's a very common way to encrypt a message?)",
+	--	["puzzle 1_longdesc"] = "uswksj, Affine: 'After Jesus said this, he looked toward heaven and prayed: Father, the hour has come. Glorify your Son, that your Son may glorify you.', Vinenere LOL 69, Rail Fence - Brooklyn",
+
 		--Crime Spree mutators
 		["mutator_cloakercuff"] = "Conjurer",
 		["mutator_cloakercuff_desc"] = "Cloaker melee strikes will now cuff players.",

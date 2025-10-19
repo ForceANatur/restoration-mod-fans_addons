@@ -434,6 +434,7 @@
 		<hook file="sc/mutators/new/mutatorteamfortresssoldiers.lua" source_file="lib/mutators/basemutator"/>
 		<hook file="sc/mutators/new/mutatorswolemedsandspoocs.lua" source_file="lib/mutators/basemutator"/>
 		<hook file="sc/mutators/new/mutatordeathvoxmedic.lua" source_file="lib/mutators/basemutator"/>
+		<hook file="sc/mutators/new/mutatorsafehousenightmare.lua" source_file="lib/mutators/basemutator"/>
 		<!--<hook file="sc/mutators/new/mutatorfactionsreplacer.lua" source_file="lib/mutators/basemutator"/>-->
 		<!--///NETWORKING\\\-->
 		<hook file="sc/network/base/hostnetworksession.lua" source_file="lib/network/base/hostnetworksession"/>
@@ -828,4 +829,5 @@
 
 	<!-- ///MUTATOR EXCLUSIVE ENEMIES\\\ -->
 	<Package id="packages/deathvox_medic" file="packages/deathvox_medic.xml"/>
+	<Package id="packages/undead_titans" file="packages/safehouse_nightmare_dozers.xml"/>
 </mod>
