@@ -1,0 +1,14 @@
+<table directory="assets">	
+
+	<!--Undead Titan-->
+	<object				path="units/pd2_mod_halloween/characters/ene_undead_titan/ene_undead_titan" force="false"/>
+	<cooked_physics		path="units/pd2_mod_halloween/characters/ene_undead_titan/ene_undead_titan" force="false"/>
+	<model				path="units/pd2_mod_halloween/characters/ene_undead_titan/ene_undead_titan" force="false"/>
+	<unit				path="units/pd2_mod_halloween/characters/ene_undead_titan/ene_undead_titan" force="false" load="true"/>
+	<material_config	path="units/pd2_mod_halloween/characters/ene_undead_titan/ene_undead_titan" force="false"/>
+	<material_config	path="units/pd2_mod_halloween/characters/ene_undead_titan/ene_undead_titan_contour" force="false"/>
+	<unit				path="units/pd2_mod_halloween/characters/ene_undead_titan/ene_undead_titan_husk" force="false" load="true"/>
+	<df_nm				path="units/pd2_mod_halloween/characters/ene_undead_titan/ene_acc_shield_lights_2"/>
+	<texture 			path="units/pd2_mod_halloween/characters/ene_undead_titan/bulldozer_white_rust_df"/>
+
+</table>

@@ -185,6 +185,11 @@ function PlayerManager:movement_speed_multiplier(speed_state, bonus_multiplier, 
 	multiplier = multiplier + self:get_hostage_bonus_multiplier("speed") - 1
 	multiplier = multiplier + self:upgrade_value("player", "movement_speed_multiplier", 1) - 1
 
+	--Bloodthirst
+	if self:has_active_temporary_property("bloodthirst_reload_speed") then
+		multiplier = multiplier + self:get_temporary_property("bloodthirst_reload_speed", 1) - 1
+	end
+
 	--Kingpin movespeed bonus.
 	if self:has_activate_temporary_upgrade("temporary", "chico_injector") then
 		multiplier = multiplier + self:upgrade_value("player", "chico_injector_speed", 1) - 1
@@ -644,6 +649,12 @@ function PlayerManager:_check_damage_to_hot(t, unit, damage_info)
 
 	if weapon_proj and weapon_proj.count_as_melee and damage_info.variant == "bullet" then
 		damage_info.variant = "melee"
+		if self:has_category_upgrade("player", "buildup_meter") and self:has_category_upgrade("player", "buildup_meter_refresh") and self._buildup_meter and self._buildup_meter > 0 then
+			local combo_t_mod = (self:has_category_upgrade("player", "buildup_meter_zack") and self:upgrade_value("player", "buildup_meter_zack", 0).combo_t_mod) or 0
+			local combo_t = self:upgrade_value("player", "buildup_meter", 0).combo_t + combo_t_mod
+			self._buildup_meter_t = combo_t
+			managers.hud:start_buff("sociopath", managers.player._buildup_meter_t)
+		end
 	end
 
 	--Allow healing over time to be applied to select non-grinder perks using dummy heal_over_time upgrade.
@@ -1128,7 +1139,7 @@ function PlayerManager:on_headshot_dealt(unit, attack_data)
 	local regen_armor_bonus = managers.player:upgrade_value("player", "headshot_regen_armor_bonus", 0)
 
 	if damage_ext and regen_armor_bonus > 0 then
-		damage_ext:restore_armor(regen_armor_bonus)
+		damage_ext:restore_armor(damage_ext:_max_armor() * regen_armor_bonus)
 	end
 
 	local regen_health_bonus = managers.player:upgrade_value("player", "headshot_regen_health_bonus", 0)

@@ -4088,11 +4088,12 @@ end)
 							info_lock_burst = true,
 							burst_fire = {
 								count = 3,
-								recoil_mult = 0.33,
+								recoil_mult = 0.25,
 								last_recoil_mult = 1,
 								delay = 0.25,
 								lock = true,
 							},
+							hip_mult = 0.75,
 							can_shoot_through_shield = false,
 							armor_piercing_override = 0.5,
 							falloff_start_mult = 0.2,
@@ -24756,7 +24757,7 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			burst_fire = {
 				count = 3,
 				delay = 0.3,
-				recoil_mult = 0.75,
+				recoil_mult = 0.35,
 				last_recoil_mult = 1.125,
 			},
 		},
@@ -24786,7 +24787,7 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 				count = 3,
 				delay = 0.18,
 				desired_burst_rof = 0.06315,
-				recoil_mult = 0.75,
+				recoil_mult = 0.6,
 				last_recoil_mult = 1,
 				block_toggle = true,
 				toggle_to_semi = true,
@@ -25227,11 +25228,12 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			info_lock_burst = true,
 			burst_fire = {
 				count = 3,
-				recoil_mult = 0.33,
+				recoil_mult = 0.25,
 				last_recoil_mult = 1,
 				delay = 0.25,
 				lock = true
 			},
+			hip_mult = 0.75,
 			can_shoot_through_shield = false,
 			armor_piercing_override = 0.5,
 			falloff_start_mult = 0.5,
@@ -27709,6 +27711,33 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			end
 
 	--[[ RJC9000'S MODS ]]
+
+		if self.parts.wpn_fps_ass_c8sfw_gl_m26mass then
+			self.parts.wpn_fps_ass_c8sfw_underbarrel_custom.pcs = nil
+			self.parts.wpn_fps_ass_c8sfw_underbarrel_custom.stats = {value = 0}
+			self.parts.wpn_fps_ass_c8sfw_underbarrel_custom.custom_stats = nil
+			self.parts.wpn_fps_ass_c8sfw_underbarrel_slug.pcs = nil
+			self.parts.wpn_fps_ass_c8sfw_underbarrel_slug.stats = {value = 0}
+			self.parts.wpn_fps_ass_c8sfw_underbarrel_slug.custom_stats = nil
+			self.parts.wpn_fps_ass_c8sfw_underbarrel_explosive.pcs = nil
+			self.parts.wpn_fps_ass_c8sfw_underbarrel_explosive.stats = {value = 0}
+			self.parts.wpn_fps_ass_c8sfw_underbarrel_explosive.custom_stats = nil
+			self.parts.wpn_fps_ass_c8sfw_underbarrel_piercing.pcs = nil
+			self.parts.wpn_fps_ass_c8sfw_underbarrel_piercing.stats = {value = 0}
+			self.parts.wpn_fps_ass_c8sfw_underbarrel_piercing.custom_stats = nil
+			self.parts.wpn_fps_ass_c8sfw_underbarrel_dragons_breath.pcs = nil
+			self.parts.wpn_fps_ass_c8sfw_underbarrel_dragons_breath.stats = {value = 0}
+			self.parts.wpn_fps_ass_c8sfw_underbarrel_dragons_breath.custom_stats = nil
+			self.parts.wpn_fps_ass_c8sfw_underbarrel_rip.pcs = nil
+			self.parts.wpn_fps_ass_c8sfw_underbarrel_rip.stats = {value = 0}
+			self.parts.wpn_fps_ass_c8sfw_underbarrel_rip.custom_stats = nil
+
+			self.parts.wpn_fps_ass_c8sfw_gl_m26mass.stats = {value = 0}
+			self.parts.wpn_fps_ass_c8sfw_gl_m26mass.custom_stats = nil
+			self.parts.wpn_fps_ass_c8sfw_flash_hider.stats = {value = 0}
+			self.parts.wpn_fps_ass_c8sfw_flash_hider.custom_stats = nil
+			self.parts.wpn_fps_ass_c8sfw_flash_hider.perks = nil
+		end
 
 		if self.parts.wpn_fps_ass_g11k2_selector then
 			self.parts.wpn_fps_ass_g11k2_selector.supported = true

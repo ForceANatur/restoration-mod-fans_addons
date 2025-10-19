@@ -46,7 +46,8 @@ function MutatorMediDozer:modify_unit_categories(group_ai_tweak, difficulty_inde
 		spring = 0,
 		headless_hatman = 0,
 		autumn = 0,
-		summers = 0
+		summers = 0,
+		heavygunner = 0
 	}
 	if difficulty_index <= 5 then
 		group_ai_tweak.unit_categories.medic_M4 = {

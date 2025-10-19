@@ -3715,8 +3715,8 @@ function WeaponTweakData:_init_stats()
 		standing = 3.5,
 		moving_crouching = 2.5,
 		crouching = 2.5,
-		moving_steelsight = 0.075,
-		steelsight = 0.075,
+		moving_steelsight = 0.05,
+		steelsight = 0.05,
 		bipod = 1,
 		player_turret = 1,
 	}
@@ -5394,14 +5394,14 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 		self[ wep_id ].damage_type_single_ray = "sniper"
 	end
 
-	recat = { "judge", "x_judge", "m1897", "m590", "r870", "ksg", "m37", "serbu", "supernova" }
+	recat = { "judge", "x_judge", "m1897", "m590", "r870", "ksg", "m37", "serbu", "supernova", "x_type54_underbarrel", "type54_underbarrel" }
 	for i, wep_id in ipairs(recat) do
 		self[ wep_id ].recategorize = { "heavy_shot" }
 		self[ wep_id ].damage_type = "shotgun_heavy"
 		self[ wep_id ].damage_type_single_ray = "sniper"
 	end
 
-	recat = { "huntsman", "b682", "boot", "coach", "x_type54_underbarrel", "type54_underbarrel" }
+	recat = { "huntsman", "b682", "boot", "coach" }
 	for i, wep_id in ipairs(recat) do
 		self[ wep_id ].recategorize = { "break_shot" }
 		self[ wep_id ].damage_type = "shotgun_heavy"
@@ -7409,7 +7409,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.rsh12.supported = true
 						self.rsh12.ads_speed = 0.220
 						self.rsh12.damage_falloff = {
-							start_dist = 1900,
+							start_dist = 1800,
 							end_dist = 4300,
 							min_mult = 0.333333
 						}
@@ -7528,7 +7528,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						}
 						self.type54_underbarrel.rays = 8
 						self.type54_underbarrel.muzzleflash = "effects/payday2/particles/weapons/big_51b_auto_fps" --"effects/particles/shotgun/shotgun_gen"
-						self.type54_underbarrel.AMMO_MAX = 10
+						self.type54_underbarrel.AMMO_MAX = 16
+						self.type54_underbarrel.has_underbarrel = true
 						self.type54_underbarrel.CLIP_AMMO_MAX = 1
 						self.type54_underbarrel.fire_mode_data = {}
 						self.type54_underbarrel.fire_mode_data.fire_rate = 0.24
@@ -7542,12 +7543,12 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.type54_underbarrel.use_stance = "type54"
 						self.type54_underbarrel.ads_speed = 0.180
 						self.type54_underbarrel.damage_falloff = {
-							start_dist = 700,
-							end_dist = 2200,
+							start_dist = 400,
+							end_dist = 1200,
 							min_mult = 0.125
 						}
 						self.type54_underbarrel.stats = {
-							damage = 90,
+							damage = 180,
 							spread = 56,
 							recoil = 77,
 							spread_moving = 6,
@@ -7562,9 +7563,9 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						}
 						self.type54_underbarrel.stats_modifiers = nil
 						self.type54_underbarrel.panic_suppression_chance = 0.05
-						self.type54_underbarrel.ignore_crit_damage = false
-						self.type54_underbarrel.ignore_damage_multipliers = false
-						self.type54_underbarrel.ignore_damage_upgrades = false
+						self.type54_underbarrel.ignore_crit_damage = nil
+						self.type54_underbarrel.ignore_damage_multipliers = nil
+						self.type54_underbarrel.ignore_damage_upgrades = nil
 						self.type54_underbarrel.timers.reload_exit_empty = 0.35
 						self.type54_underbarrel.timers.reload_exit_not_empty = 0.35
 					--Akimbo
@@ -7575,7 +7576,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						}
 						self.x_type54_underbarrel.rays = 8
 						self.x_type54_underbarrel.muzzleflash = "effects/payday2/particles/weapons/big_51b_auto_fps" --"effects/particles/shotgun/shotgun_gen"
-						self.x_type54_underbarrel.AMMO_MAX = 20
+						self.x_type54_underbarrel.AMMO_MAX = 32
+						self.x_type54_underbarrel.has_underbarrel = true
 						self.x_type54_underbarrel.BURST_FIRE = {
 							count = 2
 						}
@@ -7592,12 +7594,12 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.x_type54_underbarrel.supported = true
 						self.x_type54_underbarrel.ads_speed = 0.180
 						self.x_type54_underbarrel.damage_falloff = {
-							start_dist = 700,
-							end_dist = 2200,
+							start_dist = 400,
+							end_dist = 1200,
 							min_mult = 0.125
 						}
 						self.x_type54_underbarrel.stats = {
-							damage = 90,
+							damage = 180,
 							spread = 46,
 							recoil = 67,
 							spread_moving = 6,
@@ -11826,6 +11828,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							reload = 20
 						}
 						self.groza_underbarrel.stats_modifiers = {damage = 10}
+						self.groza_underbarrel.has_underbarrel = true
 						self.groza_underbarrel.alt_shotgunraycast = true
 
 					--TKB-059
@@ -12247,6 +12250,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.contraband_m203.alt_shotgunraycast = true
 						self.contraband_m203.use_stance = nil
 						self.contraband_m203.AMMO_MAX = 5
+						self.contraband_m203.has_underbarrel = true
 						self.contraband_m203.supported = true
 						self.contraband_m203.ads_speed = 0.400
 						self.contraband_m203.damage_falloff = {
@@ -15448,7 +15452,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			self.shatters_fury.armor_piercing_chance = 1
 			self.shatters_fury.object_damage_mult = 1.75
 			--self.shatters_fury.animations.reload_name_id = "chinchilla"
-			self.shatters_fury.reload_speed_multiplier = 0.9
+			self.shatters_fury.reload_speed_multiplier = 0.8
 			self.shatters_fury.force_shake = true
 			self.shatters_fury.timers = deep_clone(self.new_raging_bull.timers)
 			--this line doesn't do shit
@@ -24954,6 +24958,99 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 
 		--[[     RJC9000'S MODS     ]]--
 
+			if self.c8sfw then
+				self.c8sfw.nato = true
+				self.c8sfw.recategorize = { "light_ar" }
+				self.c8sfw.damage_type = "assault_rifle"
+				self.c8sfw.FIRE_MODE = "auto"
+				self.c8sfw.has_description = false
+				self.c8sfw.tactical_reload = 1
+				self.c8sfw.CLIP_AMMO_MAX = 30
+				self.c8sfw.AMMO_MAX = 150
+				self.c8sfw.fire_mode_data.fire_rate = 0.075
+				self.c8sfw.kick = self.stat_info.kick_tables.right_recoil
+				self.c8sfw.kick_pattern = {
+					{ 0, self.stat_info.kick_tables.moderate_right_kick },
+					{ 5, self.stat_info.kick_tables.moderate_kick },
+					{ 9, self.stat_info.kick_tables.moderate_right_kick },
+					{ 13, self.stat_info.kick_tables.even_recoil },
+					{ 15, self.stat_info.kick_tables.left_recoil },
+					{ 22, self.stat_info.kick_tables.moderate_left_kick }
+				}
+				self.c8sfw.supported = true
+				self.c8sfw.ads_speed = 0.340
+				self.c8sfw.damage_falloff = {
+					start_dist = 1400,
+					end_dist = 5000,
+					min_mult = 0.6
+				}
+				self.c8sfw.stats = {
+					damage = 20,
+					spread = 71,
+					recoil = 81,
+					zoom = 1,
+					concealment = 24,
+					suppression = 10,
+					alert_size = 2,
+					extra_ammo = 101,
+					total_ammo_mod = 400,
+					value = 1,
+					reload = 20
+				}
+				self.c8sfw.stats_modifiers = nil
+				self.c8sfw.has_underbarrel = true
+				self.c8sfw.panic_suppression_chance = 0.05
+				self.c8sfw.timers.reload_exit_not_empty = 0.5
+				self.c8sfw.timers.reload_not_empty = 1.77
+				self.c8sfw.timers.reload_exit_empty = 0.85
+				self.c8sfw.timers.reload_empty = 2.5
+				--M26 MASS
+					self.c8sfw_underbarrel.categories = { "shotgun" }
+					self.c8sfw_underbarrel.recategorize = { "heavy_shot" }
+					self.c8sfw_underbarrel.damage_type = "shotgun_heavy"
+					self.c8sfw_underbarrel.damage_type_single_ray = "sniper"
+					self.c8sfw_underbarrel.rays = 8
+					self.c8sfw_underbarrel.tactical_reload = 1
+					self.c8sfw_underbarrel.CLIP_AMMO_MAX = 5
+					self.c8sfw_underbarrel.AMMO_MAX = 32
+					self.c8sfw_underbarrel.fire_mode_data.fire_rate = 0.6
+					self.c8sfw_underbarrel.kick = self.stat_info.kick_tables.even_recoil
+					self.c8sfw_underbarrel.kick_pattern = {
+						{ 0, self.stat_info.kick_tables.harsh_right_kick },
+						{ 2, self.stat_info.kick_tables.even_recoil },
+						{ 4, self.stat_info.kick_tables.right_recoil }
+					}
+					self.c8sfw_underbarrel.supported = true
+					self.c8sfw_underbarrel.ads_speed = 0.340
+					self.c8sfw_underbarrel.damage_falloff = {
+						start_dist = 500,
+						end_dist = 1800,
+						min_mult = 0.1333
+					}
+					self.c8sfw_underbarrel.stats = {
+						damage = 180,
+						spread = 51,
+						recoil = 45,
+						zoom = 1,
+						concealment = 24,
+						suppression = 7,
+						alert_size = 2,
+						extra_ammo = 101,
+						total_ammo_mod = 400,
+						value = 1,
+						reload = 20
+					}
+					self.c8sfw_underbarrel.stats_modifiers = nil
+					self.c8sfw_underbarrel.panic_suppression_chance = 0.05
+					self.c8sfw_underbarrel.has_underbarrel = true
+					self.c8sfw_underbarrel.ignore_crit_damage = nil
+					self.c8sfw_underbarrel.ignore_damage_multipliers = nil
+					self.c8sfw_underbarrel.ignore_damage_upgrades = nil
+					self.c8sfw_underbarrel.timers.reload_exit_not_empty = 0.7
+					self.c8sfw_underbarrel.timers.reload_not_empty = 1.6
+					self.c8sfw_underbarrel.timers.reload_exit_empty = 0.9
+					self.c8sfw_underbarrel.timers.reload_empty = 2.2
+			end
 
 			if self.g11k2 then --RJC9000 and PlayBONK's port of 3arc's absolute sin of a G11
 				self.g11k2.categories = { "assault_rifle" }
@@ -27374,7 +27471,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					{ 13, self.stat_info.kick_tables.right_recoil },
 					{ 15, self.stat_info.kick_tables.harsh_right_kick },
 					{ 26, self.stat_info.kick_tables.right_recoil },
-					{ 28, self.stat_info.kick_tables.moderate_right_recoil }
+					{ 28, self.stat_info.kick_tables.moderate_right_kick }
 				}
 				self.coslo723.supported = true
 				self.coslo723.ads_speed = 0.300
@@ -34368,6 +34465,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			}
 			self.mdr_308_underbarrel.use_stance = "mdr_308"
 			self.mdr_308_underbarrel.is_bullpup = true
+			self.mdr_308_underbarrel.has_underbarrel = true
 			self.mdr_308_underbarrel.panic_suppression_chance = 0.05
 			self.mdr_308_underbarrel.timers.reload_exit_empty = 0.3
 			self.mdr_308_underbarrel.timers.reload_exit_not_empty = 0.3
@@ -35080,43 +35178,6 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			self.kedr.timers = deep_clone(self.tec9.timers)
 		end
 
-		if self.af2011 then
-			--Moved to primary
-			self.af2011.rays = 2
-			self.af2011.damage_type = "shotgun"
-			self.af2011.use_data.selection_index = 2
-			self.af2011.categories = { "pistol" }
-			self.af2011.CLIP_AMMO_MAX = 10
-			self.af2011.AMMO_MAX = 70
-			self.af2011.fire_mode_data.fire_rate = 0.0882352
-			self.af2011.kick = self.stat_info.kick_tables.even_recoil
-			self.af2011.supported = true
-			self.af2011.ads_speed = 0.140
-			self.af2011.damage_falloff = {
-				start_dist = 1100,
-				end_dist = 3200,
-				min_mult = 0.44
-			}
-			self.af2011.stats = {
-				damage = 48,
-				spread = 61,
-				recoil = 85,
-				spread_moving = 5,
-				zoom = 1,
-				concealment = 30,
-				suppression = 11,
-				alert_size = 2,
-				extra_ammo = 101,
-				total_ammo_mod = 400,
-				value = 1,
-				reload = 20
-			}
-			self.af2011.stats_modifiers = nil
-			self.af2011.panic_suppression_chance = 0.05
-			self.af2011.tactical_reload = 2
-			self.af2011.timers = deep_clone(self.b92fs.timers)
-		end
-
 		if self.perun then	-- Crime Boss' Cursed Handcannon
 			self.perun.categories = { "pistol" }
 			self.perun.recategorize = {"heavy_pis"}
@@ -35697,9 +35758,9 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							3,
 							0.5,
 							srm = {
-								0.01,
-								{0.95, 1},
-								4
+								-0.1,
+								{1, 1.2},
+								2
 							}
 						}
 					end
@@ -36006,7 +36067,7 @@ function WeaponTweakData:calculate_ammo_pickup(weapon, id)
 	end
 
 	--Double multiplier if gun is a secondary, to compensate for lower total ammo.
-	if weapon.use_data.selection_index == 1 then
+	if weapon.use_data.selection_index == 1 or weapon.use_data.selection_index == 3 then
 		pickup_multiplier = pickup_multiplier * 2
 	end
 
@@ -36024,15 +36085,15 @@ function WeaponTweakData:calculate_ammo_pickup(weapon, id)
 			table.contains(weapon.categories, "rocket_launcher") or 
 			table.contains(weapon.categories, "bow") or 
 			table.contains(weapon.categories, "crossbow")
-		local hs_mul = weapon.hs_mult or 1
+		local hs_mult = weapon.hs_mult or 1
 		local true_shotgun = table.contains(weapon.categories, "shotgun") and not table.contains(weapon.categories, "flamethrower")
 		local has_dot = table.contains(weapon.categories, "flamethrower") or table.contains(weapon.categories, "tranq")
-		local total_dmg_mul = 1 * (((hs_mul > 1) and 1.2) or 1) * 
+		local total_dmg_mul = 1 * (((hs_mult > 1) and 1.2) or 1) * 
 			(((weapon.has_underbarrel or has_dot) and 0.8) or 1) * 
 			((table.contains(weapon.categories, "minigun") and 3.3333) or ((table.contains(weapon.categories, "lmg") or true_shotgun) and 2) or 1)
 		damage_mul = (not exclude_calcs and (damage_mul * 2)) or damage_mul
 		if not table.contains(weapon.categories, "sweet_liberty") and not table.contains(weapon.categories, "nothing") then
-			weapon.AMMO_MAX = math.ceil((3600 * ((weapon.use_data.selection_index == 2 and 2) or 1) * total_dmg_mul)) / ((weapon.stats.damage * damage_mul) * hs_mul)
+			weapon.AMMO_MAX = math.ceil((3600 * (((weapon.use_data.selection_index == 2 or weapon.use_data.selection_index == 4) and 2) or 1) * total_dmg_mul)) / ((weapon.stats.damage * damage_mul) * hs_mult)
 		end
 		--Try to provide at least one full reload from empty (up to 100 round mags)
 		if not table.contains(exclude_ammo, id) and not table.contains(weapon.categories, "minigun") and not table.contains(weapon.categories, "saw") then

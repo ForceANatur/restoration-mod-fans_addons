@@ -89,6 +89,8 @@ action_variants.city_swat_sergeant = security_variant
 action_variants.tank_captain = clone(security_variant)
 action_variants.tank_captain.walk = TankCopActionWalk
 action_variants.enforcer_swat = security_variant
+action_variants.tank_undeadtitan = clone(security_variant)
+action_variants.tank_undeadtitan.walk = TankCopActionWalk
 
 function CopMovement:post_init()
 	local unit = self._unit

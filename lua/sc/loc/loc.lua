@@ -55,6 +55,8 @@ Hooks:Add("LocalizationManagerPostInit", "ResMod_english_Localization_Init", fun
 				["RestorationModInfo_revive_damage_reductionDescID"] = "Enables or disables tracking of this specific skill.",
 				["RestorationModInfo_first_aid_damage_reductionTitleID"] = "Quick Fix",
 				["RestorationModInfo_first_aid_damage_reductionDescID"] = "Enables or disables tracking of this specific skill.",
+				--["RestorationModInfo_uppersTitleID"] = "Uppers",
+				--["RestorationModInfo_uppersDescID"] = "Enables or disables tracking of this specific skill.",
 				["RestorationModInfo_long_dis_reviveTitleID"] = "Inspire (Cooldown)",
 				["RestorationModInfo_long_dis_reviveDescID"] = "Enables or disables tracking the cooldown of this specific skill.",
 				["RestorationModInfo_hostage_takerTitleID"] = "Hostage Taker",
@@ -110,6 +112,8 @@ Hooks:Add("LocalizationManagerPostInit", "ResMod_english_Localization_Init", fun
 				["RestorationModInfo_crookDescID"] = "Enables or disables tracking of these specific perks.",
 				["RestorationModInfo_grinderTitleID"] = "Histamine (Grinder)",
 				["RestorationModInfo_grinderDescID"] = "Enables or disables tracking of this specific perk.",
+				["RestorationModInfo_gamblerTitleID"] = "Medical Supplies (Gambler)",
+				["RestorationModInfo_gamblerDescID"] = "Enables or disables tracking of this specific perk.",
 				["RestorationModInfo_infiltratorTitleID"] = "Life Drain (Infiltrator)",
 				["RestorationModInfo_infiltratorDescID"] = "Enables or disables tracking of this specific perk.",
 				["RestorationModInfo_sociopathTitleID"] = "Combo Meter (Sociopath)",
@@ -5614,6 +5618,12 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 		["MutatorSWOLENBOYS_desc"] = "Medics and Cloakers are BUFF and SWOLE.",
 		["MutatorSWOLENBOYS_longdesc"] = "Medics and Cloakers are BUFF and SWOLE.\n\nWaning: Literally unplayable. Really.",
 
+		["mutator_deadtitans"] = "The Safehouse Nightmare Experience",
+		["mutator_deadtitans_desc"] = "The undead titans will claim your soul...",
+		["mutator_deadtitans_longdesc"] = "Most special units are replaced with an undead titan bulldozer. This can make the ammo economy crash.",
+	--	["puzzle 1_desc"] = "N Z GUxrBvyBgL VVUPaiiZd Xx F aabLgAk (Hint: What's a very common way to encrypt a message?)",
+	--	["puzzle 1_longdesc"] = "uswksj, Affine: 'After Jesus said this, he looked toward heaven and prayed: Father, the hour has come. Glorify your Son, that your Son may glorify you.', Vinenere LOL 69, Rail Fence - Brooklyn",
+
 		--Crime Spree mutators
 		["mutator_cloakercuff"] = "Conjurer",
 		["mutator_cloakercuff_desc"] = "Cloaker melee strikes will now cuff players.",
@@ -5888,7 +5898,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 			--[[   SUPPORT SUBTREE   ]]--
 				--Scavenger
 				["menu_scavenging_sc"] = "Scavenger",
-				["menu_scavenging_desc_sc"] = "BASIC: #{owned}#$basic##\nYour ammo box pick up range is increased by #{skill_color}#$skill_value_b1.##\n\nACE: #{owned}#$pro##\nEvery #{skill_color}#$skill_value_p1## enemies killed will result in an extra ammo box being dropped.",
+				["menu_scavenging_desc_sc"] = "BASIC: #{owned}#$basic##\nYour ammo box pick up range is increased by #{skill_color}#$skill_value_b1## plus an additional #{skill_color}#$skill_value_b2## for every #{skill_color}#$skill_value_b3## points of base armor you have.\n\nACE: #{owned}#$pro##\nEvery #{skill_color}#$skill_value_p1## enemies killed will result in an extra ammo box being dropped.",
 
 				--Bulletstorm--
 				["menu_ammo_reservoir_beta_sc"] = "Bulletstorm",
@@ -5935,7 +5945,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 
 				--Bulletproof--
 				["menu_iron_man_sc"] = "Bulletproof",
-				["menu_iron_man_desc_sc"] = "BASIC: #{owned}#$basic##\nBlocks the excess damage of Snipers, Titan Dozers, Crackdown Medics, fire, and explosives that break your armor continuing through to your health.\n\n#{risk}#NOTE: Does not protect against self damage or the direct health damage taken from Cloaker kicks and Taser shocks.##\n\nACE: #{owned}#$pro##\nWhile your armor is full, damage taken is reduced by a number of points equal to #{skill_color}#$skill_value_p1## of your maximum armor.\n\nYour armor recovers #{skill_color}#$skill_value_p2## faster. $anarc_disable",
+				["menu_iron_man_desc_sc"] = "BASIC: #{owned}#$basic##\nBlocks the excess damage of Snipers, Titan Dozers, fire and explosives that break your armor continuing through to your health.\n\n#{risk}#NOTE: Does not protect against self damage or the direct health damage taken from Cloaker kicks and Taser shocks.##\n\nACE: #{owned}#$pro##\nWhile your armor is full, damage taken is reduced by a number of points equal to #{skill_color}#$skill_value_p1## of your maximum armor.\n\nWhen your armor is broken, you gain an additional #{skill_color}#$skill_value_p3## seconds of damage grace for every #{skill_color}#$skill_value_p4## points of base armor you have.\n\nYour armor recovers #{skill_color}#$skill_value_p2## faster. $anarc_disable\n\n ",
 
 			--[[   BREACHER SUBTREE   ]]--
 				--Silent Drilling--
@@ -5980,7 +5990,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 				["menu_single_shot_ammo_return_desc_sc"] = "BASIC: #{owned}#$basic##\nGetting #{skill_color}#$skill_value_b1## lethal headshots with #{skill_color}#rifles## in less than #{skill_color}#$skill_value_b2## seconds will refund #{skill_color}#$skill_value_b4## of your weapon's ammo pickup stat straight to your reserves.\n\n#{risk}#NOTE: The ammo refunded is rounded up and will always provide at least## #{skill_color}#1## #{risk}#round.##\n\nACE: #{owned}#$pro##\nThe effect is now triggered upon landing #{skill_color}#$skill_value_p1## lethal headshots and the #{skill_color}#ammo is first refunded directly into your magazine,## whenever possible.",
 				--Aggressive Reload--
 				["menu_engineering_beta_sc"] = "Aggressive Reload",
-				["menu_engineering_beta_desc_sc"] = "BASIC: #{owned}#$basic##\nLethal headshots using #{skill_color}#rifles## will increase their reload and aim-down-sight speeds by #{skill_color}#$skill_value_b1## for #{skill_color}#$skill_value_b2## seconds.\n\nACE: #{owned}#$pro##\nCan now be triggered through non-headshot kills and the reload speed bonus is increased to #{skill_color}#$skill_value_p1##.",
+				["menu_engineering_beta_desc_sc"] = "BASIC: #{owned}#$basic##\nLethal headshots using #{skill_color}#rifles## will increase their reload and aim-down-sight speeds by #{skill_color}#$skill_value_b1## for #{skill_color}#$skill_value_b2## seconds.\n\nACE: #{owned}#$pro##\nCan now be triggered through non-headshot kills and the reload speed bonus is increased to #{skill_color}#$skill_value_p1.##",
 
 				--Mind Blown, formerly Explosive Headshot--
 				["menu_kilmer_sc"] = "Mind Blown",
@@ -6061,7 +6071,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 
 				--Low Blow--
 				["menu_unseen_strike_beta_sc"] = "Low Blow",
-				["menu_unseen_strike_beta_desc_sc"] = "BASIC: #{owned}#$basic##\nYou gain a #{skill_color}#$skill_value_b1## critical hit chance for for every #{risk}#$skill_value_b2## points of encumbrance under #{risk}#$skill_value_b3##, up to a maximum of #{skill_color}#$skill_value_b4.##\n\nCritical hits deal #{skill_color}#100%## additional damage.\n\n#{risk}#NOTE: #{important_1}#Explosives and damage-over-time effects## cannot deal critical hits.##\n\nACE: #{owned}#$pro##\nYou gain a #{skill_color}#$skill_value_p1## critical hit chance for every #{risk}#$skill_value_p2## point of encumbrance under #{risk}#$skill_value_p3##, up to a maximum of #{skill_color}#$skill_value_p4.##\n\nYour critical hit chance is increased by an additional #{skill_color}#$skill_value_p5## when attacking enemies from behind with guns or melee.",
+				["menu_unseen_strike_beta_desc_sc"] = "BASIC: #{owned}#$basic##\nYou gain a #{skill_color}#$skill_value_b1## critical hit chance for for every #{risk}#$skill_value_b2## points of encumbrance under #{risk}#$skill_value_b3##, up to a maximum of #{skill_color}#$skill_value_b4.##\n\nCritical hits deal #{skill_color}#100%## additional damage.\n\n#{risk}#NOTE: Explosives and damage-over-time effects## #{important_1}#cannot deal critical hits.##\n\nACE: #{owned}#$pro##\nYou gain a #{skill_color}#$skill_value_p1## critical hit chance for every #{risk}#$skill_value_p2## point of encumbrance under #{risk}#$skill_value_p3##, up to a maximum of #{skill_color}#$skill_value_p4.##\n\nYour critical hit chance is increased by an additional #{skill_color}#$skill_value_p5## when attacking enemies from behind with guns or melee.",
 
 		--[[   FUGITIVE   ]]--
 
@@ -6129,7 +6139,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 
 				--Bloodthirst--
 				["menu_bloodthirst_sc"] = "Bloodthirst",
-				["menu_bloodthirst_desc_sc"] = "BASIC: #{owned}#$basic##\nWhenever you kill an enemy with a melee attack, you will gain a #{skill_color}#$skill_value_b1## increase in reload speed for #{skill_color}#$skill_value_b2## seconds.\n\nACE: #{owned}#$pro##\nEvery non-melee kill you get will increase your next melee attack's damage by #{skill_color}#25%##, up to a maximum of #{skill_color}#100%.##\n\nThis effect gets reset when striking an enemy with a melee attack.",
+				["menu_bloodthirst_desc_sc"] = "BASIC: #{owned}#$basic##\nWhenever you kill an enemy with a melee attack, you will gain a #{skill_color}#$skill_value_b1## increase to both your movement and reload speeds for #{skill_color}#$skill_value_b2## seconds.\n\nACE: #{owned}#$pro##\nEvery non-melee kill you get will increase your next melee attack's damage by #{skill_color}#25%##, up to a maximum of #{skill_color}#100%.##\n\nThis effect gets reset when striking an enemy with a melee attack.",
 
 				--Frenzy--
 				["menu_wolverine_beta_sc"] = "Frenzy",

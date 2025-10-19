@@ -1290,7 +1290,7 @@ function CharacterTweakData:_init_city_swat(presets)
 	self.city_swat_titan.custom_shout = true		
 	self.city_swat_titan.can_slide_on_suppress = true
 	self.city_swat_titan.dt_suppress = {
-		range = 1400
+		range = 1000
 	}
 	self.city_swat_titan.speech_prefix_p1 = "null"
 	self.city_swat_titan.speech_prefix_p2 = nil
@@ -2831,7 +2831,19 @@ function CharacterTweakData:_init_tank(presets)
 	self.tank_mini.can_throw_frag = true
 	self.tank_mini.grenade_toss_chance = 0.4
 	self.tank_mini.spawn_sound_event = self._prefix_data_p1.bulldozer() .. "_entrance_elite"
-	table.insert(self._enemy_list, "tank_mini")	
+	table.insert(self._enemy_list, "tank_mini")
+
+	--The Safehouse Nightmare Experience
+	self.tank_undeadtitan = deep_clone(self.tank_titan_assault)
+	self.tank_undeadtitan.tags = {"law", "custom", "special"}
+	self.tank_undeadtitan.HEALTH_INIT = 4815
+	self.tank_undeadtitan.headshot_dmg_mul = 16.2342
+	self.tank_undeadtitan.damage.hurt_severity = presets.hurt_severities.no_hurts
+	self.tank_undeadtitan.custom_voicework = "dozer_nypd_hvh"
+	self.tank_undeadtitan.move_speed = presets.move_speed.extremely_slow
+	self.tank_undeadtitan.priority_shout = "g29"
+	self.tank_undeadtitan.bot_priority_shout = "g29"
+	table.insert(self._enemy_list, "tank_undeadtitan")
 end
 
 function CharacterTweakData:_init_tank_biker(presets)
@@ -5065,6 +5077,20 @@ function CharacterTweakData:_presets(tweak_data)
 		tase = true
 	}
 	presets.hurt_severities.only_explosion_hurts_tankblack = deep_clone(presets.hurt_severities.only_explosion_hurts)
+	presets.hurt_severities.only_explosion_hurts_tankblack.explosion = {
+		health_reference = 850,
+		zones = {
+			{
+				health_limit = 0.2,
+				none = 1
+			},
+			{
+				health_limit = 1,
+				explode = 1
+			},
+			{none = 1}
+		}
+	}
 	presets.hurt_severities.only_explosion_hurts_tankblack.tase = false
 	presets.hurt_severities.only_fire_and_poison_hurts = {
 		bullet = {
@@ -18403,6 +18429,66 @@ function CharacterTweakData:_presets(tweak_data)
 					}
 				}
 			}
+		},
+		-- only for secret zombie unit
+		extremely_slow = {
+			stand = {
+				walk = {
+					ntl = {
+						strafe = 60,
+						fwd = 72,
+						bwd = 56
+					},
+					hos = {
+						strafe = 60,
+						fwd = 72,
+						bwd = 56
+					},
+					cbt = {
+						strafe = 60,
+						fwd = 72,
+						bwd = 56
+					}
+				},
+				run = {
+					hos = {
+						strafe = 70,
+						fwd = 72,
+						bwd = 56
+					},
+					cbt = {
+						strafe = 50,
+						fwd = 72,
+						bwd = 60
+					}
+				}
+			},
+			crouch = {
+				walk = {
+					hos = {
+						strafe = 60,
+						fwd = 72,
+						bwd = 56
+					},
+					cbt = {
+						strafe = 60,
+						fwd = 72,
+						bwd = 56
+					}
+				},
+				run = {
+					hos = {
+						strafe = 65,
+						fwd = 72,
+						bwd = 56
+					},
+					cbt = {
+						strafe = 50,
+						fwd = 72,
+						bwd = 60
+					}
+				}
+			}
 		}
 	}
 	for speed_preset_name, poses in pairs(presets.move_speed) do
@@ -19353,7 +19439,7 @@ function CharacterTweakData:_set_overkill_290()
 	self.city_swat_titan.damage.hurt_severity = self.presets.hurt_severities.elite_explosion_resist	
 	self.city_swat_titan.use_animation_on_fire_damage = false
 	self.city_swat_titan.dt_suppress = {
-		range = 1600
+		range = 1200
 	}
 	self.city_swat_titan_assault.damage.hurt_severity = self.presets.hurt_severities.elite_explosion_resist	
 	self.city_swat_titan_assault.use_animation_on_fire_damage = false
@@ -19586,7 +19672,7 @@ function CharacterTweakData:_set_sm_wish()
 	self.city_swat_titan.damage.hurt_severity = self.presets.hurt_severities.elite_explosion_resist		
 	self.city_swat_titan.use_animation_on_fire_damage = false
 	self.city_swat_titan.dt_suppress = {
-		range = 1800
+		range = 1500
 	}
 	self.city_swat_titan_assault.damage.hurt_severity = self.presets.hurt_severities.elite_explosion_resist		
 	self.city_swat_titan_assault.use_animation_on_fire_damage = false
