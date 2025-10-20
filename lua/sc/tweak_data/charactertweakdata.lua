@@ -1316,6 +1316,7 @@ function CharacterTweakData:_init_city_swat(presets)
 	self.city_swat_titan.damage.explosion_damage_mul = 0.8
 	self.city_swat_titan.damage.tase_damage_mul = 1.25
 	self.city_swat_titan.use_animation_on_fire_damage = true
+	self.city_swat_titan.rotation_speed = 0.75
 	self.city_swat_titan.move_speed = presets.move_speed.fast
 	self.city_swat_titan.dodge = presets.dodge.elite
 	self.city_swat_titan.surrender = nil
@@ -1338,6 +1339,7 @@ function CharacterTweakData:_init_city_swat(presets)
 	self.city_swat_titan_assault.dt_sgunner = {
 		range = 600
 	}
+	self.city_swat_titan_assault.rotation_speed = nil
 	table.insert(self._enemy_list, "city_swat_titan_assault")
 
 	--Weekend LMG
@@ -3588,7 +3590,7 @@ function CharacterTweakData:_init_spring(presets)
 	self.tank_captain.custom_voicework = nil
 	self.tank_captain.captain_type = restoration.captain_types.dzr_snp
 	self.tank_captain.announce_incomming = "incomming_captain"
-	self.tank_captain.damage.hurt_severity = presets.hurt_severities.elite
+	self.tank_captain.damage.hurt_severity = presets.hurt_severities.only_light_hurt_no_explode
 	self.tank_captain.move_speed = presets.move_speed.slow_plus
 	self.tank_captain.rage_move_speed = presets.move_speed.fast
 	table.insert(self.tank_captain.tags, "medic")
