@@ -1211,7 +1211,7 @@ Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "ResSkillsInit", function(
 		
 			--Jack of All Trades
 				--Basic
-					self.values.player.throwables_multiplier = {1.5}
+					self.values.player.throwables_multiplier = {1.3}
 				--Ace
 					self.values.player.second_deployable = {true}
 					
@@ -1233,10 +1233,15 @@ Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "ResSkillsInit", function(
 				--Bulletproof
 					--Basic
 						self.values.player.unpierceable_armor = {true}
-						self.values.player.level_5_armor_addend = {2}
-						self.values.player.level_6_armor_addend = {2}
+						self.values.player.level_5_armor_addend = {2} --Unused
+						self.values.player.level_6_armor_addend = {2} --Unused
 					--Ace
-						self.values.player.armor_full_damage_absorb = {0.15}
+						self.values.player.armor_full_damage_absorb = {
+							{
+								0.15, -- % of armor as DA
+								0.75 -- Armor thereshold to recieve DA
+							}
+						}
 						self.values.player.scaling_armor_break_grace = {
 							{
 								grace_mod = 0.25, --seconds of damage grace for every armor step
@@ -1246,11 +1251,12 @@ Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "ResSkillsInit", function(
 						self.values.player.armor_regen_timer_multiplier_tier = {0.85}
 						
 						self.skill_descs.tower_defense = {
-							skill_value_b1 = tostring(self.values.player.level_5_armor_addend[1]*10), -- +armor for Flak and CTV
-							skill_value_p1 = tostring(self.values.player.armor_full_damage_absorb[1] * 100).."%", -- DA on 1st shot
+							skill_value_b1 = tostring(self.values.player.level_5_armor_addend[1]*10), -- +armor for Flak and CTV; unused
+							skill_value_p1 = tostring(self.values.player.armor_full_damage_absorb[1][1] * 100).."%", -- DA when armor is above threshold
 							skill_value_p2 = tostring((1 - self.values.player.armor_regen_timer_multiplier_tier[1]) * 100).."%", -- Armor recovery buff
 							skill_value_p3 = tostring(self.values.player.scaling_armor_break_grace[1].grace_mod),
 							skill_value_p4 = tostring(self.values.player.scaling_armor_break_grace[1].armor_steps * 10),
+							skill_value_p5 = tostring(self.values.player.armor_full_damage_absorb[1][2] * 100).."%", -- DA threshold
 						}
 			
 		--Breacher--
@@ -2259,6 +2265,7 @@ Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "ResSkillsInit", function(
 	
 	--Hey you're getting your grinder on my grinder
 	self.values.player.level_5_armor_addend_grinder = {-4}
+	self.values.player.level_5_deflection_addend_grinder = {-0.05}
 	self.values.player.flak_jacket_concealment = {
 		8,
 		4
@@ -2286,9 +2293,9 @@ Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "ResSkillsInit", function(
 		}
 	}
 	self.values.player.damage_to_hot = {
-		0.1,
 		0.2,
 		0.3,
+		0.4,
 		
 		0.0 --Unused
 	}
@@ -3324,7 +3331,8 @@ Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "ResSkillsInit", function(
 		perk_value_3 = tostring(self.damage_to_hot_data.max_stacks),-- Max amount of stacks
 		perk_value_4 = tostring(self.damage_to_hot_data.stacking_cooldown), -- Stacking CD
 		perk_value_5 = tostring(self.values.player.level_5_armor_addend_grinder[1] * -10), -- Flak Jacket armor reduction
-		perk_value_6 = tostring(self.values.player.flak_jacket_concealment[1]) -- Concealment bonus
+		perk_value_6 = tostring(self.values.player.flak_jacket_concealment[1]), -- Concealment bonus
+		perk_value_7 = tostring(self.values.player.level_5_deflection_addend_grinder[1] * -100), -- Flak Jacket deflection reduction
 	}
 	self.specialization_descs[11][3] = {
 		perk_value_1 = tostring((self.values.player.damage_to_hot[2] - self.values.player.damage_to_hot[1]) * 10),-- Additional HP regen per tick
@@ -3720,7 +3728,8 @@ Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "ResSkillsInit", function(
 		perk_value_4 = tostring(self.damage_to_hot_data.stacking_cooldown), -- Stacking CD
 		perk_value_5 = tostring(self.values.player.level_5_armor_addend_grinder[1] * -10), -- Flak Jacket armor reduction
 		perk_value_6 = tostring(self.values.player.flak_jacket_concealment[2]), -- Concealment bonus
-		perk_value_7 = "2" -- Body bag cases quantity. Not defined here so beware
+		perk_value_7 = "2", -- Body bag cases quantity. Not defined here so beware
+		perk_value_8 = tostring(self.values.player.level_5_deflection_addend_grinder[1] * -100), -- Flak Jacket deflection reduction
 	}
 	self.multi_choice_specialization_descs[23][9][12] = { --Yakuza
 		perk_value_1 = tostring(self.values.player.kill_dodge_regen[1] * 100).."%", -- Max dodge gain on kill at low HP
@@ -3988,6 +3997,7 @@ function UpgradesTweakData.mrwi_deck9_options()
 			upgrades = {
 				"player_damage_to_hot_1",
 				"player_level_5_armor_addend_grinder",
+				"player_level_5_deflection_addend_grinder",
 				"player_flak_jacket_concealment_1",
 				"player_flak_jacket_concealment_2",
 				"bodybags_bag_quantity",
@@ -4776,6 +4786,15 @@ function UpgradesTweakData:_player_definitions()
 		upgrade = {
 			category = "player",
 			upgrade = "level_5_armor_addend_grinder",
+			value = 1
+		}
+	}
+	self.definitions.player_level_5_deflection_addend_grinder = {
+		category = "feature",
+		name_id = "menu_player_level_5_level_5_deflection_addend_grinder",
+		upgrade = {
+			category = "player",
+			upgrade = "level_5_deflection_addend_grinder",
 			value = 1
 		}
 	}

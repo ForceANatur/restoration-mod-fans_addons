@@ -1140,6 +1140,7 @@ function PlayerManager:on_headshot_dealt(unit, attack_data)
 
 	if damage_ext and regen_armor_bonus > 0 then
 		damage_ext:restore_armor(damage_ext:_max_armor() * regen_armor_bonus)
+		managers.hud:start_buff("bullseye", tweak_data.upgrades.on_headshot_dealt_cooldown)
 	end
 
 	local regen_health_bonus = managers.player:upgrade_value("player", "headshot_regen_health_bonus", 0)
@@ -1160,6 +1161,7 @@ function PlayerManager:on_lethal_headshot_dealt(attacker_unit, attack_data)
 	local anarchist = managers.player:has_category_upgrade("player", "armor_grinding")
 	if self._on_headshot_dealt_t and not anarchist then
 		self._on_headshot_dealt_t = self._on_headshot_dealt_t - regen_armor_bonus_cd_reduction
+		managers.hud:change_cooldown("bullseye", -regen_armor_bonus_cd_reduction)
 	end
 end
 
@@ -1179,9 +1181,16 @@ end
 --Get health damage reduction gained via skills.
 --Crashes mentioning this function mean that there is a syntax error in the file.
 function PlayerManager:get_deflection_from_skills()
+	local armor_data = tweak_data.blackmarket.armors[managers.blackmarket:equipped_armor(true, true)]
+	local addend = 0
+
 	local addend = 0
 
 	addend = addend + self:upgrade_value("player", "deflection_addend", 0)
+	--Grinder Flak Jacket deflection modifier
+	if armor_data.upgrade_level == 5 then
+		addend = addend + self:upgrade_value("player", "level_5_deflection_addend_grinder", 0)
+	end
 
 	if self:has_activate_temporary_upgrade("temporary", "doctor_bag_health_regen") then	
 		addend = addend + tweak_data.upgrades.values.temporary.doctor_bag_health_regen_deflection_addend

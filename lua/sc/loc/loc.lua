@@ -55,8 +55,8 @@ Hooks:Add("LocalizationManagerPostInit", "ResMod_english_Localization_Init", fun
 				["RestorationModInfo_revive_damage_reductionDescID"] = "Enables or disables tracking of this specific skill.",
 				["RestorationModInfo_first_aid_damage_reductionTitleID"] = "Quick Fix",
 				["RestorationModInfo_first_aid_damage_reductionDescID"] = "Enables or disables tracking of this specific skill.",
-				--["RestorationModInfo_uppersTitleID"] = "Uppers",
-				--["RestorationModInfo_uppersDescID"] = "Enables or disables tracking of this specific skill.",
+				["RestorationModInfo_uppersTitleID"] = "Uppers",
+				["RestorationModInfo_uppersDescID"] = "Enables or disables tracking of this specific skill.",
 				["RestorationModInfo_long_dis_reviveTitleID"] = "Inspire (Cooldown)",
 				["RestorationModInfo_long_dis_reviveDescID"] = "Enables or disables tracking the cooldown of this specific skill.",
 				["RestorationModInfo_hostage_takerTitleID"] = "Hostage Taker",
@@ -70,6 +70,8 @@ Hooks:Add("LocalizationManagerPostInit", "ResMod_english_Localization_Init", fun
 				["RestorationModInfo_dmg_multiplier_outnumberedDescID"] = "Enables or disables tracking of this specific skill.",
 				["RestorationModInfo_overkill_damage_multiplierTitleID"] = "Overkill",
 				["RestorationModInfo_overkill_damage_multiplierDescID"] = "Enables or disables tracking of this specific skill.",
+				["RestorationModInfo_bullseyeTitleID"] = "Bullseye",
+				["RestorationModInfo_bullseyeDescID"] = "Enables or disables tracking of this specific skill.",
 				["RestorationModInfo_bullet_stormTitleID"] = "Bullet Storm",
 				["RestorationModInfo_bullet_stormDescID"] = "Enables or disables tracking of this specific skill.",
 
@@ -5945,7 +5947,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 
 				--Bulletproof--
 				["menu_iron_man_sc"] = "Bulletproof",
-				["menu_iron_man_desc_sc"] = "BASIC: #{owned}#$basic##\nBlocks the excess damage of Snipers, Titan Dozers, fire and explosives that break your armor continuing through to your health.\n\n#{risk}#NOTE: Does not protect against self damage or the direct health damage taken from Cloaker kicks and Taser shocks.##\n\nACE: #{owned}#$pro##\nWhile your armor is full, damage taken is reduced by a number of points equal to #{skill_color}#$skill_value_p1## of your maximum armor.\n\nWhen your armor is broken, you gain an additional #{skill_color}#$skill_value_p3## seconds of damage grace for every #{skill_color}#$skill_value_p4## points of base armor you have.\n\nYour armor recovers #{skill_color}#$skill_value_p2## faster. $anarc_disable\n\n ",
+				["menu_iron_man_desc_sc"] = "BASIC: #{owned}#$basic##\nBlocks the excess damage of Snipers, Titan Dozers, fire and explosives that break your armor continuing through to your health.\n\n#{risk}#NOTE: Does not protect against self damage or the direct health damage taken from Cloaker kicks and Taser shocks.##\n\nACE: #{owned}#$pro##\nWhile your armor is at least #{skill_color}#$skill_value_p5## full, damage taken is reduced by a number of points equal to #{skill_color}#$skill_value_p1## of your base armor.\n\nWhen your armor breaks you gain #{skill_color}#$skill_value_p3## seconds of damage grace for every #{skill_color}#$skill_value_p4## points of base armor you have.\n\nYour armor recovers #{skill_color}#$skill_value_p2## faster. $anarc_disable\n\n ",
 
 			--[[   BREACHER SUBTREE   ]]--
 				--Silent Drilling--
@@ -6309,7 +6311,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Perk_Decks_Eng", funct
 		["menu_deck9_corey_desc_sc"] = "Modifies #{risk}#Overdose's dodge-on-kill## to fill your dodge meter by #{skill_color}#$perk_value_1## of your dodge rating for every #{risk}#$perk_value_2## points of combo you have, to a maximum of #{skill_color}#$perk_value_3.##\nMelee kills boost the amount by #{skill_color}#$perk_value_5.##\n\nYou lose an additional #{important_1}#$perk_value_4## points of combo when taking health damage.\n#{risk}#Showdown's panic-on-kill## is #{important_1}#no longer boosted by melee kills.##",
 
 		--Grinder--
-		["menu_deck11_1_desc_sc"] = "Damaging an enemy heals #{skill_color}#$perk_value_1## health every second for #{skill_color}#$perk_value_2## seconds; stacks up to #{skill_color}#$perk_value_3## times.\nYou can only gain a stack every #{important_1}#$perk_value_4## seconds and only while wearing the #{risk}#Flak Jacket.##\nYour Flak Jacket loses #{important_1}#$perk_value_5## armor but gains #{skill_color}#$perk_value_6## mobility.\n\n#{risk}#NOTE: Damaging enemies with sentries or damage-over-time effects will not grant stacks.##",
+		["menu_deck11_1_desc_sc"] = "Damaging an enemy heals #{skill_color}#$perk_value_1## health every second for #{skill_color}#$perk_value_2## seconds; stacks up to #{skill_color}#$perk_value_3## times.\nYou can only gain a stack every #{important_1}#$perk_value_4## seconds and only while wearing the #{risk}#Flak Jacket.##\nYour Flak Jacket loses #{important_1}#$perk_value_5## armor and #{important_1}#$perk_value_7## deflection but gains #{skill_color}#$perk_value_6## mobility.\n\n#{risk}#NOTE: Damaging enemies with sentries or damage-over-time effects will not grant stacks.##",
 		["menu_deck11_3_desc_sc"] = "Stacks heal an additional ##$perk_value_1## health every second.",
 		["menu_deck11_5_desc_sc"] = "Stacks last an additional ##$perk_value_1## seconds.\n\nYou gain the ability to place ##$perk_value_2## body bag cases.",
 		["menu_deck11_7_desc_sc"] = "Stacks heal an additional ##$perk_value_1## health every second.",
@@ -6340,10 +6342,10 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Perk_Decks_Eng", funct
 
 		--Scarface--
 		["menu_deck17_1_desc_sc"] = "Unlocks the #{skill_color}#Injector## for use in place of a throwable.\n\nActivating the Injector will heal you for #{skill_color}#$perk_value_1## of all damage taken for #{skill_color}#$perk_value_2## seconds; you can still take damage during the effect.\n\nThe Injector can only be used once every #{important_1}#$perk_value_3## seconds; each kill you perform will shorten the cooldown timer by #{skill_color}#$perk_value_4## seconds.",
-		["menu_deck17_3_desc_sc"] = "Your movement speed is increased by ##$perk_value_1## while the Injector is active.",
-		["menu_deck17_5_desc_sc"] = "You are now healed for ##$perk_value_1## of all damage taken for ##$perk_value_2## seconds while the Injector is active.\n\nEnemies nearby will prefer targeting you, whenever possible, while the Injector is active.",
-		["menu_deck17_7_desc_sc"] = "The amount of health received during the Injector effect is increased by ##$perk_value_1## while below ##$perk_value_2## health.",
-		["menu_deck17_9_desc_sc"] = "For every ##$perk_value_1## health gained during the Injector effect while at maximum health, the recharge time of the Injector is reduced by ##$perk_value_2## seconds.\n\nDeck Completion Bonus: Your chance of getting a higher quality item during a PAYDAY is increased by ##10%.##",
+		["menu_deck17_3_desc_sc"] = "Your movement speed is increased by #{skill_color}#$perk_value_1## while the Injector is active.",
+		["menu_deck17_5_desc_sc"] = "You are now healed for #{skill_color}#$perk_value_1## of all damage taken for ##$perk_value_2## seconds while the Injector is active.\n\nWhile the Injector is active, #{risk}#nearby enemies will prefer targeting you whenever possible.## ",
+		["menu_deck17_7_desc_sc"] = "The amount of health received during the Injector effect is increased by #{skill_color}#$perk_value_1## while below #{skill_color}#$perk_value_2## health.",
+		["menu_deck17_9_desc_sc"] = "For every #{skill_color}#$perk_value_1## health gained during the Injector effect while at maximum health, the recharge time of the Injector is reduced by #{skill_color}#$perk_value_2## seconds.\n\nDeck Completion Bonus: Your chance of getting a higher quality item during a PAYDAY is increased by #{skill_color}#10%.##",
 
 		--10 feet higher--
 		["menu_deck18_1_desc_sc"] = "Unlocks the #{skill_color}#Smoke Bomb## for use in place of a standard throwable.\n\nWhen deployed, the smoke bomb creates a smoke screen that lasts for #{skill_color}#$perk_value_1## seconds. While standing inside the smoke screen, you and your allies regenerate armor #{skill_color}#$perk_value_2## faster. Any enemies that stand in the smoke will see their accuracy reduced by #{skill_color}#$perk_value_3.##\n\nThe Smoke Bomb has a #{important_1}#$perk_value_4## second cooldown; killing enemies will reduce this cooldown by #{skill_color}#$perk_value_5## seconds.\n\nYour dodge is increased by #{skill_color}#$perk_value_6## points.",
@@ -6464,7 +6466,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Perk_Decks_Eng", funct
 			--Gambler
 			["menu_deck10_mrwi_desc"] = "Ammo boxes you pick up also yield medical supplies that heal you for ##$perk_value_1 to $perk_value_2## health.\n\nHealing has a ##$perk_value_3## second cooldown, but every ammo box you pick up reduces it by ##$perk_value_4 to $perk_value_5## seconds.\n\nWhen you pick up ammo, you trigger an ammo pickup for ##$perk_value_6## of normal rate to other crew members.\n\nYou answer pagers ##$perk_value_7## faster.",
 			--Grinder
-			["menu_deck11_mrwi_desc"] = "Damaging an enemy heals #{skill_color}#$perk_value_1## health every second for #{skill_color}#$perk_value_2## seconds; stacks up to #{skill_color}#$perk_value_3## times.\nYou can only gain a stack every #{important_1}#$perk_value_4## seconds and only while wearing the #{risk}#Flak Jacket.##\nYour Flak Jacket loses #{important_1}#$perk_value_5## armor but gains #{skill_color}#$perk_value_6## mobility.\n\n#{risk}#NOTE: Damaging enemies with sentries or damage-over-time effects will not grant stacks.##\n\nYou gain the ability to place #{skill_color}#$perk_value_7## body bag cases.",
+			["menu_deck11_mrwi_desc"] = "Damaging an enemy heals #{skill_color}#$perk_value_1## health every second for #{skill_color}#$perk_value_2## seconds; stacks up to #{skill_color}#$perk_value_3## times.\nYou can only gain a stack every #{important_1}#$perk_value_4## seconds and only while wearing the #{risk}#Flak Jacket.##\nYour Flak Jacket loses #{important_1}#$perk_value_5## armor and #{important_1}#$perk_value_8## deflection but gains #{skill_color}#$perk_value_6## mobility.\n\n#{risk}#NOTE: Damaging enemies with sentries or damage-over-time effects will not grant stacks.##\n\nYou gain the ability to place #{skill_color}#$perk_value_7## body bag cases.",
 			--Yakuza
 			["menu_deck12_mrwi_desc"] = "The lower your health, the more your dodge meter is filled when you kill an enemy.\n\nWhen your health is below ##100%##, your meter fills by up to ##$perk_value_1## of your dodge.\n\nYou bag corpses and interact with hostages ##$perk_value_2## faster.",
 			--Ex-Pres

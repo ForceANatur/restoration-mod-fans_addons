@@ -975,7 +975,7 @@ local crew_wep_preset = {
 		self.colt_1911_primary_npc.DAMAGE = 4.5
 
 		self.beretta92_titan_npc = deep_clone(self.c45_npc)
-		self.beretta92_titan_npc.usage = "is_revolver"
+		self.beretta92_titan_npc.usage = "is_lmg"
 		self.beretta92_titan_npc.sounds.prefix = "beretta_npc"
 		self.beretta92_titan_npc.DAMAGE = 2.4
 		self.beretta92_titan_npc.CLIP_AMMO_MAX = 14
@@ -6044,6 +6044,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							reload = 20
 						}
 						self.lemming.stats_modifiers = nil
+						self.lemming.timers.reload_empty = 2.05
 						self.lemming.timers.reload_exit_empty = 0.55
 						self.lemming.timers.reload_exit_not_empty = 0.45
 
@@ -6859,7 +6860,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.packrat.stats_modifiers = nil
 						self.packrat.reload_speed_multiplier = 1.1
 						self.packrat.timers.reload_not_empty = 1.45
-						self.packrat.timers.reload_empty = 2.12
+						self.packrat.timers.reload_empty = 2.02
 						self.packrat.timers.reload_exit_empty = 0.68
 						self.packrat.timers.reload_exit_not_empty = 0.65
 					--Akimbo
@@ -7481,6 +7482,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.type54.stats_modifiers = nil
 						self.type54.panic_suppression_chance = 0.05
 						self.type54.reload_speed_multiplier = 1.05
+						self.type54.timers.reload_empty = 2.05
 						self.type54.timers.reload_exit_empty = 0.55
 						self.type54.timers.reload_exit_not_empty = 0.45
 					--Akimbo
@@ -7528,7 +7530,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						}
 						self.type54_underbarrel.rays = 12
 						self.type54_underbarrel.muzzleflash = "effects/payday2/particles/weapons/big_51b_auto_fps" --"effects/particles/shotgun/shotgun_gen"
-						self.type54_underbarrel.AMMO_MAX = 10
+						self.type54_underbarrel.AMMO_MAX = 12
 						self.type54_underbarrel.has_underbarrel = true
 						self.type54_underbarrel.CLIP_AMMO_MAX = 1
 						self.type54_underbarrel.fire_mode_data = {}
@@ -7580,7 +7582,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						}
 						self.x_type54_underbarrel.rays = 12
 						self.x_type54_underbarrel.muzzleflash = "effects/payday2/particles/weapons/big_51b_auto_fps" --"effects/particles/shotgun/shotgun_gen"
-						self.x_type54_underbarrel.AMMO_MAX = 20
+						self.x_type54_underbarrel.AMMO_MAX = 24
 						self.x_type54_underbarrel.has_underbarrel = true
 						self.x_type54_underbarrel.BURST_FIRE = {
 							count = 2
@@ -7603,7 +7605,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							min_mult = 0.125
 						}
 						self.x_type54_underbarrel.stats = {
-							damage = 180,
+							damage = 90,
 							spread = 16,
 							recoil = 67,
 							spread_moving = 6,
@@ -8484,6 +8486,11 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.x_deagle.timers.reload_exit_not_empty = 0.65
 
 					--Wow wow (Peacemaker)
+						self.peacemaker.categories = {
+							"pistol",
+							"handcannon",
+							"yeehaw",
+						}
 						self.peacemaker.has_description = true
 						self.peacemaker.desc_id = "bm_ap_weapon_peacemaker_sc_desc"
 						self.peacemaker.AMMO_MAX = 20
@@ -8543,7 +8550,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.peacemaker.timers.shotgun_reload_exit_empty = 0.7
 						self.peacemaker.timers.shotgun_reload_exit_not_empty = 0.7
 						self.peacemaker.use_unequip_swap = true
-						self.peacemaker.swap_speed_multiplier = 0.65
+						self.peacemaker.swap_speed_multiplier = 0.75
 
 		--[[     MGs     ]]--
 
@@ -30608,7 +30615,9 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.bk500.categories = {"pistol", "handcannon"}
 				self.bk500.recategorize = { "heavy_pis", "handcannon" }
 				self.bk500.damage_type = "handcannon"
+				self.bk500.always_play_anims = true
 				self.bk500.fire_mode_data.fire_rate = 0.5454
+				self.bk500.fire_rate_multiplier = 0.681818
 				self.bk500.muzzleflash = "effects/payday2/particles/weapons/big_51b_auto_fps"
 				self.bk500.desc_id = "bm_ap_weapon_sc_desc"
 				self.bk500.AMMO_MAX = 20
@@ -30622,8 +30631,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.bk500.supported = true
 				self.bk500.ads_speed = 0.200
 				self.bk500.damage_falloff = {
-					start_dist = 1600,
-					end_dist = 4500,
+					start_dist = 1000,
+					end_dist = 5000,
 					min_mult = 0.26666
 				}
 				self.bk500.stats = {

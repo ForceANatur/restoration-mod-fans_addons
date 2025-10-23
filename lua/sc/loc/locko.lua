@@ -53,6 +53,8 @@ Hooks:Add("LocalizationManagerPostInit", "ResMod_english_Localization_Init", fun
 				["RestorationModInfo_revive_damage_reductionDescID"] = "해당 스킬의 표시를 활성화하거나 비활성화합니다.",
 				["RestorationModInfo_first_aid_damage_reductionTitleID"] = "응급 치료",
 				["RestorationModInfo_first_aid_damage_reductionDescID"] = "해당 스킬의 표시를 활성화하거나 비활성화합니다.",
+				--["RestorationModInfo_uppersTitleID"] = "각성제",
+				--["RestorationModInfo_uppersDescID"] = "해당 스킬의 표시를 활성화하거나 비활성화합니다.",				
 				["RestorationModInfo_long_dis_reviveTitleID"] = "인스파이어 (쿨다운)",
 				["RestorationModInfo_long_dis_reviveDescID"] = "해당 스킬의 쿨다운 표시를 활성화하거나 비활성화합니다.",
 				["RestorationModInfo_hostage_takerTitleID"] = "인질범",
@@ -108,6 +110,8 @@ Hooks:Add("LocalizationManagerPostInit", "ResMod_english_Localization_Init", fun
 				["RestorationModInfo_crookDescID"] = "이러한 특정 특성 효과의 표시를 활성화하거나 비활성화합니다.",
 				["RestorationModInfo_grinderTitleID"] = "히스타민 (그라인더)",
 				["RestorationModInfo_grinderDescID"] = "해당 특성 덱의 표시를 활성화하거나 비활성화합니다.",
+				["RestorationModInfo_gamblerTitleID"] = "의약품 (갬블러)",
+				["RestorationModInfo_gamblerDescID"] = "해당 특성 덱의 표시를 활성화하거나 비활성화합니다.",				
 				["RestorationModInfo_infiltratorTitleID"] = "체력 흡수 (인필트레이터)",
 				["RestorationModInfo_infiltratorDescID"] = "해당 특성 덱의 표시를 활성화하거나 비활성화합니다.",
 				["RestorationModInfo_sociopathTitleID"] = "콤보 미터 (소시오패스)",
@@ -5786,7 +5790,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 
 				--Bulletproof--
 				["menu_iron_man_sc"] = "방탄 갑옷",
-				["menu_iron_man_desc_sc"] = "베이식: #{owned}#$basic##\n스나이퍼, 타이탄 도저, 화염, 폭발물이 당신의 방탄복을 파괴하며 체력으로 넘어오는 초과 피해를 막아줍니다.\n\n#{risk}#주의: 자가 피해 또는 클로커의 발차기 및 테이저의 전기 충격으로 직접 입는 체력 피해에는 적용되지 않습니다.##\n\n에이스: #{owned}#$pro##\n방탄량이 가득 차 있는 동안, 받는 피해가 최대 방탄량의 #{skill_color}#$skill_value_p1##만큼 감소합니다.\n\n방탄복이 파괴되면 기본 방탄량 #{skill_color}#$skill_value_p4##당 #{skill_color}#$skill_value_p3##초의 피해 유예 시간을 더 얻습니다.\n\n방탄복 회복 속도가 #{skill_color}#$skill_value_p2## 빨라집니다. $anarc_disable\n\n",
+				["menu_iron_man_desc_sc"] = "베이식: #{owned}#$basic##\n스나이퍼, 타이탄 도저, 화염, 폭발물이 당신의 방탄복을 파괴하며 체력으로 넘어오는 초과 피해를 막아줍니다.\n\n#{risk}#주의: 자가 피해 또는 클로커의 발차기 및 테이저의 전기 충격으로 직접 입는 체력 피해에는 적용되지 않습니다.##\n\n에이스: #{owned}#$pro##\n방탄량이 가득 차 있는 동안, 받는 피해가 최대 방탄량의 #{skill_color}#$skill_value_p1##만큼 감소합니다.\n\n방탄복이 파괴되면 기본 방탄량 #{skill_color}#$skill_value_p4## 당 #{skill_color}#$skill_value_p3##초의 피해 유예 시간을 얻습니다.\n\n방탄복 회복 속도가 #{skill_color}#$skill_value_p2## 빨라집니다. $anarc_disable\n\n",
 
 			--[[   BREACHER SUBTREE   ]]--
 				--Silent Drilling--
@@ -6100,8 +6104,8 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Perk_Decks_Eng", funct
 		["menu_deck10_5_desc_sc"] = "탄약 상자의 회복량이 #{skill_color}#$perk_value_1##에서 ##$perk_value_2## 증가합니다.\n\n탄약을 획득해 체력을 회복할 때마다, 회피 미터가 ##$perk_value_3##씩 채워집니다.\n\n페이저를 응답하는 속도가 ##$perk_value_4## 빨라집니다.",
 		["menu_deck10_7_desc_sc"] = "탄약을 획득해 체력을 회복할 때마다, 당신의 팀원도 당신이 회복한 양의 ##$perk_value_1##만큼 체력을 회복합니다.\n\n회피율이 추가로 ##$perk_value_2## 증가합니다.",
 		["menu_deck10_9_desc_sc"] = "탄약 상자의 회복량이 #{skill_color}#$perk_value_1##에서 ##$perk_value_2## 증가합니다.\n\n탄약을 획득해 체력을 회복할 때마다, 방탄량을 ##$perk_value_1## 회복합니다.\n\n덱 완료 보너스: PAYDAY 카드에서 높은 등급의 아이템을 얻을 확률이 ##10%## 상승합니다.",
-		["menu_deck10_7"] = "임시방편 의약품",
-		["menu_deck10_9"] = "봉인된 의약품",
+		["menu_deck10_7"] = "회피 의약품",
+		["menu_deck10_9"] = "방탄 의약품",
 
 		--Infiltrator--
 		["menu_deck8_1_desc_sc"] = "적이 ##$perk_value_1##미터 이내에 있을 때, 적에게 받는 피해가 ##$perk_value_2## 감소합니다.",
@@ -6153,7 +6157,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Perk_Decks_Eng", funct
 		["menu_deck9_corey_desc_sc"] = "#{risk}#과다 복용의 처치 시 회피##를 수정하여 콤보 #{risk}#$perk_value_2##점마다 회피의 #{skill_color}#$perk_value_1##만큼 회피 미터를 채우고, 최대 #{skill_color}#$perk_value_3##까지 채웁니다.\n근접 공격으로 적을 처치하면 추가로 #{skill_color}#$perk_value_5## 채웁니다.\n\n체력 피해를 입으면 콤보를 추가로 #{important_1}#$perk_value_4## 잃습니다.\n#{risk}#결전의 처치 시 공포감이## #{important_1}#근접 공격으로 적을 처치해도 더 이상 증가하지 않습니다.##",
 
 		--Grinder--
-		["menu_deck11_1_desc_sc"] = "적에게 피해를 가하면 #{skill_color}#$perk_value_2##초동안 매 초마다 체력이 #{skill_color}#$perk_value_1##씩 회복되며, 최대 #{skill_color}#$perk_value_3##회까지 중첩됩니다.\n#{important_1}#$perk_value_4##초마다 스택을 얻을 수 있으며, #{risk}#방편복##를 입을 때만 적용됩니다.\n방편복의 방탄력이 #{important_1}#$perk_value_5## 감소하지만 방편복의 기동성이 #{skill_color}#$perk_value_6## 증가합니다.\n\n#{risk}#주의: 센트리 또는 지속 피해 효과로 적에게 피해를 가해도 중첩을 얻을 수 없습니다.##",
+		["menu_deck11_1_desc_sc"] = "적에게 피해를 가하면 #{skill_color}#$perk_value_2##초동안 매 초마다 체력이 #{skill_color}#$perk_value_1##씩 회복되며, 최대 #{skill_color}#$perk_value_3##회까지 중첩됩니다.\n#{important_1}#$perk_value_4##초마다 스택을 얻을 수 있으며, #{risk}#방편복##를 입을 때만 적용됩니다.\n방편복의 방탄력이 #{important_1}#$perk_value_5##, 방어력이 #{important_1}#$perk_value_7## 감소하지만 방편복의 기동성이 #{skill_color}#$perk_value_6## 증가합니다.\n\n#{risk}#주의: 센트리 또는 지속 피해 효과로 적에게 피해를 가해도 중첩을 얻을 수 없습니다.##",
 		["menu_deck11_3_desc_sc"] = "스택은 매 초마다 체력이 추가로 ##$perk_value_1##씩 회복합니다.",
 		["menu_deck11_5_desc_sc"] = "스택의 지속 시간이 추가로 ##$perk_value_1##초 증가합니다.\n\n시체 가방의 소지 수가 ##$perk_value_2##개 증가합니다.",
 		["menu_deck11_7_desc_sc"] = "스택은 매 초마다 체력이 추가로 ##$perk_value_1##씩 회복합니다.",
@@ -6184,10 +6188,10 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Perk_Decks_Eng", funct
 
 		--Scarface--
 		["menu_deck17_1_desc_sc"] = "투척 무기 대신 사용할 수 있는 #{skill_color}#주사기##가 잠금 해제됩니다.\n\n주사기를 사용하면 #{skill_color}#$perk_value_2##초 동안 받는 모든 피해량의 #{skill_color}#$perk_value_1##만큼 회복하고, 효과가 지속되는 동안에도 피해를 받을 수 있습니다.\n\n주사기는 #{important_1}#$perk_value_3##초마다 한 번만 쓸 수 있지만, 적을 처치할 때마다 재사용 대기 시간이 #{skill_color}#$perk_value_4##초씩 단축됩니다.",
-		["menu_deck17_3_desc_sc"] = "주사기 사용 효과가 지속되는 동안 이동 속도가 ##$perk_value_1## 증가합니다.",
-		["menu_deck17_5_desc_sc"] = "이제 주사기 사용 효과가 지속되는 동안 ##$perk_value_2##초간 받는 모든 피해량의 ##$perk_value_1##만큼 회복됩니다.\n\n주사기의 효과가 지속하는 동안 근처의 적이 당신을 집중 공격합니다.",
-		["menu_deck17_7_desc_sc"] = "주사기 사용 효과가 지속되는 동안 체력이 ##$perk_value_2## 이하일 때, 주사기의 회복 효과가 ##$perk_value_1## 증가합니다.",
-		["menu_deck17_9_desc_sc"] = "체력이 최대일 때 체력을 ##$perk_value_1##씩 회복 할때마다 주사기 재사용 대기 시간이 ##$perk_value_2##초씩 줄어듭니다.\n\n덱 완료 보너스: PAYDAY 카드에서 높은 등급의 아이템을 얻을 확률이 ##10%## 상승합니다.",
+		["menu_deck17_3_desc_sc"] = "주사기 사용 효과가 지속되는 동안 이동 속도가 #{skill_color}#$perk_value_1## 증가합니다.",
+		["menu_deck17_5_desc_sc"] = "이제 주사기 사용 효과가 지속되는 동안 #{skill_color}#$perk_value_2##초간 받는 모든 피해량의 #{skill_color}#$perk_value_1##만큼 회복됩니다.\n\n주사기의 효과가 지속하는 동안 #{risk}#근처의 적이 당신을 집중 공격합니다.##",
+		["menu_deck17_7_desc_sc"] = "주사기 사용 효과가 지속되는 동안 체력이 #{skill_color}#$perk_value_2## 이하일 때, 주사기의 회복 효과가 #{skill_color}#$perk_value_1## 증가합니다.",
+		["menu_deck17_9_desc_sc"] = "체력이 최대일 때 체력을 #{skill_color}#$perk_value_1##씩 회복 할때마다 주사기 재사용 대기 시간이 #{skill_color}#$perk_value_2##초씩 줄어듭니다.\n\n덱 완료 보너스: PAYDAY 카드에서 높은 등급의 아이템을 얻을 확률이 ##10%## 상승합니다.",
 
 		--10 feet higher--
 		["menu_deck18_1_desc_sc"] = "투척 무기 대신 사용할 수 있는 #{skill_color}#연막탄##이 잠금 해제됩니다.\n\n연막탄을 사용하면, #{skill_color}#$perk_value_1##초간 숨을 수 있는 연막을 형성합니다. 연막 속에 숨어 있으면, 당신과 팀원은 방탄력의 회복 속도가 #{skill_color}#$perk_value_2## 빨라집니다. 연막 속으로 들어간 적은 명중률이 #{skill_color}#$perk_value_3## 감소합니다.\n\n연막탄은 #{important_1}#$perk_value_4##초의 재사용 대기 시간이 있지만, 적을 처치하면 재사용 대기 시간이 #{skill_color}#$perk_value_5##초씩 감소합니다.\n\n회피율이 #{skill_color}#$perk_value_6## 증가합니다.",
@@ -6308,7 +6312,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Perk_Decks_Eng", funct
 			--Gambler
 			["menu_deck10_mrwi_desc"] = "탄약을 획득할 때마다 #{skill_color}#$perk_value_1##에서 #{skill_color}#$perk_value_2##의 체력을 회복하는 의약품을 얻을 수 있습니다.\n\n치료의 재사용 대기 시간은 #{important_1}#$perk_value_3##초이지만, 탄약 상자를 획득할 때마다 대기 시간이 #{skill_color}#$perk_value_4##초에서 #{skill_color}#$perk_value_5##초씩 감소합니다.\n\n탄약을 획득할 때마다, 당신의 팀원도 기본 탄약 회수량의 ##$perk_value_6##만큼 탄약을 획득합니다.\n\n페이저를 응답하는 속도가 ##$perk_value_7## 빨라집니다.",
 			--Grinder
-			["menu_deck11_mrwi_desc"] = "적에게 피해를 가하면 #{skill_color}#$perk_value_2##초동안 매 초마다 체력이 #{skill_color}#$perk_value_1##씩 회복되며, 최대 #{skill_color}#$perk_value_3##회까지 중첩됩니다.\n#{important_1}#$perk_value_4##초마다 스택을 얻을 수 있으며, #{risk}#방편복##를 입을 때만 적용됩니다.\n방편복의 방탄력이 #{important_1}#$perk_value_5## 감소하지만 방편복의 기동성이 #{skill_color}#$perk_value_6## 증가합니다.\n\n#{risk}#주의: 센트리 또는 지속 피해 효과로 적에게 피해를 가해도 중첩을 얻을 수 없습니다.##\n\n시체 가방의 소지 수가 #{skill_color}#$perk_value_7##개 증가합니다.",
+			["menu_deck11_mrwi_desc"] = "적에게 피해를 가하면 #{skill_color}#$perk_value_2##초동안 매 초마다 체력이 #{skill_color}#$perk_value_1##씩 회복되며, 최대 #{skill_color}#$perk_value_3##회까지 중첩됩니다.\n#{important_1}#$perk_value_4##초마다 스택을 얻을 수 있으며, #{risk}#방편복##를 입을 때만 적용됩니다.\n방편복의 방탄력이 #{important_1}#$perk_value_5##, 방어력이 #{important_1}#$perk_value_8## 감소하지만 방편복의 기동성이 #{skill_color}#$perk_value_6## 증가합니다.\n\n#{risk}#주의: 센트리 또는 지속 피해 효과로 적에게 피해를 가해도 중첩을 얻을 수 없습니다.##\n\n시체 가방의 소지 수가 #{skill_color}#$perk_value_7##개 증가합니다.",
 			--Yakuza
 			["menu_deck12_mrwi_desc"] = "체력이 낮을 수록 회피 미터가 더 빠르게 자동으로 채워집니다.\n\n체력이 ##100%## 미만일 경우, 회피 미터가 매초 최대 ##$perk_value_1##만큼 채워집니다.\n\n시체를 가방에 넣거나 인질과 상호 작용하는 속도가 ##$perk_value_2## 빨라집니다.",
 			--Ex-Pres
