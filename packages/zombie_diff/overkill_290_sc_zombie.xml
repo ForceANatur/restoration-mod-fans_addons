@@ -205,6 +205,27 @@
 	<texture			path="units/pd2_mod_halloween/characters/ene_marshal_marksman_1/ene_male_marshal_head_1_df" force="false"/>
 	<texture			path="units/pd2_mod_halloween/characters/ene_marshal_marksman_1/ene_marshal_body_df" force="false"/>
 	<texture			path="units/pd2_mod_halloween/characters/ene_marshal_marksman_1/ene_marshal_equipment_df" force="false"/>
+
+	<!--Golem(?) Shield-->
+	<model				path="units/pd2_mod_halloween/characters/ene_acc_marshal_shield_1/marshal_shield_1" force="true"/>
+	<object				path="units/pd2_mod_halloween/characters/ene_acc_marshal_shield_1/marshal_shield_1" force="true"/>
+	<unit				path="units/pd2_mod_halloween/characters/ene_acc_marshal_shield_1/marshal_shield_1" force="true" load="true"/>
+	<unit				path="units/pd2_mod_halloween/characters/ene_acc_marshal_shield_1/marshal_shield_1_dummy" load="true"/>
+	<sequence_manager	path="units/pd2_mod_halloween/characters/ene_acc_marshal_shield_1/marshal_shield_1"/>	
+	<texture			path="units/pd2_mod_halloween/characters/ene_acc_marshal_shield_1/marshal_shield_df" force="true"/>
+
+	<unit				path="units/pd2_mod_halloween/characters/ene_marshal_shield_1/ene_marshal_shield_1" force="false" load="true"/>
+	<unit				path="units/pd2_mod_halloween/characters/ene_marshal_shield_1/ene_marshal_shield_1_husk" force="false" load="true"/>
+	<object				path="units/pd2_mod_halloween/characters/ene_marshal_shield_1/ene_marshal_shield_1" force="false"/>
+	<cooked_physics		path="units/pd2_mod_halloween/characters/ene_marshal_shield_1/ene_marshal_shield_1" force="false"/>
+	<model				path="units/pd2_mod_halloween/characters/ene_marshal_shield_1/ene_marshal_shield_1" force="false"/>
+	<material_config	path="units/pd2_mod_halloween/characters/ene_marshal_shield_1/ene_marshal_shield_1" force="false"/>
+	<material_config	path="units/pd2_mod_halloween/characters/ene_marshal_shield_1/ene_marshal_shield_1_contour" force="false"/>
+
+	<texture			path="units/pd2_mod_halloween/characters/ene_marshal_shield_1/ene_male_marshal_arms_df" force="false"/>
+	<texture			path="units/pd2_mod_halloween/characters/ene_marshal_shield_1/ene_male_marshal_head_1_df" force="false"/>
+	<texture			path="units/pd2_mod_halloween/characters/ene_marshal_shield_1/ene_male_marshal_shield_1_equipment_df" force="false"/>
+	<texture			path="units/pd2_mod_halloween/characters/ene_marshal_shield_1/ene_marshal_body_df" force="false"/>
 	
 	<!--skeleton SWAT m4-->
     <object				path="units/pd2_mod_halloween/characters/ene_skele_swat/ene_skele_swat"/>
@@ -490,7 +511,6 @@
 	<material_config	path="units/pd2_mod_dave/characters/ene_dave_hvh/ene_dave_hvh_contour" force="false"/>
 	<unit				path="units/pd2_mod_dave/characters/ene_dave_hvh/ene_dave_hvh_husk" force="false" load="true"/> 
 	<texture			path="units/pd2_mod_dave/characters/ene_dave_hvh/taser_body_df"/>
-	<texture			path="units/pd2_mod_dave/characters/ene_dave_hvh/taser_body_nm"/>
 	<texture			path="units/pd2_mod_dave/characters/ene_dave_hvh/heads_atlas_df"/>
 	<texture			path="units/pd2_mod_dave/characters/ene_dave_hvh/helmets_heavy_taser_atlas_df"/>
 
@@ -499,7 +519,6 @@
 	<unit				path="units/pd2_dlc_hvh/characters/ene_bulldozer_minigun_classic/ene_bulldozer_minigun_classic_husk" force="true" load="true"/>
 	<object				path="units/pd2_dlc_hvh/characters/ene_bulldozer_minigun_classic/ene_bulldozer_minigun_classic" force="true" />
 	<model				path="units/pd2_dlc_hvh/characters/ene_bulldozer_minigun_classic/ene_bulldozer_minigun_classic" force="true" />
-	<sequence_manager	path="units/pd2_dlc_hvh/characters/ene_bulldozer_minigun_classic/ene_bulldozer_minigun_classic" force="true" />
 	<material_config	path="units/pd2_dlc_hvh/characters/ene_bulldozer_minigun_classic/ene_bulldozer_minigun_classic" force="true" />
 	<material_config	path="units/pd2_dlc_hvh/characters/ene_bulldozer_minigun_classic/ene_bulldozer_minigun_classic_contour" force="true" />
 	<texture			path="units/pd2_dlc_hvh/characters/ene_bulldozer_minigun_classic/ene_bulldozer_minigun_df"/>

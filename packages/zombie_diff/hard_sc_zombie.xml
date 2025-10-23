@@ -238,7 +238,6 @@
 	<material_config	path="units/pd2_mod_dave/characters/ene_dave_hvh/ene_dave_hvh_contour" force="false"/>
 	<unit				path="units/pd2_mod_dave/characters/ene_dave_hvh/ene_dave_hvh_husk" force="false" load="true"/> 
 	<texture			path="units/pd2_mod_dave/characters/ene_dave_hvh/taser_body_df"/>
-	<texture			path="units/pd2_mod_dave/characters/ene_dave_hvh/taser_body_nm"/>
 	<texture			path="units/pd2_mod_dave/characters/ene_dave_hvh/heads_atlas_df"/>
 	<texture			path="units/pd2_mod_dave/characters/ene_dave_hvh/helmets_heavy_taser_atlas_df"/>
 
