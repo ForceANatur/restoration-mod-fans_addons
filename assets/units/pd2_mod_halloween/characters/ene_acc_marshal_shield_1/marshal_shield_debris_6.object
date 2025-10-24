@@ -1,0 +1,12 @@
+<dynamic_object>
+	<diesel materials="units/pd2_mod_halloween/characters/ene_acc_marshal_shield_1/marshal_shield_1" orientation_object="rp_marshal_shield_debris_6" />
+	<bodies>
+		<body name="body_collision_01" enabled="true" template="debris">
+			<object name="c_box_01" collision_type="convex" padding="-2.5" />
+		</body>
+	</bodies>
+	<graphics>
+		<object name="g_shield_debris" enabled="true" />
+	</graphics>
+	<lights />
+</dynamic_object>

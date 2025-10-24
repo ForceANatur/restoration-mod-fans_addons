@@ -3399,7 +3399,11 @@ function CharacterTweakData:_init_marshal_shield(presets)
 	self.marshal_shield.speech_prefix_count = nil
 	self.marshal_shield.yellow_blood = nil
 	self.marshal_shield.no_asu = true
-	self.marshal_shield.custom_voicework = "marshal_shield"
+	if self:get_ai_group_type() == "zombie" then
+		self.marshal_shield.custom_voicework = "bravo_murky"
+	else
+		self.marshal_shield.custom_voicework = "marshal_marksman"
+	end
 	self.marshal_shield.speech_prefix_count = nil
 	self.marshal_shield.priority_shout = "f31"
 	self.marshal_shield.access = "shield"
@@ -20409,10 +20413,11 @@ function CharacterTweakData:character_map()
 				"ene_gensec_sgt",
 				"ene_heavymedic_1",
 				"ene_marshal_marksman_1",
+				"ene_marshal_shield_1",
 				"ene_police_heavygunner"
 			}
 		}
-		
+
 		char_map.reapers = {
 			path = "units/pd2_mod_reapers/characters/",
 			list = {
