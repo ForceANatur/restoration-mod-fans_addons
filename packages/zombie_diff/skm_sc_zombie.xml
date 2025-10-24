@@ -559,12 +559,14 @@
 	<texture			path="units/pd2_mod_halloween/characters/ene_marshal_marksman_1/ene_marshal_equipment_df" force="false"/>
 
 	<!--Golem(?) Shield-->
-	<model				path="units/pd2_mod_halloween/characters/ene_acc_marshal_shield_1/marshal_shield_1" force="true"/>
-	<object				path="units/pd2_mod_halloween/characters/ene_acc_marshal_shield_1/marshal_shield_1" force="true"/>
-	<unit				path="units/pd2_mod_halloween/characters/ene_acc_marshal_shield_1/marshal_shield_1" force="true" load="true"/>
-	<unit				path="units/pd2_mod_halloween/characters/ene_acc_marshal_shield_1/marshal_shield_1_dummy" load="true"/>
-	<sequence_manager	path="units/pd2_mod_halloween/characters/ene_acc_marshal_shield_1/marshal_shield_1"/>	
-	<texture			path="units/pd2_mod_halloween/characters/ene_acc_marshal_shield_1/marshal_shield_df" force="true"/>
+	<model				path="units/pd2_mod_halloween/characters/ene_acc_marshal_shield_1/marshal_shield_1" force="false"/>
+	<cooked_physics		path="units/pd2_mod_halloween/characters/ene_acc_marshal_shield_1/marshal_shield_1" force="false"/>
+	<material_config	path="units/pd2_mod_halloween/characters/ene_acc_marshal_shield_1/marshal_shield_1" force="false"/>
+	<object				path="units/pd2_mod_halloween/characters/ene_acc_marshal_shield_1/marshal_shield_1" force="false"/>
+	<unit				path="units/pd2_mod_halloween/characters/ene_acc_marshal_shield_1/marshal_shield_1" force="false" load="true"/>
+	<unit				path="units/pd2_mod_halloween/characters/ene_acc_marshal_shield_1/marshal_shield_1_dummy" load="false"/>
+	<sequence_manager	path="units/pd2_mod_halloween/characters/ene_acc_marshal_shield_1/marshal_shield_1"/>
+	<texture			path="units/pd2_mod_halloween/characters/ene_acc_marshal_shield_1/marshal_shield_df" force="false"/>
 
 	<unit				path="units/pd2_mod_halloween/characters/ene_marshal_shield_1/ene_marshal_shield_1" force="false" load="true"/>
 	<unit				path="units/pd2_mod_halloween/characters/ene_marshal_shield_1/ene_marshal_shield_1_husk" force="false" load="true"/>
@@ -578,6 +580,36 @@
 	<texture			path="units/pd2_mod_halloween/characters/ene_marshal_shield_1/ene_male_marshal_head_1_df" force="false"/>
 	<texture			path="units/pd2_mod_halloween/characters/ene_marshal_shield_1/ene_male_marshal_shield_1_equipment_df" force="false"/>
 	<texture			path="units/pd2_mod_halloween/characters/ene_marshal_shield_1/ene_marshal_body_df" force="false"/>
+
+	<unit				path="units/pd2_mod_halloween/characters/ene_acc_marshal_shield_1/marshal_shield_debris_1" force="false" load="true"/>
+	<object				path="units/pd2_mod_halloween/characters/ene_acc_marshal_shield_1/marshal_shield_debris_1" force="false"/>
+	<cooked_physics		path="units/pd2_mod_halloween/characters/ene_acc_marshal_shield_1/marshal_shield_debris_1" force="false"/>
+	<model				path="units/pd2_mod_halloween/characters/ene_acc_marshal_shield_1/marshal_shield_debris_1" force="false"/>
+
+	<unit				path="units/pd2_mod_halloween/characters/ene_acc_marshal_shield_1/marshal_shield_debris_2" force="false" load="true"/>
+	<object				path="units/pd2_mod_halloween/characters/ene_acc_marshal_shield_1/marshal_shield_debris_2" force="false"/>
+	<cooked_physics		path="units/pd2_mod_halloween/characters/ene_acc_marshal_shield_1/marshal_shield_debris_2" force="false"/>
+	<model				path="units/pd2_mod_halloween/characters/ene_acc_marshal_shield_1/marshal_shield_debris_2" force="false"/>
+
+	<unit				path="units/pd2_mod_halloween/characters/ene_acc_marshal_shield_1/marshal_shield_debris_3" force="false" load="true"/>
+	<object				path="units/pd2_mod_halloween/characters/ene_acc_marshal_shield_1/marshal_shield_debris_3" force="false"/>
+	<cooked_physics		path="units/pd2_mod_halloween/characters/ene_acc_marshal_shield_1/marshal_shield_debris_3" force="false"/>
+	<model				path="units/pd2_mod_halloween/characters/ene_acc_marshal_shield_1/marshal_shield_debris_3" force="false"/>
+
+	<unit				path="units/pd2_mod_halloween/characters/ene_acc_marshal_shield_1/marshal_shield_debris_4" force="false" load="true"/>
+	<object				path="units/pd2_mod_halloween/characters/ene_acc_marshal_shield_1/marshal_shield_debris_4" force="false"/>
+	<cooked_physics		path="units/pd2_mod_halloween/characters/ene_acc_marshal_shield_1/marshal_shield_debris_4" force="false"/>
+	<model				path="units/pd2_mod_halloween/characters/ene_acc_marshal_shield_1/marshal_shield_debris_4" force="false"/>
+
+	<unit				path="units/pd2_mod_halloween/characters/ene_acc_marshal_shield_1/marshal_shield_debris_5" force="false" load="true"/>
+	<object				path="units/pd2_mod_halloween/characters/ene_acc_marshal_shield_1/marshal_shield_debris_5" force="false"/>
+	<cooked_physics		path="units/pd2_mod_halloween/characters/ene_acc_marshal_shield_1/marshal_shield_debris_5" force="false"/>
+	<model				path="units/pd2_mod_halloween/characters/ene_acc_marshal_shield_1/marshal_shield_debris_5" force="false"/>
+
+	<unit				path="units/pd2_mod_halloween/characters/ene_acc_marshal_shield_1/marshal_shield_debris_6" force="false" load="true"/>
+	<object				path="units/pd2_mod_halloween/characters/ene_acc_marshal_shield_1/marshal_shield_debris_6" force="false"/>
+	<cooked_physics		path="units/pd2_mod_halloween/characters/ene_acc_marshal_shield_1/marshal_shield_debris_6" force="false"/>
+	<model				path="units/pd2_mod_halloween/characters/ene_acc_marshal_shield_1/marshal_shield_debris_6" force="false"/>
 	
 	<!--skeleton SWAT m4-->
     <object				path="units/pd2_mod_halloween/characters/ene_skele_swat/ene_skele_swat"/>

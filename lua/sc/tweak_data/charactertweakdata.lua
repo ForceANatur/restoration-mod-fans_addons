@@ -3399,7 +3399,7 @@ function CharacterTweakData:_init_marshal_shield(presets)
 	self.marshal_shield.yellow_blood = nil
 	self.marshal_shield.no_asu = true
 	if self:get_ai_group_type() == "zombie" then
-		self.marshal_shield.custom_voicework = "tshield"
+		self.marshal_shield.custom_voicework = "bravo_murky"
 	else
 		self.marshal_shield.custom_voicework = "marshal_marksman"
 	end
