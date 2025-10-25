@@ -98,7 +98,8 @@ local barrels = {
 	--barrels.short_b2_stats
 		short_b2_stats = {
 			value = 2,
-			spread = -4,
+			spread = -3,
+			recoil = -2,
 			concealment = 2,
 			falloff_start_mult = 0.85,
 			falloff_end_mult = 0.85,
@@ -108,7 +109,8 @@ local barrels = {
 	--barrels.short_b3_stats
 		short_b3_stats = {
 			value = 3,
-			spread = -6,
+			spread = -4,
+			recoil = -4,
 			concealment = 3,
 			falloff_start_mult = 0.775,
 			falloff_end_mult = 0.775,
@@ -14048,7 +14050,8 @@ end)
 				self.parts.wpn_fps_ass_g3_fg_railed.supported = true
 				self.parts.wpn_fps_ass_g3_fg_railed.stats = {
 					value = 2,
-					recoil = -2,
+					recoil = -4,
+					spread = 1,
 					concealment = 1
 				}
 
@@ -14058,12 +14061,11 @@ end)
 				self.parts.wpn_fps_ass_g3_fg_retro.stats = {
 					value = 2,
 					spread = -1,
-					concealment = 1
+					recoil = 2
 				}
 				self.parts.wpn_fps_ass_g3_fg_retro.custom_stats = {
 					falloff_start_mult = 0.925,
-					falloff_end_mult = 0.925,
-					ads_speed_mult = 0.975
+					falloff_end_mult = 0.925
 				}
 
 				--Plastic Foregrip
@@ -14077,8 +14079,7 @@ end)
 				}
 				self.parts.wpn_fps_ass_g3_fg_retro_plastic.custom_stats = {
 					falloff_start_mult = 0.925,
-					falloff_end_mult = 0.925,
-					ads_speed_mult = 0.975
+					falloff_end_mult = 0.925
 				}
 
 				--Retro Grip
@@ -14090,7 +14091,8 @@ end)
 				--Precision Grip
 				self.parts.wpn_fps_ass_g3_g_sniper.pcs = {}
 				self.parts.wpn_fps_ass_g3_g_sniper.supported = true
-				self.parts.wpn_fps_ass_g3_g_sniper.stats = deep_clone(grips.recoil_2)
+				self.parts.wpn_fps_ass_g3_g_sniper.stats = deep_clone(grips.dual_stat_1)
+				self.parts.wpn_fps_ass_g3_g_sniper.custom_stats = deep_clone(grips.dual_stat_1)
 
 				--Precision Stock
 				self.parts.wpn_fps_ass_g3_s_sniper.pcs = {}
@@ -20298,11 +20300,13 @@ end)
 			self.parts.wpn_fps_upg_i_singlefire.supported = true
 			self.parts.wpn_fps_upg_i_singlefire.stats = {
 				value = 5,
+				recoil = -8,
 				spread = 10
 			}
 			self.parts.wpn_fps_upg_i_singlefire.custom_stats = {
 				info_lock_semi = true,
 				ignore_rof_mult_anims = true,
+				hip_mult = 1.15,
 				rof_mult = 0.75,
 				falloff_start_mult = 1.25,
 				falloff_end_mult = 1.25
@@ -20325,13 +20329,13 @@ end)
 			self.parts.wpn_fps_upg_i_autofire.supported = true
 			self.parts.wpn_fps_upg_i_autofire.stats = {
 				value = 5,
-				spread = -3,
+				spread = -6,
 				recoil = 6
 			}
 			self.parts.wpn_fps_upg_i_autofire.custom_stats = {
 				info_lock_auto = true,
-				falloff_start_mult = 0.85,
-				falloff_end_mult = 0.85
+				falloff_start_mult = 0.8,
+				falloff_end_mult = 0.8
 			}
 			self.parts.wpn_fps_upg_i_autofire.perks = {
 				"fire_mode_auto"
@@ -23774,7 +23778,7 @@ end)
 									}
 								}
 								self[ factory_id ].override.wpn_fps_upg_bonus_concealment_p2 = {
-									stats = {value = 1, concealment = 2, spread = -4},
+									stats = {value = 1, concealment = 2, spread = -3, recoil = -2},
 									custom_stats = {
 										empire = true,
 										falloff_start_mult = 0.85,
@@ -23783,7 +23787,7 @@ end)
 									}
 								}
 								self[ factory_id ].override.wpn_fps_upg_bonus_concealment_p3 = {
-									stats = {value = 1, concealment = 3, spread = -6},
+									stats = {value = 1, concealment = 3, spread = -4, recoil = -4},
 									custom_stats = {
 										empire = true,
 										falloff_start_mult = 0.775,
@@ -24380,7 +24384,7 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 		supported = true,
 		stats = {
 			value = 8,
-			spread = 6,
+			spread = 12,
 			recoil = -12,
 			concealment = -4
 		},
@@ -24392,7 +24396,6 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 		},
 		forbids = {},
 		adds = (restoration.Options:GetValue("WEAPONS/WEAPONSOUNDS/ComboSoundsJiisuri") == 2 and { "wpn_fps_ass_g3sg1_sounds" }) or {},
-		internal_part = true,
 		dlc = "sc"
 	}
 	for k, used_part_id in ipairs(self.wpn_fps_ass_g3.uses_parts) do
