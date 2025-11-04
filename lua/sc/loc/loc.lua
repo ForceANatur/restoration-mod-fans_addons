@@ -2588,8 +2588,9 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 				["bm_wally_desc"] = "#{important_2}#Hey kiddo...##",
 				["bm_maralohk_desc"] = "#{important_1}#VOULL NE XATA VOK, MARA LOHK?##",
 				--AMR16--
-				["bm_wp_upg_i_m16a2"] = "AMR-16 B3 Kit",
+				["bm_wp_upg_i_m16a2"] = "Crosskill B3 Kit",
 				["bm_wp_upg_i_m16a2_desc"] = "Trade full-auto for a #{skill_color}#3-round burst## setting. #{risk}#Burst## fire rate is #{skill_color}#increased to 950 RPM.## ",
+				["bm_wp_upg_i_m16a2_famas_desc"] = "Trade full-auto for an improved #{skill_color}#3-round burst## setting and boosted damage.",
 				--G3A3--
 				["bm_wp_upg_i_g3"] = "SG-3 Kit",
 				["bm_wp_upg_i_g3_desc"] = "Adds a 4-position fire selector, granting the weapon a #{skill_color}#3-round burst## setting.",
@@ -6221,7 +6222,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Perk_Decks_Eng", funct
 		["menu_deck5_7_sc"] = "Expert Assassin",
 
 		["menu_deck5_1_desc_sc"] = "Killing an enemy outside of melee stores #{skill_color}#$perk_value_1## health. You can store up to #{risk}#$perk_value_2## health.\n\nKilling an enemy in melee turns that stored health into temporary health that decays at a rate of #{important_1}#$perk_value_3## per second.\n\nTemporary health can exceed your normal maximum health, but you can only have up to #{risk}#$perk_value_4## temporary health at once.",
-		["menu_deck5_3_desc_sc"] = "Your dodge meter fills up by ##$perk_value_1## of your dodge when your armor is restored.\n\nYou gain an additional ##$perk_value_2## dodge points.",
+		["menu_deck5_3_desc_sc"] = "When your armor starts to regenerate, your dodge meter fills up by ##$perk_value_1## of your dodge.\n\nYou gain an additional ##$perk_value_2## dodge points.",
 		["menu_deck5_5_desc_sc"] = "You store ##$perk_value_1## more health.\n\nYou carry ##$perk_value_2## additional body bag in your inventory.",
 		["menu_deck5_7_desc_sc"] = "You gain ##$perk_value_1## temporary health when you are revived.\n\nYou gain an additional ##$perk_value_2## dodge points.",
 		["menu_deck5_9_desc_sc"] = "While you have temporary health, you gain ##$perk_value_1## deflection and ##$perk_value_2## additional movement speed.\n\nDeflection reduces the amount of health damage you take, to a maximum of ##$perk_value_3##, and is applied after other forms of damage reduction.\n\nDeck completion Bonus: Your chance of getting a higher quality item during PAYDAY is increased by ##10%.##",

@@ -4761,6 +4761,7 @@ function BlackMarketGui:update_info_text()
 								end
 							elseif is_akimbo or weapon_tweak.BURST_FIRE.burst_default then
 								firemode_string = managers.localization:to_upper_text("st_menu_firemode_burst") .. (firemode_string ~= "" and "+" .. firemode_string) or ""
+							elseif auto_to_burst then
 							else
 								firemode_string = firemode_string and firemode_string .. "+" .. managers.localization:to_upper_text("st_menu_firemode_burst") or managers.localization:to_upper_text("st_menu_firemode_burst")
 							end
@@ -5314,7 +5315,15 @@ function BlackMarketGui:update_info_text()
 		end
 
 		updated_texts[4].resource_color = {}
-		local desc_text = managers.localization:text(tweak_data.blackmarket.projectiles[slot_data.name].desc_id)
+		local proj_tweak = tweak_data.projectiles[slot_data.name]
+		local proj_b_tweak = tweak_data.blackmarket.projectiles[slot_data.name]
+		local skill_pickup_chance = managers.player:upgrade_value("player", "regain_throwable_from_ammo", {chance = 0, chance_inc = 0})
+		local desc_text = managers.localization:text(tweak_data.blackmarket.projectiles[slot_data.name].desc_id, {
+			damage = ((proj_tweak and proj_tweak.damage) or 0) * 10, --I LOVE that damage is defined elsewhere
+			pickup = (((proj_b_tweak and proj_b_tweak.base_pickup_chance) or 0.01) + skill_pickup_chance.chance) * 100 .. "%",
+			regen = ((proj_b_tweak and proj_b_tweak.base_cooldown) or 0) .. managers.localization:text("menu_seconds_suffix_short"),
+			regen_t = -((proj_b_tweak and proj_b_tweak.pickup_cooldown_t) or 0) .. managers.localization:text("menu_seconds_suffix_short")
+		})
 
 		for color_id in string.gmatch(desc_text, "#%{(.-)%}#") do
 			table.insert(updated_texts[4].resource_color, tweak_data.screen_colors[color_id])
