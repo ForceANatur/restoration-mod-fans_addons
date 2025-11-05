@@ -257,6 +257,7 @@ function CharacterTweakData:_init_security(presets)
 		self.mute_security_undominatable.failure_on_death = true
 		self.mute_security_undominatable.unintimidateable = true
 	end
+	self.mute_security_undominatable.custom_voicework = nil
 	table.insert(self._enemy_list, "mute_security_undominatable")	
 	
 	self.security_mex = deep_clone(self.security)
@@ -19963,6 +19964,7 @@ function CharacterTweakData:character_map()
 				"ene_zeal_swat_shield_sc",
 				"ene_zeal_tazer",
 				"ene_zeal_tazer_sc",
+				"ene_zeal_fbi_c45",
 				"ene_zeal_fbi_m4",
 				"ene_zeal_fbi_mp5",
 				"ene_zeal_swat_heavy_sc",
@@ -20353,6 +20355,7 @@ function CharacterTweakData:character_map()
 				"ene_medic_mp5",
 				"ene_zeal_fbi_m4",
 				"ene_zeal_fbi_mp5",
+				"ene_zeal_fbi_c45",
 				"ene_zeal_medic",
 				"ene_zeal_swat_shield",
 				"ene_zeal_bulldozer",

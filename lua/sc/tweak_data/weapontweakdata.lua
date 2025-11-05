@@ -1600,7 +1600,7 @@ local crew_wep_preset = {
 		self.deagle_npc.sounds.prefix = "deagle_npc"
 		self.deagle_npc.anim_usage = "is_pistol"
 		self.deagle_npc.hold = "pistol"
-		self.deagle_npc.reload = "pistol"	
+		self.deagle_npc.reload = "pistol"
 	end
 
 	--Marshal Shield Phase 2 Shotgun
