@@ -887,4 +887,5 @@
 	<!-- ///MUTATOR EXCLUSIVE ENEMIES\\\ -->
 	<Package id="packages/deathvox_medic" file="packages/deathvox_medic.xml"/>
 	<Package id="packages/undead_titans" file="packages/safehouse_nightmare_dozers.xml"/>
+	<Package id="packages/bodybuilder_specials" file="packages/bodybuilder_specials.xml"/>
 </mod>
