@@ -13,6 +13,7 @@ MutatorSWOLENBOYS.icon_coords = {
 	8,
 	3
 }
+MutatorSWOLENBOYS.package = "packages/bodybuilder_specials"
 
 MutatorSWOLENBOYS.default_value = "spawn_chance"
 MutatorSWOLENBOYS.medics = {
