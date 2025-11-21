@@ -117,7 +117,17 @@
 	<unit				path="units/pd2_dlc_bex/characters/ene_fbi_3/ene_fbi_3" load="true"/>
 	<material_config	path="units/pd2_dlc_bex/characters/ene_fbi_3/ene_fbi_3"/>
 	<material_config	path="units/pd2_dlc_bex/characters/ene_fbi_3/ene_fbi_3_contour"/>
-	<unit				path="units/pd2_dlc_bex/characters/ene_fbi_3/ene_fbi_3_husk" load="true"/>	
+	<unit				path="units/pd2_dlc_bex/characters/ene_fbi_3/ene_fbi_3_husk" load="true"/>
+	<!--r870-->
+	<object				path="units/pd2_dlc_bex/characters/ene_fbi_4/ene_fbi_4" />
+	<cooked_physics		path="units/pd2_dlc_bex/characters/ene_fbi_4/ene_fbi_4" />
+	<model				path="units/pd2_dlc_bex/characters/ene_fbi_4/ene_fbi_4" />
+	<unit				path="units/pd2_dlc_bex/characters/ene_fbi_4/ene_fbi_4" load="true"/>
+	<material_config	path="units/pd2_dlc_bex/characters/ene_fbi_4/ene_fbi_4"/>
+	<material_config	path="units/pd2_dlc_bex/characters/ene_fbi_4/ene_fbi_4_contour"/>
+	<unit				path="units/pd2_dlc_bex/characters/ene_fbi_4/ene_fbi_4_husk" load="true"/>
+	<texture			path="units/pd2_dlc_bex/characters/ene_fbi_4/sjnp_beatcop_atlas_d" />
+	<texture			path="units/pd2_dlc_bex/characters/ene_fbi_4/sjnp_beatcop_atlas_n" />
 	
 	<!-- blue swats here -->
 	<!--AMCAR-->	

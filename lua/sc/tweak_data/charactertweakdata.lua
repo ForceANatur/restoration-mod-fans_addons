@@ -257,6 +257,7 @@ function CharacterTweakData:_init_security(presets)
 		self.mute_security_undominatable.failure_on_death = true
 		self.mute_security_undominatable.unintimidateable = true
 	end
+	self.mute_security_undominatable.custom_voicework = nil
 	table.insert(self._enemy_list, "mute_security_undominatable")	
 	
 	self.security_mex = deep_clone(self.security)
@@ -2749,7 +2750,7 @@ function CharacterTweakData:_init_tank(presets)
 	self.tank_titan.weapon = deep_clone(presets.weapon.normal)
 	self.tank_titan.tags = {"law", "tank", "special", "tank_titan", "customvo"}	
 	self.tank_titan.move_speed = presets.move_speed.very_slow
-	self.tank_titan.damage.hurt_severity = presets.hurt_severities.titan	
+	self.tank_titan.damage.hurt_severity = presets.hurt_severities.titan
 	self.tank_titan.no_omnia_heal = true
 	self.tank_titan.dt_suppress = {
 		range = 500
@@ -2995,7 +2996,17 @@ function CharacterTweakData:_init_spooc(presets)
 	self.spooc_titan.cloak_on_bullet_damage_chance = 0.5
 	self.spooc_titan.cloak_on_fire_damage_chance = 0.5
 	self.spooc_titan.cloak_on_explosive_damage_chance = 0
-	table.insert(self._enemy_list, "spooc_titan")
+
+	--SWOLE CLOAKER
+	self.spooc_swole = deep_clone(self.spooc)
+	self.spooc_swole.kick_damage = 16
+	self.spooc_swole.HEALTH_INIT = 1000
+	self.spooc_swole.headshot_dmg_mul = 1
+	self.spooc_swole.damage_resistance = presets.damage_resistance.swolen
+	self.spooc_swole.special_deaths = nil
+	self.spooc_swole.charging_detect = true
+	self.spooc_swole.use_animation_on_fire_damage = false
+	table.insert(self._enemy_list, "spooc_swole")
 
 	--SWOLE CLOAKER
 	self.spooc_swole = deep_clone(self.spooc)
@@ -19502,6 +19513,14 @@ function CharacterTweakData:_set_sm_wish()
 		self.city_swat_sergeant.damage.bullet_dodge_chance = 25
 	end
 
+	if pro_job then
+		self.city_swat_sergeant.headshot_dmg_mul = 1
+		self.city_swat_sergeant.damage.bullet_dodge_chance = 30
+	else
+		self.city_swat_sergeant.headshot_dmg_mul = 1.6
+		self.city_swat_sergeant.damage.bullet_dodge_chance = 25
+	end
+
 	if SystemInfo:platform() == Idstring("PS3") then
 		self:_multiply_all_hp(2, 0.915)
 	else
@@ -19882,6 +19901,8 @@ function CharacterTweakData:character_map()
 		table.insert(char_map.basic.list, "ene_cop_2_forest")
 		table.insert(char_map.basic.list, "ene_swole_spook_1")
 		table.insert(char_map.basic.list, "ene_swole_medic_m249")
+		table.insert(char_map.basic.list, "ene_fbi_4")
+
 	--dlc1
 		table.insert(char_map.dlc1.list, "ene_security_gensec_guard_1")
 		table.insert(char_map.dlc1.list, "ene_security_gensec_guard_2")
@@ -19934,6 +19955,7 @@ function CharacterTweakData:character_map()
 		table.insert(char_map.hvh.list, "ene_zeal_swat_2")
 		table.insert(char_map.hvh.list, "ene_zeal_swat_heavy")
 		table.insert(char_map.hvh.list, "ene_zeal_swat_heavy_2")
+		table.insert(char_map.hvh.list, "ene_fbi_hvh_4")
 	--bph
 		table.insert(char_map.bph.list, "ene_murky_heavyg")
 		table.insert(char_map.bph.list, "ene_murky_sgt")
@@ -19993,6 +20015,7 @@ function CharacterTweakData:character_map()
 				"ene_zeal_fbi_c45",
 				"ene_zeal_fbi_m4",
 				"ene_zeal_fbi_mp5",
+				"ene_zeal_fbi_r870",
 				"ene_zeal_swat_heavy_sc",
 				"ene_zeal_swat_heavy_r870_sc",
 				"ene_zeal_swat_heavy_benelli",
@@ -20073,6 +20096,7 @@ function CharacterTweakData:character_map()
 				"ene_fbi_1",
 				"ene_fbi_2",
 				"ene_fbi_3",
+				"ene_fbi_4",
 				"ene_grenadier_1",
 				"ene_bex_security_01",
 				"ene_bex_security_02",
@@ -20088,7 +20112,8 @@ function CharacterTweakData:character_map()
 				"civ_male_mariachi_01",
 				"civ_male_mariachi_02",
 				"civ_male_mariachi_03",
-				"civ_male_mariachi_04"
+				"civ_male_mariachi_04",
+				"ene_deathvox_fbi_heavyswat"
 			}
 		}
 	--fully custom
@@ -20109,6 +20134,7 @@ function CharacterTweakData:character_map()
 				"ene_fbi_3",
 				"ene_fbi_1",
 				"ene_fbi_2",
+				"ene_fbi_4",
 				"ene_fbi_swat_1",
 				"ene_fbi_swat_2",
 				"ene_fbi_swat_3",
@@ -20160,6 +20186,7 @@ function CharacterTweakData:character_map()
 				"ene_omnia_hrt_1",
 				"ene_omnia_hrt_2",
 				"ene_omnia_hrt_3",
+				"ene_omnia_hrt_4",
 				"ene_omnia_crew",
 				"ene_omnia_crew_2",
 				"ene_omnia_city",
@@ -20385,6 +20412,8 @@ function CharacterTweakData:character_map()
 				"ene_zeal_fbi_c45",
 				"ene_zeal_fbi_m4",
 				"ene_zeal_fbi_mp5",
+				"ene_zeal_fbi_c45",
+				"ene_zeal_fbi_r870",
 				"ene_zeal_medic",
 				"ene_zeal_swat_shield",
 				"ene_zeal_bulldozer",
@@ -20416,7 +20445,8 @@ function CharacterTweakData:character_map()
 				"ene_heavymedic_1",
 				"ene_marshal_marksman_1",
 				"ene_marshal_shield_1",
-				"ene_police_heavygunner"
+				"ene_police_heavygunner",
+				"ene_undead_titan"
 			}
 		}
 
@@ -20446,8 +20476,10 @@ function CharacterTweakData:character_map()
 				"ene_fbi_1",
 				"ene_fbi_2",
 				"ene_fbi_3",
+				"ene_fbi_4",
 				"ene_drak_hrt_1",
 				"ene_drak_hrt_2",
+				"ene_drak_hrt_3",
 				"ene_akan_veteran_1",
 				"ene_akan_veteran_2",
 				"ene_akan_veteran_subject",

@@ -3,6 +3,9 @@
 This is a couple of edits to Restoration Mod fitted for my liking.
 These range from minor weapon tweaks to new features such as mutators.
 
+This branch is a build of the addons before the dev-epicness merge.
+Branch will likly be abandoned when Restoration Mod 13.0 comes out.
+
 # Changes:
 
 Vanilla units spawn across most factions. Don't like the look of them? Use a mod!
@@ -34,6 +37,8 @@ Marshal Shield has been buffed.
 A secret 6th and 7th captain only available with April 1st/Everlasting Season.
 
 Vanilla units have bravo units. Assets borrowed from new coppers again.
+
+Shotgun Hostage Rescue Teams
 
 # Mutators:
 
@@ -185,7 +190,7 @@ test-1: adding the package loading system, updating the network code, expanding 
 
 Porky da Corgi: creating the base textures for the grenadier and OMNIA Light
 
-Wekk: Telling us what LPF should mean and allowing us to implement "Less Clones, More Face Variations" mod and "Zeal Shield Illumination Fix" into the mod.
+Wekk: Telling us what LPF should mean and allowing us to implement "Less Clones, More Face Variations" mod and "Zeal Shield Illumination Fix" into the mod. Skulldozer ACP camo (https://modworkshop.net/mod/19356)
 
 Hoppip: Manufactured the Mind Blown graze rework, the insane laser assets used for enemy damage buffs and the Streamlined Heisting framework. 
 

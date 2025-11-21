@@ -42912,7 +42912,6 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 		end
 
 
-
 	--[[ SILENT ENFORCER'S MODS ]]
 
 		if self.parts.wpn_fps_ass_qbz95_body_standard then

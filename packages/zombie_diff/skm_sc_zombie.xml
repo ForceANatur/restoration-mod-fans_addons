@@ -287,7 +287,32 @@
 	<texture			path="units/pd2_dlc_gitgud/characters/shared_textures/ene_zeal_city_head_nm" />
 	<texture			path="units/pd2_mod_halloween/characters/shared_textures/helmets_shotgun_df" />
 	
-	<texture			path="units/pd2_dlc_gitgud/characters/shared_textures/ene_zeal_fbi_nm" />	
+	<texture			path="units/pd2_dlc_gitgud/characters/shared_textures/ene_zeal_fbi_nm" />
+
+	<!--zeal fbi c45-->
+	<unit				path="units/pd2_mod_halloween/characters/ene_zeal_fbi_c45/ene_zeal_fbi_c45" load="true"/>
+	<unit				path="units/pd2_mod_halloween/characters/ene_zeal_fbi_c45/ene_zeal_fbi_c45_husk" load="true"/>
+	<object				path="units/pd2_mod_halloween/characters/ene_zeal_fbi_c45/ene_zeal_fbi_c45"/>
+	<cooked_physics		path="units/pd2_mod_halloween/characters/ene_zeal_fbi_c45/ene_zeal_fbi_c45"/>
+	<model				path="units/pd2_mod_halloween/characters/ene_zeal_fbi_c45/ene_zeal_fbi_c45"/>
+	<material_config	path="units/pd2_mod_halloween/characters/ene_zeal_fbi_c45/ene_zeal_fbi_c45"/>
+	<material_config	path="units/pd2_mod_halloween/characters/ene_zeal_fbi_c45/ene_zeal_fbi_c45_contour"/>
+
+	<texture			path="units/pd2_mod_halloween/characters/ene_zeal_fbi_c45/secret_service_df" />
+
+	<!--zeal fbi r870-->
+	<unit				path="units/pd2_mod_halloween/characters/ene_zeal_fbi_r870/ene_zeal_fbi_r870" load="true"/>
+	<unit				path="units/pd2_mod_halloween/characters/ene_zeal_fbi_r870/ene_zeal_fbi_r870_husk" load="true"/>
+	<object				path="units/pd2_mod_halloween/characters/ene_zeal_fbi_r870/ene_zeal_fbi_r870"/>
+	<cooked_physics		path="units/pd2_mod_halloween/characters/ene_zeal_fbi_r870/ene_zeal_fbi_r870"/>
+	<model				path="units/pd2_mod_halloween/characters/ene_zeal_fbi_r870/ene_zeal_fbi_r870"/>
+	<material_config	path="units/pd2_mod_halloween/characters/ene_zeal_fbi_r870/ene_zeal_fbi_r870"/>
+	<material_config	path="units/pd2_mod_halloween/characters/ene_zeal_fbi_r870/ene_zeal_fbi_r870_contour"/>
+
+	<texture			path="units/pd2_mod_halloween/characters/ene_zeal_fbi_r870/ene_zeal_swat_df" />
+	<texture			path="units/pd2_dlc_gitgud/characters/ene_zeal_fbi_r870/ene_zeal_swat_nm" />
+	<texture			path="units/pd2_mod_halloween/characters/ene_zeal_fbi_r870/ene_zeal_swat_head_df" />
+	<texture			path="units/pd2_dlc_gitgud/characters/ene_zeal_fbi_r870/ene_zeal_swat_head_nm" />
 	
 	<!--zeal heavy m4-->
     <object				path="units/pd2_mod_halloween/characters/ene_zeal_swat_heavy_sc/ene_zeal_swat_heavy_sc"/>
@@ -890,6 +915,19 @@
 	<texture			path="units/pd2_mod_dave/characters/ene_dave_hvh/taser_body_df"/>
 	<texture			path="units/pd2_mod_dave/characters/ene_dave_hvh/heads_atlas_df"/>
 	<texture			path="units/pd2_mod_dave/characters/ene_dave_hvh/helmets_heavy_taser_atlas_df"/>
+
+	<!--R870 HRT-->
+	<unit				path="units/pd2_dlc_hvh/characters/ene_fbi_hvh_4/ene_fbi_hvh_4" force="true" load="true"/>
+	<unit				path="units/pd2_dlc_hvh/characters/ene_fbi_hvh_4/ene_fbi_hvh_4_husk" force="true" load="true"/>
+	<object				path="units/pd2_dlc_hvh/characters/ene_fbi_hvh_4/ene_fbi_hvh_4" force="true" />
+	<model				path="units/pd2_dlc_hvh/characters/ene_fbi_hvh_4/ene_fbi_hvh_4" force="true" />
+	<material_config	path="units/pd2_dlc_hvh/characters/ene_fbi_hvh_4/ene_fbi_hvh_4" force="true" />
+	<material_config	path="units/pd2_dlc_hvh/characters/ene_fbi_hvh_4/ene_fbi_hvh_4_contour" force="true" />
+	<texture			path="units/pd2_dlc_hvh/characters/ene_fbi_hvh_4/ene_bulldozer_minigun_df"/>
+	<texture			path="units/pd2_dlc_hvh/characters/ene_fbi_hvh_4/arena_fbi_head_df"/>
+	<texture			path="units/payday2/characters/ene_fbi_4/arena_fbi_head_nm"/>
+	<texture			path="units/pd2_dlc_hvh/characters/ene_fbi_hvh_4/arena_fbi_body_df"/>
+	<texture			path="units/payday2/characters/ene_fbi_4/arena_fbi_body_nm"/>
 
 	<!--Missing Zombie Minigun Bulldozer-->
 	<unit				path="units/pd2_dlc_hvh/characters/ene_bulldozer_minigun_classic/ene_bulldozer_minigun_classic" force="true" load="true"/>

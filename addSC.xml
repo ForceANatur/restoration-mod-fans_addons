@@ -286,6 +286,19 @@
 	<continent			path="levels/narratives/classics/flat/art_dhruva/art_dhruva" force="true" unload="true"/>
 	<continent			path="levels/narratives/classics/flat/lights/lights" force="true" unload="true"/>
 	<continent			path="levels/narratives/classics/flat/collision/collision" force="true" unload="true"/>
+
+	<!--FBI Shotgun Concept-->
+	<object				path="units/payday2/characters/ene_fbi_4/ene_fbi_4" force="false"/>
+	<cooked_physics		path="units/payday2/characters/ene_fbi_4/ene_fbi_4" force="false"/>
+	<model				path="units/payday2/characters/ene_fbi_4/ene_fbi_4" force="false"/>
+	<unit				path="units/payday2/characters/ene_fbi_4/ene_fbi_4" force="false" load="true"/>
+	<material_config	path="units/payday2/characters/ene_fbi_4/ene_fbi_4" force="false"/>
+	<material_config	path="units/payday2/characters/ene_fbi_4/ene_fbi_4_contour" force="true"/>
+	<unit				path="units/payday2/characters/ene_fbi_4/ene_fbi_4_husk" force="false" load="true"/>
+	<texture			path="units/payday2/characters/ene_fbi_4/arena_fbi_head_df"/>
+	<texture			path="units/payday2/characters/ene_fbi_4/arena_fbi_head_nm"/>
+	<texture			path="units/payday2/characters/ene_fbi_4/arena_fbi_body_df"/>
+	<texture			path="units/payday2/characters/ene_fbi_4/arena_fbi_body_nm"/>
 	
 	<!--Misc. Changes and Fixes to Base Game Objects-->
 	<!-- Gensec Security: Beret Poppin' -->
@@ -2445,5 +2458,5 @@
 	<unit 				path="units/pd2_dlc_a10th/props/a10th_gifts/a10th_gifts_stars"/>
 	<unit 				path="units/pd2_dlc_a10th/props/a10th_gifts/a10th_gifts_stripes"/>
 	<unit 				path="units/pd2_dlc_a10th/props/a10th_balloon/a10th_balloon_polkal"/>
-	<unit 				path="units/pd2_dlc_a10th/props/a10th_gifts/a10th_gifts_diamonds"/>	
+	<unit 				path="units/pd2_dlc_a10th/props/a10th_gifts/a10th_gifts_diamonds"/>
 </table>
