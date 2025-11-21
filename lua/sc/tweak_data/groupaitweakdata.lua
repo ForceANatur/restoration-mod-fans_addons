@@ -12908,14 +12908,14 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 				Idstring("units/pd2_mod_halloween/characters/ene_zeal_swat_shield/ene_zeal_swat_shield"),
 				Idstring("units/pd2_dlc_hvh/characters/ene_zeal_swat_shield/ene_zeal_swat_shield"),
 				Idstring("units/pd2_mod_halloween/characters/ene_zeal_swat_shield/ene_zeal_swat_shield"),
-				Idstring("units/pd2_mod_halloween/characters/ene_marshal_shield_2/ene_marshal_shield_2"),
-				Idstring("units/pd2_mod_halloween/characters/ene_marshal_shield_2/ene_marshal_shield_2"),
-				Idstring("units/pd2_mod_halloween/characters/ene_marshal_shield_2/ene_marshal_shield_2"),
-				Idstring("units/pd2_mod_halloween/characters/ene_marshal_shield_2/ene_marshal_shield_2"),
-				Idstring("units/pd2_mod_halloween/characters/ene_marshal_shield_2/ene_marshal_shield_2"),
-				Idstring("units/pd2_mod_halloween/characters/ene_marshal_shield_2/ene_marshal_shield_2"),
-				Idstring("units/pd2_mod_halloween/characters/ene_marshal_shield_2/ene_marshal_shield_2"),
-				Idstring("units/pd2_mod_halloween/characters/ene_marshal_shield_2/ene_marshal_shield_2"),
+				Idstring("units/pd2_mod_halloween/characters/ene_marshal_shield_1/ene_marshal_shield_1"),
+				Idstring("units/pd2_mod_halloween/characters/ene_marshal_shield_1/ene_marshal_shield_1"),
+				Idstring("units/pd2_mod_halloween/characters/ene_marshal_shield_1/ene_marshal_shield_1"),
+				Idstring("units/pd2_mod_halloween/characters/ene_marshal_shield_1/ene_marshal_shield_1"),
+				Idstring("units/pd2_mod_halloween/characters/ene_marshal_shield_1/ene_marshal_shield_1"),
+				Idstring("units/pd2_mod_halloween/characters/ene_marshal_shield_1/ene_marshal_shield_1"),
+				Idstring("units/pd2_mod_halloween/characters/ene_marshal_shield_1/ene_marshal_shield_1"),
+				Idstring("units/pd2_mod_halloween/characters/ene_marshal_shield_1/ene_marshal_shield_1"),
 				Idstring("units/pd2_mod_halloween/characters/ene_phalanx_1_assault/ene_phalanx_1_assault"),	
 				Idstring("units/pd2_mod_halloween/characters/ene_phalanx_1_assault/ene_phalanx_1_assault"),	
 				Idstring("units/pd2_mod_halloween/characters/ene_phalanx_1_assault/ene_phalanx_1_assault")
@@ -13092,14 +13092,14 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 				Idstring("units/pd2_mod_halloween/characters/ene_zeal_swat_shield/ene_zeal_swat_shield"),
 				Idstring("units/pd2_dlc_hvh/characters/ene_zeal_swat_shield/ene_zeal_swat_shield"),
 				Idstring("units/pd2_mod_halloween/characters/ene_zeal_swat_shield/ene_zeal_swat_shield"),
-				Idstring("units/pd2_mod_halloween/characters/ene_marshal_shield_2/ene_marshal_shield_2"),
-				Idstring("units/pd2_mod_halloween/characters/ene_marshal_shield_2/ene_marshal_shield_2"),
-				Idstring("units/pd2_mod_halloween/characters/ene_marshal_shield_2/ene_marshal_shield_2"),
-				Idstring("units/pd2_mod_halloween/characters/ene_marshal_shield_2/ene_marshal_shield_2"),
-				Idstring("units/pd2_mod_halloween/characters/ene_marshal_shield_2/ene_marshal_shield_2"),
-				Idstring("units/pd2_mod_halloween/characters/ene_marshal_shield_2/ene_marshal_shield_2"),
-				Idstring("units/pd2_mod_halloween/characters/ene_marshal_shield_2/ene_marshal_shield_2"),
-				Idstring("units/pd2_mod_halloween/characters/ene_marshal_shield_2/ene_marshal_shield_2"),
+				Idstring("units/pd2_mod_halloween/characters/ene_marshal_shield_1/ene_marshal_shield_1"),
+				Idstring("units/pd2_mod_halloween/characters/ene_marshal_shield_1/ene_marshal_shield_1"),
+				Idstring("units/pd2_mod_halloween/characters/ene_marshal_shield_1/ene_marshal_shield_1"),
+				Idstring("units/pd2_mod_halloween/characters/ene_marshal_shield_1/ene_marshal_shield_1"),
+				Idstring("units/pd2_mod_halloween/characters/ene_marshal_shield_1/ene_marshal_shield_1"),
+				Idstring("units/pd2_mod_halloween/characters/ene_marshal_shield_1/ene_marshal_shield_1"),
+				Idstring("units/pd2_mod_halloween/characters/ene_marshal_shield_1/ene_marshal_shield_1"),
+				Idstring("units/pd2_mod_halloween/characters/ene_marshal_shield_1/ene_marshal_shield_1"),
 				Idstring("units/pd2_mod_halloween/characters/ene_phalanx_1_assault/ene_phalanx_1_assault"),	
 				Idstring("units/pd2_mod_halloween/characters/ene_phalanx_1_assault/ene_phalanx_1_assault"),	
 				Idstring("units/pd2_mod_halloween/characters/ene_phalanx_1_assault/ene_phalanx_1_assault")
@@ -23455,4 +23455,5 @@ function GroupAITweakData:_init_task_data(difficulty_index, difficulty)
 	}
 	self.safehouse = deep_clone(self.besiege)	
 end
+
 end
