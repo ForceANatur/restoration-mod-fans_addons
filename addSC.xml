@@ -287,6 +287,19 @@
 		<material_config 	path="units/payday2/characters/ene_security_3/ene_security_3"/>
 		<unit load="true" 	path="units/payday2/characters/ene_security_3/ene_security_3_husk"/>
 	</add>
+
+	<!--FBI Shotgun Concept-->
+	<object				path="units/payday2/characters/ene_fbi_4/ene_fbi_4" force="false"/>
+	<cooked_physics		path="units/payday2/characters/ene_fbi_4/ene_fbi_4" force="false"/>
+	<model				path="units/payday2/characters/ene_fbi_4/ene_fbi_4" force="false"/>
+	<unit				path="units/payday2/characters/ene_fbi_4/ene_fbi_4" force="false" load="true"/>
+	<material_config	path="units/payday2/characters/ene_fbi_4/ene_fbi_4" force="false"/>
+	<material_config	path="units/payday2/characters/ene_fbi_4/ene_fbi_4_contour" force="true"/>
+	<unit				path="units/payday2/characters/ene_fbi_4/ene_fbi_4_husk" force="false" load="true"/>
+	<texture			path="units/payday2/characters/ene_fbi_4/arena_fbi_head_df"/>
+	<texture			path="units/payday2/characters/ene_fbi_4/arena_fbi_head_nm"/>
+	<texture			path="units/payday2/characters/ene_fbi_4/arena_fbi_body_df"/>
+	<texture			path="units/payday2/characters/ene_fbi_4/arena_fbi_body_nm"/>
 	
 	<!-- Gensec Security: Beret Poppin' -->
 	<unit				path="units/pd2_dlc1/characters/ene_security_gensec_1/ene_security_gensec_1" load="true" force="true" />
@@ -1262,6 +1275,8 @@
 	<material_config	path="units/payday2/characters/ene_mememan_2/ene_mememan_2" force="false"/>
 	<material_config	path="units/payday2/characters/ene_mememan_2/ene_mememan_2_contour" force="false"/>
 	<unit				path="units/payday2/characters/ene_mememan_2/ene_mememan_2_husk" force="false" load="true"/>
+
+	<texture			path="units/payday2/characters/ene_mememan_2/material_df"/>
 	
 	<unit				path="units/payday2/weapons/wpn_npc_mini/x_mini_npc" load="true" force="false"/>
 

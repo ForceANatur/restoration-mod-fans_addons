@@ -44,6 +44,15 @@
 
 	<texture			path="units/pd2_mod_omnia/characters/shared_textures/omnia_hrt_df" force="false"/>
 
+	<unit				path="units/pd2_mod_omnia/characters/ene_omnia_hrt_4/ene_omnia_hrt_4" force="false" load="true"/>
+	<unit				path="units/pd2_mod_omnia/characters/ene_omnia_hrt_4/ene_omnia_hrt_4_husk" force="false" load="true"/>
+	<object				path="units/pd2_mod_omnia/characters/ene_omnia_hrt_4/ene_omnia_hrt_4" force="false"/>
+	<cooked_physics		path="units/pd2_mod_omnia/characters/ene_omnia_hrt_4/ene_omnia_hrt_4" force="false"/>
+	<model				path="units/pd2_mod_omnia/characters/ene_omnia_hrt_4/ene_omnia_hrt_4" force="false"/>
+	<material_config	path="units/pd2_mod_omnia/characters/ene_omnia_hrt_4/ene_omnia_hrt_4" force="false"/>
+	<material_config	path="units/pd2_mod_omnia/characters/ene_omnia_hrt_4/ene_omnia_hrt_4_contour" force="false"/>
+	<texture			path="units/pd2_mod_omnia/characters/ene_omnia_hrt_4/hrt_omnia_body_df" force="false"/>
+
 	<!--OMNIA Crew 1-->
 	<object				path="units/pd2_mod_omnia/characters/ene_omnia_crew/ene_omnia_crew" force="false"/>
 	<cooked_physics		path="units/pd2_mod_omnia/characters/ene_omnia_crew/ene_omnia_crew" force="false"/>

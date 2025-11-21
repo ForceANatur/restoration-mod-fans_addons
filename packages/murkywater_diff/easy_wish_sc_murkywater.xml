@@ -45,10 +45,20 @@
 	<unit				path="units/pd2_mod_sharks/characters/ene_fbi_3/ene_fbi_3" force="false" load="true"/>
 	<material_config	path="units/pd2_mod_sharks/characters/ene_fbi_3/ene_fbi_3" force="false"/>
 	<material_config	path="units/pd2_mod_sharks/characters/ene_fbi_3/ene_fbi_3_contour" force="false"/>
-	<unit				path="units/pd2_mod_sharks/characters/ene_fbi_3/ene_fbi_3_husk" force="false" load="true"/>	
+	<unit				path="units/pd2_mod_sharks/characters/ene_fbi_3/ene_fbi_3_husk" force="false" load="true"/>
+
+	<!--FBI 4-->
+	<object				path="units/pd2_mod_sharks/characters/ene_fbi_4/ene_fbi_4" force="false"/>
+	<cooked_physics		path="units/pd2_mod_sharks/characters/ene_fbi_4/ene_fbi_4" force="false"/>
+	<model				path="units/pd2_mod_sharks/characters/ene_fbi_4/ene_fbi_4" force="false"/>
+	<unit				path="units/pd2_mod_sharks/characters/ene_fbi_4/ene_fbi_4" force="false" load="true"/>
+	<material_config	path="units/pd2_mod_sharks/characters/ene_fbi_4/ene_fbi_4" force="false"/>
+	<material_config	path="units/pd2_mod_sharks/characters/ene_fbi_4/ene_fbi_4_contour" force="false"/>
+	<unit				path="units/pd2_mod_sharks/characters/ene_fbi_4/ene_fbi_4_husk" force="false" load="true"/>
+	<texture			path="units/pd2_mod_sharks/characters/ene_fbi_4/hrt_df" force="false"/>
 	
 	<!--FBI texture-->
-	<texture			path="units/pd2_mod_sharks/characters/shared_textures/ene_murky_hrt_df" force="false"/>		
+	<texture			path="units/pd2_mod_sharks/characters/shared_textures/ene_murky_hrt_df" force="false"/>
 	
 	<!--Murky Cop C45-->
 	<unit				path="units/pd2_mod_sharks/characters/ene_murky_cs_cop_c45/ene_murky_cs_cop_c45" load="true"/>

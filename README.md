@@ -20,7 +20,7 @@ Big Dave has random weapons.
 
 Added descriptions for various weapons.
 
-Half assed custom weapon support for Third Eye Railgun, UTS-15, VxWolf's HK G11, Crime Boss: Rockay City Scudomnion, PD:TH AMCAR-4, IWI TAR-21, Travis Baker's Repeater, Hawk Type 97, K3 Light Machine Gun, Owen SMG, .300 Knockout, PP-91 KEDR, AF2011, Crime Boss Handcannon, M3 Grease Gun, and Beretta Model 38A.
+Half assed custom weapon support for Third Eye Railgun, UTS-15, VxWolf's HK G11, Crime Boss: Rockay City Scudomnion, PD:TH AMCAR-4, IWI TAR-21, Travis Baker's Repeater, Hawk Type 97, K3 Light Machine Gun, Owen SMG, .300 Knockout, PP-91 KEDR, Crime Boss Handcannon, M3 Grease Gun, and Beretta Model 38A.
 
 Package data for Russia and Murkywater properlly load.
 
@@ -36,9 +36,9 @@ Akan LPFs and Enforcers spawn on mexico heists
 
 Marshal Shield has been buffed.
 
-Captains are a lot more meaner on Death Sentence Pro Job.
-
 A secret 6th captain only available with Everlasting Season/April 1st.
+
+Shotgun Hostage Rescue Teams
 
 # Mutators:
 
@@ -192,7 +192,7 @@ test-1: adding the package loading system, updating the network code, expanding 
 
 Porky da Corgi: creating the base textures for the grenadier and OMNIA Light
 
-Wekk: Telling us what LPF should mean and allowing us to implement "Less Clones, More Face Variations" mod and "Zeal Shield Illumination Fix" into the mod.
+Wekk: Telling us what LPF should mean and allowing us to implement "Less Clones, More Face Variations" mod and "Zeal Shield Illumination Fix" into the mod. Skulldozer ACP camo (https://modworkshop.net/mod/19356)
 
 Hoppip: Manufactured the Mind Blown graze rework, the insane laser assets used for enemy damage buffs and the Streamlined Heisting framework. 
 

@@ -135,7 +135,16 @@
 	<model 				path="units/pd2_mod_reapers/characters/ene_fbi_3/ene_fbi_3" />	
 	<cooked_physics 	path="units/pd2_mod_reapers/characters/ene_fbi_3/ene_fbi_3"/>	
 	<texture 			path="units/pd2_mod_reapers/characters/shared_textures/head_atlas_df" force="false"/>
-	<texture 			path="units/pd2_mod_reapers/characters/shared_textures/head_atlas_nm" force="false"/>	
+	<texture 			path="units/pd2_mod_reapers/characters/shared_textures/head_atlas_nm" force="false"/>
+
+	<unit  				path="units/pd2_mod_reapers/characters/ene_fbi_4/ene_fbi_4" load="true" force="false"/>
+	<unit  				path="units/pd2_mod_reapers/characters/ene_fbi_4/ene_fbi_4_husk" load="true" force="false"/>
+	<material_config 	path="units/pd2_mod_reapers/characters/ene_fbi_4/ene_fbi_4"/>
+	<material_config 	path="units/pd2_mod_reapers/characters/ene_fbi_4/ene_fbi_4_contour"/>
+	<cooked_physics 	path="units/pd2_mod_reapers/characters/ene_fbi_4/ene_fbi_4"/>
+	<model 				path="units/pd2_mod_reapers/characters/ene_fbi_4/ene_fbi_4"/>
+	<object 			path="units/pd2_mod_reapers/characters/ene_fbi_4/ene_fbi_4"/>
+	<texture 			path="units/pd2_mod_reapers/characters/ene_fbi_4/ene_soldier_akan_3_df"/>
 	
 	<!-- Reaper swats tier here -->
 	<!--sexy ass helmet-->

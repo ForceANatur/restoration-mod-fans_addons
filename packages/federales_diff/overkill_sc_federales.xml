@@ -130,7 +130,17 @@
 	<unit				path="units/pd2_dlc_bex/characters/ene_fbi_3/ene_fbi_3" load="true"/>
 	<material_config	path="units/pd2_dlc_bex/characters/ene_fbi_3/ene_fbi_3"/>
 	<material_config	path="units/pd2_dlc_bex/characters/ene_fbi_3/ene_fbi_3_contour"/>
-	<unit				path="units/pd2_dlc_bex/characters/ene_fbi_3/ene_fbi_3_husk" load="true"/>	
+	<unit				path="units/pd2_dlc_bex/characters/ene_fbi_3/ene_fbi_3_husk" load="true"/>
+	<!--r870-->
+	<object				path="units/pd2_dlc_bex/characters/ene_fbi_4/ene_fbi_4" />
+	<cooked_physics		path="units/pd2_dlc_bex/characters/ene_fbi_4/ene_fbi_4" />
+	<model				path="units/pd2_dlc_bex/characters/ene_fbi_4/ene_fbi_4" />
+	<unit				path="units/pd2_dlc_bex/characters/ene_fbi_4/ene_fbi_4" load="true"/>
+	<material_config	path="units/pd2_dlc_bex/characters/ene_fbi_4/ene_fbi_4"/>
+	<material_config	path="units/pd2_dlc_bex/characters/ene_fbi_4/ene_fbi_4_contour"/>
+	<unit				path="units/pd2_dlc_bex/characters/ene_fbi_4/ene_fbi_4_husk" load="true"/>
+	<texture			path="units/pd2_dlc_bex/characters/ene_fbi_4/sjnp_beatcop_atlas_d" />
+	<texture			path="units/pd2_dlc_bex/characters/ene_fbi_4/sjnp_beatcop_atlas_n" />
 	
 	<!-- blue swats here -->
 	<!--AMCAR-->	
@@ -381,7 +391,20 @@
 	<unit				path="units/pd2_dlc_bex/characters/ene_medic_mp5/ene_medic_mp5"  load="true"/>
 	<material_config	path="units/pd2_dlc_bex/characters/ene_medic_mp5/ene_medic_mp5" />
 	<material_config	path="units/pd2_dlc_bex/characters/ene_medic_mp5/ene_medic_mp5_contour" />
-	<unit				path="units/pd2_dlc_bex/characters/ene_medic_mp5/ene_medic_mp5_husk"  load="true"/>	
+	<unit				path="units/pd2_dlc_bex/characters/ene_medic_mp5/ene_medic_mp5_husk"  load="true"/>
+
+	<!--Stolen Crackdown FBI Heavy-->
+	<object				path="units/pd2_dlc_bex/characters/ene_deathvox_fbi_heavyswat/ene_deathvox_fbi_heavyswat" force="false"/>
+	<cooked_physics		path="units/pd2_dlc_bex/characters/ene_deathvox_fbi_heavyswat/ene_deathvox_fbi_heavyswat" force="false"/>
+	<model				path="units/pd2_dlc_bex/characters/ene_deathvox_fbi_heavyswat/ene_deathvox_fbi_heavyswat" force="false"/>
+	<unit				path="units/pd2_dlc_bex/characters/ene_deathvox_fbi_heavyswat/ene_deathvox_fbi_heavyswat" force="false" load="true"/>
+	<material_config	path="units/pd2_dlc_bex/characters/ene_deathvox_fbi_heavyswat/ene_deathvox_fbi_heavyswat" force="false"/>
+	<material_config	path="units/pd2_dlc_bex/characters/ene_deathvox_fbi_heavyswat/ene_deathvox_fbi_heavyswat_contour" force="false"/>
+	<unit				path="units/pd2_dlc_bex/characters/ene_deathvox_fbi_heavyswat/ene_deathvox_fbi_heavyswat_husk" force="false" load="true"/>
+
+	<texture			path="units/pd2_dlc_bex/characters/ene_deathvox_fbi_heavyswat/heads_atlas_df" force="false"/>
+	<texture			path="units/pd2_dlc_bex/characters/ene_deathvox_fbi_heavyswat/helmets_atlas_df" force="false"/>
+	<texture			path="units/pd2_dlc_bex/characters/ene_deathvox_fbi_heavyswat/spook_heavy_df" force="false"/>
 	<!-- specials end -->
 
 	<!-- titans -->
@@ -408,28 +431,6 @@
 	<texture			path="units/pd2_mod_reapers/characters/shared_textures/k63_df" force="false"/>
 	<texture			path="units/pd2_mod_reapers/characters/shared_textures/k63_nm" force="false"/>
 	<texture			path="units/pd2_mod_reapers/characters/shared_textures/heads_dozer_il" force="false"/>
-
-	<!-- reaper silverman -->
-	<unit				path="units/pd2_mod_reapers/characters/ene_subject_enforcer/ene_subject_enforcer" load="true"/>
-	<unit				path="units/pd2_mod_reapers/characters/ene_subject_enforcer/ene_subject_enforcer_husk" load="true"/>
-	<model				path="units/pd2_mod_reapers/characters/ene_subject_enforcer/ene_subject_enforcer" />
-	<object				path="units/pd2_mod_reapers/characters/ene_subject_enforcer/ene_subject_enforcer"/>
-	<sequence_manager	path="units/pd2_mod_reapers/characters/ene_subject_enforcer/ene_subject_enforcer"/>
-	<material_config	path="units/pd2_mod_reapers/characters/ene_subject_enforcer/ene_subject_enforcer"/>
-	<material_config	path="units/pd2_mod_reapers/characters/ene_subject_enforcer/ene_subject_enforcer_contour"/>
-
-	<df_nm				path="units/pd2_mod_reapers/characters/ene_subject_enforcer/ene_subject_enforcer"/>
-	<texture			path="units/pd2_mod_reapers/characters/ene_subject_enforcer/coat_op"/>
-
-	<unit_obj			path="units/pd2_mod_reapers/characters/ene_subject_enforcer/debris/ene_subject_enforcer_helmet_debris" load="false" force="false"/>
-	
-	<unit_obj			path="units/pd2_mod_reapers/characters/ene_subject_enforcer/debris/ene_subject_enforcer_arm_debris" load="false" force="false"/>
-	
-	<unit_obj_seq		path="units/pd2_mod_reapers/characters/ene_subject_enforcer/debris/ene_subject_enforcer_head_debris" load="false" force="false"/>
-	
-	<add from_db="true" path="effects/payday2/environment/parts/thermal_fire" type="effect">
-		<effect load="true" path="effects/payday2/environment/parts/thermal_fire" unload="true"/>
-	</add>
 
     <!--Titan Sniper-->	
 	<unit				path="units/pd2_mod_reapers/characters/ene_titan_sniper/ene_titan_sniper" force="false" load="true"/>

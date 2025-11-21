@@ -128,6 +128,7 @@ elseif ai_type == m then
 		["units/pd2_mod_sharks/characters/ene_fbi_1/ene_fbi_1"] = "units/pd2_mod_omnia/characters/ene_omnia_hrt_1/ene_omnia_hrt_1",
 		["units/pd2_mod_sharks/characters/ene_fbi_2/ene_fbi_2"] = "units/pd2_mod_omnia/characters/ene_omnia_hrt_2/ene_omnia_hrt_2",
 		["units/pd2_mod_sharks/characters/ene_fbi_3/ene_fbi_3"] = "units/pd2_mod_omnia/characters/ene_omnia_hrt_3/ene_omnia_hrt_3",
+		["units/pd2_mod_sharks/characters/ene_fbi_4/ene_fbi_4"] = "units/pd2_mod_omnia/characters/ene_omnia_hrt_4/ene_omnia_hrt_4",
 		
 		--Murky FBI Rifle
 		["units/pd2_mod_sharks/characters/ene_swat_1/ene_swat_1"] = "units/pd2_mod_sharks/characters/ene_fbi_swat_1/ene_fbi_swat_1",
