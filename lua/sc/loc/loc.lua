@@ -462,6 +462,8 @@ Hooks:Add("LocalizationManagerPostInit", "ResMod_english_Localization_Init", fun
 		["RestorationModDisableSoloBoonsDescID"] = "Disable the additional boons the player receives in solo play (Crime.net offline).",
 		["RestorationModEnemySpawnSoundsTitleID"] = "Enemy Spawn Sounds",
 		["RestorationModEnemySpawnSoundsDescID"] = "Enable the playback of spawn-in sounds of enemies. Enabled by default.",
+		["RestorationModExtraUnmuteablesTitleID"] = "Extra Unmuteables (WIP)",
+		["RestorationModExtraUnmuteablesDescID"] = "Make some non-essential but helpful contractor voicelines unable to be muted. Enabled by default. Requires heist restart to apply after toggling.",
 		["RestorationModRestoreHitFlashTitleID"] = "Restore Hit Flash",
 		["RestorationModRestoreHitFlashDescID"] = "Enable or disable the restored hit flash when taking damage.",
 		["RestorationModBotsNoDropTitleID"] = "Disable Bot Loot Bag Dropping",
@@ -1434,11 +1436,11 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Eng", function(loc)
 		["bm_wp_upg_a_piercing_semi_desc_sc"] = "Fires #{skill_color}#12## #{skill_color}#armor piercing## flechettes.",
 		["bm_wp_upg_a_piercing_pump_desc_sc"] = "Fires #{skill_color}#12## #{skill_color}#armor piercing## flechettes.",
 		["bm_wp_upg_a_piercing_heavy_desc_sc"] = "Fires #{skill_color}#12## #{skill_color}#armor piercing## flechettes.",
-		["bm_wp_upg_a_piercing_auto_desc_per_pellet"] = "Fires #{skill_color}#12## #{skill_color}#armor piercing## flechettes.\n#{skill_color}#Headshot damage is increased by 200% and there is no reduction to enemy headshot multipliers.##",
-		["bm_wp_upg_a_piercing_9_auto_desc_per_pellet"] = "Fires #{skill_color}#9## #{skill_color}#armor piercing## flechettes.\n#{skill_color}#Headshot damage is increased by 200% and there is no reduction to enemy headshot multipliers.##",
-		["bm_wp_upg_a_piercing_semi_desc_per_pellet"] = "Fires #{skill_color}#12## #{skill_color}#armor piercing## flechettes.\n#{skill_color}#Headshot damage is increased by 200% and there is no reduction to enemy headshot multipliers.##",
-		["bm_wp_upg_a_piercing_pump_desc_per_pellet"] = "Fires #{skill_color}#12## #{skill_color}#armor piercing## flechettes.\n#{skill_color}#Headshot damage is increased by 200% and there is no reduction to enemy headshot multipliers.##",
-		["bm_wp_upg_a_piercing_heavy_desc_per_pellet"] = "Fires #{skill_color}#12## #{skill_color}#armor piercing## flechettes.\n#{skill_color}#Headshot damage is increased by 200% and there is no reduction to enemy headshot multipliers.##",
+		["bm_wp_upg_a_piercing_auto_desc_per_pellet"] = "Fires #{skill_color}#12## #{skill_color}#armor piercing## flechettes.\n#{skill_color}#Headshot damage is increased by 150% and there is no reduction to enemy headshot multipliers.##",
+		["bm_wp_upg_a_piercing_9_auto_desc_per_pellet"] = "Fires #{skill_color}#9## #{skill_color}#armor piercing## flechettes.\n#{skill_color}#Headshot damage is increased by 150% and there is no reduction to enemy headshot multipliers.##",
+		["bm_wp_upg_a_piercing_semi_desc_per_pellet"] = "Fires #{skill_color}#12## #{skill_color}#armor piercing## flechettes.\n#{skill_color}#Headshot damage is increased by 150% and there is no reduction to enemy headshot multipliers.##",
+		["bm_wp_upg_a_piercing_pump_desc_per_pellet"] = "Fires #{skill_color}#12## #{skill_color}#armor piercing## flechettes.\n#{skill_color}#Headshot damage is increased by 150% and there is no reduction to enemy headshot multipliers.##",
+		["bm_wp_upg_a_piercing_heavy_desc_per_pellet"] = "Fires #{skill_color}#12## #{skill_color}#armor piercing## flechettes.\n#{skill_color}#Headshot damage is increased by 150% and there is no reduction to enemy headshot multipliers.##",
 
 		--Generic Optic Zoom Descriptions--
 		["bm_wp_upg_o_1_1"] = "Red dot sight.\n#{risk}#1.1x magnification.##",
@@ -5505,6 +5507,8 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 		["mutator_no_outlines_longdesc"] = "Majority of outlines are disabled as well as name labels above players/bots.",
 		["menu_mutator_no_outlines_enemies_toggle"] = "Disable Enemy Outlines",
 		["menu_mutator_no_outlines_objectives_toggle"] = "Disable Highlight Outlines (except escort)",
+		["menu_mutator_no_outlines_deployables_toggle"] = "Disable Deployables Outlines",
+		["menu_mutator_no_outlines_ammo_pickups_toggle"] = "Disable Outlines for Ammo Pickups and Throwables",
 
 		["mutator_no_ammo_drops"] = "Ammo Deficiency",
 		["menu_mutator_ammo_drop_chance"] = "Ammo Drop Chance (in %)",
@@ -5585,17 +5589,17 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 		["mutator_zombie_outbreak_desc"] = "Replaces all enemies with Zombie units",
 		["mutator_zombie_outbreak_longdesc"] = "The dead have risen! Replaces all enemies with Zombie units",
 
-		["mutator_faction_override"] = "Enemy Faction Override",
-		["mutator_faction_override_desc"] = "",
-		["mutator_faction_override_longdesc"] = "",
-		["mutator_faction_override_"] = "",
-		["mutator_faction_override_select"] = "",
-		["mutator_faction_override_america"] = "America",
-		["mutator_faction_override_russia"] = "Russia",
-		["mutator_faction_override_zombie"] = "Zombie",
-		["mutator_faction_override_murkywater"] = "MurkyWater",
-		["mutator_faction_override_nypd"] = "NYPD",
-		["mutator_faction_override_lapd"] = "LAPD",
+		["mutator_faction_replace"] = "Faction Replacer",
+		["mutator_faction_replace_desc"] = "Faction Replacer desc",
+		["mutator_faction_replace_longdesc"] = "Faction Replacer longdesc",
+		["menu_mutator_faction_replace"] = "Faction",
+		["menu_mutator_faction_replace_america"] = "America",
+		["menu_mutator_faction_replace_russia"] = "Russia",
+		["menu_mutator_faction_replace_zombie"] = "Zombie",
+		["menu_mutator_faction_replace_murkywater"] = "MurkyWater",
+		["menu_mutator_faction_replace_federales"] = "Federales",
+		["menu_mutator_faction_replace_nypd"] = "NYPD",
+		["menu_mutator_faction_replace_lapd"] = "LAPD",
 		["faction_selector_choice"] = "Faction: ",
 
 		["mutator_high_noon"] = "Red Dead: The Heist",
@@ -6101,7 +6105,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 
 				--Desperado--
 				["menu_expert_handling_sc"] = "Desperado",
-				["menu_expert_handling_desc_sc"] = "BASIC: #{owned}#$basic##\nHeadshots with #{skill_color}#pistols## grants them an #{skill_color}#$skill_value_b1## accuracy and range boost for #{skill_color}#$skill_value_b2## seconds.\n\nThis effect can stack #{skill_color}#$skill_value_b3## times; the duration of each stack is refreshed with each headshot.\n\nACE: #{owned}#$pro##\nIncreases the accuracy and range boost duration by an additional #{skill_color}#$skill_value_p1## seconds.\n\n#{skill_color}#Pistols## gain #{skill_color}#$skill_value_p2## more accuracy and range while aiming down sights.",
+				["menu_expert_handling_desc_sc"] = "BASIC: #{owned}#$basic##\nHeadshots with #{skill_color}#pistols## grants them an #{skill_color}#$skill_value_b1## accuracy and range boost for #{skill_color}#$skill_value_b2## seconds.\n\nThis effect can stack #{skill_color}#$skill_value_b3## times; the duration of each stack is refreshed with each headshot.\n\n#{skill_color}#Pistols## gain #{skill_color}#$skill_value_b4## more accuracy while aiming down sights.\n\nACE: #{owned}#$pro##\nIncreases the accuracy and range boost duration by an additional #{skill_color}#$skill_value_p1## seconds.\n\n#{skill_color}#Pistols## gain #{skill_color}#$skill_value_p2## more range while aiming down sights.",
 
 				--Trigger Happy--
 				["menu_trigger_happy_beta_sc"] = "Trigger Happy",

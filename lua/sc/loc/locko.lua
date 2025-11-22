@@ -457,6 +457,8 @@ Hooks:Add("LocalizationManagerPostInit", "ResMod_english_Localization_Init", fun
 		["RestorationModDisableSoloBoonsDescID"] = "솔로 플레이 시 플레이어가 받는 추가적인 혜택을 비활성화합니다(Crime.net 오프라인).",
 		["RestorationModEnemySpawnSoundsTitleID"] = "적 생성 사운드",
 		["RestorationModEnemySpawnSoundsDescID"] = "적의 스폰 사운드 재생을 활성화합니다. 기본적으로 활성화되어 있습니다.",
+		["RestorationModExtraUnmuteablesTitleID"] = "엑스트라 음소거 없음 (WIP)",
+		["RestorationModExtraUnmuteablesDescID"] = "필요하지 않지만 도움이 되는 계약자 음성을 음소거하지 못하도록 설정합니다. 기본적으로 활성화되어 있습니다. 전환 후 변경 사항은 하이스트 재시작 후에 적용됩니다.",		
 		["RestorationModRestoreHitFlashTitleID"] = "히트 플래시 복원",
 		["RestorationModRestoreHitFlashDescID"] = "대미지를 입었을 때 복원된 히트 플래시를 활성화하거나 비활성화합니다.",
 		["RestorationModBotsNoDropTitleID"] = "봇 전리품 가방 드롭 비활성화",
@@ -1372,11 +1374,11 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Eng", function(loc)
 		["bm_wp_upg_a_piercing_semi_desc_sc"] = "#{skill_color}#철갑## 플레셰트 #{skill_color}#12##발을 발사합니다.",
 		["bm_wp_upg_a_piercing_pump_desc_sc"] = "#{skill_color}#철갑## 플레셰트 #{skill_color}#12##발을 발사합니다.",
 		["bm_wp_upg_a_piercing_heavy_desc_sc"] = "#{skill_color}#철갑## 플레셰트 #{skill_color}#12##발을 발사합니다.",
-		["bm_wp_upg_a_piercing_auto_desc_per_pellet"] = "#{skill_color}#철갑## 플레셰트 #{skill_color}#12##발을 발사합니다.\n#{skill_color}#헤드샷 피해가 200% 증가하지만, 적의 헤드샷 배수는 감소하지 않습니다.##",
-		["bm_wp_upg_a_piercing_9_auto_desc_per_pellet"] = "#{skill_color}#철갑## 플레셰트 #{skill_color}#9##발을 발사합니다.\n#{skill_color}#헤드샷 피해가 200% 증가하지만, 적의 헤드샷 배수는 감소하지 않습니다.##",
-		["bm_wp_upg_a_piercing_semi_desc_per_pellet"] = "#{skill_color}#철갑## 플레셰트 #{skill_color}#12##발을 발사합니다.\n#{skill_color}#헤드샷 피해가 200% 증가하지만, 적의 헤드샷 배수는 감소하지 않습니다.##",
-		["bm_wp_upg_a_piercing_pump_desc_per_pellet"] = "#{skill_color}#철갑## 플레셰트 #{skill_color}#12##발을 발사합니다.\n#{skill_color}#헤드샷 피해가 200% 증가하지만, 적의 헤드샷 배수는 감소하지 않습니다.##",
-		["bm_wp_upg_a_piercing_heavy_desc_per_pellet"] = "#{skill_color}#철갑## 플레셰트 #{skill_color}#12##발을 발사합니다.\n#{skill_color}#헤드샷 피해가 200% 증가하지만, 적의 헤드샷 배수는 감소하지 않습니다.##",
+		["bm_wp_upg_a_piercing_auto_desc_per_pellet"] = "#{skill_color}#철갑## 플레셰트 #{skill_color}#12##발을 발사합니다.\n#{skill_color}#헤드샷 피해가 150% 증가하고 적의 헤드샷 배수가 감소하지 않습니다.##",
+		["bm_wp_upg_a_piercing_9_auto_desc_per_pellet"] = "#{skill_color}#철갑## 플레셰트 #{skill_color}#9##발을 발사합니다.\n#{skill_color}#헤드샷 피해가 150% 증가하고 적의 헤드샷 배수가 감소하지 않습니다.##",
+		["bm_wp_upg_a_piercing_semi_desc_per_pellet"] = "#{skill_color}#철갑## 플레셰트 #{skill_color}#12##발을 발사합니다.\n#{skill_color}#헤드샷 피해가 150% 증가하고 적의 헤드샷 배수가 감소하지 않습니다.##",
+		["bm_wp_upg_a_piercing_pump_desc_per_pellet"] = "#{skill_color}#철갑## 플레셰트 #{skill_color}#12##발을 발사합니다.\n#{skill_color}#헤드샷 피해가 150% 증가하고 적의 헤드샷 배수가 감소하지 않습니다.##",
+		["bm_wp_upg_a_piercing_heavy_desc_per_pellet"] = "#{skill_color}#철갑## 플레셰트 #{skill_color}#12##발을 발사합니다.\n#{skill_color}#헤드샷 피해가 150% 증가하고 적의 헤드샷 배수가 감소하지 않습니다.##",
 
 		--Generic Optic Zoom Descriptions--
 		["bm_wp_upg_o_1_1"] = "레드 닷 조준기.\n#{risk}#1.1배 배율.##",
@@ -5399,6 +5401,8 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 		["mutator_no_outlines_longdesc"] = "대부분의 외곽선과 플레이어 및 봇 위의 이름 라벨이 비활성화됩니다.",
 		["menu_mutator_no_outlines_enemies_toggle"] = "적 외곽선 비활성화",
 		["menu_mutator_no_outlines_objectives_toggle"] = "하이라이트 외곽선 비활성화 (에스코트 제외)",
+		["menu_mutator_no_outlines_deployables_toggle"] = "배치물 외곽선 비활성화",
+		["menu_mutator_no_outlines_ammo_pickups_toggle"] = "탄약 상자 및 투척 무기 외곽선 비활성화",
 
 		["mutator_no_ammo_drops"] = "탄약 결핍",
 		["menu_mutator_ammo_drop_chance"] = "탄약 드랍 확률 (% 기준)",
@@ -5473,17 +5477,17 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 		["mutator_zombie_outbreak_desc"] = "모든 적을 좀비 유닛으로 대체합니다.",
 		["mutator_zombie_outbreak_longdesc"] = "죽은 자가 부활했습니다! 모든 적을 좀비 유닛으로 대체합니다.",
 
-		["mutator_faction_override"] = "적 진영 오버라이드",
-		["mutator_faction_override_desc"] = "",
-		["mutator_faction_override_longdesc"] = "",
-		["mutator_faction_override_"] = "",
-		["mutator_faction_override_select"] = "",
-		["mutator_faction_override_america"] = "미국",
-		["mutator_faction_override_russia"] = "러시아",
-		["mutator_faction_override_zombie"] = "좀비",
-		["mutator_faction_override_murkywater"] = "머키워터",
-		["mutator_faction_override_nypd"] = "NYPD",
-		["mutator_faction_override_lapd"] = "LAPD",
+		["mutator_faction_replace"] = "Faction Replacer",
+		["mutator_faction_replace_desc"] = "Faction Replacer desc",
+		["mutator_faction_replace_longdesc"] = "Faction Replacer longdesc",
+		["menu_mutator_faction_replace"] = "진영",
+		["menu_mutator_faction_replace_america"] = "미국",
+		["menu_mutator_faction_replace_russia"] = "러시아",
+		["menu_mutator_faction_replace_zombie"] = "좀비",
+		["menu_mutator_faction_replace_murkywater"] = "머키워터",
+		["menu_mutator_faction_replace_federales"] = "연방 경찰",
+		["menu_mutator_faction_replace_nypd"] = "NYPD",
+		["menu_mutator_faction_replace_lapd"] = "LAPD",	
 		["faction_selector_choice"] = "진영: ",
 
 		["mutator_high_noon"] = "레드 데드: 더 하이스트",
@@ -5947,11 +5951,11 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 
 				--Desperado--
 				["menu_expert_handling_sc"] = "데스페라도",
-				["menu_expert_handling_desc_sc"] = "베이식: #{owned}#$basic##\n#{skill_color}#권총##으로 헤드샷 성공 시 #{skill_color}#$skill_value_b2##초간 명중률과 사거리가 #{skill_color}#$skill_value_b1## 증가합니다.\n\n이 효과는 최대 #{skill_color}#$skill_value_b3##번까지 중첩되며, 각 중첩의 지속 시간은 헤드샷 성공 시 새로 고침됩니다.\n\n에이스: #{owned}#$pro##\n명중률 및 사거리 증가 지속 시간이 추가로 #{skill_color}#$skill_value_p1##초 증가합니다.\n\n조준 시 #{skill_color}#권총##의 명중률과 사거리가 #{skill_color}#$skill_value_p2## 더 증가합니다.",
+				["menu_expert_handling_desc_sc"] = "베이식: #{owned}#$basic##\n#{skill_color}#권총##으로 헤드샷 성공 시 #{skill_color}#$skill_value_b2##초간 명중률과 사거리가 #{skill_color}#$skill_value_b1## 증가합니다.\n\n이 효과는 최대 #{skill_color}#$skill_value_b3##번까지 중첩되며, 각 중첩의 지속 시간은 헤드샷 성공 시 되돌려집니다.\n\n조준 시 #{skill_color}#권총##의 명중률이 #{skill_color}#$skill_value_b4## 더 증가합니다.\n\n에이스: #{owned}#$pro##\n명중률 및 사거리 증가 지속 시간이 추가로 #{skill_color}#$skill_value_p1##초 증가합니다.\n\n조준 시 #{skill_color}#권총##의 사거리가 #{skill_color}#$skill_value_p2## 더 증가합니다.",
 
 				--Trigger Happy--
 				["menu_trigger_happy_beta_sc"] = "난사광",
-				["menu_trigger_happy_beta_desc_sc"] = "베이식: #{owned}#$basic##\n#{skill_color}#권총##으로 헤드샷 성공 시 #{skill_color}#$skill_value_b2##초간 #{skill_color}#$skill_value_b1## 피해량 증가 효과를 얻습니다.\n\n이 효과는 최대 #{skill_color}#$skill_value_b3##번까지 중첩되며, 각 중첩의 지속 시간은 헤드샷 성공 시 새로 고침됩니다.\n\n에이스: #{owned}#$pro##\n피해량 증가 효과 지속 시간이 추가로 #{skill_color}#$skill_value_p1##초 증가하고, 최대 중첩 수가 추가로 #{skill_color}#$skill_value_p2##회 증가합니다.",
+				["menu_trigger_happy_beta_desc_sc"] = "베이식: #{owned}#$basic##\n#{skill_color}#권총##으로 헤드샷 성공 시 #{skill_color}#$skill_value_b2##초간 #{skill_color}#$skill_value_b1## 피해량 증가 효과를 얻습니다.\n\n이 효과는 최대 #{skill_color}#$skill_value_b3##번까지 중첩되며, 각 중첩의 지속 시간은 헤드샷 성공 시 되돌려집니다.\n\n에이스: #{owned}#$pro##\n피해량 증가 효과 지속 시간이 추가로 #{skill_color}#$skill_value_p1##초 증가하고, 최대 중첩 수가 추가로 #{skill_color}#$skill_value_p2##회 증가합니다.",
 
 			--[[   REVENANT SUBTREE   ]]--
 				--Running From Death--
