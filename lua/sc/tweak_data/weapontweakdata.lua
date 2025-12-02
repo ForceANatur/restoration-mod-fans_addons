@@ -3687,7 +3687,7 @@ function WeaponTweakData:_init_stats()
 	end
 
 	self.stats = {}
-	self.stat_info = {} --Certain custom RM stuff falls under this for weaponlib compatibility.
+	self.stat_info = {}
 
 	self.stats.alert_size = {
 		0,
@@ -3721,7 +3721,7 @@ function WeaponTweakData:_init_stats()
 		player_turret = 1,
 	}
 
-	--Multiplier for spread on multi-raycast weapons. This compensates for linear spread scaling which would otherwise cripple their multikill potential.
+	--Multiplier for spread on multi-raycast weapons so pellets don't clump up and turn into a range-capable slug
 	self.stat_info.shotgun_spread_increase = 1.5
 	self.stat_info.shotgun_spread_increase_ads = 0.6 / self.stat_info.stance_spread_mults.steelsight
 
@@ -3864,7 +3864,7 @@ function WeaponTweakData:_init_stats()
 	end
 
 	self.stats.reload = {}
-	for i = 0.05, 2.01, 0.05 do
+	for i = 0.04, 2.01, 0.04 do
 		table.insert(self.stats.reload, clamp_near_zero(i - 1) + 1)
 	end
 
@@ -5226,6 +5226,10 @@ end)
 Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 	assert(self.osipr, "Resmod's custom assets aren't loading. Your copy of Resmod may be corrupt or Beardlib may not be installed correctly.") --force a crash on boot if custom assets aren't loading. Better to have an early tell vs crashing on failed enemy unit spawns mid-game, right?
 
+	--force a crash on boot if incompatible mod(s) are installed
+	assert(not BeardLib.Utils:FindMod("WeaponLib"), "WeaponLib has incompatibilities with Resmod as DMC sucks at coding - please disable WeaponLib and use \"Custom Attachment Points\" instead if your installed custom weapons need lua-based attachment connection points.")
+	assert(not SystemFS:exists("mods/DMCWO"), "Hey. Stop that. -DMC")
+
 	self:_init_data_bessy_crew()
 	self:_init_data_money_crew()
 
@@ -5718,7 +5722,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			weap.stats.total_ammo_mod = 400
 		end
 		if weap.stats and weap.stats.reload then
-			weap.stats.reload = 20
+			weap.stats.reload = 25
 		end
 		if weap.stats and weap.stats.extra_ammo then
 			weap.stats.extra_ammo = 101
@@ -5745,32 +5749,37 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 	local shared_timers = {
 		glock = { 
 			--glock_17, glock_18c, b92fs, g26, legacy, g22c, p226, hs2000, shrew
-			--anim timing is effectively identical: pl14, sparrow, m1911, colt_1911, usp
+			--anim timing is near identical despite different anim: pl14, sparrow, m1911 + colt_1911, usp
 			reload_empty = 2.08,
 			reload_exit_empty = 0.65,
 			reload_not_empty = 1.47,
-			reload_exit_not_empty = 0.9,
+			reload_exit_not_empty = 0.85,
 		},
 		p30l = { --packrat, holt, maxim9
-			reload_empty = 1,
-			reload_exit_empty = 1,
-			reload_not_empty = 1,
-			reload_exit_not_empty = 1,
+			reload_empty = 2.02,
+			reload_exit_empty = 0.68,
+			reload_not_empty = 1.45,
+			reload_exit_not_empty = 0.65,
 		},
 		fiveseven = { --lemming, type54
-			reload_empty = 1,
-			reload_exit_empty = 1,
-			reload_not_empty = 1,
-			reload_exit_not_empty = 1,
+			reload_empty = 2.05,
+			reload_exit_empty = 0.55,
+			reload_not_empty = 1.45,
+			reload_exit_not_empty = 0.3
 		},
-		rage = { --judge, rsh12
-			reload_empty = 1,
-			reload_exit_empty = 1,
-			reload_not_empty = 1,
-			reload_exit_not_empty = 1,
+		rage = { --new_raging_bull, judge, rsh12
+			reload_empty = 1.6,
+			reload_exit_empty = 1.1,
+			reload_not_empty = 1.6,
+			reload_exit_not_empty = 1.1,
 		}
-		--*anim timing is roughly the same
 	}
+
+	local function blanket_timer(wep_id, timer_table)
+		for reload_state, time in pairs(timer_table) do
+	       self[wep_id].timers[reload_state] = time
+	    end
+	end
 
 	--[[     BASE WEAPONS     ]]--
 	--Sorted by "Primary Skill Use > Sub-category > Primary/Secondary"
@@ -5815,7 +5824,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.czech.stats_modifiers = nil
 						self.czech.panic_suppression_chance = 0.05
@@ -5859,7 +5868,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.fmg9.stats_modifiers = nil
 						self.fmg9.panic_suppression_chance = 0.05
@@ -5924,8 +5933,14 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
+						if restoration.Options:GetValue("WEAPONS/WEAPONSOUNDS/ComboSoundsRaffica") > 1 then
+							self.beer.sounds.fire_single = "beretta_fire"
+							if restoration.Options:GetValue("WEAPONS/WEAPONSOUNDS/ComboSoundsRaffica") == 3 then
+								self.beer.sounds.fire_single2 = "beer_fire_single"
+							end
+						end
 						self.beer.stats_modifiers = nil
 						self.beer.panic_suppression_chance = 0.05
 						self.beer.timers.reload_not_empty = 1.47
@@ -5971,7 +5986,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.maxim9.stats_modifiers = nil
 						self.maxim9.panic_suppression_chance = 0.05
@@ -5979,10 +5994,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.maxim9.sounds.fire = "max9_fire"
 						self.maxim9.sounds.fire_single = "max9_fire"
 						self.maxim9.sounds.fire_auto = "max9_fire"
-						self.maxim9.timers.reload_not_empty = 1.45
-						self.maxim9.timers.reload_empty = 2.12
-						self.maxim9.timers.reload_exit_empty = 0.68
-						self.maxim9.timers.reload_exit_not_empty = 0.65
+						blanket_timer("maxim9", shared_timers.p30l)
 					--Akimbo
 						self.x_maxim9.categories = {
 							"akimbo",
@@ -6020,7 +6032,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.x_maxim9.stats_modifiers = nil
 						self.x_maxim9.panic_suppression_chance = 0.05
@@ -6071,12 +6083,11 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.lemming.stats_modifiers = nil
 						self.lemming.timers.reload_empty = 2.05
-						self.lemming.timers.reload_exit_empty = 0.55
-						self.lemming.timers.reload_exit_not_empty = 0.45
+						blanket_timer("lemming", shared_timers.fiveseven)
 
 						if self.x_lemming then
 							self.x_lemming.use_data.selection_index = 2
@@ -6132,7 +6143,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 								extra_ammo = 101,
 								total_ammo_mod = 400,
 								value = 1,
-								reload = 20
+								reload = 25
 							}
 							self.x_lemming.stats_modifiers = nil
 							self.x_lemming.timers.reload_exit_empty = 0.55
@@ -6172,12 +6183,11 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.glock_18c.stats_modifiers = nil
 						self.glock_18c.panic_suppression_chance = 0.05
-						self.glock_18c.timers.reload_exit_empty = 0.5
-						self.glock_18c.timers.reload_exit_not_empty = 0.65
+						blanket_timer("glock_18c", shared_timers.glock)
 					--Akimbo
 						self.x_g18c.has_description = true
 						self.x_g18c.desc_id = "bm_x_g18c_sc_desc"
@@ -6211,7 +6221,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.x_g18c.stats_modifiers = nil
 						self.x_g18c.panic_suppression_chance = 0.05
@@ -6248,7 +6258,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.ppk.stats_modifiers = nil
 						self.ppk.panic_suppression_chance = 0.05
@@ -6288,7 +6298,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.x_ppk.stats_modifiers = nil
 						self.x_ppk.weapon_movement_penalty = 1.14
@@ -6330,13 +6340,12 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.g26.stats_modifiers = nil
 						self.g26.panic_suppression_chance = 0.05
 						self.g26.reload_speed_multiplier = 1.25
-						self.g26.timers.reload_exit_empty = 0.5
-						self.g26.timers.reload_exit_not_empty = 0.65
+						blanket_timer("g26", shared_timers.glock)
 					--Akimbo
 						self.jowi.has_description = true
 						self.jowi.desc_id = "bm_x_jowi_sc_desc"
@@ -6368,7 +6377,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.jowi.stats_modifiers = nil
 						self.jowi.panic_suppression_chance = 0.05
@@ -6406,7 +6415,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.stech.stats_modifiers = nil
 						self.stech.panic_suppression_chance = 0.05
@@ -6446,7 +6455,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.x_stech.stats_modifiers = nil
 						self.x_stech.panic_suppression_chance = 0.05
@@ -6485,12 +6494,11 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.glock_17.stats_modifiers = nil
 						self.glock_17.panic_suppression_chance = 0.05
-						self.glock_17.timers.reload_exit_empty = 0.5
-						self.glock_17.timers.reload_exit_not_empty = 0.65
+						blanket_timer("glock_17", shared_timers.glock)
 					--Akimbo
 						self.x_g17.has_description = true
 						self.x_g17.desc_id = "bm_x_g17_sc_desc"
@@ -6524,7 +6532,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.x_g17.stats_modifiers = nil
 						self.x_g17.panic_suppression_chance = 0.05
@@ -6562,13 +6570,12 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.b92fs.stats_modifiers = nil
 						self.b92fs.panic_suppression_chance = 0.05
 						self.b92fs.reload_speed_multiplier = 1.05
-						self.b92fs.timers.reload_exit_empty = 0.5
-						self.b92fs.timers.reload_exit_not_empty = 0.65
+						blanket_timer("b92fs", shared_timers.glock)
 					--Akimbo
 						self.x_b92fs.has_description = true
 						self.x_b92fs.desc_id = "bm_x_b92fs_sc_desc"
@@ -6601,7 +6608,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.x_b92fs.stats_modifiers = nil
 						self.x_b92fs.panic_suppression_chance = 0.05
@@ -6640,13 +6647,12 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.pl14.stats_modifiers = nil
 						self.pl14.panic_suppression_chance = 0.05
 						self.pl14.reload_speed_multiplier = 1.05
-						self.pl14.timers.reload_exit_empty = 0.5
-						self.pl14.timers.reload_exit_not_empty = 0.65
+						blanket_timer("pl14", shared_timers.glock)
 					--Akimbo
 						self.x_pl14.has_description = true
 						self.x_pl14.desc_id = "bm_pl14_sc_desc"
@@ -6679,7 +6685,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.x_pl14.stats_modifiers = nil
 						self.x_pl14.panic_suppression_chance = 0.05
@@ -6718,7 +6724,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.legacy.stats_modifiers = nil
 						self.legacy.timers = {
@@ -6729,8 +6735,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						}
 						self.legacy.panic_suppression_chance = 0.05
 						self.legacy.reload_speed_multiplier = 1.1
-						self.legacy.timers.reload_exit_empty = 0.5
-						self.legacy.timers.reload_exit_not_empty = 0.65
+						blanket_timer("legacy", shared_timers.glock)
 						if BeardLib.Utils:FindMod("m13 reload animations") then
 							self.legacy.lock_slide_alt = true
 						end
@@ -6766,7 +6771,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.x_legacy.stats_modifiers = nil
 						self.x_legacy.panic_suppression_chance = 0.05
@@ -6805,14 +6810,12 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.holt.stats_modifiers = nil
 						self.holt.reload_speed_multiplier = 1.05
 						self.holt.panic_suppression_chance = 0.05
-						self.holt.timers.reload_empty = 2.12
-						self.holt.timers.reload_exit_empty = 0.68
-						self.holt.timers.reload_exit_not_empty = 0.65
+						blanket_timer("holt", shared_timers.p30l)
 					--Akimbo
 						self.x_holt.has_description = true
 						self.x_holt.desc_id = "bm_x_holt_sc_desc"
@@ -6845,7 +6848,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.x_holt.stats_modifiers = nil
 						self.x_holt.panic_suppression_chance = 0.05
@@ -6885,14 +6888,12 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.packrat.stats_modifiers = nil
 						self.packrat.reload_speed_multiplier = 1.1
 						self.packrat.timers.reload_not_empty = 1.45
-						self.packrat.timers.reload_empty = 2.02
-						self.packrat.timers.reload_exit_empty = 0.68
-						self.packrat.timers.reload_exit_not_empty = 0.65
+						blanket_timer("packrat", shared_timers.p30l)
 					--Akimbo
 						self.x_packrat.has_description = true
 						self.x_packrat.desc_id = "bm_x_packrat_sc_desc"
@@ -6926,7 +6927,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.x_packrat.stats_modifiers = nil
 						self.x_packrat.timers.reload_exit_empty = 0.55
@@ -6963,7 +6964,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.breech.stats_modifiers = nil
 						self.breech.panic_suppression_chance = 0.05
@@ -7009,7 +7010,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.x_breech.stats_modifiers = nil
 						self.x_breech.panic_suppression_chance = 0.05
@@ -7059,13 +7060,12 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.g22c.stats_modifiers = nil
 						self.g22c.panic_suppression_chance = 0.05
 						self.g22c.reload_speed_multiplier = 1.1
-						self.g22c.timers.reload_exit_empty = 0.5
-						self.g22c.timers.reload_exit_not_empty = 0.65
+						blanket_timer("g22c", shared_timers.glock)
 					--Akimbo
 						self.x_g22c.has_description = true
 						self.x_g22c.desc_id = "bm_x_g22c_sc_desc"
@@ -7101,7 +7101,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.x_g22c.stats_modifiers = nil
 						self.x_g22c.panic_suppression_chance = 0.05
@@ -7142,13 +7142,12 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 4,
-							reload = 20
+							reload = 25
 						}
 						self.p226.stats_modifiers = nil
 						self.p226.panic_suppression_chance = 0.05
 						self.p226.reload_speed_multiplier = 1.05
-						self.p226.timers.reload_exit_empty = 0.5
-						self.p226.timers.reload_exit_not_empty = 0.65
+						blanket_timer("p226", shared_timers.glock)
 					--Akimbo
 						self.x_p226.kick = self.stat_info.kick_tables.even_recoil
 						self.x_p226.kick_pattern = {
@@ -7182,7 +7181,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 4,
-							reload = 20
+							reload = 25
 						}
 						self.x_p226.stats_modifiers = nil
 						self.x_p226.panic_suppression_chance = 0.05
@@ -7222,13 +7221,12 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.sparrow.stats_modifiers = nil
 						self.sparrow.panic_suppression_chance = 0.05
 						self.sparrow.reload_speed_multiplier = 1.14
-						self.sparrow.timers.reload_exit_empty = 0.7
-						self.sparrow.timers.reload_exit_not_empty = 0.65
+						blanket_timer("sparrow", shared_timers.glock)
 					--Akimbo
 						self.x_sparrow.desc_id = "bm_sparrow_sc_desc"
 						self.x_sparrow.CLIP_AMMO_MAX = 24
@@ -7260,7 +7258,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.x_sparrow.stats_modifiers = nil
 						self.x_sparrow.panic_suppression_chance = 0.05
@@ -7303,12 +7301,11 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 4,
-							reload = 20
+							reload = 25
 						}
 						self.hs2000.stats_modifiers = nil
 						self.hs2000.panic_suppression_chance = 0.05
-						self.hs2000.timers.reload_exit_empty = 0.5
-						self.hs2000.timers.reload_exit_not_empty = 0.65
+						blanket_timer("hs2000", shared_timers.glock)
 
 			--[[     HEAVY PISTOLS     ]]
 
@@ -7359,7 +7356,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.c96.stats_modifiers = nil
 						self.c96.keep_ammo = 1
@@ -7413,7 +7410,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.sub2000.panic_suppression_chance = 0.05
 						self.sub2000.stats_modifiers = nil
@@ -7461,15 +7458,13 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.rsh12.stats_modifiers = nil
+						self.rsh12.muzzleflash = "_dmc/effects/heavy_muzzle"
+						self.rsh12.muzzleflash_silenced = "_dmc/effects/heavy_suppressed"
 						self.rsh12.reload_speed_multiplier = 0.9
-						self.rsh12.timers.reload_not_empty = 2.1
-						self.rsh12.timers.reload_empty = 1.6
-						self.rsh12.timers.reload_exit_empty = 1.1
-						self.rsh12.timers.reload_not_empty = 1.6
-						self.rsh12.timers.reload_exit_not_empty = 1.1
+						blanket_timer("rsh12", shared_timers.rage)
 						self.rsh12.panic_suppression_chance = 0.05
 						self.rsh12.can_shoot_through_enemy = true
 						self.rsh12.can_shoot_through_enemy_unlim = true
@@ -7512,14 +7507,12 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 4,
-							reload = 20
+							reload = 25
 						}
 						self.type54.stats_modifiers = nil
 						self.type54.panic_suppression_chance = 0.05
 						self.type54.reload_speed_multiplier = 1.05
-						self.type54.timers.reload_empty = 2.05
-						self.type54.timers.reload_exit_empty = 0.55
-						self.type54.timers.reload_exit_not_empty = 0.45
+						blanket_timer("type54", shared_timers.fiveseven)
 					--Akimbo
 						self.x_type54.has_description = true
 						self.x_type54.desc_id = "bm_x_type54_sc_desc"
@@ -7552,7 +7545,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 4,
-							reload = 20
+							reload = 25
 						}
 						self.x_type54.stats_modifiers = nil
 						self.x_type54.panic_suppression_chance = 0.05
@@ -7597,7 +7590,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.type54_underbarrel.stats_modifiers = nil
 						self.type54_underbarrel.panic_suppression_chance = 0.05
@@ -7648,7 +7641,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.x_type54_underbarrel.stats_modifiers = nil
 						self.x_type54_underbarrel.panic_suppression_chance = 0.05
@@ -7693,13 +7686,12 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.shrew.stats_modifiers = nil
 						self.shrew.panic_suppression_chance = 0.05
 						self.shrew.reload_speed_multiplier = 1.25
-						self.shrew.timers.reload_exit_empty = 0.5
-						self.shrew.timers.reload_exit_not_empty = 0.65
+						blanket_timer("shrew", shared_timers.glock)
 					--Akimbo
 						self.x_shrew.has_description = true
 						self.x_shrew.desc_id = "bm_x_shrew_sc_desc"
@@ -7731,7 +7723,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.x_shrew.stats_modifiers = nil
 						self.x_shrew.panic_suppression_chance = 0.05
@@ -7776,12 +7768,11 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.usp.stats_modifiers = nil
 						self.usp.panic_suppression_chance = 0.05
-						self.usp.timers.reload_exit_empty = 0.5
-						self.usp.timers.reload_exit_not_empty = 0.65
+						blanket_timer("usp", shared_timers.glock)
 					--Akimbo
 						self.x_usp.has_description = true
 						self.x_usp.desc_id = "bm_x_usp_sc_desc"
@@ -7813,7 +7804,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.x_usp.stats_modifiers = nil
 						self.x_usp.panic_suppression_chance = 0.05
@@ -7851,13 +7842,12 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.colt_1911.stats_modifiers = nil
 						self.colt_1911.panic_suppression_chance = 0.05
 						self.colt_1911.reload_speed_multiplier = 1.05
-						self.colt_1911.timers.reload_exit_empty = 0.5
-						self.colt_1911.timers.reload_exit_not_empty = 0.65
+						blanket_timer("colt_1911", shared_timers.glock)
 					--Akimbo
 						self.x_1911.has_description = true
 						self.x_1911.desc_id = "bm_x_1911_sc_desc"
@@ -7889,7 +7879,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.x_1911.stats_modifiers = nil
 						self.x_1911.panic_suppression_chance = 0.05
@@ -7928,13 +7918,12 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.m1911.stats_modifiers = nil
 						self.m1911.panic_suppression_chance = 0.05
 						self.m1911.reload_speed_multiplier = 1.15
-						self.m1911.timers.reload_exit_empty = 0.5
-						self.m1911.timers.reload_exit_not_empty = 0.65
+						blanket_timer("m1911", shared_timers.glock)
 						if restoration.Options:GetValue("WEAPONS/WEAPONANIMS/m1911_foley") then
 							self.m1911.animations.reload_name_id = "sparrow"
 						end
@@ -7969,7 +7958,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.x_m1911.stats_modifiers = nil
 						self.x_m1911.panic_suppression_chance = 0.05
@@ -8008,14 +7997,13 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.korth.stats_modifiers = nil
 						self.korth.armor_piercing_chance = 0.5
 						self.korth.can_shoot_through_enemy = true
 						self.korth.panic_suppression_chance = 0.05
-						self.korth.reload_speed_multiplier = 0.92
-						self.korth.swap_speed_multiplier = 0.65
+						self.korth.swap_speed_multiplier = 0.85
 						self.korth.timers.equip = 0.9
 						self.korth.timers.reload_empty = 2.3
 						self.korth.timers.reload_exit_empty = 1.6
@@ -8027,6 +8015,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						--Yes
 						--All of ONE weapon (this one, lol) needs this despite other revolvers doing
 						--the exact same fucking thing with their speed loaders WITHOUT the need for this stupid shit
+
+						--I had to see this ugly fucking garbage again so I'm expressing my anger again: the need for this is REALLY FUCKING STUPID
 						self.korth.hide_reload_obj_start = 0
 						self.korth.show_reload_obj = 1.2
 						self.korth.hide_reload_obj_exit = 1.1
@@ -8061,13 +8051,13 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.x_korth.stats_modifiers = nil
 						self.x_korth.armor_piercing_chance = 0.5
 						self.x_korth.can_shoot_through_enemy = true
 						self.x_korth.panic_suppression_chance = 0.05
-						self.x_korth.reload_speed_multiplier = 0.85
+						self.x_korth.reload_speed_multiplier = 0.92
 						self.x_korth.timers.reload_empty = 3.1
 						self.x_korth.timers.reload_not_empty = 3.1
 						self.x_korth.timers.reload_exit_empty = 1.3
@@ -8105,7 +8095,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.mateba.stats_modifiers = nil
 						self.mateba.armor_piercing_chance = 0.5
@@ -8146,7 +8136,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.x_2006m.stats_modifiers = nil
 						self.x_2006m.armor_piercing_chance = 0.5
@@ -8192,7 +8182,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.model3.stats_modifiers = nil
 						self.model3.armor_piercing_chance = 0.5
@@ -8233,7 +8223,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.x_model3.stats_modifiers = nil
 						self.x_model3.armor_piercing_chance = 0.5
@@ -8277,17 +8267,14 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.new_raging_bull.stats_modifiers = nil
 						self.new_raging_bull.armor_piercing_chance = 0.5
 						self.new_raging_bull.can_shoot_through_enemy = true
 						self.new_raging_bull.can_shoot_through_enemy_unlim = true
 						self.new_raging_bull.reload_speed_multiplier = 0.9
-						self.new_raging_bull.timers.reload_empty = 1.6
-						self.new_raging_bull.timers.reload_exit_empty = 1.1
-						self.new_raging_bull.timers.reload_not_empty = 1.6
-						self.new_raging_bull.timers.reload_exit_not_empty = 1.1
+						blanket_timer("new_raging_bull", shared_timers.rage)
 						self.new_raging_bull.panic_suppression_chance = 0.05
 					--Akimbo
 						self.x_rage.has_description = true
@@ -8319,7 +8306,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.x_rage.stats_modifiers = nil
 						self.x_rage.armor_piercing_chance = 0.5
@@ -8366,7 +8353,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.chinchilla.stats_modifiers = nil
 						self.chinchilla.armor_piercing_chance = 0.5
@@ -8409,7 +8396,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.x_chinchilla.reload_speed_multiplier = 0.9
 						self.x_chinchilla.stats_modifiers = nil
@@ -8436,6 +8423,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.deagle.CLIP_AMMO_MAX = 7
 						self.deagle.AMMO_MAX = 20
 						self.deagle.muzzleflash = "_dmc/effects/heavy_muzzle_ring"
+						self.deagle.muzzleflash_silenced = "_dmc/effects/heavy_suppressed"
 						self.deagle.no_auto_anims = true
 						self.deagle.supported = true
 						self.deagle.ads_speed = 0.220
@@ -8456,7 +8444,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.deagle.stats_modifiers = nil
 						self.deagle.armor_piercing_chance = 0.5
@@ -8486,6 +8474,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						}
 						self.x_deagle.animations.has_steelsight_stance = true
 						self.x_deagle.muzzleflash = "_dmc/effects/heavy_muzzle_ring"
+						self.x_deagle.muzzleflash_silenced = "_dmc/effects/heavy_suppressed"
 						self.x_deagle.supported = true
 						self.x_deagle.ads_speed = 0.220
 						self.x_deagle.damage_falloff = {
@@ -8505,7 +8494,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.x_deagle.stats_modifiers = nil
 						self.x_deagle.armor_piercing_chance = 0.5
@@ -8544,7 +8533,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							slamfire = true
 						}
 						self.peacemaker.BURST_TYPE = "fan"
-						self.peacemaker.muzzleflash = "effects/payday2/particles/weapons/big_51b_auto_fps"
+						self.peacemaker.muzzleflash = "_dmc/effects/heavy_muzzle"
+						self.peacemaker.muzzleflash_silenced = "_dmc/effects/heavy_suppressed"
 						self.peacemaker.supported = true
 						self.peacemaker.ads_speed = 0.180
 						self.peacemaker.damage_falloff = {
@@ -8564,7 +8554,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.peacemaker.stats_modifiers = nil
 						self.peacemaker.panic_suppression_chance = 0.05
@@ -8648,7 +8638,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 9,
-							reload = 20
+							reload = 25
 						}
 						self.hailstorm.recoil_values = {
 							{ 80, 60 },
@@ -8698,7 +8688,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.pm9.reload_speed_multiplier = 1.05
 						self.pm9.stats_modifiers = nil
@@ -8740,7 +8730,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.shepheard.stats_modifiers = nil
 						self.shepheard.panic_suppression_chance = 0.05
@@ -8778,7 +8768,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 								extra_ammo = 101,
 								total_ammo_mod = 400,
 								value = 1,
-								reload = 20
+								reload = 25
 							}
 							self.x_shepheard.stats_modifiers = nil
 							self.x_shepheard.sounds.fire = "shepheard_fire_single"
@@ -8826,7 +8816,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.coal.stats_modifiers = nil
 						self.coal.panic_suppression_chance = 0.05
@@ -8882,7 +8872,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 7,
-							reload = 20
+							reload = 25
 						}
 						self.mp7.stats_modifiers = nil
 						self.mp7.reload_speed_multiplier = 1.14
@@ -8934,7 +8924,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.p90.stats_modifiers = nil
 						self.p90.panic_suppression_chance = 0.05
@@ -8984,7 +8974,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.x_p90.stats_modifiers = nil
 						self.x_p90.panic_suppression_chance = 0.05
@@ -9031,7 +9021,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 7,
-							reload = 20
+							reload = 25
 						}
 						self.tec9.stats_modifiers = nil
 						self.tec9.panic_suppression_chance = 0.05
@@ -9075,7 +9065,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.baka.stats_modifiers = nil
 						self.baka.panic_suppression_chance = 0.05
@@ -9117,7 +9107,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.x_baka.stats_modifiers = nil
 						self.x_baka.panic_suppression_chance = 0.05
@@ -9159,7 +9149,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.mp9.stats_modifiers = nil
 						self.mp9.panic_suppression_chance = 0.05
@@ -9205,7 +9195,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.sr2.armor_piercing_chance = 0.75
 						self.sr2.can_shoot_through_enemy = false
@@ -9262,7 +9252,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.x_sr2.stats_modifiers = nil
 						self.x_sr2.armor_piercing_chance = 0.75
@@ -9316,7 +9306,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 7,
-							reload = 20
+							reload = 25
 						}
 						self.scorpion.stats_modifiers = nil
 						self.scorpion.timers.reload_empty = 2.45
@@ -9356,7 +9346,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 7,
-							reload = 20
+							reload = 25
 						}
 						self.x_scorpion.stats_modifiers = nil
 						self.x_scorpion.panic_suppression_chance = 0.05
@@ -9407,7 +9397,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.new_mp5.stats_modifiers = nil
 						self.new_mp5.panic_suppression_chance = 0.05
@@ -9451,7 +9441,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.x_mp5.stats_modifiers = nil
 						self.x_mp5.panic_suppression_chance = 0.05
@@ -9493,7 +9483,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.cobray.stats_modifiers = nil
 						self.cobray.sounds.spin_start = "wp_mac10_lever_pull"
@@ -9540,7 +9530,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.x_cobray.stats_modifiers = nil
 						self.x_cobray.sounds.spin_start = "wp_mac10_lever_pull"
@@ -9593,7 +9583,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 5,
-							reload = 20
+							reload = 25
 						}
 						self.vityaz.stats_modifiers = nil
 						self.vityaz.panic_suppression_chance = 0.05
@@ -9638,7 +9628,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 5,
-							reload = 20
+							reload = 25
 						}
 						self.erma.stats_modifiers = nil
 						self.erma.sounds.spin_start = "wp_mac10_lever_pull"
@@ -9692,7 +9682,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.polymer.stats_modifiers = nil
 						self.polymer.panic_suppression_chance = 0.05
@@ -9742,7 +9732,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.schakal.stats_modifiers = nil
 						self.schakal.reload_speed_multiplier = 1.1
@@ -9784,7 +9774,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 5,
-							reload = 20
+							reload = 25
 						}
 						self.m45.stats_modifiers = nil
 						self.m45.timers.reload_empty = 3.45
@@ -9825,7 +9815,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 7,
-							reload = 20
+							reload = 25
 						}
 						self.sterling.stats_modifiers = nil
 						self.sterling.sounds.spin_start = "wp_mac10_lever_pull"
@@ -9871,7 +9861,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.mac10.stats_modifiers = nil
 						self.mac10.sounds.spin_start = "wp_mac10_lever_pull"
@@ -9915,7 +9905,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.x_mac10.stats_modifiers = nil
 						self.x_mac10.panic_suppression_chance = 0.05
@@ -9966,7 +9956,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 7,
-							reload = 20
+							reload = 25
 						}
 						self.uzi.stats_modifiers = nil
 						self.uzi.panic_suppression_chance = 0.05
@@ -10014,7 +10004,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 7,
-							reload = 20
+							reload = 25
 						}
 						self.x_uzi.stats_modifiers = nil
 						self.x_uzi.panic_suppression_chance = 0.05
@@ -10064,7 +10054,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 9,
-							reload = 20
+							reload = 25
 						}
 						self.m1928.stats_modifiers = nil
 						self.m1928.sounds.spin_start = "wp_m1928_lever_release"
@@ -10122,7 +10112,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						extra_ammo = 101,
 						total_ammo_mod = 400,
 						value = 1,
-						reload = 20
+						reload = 25
 					}
 					self.tecci.stats_modifiers = nil
 					self.tecci.reload_speed_multiplier = 1
@@ -10176,7 +10166,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						extra_ammo = 101,
 						total_ammo_mod = 400,
 						value = 9,
-						reload = 20
+						reload = 25
 					}
 					self.m249.shell_ejection = "_dmc/effects/shell_lmg_down"
 					self.m249.stats_modifiers = nil
@@ -10235,7 +10225,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						extra_ammo = 101,
 						total_ammo_mod = 400,
 						value = 9,
-						reload = 20
+						reload = 25
 					}
 					self.kacchainsaw.stats_modifiers = nil
 					self.kacchainsaw.panic_suppression_chance = 0.05
@@ -10288,7 +10278,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						extra_ammo = 101,
 						total_ammo_mod = 400,
 						value = 1,
-						reload = 20
+						reload = 25
 					}
 					self.kacchainsaw_flamethrower.flame_max_range = 1100
 					self.kacchainsaw_flamethrower.stats_modifiers = nil
@@ -10342,7 +10332,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						extra_ammo = 101,
 						total_ammo_mod = 400,
 						value = 9,
-						reload = 20
+						reload = 25
 					}
 					self.rpk.stats_modifiers = nil
 					self.rpk.panic_suppression_chance = 0.05
@@ -10404,7 +10394,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						extra_ammo = 101,
 						total_ammo_mod = 400,
 						value = 9,
-						reload = 20
+						reload = 25
 					}
 					self.hk51b.stats_modifiers = nil
 					self.hk51b.timers.reload_empty = 3.3
@@ -10464,7 +10454,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 9,
-							reload = 20
+							reload = 25
 						}
 						self.mg42.stats_modifiers = nil
 						self.mg42.panic_suppression_chance = 0.05
@@ -10527,7 +10517,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 9,
-							reload = 20
+							reload = 25
 						}
 						self.hk21.stats_modifiers = nil
 						self.hk21.reload_speed_multiplier = 0.88
@@ -10577,7 +10567,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 9,
-							reload = 20
+							reload = 25
 						}
 						self.hcar.stats_modifiers = nil
 						self.hcar.panic_suppression_chance = 0.05
@@ -10628,7 +10618,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 9,
-							reload = 20
+							reload = 25
 						}
 						self.m60.stats_modifiers = nil
 						self.m60.bipod_req_scope = true
@@ -10688,7 +10678,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 9,
-							reload = 20
+							reload = 25
 						}
 						self.par.stats_modifiers = nil
 						self.par.no_bipod_anims = true
@@ -10733,7 +10723,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 9,
-							reload = 20
+							reload = 25
 						}
 						self.ranc_heavy_machine_gun.stats_modifiers = nil
 						self.ranc_heavy_machine_gun.armor_piercing_chance = 1
@@ -10787,7 +10777,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						extra_ammo = 101,
 						total_ammo_mod = 400,
 						value = 9,
-						reload = 20
+						reload = 25
 					}
 					self.shuno.stats_modifiers = nil
 					self.shuno.ads_spool = true
@@ -10849,7 +10839,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						extra_ammo = 101,
 						total_ammo_mod = 400,
 						value = 9,
-						reload = 20
+						reload = 25
 					}
 					self.m134.stats_modifiers = nil
 					self.m134.jab_range = 50
@@ -10884,7 +10874,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							{4, self.stat_info.kick_tables.moderate_right_kick},
 							{7, self.stat_info.kick_tables.right_recoil},
 							{12, self.stat_info.kick_tables.moderate_kick},
-							{19, self.stat_info.kick_tables.left_recoil}
+							{19, self.stat_info.kick_tables.left_recoil},
+							{36, self.stat_info.kick_tables.even_recoil}
 						}
 						self.amcar.supported = true
 						self.amcar.ads_speed = 0.300
@@ -10905,7 +10896,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.amcar.stats_modifiers = nil
 						self.amcar.timers.reload_not_empty = 2.1
@@ -10927,8 +10918,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.s552.BURST_FIRE = {
 							count = 3,
 							delay = 0.18,
-							recoil_mult = 0.8,
-							last_recoil_mult = 1.05
+							recoil_mult = 0.7,
+							last_recoil_mult = 1.02
 						}
 						self.s552.ADAPTIVE_BURST_SIZE = false
 						self.s552.kick = self.stat_info.kick_tables.moderate_kick
@@ -10959,7 +10950,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.s552.stats_modifiers = nil
 						self.s552.reload_speed_multiplier = 1
@@ -10982,8 +10973,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.g36.BURST_FIRE = {
 							count = 3,
 							delay = 0.18,
-							recoil_mult = 0.75,
-							last_recoil_mult = 1.05
+							recoil_mult = 0.7,
+							last_recoil_mult = 1.02
 						}
 						self.g36.ADAPTIVE_BURST_SIZE = false
 						self.g36.auto.fire_rate = 0.08
@@ -11017,7 +11008,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.g36.stats_modifiers = nil
 						self.g36.reload_speed_multiplier = 1.2
@@ -11063,7 +11054,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 9,
-							reload = 20
+							reload = 25
 						}
 						self.vhs.stats_modifiers = nil
 						self.vhs.panic_suppression_chance = 0.05
@@ -11106,7 +11097,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.new_m4.stats_modifiers = nil
 						self.new_m4.reload_speed_multiplier = 1
@@ -11161,7 +11152,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.ak5.stats_modifiers = nil
 						self.ak5.timers.reload_empty = 3
@@ -11205,7 +11196,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 9,
-							reload = 20
+							reload = 25
 						}
 						self.corgi.stats_modifiers = nil
 						self.corgi.panic_suppression_chance = 0.05
@@ -11249,7 +11240,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.aug.stats_modifiers = nil
 						self.aug.timers.reload_empty = 3.25
@@ -11300,7 +11291,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 4,
-							reload = 20
+							reload = 25
 						}
 						self.flint.stats_modifiers = nil
 						self.flint.panic_suppression_chance = 0.05
@@ -11341,7 +11332,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.ak74.stats_modifiers = nil
 						self.ak74.panic_suppression_chance = 0.05
@@ -11390,7 +11381,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.olympic.stats_modifiers = nil
 						self.olympic.timers.reload_empty = 2.93
@@ -11435,7 +11426,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.x_olympic.stats_modifiers = nil
 						self.x_olympic.timers.reload_exit_empty = 0.8
@@ -11485,7 +11476,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 4,
-							reload = 20
+							reload = 25
 						}
 						self.famas.stats_modifiers = nil
 						self.famas.timers.reload_empty = 3.48
@@ -11496,7 +11487,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.famas.BURST_FIRE = {
 							count = 3,
 							delay = 0.18,
-							recoil_mult = 0.75,
+							recoil_mult = 0.65,
 							last_recoil_mult = 1.05
 						}
 						self.famas.reload_speed_multiplier = 1.1
@@ -11539,7 +11530,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.komodo.stats_modifiers = nil
 						self.komodo.timers.reload_empty = 2.66
@@ -11556,7 +11547,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.hajk.BURST_FIRE = {
 							count = 2,
 							delay = 0.15,
-							recoil_mult = 0.75,
+							recoil_mult = 0.6,
 							last_recoil_mult = 1.02
 						}
 						self.hajk.kick = self.stat_info.kick_tables.moderate_kick
@@ -11590,7 +11581,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.hajk.stats_modifiers = nil
 						self.hajk.timers.reload_empty = 2.9
@@ -11639,7 +11630,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.m16.stats_modifiers = nil
 						self.m16.panic_suppression_chance = 0.05
@@ -11689,7 +11680,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 9,
-							reload = 20
+							reload = 25
 						}
 						self.l85a2.stats_modifiers = nil
 						self.l85a2.timers.reload_empty = 3.5
@@ -11732,7 +11723,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.akm.stats_modifiers = nil
 						self.akm.panic_suppression_chance = 0.05
@@ -11776,7 +11767,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.akm_gold.stats_modifiers = nil
 						self.akm_gold.panic_suppression_chance = 0.05
@@ -11823,7 +11814,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.groza.stats_modifiers = nil
 						self.groza.has_underbarrel = true
@@ -11877,7 +11868,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.groza_underbarrel.stats_modifiers = {damage = 10}
 						self.groza_underbarrel.has_underbarrel = true
@@ -11938,7 +11929,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.tkb.stats_modifiers = nil
 						self.tkb.panic_suppression_chance = 0.05
@@ -11989,7 +11980,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.akmsu.stats_modifiers = nil
 						self.akmsu.timers.reload_empty = 3.2
@@ -12041,7 +12032,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.x_akmsu.stats_modifiers = nil
 						self.x_akmsu.reload_speed_multiplier = 0.7
@@ -12092,7 +12083,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.asval.stats_modifiers = nil
 						self.asval.can_shoot_through_enemy = false
@@ -12141,7 +12132,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 9,
-							reload = 20
+							reload = 25
 						}
 						self.scar.stats_modifiers = nil
 						self.scar.panic_suppression_chance = 0.05
@@ -12191,7 +12182,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 4,
-							reload = 20
+							reload = 25
 						}
 						self.galil.stats_modifiers = nil
 						self.galil.panic_suppression_chance = 0.05
@@ -12237,7 +12228,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 4,
-							reload = 20
+							reload = 25
 						}
 						self.fal.stats_modifiers = nil
 						self.fal.panic_suppression_chance = 0.05
@@ -12283,7 +12274,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.contraband.has_underbarrel = true
 						self.contraband.stats_modifiers = nil
@@ -12323,7 +12314,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.contraband_m203.stats_modifiers = {damage = 10}
 						self.contraband_m203.timers.reload_exit_empty = 0.4
@@ -12369,7 +12360,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.shak12.stats_modifiers = nil
 						self.shak12.reload_speed_multiplier = 0.85
@@ -12414,7 +12405,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.new_m14.stats_modifiers = nil
 						self.new_m14.can_shoot_through_enemy = true
@@ -12469,7 +12460,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 4,
-							reload = 20
+							reload = 25
 						}
 						self.g3.stats_modifiers = nil
 						self.g3.panic_suppression_chance = 0.05
@@ -12554,7 +12545,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 9,
-							reload = 20
+							reload = 25
 						}
 						self.ching.stats_modifiers = nil
 						self.ching.armor_piercing_chance = 0.75
@@ -12612,7 +12603,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 9,
-							reload = 20
+							reload = 25
 						}
 						self.qbu88.armor_piercing_chance = 1
 						self.qbu88.hs_mult = 2
@@ -12666,7 +12657,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 9,
-							reload = 20
+							reload = 25
 						}
 						self.tti.stats_modifiers = nil
 						self.tti.reload_speed_multiplier = 0.87
@@ -12734,7 +12725,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 9,
-							reload = 20
+							reload = 25
 						}
 						self.winchester1874.timers.shotgun_reload_first_shell_offset = 0.25
 						self.winchester1874.timers.shotgun_reload_exit_empty = 1
@@ -12771,7 +12762,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 9,
-							reload = 20
+							reload = 25
 						}
 						self.msr.stats_modifiers = nil
 						self.msr.panic_suppression_chance = 0.05
@@ -12810,7 +12801,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 9,
-							reload = 20
+							reload = 25
 						}
 						self.awp.armor_piercing_chance = 1
 						self.awp.stats_modifiers = nil
@@ -12851,7 +12842,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 9,
-							reload = 20
+							reload = 25
 						}
 						self.r700.stats_modifiers = nil
 						self.r700.panic_suppression_chance = 0.05
@@ -12892,7 +12883,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 9,
-							reload = 20
+							reload = 25
 						}
 						self.scout.stats_modifiers = nil
 						self.scout.panic_suppression_chance = 0.05
@@ -12945,7 +12936,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 9,
-							reload = 20
+							reload = 25
 						}
 						self.victor.stats_modifiers = nil
 						self.victor.hs_mult = 2
@@ -13003,7 +12994,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 9,
-							reload = 20
+							reload = 25
 						}
 						self.wa2000.armor_piercing_chance = 1
 						self.wa2000.stats_modifiers = nil
@@ -13053,7 +13044,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 9,
-							reload = 20
+							reload = 25
 						}
 						self.siltstone.reload_speed_multiplier = 0.80
 						self.siltstone.armor_piercing_chance = 1
@@ -13120,7 +13111,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 9,
-							reload = 20
+							reload = 25
 						}
 						self.sbl.stats_modifiers = nil
 						self.sbl.panic_suppression_chance = 0.05
@@ -13160,7 +13151,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 9,
-							reload = 20
+							reload = 25
 						}
 						self.mosin.stats_modifiers = nil
 						self.mosin.keep_ammo = 1
@@ -13202,7 +13193,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 9,
-							reload = 20
+							reload = 25
 						}
 						self.model70.stats_modifiers = nil
 						self.model70.reload_speed_multiplier = 1.125
@@ -13241,7 +13232,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 9,
-							reload = 20
+							reload = 25
 						}
 						self.r93.armor_piercing_chance = 1
 						self.r93.reload_speed_multiplier = 1.08
@@ -13280,7 +13271,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 10,
-							reload = 20
+							reload = 25
 						}
 						self.desertfox.stats_modifiers = nil
 						self.desertfox.reload_speed_multiplier = 0.95
@@ -13327,7 +13318,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 9,
-							reload = 20
+							reload = 25
 						}
 						self.bessy.armor_piercing_chance = 1
 						self.bessy.can_shoot_through_titan_shield = true
@@ -13390,7 +13381,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 9,
-							reload = 20
+							reload = 25
 						}
 						self.contender.stats_modifiers = nil
 						self.contender.panic_suppression_chance = 0.05
@@ -13431,7 +13422,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						extra_ammo = 101,
 						total_ammo_mod = 400,
 						value = 9,
-						reload = 20
+						reload = 25
 					}
 					self.m95.armor_piercing_chance = 1
 					self.m95.use_vapor_trail = true
@@ -13494,7 +13485,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.flamethrower_mk2.flame_max_range = 1800
 						self.flamethrower_mk2.stats_modifiers = nil
@@ -13550,7 +13541,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.system.flame_max_range = 1300
 						self.system.stats_modifiers = nil
@@ -13610,7 +13601,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 								extra_ammo = 101,
 								total_ammo_mod = 400,
 								value = 1,
-								reload = 20
+								reload = 25
 							}
 							self.money.flame_max_range = 1400
 							self.money.stats_modifiers = nil
@@ -13666,7 +13657,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.saiga.stats_modifiers = nil
 						self.saiga.panic_suppression_chance = 0.05
@@ -13710,7 +13701,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.sko12.stats_modifiers = nil
 						self.sko12.reload_speed_multiplier = 0.76
@@ -13761,11 +13752,12 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.aa12.stats_modifiers = nil
 						self.aa12.panic_suppression_chance = 0.05
 						self.aa12.reload_speed_multiplier = 1.26
+						self.aa12.reload_not_empty_speed_multiplier = 1.1
 						self.aa12.sounds.spin_start = "wp_mac10_lever_pull"
 						self.aa12.spin_up_shoot = true
 						self.aa12.spin_up_t = 0.06
@@ -13808,7 +13800,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.ultima.stats_modifiers = nil
 						self.ultima.panic_suppression_chance = 0.05
@@ -13865,7 +13857,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.spas12.stats_modifiers = nil
 						self.spas12.panic_suppression_chance = 0.05
@@ -13911,7 +13903,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.benelli.stats_modifiers = nil
 						self.benelli.panic_suppression_chance = 0.05
@@ -13959,7 +13951,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.basset.stats_modifiers = nil
 						self.basset.reload_speed_multiplier = 0.925
@@ -14003,7 +13995,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.x_basset.stats_modifiers = nil
 						self.x_basset.reload_speed_multiplier = 0.7
@@ -14047,14 +14039,11 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.judge.stats_modifiers = nil
 						self.judge.reload_speed_multiplier = 0.9
-						self.judge.timers.reload_empty = 1.6
-						self.judge.timers.reload_exit_empty = 1.1
-						self.judge.timers.reload_not_empty = 1.6
-						self.judge.timers.reload_exit_not_empty = 1.1
+						blanket_timer("judge", shared_timers.rage)
 						self.judge.panic_suppression_chance = 0.05
 					--Akimbo
 						self.x_judge.desc_id = "bm_x_judge_sc_desc"
@@ -14094,7 +14083,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.x_judge.stats_modifiers = nil
 						self.x_judge.panic_suppression_chance = 0.05
@@ -14148,7 +14137,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.striker.stats_modifiers = nil
 						self.striker.panic_suppression_chance = 0.05
@@ -14186,7 +14175,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.rota.stats_modifiers = nil
 						self.rota.reload_speed_multiplier = 1.13
@@ -14226,7 +14215,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.m590.stats_modifiers = nil
 						self.m590.panic_suppression_chance = 0.05
@@ -14285,7 +14274,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.supernova.stats_modifiers = nil
 						self.supernova.panic_suppression_chance = 0.05
@@ -14329,7 +14318,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.r870.stats_modifiers = nil
 						self.r870.panic_suppression_chance = 0.05
@@ -14368,7 +14357,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.ksg.stats_modifiers = nil
 						self.ksg.panic_suppression_chance = 0.05
@@ -14425,7 +14414,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.m1897.stats_modifiers = nil
 						self.m1897.panic_suppression_chance = 0.05
@@ -14463,7 +14452,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.serbu.stats_modifiers = nil
 						self.serbu.panic_suppression_chance = 0.05
@@ -14521,7 +14510,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.m37.stats_modifiers = nil
 						self.m37.timers.shotgun_reload_exit_not_empty = 0.9
@@ -14567,7 +14556,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.b682.stats_modifiers = nil
 						self.b682.keep_ammo = 1
@@ -14608,7 +14597,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.boot.timers = {
 							shotgun_reload_enter = 0.733,
@@ -14667,7 +14656,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.huntsman.stats_modifiers = nil
 						self.huntsman.timers.reload_empty = 1.8
@@ -14723,7 +14712,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.coach.stats_modifiers = nil
 						self.coach.keep_ammo = 1
@@ -14772,7 +14761,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.ecp.stats_modifiers = {damage = 4}
 						self.ecp.fire_mode_data.fire_rate = 0.45
@@ -14809,7 +14798,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.frankish.timers.reload_not_empty = 1.42
 						self.frankish.timers.reload_empty = 1.42
@@ -14844,7 +14833,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.arblast.stats_modifiers = {damage =  4}
 						self.arblast.timers.reload_exit_empty = 0.9
@@ -14880,7 +14869,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.plainsrider.panic_suppression_chance = 0.05
 						self.plainsrider.stats_modifiers = {damage = 4}
@@ -14920,7 +14909,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.long.stats_modifiers = {damage = 4}
 						self.long.timers.reload_not_empty = 0.8
@@ -14971,7 +14960,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.elastic.stats_modifiers = {damage = 4}
 						self.elastic.timers.reload_not_empty = 0.9
@@ -15014,7 +15003,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.hunter.panic_suppression_chance = 0.05
 						self.hunter.stats_modifiers = {damage = 2}
@@ -15057,7 +15046,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.gre_m79.panic_suppression_chance = 0.05
 						self.gre_m79.stats_modifiers = {damage = 10}
@@ -15103,7 +15092,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.m32.stats_modifiers = {damage = 10}
 						self.m32.panic_suppression_chance = 0.05
@@ -15148,7 +15137,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.ray.weapon_movement_penalty = 1
 						self.ray.rms = 0.25
@@ -15213,7 +15202,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.ms3gl.panic_suppression_chance = 0.05
 						self.ms3gl.stats_modifiers = {damage = 10}
@@ -15249,7 +15238,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.arbiter.stats_modifiers = {damage = 10}
 						self.arbiter.panic_suppression_chance = 0.05
@@ -15292,7 +15281,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.slap.panic_suppression_chance = 0.05
 						self.slap.stats_modifiers = {damage = 10}
@@ -15335,7 +15324,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.china.panic_suppression_chance = 0.05
 						self.china.stats_modifiers = {damage = 10}
@@ -15377,7 +15366,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							extra_ammo = 101,
 							total_ammo_mod = 400,
 							value = 1,
-							reload = 20
+							reload = 25
 						}
 						self.rpg7.weapon_movement_penalty = 1
 						self.rpg7.rms = 0.5
@@ -15416,7 +15405,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					value = 1,
 					extra_ammo = 101,
 					total_ammo_mod = 400,
-					reload = 20
+					reload = 25
 				}
 				self.saw.stats_modifiers = nil
 				self.saw.panic_suppression_chance = 0.05
@@ -15450,7 +15439,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						value = 1,
 						extra_ammo = 101,
 						total_ammo_mod = 400,
-						reload = 20
+						reload = 25
 					}
 					self.saw_secondary.stats_modifiers = nil
 					self.saw_secondary.reload_speed_multiplier = 1.1
@@ -15465,7 +15454,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			self.shatters_fury.recategorize = { "heavy_pis", "handcannon" }
 			self.shatters_fury.damage_type = "handcannon"
 			self.shatters_fury.fire_mode_data.fire_rate = 0.2142857
-			self.shatters_fury.muzzleflash = "effects/payday2/particles/weapons/big_51b_auto_fps"
+			self.shatters_fury.muzzleflash = "_dmc/effects/heavy_muzzle"
+			self.shatters_fury.muzzleflash_silenced = "_dmc/effects/heavy_suppressed"
 			if restoration.Options:GetValue("WEAPONS/WEAPONSOUNDS/ComboSoundsSW500") > 1 then
 			self.shatters_fury.sounds.fire_single = "pmkr45_fire"
 				if restoration.Options:GetValue("WEAPONS/WEAPONSOUNDS/ComboSoundsSW500") == 3 then
@@ -15500,7 +15490,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				extra_ammo = 101,
 				total_ammo_mod = 400,
 				value = 1,
-				reload = 20
+				reload = 25
 			}
 			self.shatters_fury.stats_modifiers = nil
 			self.shatters_fury.panic_suppression_chance = 0.05
@@ -15558,7 +15548,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				extra_ammo = 101,
 				total_ammo_mod = 400,
 				value = 1,
-				reload = 20
+				reload = 25
 			}
 			self.osipr.stats_modifiers = nil
 			self.osipr.timers.reload_empty = 2.65
@@ -15599,7 +15589,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				extra_ammo = 101,
 				total_ammo_mod = 400,
 				value = 1,
-				reload = 20
+				reload = 25
 			}
 			self.osipr_gl.stats_modifiers = {damage = 10}
 			self.osipr_gl.timers.reload_not_empty = 3.34
@@ -15662,7 +15652,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				extra_ammo = 101,
 				total_ammo_mod = 400,
 				value = 1,
-				reload = 20
+				reload = 25
 			}
 			self.socom.stats_modifiers = nil
 			self.socom.panic_suppression_chance = 0.05
@@ -15710,7 +15700,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				extra_ammo = 101,
 				total_ammo_mod = 400,
 				value = 1,
-				reload = 20
+				reload = 25
 			}
 			self.x_socom.stats_modifiers = nil
 			self.x_socom.panic_suppression_chance = 0.05
@@ -15745,7 +15735,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.toym16.kick = self.stat_info.kick_tables.none
 				self.toym16.panic_suppression_chance = 0.05
@@ -15787,7 +15777,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.toy1911.kick = self.stat_info.kick_tables.none
 				self.toy1911.panic_suppression_chance = 0.05
@@ -15834,7 +15824,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.hpb.stats_modifiers = nil
 				self.hpb.panic_suppression_chance = 0.05
@@ -15875,7 +15865,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						extra_ammo = 101,
 						total_ammo_mod = 400,
 						value = 1,
-						reload = 20
+						reload = 25
 					}
 					self.lebman.stats_modifiers = nil
 					self.lebman.panic_suppression_chance = 0.05
@@ -15926,7 +15916,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						extra_ammo = 101,
 						total_ammo_mod = 400,
 						value = 1,
-						reload = 20
+						reload = 25
 					}
 					self.ak5s.stats_modifiers = nil
 					self.ak5s.panic_suppression_chance = 0.05
@@ -15974,7 +15964,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						extra_ammo = 101,
 						total_ammo_mod = 400,
 						value = 1,
-						reload = 20
+						reload = 25
 					}
 					self.car9.reload_speed_multiplier = 1.1
 					self.car9.timers.reload_not_empty = self.new_m4.timers.reload_not_empty
@@ -16022,7 +16012,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						extra_ammo = 101,
 						total_ammo_mod = 400,
 						value = 1,
-						reload = 20
+						reload = 25
 					}
 					self.amr12.panic_suppression_chance = 0.05
 					self.amr12.stats_modifiers = {damage = 1}
@@ -16055,7 +16045,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						suppression = 8,
 						extra_ammo = 101,
 						total_ammo_mod = 400,
-						reload = 20,
+						reload = 25,
 						value = 7
 					}
 					self.minibeck.kick = self.stat_info.kick_tables.vertical_kick
@@ -16110,7 +16100,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						extra_ammo = 101,
 						total_ammo_mod = 400,
 						value = 1,
-						reload = 20
+						reload = 25
 					}
 					self.beck.stats_modifiers = {damage = 1}
 					self.beck.panic_suppression_chance = 0.05
@@ -16156,7 +16146,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						extra_ammo = 101,
 						total_ammo_mod = 400,
 						value = 1,
-						reload = 20
+						reload = 25
 					}
 					self.bs23.stats_modifiers = nil
 					self.bs23.descope_on_fire = true
@@ -16207,7 +16197,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						extra_ammo = 101,
 						total_ammo_mod = 400,
 						value = 1,
-						reload = 20
+						reload = 25
 					}
 					self.sg416.stats_modifiers = nil
 					self.sg416.sounds.magazine_empty = "wp_rifle_slide_lock"
@@ -16256,7 +16246,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						extra_ammo = 101,
 						total_ammo_mod = 400,
 						value = 1,
-						reload = 20
+						reload = 25
 					}
 					self.aknato.stats_modifiers = nil
 					self.aknato.panic_suppression_chance = 0.05
@@ -16300,7 +16290,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						extra_ammo = 101,
 						total_ammo_mod = 400,
 						value = 9,
-						reload = 20
+						reload = 25
 					}
 					self.smolak.stats_modifiers = nil
 					self.smolak.panic_suppression_chance = 0.05
@@ -16343,7 +16333,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						extra_ammo = 101,
 						total_ammo_mod = 400,
 						value = 1,
-						reload = 20
+						reload = 25
 					}
 					self.spike.stats_modifiers = nil
 					self.spike.rays = nil
@@ -16377,7 +16367,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						suppression = 20,
 						extra_ammo = 101,
 						total_ammo_mod = 400,
-						reload = 20,
+						reload = 25,
 						value = 6
 					}
 					self.bdgr.kick = self.stat_info.kick_tables.moderate_kick
@@ -16443,7 +16433,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						extra_ammo = 101,
 						total_ammo_mod = 400,
 						value = 9,
-						reload = 20
+						reload = 25
 					}
 					self.sgs.armor_piercing_chance = 1
 					self.sgs.stats_modifiers = nil
@@ -16478,7 +16468,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						suppression = 1,
 						extra_ammo = 101,
 						total_ammo_mod = 400,
-						reload = 20,
+						reload = 25,
 						value = 7
 					}
 					self.qrl.timers.reload_not_empty = 3.5
@@ -16516,7 +16506,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						suppression = 6,
 						extra_ammo = 101,
 						total_ammo_mod = 400,
-						reload = 20,
+						reload = 25,
 						value = 7
 					}
 					self.qsho.stats_modifiers = nil
@@ -16570,7 +16560,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 4,
-					reload = 20
+					reload = 25
 				}
 				self.l1a1.stats_modifiers = nil
 				self.l1a1.panic_suppression_chance = 0.05
@@ -16612,7 +16602,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.limafive.stats_modifiers = nil
 				self.limafive.panic_suppression_chance = 0.05
@@ -16655,7 +16645,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.derringer.stats_modifiers = nil
 				self.derringer.panic_suppression_chance = 0.05
@@ -16723,7 +16713,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.tilt.stats_modifiers = nil
 				self.tilt.panic_suppression_chance = 0.05
@@ -16767,7 +16757,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.czevo.stats_modifiers = nil
 				self.czevo.panic_suppression_chance = 0.05
@@ -16812,7 +16802,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.lapd.stats_modifiers = nil
 				self.lapd.panic_suppression_chance = 0.05
@@ -16862,7 +16852,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.pdr.stats_modifiers = nil
 				self.pdr.timers = deep_clone(self.aug.timers)
@@ -16909,7 +16899,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.sr1.stats_modifiers = nil
 				self.sr1.panic_suppression_chance = 0.05
@@ -16963,7 +16953,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						extra_ammo = 101,
 						total_ammo_mod = 400,
 						value = 1,
-						reload = 20
+						reload = 25
 					}
 					self.x_sr1.stats_modifiers = nil
 					self.x_sr1.panic_suppression_chance = 0.05
@@ -17009,7 +16999,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.gsh18.stats_modifiers = nil
 				self.gsh18.panic_suppression_chance = 0.05
@@ -17061,7 +17051,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						extra_ammo = 101,
 						total_ammo_mod = 400,
 						value = 1,
-						reload = 20
+						reload = 25
 					}
 					self.x_gsh18.stats_modifiers = nil
 					self.x_gsh18.panic_suppression_chance = 0.05
@@ -17108,7 +17098,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 7,
-					reload = 20
+					reload = 25
 				}
 				self.kedr.stats_modifiers = nil
 				self.kedr.panic_suppression_chance = 0.05
@@ -17150,7 +17140,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 7,
-					reload = 20
+					reload = 25
 				}
 				self.x_kedr.stats_modifiers = nil
 				self.x_kedr.panic_suppression_chance = 0.05
@@ -17196,7 +17186,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.acwr.stats_modifiers = nil
 				self.acwr.panic_suppression_chance = 0.05
@@ -17242,7 +17232,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.acwr2.stats_modifiers = nil
 				self.acwr2.panic_suppression_chance = 0.05
@@ -17285,7 +17275,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.mr96.stats_modifiers = nil
 				self.mr96.panic_suppression_chance = 0.05
@@ -17333,7 +17323,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.x_mr96.stats_modifiers = nil
 				self.x_mr96.reload_speed_multiplier = 0.9
@@ -17379,7 +17369,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.virtus.stats_modifiers = nil
 				self.virtus.panic_suppression_chance = 0.05
@@ -17423,7 +17413,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.sonny.stats_modifiers = nil
 				self.sonny.reload_speed_multiplier = 1.05
@@ -17469,7 +17459,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						extra_ammo = 101,
 						total_ammo_mod = 400,
 						value = 1,
-						reload = 20
+						reload = 25
 					}
 					self.x_sonny.stats_modifiers = nil
 					self.x_sonny.panic_suppression_chance = 0.05
@@ -17516,7 +17506,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.qsz92.stats_modifiers = nil
 				self.qsz92.panic_suppression_chance = 0.05
@@ -17571,7 +17561,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						extra_ammo = 101,
 						total_ammo_mod = 400,
 						value = 1,
-						reload = 20
+						reload = 25
 					}
 					self.x_qsz92.stats_modifiers = nil
 					self.x_qsz92.timers.reload_exit_empty = 0.55
@@ -17622,7 +17612,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.bulldoge.stats_modifiers = nil
 				self.bulldoge.can_shoot_through_enemy = true
@@ -17678,7 +17668,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.vsk94.stats_modifiers = nil
 				self.vsk94.panic_suppression_chance = 0.05
@@ -17732,7 +17722,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.ak556.stats_modifiers = nil
 				self.ak556.panic_suppression_chance = 0.05
@@ -17777,7 +17767,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.mikon.stats_modifiers = nil
 				self.mikon.panic_suppression_chance = 0.05
@@ -17822,7 +17812,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.akm_nomag.stats_modifiers = nil
 				self.akm_nomag.reload_speed_multiplier = 1.3
@@ -17873,7 +17863,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.tingledingle.stats_modifiers = nil
 				self.tingledingle.panic_suppression_chance = 0.05
@@ -17947,7 +17937,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.hmcar.stats_modifiers = nil
 				self.hmcar.reload_speed_multiplier = 0.75
@@ -18001,7 +17991,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					suppression = 6,
 					extra_ammo = 101,
 					total_ammo_mod = 400,
-					reload = 20,
+					reload = 25,
 					value = 10
 				}
 				self.nckuro.stats_modifiers = { damage = 10 }
@@ -18043,7 +18033,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					suppression = 6,
 					extra_ammo = 101,
 					total_ammo_mod = 400,
-					reload = 20,
+					reload = 25,
 					value = 10
 				}
 				self.raygun.recoil_values = {
@@ -18086,7 +18076,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					suppression = 6,
 					extra_ammo = 101,
 					total_ammo_mod = 400,
-					reload = 20,
+					reload = 25,
 					value = 10
 				}
 				self.umd_launcher.recoil_values = {
@@ -18141,7 +18131,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.holygrail.stats_modifiers = nil
 				self.holygrail.can_shoot_through_enemy = true
@@ -18198,7 +18188,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.martinihenry.stats_modifiers = nil
 				self.martinihenry.can_shoot_through_enemy = true
@@ -18252,7 +18242,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.obrez.stats_modifiers = nil
 				self.obrez.can_shoot_through_enemy = true
@@ -18305,7 +18295,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.bigglock.stats_modifiers = nil
 				self.bigglock.lock_slide = true
@@ -18359,7 +18349,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.mars.stats_modifiers = nil
 				self.mars.panic_suppression_chance = 0.05
@@ -18414,7 +18404,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.m712.stats_modifiers = nil
 				self.m712.panic_suppression_chance = 0.05
@@ -18460,7 +18450,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.fmgnine.stats_modifiers = nil
 				self.fmgnine.panic_suppression_chance = 0.05
@@ -18510,7 +18500,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.x_fmgnine.stats_modifiers = nil
 				self.x_fmgnine.panic_suppression_chance = 0.05
@@ -18561,7 +18551,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.p99.stats_modifiers = nil
 				self.p99.timers = {
@@ -18610,7 +18600,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.px4.stats_modifiers = nil
 				self.px4.panic_suppression_chance = 0.05
@@ -18654,7 +18644,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.g19.stats_modifiers = nil
 				self.g19.reload_speed_multiplier = 1.1
@@ -18698,7 +18688,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.fp45.stats_modifiers = nil
 				self.fp45.panic_suppression_chance = 0.05
@@ -18752,7 +18742,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.duke1911.stats_modifiers = nil
 				self.duke1911.panic_suppression_chance = 0.05
@@ -18795,7 +18785,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.zenith.stats_modifiers = nil
 				self.zenith.panic_suppression_chance = 0.05
@@ -18844,7 +18834,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.ppsh.stats_modifiers = nil
 				self.ppsh.panic_suppression_chance = 0.05
@@ -18897,7 +18887,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.pps43.stats_modifiers = nil
 				self.pps43.panic_suppression_chance = 0.05
@@ -18943,7 +18933,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.aug9mm.stats_modifiers = nil
 				self.aug9mm.panic_suppression_chance = 0.05
@@ -18997,7 +18987,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.lewis.stats_modifiers = nil
 				self.lewis.sounds.spin_start = "wp_mg42_lever_release"
@@ -19045,7 +19035,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					suppression = 8,
 					extra_ammo = 101,
 					total_ammo_mod = 400,
-					reload = 20,
+					reload = 25,
 					value = 7
 				}
 				self.mp153.stats_modifiers = nil
@@ -19095,7 +19085,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.wmtx.stats_modifiers = nil
 				self.wmtx.timers.reload_empty = 2.9
@@ -19145,7 +19135,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.jackhammer.stats_modifiers = nil
 				self.jackhammer.timers.reload_exit_empty = 0.9
@@ -19198,7 +19188,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.quadbarrel.stats_modifiers = nil
 				self.quadbarrel.panic_suppression_chance = 0.05
@@ -19241,7 +19231,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.ks23.armor_piercing_chance = 1
 				self.ks23.descope_on_fire = true
@@ -19294,7 +19284,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.super.stats_modifiers = nil
 				self.super.panic_suppression_chance = 0.05
@@ -19344,7 +19334,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.fazertron.stats_modifiers = nil
 				self.fazertron.reload_speed_multiplier = 1.02
@@ -19366,8 +19356,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.g36k.BURST_FIRE = {
 					count = 3,
 					delay = 0.18,
-					recoil_mult = 0.75,
-					last_recoil_mult = 1.05
+					recoil_mult = 0.7,
+					last_recoil_mult = 1.02
 				}
 				self.g36k.ADAPTIVE_BURST_SIZE = false
 				self.g36k.fire_mode_data.fire_rate = 0.08
@@ -19400,7 +19390,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.g36k.stats_modifiers = nil
 				self.g36k.reload_speed_multiplier = 1.2
@@ -19449,7 +19439,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.xm8.stats_modifiers = nil
 				self.xm8.reload_speed_multiplier = 1.2
@@ -19498,7 +19488,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.ar18.stats_modifiers = nil
 				self.ar18.timers = deep_clone(self.ak5.timers)
@@ -19515,8 +19505,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.ak12.BURST_FIRE = {
 					count = 3,
 					rof_mult = 1.6666,
-					recoil_mult = 0.75,
-					last_recoil_mult = 1.05
+					recoil_mult = 0.65,
+					last_recoil_mult = 1.02
 				}
 				self.ak12.ADAPTIVE_BURST_SIZE = false
 				self.ak12.fire_mode_data.fire_rate = 0.1
@@ -19548,7 +19538,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 4,
-					reload = 20
+					reload = 25
 				}
 				self.ak12.stats_modifiers = nil
 				self.ak12.panic_suppression_chance = 0.05
@@ -19596,7 +19586,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 4,
-					reload = 20
+					reload = 25
 				}
 				self.galilace.stats_modifiers = nil
 				self.galilace.panic_suppression_chance = 0.05
@@ -19649,7 +19639,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.scarl.stats_modifiers = nil
 				self.scarl.panic_suppression_chance = 0.05
@@ -19672,7 +19662,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.xeno.BURST_FIRE = {
 					count = 4,
 					delay = 0.25,
-					recoil_mult = 0.75,
+					recoil_mult = 0.5,
 					last_recoil_mult = 1.05
 				}
 				self.xeno.kick = self.stat_info.kick_tables.moderate_kick
@@ -19705,7 +19695,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.xeno.has_underbarrel = true
 				self.xeno.stats_modifiers = nil
@@ -19764,7 +19754,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.sks.stats_modifiers = nil
 				self.sks.armor_piercing_chance = 0.25
@@ -19829,7 +19819,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.skspug.stats_modifiers = nil
 				self.skspug.armor_piercing_chance = 0.25
@@ -19883,7 +19873,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.vss.stats_modifiers = nil
 				self.vss.can_shoot_through_enemy = true
@@ -19947,7 +19937,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 4,
-					reload = 20
+					reload = 25
 				}
 				self.g3hk79.stats_modifiers = nil
 				self.g3hk79.panic_suppression_chance = 0.05
@@ -20000,7 +19990,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.m2.lock_slide = true
 				self.m2.sounds.magazine_empty = "wp_rifle_slide_lock"
@@ -20053,7 +20043,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.m1a1.lock_slide = true
 				self.m1a1.sounds.magazine_empty = "wp_rifle_slide_lock"
@@ -20109,7 +20099,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.moss464spx.timers = deep_clone(self.sbl.timers)
 				self.moss464spx.stats_modifiers = nil
@@ -20159,7 +20149,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.winchester1894.timers = deep_clone(self.sbl.timers)
 				self.winchester1894.stats_modifiers = nil
@@ -20207,7 +20197,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.m1894.timers.shotgun_reload_shell = 0.664
 				self.m1894.timers.shotgun_reload_first_shell_offset = 0.15
@@ -20250,7 +20240,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.k31.stats_modifiers = nil
 				self.k31.panic_suppression_chance = 0.05
@@ -20295,7 +20285,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.l115.armor_piercing_chance = 1
 				self.l115.stats_modifiers = nil
@@ -20348,7 +20338,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.svd.reload_speed_multiplier = 0.82
 				self.svd.armor_piercing_chance = 1
@@ -20403,7 +20393,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.musket.armor_piercing_chance = 1
 				self.musket.can_shoot_through_titan_shield = true
@@ -20462,7 +20452,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.m107cq.armor_piercing_chance = 1
 				self.m107cq.use_vapor_trail = true
@@ -20512,7 +20502,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.m200.fire_mode_data.fire_rate = 1.090909
 				self.m200.fire_rate_multiplier = 0.8
@@ -20568,7 +20558,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.amr2.use_vapor_trail = true
 				self.amr2.fire_mode_data.fire_rate = 1.090909
@@ -20616,7 +20606,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.tac50.use_vapor_trail = true
 				self.tac50.fire_mode_data.fire_rate = 1.090909
@@ -20665,7 +20655,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.cs5.stats_modifiers = nil
 				self.cs5.panic_suppression_chance = 0.05
@@ -20709,7 +20699,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.arisaka38.stats_modifiers = nil
 				self.arisaka38.descope_on_fire = true
@@ -20747,7 +20737,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					suppression = 6,
 					extra_ammo = 101,
 					total_ammo_mod = 400,
-					reload = 20,
+					reload = 25,
 					value = 7
 				}
 				self.hx25.kick = self.stat_info.kick_tables.right_kick
@@ -20786,7 +20776,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.as24.stats_modifiers = {damage = 10}
 				self.as24.panic_suppression_chance = 0.05
@@ -20826,7 +20816,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.rhino.stats_modifiers = nil
 				self.rhino.panic_suppression_chance = 0.05
@@ -20868,7 +20858,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.sw27.stats_modifiers = nil
 				self.sw27.panic_suppression_chance = 0.05
@@ -20911,7 +20901,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.sw642.stats_modifiers = nil
 				self.sw642.panic_suppression_chance = 0.05
@@ -20954,7 +20944,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.x_sw642.stats_modifiers = nil
 				self.x_sw642.reload_speed_multiplier = 0.9
@@ -20996,7 +20986,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.unica6.stats_modifiers = nil
 				self.unica6.panic_suppression_chance = 0.05
@@ -21053,7 +21043,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.m1895.stats_modifiers = nil
 				self.m1895.panic_suppression_chance = 0.05
@@ -21104,7 +21094,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.deckard.stats_modifiers = nil
 				self.deckard.reload_speed_multiplier = 0.9
@@ -21149,7 +21139,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 7,
-					reload = 20
+					reload = 25
 				}
 				self.einhander.stats_modifiers = nil
 				self.einhander.panic_suppression_chance = 0.05
@@ -21203,7 +21193,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.m60e4.stats_modifiers = nil
 				self.m60e4.sounds.spin_start = "wp_m60_reload_lever_release"
@@ -21259,7 +21249,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.m1919a6.stats_modifiers = nil
 				self.m1919a6.sounds.spin_start = "wp_m60_reload_lever_release"
@@ -21322,7 +21312,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.ultimax.stats_modifiers = nil
 				self.ultimax.panic_suppression_chance = 0.05
@@ -21383,7 +21373,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.lsat.stats_modifiers = nil
 				self.lsat.panic_suppression_chance = 0.05
@@ -21443,7 +21433,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.mg4.stats_modifiers = nil
 				self.mg4.panic_suppression_chance = 0.05
@@ -21504,7 +21494,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.mg3.stats_modifiers = nil
 				self.mg3.panic_suppression_chance = 0.05
@@ -21544,7 +21534,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.aek971.stats_modifiers = nil
 				self.aek971.panic_suppression_chance = 0.05
@@ -21579,7 +21569,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.a545.stats_modifiers = nil
 				self.a545.panic_suppression_chance = 0.05
@@ -21623,7 +21613,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.aku94.stats_modifiers = nil
 				self.aku94.panic_suppression_chance = 0.05
@@ -21675,7 +21665,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.sr3m.stats_modifiers = nil
 				self.sr3m.panic_suppression_chance = 0.05
@@ -21731,7 +21721,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.zweihander.stats_modifiers = nil
 				self.zweihander.spin_up_shoot = nil
@@ -21775,7 +21765,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.air16.stats_modifiers = {damage = 4}
 				self.air16.fire_mode_data.fire_rate = 0.45
@@ -21828,7 +21818,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.toz66.stats_modifiers = nil
 				self.toz66.reload_speed_multiplier = 1.1
@@ -21883,7 +21873,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.x_toz66.stats_modifiers = nil
 				self.x_toz66.always_hipfire = true
@@ -21934,7 +21924,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.toz34.stats_modifiers = nil
 				self.toz34.keep_ammo = 1
@@ -21983,7 +21973,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.triple.stats_modifiers = nil
 				self.triple.panic_suppression_chance = 0.05
@@ -22032,7 +22022,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.appistol.stats_modifiers = nil
 				self.appistol.panic_suppression_chance = 0.05
@@ -22075,7 +22065,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.rk62.stats_modifiers = nil
 				self.rk62.panic_suppression_chance = 0.05
@@ -22126,7 +22116,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.m1912.stats_modifiers = {damage = 1}
 				self.m1912.panic_suppression_chance = 0.05
@@ -22180,7 +22170,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.fnar.armor_piercing_chance = 1
 				self.fnar.stats_modifiers = nil
@@ -22235,7 +22225,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.mk12.stats_modifiers = nil
 				self.mk12.hs_mult = 2
@@ -22289,7 +22279,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.ak12_2014.stats_modifiers = nil
 				self.ak12_2014.panic_suppression_chance = 0.05
@@ -22338,7 +22328,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.triad.stats_modifiers = nil
 				self.triad.panic_suppression_chance = 0.05
@@ -22384,7 +22374,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.hk45c.stats_modifiers = nil
 				self.hk45c.reload_speed_multiplier = 1.05
@@ -22432,7 +22422,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.x_hk45c.stats_modifiers = nil
 				self.x_hk45c.panic_suppression_chance = 0.05
@@ -22483,7 +22473,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.rpd.stats_modifiers = nil
 				self.rpd.panic_suppression_chance = 0.05
@@ -22538,7 +22528,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.cbjms.armor_piercing_chance = 0.75
 				self.cbjms.can_shoot_through_enemy = false
@@ -22593,7 +22583,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.svu.reload_speed_multiplier = 0.65
 				self.svu.armor_piercing_chance = 1
@@ -22646,7 +22636,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.sg510.stats_modifiers = nil
 				self.sg510.can_shoot_through_enemy = true
@@ -22693,7 +22683,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 4,
-					reload = 20
+					reload = 25
 				}
 				self.swmp40.stats_modifiers = nil
 				self.swmp40.panic_suppression_chance = 0.05
@@ -22732,7 +22722,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.rugermk3.stats_modifiers = nil
 				self.rugermk3.hs_mult = 2
@@ -22783,7 +22773,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.sar21.stats_modifiers = nil
 				self.sar21.panic_suppression_chance = 0.05
@@ -22842,7 +22832,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.svt40.armor_piercing_chance = 0.75
 				self.svt40.stats_modifiers = nil
@@ -22891,7 +22881,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.fd338.armor_piercing_chance = 1
 				self.fd338.use_vapor_trail = true
@@ -22937,7 +22927,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.merkel.stats_modifiers = nil
 				self.merkel.can_shoot_through_enemy = true
@@ -23000,7 +22990,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.mas49.armor_piercing_chance = 0.75
 				self.mas49.stats_modifiers = nil
@@ -23050,7 +23040,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.plr16.stats_modifiers = nil
 				self.plr16.hs_mult = 2.25
@@ -23095,7 +23085,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.m40a5.stats_modifiers = nil
 				self.m40a5.panic_suppression_chance = 0.05
@@ -23151,7 +23141,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.xm21.armor_piercing_chance = 1
 				self.xm21.stats_modifiers = nil
@@ -23191,7 +23181,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.l35.stats_modifiers = nil
 				self.l35.panic_suppression_chance = 0.05
@@ -23244,7 +23234,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.sigke7.stats_modifiers = nil
 				self.sigke7.panic_suppression_chance = 0.05
@@ -23294,7 +23284,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						extra_ammo = 101,
 						total_ammo_mod = 400,
 						value = 1,
-						reload = 20
+						reload = 25
 					}
 					self.duskrifle.stats_modifiers = nil
 					self.duskrifle.armor_piercing_chance = 1
@@ -23337,7 +23327,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						extra_ammo = 101,
 						total_ammo_mod = 400,
 						value = 1,
-						reload = 20
+						reload = 25
 					}
 					self.duskmg.stats_modifiers = nil
 					self.duskmg.panic_suppression_chance = 0.05
@@ -23376,7 +23366,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						extra_ammo = 101,
 						total_ammo_mod = 400,
 						value = 1,
-						reload = 20
+						reload = 25
 					}
 					self.duskpistol.stats_modifiers = nil
 					self.duskpistol.panic_suppression_chance = 0.05
@@ -23407,7 +23397,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						extra_ammo = 101,
 						total_ammo_mod = 400,
 						value = 1,
-						reload = 20
+						reload = 25
 					}
 					self.riviter.stats_modifiers = {damage = 3}
 					self.riviter.turret_instakill = true
@@ -23462,7 +23452,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.rusglock.stats_modifiers = nil
 				self.rusglock.panic_suppression_chance = 0.05
@@ -23515,7 +23505,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.pkpsd9.stats_modifiers = nil
 				self.pkpsd9.panic_suppression_chance = 0.05
@@ -23560,7 +23550,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.coltds.stats_modifiers = nil
 				self.coltds.timers = deep_clone(self.chinchilla.timers)
@@ -23603,7 +23593,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.tommy.stats_modifiers = nil
 				self.tommy.sounds.spin_start = "wp_m1928_lever_release"
@@ -23658,7 +23648,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.smg45.stats_modifiers = nil
 				self.smg45.reload_speed_multiplier = 1.05
@@ -23710,7 +23700,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.fang45.stats_modifiers = nil
 				self.fang45.reload_speed_multiplier = 0.95
@@ -23755,7 +23745,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.troglodyte.stats_modifiers = {
 					damage = 4
@@ -23803,7 +23793,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.dvl10.stats_modifiers = nil
 				self.dvl10.panic_suppression_chance = 0.05
@@ -23848,7 +23838,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.dokkasho.stats_modifiers = nil
 				self.dokkasho.keep_ammo = 1
@@ -23895,7 +23885,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.cssdeagle.stats_modifiers = nil
 				self.cssdeagle.no_ads = true
@@ -23946,7 +23936,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.t1000x5.stats_modifiers = nil
 				self.t1000x5.panic_suppression_chance = 0.05
@@ -23991,7 +23981,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.heartpiercer.stats_modifiers = nil
 				self.heartpiercer.panic_suppression_chance = 0.05
@@ -24036,7 +24026,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 10,
-					reload = 20
+					reload = 25
 				}
 				self.bigbust.stats_modifiers = nil
 				self.bigbust.panic_suppression_chance = 0.05
@@ -24084,7 +24074,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.fakedefy.stats_modifiers = nil
 				self.fakedefy.panic_suppression_chance = 0.05
@@ -24133,7 +24123,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.lvoac.stats_modifiers = nil
 				self.lvoac.panic_suppression_chance = 0.05
@@ -24188,7 +24178,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.fsbcustom.stats_modifiers = nil
 				self.fsbcustom.rays = nil
@@ -24229,7 +24219,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.fpsix.stats_modifiers = {damage = 1}
 				self.fpsix.panic_suppression_chance = 0.05
@@ -24272,7 +24262,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.stf12.stats_modifiers = {damage = 1}
 				self.stf12.panic_suppression_chance = 0.05
@@ -24322,7 +24312,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.vp70.stats_modifiers = nil
 				self.vp70.panic_suppression_chance = 0.05
@@ -24373,7 +24363,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.x_vp70.stats_modifiers = nil
 				self.x_vp70.panic_suppression_chance = 0.05
@@ -24422,7 +24412,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.kurisumasu.has_underbarrel = true
 				self.kurisumasu.stats_modifiers = nil
@@ -24465,7 +24455,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.pinkie.stats_modifiers = nil
 				self.pinkie.panic_suppression_chance = 0.05
@@ -24512,7 +24502,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.enfieldl22.stats_modifiers = nil
 				self.enfieldl22.reload_speed_multiplier = 1.1
@@ -24557,7 +24547,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.b42.stats_modifiers = nil
 				self.b42.panic_suppression_chance = 0.05
@@ -24598,7 +24588,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.axewscope.stats_modifiers = nil
 				self.axewscope.panic_suppression_chance = 0.05
@@ -24643,7 +24633,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.shieldgirl.stats_modifiers = nil
 				self.shieldgirl.timers = deep_clone(self.komodo.timers)
@@ -24690,7 +24680,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.tkpd.armor_piercing_chance = 1
 				self.tkpd.use_vapor_trail = true
@@ -24733,7 +24723,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.hipower.stats_modifiers = nil
 				self.hipower.panic_suppression_chance = 0.05
@@ -24782,7 +24772,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						extra_ammo = 101,
 						total_ammo_mod = 400,
 						value = 1,
-						reload = 20
+						reload = 25
 					}
 					self.x_hipower.stats_modifiers = nil
 					self.x_hipower.panic_suppression_chance = 0.05
@@ -24833,7 +24823,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.xmassg.stats_modifiers = nil
 				self.xmassg.reload_speed_multiplier = 1.12
@@ -24877,7 +24867,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.bootl1911.stats_modifiers = nil
 				self.bootl1911.panic_suppression_chance = 0.05
@@ -24925,7 +24915,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						extra_ammo = 101,
 						total_ammo_mod = 400,
 						value = 1,
-						reload = 20
+						reload = 25
 					}
 					self.x_bootl1911.stats_modifiers = nil
 					self.x_bootl1911.panic_suppression_chance = 0.05
@@ -24963,7 +24953,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.fnp45.stats_modifiers = nil
 				self.fnp45.reload_speed_multiplier = 1.05
@@ -25011,7 +25001,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.nightgoddess.stats_modifiers = nil
 				self.nightgoddess.panic_suppression_chance = 0.05
@@ -25071,7 +25061,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.scotia.stats_modifiers = nil
 				self.scotia.lock_slide = true
@@ -25117,7 +25107,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.baltic.stats_modifiers = nil
 				self.baltic.fire_mode_data.volley.spread_mul = 1
@@ -25174,7 +25164,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.c8sfw.stats_modifiers = nil
 				self.c8sfw.has_underbarrel = true
@@ -25217,7 +25207,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						extra_ammo = 101,
 						total_ammo_mod = 400,
 						value = 1,
-						reload = 20
+						reload = 25
 					}
 					self.c8sfw_underbarrel.stats_modifiers = nil
 					self.c8sfw_underbarrel.panic_suppression_chance = 0.05
@@ -25283,7 +25273,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.g11k2.stats_modifiers = nil
 				self.g11k2.panic_suppression_chance = 0.05
@@ -25336,7 +25326,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.ak15.stats_modifiers = nil
 				self.ak15.panic_suppression_chance = 0.05
@@ -25359,8 +25349,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.howa_type89.BURST_FIRE = {
 					count = 3,
 					delay = 0.18,
-					recoil_mult = 0.8,
-					last_recoil_mult = 1.05
+					recoil_mult = 0.65,
+					last_recoil_mult = 1.02
 				}
 				self.howa_type89.FIRE_MODE = "auto"
 				self.howa_type89.kick = {}
@@ -25391,7 +25381,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.howa_type89.stats_modifiers = nil
 				self.howa_type89.panic_suppression_chance = 0.05
@@ -25438,7 +25428,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.howa_type20.stats_modifiers = nil
 				self.howa_type20.panic_suppression_chance = 0.05
@@ -25497,7 +25487,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.peppermill.stats_modifiers = nil
 				self.peppermill.spin_up_anims = true
@@ -25548,7 +25538,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.morita.stats_modifiers = nil
 				self.morita.panic_suppression_chance = 0.05
@@ -25595,7 +25585,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.mas38.stats_modifiers = nil
 				self.mas38.panic_suppression_chance = 0.05
@@ -25644,7 +25634,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.tribune32.stats_modifiers = nil
 				self.tribune32.panic_suppression_chance = 0.05
@@ -25687,7 +25677,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.x_tribune32.stats_modifiers = nil
 				self.x_tribune32.panic_suppression_chance = 0.05
@@ -25745,7 +25735,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.scp_mg36.stats_modifiers = nil
 				self.scp_mg36.panic_suppression_chance = 0.05
@@ -25799,7 +25789,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.thorhammer.stats_modifiers = nil
 				self.thorhammer.sounds.use_fix = nil
@@ -25840,7 +25830,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.stampede_ecs.stats_modifiers = nil
 				self.stampede_ecs.panic_suppression_chance = 0.05
@@ -25886,7 +25876,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.l403a1.stats_modifiers = nil
 				self.l403a1.panic_suppression_chance = 0.05
@@ -25934,7 +25924,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.l119a2.stats_modifiers = nil
 				self.l119a2.panic_suppression_chance = 0.05
@@ -25989,7 +25979,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.mptango41.armor_piercing_chance = 1
 				self.mptango41.reload_speed_multiplier = 0.85
@@ -26049,7 +26039,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.madsen_lar.stats_modifiers = nil
 				self.madsen_lar.can_shoot_through_enemy = true
@@ -26100,7 +26090,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.tti_2011.reload_speed_multiplier = 1.25
 				self.tti_2011.keep_ammo = 1
@@ -26149,7 +26139,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.tti_viper.reload_speed_multiplier = 1
 				self.tti_viper.keep_ammo = 1
@@ -26199,7 +26189,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.papa320.reload_speed_multiplier = 1.3
 				self.papa320.keep_ammo = 1
@@ -26253,7 +26243,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.x_papa320.stats_modifiers = nil
 				self.x_papa320.panic_suppression_chance = 0.05
@@ -26294,7 +26284,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.m6d.stats_modifiers = nil
 				self.m6d.panic_suppression_chance = 0.05
@@ -26339,7 +26329,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.m7caseless.stats_modifiers = nil
 				self.m7caseless.timers.reload_exit_not_empty = 0.55
@@ -26383,7 +26373,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.x_m7caseless.stats_modifiers = nil
 				self.x_m7caseless.weapon_hold = "x_akmsu"
@@ -26452,7 +26442,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.alpha57_prim.stats_modifiers = nil
 				self.alpha57_prim.panic_suppression_chance = 0.05
@@ -26510,7 +26500,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.stango44.stats_modifiers = nil
 				self.stango44.panic_suppression_chance = 0.05
@@ -26560,7 +26550,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.acr_2012.stats_modifiers = nil
 				self.acr_2012.panic_suppression_chance = 0.05
@@ -26615,7 +26605,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.nova4.stats_modifiers = nil
 				self.nova4.panic_suppression_chance = 0.05
@@ -26667,7 +26657,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				--self.m4_usasoc.speen = true
 				self.m4_usasoc.stats_modifiers = nil
@@ -26718,7 +26708,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.pd3_qbz191.stats_modifiers = nil
 				self.pd3_qbz191.armor_piercing_chance = 0.25
@@ -26768,7 +26758,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.lc10.stats_modifiers = nil
 				self.lc10.keep_ammo = 1
@@ -26832,7 +26822,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.ksp45.stats_modifiers = nil
 				self.ksp45.panic_suppression_chance = 0.05
@@ -26879,7 +26869,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.t9british.stats_modifiers = nil
 				self.t9british.keep_ammo = 1
@@ -26944,7 +26934,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.t9fastburst.stats_modifiers = nil
 				self.t9fastburst.is_bullpup = true
@@ -26994,7 +26984,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.stoner63a.stats_modifiers = nil
 				self.stoner63a.panic_suppression_chance = 0.05
@@ -27041,7 +27031,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.stoner63a_rifle.stats_modifiers = nil
 				self.stoner63a_rifle.panic_suppression_chance = 0.05
@@ -27087,7 +27077,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.bf2042_ayylmao.stats_modifiers = nil
 				self.bf2042_ayylmao.panic_suppression_chance = 0.05
@@ -27148,7 +27138,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.rc_auto9.stats_modifiers = nil
 				self.rc_auto9.muzzleflash = "effects/payday2/particles/weapons/308_muzzle"
@@ -27196,7 +27186,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.malorian_3516.stats_modifiers = nil
 				self.malorian_3516.fire_melee_damage = 3
@@ -27215,7 +27205,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.malorian_3516.sounds.magazine_empty = nil
 				self.malorian_3516.sounds.stop_fire = "saiga_npc1a_end"
 				self.malorian_3516.shell_ejection = "_dmc/effects/shell_shak_smol"
-				self.malorian_3516.swap_speed_multiplier = 0.65
+				self.malorian_3516.swap_speed_multiplier = 0.7
 				self.malorian_3516.use_unequip_swap = true
 			end
 
@@ -27260,7 +27250,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.cp2077_guts.stats_modifiers = nil
 				self.cp2077_guts.reload_speed_multiplier = 0.95
@@ -27312,7 +27302,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.tti_dracarys.stats_modifiers = nil
 				self.tti_dracarys.keep_ammo = 1
@@ -27357,7 +27347,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.swhiskey.stats_modifiers = nil
 				self.swhiskey.panic_suppression_chance = 0.05
@@ -27419,7 +27409,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.sbeta.stats_modifiers = nil
 				self.sbeta.panic_suppression_chance = 0.05
@@ -27466,7 +27456,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.malima.stats_modifiers = nil
 				self.malima.reload_speed_multiplier = 0.77
@@ -27519,7 +27509,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.hk_g56.stats_modifiers = nil
 				self.hk_g56.panic_suppression_chance = 0.05
@@ -27562,7 +27552,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.geasy9.stats = {
 					damage = 24,
 					spread = 65,
-					recoil = 73,
+					recoil = 75,
 					spread_moving = 6,
 					zoom = 1,
 					concealment = 28,
@@ -27571,11 +27561,11 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.geasy9.stats_modifiers = nil
 				self.geasy9.panic_suppression_chance = 0.05
-				self.geasy9.reload_speed_multiplier = 1.4
+				self.geasy9.reload_speed_multiplier = 1.52
 				self.geasy9.timers.reload_empty = 3
 				self.geasy9.timers.reload_exit_empty = 1.33
 				self.geasy9.timers.reload_not_empty = 2.22
@@ -27621,12 +27611,13 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.uncle12.stats_modifiers = nil
 				self.uncle12.sounds.use_fix = nil
 				self.uncle12.sounds.stop_fire = "saiga_stop"
 				self.uncle12.panic_suppression_chance = 0.05
+				self.uncle12.reload_speed_multiplier = 0.9
 				self.uncle12.timers.reload_empty = 2.23
 				self.uncle12.timers.reload_exit_empty = 0.71
 				self.uncle12.timers.reload_not_empty = 1.6
@@ -27671,7 +27662,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.coslo723.stats_modifiers = nil
 				self.coslo723.panic_suppression_chance = 0.05
@@ -27731,7 +27722,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.rmary2.armor_piercing_chance = 0.75
 				self.rmary2.can_shoot_through_enemy = true
@@ -27791,7 +27782,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.pkilo.stats_modifiers = nil
 				self.pkilo.sounds.stop_fire = "scar_stop"
@@ -27847,7 +27838,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.msecho.stats_modifiers = nil
 				self.msecho.reload_speed_multiplier = 1.22
@@ -27909,7 +27900,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.mike4_2022.stats_modifiers = nil
 				self.mike4_2022.reload_speed_multiplier = 1.36
@@ -27958,7 +27949,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.xmike2010.armor_piercing_chance = 1
 				self.xmike2010.stats_modifiers = nil
@@ -27996,7 +27987,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						extra_ammo = 101,
 						total_ammo_mod = 400,
 						value = 1,
-						reload = 20
+						reload = 25
 					}
 					self.akilo_2022.stats_modifiers = nil
 					self.akilo_2022.reload_speed_multiplier = 1.45
@@ -28044,7 +28035,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						extra_ammo = 101,
 						total_ammo_mod = 400,
 						value = 1,
-						reload = 20
+						reload = 25
 					}
 					self.akilo105_2022.stats_modifiers = nil
 					self.akilo105_2022.reload_speed_multiplier = 1.72
@@ -28078,7 +28069,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					suppression = 20,
 					extra_ammo = 101,
 					total_ammo_mod = 400,
-					reload = 20,
+					reload = 25,
 					value = 6
 				}
 				self.mcbravo.kick = self.stat_info.kick_tables.moderate_kick
@@ -28139,7 +28130,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.mcx_spear.stats_modifiers = nil
 				self.mcx_spear.panic_suppression_chance = 0.05
@@ -28198,7 +28189,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.sig_xm250.stats_modifiers = nil
 				self.sig_xm250.panic_suppression_chance = 0.05
@@ -28258,7 +28249,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.ngsierra.stats_modifiers = nil
 				self.ngsierra.panic_suppression_chance = 0.05
@@ -28321,7 +28312,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.vecho.stats_modifiers = nil
 				self.vecho.sounds.use_fix = nil
@@ -28376,7 +28367,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.bromeo805.stats_modifiers = nil
 				self.bromeo805.panic_suppression_chance = 0.05
@@ -28434,7 +28425,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.bromeo2m.stats_modifiers = nil
 				self.bromeo2m.panic_suppression_chance = 0.05
@@ -28490,7 +28481,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.bromeo2.stats_modifiers = nil
 				self.bromeo2.panic_suppression_chance = 0.05
@@ -28552,7 +28543,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.bromeop.stats_modifiers = nil
 				self.bromeop.panic_suppression_chance = 0.05
@@ -28608,7 +28599,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.doot_eternal_shotgun.stats_modifiers = nil
 				self.doot_eternal_shotgun.panic_suppression_chance = 0.05
@@ -28669,7 +28660,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.bolter_40k.stats_modifiers = nil
 				self.bolter_40k.armor_piercing_chance = 1
@@ -28729,7 +28720,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.owd_m1a.stats_modifiers = nil
 				self.owd_m1a.panic_suppression_chance = 0.05
@@ -28790,7 +28781,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.ma40.stats_modifiers = nil
 				self.ma40.panic_suppression_chance = 0.05
@@ -28844,7 +28835,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.vk78_commando.stats_modifiers = nil
 				self.vk78_commando.panic_suppression_chance = 0.05
@@ -28893,7 +28884,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.srs99_s7.use_vapor_trail = true
 				self.srs99_s7.armor_piercing_chance = 1
@@ -28947,7 +28938,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.br55.armor_piercing_chance = 0.25
 				self.br55.stats_modifiers = nil
@@ -29000,7 +28991,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.pd3_lynx.use_vapor_trail = true
 				self.pd3_lynx.armor_piercing_chance = 1
@@ -29058,7 +29049,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.raid_ww2_bren.stats_modifiers = nil
 				self.raid_ww2_bren.panic_suppression_chance = 0.05
@@ -29119,7 +29110,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.tkb0146.stats_modifiers = nil
 				self.tkb0146.panic_suppression_chance = 0.05
@@ -29168,7 +29159,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.zip22.stats_modifiers = nil
 				self.zip22.panic_suppression_chance = 0.05
@@ -29220,7 +29211,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.madsen_mg.stats_modifiers = nil
 				self.madsen_mg.panic_suppression_chance = 0.05
@@ -29273,7 +29264,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.m416d.stats_modifiers = nil
 				self.m416d.panic_suppression_chance = 0.05
@@ -29322,7 +29313,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.korth_prs.stats_modifiers = nil
 				self.korth_prs.panic_suppression_chance = 0.05
@@ -29359,7 +29350,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.sako_85.stats_modifiers = nil
 				self.sako_85.reload_speed_multiplier = 1.25
@@ -29393,7 +29384,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.lsw.CLIP_AMMO_MAX = 50
 				self.lsw.AMMO_MAX = 0
 				self.lsw.FIRE_MODE = "auto"
-				self.lsw.fire_mode_data.fire_rate = 0.1
+				self.lsw.fire_mode_data.fire_rate = 0.0923076
 				self.lsw.CAN_TOGGLE_FIREMODE = true
 				self.lsw.BURST_FIRE = false
 				self.lsw.kick = {}
@@ -29401,14 +29392,15 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.lsw .kick_pattern = {
 					{0, self.stat_info.kick_tables.random_recoil},
 					{9, self.stat_info.kick_tables.left_recoil},
-					{13, self.stat_info.kick_tables.horizontal_recoil},
-					{18, self.stat_info.kick_tables.moderate_right_kick},
-					{27, self.stat_info.kick_tables.right_recoil}
+					{15, self.stat_info.kick_tables.horizontal_recoil},
+					{19, self.stat_info.kick_tables.moderate_right_kick},
+					{27, self.stat_info.kick_tables.right_recoil},
+					{35, self.stat_info.kick_tables.left_recoil}
 				}
 				self.lsw.muzzleflash = "_dmc/effects/heavy_muzzle"
 				self.lsw.muzzleflash_silenced = "_dmc/effects/heavy_suppressed"
 				self.lsw.supported = true
-				self.lsw.ads_speed = 0.420
+				self.lsw.ads_speed = 0.460
 				self.lsw.damage_falloff = {
 					start_dist = 2100,
 					end_dist = 6800,
@@ -29420,13 +29412,13 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					recoil = 71,
 					spread_moving = 5,
 					zoom = 1,
-					concealment = 17,
+					concealment = 15,
 					suppression = 7,
 					alert_size = 2,
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.lsw.stats_modifiers = nil
 				self.lsw.panic_suppression_chance = 0.05
@@ -29452,8 +29444,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.s556.BURST_FIRE = {
 					count = 3,
 					delay = 0.18,
-					recoil_mult = 0.8,
-					last_recoil_mult = 1.05,
+					recoil_mult = 0.7,
+					last_recoil_mult = 1.02,
 					rof_mult = 1.9375,
 					burst_default = true
 				}
@@ -29485,7 +29477,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.s556.panic_suppression_chance = 0.05
 				self.s556.stats_modifiers = nil
@@ -29531,7 +29523,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.ar47.panic_suppression_chance = 0.05
 				self.ar47.stats_modifiers = nil
@@ -29584,7 +29576,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.omni.panic_suppression_chance = 0.05
 				self.omni.stats_modifiers = nil
@@ -29637,7 +29629,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.dd5.stats_modifiers = nil
 				self.dd5.can_shoot_through_enemy = false
@@ -29696,7 +29688,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.sierra458.stats_modifiers = nil
 				self.sierra458.sms = sms_preset.semi_snp_light
@@ -29750,7 +29742,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.czshadow.stats_modifiers = nil
 				self.czshadow.panic_suppression_chance = 0.05
@@ -29796,7 +29788,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						extra_ammo = 101,
 						total_ammo_mod = 400,
 						value = 1,
-						reload = 20
+						reload = 25
 					}
 					self.x_czshadow.stats_modifiers = nil
 					self.x_czshadow.panic_suppression_chance = 0.05
@@ -29819,7 +29811,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					{14, self.stat_info.kick_tables.even_recoil}
 				}
 				self.polar9.supported = true
-				self.polar9.ads_speed = 0.160
+				self.polar9.ads_speed = 0.140
 				self.polar9.damage_falloff = {
 					start_dist = 1500,
 					end_dist = 2700,
@@ -29831,17 +29823,17 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					recoil = 79,
 					spread_moving = 9,
 					zoom = 1,
-					concealment = 29,
+					concealment = 30,
 					suppression = 12,
 					alert_size = 2,
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.polar9.stats_modifiers = nil
 				self.polar9.panic_suppression_chance = 0.05
-				self.polar9.timers = deep_clone(self.b92fs.timers)
+				self.polar9.timers = deep_clone(self.colt_1911.timers)
 				--Akimbo
 					self.x_polar9.recategorize = { "light_pis" }
 					self.x_polar9.damage_type = "pistol"
@@ -29865,7 +29857,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						{14, self.stat_info.kick_tables.even_recoil}
 					}
 					self.x_polar9.supported = true
-					self.x_polar9.ads_speed = 0.160
+					self.x_polar9.ads_speed = 0.140
 					self.x_polar9.damage_falloff = {
 						start_dist = 1500,
 						end_dist = 2700,
@@ -29877,13 +29869,13 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						recoil = 69,
 						spread_moving = 9,
 						zoom = 1,
-						concealment = 29,
+						concealment = 30,
 						suppression = 12,
 						alert_size = 2,
 						extra_ammo = 101,
 						total_ammo_mod = 400,
 						value = 1,
-						reload = 20
+						reload = 25
 					}
 					self.x_polar9.stats_modifiers = nil
 					self.x_polar9.panic_suppression_chance = 0.05
@@ -29892,12 +29884,13 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.baller.desc_id = "bm_baller_sc_desc"
 				self.baller.recategorize = { "heavy_pis" }
 				self.baller.damage_type = "heavy_pistol"
+				self.baller.lock_slide = true
 				self.baller.fire_mode_data.fire_rate = 0.1263157894
 				self.baller.CLIP_AMMO_MAX = 8
 				self.baller.AMMO_MAX = 40
 				self.baller.kick = self.stat_info.kick_tables.right_recoil
 				self.baller.kick_pattern = {
-					{0, self.stat_info.kick_tables.vertical_kick},
+					{0, self.stat_info.kick_tables.even_recoil},
 					{3, self.stat_info.kick_tables.right_kick},
 					{6, self.stat_info.kick_tables.right_recoil}
 				}
@@ -29914,8 +29907,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				}
 				self.baller.stats = {
 					damage = 45,
-					spread = 58,
-					recoil = 73,
+					spread = 61,
+					recoil = 69,
 					spread_moving = 5,
 					zoom = 1,
 					concealment = 27,
@@ -29924,13 +29917,12 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.baller.stats_modifiers = nil
-				self.baller.reload_speed_multiplier = 1.05
+				self.baller.reload_speed_multiplier = 1.02
 				self.baller.panic_suppression_chance = 0.05
-				self.baller.timers.reload_exit_empty = 0.5
-				self.baller.timers.reload_exit_not_empty = 0.65
+				self.baller.timers = deep_clone(self.colt_1911.timers)
 			end
 
 			if self.sg45 then
@@ -29965,7 +29957,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.sg45.stats_modifiers = nil
 				self.sg45.reload_speed_multiplier = 1.05
@@ -30011,7 +30003,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						extra_ammo = 101,
 						total_ammo_mod = 400,
 						value = 1,
-						reload = 20
+						reload = 25
 					}
 					self.x_sg45.stats_modifiers = nil
 					self.x_sg45.panic_suppression_chance = 0.05
@@ -30057,7 +30049,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.sa1.stats_modifiers = nil
 				self.sa1.panic_suppression_chance = 0.05
@@ -30106,7 +30098,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.c96carbine.stats_modifiers = nil
 				self.c96carbine.panic_suppression_chance = 0.05
@@ -30150,7 +30142,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.mk22_pistol.stats_modifiers = nil
 				self.mk22_pistol.panic_suppression_chance = 0.05
@@ -30202,7 +30194,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.vsk_94.stats_modifiers = nil
 				self.vsk_94.panic_suppression_chance = 0.05
@@ -30245,7 +30237,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.ak19.stats_modifiers = nil
 				self.ak19.panic_suppression_chance = 0.05
@@ -30296,7 +30288,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.m1918.stats_modifiers = nil
 				self.m1918.panic_suppression_chance = 0.05
@@ -30352,7 +30344,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.modl.stats_modifiers = nil
 				self.modl.timers.reload_not_empty = 2.5
@@ -30405,7 +30397,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.grayhound.stats_modifiers = nil
 				self.grayhound.panic_suppression_chance = 0.05
@@ -30449,7 +30441,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.r31.stats_modifiers = nil
 				self.r31.panic_suppression_chance = 0.05
@@ -30501,7 +30493,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.riveter.panic_suppression_chance = 0.05
 				self.riveter.stats_modifiers = nil
@@ -30557,7 +30549,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.soa.stats_modifiers = nil
 				self.soa.armor_piercing_chance = 0.25
@@ -30604,7 +30596,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.toz81.stats_modifiers = nil
 				self.toz81.panic_suppression_chance = 0.05
@@ -30657,7 +30649,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.x_toz81.stats_modifiers = nil
 				self.x_toz81.panic_suppression_chance = 0.05
@@ -30704,7 +30696,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.fsa12.stats_modifiers = nil
 				self.fsa12.panic_suppression_chance = 0.05
@@ -30767,7 +30759,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.bp12.stats_modifiers = nil
 				self.bp12.panic_suppression_chance = 0.05
@@ -30819,7 +30811,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.or12.stats_modifiers = nil
 				self.or12.lock_slide = true
@@ -30872,7 +30864,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.bk500.stats_modifiers = nil
 				self.bk500.panic_suppression_chance = 0.05
@@ -30930,7 +30922,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.haymaker.stats_modifiers = nil
 				self.haymaker.sounds.use_fix = nil
@@ -30978,7 +30970,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.ntw20.armor_piercing_chance = 1
 				self.ntw20.use_vapor_trail = true
@@ -31020,7 +31012,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 4,
-					reload = 20
+					reload = 25
 				}
 				self.fik22.stats_modifiers = nil
 				self.fik22.panic_suppression_chance = 0.05
@@ -31060,7 +31052,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 4,
-					reload = 20
+					reload = 25
 				}
 				self.ar2.stats_modifiers = nil
 				self.ar2.panic_suppression_chance = 0.05
@@ -31128,7 +31120,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.mx63.stats_modifiers = nil
 				self.mx63.panic_suppression_chance = 0.05
@@ -31176,7 +31168,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 4,
-					reload = 20
+					reload = 25
 				}
 				self.g7.stats_modifiers = nil
 				self.g7.panic_suppression_chance = 0.05
@@ -31224,7 +31216,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 4,
-					reload = 20
+					reload = 25
 				}
 				self.coyote.stats_modifiers = nil
 				self.coyote.panic_suppression_chance = 0.05
@@ -31280,7 +31272,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 4,
-					reload = 20
+					reload = 25
 				}
 				self.ar23.stats_modifiers = nil
 				self.ar23.is_bullpup = true
@@ -31329,7 +31321,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 4,
-					reload = 20
+					reload = 25
 				}
 				self.sta52.is_bullpup = true
 				self.sta52.stats_modifiers = nil
@@ -31382,7 +31374,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 4,
-					reload = 20
+					reload = 25
 				}
 				self.ar32.stats_modifiers = nil
 				self.ar32.panic_suppression_chance = 0.05
@@ -31434,7 +31426,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 4,
-					reload = 20
+					reload = 25
 				}
 				self.r2.stats_modifiers = nil
 				self.r2.panic_suppression_chance = 0.05
@@ -31485,7 +31477,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 4,
-					reload = 20
+					reload = 25
 				}
 				self.br14.stats_modifiers = nil
 				self.br14.panic_suppression_chance = 0.05
@@ -31539,7 +31531,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 4,
-					reload = 20
+					reload = 25
 				}
 				self.reprimand.stats_modifiers = nil
 				self.reprimand.sounds.use_fix = nil
@@ -31590,7 +31582,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 4,
-					reload = 20
+					reload = 25
 				}
 				self.sta11.stats_modifiers = nil
 				self.sta11.sounds.use_fix = nil
@@ -31637,7 +31629,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 4,
-					reload = 20
+					reload = 25
 				}
 				self.sickle.stats_modifiers = nil
 				self.sickle.panic_suppression_chance = 0.05
@@ -31713,7 +31705,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.r6.stats_modifiers = nil
 				self.r6.panic_suppression_chance = 0.05
@@ -31769,7 +31761,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 4,
-					reload = 20
+					reload = 25
 				}
 				self.bulldog.stats_modifiers = nil
 				self.bulldog.panic_suppression_chance = 0.05
@@ -31812,7 +31804,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 4,
-					reload = 20
+					reload = 25
 				}
 				self.holoar.stats_modifiers = nil
 				self.holoar.panic_suppression_chance = 0.05
@@ -31861,7 +31853,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.curve.weapon_movement_penalty = 1.08
 				self.curve.stats_modifiers = nil
@@ -31913,7 +31905,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.qbz95.stats_modifiers = nil
 				self.qbz95.armor_piercing_chance = 0.25
@@ -31957,7 +31949,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.pm.stats_modifiers = nil
 				self.pm.panic_suppression_chance = 0.05
@@ -32008,7 +32000,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						extra_ammo = 101,
 						total_ammo_mod = 400,
 						value = 1,
-						reload = 20
+						reload = 25
 					}
 					self.x_pm.stats_modifiers = nil
 					self.x_pm.panic_suppression_chance = 0.05
@@ -32046,7 +32038,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.f500.kick = self.stat_info.kick_tables.moderate_kick
 				self.f500.muzzleflash = "effects/payday2/particles/weapons/big_51b_auto_fps" --"effects/particles/shotgun/shotgun_gen"
@@ -32089,7 +32081,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.toz194.kick = self.stat_info.kick_tables.moderate_kick
 				self.toz194.muzzleflash = "effects/payday2/particles/weapons/big_51b_auto_fps" --"effects/particles/shotgun/shotgun_gen"
@@ -32135,7 +32127,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.mossberg590.stats_modifiers = {damage = 1}
 				self.mossberg590.panic_suppression_chance = 0.05
@@ -32176,7 +32168,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					suppression = 8,
 					extra_ammo = 101,
 					total_ammo_mod = 400,
-					reload = 20,
+					reload = 25,
 					value = 7
 				}
 				self.qbs.stats_modifiers = {damage = 1}
@@ -32221,7 +32213,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.welrod.stats_modifiers = nil
 				self.welrod.panic_suppression_chance = 0.05
@@ -32266,7 +32258,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.spectre_m4.stats_modifiers = nil
 				self.spectre_m4.panic_suppression_chance = 0.05
@@ -32307,7 +32299,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.x_spectre_m4.stats_modifiers = nil
 				self.x_spectre_m4.panic_suppression_chance = 0.05
@@ -32354,7 +32346,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.m3.stats_modifiers = nil
 				self.m3.panic_suppression_chance = 0.05
@@ -32397,7 +32389,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.x_m3.stats_modifiers = nil
 				self.x_m3.panic_suppression_chance = 0.05
@@ -32445,7 +32437,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.candy.stats_modifiers = {damage = 1}
 				self.candy.panic_suppression_chance = 0.05
@@ -32482,7 +32474,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.nothing.stats_modifiers = nil
 				self.nothing.swap_speed_multiplier = 2
@@ -32524,7 +32516,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.nothing2.stats_modifiers = nil
 				self.nothing2.swap_speed_multiplier = 2
@@ -32581,7 +32573,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.mg34.stats_modifiers = nil
 				self.mg34.panic_suppression_chance = 0.05
@@ -32631,7 +32623,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.sasha.stats_modifiers = nil
 				self.sasha.keep_ammo = 1
@@ -32687,7 +32679,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.tf2_revolver.stats_modifiers = nil
 				self.tf2_revolver.panic_suppression_chance = 0.05
@@ -32744,7 +32736,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.owlfbullpup.stats_modifiers = nil
 				self.owlfbullpup.armor_piercing_chance = 0.25
@@ -32793,7 +32785,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.plasmaproto.stats_modifiers = nil
 				self.plasmaproto.panic_suppression_chance = 0.05
@@ -32829,7 +32821,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.hhpc.stats_modifiers = nil
 				self.hhpc.armor_piercing_chance = 1
@@ -32871,7 +32863,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.predator_spear_crossbow.timers.reload_not_empty = 1.55
 				self.predator_spear_crossbow.timers.reload_empty = 1.55
@@ -32925,7 +32917,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.type99inc.flame_max_range = 1200
 				self.type99inc.stats_modifiers = nil
@@ -32981,7 +32973,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 9,
-					reload = 20
+					reload = 25
 				}
 				self.xm214a.stats_modifiers = nil
 				self.xm214a.ads_spool = true
@@ -33033,7 +33025,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				suppression = 6,
 				extra_ammo = 101,
 				total_ammo_mod = 400,
-				reload = 20,
+				reload = 25,
 				value = 10
 			}
 			self.sidewinder.panic_suppression_chance = 0.05
@@ -33081,7 +33073,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				extra_ammo = 101,
 				total_ammo_mod = 400,
 				value = 9,
-				reload = 20
+				reload = 25
 			}
 			self.fyjs.stats_modifiers = nil
 			self.fyjs.panic_suppression_chance = 0.05
@@ -33130,7 +33122,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				extra_ammo = 101,
 				total_ammo_mod = 400,
 				value = 1,
-				reload = 20
+				reload = 25
 			}
 			self.amt.stats_modifiers = nil
 			self.amt.panic_suppression_chance = 0.05
@@ -33186,7 +33178,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				extra_ammo = 101,
 				total_ammo_mod = 400,
 				value = 9,
-				reload = 20
+				reload = 25
 			}
 			self.xr2.stats_modifiers = nil
 			self.xr2.armor_piercing_chance = 0.25
@@ -33269,7 +33261,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				extra_ammo = 101,
 				total_ammo_mod = 400,
 				value = 9,
-				reload = 20
+				reload = 25
 			}
 			self.crysis3_typhoon.recoil_values = {
 				{ 80, 60 },
@@ -33345,7 +33337,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				extra_ammo = 101,
 				total_ammo_mod = 400,
 				value = 9,
-				reload = 20
+				reload = 25
 			}
 			self.iuhTTIPlus.armor_piercing_chance = 1
 			self.iuhTTIPlus.stats_modifiers = nil
@@ -33399,7 +33391,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				extra_ammo = 101,
 				total_ammo_mod = 400,
 				value = 9,
-				reload = 20
+				reload = 25
 			}
 			self.rsass.armor_piercing_chance = 1
 			self.rsass.stats_modifiers = nil
@@ -33450,7 +33442,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				extra_ammo = 101,
 				total_ammo_mod = 400,
 				value = 1,
-				reload = 20
+				reload = 25
 			}
 			self.bren2.stats_modifiers = nil
 			self.bren2.panic_suppression_chance = 0.05
@@ -33494,7 +33486,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				extra_ammo = 101,
 				total_ammo_mod = 400,
 				value = 1,
-				reload = 20
+				reload = 25
 			}
 			self.pdw.stats_modifiers = nil
 			self.pdw.panic_suppression_chance = 0.05
@@ -33540,7 +33532,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				extra_ammo = 101,
 				total_ammo_mod = 400,
 				value = 1,
-				reload = 20
+				reload = 25
 			}
 			self.iso.stats_modifiers = nil
 			self.iso.panic_suppression_chance = 0.05
@@ -33586,7 +33578,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				extra_ammo = 101,
 				total_ammo_mod = 400,
 				value = 9,
-				reload = 20
+				reload = 25
 			}
 			self.fg42.stats_modifiers = nil
 			self.fg42.panic_suppression_chance = 0.05
@@ -33642,7 +33634,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				extra_ammo = 101,
 				total_ammo_mod = 400,
 				value = 1,
-				reload = 20
+				reload = 25
 			}
 			self.littlest.stats_modifiers = nil
 			self.littlest.timers = deep_clone(self.huntsman.timers)
@@ -33691,7 +33683,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				extra_ammo = 101,
 				total_ammo_mod = 400,
 				value = 1,
-				reload = 20
+				reload = 25
 			}
 			self.pb.stats_modifiers = nil
 			self.pb.panic_suppression_chance = 0.05
@@ -33737,7 +33729,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				extra_ammo = 101,
 				total_ammo_mod = 400,
 				value = 1,
-				reload = 20
+				reload = 25
 			}
 			self.hshdm.stats_modifiers = nil
 			self.hshdm.panic_suppression_chance = 0.05
@@ -33787,7 +33779,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.x_hshdm.stats_modifiers = nil
 				self.x_hshdm.panic_suppression_chance = 0.05
@@ -33829,7 +33821,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				extra_ammo = 101,
 				total_ammo_mod = 400,
 				value = 9,
-				reload = 20
+				reload = 25
 			}
 			self.kar98k.stats_modifiers = nil
 			self.kar98k.descope_on_fire = true
@@ -33874,7 +33866,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				extra_ammo = 101,
 				total_ammo_mod = 400,
 				value = 1,
-				reload = 20
+				reload = 25
 			}
 			self.degle.stats_modifiers = nil
 			self.degle.panic_suppression_chance = 0.05
@@ -33919,7 +33911,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				extra_ammo = 101,
 				total_ammo_mod = 400,
 				value = 9,
-				reload = 20
+				reload = 25
 			}
 			self.enfield_no5i.stats_modifiers = nil
 			self.enfield_no5i.panic_suppression_chance = 0.05
@@ -33964,7 +33956,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				extra_ammo = 101,
 				total_ammo_mod = 400,
 				value = 1,
-				reload = 20
+				reload = 25
 			}
 			self.mp443.stats_modifiers = nil
 			self.mp443.panic_suppression_chance = 0.05
@@ -34019,7 +34011,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				extra_ammo = 101,
 				total_ammo_mod = 400,
 				value = 1,
-				reload = 20
+				reload = 25
 			}
 			self.af2011.stats_modifiers = nil
 			self.af2011.panic_suppression_chance = 0.05
@@ -34062,7 +34054,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				extra_ammo = 101,
 				total_ammo_mod = 400,
 				value = 1,
-				reload = 20
+				reload = 25
 			}
 			self.cz75b.stats_modifiers = nil
 			self.cz75b.panic_suppression_chance = 0.05
@@ -34108,7 +34100,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.x_cz75b.stats_modifiers = nil
 				self.x_cz75b.panic_suppression_chance = 0.05
@@ -34158,7 +34150,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				extra_ammo = 101,
 				total_ammo_mod = 400,
 				value = 1,
-				reload = 20
+				reload = 25
 			}
 			self.dp12.stats_modifiers = nil
 			self.dp12.panic_suppression_chance = 0.05
@@ -34198,7 +34190,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				extra_ammo = 101,
 				total_ammo_mod = 400,
 				value = 4,
-				reload = 20
+				reload = 25
 			}
 			self.chinesium.stats_modifiers = nil
 			self.chinesium.reload_speed_multiplier = 1.05
@@ -34242,7 +34234,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				extra_ammo = 101,
 				total_ammo_mod = 400,
 				value = 9,
-				reload = 20
+				reload = 25
 			}
 			self.abzats.stats_modifiers = nil
 			self.abzats.panic_suppression_chance = 0.05
@@ -34292,7 +34284,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				extra_ammo = 101,
 				total_ammo_mod = 400,
 				value = 9,
-				reload = 20
+				reload = 25
 			}
 			self.ashot.stats_modifiers = nil
 			self.ashot.reload_speed_multiplier = 1.25
@@ -34339,7 +34331,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				extra_ammo = 101,
 				total_ammo_mod = 400,
 				value = 1,
-				reload = 20
+				reload = 25
 			}
 			self.spas15.stats_modifiers = nil
 			self.spas15.panic_suppression_chance = 0.05
@@ -34381,7 +34373,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				extra_ammo = 101,
 				total_ammo_mod = 400,
 				value = 1,
-				reload = 20
+				reload = 25
 			}
 			self.k5.stats_modifiers = nil
 			self.k5.panic_suppression_chance = 0.05
@@ -34431,7 +34423,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				extra_ammo = 101,
 				total_ammo_mod = 400,
 				value = 1,
-				reload = 20
+				reload = 25
 			}
 			self.k2.stats_modifiers = nil
 			self.k2.timers = deep_clone(self.ak5.timers)
@@ -34473,7 +34465,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				extra_ammo = 101,
 				total_ammo_mod = 400,
 				value = 9,
-				reload = 20
+				reload = 25
 			}
 			self.hecate.use_vapor_trail = true
 			self.hecate.fire_mode_data.fire_rate = 1.090909
@@ -34519,7 +34511,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				extra_ammo = 101,
 				total_ammo_mod = 400,
 				value = 1,
-				reload = 20
+				reload = 25
 			}
 			self.sw659.stats_modifiers = nil
 			self.sw659.panic_suppression_chance = 0.05
@@ -34564,7 +34556,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					extra_ammo = 101,
 					total_ammo_mod = 400,
 					value = 1,
-					reload = 20
+					reload = 25
 				}
 				self.x_sw659.stats_modifiers = nil
 				self.x_sw659.panic_suppression_chance = 0.05
@@ -34613,7 +34605,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				extra_ammo = 101,
 				total_ammo_mod = 400,
 				value = 1,
-				reload = 20
+				reload = 25
 			}
 			self.howa.stats_modifiers = nil
 			self.howa.panic_suppression_chance = 0.05
@@ -34661,7 +34653,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				extra_ammo = 101,
 				total_ammo_mod = 400,
 				value = 4,
-				reload = 20
+				reload = 25
 			}
 			self.mdr_308.has_underbarrel = true
 			self.mdr_308.stats_modifiers = nil
@@ -34702,7 +34694,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				extra_ammo = 101,
 				total_ammo_mod = 400,
 				value = 1,
-				reload = 20
+				reload = 25
 			}
 			self.mdr_308_underbarrel.use_stance = "mdr_308"
 			self.mdr_308_underbarrel.is_bullpup = true
@@ -34750,7 +34742,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				extra_ammo = 101,
 				total_ammo_mod = 400,
 				value = 1,
-				reload = 20
+				reload = 25
 			}
 			self.degfifty.stats_modifiers = nil
 			self.degfifty.panic_suppression_chance = 0.05
@@ -34809,7 +34801,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				extra_ammo = 101,
 				total_ammo_mod = 400,
 				value = 9,
-				reload = 20
+				reload = 25
 			}
 			self.glockson.stats_modifiers = nil
 			self.glockson.panic_suppression_chance = 0.05
@@ -34861,7 +34853,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				extra_ammo = 101,
 				total_ammo_mod = 400,
 				value = 1,
-				reload = 20
+				reload = 25
 			}
 			self.x_huntsman.stats_modifiers = nil
 			self.x_huntsman.always_hipfire = true
@@ -34919,7 +34911,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				extra_ammo = 101,
 				total_ammo_mod = 400,
 				value = 1,
-				reload = 20
+				reload = 25
 			}
 			self.x_coach.stats_modifiers = nil
 			self.x_coach.always_hipfire = true
@@ -34964,7 +34956,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				extra_ammo = 101,
 				total_ammo_mod = 400,
 				value = 9,
-				reload = 20
+				reload = 25
 			}
 			self.dl.hs_mult = 2
 			self.dl.stats_modifiers = nil
@@ -35011,7 +35003,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				extra_ammo = 101,
 				total_ammo_mod = 400,
 				value = 1,
-				reload = 20
+				reload = 25
 			}
 			self.p38.stats_modifiers = nil
 			self.p38.panic_suppression_chance = 0.05
@@ -35067,7 +35059,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				extra_ammo = 101,
 				total_ammo_mod = 400,
 				value = 1,
-				reload = 20
+				reload = 25
 			}
 			self.cold.stats_modifiers = nil
 			self.cold.panic_suppression_chance = 0.05
@@ -35880,10 +35872,12 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				--SHOTGUNS
 				elseif table.contains(weap.categories, "shotgun") then
 					if weap.damage_type == "flamethrower" then
-						weap.object_damage_mult = 0.25
+						weap.object_damage_mult = 0.125
 					elseif table.contains(weap.recategorize, "light_shot") then
+						weap.object_damage_mult = 0.25
+					elseif table.contains(weap.recategorize, "heavy_shot") then
 						weap.object_damage_mult = 0.5
-					elseif table.contains(weap.recategorize, "heavy_shot") or table.contains(weap.recategorize, "break_shot") then
+					elseif table.contains(weap.recategorize, "break_shot") then
 						weap.object_damage_mult = 0.75
 					end
 				end
@@ -35955,6 +35949,14 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				end
 
 			end
+			--[[
+			if table.contains(weap.recategorize, "heavy_pis") then
+				if weap.muzzleflash ~= "_dmc/effects/heavy_muzzle" or weap.muzzleflash ~= "_dmc/effects/heavy_muzzle_ring" then
+					--weap.muzzleflash = "_dmc/effects/heavy_muzzle"
+				end
+				weap.muzzleflash_silenced = "_dmc/effects/heavy_suppressed"
+			end
+			--]]
 			if table.contains(weap.recategorize, "handcannon") then
 				table.insert(weap.categories, "handcannon")
 			end

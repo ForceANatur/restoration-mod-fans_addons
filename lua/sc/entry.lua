@@ -359,3 +359,30 @@ if GGWEPNENAME then
 		return data.name_localized
 	end)
 end
+
+--This stuff needs to load late as to override the hooks from their respective mods
+if SKSWeaponBase then
+	function SKSWeaponBase:clbk_assembly_complete(...)
+		SKSWeaponBase.super.clbk_assembly_complete(self, ...)
+		if table.contains(self._blueprint, "wpn_fps_upg_sks_mag_detach10") or table.contains(self._blueprint, "wpn_fps_upg_sks_mag_detach20") then
+			self:weapon_tweak_data().animations.reload_name_id = "sks_mag"
+		else
+			self:weapon_tweak_data().animations.reload_name_id = "sks"
+		end
+	end
+end
+
+if OWLFBullpupWeaponBase then
+	function OWLFBullpupWeaponBase:clbk_assembly_complete(...)
+		OWLFBullpupWeaponBase.super.clbk_assembly_complete(self, ...)
+		if table.contains(self._blueprint, "wpn_fps_upg_owlfbullpup_mag_drum") then
+			self:weapon_tweak_data().animations.reload_name_id = "owlfbullpup_drum"
+		else
+			self:weapon_tweak_data().animations.reload_name_id = "owlfbullpup"
+		--[[
+			self:weapon_tweak_data().timers.reload_empty = 4.8
+			self:weapon_tweak_data().timers.reload_not_empty = 3.0
+		--]]
+		end
+	end
+end

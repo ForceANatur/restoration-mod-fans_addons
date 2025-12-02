@@ -15396,7 +15396,7 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 	elseif Month == "12" and restoration.Options:GetValue("OTHER/Holiday") then
 		self.unit_categories.SKULL_tank.unit_types.america[1] = "units/pd2_dlc_cg22/characters/ene_bulldozer_snowman/ene_bulldozer_snowman"
 		self.unit_categories.SKULL_tank.unit_types.russia[1] = "units/pd2_dlc_cg22/characters/ene_bulldozer_snowman/ene_bulldozer_snowman"
-		self.unit_categories.SKULL_tank.unit_types.zombie[1] = "units/pd2_dlc_cg22/characters/ene_bulldozer_snowman/ene_bulldozer_snowman"
+		self.unit_categories.SKULL_tank.unit_types.zombie[1] = "units/pd2_dlc_hvh/characters/ene_bulldozer_snowman/ene_bulldozer_snowman"
 		self.unit_categories.SKULL_tank.unit_types.murkywater[1] = "units/pd2_dlc_cg22/characters/ene_bulldozer_snowman/ene_bulldozer_snowman"
 		self.unit_categories.SKULL_tank.unit_types.federales[1] = "units/pd2_dlc_cg22/characters/ene_bulldozer_snowman/ene_bulldozer_snowman"
 		self.unit_categories.SKULL_tank.unit_types.nypd[1] = "units/pd2_dlc_cg22/characters/ene_bulldozer_snowman/ene_bulldozer_snowman"
@@ -15414,7 +15414,7 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 				Idstring("units/pd2_dlc_cg22/characters/ene_bulldozer_snowman/ene_bulldozer_snowman")
 			},
 			zombie = {
-				Idstring("units/pd2_dlc_cg22/characters/ene_bulldozer_snowman/ene_bulldozer_snowman")
+				Idstring("units/pd2_dlc_hvh/characters/ene_bulldozer_snowman/ene_bulldozer_snowman")
 			},
 			murkywater = {
 				Idstring("units/pd2_dlc_cg22/characters/ene_bulldozer_snowman/ene_bulldozer_snowman")
@@ -16372,7 +16372,8 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					rank = 1
 				}
 			}
-		}		
+		}
+	--[[
 	elseif difficulty_index == 6 then
 		self.enemy_spawn_groups.CS_tazers = {
 			amount = {3, 4},
@@ -16401,8 +16402,9 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					rank = 1
 				}
 			}
-		}			
-	elseif difficulty_index == 7 then
+		}
+	]]
+	elseif difficulty_index <= 7 then
 		self.enemy_spawn_groups.CS_tazers = {
 			amount = {3, 4},
 			spawn = {
@@ -17562,6 +17564,7 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				}
 			}
 		}
+	--[[
 	elseif difficulty_index == 6 then
 		self.enemy_spawn_groups.GREEN_tanks = {
 			amount = {3, 4},
@@ -17581,8 +17584,9 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					rank = 1
 				}
 			}
-		}	
-	elseif difficulty_index == 7 then
+		}
+	]]
+	elseif difficulty_index <= 7 then
 		self.enemy_spawn_groups.GREEN_tanks = {
 			amount = {3, 4},
 			spawn = {
@@ -17672,6 +17676,7 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				}
 			}
 		}
+	--[[
 	elseif difficulty_index == 6 then
 		self.enemy_spawn_groups.BLACK_tanks = {
 			amount = {3, 4},
@@ -17691,8 +17696,9 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					rank = 1
 				}
 			}
-		}	
-	elseif difficulty_index == 7 then	
+		}
+	]]
+	elseif difficulty_index <= 7 then	
 		self.enemy_spawn_groups.BLACK_tanks = {
 			amount = {3, 4},
 			spawn = {
@@ -17783,6 +17789,7 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				}
 			}
 		}
+	--[[
 	elseif difficulty_index == 6 then	
 		self.enemy_spawn_groups.SKULL_tanks = {
 			amount = {3, 4},
@@ -17803,8 +17810,9 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					rank = 1
 				}
 			}
-		}	
-	elseif difficulty_index == 7 then	
+		}
+	]]
+	elseif difficulty_index <= 7 then	
 		self.enemy_spawn_groups.SKULL_tanks = {
 			amount = {3, 4},
 			spawn = {
@@ -17897,6 +17905,7 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				}
 			}
 		}
+	--[[
 	elseif difficulty_index == 6 then	
 		self.enemy_spawn_groups.TIT_tanks = {
 			amount = {3, 4},
@@ -17917,8 +17926,9 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					rank = 1
 				}
 			}
-		}	
-	elseif difficulty_index == 7 then	
+		}
+	]]
+	elseif difficulty_index <= 7 then
 		self.enemy_spawn_groups.TIT_tanks = {
 			amount = {3, 4},
 			spawn = {
@@ -17977,6 +17987,7 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 	end	
 	
 	--GS/Zeal Light SWATs
+	--[[
 	if difficulty_index <= 6 then	
 		self.enemy_spawn_groups.GS_swats = {
 			amount = {3, 4},
@@ -18020,7 +18031,8 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				}
 			}
 		}
-	elseif difficulty_index == 7 then	
+	]]
+	if difficulty_index <= 7 then	
 		self.enemy_spawn_groups.GS_swats = {
 			amount = {3, 4},
 			spawn = {
@@ -18109,6 +18121,7 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 	end		
 	
 	--GS/Zeal Heavys
+	--[[
 	if difficulty_index <= 6 then	
 		self.enemy_spawn_groups.GS_Heavys = {
 			amount = {3, 4},
@@ -18149,8 +18162,9 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					rank = 1
 				}
 			}
-		}			
-	elseif difficulty_index == 7 then	
+		}
+	]]		
+	if difficulty_index <= 7 then	
 		self.enemy_spawn_groups.GS_Heavys = {
 			amount = {3, 4},
 			spawn = {
@@ -18222,6 +18236,9 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 		}
 	end	
 	--GS Heavies with Grenadier spawns, Mayhem only
+	-- Temporarily set to a clone of GS_Heavys due to Mayhem spawn composition changes
+	self.enemy_spawn_groups.GS_heavys_boom = deep_clone(self.enemy_spawn_groups.GS_Heavys)
+	--[[
 	self.enemy_spawn_groups.GS_heavys_boom = {
 		amount = {3, 4},
 		spawn = {
@@ -18261,9 +18278,11 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				rank = 1
 			}
 		}
-	}			
+	}
+	]]
 	
 	--GS/Zeal Shields
+	--[[
 	if difficulty_index <= 6 then
 		self.enemy_spawn_groups.GS_shields = {
 			amount = {3, 4},
@@ -18299,8 +18318,9 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					rank = 1
 				}
 			}
-		}	
-	elseif difficulty_index == 7 then	
+		}
+	]]
+	if difficulty_index <= 7 then	
 		self.enemy_spawn_groups.GS_shields = {
 			amount = {3, 4},
 			spawn = {
@@ -18387,7 +18407,8 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 			}
 		}
 	end	
-	--GS/Zeal Shields, can spawn with Grenadier 
+	--GS/Zeal Shields, can spawn with Grenadier
+	--[[
 	if difficulty_index <= 6 then	
 		self.enemy_spawn_groups.GS_shields_boom = {
 			amount = {3, 4},
@@ -18423,8 +18444,9 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					rank = 1
 				}
 			}
-		}		
-	elseif difficulty_index == 7 then	
+		}
+	]]
+	if difficulty_index == 7 then	
 		self.enemy_spawn_groups.GS_shields_boom = {
 			amount = {3, 4},
 			spawn = {
@@ -18570,7 +18592,7 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					rank = 1
 				}
 			}
-		}			
+		}
 	end
 	
 	--Reserved for mutator
@@ -19112,6 +19134,7 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				"GS_Booms"
 			})
 		}
+		--[[
 	elseif difficulty_index == 6 then
 		self.enemy_spawn_groups.titan_snipers = {
 			spawn_cooldown = 60,
@@ -19157,8 +19180,9 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				"GS_shields_boom",
 				"GS_Booms"
 			})
-		}	
-	elseif difficulty_index == 7 then
+		}
+	]]
+	elseif difficulty_index <= 7 then
 		self.enemy_spawn_groups.titan_snipers = {
 			spawn_cooldown = 60,
 			max_nr_simultaneous_groups = 1,

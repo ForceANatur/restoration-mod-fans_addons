@@ -19956,6 +19956,7 @@ function CharacterTweakData:character_map()
 		table.insert(char_map.hvh.list, "ene_zeal_swat_heavy")
 		table.insert(char_map.hvh.list, "ene_zeal_swat_heavy_2")
 		table.insert(char_map.hvh.list, "ene_fbi_hvh_4")
+		table.insert(char_map.hvh.list, "ene_bulldozer_snowman")
 	--bph
 		table.insert(char_map.bph.list, "ene_murky_heavyg")
 		table.insert(char_map.bph.list, "ene_murky_sgt")

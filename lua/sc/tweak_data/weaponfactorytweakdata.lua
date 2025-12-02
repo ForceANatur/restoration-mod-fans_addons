@@ -1058,18 +1058,20 @@ local grips = {
 				stats = {
 					value = 9,
 					damage = -45,
+					spread = 5,
 					total_ammo_mod = -165
 				},
 				custom_stats = {
 					ap_desc = "bm_ap_armor_weapon_sc_desc",
 					trail_effect = "_dmc/effects/nato_trail",
+					object_damage_mult_override = 0.45,
 					ene_hs_mult_add = 0.65,
 					ammo_pickup_max_mul = 0.8,
 					ammo_pickup_min_mul = 0.8,
 					hs_mult = 2.5,
 					hs_mult_desc = true,
 					falloff_start_mult = 1,
-					falloff_end_mult = 1.1,
+					falloff_end_mult = 1.15,
 					damage_min_mult = 4,
 					armor_piercing_add = 1,
 					rays = 12
@@ -1092,18 +1094,20 @@ local grips = {
 				stats = {
 					value = 9,
 					damage = -60,
+					spread = 5,
 					total_ammo_mod = -165
 				},
 				custom_stats = {
 					ap_desc = "bm_ap_armor_weapon_sc_desc",
 					trail_effect = "_dmc/effects/nato_trail",
+					object_damage_mult_override = 0.45,
 					ene_hs_mult_add = 0.5,
 					ammo_pickup_max_mul = 0.8,
 					ammo_pickup_min_mul = 0.8,
 					hs_mult = 2.5,
 					hs_mult_desc = true,
 					falloff_start_mult = 1,
-					falloff_end_mult = 1.1,
+					falloff_end_mult = 1.15,
 					damage_min_mult = 4,
 					armor_piercing_add = 1,
 					rays = 12
@@ -1126,18 +1130,20 @@ local grips = {
 				stats = {
 					value = 9,
 					damage = -90,
+					spread = 5,
 					total_ammo_mod = -165
 				},
 				custom_stats = {
 					ap_desc = "bm_ap_armor_weapon_sc_desc",
 					trail_effect = "_dmc/effects/nato_trail",
+					object_damage_mult_override = 0.9,
 					ene_hs_mult_add = 0.35,
 					ammo_pickup_max_mul = 0.8,
 					ammo_pickup_min_mul = 0.8,
 					hs_mult = 2.5,
 					hs_mult_desc = true,
 					falloff_start_mult = 1,
-					falloff_end_mult = 1.1,
+					falloff_end_mult = 1.15,
 					damage_min_mult = 4,
 					armor_piercing_add = 1,
 					rays = 12,
@@ -1160,18 +1166,20 @@ local grips = {
 				stats = {
 					value = 9,
 					damage = -120,
+					spread = 5,
 					total_ammo_mod = -165
 				},
 				custom_stats = {
 					ap_desc = "bm_ap_armor_weapon_sc_desc",
 					trail_effect = "_dmc/effects/nato_trail",
+					object_damage_mult_override = 1.35,
 					ene_hs_mult_add = 0.2,
 					ammo_pickup_max_mul = 0.8,
 					ammo_pickup_min_mul = 0.8,
 					hs_mult = 2.5,
 					hs_mult_desc = true,
 					falloff_start_mult = 1,
-					falloff_end_mult = 1.1,
+					falloff_end_mult = 1.15,
 					damage_min_mult = 4,
 					armor_piercing_add = 1,
 					rays = 12,
@@ -1265,8 +1273,8 @@ local grips = {
 					ammo_pickup_max_mul = 0.95,
 					ammo_pickup_min_mul = 0.95,
 					rof_mult = 0.9,
-					falloff_start_mult = 1.2,
-					falloff_end_mult = 0.8,
+					falloff_start_mult = 1.4,
+					falloff_end_mult = 0.6,
 					damage_min_mult = 0.2,
 					ignore_statistic = true,
 					bullet_class = "FlameBulletBase",
@@ -1290,8 +1298,8 @@ local grips = {
 					ammo_pickup_max_mul = 0.95,
 					ammo_pickup_min_mul = 0.95,
 					rof_mult = 0.9,
-					falloff_start_mult = 1.2,
-					falloff_end_mult = 0.8,
+					falloff_start_mult = 1.3,
+					falloff_end_mult = 0.7,
 					damage_min_mult = 0.2,
 					ignore_statistic = true,
 					bullet_class = "FlameBulletBase",
@@ -1313,8 +1321,8 @@ local grips = {
 				custom_stats = {
 					ammo_pickup_max_mul = 0.95,
 					ammo_pickup_min_mul = 0.95,
-					falloff_start_mult = 1.2,
-					falloff_end_mult = 0.8,
+					falloff_start_mult = 1.3,
+					falloff_end_mult = 0.7,
 					damage_min_mult = 0.2,
 					ignore_statistic = true,
 					bullet_class = "FlameBulletBase",
@@ -1338,8 +1346,8 @@ local grips = {
 					ammo_pickup_max_mul = 0.95,
 					ammo_pickup_min_mul = 0.95,
 					alt_rof_mult = 0.9,
-					falloff_start_mult = 1.2,
-					falloff_end_mult = 0.8,
+					falloff_start_mult = 1.3,
+					falloff_end_mult = 0.7,
 					damage_min_mult = 0.2,
 					ignore_statistic = true,
 					bullet_class = "FlameBulletBase",
@@ -1360,8 +1368,8 @@ local grips = {
 				custom_stats = {
 					ammo_pickup_max_mul = 0.95,
 					ammo_pickup_min_mul = 0.95,
-					falloff_start_mult = 1.2,
-					falloff_end_mult = 0.8,
+					falloff_start_mult = 1.3,
+					falloff_end_mult = 0.7,
 					damage_min_mult = 0.2,
 					ignore_statistic = true,
 					bullet_class = "FlameBulletBase",
@@ -1380,16 +1388,18 @@ local grips = {
 				stats = {
 					value = 9,
 					total_ammo_mod = -102,
-					spread = -5,
+					spread = -10,
 					damage = 30
 				},
 				custom_stats = {
-					hip_mult = 1.5,
+					object_damage_mult_override = 0.21875,
+					hs_mult = 0.8,
+					hip_mult = 1.25,
 					falloff_start_mult = 1.2,
-					falloff_end_mult = 0.75,
+					falloff_end_mult = 0.8,
 					damage_min_mult = 0.75,
-					ammo_pickup_max_mul = 0.75,
-					ammo_pickup_min_mul = 0.75,
+					ammo_pickup_max_mul = 0.7,
+					ammo_pickup_min_mul = 0.7,
 					rays = 6
 				}
 			},
@@ -1398,17 +1408,19 @@ local grips = {
 				supported = true,
 				stats = {
 					value = 9,
-					spread = -5,
+					spread = -10,
 					total_ammo_mod = -136,
 					damage = 60
 				},
 				custom_stats = {
-					hip_mult = 1.5,
+					object_damage_mult_override = 0.20833,
+					hs_mult = 0.8,
+					hip_mult = 1.25,
 					falloff_start_mult = 1.2,
 					falloff_end_mult = 0.8,
 					damage_min_mult = 0.66667,
-					ammo_pickup_max_mul = 0.75,
-					ammo_pickup_min_mul = 0.75,
+					ammo_pickup_max_mul = 0.7,
+					ammo_pickup_min_mul = 0.7,
 					rays = 6
 				}
 			},
@@ -1417,17 +1429,19 @@ local grips = {
 				supported = true,
 				stats = {
 					value = 9,
-					spread = -5,
+					spread = -10,
 					total_ammo_mod = -104,
 					damage = 60
 				},
 				custom_stats = {
-					hip_mult = 1.5,
+					object_damage_mult_override = 0.4375,
+					hs_mult = 0.8,
+					hip_mult = 1.25,
 					falloff_start_mult = 1.2,
 					falloff_end_mult = 0.8,
 					damage_min_mult = 0.75,
-					ammo_pickup_max_mul = 0.75,
-					ammo_pickup_min_mul = 0.75,
+					ammo_pickup_max_mul = 0.7,
+					ammo_pickup_min_mul = 0.7,
 					rays = 6
 				}
 			},
@@ -1435,17 +1449,19 @@ local grips = {
 			a_custom_heavy_override = {
 				stats = {
 					value = 9,
-					spread = -5,
+					spread = -10,
 					total_ammo_mod = -77,
 					damage = 60
 				},
 				custom_stats = {
-					hip_mult = 1.5,
+					object_damage_mult_override = 0.675,
+					hs_mult = 0.8,
+					hip_mult = 1.25,
 					falloff_start_mult = 1.2,
 					falloff_end_mult = 0.8,
 					damage_min_mult = 0.79999,
-					ammo_pickup_max_mul = 0.75,
-					ammo_pickup_min_mul = 0.75,
+					ammo_pickup_max_mul = 0.7,
+					ammo_pickup_min_mul = 0.7,
 					rays = 6
 				}
 			},
@@ -1461,7 +1477,7 @@ local grips = {
 					total_ammo_mod = -165,
 					damage = 0,
 					recoil = -20,
-					spread = 5,
+					spread = 10,
 					spread_multi = {1, 1},
 					suppression = -1,
 					moving_spread = 0
@@ -1492,7 +1508,7 @@ local grips = {
 					concealment = -1,
 					total_ammo_mod = -165,
 					damage = 0,
-					spread = 5,
+					spread = 10,
 					spread_multi = {1, 1},
 					recoil = -20,
 					moving_spread = 0,
@@ -1525,7 +1541,7 @@ local grips = {
 					total_ammo_mod = -165,
 					damage = 0,
 					recoil = -20,
-					spread = 5,
+					spread = 10,
 					spread_multi = {1, 1},
 					moving_spread = 0,
 					suppression = -1
@@ -1535,7 +1551,6 @@ local grips = {
 					rays = 1,
 					hip_mult = 2,
 					armor_piercing_add = 1,
-					--ene_hs_mult_add = -0.15,
 					ammo_pickup_max_mul = 0.7,
 					ammo_pickup_min_mul = 0.7,
 					can_shoot_through_enemy_unlim = true,
@@ -1556,7 +1571,7 @@ local grips = {
 					total_ammo_mod = -165,
 					damage = 0,
 					recoil = -20,
-					spread = 5,
+					spread = 10,
 					spread_multi = {1, 1},
 					suppression = -1,
 					moving_spread = 0
@@ -2142,7 +2157,7 @@ end)
 					self.parts.wpn_fps_pis_lemming_m_ext.stats = {
 						value = 1,
 						extra_ammo = 10,
-						concealment = -1,
+						concealment = -2,
 						reload = -3
 					}
 					self.parts.wpn_fps_pis_lemming_m_ext.custom_stats = {
@@ -2202,8 +2217,8 @@ end)
 					self.parts.wpn_fps_pis_g18c_m_mag_33rnd.stats = {
 						value = 6,
 						extra_ammo = 16,
-						concealment = -2,
-						reload = -4
+						concealment = -3,
+						reload = -5
 					}
 					self.parts.wpn_fps_pis_g18c_m_mag_33rnd.bullet_objects = {
 						amount = 1,
@@ -2272,8 +2287,8 @@ end)
 						stats = {
 							value = 6,
 							extra_ammo = 32,
-							concealment = -2,
-							reload = -4
+							concealment = -3,
+							reload = -5
 						}
 					}
 
@@ -2828,8 +2843,8 @@ end)
 						stats = {
 							value = 6,
 							extra_ammo = 23,
-							concealment = -3,
-							reload = -5
+							concealment = -4,
+							reload = -6
 						},
 						custom_stats = {
 							ads_speed_mult = 1.075
@@ -2874,8 +2889,8 @@ end)
 						stats = {
 							value = 6,
 							extra_ammo = 46,
-							concealment = -3,
-							reload = -5
+							concealment = -4,
+							reload = -6
 						},
 						custom_stats = {
 							ads_speed_mult = 1.075
@@ -2968,8 +2983,8 @@ end)
 					self.wpn_fps_pis_x_g17.override.wpn_fps_pis_g18c_m_mag_33rnd.stats = {
 						value = 6,
 						extra_ammo = 32,
-						concealment = -2,
-						reload = -4
+						concealment = -3,
+						reload = -5
 					}
 
 					self.wpn_fps_pis_x_g17.override.wpn_fps_pis_g18c_s_stock = {
@@ -3644,8 +3659,8 @@ end)
 					self.wpn_fps_pis_x_p226.override.wpn_fps_pis_p226_m_extended.stats = {
 						value = 3,
 						extra_ammo = 20,
-						reload = -3,
-						concealment = -1
+						reload = -4,
+						concealment = -2
 					}
 				end)
 
@@ -3675,8 +3690,8 @@ end)
 					self.wpn_fps_pis_x_g22c.override.wpn_fps_pis_g18c_m_mag_33rnd.stats = {
 						value = 6,
 						extra_ammo = 32,
-						concealment = -2,
-						reload = -4
+						concealment = -3,
+						reload = -5
 					}
 				end)
 
@@ -4661,7 +4676,7 @@ end)
 							value = 2,
 							concealment = -3,
 							extra_ammo = 24,
-							reload = -3
+							reload = -5
 						}
 					}
 				end)
@@ -4843,11 +4858,11 @@ end)
 					self.parts.wpn_fps_pis_korth_m_6.adds = {"wpn_fps_pis_korth_m_6_dummy"}
 					self.parts.wpn_fps_pis_korth_m_6.stats = {
 						extra_ammo = -2,
-						concealment = 1,
-						reload = 3
+						concealment = 2,
+						reload = 4
 					}
 					self.parts.wpn_fps_pis_korth_m_6.custom_stats = {
-						ads_speed_mult = 0.975
+						ads_speed_mult = 0.95
 					}
 
 					--Exclusive Set
@@ -4856,9 +4871,8 @@ end)
 					self.parts.wpn_fps_pis_korth_conversionkit.desc_id = "bm_ap_weapon_sc_desc"
 					self.parts.wpn_fps_pis_korth_conversionkit.stats = {
 						value = 10,
-						recoil = -6,
-						spread = 3,
-						concealment = -3
+						spread = 5,
+						concealment = -5
 					}
 					self.parts.wpn_fps_pis_korth_conversionkit.custom_stats = {
 						rof_mult = 0.5,
@@ -7180,8 +7194,8 @@ end)
 					self.parts.wpn_fps_smg_schakal_m_long.stats = {
 						value = 1,
 						extra_ammo = 20,
-						reload = -3,
-						concealment = -4
+						reload = -5,
+						concealment = -3
 					}
 					self.parts.wpn_fps_smg_schakal_m_long.custom_stats = {
 						ads_speed_mult = 1.1
@@ -9435,8 +9449,8 @@ end)
 				self.parts.wpn_fps_lmg_mg42_m_75.stats = {
 					value = 4,
 					extra_ammo = 25,
-					concealment = -2,
-					reload = -4
+					concealment = -3,
+					reload = -5
 				}
 				self.parts.wpn_fps_lmg_mg42_m_75.custom_stats = { ads_speed_mult = 1.075 }
 
@@ -10983,8 +10997,8 @@ end)
 						burst_fire = {
 							count = 3,
 							delay = 0.18,
-							recoil_mult = 0.85,
-							last_recoil_mult = 1.05
+							recoil_mult = 0.6,
+							last_recoil_mult = 1.02
 						},
 						info_add_burst = true
 					}
@@ -24202,7 +24216,7 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 		supported = true,
 		stats = {
 			value = 10,
-			spread = -44,
+			spread = -34,
 			recoil = -20,
 			concealment = -6,
 			extra_ammo = 70,
@@ -24218,7 +24232,7 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			alt_ammo_pickup_max_mul = 0,
 			ammo_pickup_min_mul = 0,
 			ammo_pickup_max_mul = 0,
-			hip_mult = 2.3333333,
+			hip_mult = 3,
 			rof_mult = 1.25,
 			ads_speed_mult = 1.3846153,
 			damage_min_mult = 0.5,
@@ -26262,8 +26276,8 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 				self.parts.wpn_fps_upg_lewis_mag_ext.stats = {
 					value = 0,
 					extra_ammo = 50,
-					concealment = -4,
-					reload = -6
+					concealment = -5,
+					reload = -7
 				}
 				self.parts.wpn_fps_upg_lewis_mag_ext.custom_stats = {
 					ads_speed_mult = 1.1
@@ -29369,6 +29383,10 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 				self.parts.wpn_fps_smg_geasy9_stock_true.stats = { value = 0 }
 				self.parts.wpn_fps_smg_geasy9_stock_true.custom_stats = nil
 			--MAGS
+				self.parts.wpn_fps_smg_geasy9_magazine.supported = true
+				self.parts.wpn_fps_smg_geasy9_magazine.custom_stats = {
+					reload_not_empty_speed_multiplier = 0.85
+				}
 				--FM 1
 				self.parts.wpn_fps_smg_geasy9_magazine_fast.supported = true
 				self.parts.wpn_fps_smg_geasy9_magazine_fast.stats = {
@@ -29379,6 +29397,7 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 				}
 				self.parts.wpn_fps_smg_geasy9_magazine_fast.custom_stats = {
 					ads_speed_mult = 0.975,
+					reload_not_empty_speed_multiplier = 1.1,
 					reload_non_empty_anim_mult = 0.97,
 					adj_timers = {
 						reload_exit_empty = 1.35,
@@ -29404,12 +29423,13 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 				self.parts.wpn_fps_smg_geasy9_xmag1.supported = true
 				self.parts.wpn_fps_smg_geasy9_xmag1.stats = {
 					value = 7,
-					concealment = -2,
-					reload = -4,
+					concealment = -1,
+					reload = -3,
 					extra_ammo = 10
 				}
 				self.parts.wpn_fps_smg_geasy9_xmag1.custom_stats = {
-					ads_speed_mult = 1.05,
+					ads_speed_mult = 1.025,
+					reload_not_empty_speed_multiplier = 1.02,
 					reload_non_empty_anim_mult = 0.97,
 					adj_timers = {
 						reload_exit_empty = 1.35,
@@ -39239,12 +39259,11 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			self.parts.wpn_fps_lmg_lsw_ck_m27.supported = true
 			self.parts.wpn_fps_lmg_lsw_ck_m27.stats = {
 				value = 10,
-				spread = 1,
+				spread = 2,
 				recoil = -4,
-				concealment = -1
 			}
 			self.parts.wpn_fps_lmg_lsw_ck_m27.custom_stats = {
-				rof_mult = 1.175,
+				rof_mult = 1.084615,
 			}
 			self.parts.wpn_fps_lmg_lsw_ck_m27.forbids = {}
 			for k, used_part_id in ipairs(self.wpn_fps_lmg_lsw.uses_parts) do
@@ -39271,7 +39290,7 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 				concealment = 3
 			}
 			self.parts.wpn_fps_lmg_lsw_ck_m231.custom_stats = {
-				rof_mult = 1.66667,
+				rof_mult = 1.5384615,
 				hip_mult = 0.4,
 				falloff_start_mult = 0.761904,
 				falloff_end_mult = 0.764705
@@ -40224,7 +40243,7 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			self.parts.wpn_fps_snp_tti_body_receiverupper_223.supported = true
 			self.parts.wpn_fps_snp_tti_body_receiverupper_223.stats = {
 				value = 1,
-				spread = 1,
+				spread = 2,
 				concealment = -2
 			}
 			self.parts.wpn_fps_snp_tti_fg_m4.supported = true
@@ -41365,65 +41384,65 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 				self.parts.wpn_fps_pis_glock_m_pmag.stats = {
 					value = 6,
 					extra_ammo = 10,
-					concealment = -2,
+					concealment = -3,
 					spread = -1,
-					reload = -2,
+					reload = -3,
 				}
 				self.parts.wpn_fps_pis_glock_m_pmag.custom_stats = {
-					ads_speed_mult = 1.05
+					ads_speed_mult = 1.075
 				}
 					self.wpn_fps_pis_x_g17.override.wpn_fps_pis_glock_m_pmag = {
 						stats = {
 							value = 6,
 							extra_ammo = 20,
-							concealment = -2,
+							concealment = -3,
 							spread = -1,
-							reload = -2,
+							reload = -3,
 						}
 					}
 					self.wpn_fps_pis_x_g18c.override.wpn_fps_pis_glock_m_pmag = {
 						stats = {
 							value = 6,
 							extra_ammo = 20,
-							concealment = -2,
+							concealment = -3,
 							spread = -1,
-							reload = -2,
+							reload = -3,
 						}
 					}
 					self.wpn_fps_pis_g26.override.wpn_fps_pis_glock_m_pmag = {
 						stats = {
 							value = 6,
 							extra_ammo = 17,
-							concealment = -2,
+							concealment = -3,
 							spread = -1,
-							reload = -2,
+							reload = -3,
 						}
 					}
 					self.wpn_fps_jowi.override.wpn_fps_pis_glock_m_pmag = {
 						stats = {
 							value = 6,
 							extra_ammo = 34,
-							concealment = -2,
+							concealment = -3,
 							spread = -1,
-							reload = -2,
+							reload = -3,
 						}
 					}
 					self.wpn_fps_pis_g22c.override.wpn_fps_pis_glock_m_pmag = {
 						stats = {
 							value = 6,
 							extra_ammo = 10,
-							concealment = -2,
+							concealment = -3,
 							spread = -1,
-							reload = -2,
+							reload = -3,
 						}
 					}
 					self.wpn_fps_pis_x_g22c.override.wpn_fps_pis_glock_m_pmag = {
 						stats = {
 							value = 6,
 							extra_ammo = 20,
-							concealment = -2,
+							concealment = -3,
 							spread = -1,
-							reload = -2,
+							reload = -3,
 						}
 					}
 
@@ -41440,58 +41459,58 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 				self.parts.wpn_fps_pis_glock_m_d50.supported = true
 				self.parts.wpn_fps_pis_glock_m_d50.stats = {
 					value = 7,
-					concealment = -4,
-					reload = -6,
+					concealment = -5,
+					reload = -7,
 					extra_ammo = 33
 				}
 				self.parts.wpn_fps_pis_glock_m_d50.custom_stats = {
-					ads_speed_mult = 1.1
+					ads_speed_mult = 1.125
 				}
 					self.wpn_fps_pis_x_g17.override.wpn_fps_pis_glock_m_d50 = {
 						stats = {
 							value = 7,
-							concealment = -4,
-							reload = -6,
+							concealment = -5,
+							reload = -7,
 							extra_ammo = 66
 						}
 					}
 					self.wpn_fps_pis_x_g18c.override.wpn_fps_pis_glock_m_d50 = {
 						stats = {
 							value = 7,
-							concealment = -4,
-							reload = -6,
+							concealment = -5,
+							reload = -7,
 							extra_ammo = 66
 						}
 					}
 					self.wpn_fps_pis_g26.override.wpn_fps_pis_glock_m_d50 = {
 						stats = {
 							value = 7,
-							concealment = -4,
-							reload = -6,
+							concealment = -5,
+							reload = -7,
 							extra_ammo = 40
 						}
 					}
 					self.wpn_fps_jowi.override.wpn_fps_pis_glock_m_d50 = {
 						stats = {
 							value = 7,
-							concealment = -4,
-							reload = -6,
+							concealment = -5,
+							reload = -7,
 							extra_ammo = 80
 						}
 					}
 					self.wpn_fps_pis_g22c.override.wpn_fps_pis_glock_m_d50 = {
 						stats = {
 							value = 7,
-							concealment = -4,
-							reload = -6,
+							concealment = -5,
+							reload = -7,
 							extra_ammo = 35
 						}
 					}
 					self.wpn_fps_pis_x_g22c.override.wpn_fps_pis_glock_m_d50 = {
 						stats = {
 							value = 7,
-							concealment = -4,
-							reload = -6,
+							concealment = -5,
+							reload = -7,
 							extra_ammo = 70
 						}
 					}
@@ -41525,32 +41544,32 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 					self.wpn_fps_pis_g26.override.wpn_fps_pis_glock_m_cmag = {
 						stats = {
 							value = 7,
-							concealment = -4,
-							reload = -6,
+							reload = -9,
+							concealment = -7,
 							extra_ammo = 90
 						}
 					}
 					self.wpn_fps_jowi.override.wpn_fps_pis_glock_m_cmag = {
 						stats = {
 							value = 7,
-							concealment = -4,
-							reload = -6,
+							reload = -9,
+							concealment = -7,
 							extra_ammo = 180
 						}
 					}
 					self.wpn_fps_pis_g22c.override.wpn_fps_pis_glock_m_cmag = {
 						stats = {
 							value = 7,
-							concealment = -4,
-							reload = -6,
+							reload = -9,
+							concealment = -7,
 							extra_ammo = 85
 						}
 					}
 					self.wpn_fps_pis_x_g22c.override.wpn_fps_pis_glock_m_cmag = {
 						stats = {
 							value = 7,
-							concealment = -4,
-							reload = -6,
+							reload = -9,
+							concealment = -7,
 							extra_ammo = 170
 						}
 					}

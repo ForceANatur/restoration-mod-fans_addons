@@ -175,6 +175,11 @@ Hooks:Add("LocalizationManagerPostInit", "ResMod_english_Localization_Init", fun
 					["RestorationModResSoundscapingDescID"] = "리버브 효과를 변경하여 더 큰 소리를 내는 다른 효과를 사용하고, 바닐라 효과나 바닐라 설정을 사용하여 수정된 효과를 사용하지 않도록 설정합니다.",
 					["RestorationModComboSoundsTitleID"] = "===무기 사운드===",
 					["RestorationModComboSoundsDescID"] = "대체 무기 사운드 옵션입니다.\n재시작 후에 적용됩니다.",
+						["RestorationModComboSoundsRafficaTitleID"] = "Bernetti 93R (M93 Raffica)",
+						["RestorationModComboSoundsRafficaDescID"] = "Bernetti 93R의 사운드를 바꿉니다.",
+							["snd_raffica_vanilla"] = "바닐라 사운드",
+							["snd_raffica_b92fs"] = "Bernetti 9",
+							["snd_raffica_combo"] = "Bernetti 9 + 바닐라",					
 						["RestorationModComboSoundsSW500TitleID"] = "Phoenix .500 (SW 500)",
 						["RestorationModComboSoundsSW500DescID"] = "Phoenix .500의 사운드를 바꿉니다.",
 							["snd_sw500_vanilla"] = "기본 사운드 (Bronco .44)",
@@ -1349,8 +1354,8 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Eng", function(loc)
 		["bm_wp_upg_a_slug_desc"] = "#{skill_color}#방탄복과 다수의 적, 얇은 벽을 관통하는## 납탄을 발사합니다.",
 		["bm_wp_upg_a_slug_titan_desc"] = "#{skill_color}#방탄복과 다수의 적, 방패, 타이탄 방패, 얇은 벽을 관통하는## 납탄을 발사합니다.",
 		["bm_wp_upg_a_explosive_desc_sc"] = "폭발 반경이 #{skill_color}#2##미터인 #{heat_warm_color}#폭발성## 납탄을 발사합니다.\n이 슬러그탄은 #{skill_color}#사거리 별 피해량 감소가 없습니다.## 하지만 #{risk}#피해는 슬러그탄과 폭발로 나뉩니다.##",
-		["bm_wp_upg_a_custom_desc"] = "#{skill_color}#더 큰 피해량을 가진## 더 크고 무거운 펠릿을 #{important_1}#6개## 발사합니다.",
-		["bm_wp_upg_a_custom_4_desc"] = "#{skill_color}#더 큰 피해량을 가진## 더 크고 무거운 펠릿을 #{important_1}#4개## 발사합니다.",
+		["bm_wp_upg_a_custom_desc"] = "#{skill_color}#몸에 더 큰 피해를 가하는## 큰 펠릿 #{important_1}#6발##을 발사합니다. #{risk}#헤드샷 피해량은 약간만 증가합니다.##",
+		["bm_wp_upg_a_custom_4_desc"] = "#{skill_color}#몸에 더 큰 피해를 가하는## 큰 펠릿 #{important_1}#4발##을 발사합니다. #{risk}#헤드샷 피해량은 약간만 증가합니다.##",
 		--["bm_wp_upg_a_dragons_breath_auto_desc_sc"] = "Fires magnesium shards that have up to a #{skill_color}#15%## chance to #{heat_warm_color}#set enemies on fire##, dealing #{heat_warm_color}#90## damage over #{skill_color}#2## seconds.\n\n#{risk}#Chance is reduced over range and can only stun enemies before damage falloff starts.##", --NOT IN USE
 		--["bm_wp_upg_a_dragons_breath_semi_desc_sc"] = "Fires magnesium shards that have up to a #{skill_color}#40%## chance to #{heat_warm_color}#set enemies on fire##, dealing #{heat_warm_color}#120## damage over #{skill_color}#2## seconds.\n\n#{risk}#Chance is reduced over range and can only stun enemies before damage falloff starts.##",
 		--["bm_wp_upg_a_dragons_breath_pump_desc_sc"] = "Fires magnesium shards that have up to a #{skill_color}#60%## chance to #{heat_warm_color}#set enemies on fire##, dealing #{heat_warm_color}#180## damage over #{skill_color}#2## seconds.\n\n#{risk}#Chance is reduced over range and can only stun enemies before damage falloff starts.##",
@@ -5737,7 +5742,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 
 				--Transporter
 				["menu_pack_mule_beta_sc"] = "트랜스포터",
-				["menu_transporter_beta_desc_sc"] = "베이식: #{owned}#$basic##\n가방 운반 시 이동 속도 패널티가 보유한 방탄량 #{skill_color}#10##당 #{skill_color}#$skill_value_b1##씩 감소합니다.\n\n에이스: #{owned}#$pro##\n가방을 운반할 수 있는 최대 무게량이 #{skill_color}#$skill_value_p2## 증가합니다.\n\n#{risk}#참고: 기본 운반 무게량은 45이며, 가방 운반 시의 이동 속도 패널티는 여전히 적용됩니다.##",
+				["menu_transporter_beta_desc_sc"] = "베이식: #{owned}#$basic##\n가방 운반 시 이동 속도 패널티가 보유한 방탄량 #{skill_color}#10##당 #{skill_color}#$skill_value_b1##씩 감소합니다.\n\n에이스: #{owned}#$pro##\n가방을 운반할 수 있는 최대 무게량이 #{skill_color}#$skill_value_p2## 증가합니다.\n\n#{risk}#참고: 기본 운반 무게량은 30이며, 가방 운반 시의 이동 속도 패널티는 여전히 적용됩니다.##",
 
 				--More Blood to Bleed--
 				["menu_iron_man_beta_sc"] = "아직 흘릴 피가 남아 있어",
@@ -6237,7 +6242,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Perk_Decks_Eng", funct
 		["menu_deck12_3_desc_sc"] = "체력이 낮을 수록 적을 죽일 때마다 회피 미터가 채워집니다.\n\n체력이 ##100%## 미만일 경우, 적을 죽일 때마다 회피 미터가 최대 ##$perk_value_1##만큼 채워집니다.",
 		["menu_deck12_5_desc_sc"] = "체력이 낮을 수록 받는 피해가 감소합니다. 체력이 ##100%## 미만일 경우, 최대 ##$perk_value_1##만큼 피해를 덜 받습니다.\n\n시체를 가방에 넣거나 인질과 상호 작용하는 속도가 ##$perk_value_2## 빨라집니다.",
 		["menu_deck12_7_desc_sc"] = "체력이 낮을 수록 근접 공격으로 적을 처치할 때 회피를 더욱 효과적으로 만듭니다.\n\n체력이 ##100%## 미만일 경우, 근접 공격으로 적을 처치하면 회피율의 회피 미터가 매초 최대 ##$perk_value_1##만큼 채워치고, 이는 뱀 문신(3번 카드)의 효과와 중첩되며, 다음 회피의 유예 시간이 최대 ##$perk_value_2##까지 늘어나 최대 ##$perk_value_3##ms가 됩니다.\n\n회피율이 추가로 ##$perk_value_4## 증가합니다.",		
-		["menu_deck12_9_desc_sc"] = "얻을 수 있는 최대 방어력이 #{skill_color}#$perk_value_1## 증가합니다.\n\n다운 당 쓰러지는 대신 ##1##의 체력으로 살아남고 방탄력을 ##$perk_value_2## 회복됩니다.\n\n#{risk}#주의: 이 효과는 클로커의 킥과 테이저의 전기 충격으로 쓰러지는 경우에는 발동되지 않으며, 쓰러지는 경우에도 초기화 되지 않습니다.##\n\n덱 완료 보너스: PAYDAY 카드에서 높은 등급의 아이템을 얻을 확률이 ##10%## 상승합니다.",
+		["menu_deck12_9_desc_sc"] = "얻을 수 있는 최대 방어력이 #{skill_color}#$perk_value_1## 증가합니다.\n\n다운 당 쓰러지는 대신 ##1##의 체력으로 살아남고 방탄력을 #{skill_color}#$perk_value_2## 회복됩니다.\n\n#{risk}#주의: 이 효과는 클로커의 킥과 테이저의 전기 충격으로 쓰러지는 경우에는 발동되지 않으며, 쓰러지는 경우에도 초기화 되지 않습니다.##\n\n덱 완료 보너스: PAYDAY 카드에서 높은 등급의 아이템을 얻을 확률이 ##10%## 상승합니다.",
 		["menu_yakuza_deflection_add"] = "(야쿠자로 인해 증가함)",
 
 		--Hacker--

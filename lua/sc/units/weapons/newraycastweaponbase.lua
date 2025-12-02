@@ -885,6 +885,8 @@ function NewRaycastWeaponBase:old_update_stats_values(disallow_replenish, ammo_d
 		stats.zoom = math.min(stats.zoom + managers.player:upgrade_value(primary_category, "zoom_increase", 0), #stats_tweak_data.zoom)
 	end
 
+	self._part_stats_uncapped = {}
+
 	for stat, _ in pairs(stats) do
 		if stats[stat] < 1 or stats[stat] > #stats_tweak_data[stat] then
 			Application:error("[NewRaycastWeaponBase] Base weapon stat is out of bound!", "stat: " .. stat, "index: " .. stats[stat], "max_index: " .. #stats_tweak_data[stat], "This stat will be clamped!")
@@ -892,6 +894,7 @@ function NewRaycastWeaponBase:old_update_stats_values(disallow_replenish, ammo_d
 
 		if parts_stats[stat] then
 			stats[stat] = stats[stat] + parts_stats[stat]
+			self._part_stats_uncapped[stat] = (self._part_stats_uncapped[stat] or 0) + parts_stats[stat]
 		end
 
 		if bonus_stats[stat] then
@@ -1264,6 +1267,9 @@ function NewRaycastWeaponBase:_update_stats_values(disallow_replenish, ammo_data
 				self._pointshoot_strafe = math.min( (self._pointshoot_strafe or 0) + stats.pointshoot_strafe, 1 )
 			end
 
+			if stats.object_damage_mult_override then		
+				self._object_damage_mult = stats.object_damage_mult_override
+			end
 			if stats.descope_on_fire then		
 				self._descope_on_fire = stats.descope_on_fire
 			end
@@ -2644,30 +2650,3 @@ Hooks:PostHook(NewRaycastWeaponBase, "weapon_tweak_data", "res_weapon_tweak_data
 
     return wtd
 end)
-
-if OWLFBullpupWeaponBase then
-	function OWLFBullpupWeaponBase:clbk_assembly_complete(...)
-		OWLFBullpupWeaponBase.super.clbk_assembly_complete(self, ...)
-		if table.contains(self._blueprint, "wpn_fps_upg_owlfbullpup_mag_drum") then
-			self:weapon_tweak_data().animations.reload_name_id = "owlfbullpup_drum"
-		else
-			self:weapon_tweak_data().animations.reload_name_id = "owlfbullpup"
-		--[[
-			self:weapon_tweak_data().timers.reload_empty = 4.8
-			self:weapon_tweak_data().timers.reload_not_empty = 3.0
-		--]]
-		end
-	end
-end
-
-
-if SKSWeaponBase then
-	function SKSWeaponBase:clbk_assembly_complete(...)
-		SKSWeaponBase.super.clbk_assembly_complete(self, ...)
-		if table.contains(self._blueprint, "wpn_fps_upg_sks_mag_detach10") or table.contains(self._blueprint, "wpn_fps_upg_sks_mag_detach20") then
-			self:weapon_tweak_data().animations.reload_name_id = "sks_mag"
-		else
-			self:weapon_tweak_data().animations.reload_name_id = "sks"
-		end
-	end
-end

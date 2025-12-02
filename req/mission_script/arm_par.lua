@@ -23,8 +23,17 @@ local gensec_tank = {
 	values = {
         enemy = gensec_dozer
 	}
-}	
-
+}
+local disabled = {
+	values = {
+		enabled = false,
+	},
+}
+local avalon_side_spawwn = {
+	values = {
+		interval = 25, 
+	},
+}
 return {
 	--Pro Job PONR+Hunt (Endless assault), triggers when van arrives cause that's better
 	[100329] = {
@@ -78,8 +87,28 @@ return {
 	[100524] = gensec,
 	[100525] = gensec,
 --]]	
-	--Van Bulldozers
+	-- Van Bulldozers
 	[102058] = gensec_tank,
 	[102068] = gensec_tank,
-	[102057] = gensec_tank
+	[102057] = gensec_tank,
+	-- Disable vanilla reinforce on the trucks
+	[100267] = disabled,
+	[100268] = disabled,
+	[100269] = disabled,
+	[100270] = disabled,
+	[100270] = disabled,
+	[100271] = disabled,
+	[100272] = disabled,
+	[100273] = disabled,
+	[100274] = disabled,
+	[100275] = disabled,
+	[100276] = disabled,
+	[100277] = disabled,
+	[100278] = disabled,
+	-- increased spawn intervals on Avalon sides 
+	[100128] = avalon_side_spawwn,
+	[101046] = avalon_side_spawwn,
+	[100781] = avalon_side_spawwn,
+	[100794] = avalon_side_spawwn,
+	[101048] = avalon_side_spawwn,
 }
