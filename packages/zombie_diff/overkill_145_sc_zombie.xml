@@ -613,4 +613,15 @@
 	<unit				path="units/pd2_mod_halloween/characters/ene_police_heavygunner/ene_police_heavygunner_husk" force="false" load="true"/>
 	<texture			path="units/pd2_mod_halloween/characters/ene_police_heavygunner/helmets_atlas_df"/>
 	<texture			path="units/pd2_mod_halloween/characters/ene_police_heavygunner/swat_body_df"/>
+
+	<!-- Snowman Zombie (Because Winter) -->
+	<object				path="units/pd2_dlc_hvh/characters/ene_bulldozer_snowman/ene_bulldozer_snowman"/>
+	<cooked_physics		path="units/pd2_dlc_hvh/characters/ene_bulldozer_snowman/ene_bulldozer_snowman"/>
+	<model				path="units/pd2_dlc_hvh/characters/ene_bulldozer_snowman/ene_bulldozer_snowman"/>
+	<unit				path="units/pd2_dlc_hvh/characters/ene_bulldozer_snowman/ene_bulldozer_snowman" load="true"/>
+	<material_config	path="units/pd2_dlc_hvh/characters/ene_bulldozer_snowman/ene_bulldozer_snowman"/>
+	<material_config	path="units/pd2_dlc_hvh/characters/ene_bulldozer_snowman/ene_bulldozer_snowman_contour" />
+	<unit				path="units/pd2_dlc_hvh/characters/ene_bulldozer_snowman/ene_bulldozer_snowman_husk" load="true"/>
+
+	<texture			path="units/pd2_dlc_hvh/characters/ene_bulldozer_snowman/ene_snowman_boss_df"/>
 </table>

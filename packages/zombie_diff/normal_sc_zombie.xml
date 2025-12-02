@@ -294,4 +294,15 @@
 	<unit				path="units/pd2_dlc_hvh/characters/ene_bulldozer_medic/ene_bulldozer_medic_husk" force="false" load="true"/>
 	<object				path="units/pd2_dlc_hvh/characters/ene_bulldozer_medic/ene_bulldozer_medic" force="false"/>
 	<sequence_manager	path="units/pd2_dlc_hvh/characters/ene_bulldozer_medic/ene_bulldozer_medic" force="false"/>
+
+	<!-- Snowman Zombie (Because Winter) -->
+	<object				path="units/pd2_dlc_hvh/characters/ene_bulldozer_snowman/ene_bulldozer_snowman"/>
+	<cooked_physics		path="units/pd2_dlc_hvh/characters/ene_bulldozer_snowman/ene_bulldozer_snowman"/>
+	<model				path="units/pd2_dlc_hvh/characters/ene_bulldozer_snowman/ene_bulldozer_snowman"/>
+	<unit				path="units/pd2_dlc_hvh/characters/ene_bulldozer_snowman/ene_bulldozer_snowman" load="true"/>
+	<material_config	path="units/pd2_dlc_hvh/characters/ene_bulldozer_snowman/ene_bulldozer_snowman"/>
+	<material_config	path="units/pd2_dlc_hvh/characters/ene_bulldozer_snowman/ene_bulldozer_snowman_contour" />
+	<unit				path="units/pd2_dlc_hvh/characters/ene_bulldozer_snowman/ene_bulldozer_snowman_husk" load="true"/>
+
+	<texture			path="units/pd2_dlc_hvh/characters/ene_bulldozer_snowman/ene_snowman_boss_df"/>
 </table>

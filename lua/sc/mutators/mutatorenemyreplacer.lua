@@ -573,7 +573,7 @@ function MutatorEnemyReplacer:_get_unit_group_tank(difficulty_index)
 						Idstring("units/pd2_dlc_hvh/characters/ene_bulldozer_minigun_classic/ene_bulldozer_minigun_classic"),
 						Idstring("units/payday2/characters/ene_bulldozer_4/ene_bulldozer_4"),
 						Idstring("units/pd2_dlc_pda10/characters/ene_dozer_piggy/ene_dozer_piggy"),
-						Idstring("units/pd2_dlc_cg22/characters/ene_bulldozer_snowman/ene_bulldozer_snowman")
+						Idstring("units/pd2_dlc_hvh/characters/ene_bulldozer_snowman/ene_bulldozer_snowman")
 					},
 					murkywater = {
 						Idstring("units/pd2_dlc_bph/characters/ene_murkywater_bulldozer_2/ene_murkywater_bulldozer_2"),
