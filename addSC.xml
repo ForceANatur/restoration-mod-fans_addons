@@ -1300,6 +1300,35 @@
 	<material_config	path="units/payday2/characters/ene_acc_mememan_2_helmet_plate/ene_acc_mememan_2_helmet_plate"/>
 	<!--MemeMan2 Mod-->
 
+	<!--THE 3RD MEME MAN-->
+	<object				path="units/payday2/characters/ene_mememan_3/ene_mememan_3" force="false"/>
+	<cooked_physics		path="units/payday2/characters/ene_mememan_3/ene_mememan_3" force="false"/>
+	<model				path="units/payday2/characters/ene_mememan_3/ene_mememan_3" force="false"/>
+	<unit				path="units/payday2/characters/ene_mememan_3/ene_mememan_3" force="false" load="true"/>
+	<material_config	path="units/payday2/characters/ene_mememan_3/ene_mememan_3" force="false"/>
+	<material_config	path="units/payday2/characters/ene_mememan_3/ene_mememan_3_contour" force="false"/>
+	<unit				path="units/payday2/characters/ene_mememan_3/ene_mememan_3_husk" force="false" load="true"/>
+
+	<unit				path="units/payday2/characters/ene_acc_zeal_swat_heavy_sniper_mememan/ene_acc_zeal_swat_heavy_sniper_mememan" load="false"/>
+	<cooked_physics		path="units/payday2/characters/ene_acc_zeal_swat_heavy_sniper_mememan/ene_acc_zeal_swat_heavy_sniper_mememan"/>
+	<model				path="units/payday2/characters/ene_acc_zeal_swat_heavy_sniper_mememan/ene_acc_zeal_swat_heavy_sniper_mememan" />
+	<object				path="units/payday2/characters/ene_acc_zeal_swat_heavy_sniper_mememan/ene_acc_zeal_swat_heavy_sniper_mememan"/>
+	<material_config	path="units/payday2/characters/ene_acc_zeal_swat_heavy_sniper_mememan/ene_acc_zeal_swat_heavy_sniper_mememan"/>
+
+	<texture			path="units/payday2/characters/ene_mememan_3/ene_zeal_swat_heavy_sniper_helmet_df" />
+	<texture			path="units/payday2/characters/ene_mememan_3/ene_zeal_swat_heavy_sniper_helmet_nm" />
+	<texture			path="units/payday2/characters/ene_mememan_3/swat_heavy_df" />
+	<texture			path="units/payday2/characters/ene_mememan_3/swat_heavy_head_df" />
+
+	<!--THE AWESOME RIFLE-->
+	<unit				path="units/payday2/weapons/wpn_npc_sniper_tacticool/wpn_npc_sniper_tacticool" force="false"/>
+	<object				path="units/payday2/weapons/wpn_npc_sniper_tacticool/wpn_npc_sniper_tacticool" force="false"/>
+	<model				path="units/payday2/weapons/wpn_npc_sniper_tacticool/wpn_npc_sniper_tacticool" force="false"/>
+	<material_config	path="units/payday2/weapons/wpn_npc_sniper_tacticool/wpn_npc_sniper_tacticool" force="false"/>
+	<cooked_physics		path="units/payday2/weapons/wpn_npc_sniper_tacticool/wpn_npc_sniper_tacticool" force="false"/>
+	<texture			path="units/payday2/weapons/wpn_npc_sniper_tacticool/wpn_npc_sniper_p1_df" />
+	<texture			path="units/payday2/weapons/wpn_npc_sniper_tacticool/wpn_npc_sniper_p1_nm" />
+
 	<!--Load helmet before anything related to new coppers-->
 	<!--This helmet is agony for anything new coppers related. Fuck this helmet. - FaN Scout-->
 	<object				path="units/pd2_mod_nc/characters/ene_acc_zeal_swat_helmet/ene_acc_zeal_swat_helmet" force="false"/>

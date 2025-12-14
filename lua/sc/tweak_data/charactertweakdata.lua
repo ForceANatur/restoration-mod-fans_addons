@@ -1029,7 +1029,18 @@ function CharacterTweakData:_init_heavy_swat(presets)
 	self.heavy_swat_sniper_scripted.headshot_dmg_mul = 3.75
 	self.heavy_swat_sniper_scripted.die_sound_event_2 = "mga_death_scream"
 	self.heavy_swat_sniper_scripted.damage.hurt_severity = presets.hurt_severities.no_hurts
-	table.insert(self._enemy_list, "heavy_swat_sniper")
+	table.insert(self._enemy_list, "heavy_swat_sniper_scripted")
+
+	--Mememan Sniper
+	self.heavy_swat_sniper_mememan = deep_clone(self.heavy_swat_sniper)
+	self.heavy_swat_sniper_mememan.custom_voicework = "meme_man"
+	self.heavy_swat_sniper_mememan.yellow_blood = false
+	self.heavy_swat_sniper_mememan.HEALTH_INIT = 21
+	self.heavy_swat_sniper_mememan.headshot_dmg_mul = 1.69
+	self.heavy_swat_sniper_mememan.move_speed = presets.move_speed.lightning
+	self.heavy_swat_sniper_mememan.dodge = presets.dodge.elite
+	self.heavy_swat_sniper_mememan.no_xmas_hat = true
+	table.insert(self._enemy_list, "heavy_swat_sniper_mememan")
 	
 	--Weekend Snipers
 	self.weekend_dmr = deep_clone(self.heavy_swat_sniper)
@@ -18989,6 +19000,10 @@ Hooks:PostHook(CharacterTweakData, "_create_table_structure", "remod_create_tabl
 	--HK G3A3
 	table.insert(self.weap_ids, "g3a3_npc")
 	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_g3a3/wpn_npc_g3a3"))
+
+	--Highly modified CAR-4
+	table.insert(self.weap_ids, "m4_tacticool_snp")
+	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_sniper_tacticool/wpn_npc_sniper_tacticool"))
 end)
 -- EASY (UNUSED) --
 function CharacterTweakData:_set_easy()
@@ -19848,6 +19863,7 @@ function CharacterTweakData:character_map()
 		table.insert(char_map.basic.list, "ene_bulldozer_4_minion")		
 		table.insert(char_map.basic.list, "ene_mememan_1")
 		table.insert(char_map.basic.list, "ene_mememan_2")
+		table.insert(char_map.basic.list, "ene_mememan_3")
 		table.insert(char_map.basic.list, "ene_bulldozer_biker_1")
 		table.insert(char_map.basic.list, "ene_guard_biker_1")
 		table.insert(char_map.basic.list, "ene_gang_black_enforcer")

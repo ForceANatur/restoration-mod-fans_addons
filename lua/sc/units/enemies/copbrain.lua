@@ -270,6 +270,8 @@ logic_variants.tank_captain.attack = TankCopLogicAttack
 logic_variants.enforcer_swat = security_variant
 logic_variants.tank_undeadtitan = clone(security_variant)
 logic_variants.tank_undeadtitan.attack = TankCopLogicAttack
+logic_variants.heavy_swat_sniper_mememan = clone(security_variant)
+logic_variants.heavy_swat_sniper_mememan.attack = MarshalLogicAttack
 
 logic_variants.heavy_swat_sniper = clone(security_variant)
 logic_variants.heavy_swat_sniper.attack = MarshalLogicAttack
@@ -291,7 +293,7 @@ logic_variants.city_swat_titan.attack = MarshalLogicAttack
 logic_variants.weekend_lmg = clone(security_variant)
 logic_variants.weekend_lmg.attack = MarshalLogicAttack		
 logic_variants.taser_titan_reaper = clone(security_variant)
-logic_variants.taser_titan_reaper.attack = MarshalLogicAttack			
+logic_variants.taser_titan_reaper.attack = MarshalLogicAttack
 
 --Set up boss logics
 logic_variants.mobster_boss = logic_variants.triad_boss

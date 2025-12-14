@@ -15230,6 +15230,7 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 				Idstring("units/pd2_mod_dave/characters/ene_big_dave/ene_big_dave"),
 				Idstring("units/payday2/characters/ene_mememan_1/ene_mememan_1"),
 				Idstring("units/payday2/characters/ene_mememan_2/ene_mememan_2"),
+				Idstring("units/payday2/characters/ene_mememan_3/ene_mememan_3"),
 				Idstring("units/payday2/characters/ene_veteran_lod_1/ene_veteran_lod_1"),
 				Idstring("units/payday2/characters/ene_veteran_lod_2/ene_veteran_lod_2")
 			},
@@ -15237,6 +15238,7 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 				Idstring("units/pd2_mod_dave/characters/ene_big_dave/ene_big_dave"),
 				Idstring("units/payday2/characters/ene_mememan_1/ene_mememan_1"),
 				Idstring("units/payday2/characters/ene_mememan_2/ene_mememan_2"),
+				Idstring("units/payday2/characters/ene_mememan_3/ene_mememan_3"),
 				Idstring("units/payday2/characters/ene_veteran_lod_1/ene_veteran_lod_1"),
 				Idstring("units/payday2/characters/ene_veteran_lod_2/ene_veteran_lod_2")
 			},
@@ -15244,6 +15246,7 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 				Idstring("units/pd2_mod_dave/characters/ene_dave_hvh/ene_dave_hvh"),
 				Idstring("units/payday2/characters/ene_mememan_1/ene_mememan_1"),
 				Idstring("units/payday2/characters/ene_mememan_2/ene_mememan_2"),
+				Idstring("units/payday2/characters/ene_mememan_3/ene_mememan_3"),
 				Idstring("units/payday2/characters/ene_veteran_lod_1/ene_veteran_lod_1"),
 				Idstring("units/payday2/characters/ene_veteran_lod_2/ene_veteran_lod_2")
 			},
@@ -15251,6 +15254,7 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 				Idstring("units/pd2_mod_dave/characters/ene_big_dave/ene_big_dave"),
 				Idstring("units/payday2/characters/ene_mememan_1/ene_mememan_1"),
 				Idstring("units/payday2/characters/ene_mememan_2/ene_mememan_2"),
+				Idstring("units/payday2/characters/ene_mememan_3/ene_mememan_3"),
 				Idstring("units/payday2/characters/ene_veteran_lod_1/ene_veteran_lod_1"),
 				Idstring("units/payday2/characters/ene_veteran_lod_2/ene_veteran_lod_2")
 			},
@@ -15258,6 +15262,7 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 				Idstring("units/pd2_mod_dave/characters/ene_big_dave/ene_big_dave"),
 				Idstring("units/payday2/characters/ene_mememan_1/ene_mememan_1"),
 				Idstring("units/payday2/characters/ene_mememan_2/ene_mememan_2"),
+				Idstring("units/payday2/characters/ene_mememan_3/ene_mememan_3"),
 				Idstring("units/payday2/characters/ene_veteran_lod_1/ene_veteran_lod_1"),
 				Idstring("units/payday2/characters/ene_veteran_lod_2/ene_veteran_lod_2")
 			},					
@@ -15265,6 +15270,7 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 				Idstring("units/pd2_mod_dave/characters/ene_big_dave/ene_big_dave"),
 				Idstring("units/payday2/characters/ene_mememan_1/ene_mememan_1"),
 				Idstring("units/payday2/characters/ene_mememan_2/ene_mememan_2"),
+				Idstring("units/payday2/characters/ene_mememan_3/ene_mememan_3"),
 				Idstring("units/payday2/characters/ene_veteran_lod_1/ene_veteran_lod_1"),
 				Idstring("units/payday2/characters/ene_veteran_lod_2/ene_veteran_lod_2")
 			},
@@ -15272,6 +15278,7 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 				Idstring("units/pd2_mod_dave/characters/ene_big_dave/ene_big_dave"),
 				Idstring("units/payday2/characters/ene_mememan_1/ene_mememan_1"),
 				Idstring("units/payday2/characters/ene_mememan_2/ene_mememan_2"),
+				Idstring("units/payday2/characters/ene_mememan_3/ene_mememan_3"),
 				Idstring("units/payday2/characters/ene_veteran_lod_1/ene_veteran_lod_1"),
 				Idstring("units/payday2/characters/ene_veteran_lod_2/ene_veteran_lod_2")
 			},
@@ -15279,6 +15286,7 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 				Idstring("units/pd2_mod_dave/characters/ene_big_dave/ene_big_dave"),
 				Idstring("units/payday2/characters/ene_mememan_1/ene_mememan_1"),
 				Idstring("units/payday2/characters/ene_mememan_2/ene_mememan_2"),
+				Idstring("units/payday2/characters/ene_mememan_3/ene_mememan_3"),
 				Idstring("units/payday2/characters/ene_veteran_lod_1/ene_veteran_lod_1"),
 				Idstring("units/payday2/characters/ene_veteran_lod_2/ene_veteran_lod_2")
 			}
@@ -15289,6 +15297,16 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 	--Holiday effects
 	--April Fools
 	if Month == "04" and Day == "01" and restoration.Options:GetValue("OTHER/Holiday") then
+
+		self.unit_categories.titan_sniper.unit_types.america[4] = "units/payday2/characters/ene_mememan_3/ene_mememan_3"
+		self.unit_categories.titan_sniper.unit_types.russia[2] = "units/payday2/characters/ene_mememan_3/ene_mememan_3"
+		self.unit_categories.titan_sniper.unit_types.zombie[2] = "units/payday2/characters/ene_mememan_3/ene_mememan_3"
+		self.unit_categories.titan_sniper.unit_types.murkywater[2] = "units/payday2/characters/ene_mememan_3/ene_mememan_3"
+		self.unit_categories.titan_sniper.unit_types.federales[2] = "units/payday2/characters/ene_mememan_3/ene_mememan_3"
+		self.unit_categories.titan_sniper.unit_types.nypd[4] = "units/payday2/characters/ene_mememan_3/ene_mememan_3"
+		self.unit_categories.titan_sniper.unit_types.lapd[4] = "units/payday2/characters/ene_mememan_3/ene_mememan_3"
+		self.unit_categories.titan_sniper.unit_types.fbi[4] = "units/payday2/characters/ene_mememan_3/ene_mememan_3"
+
 		if difficulty_index <= 3 then
 			self.unit_categories.FBI_suit_M4_MP5.unit_types.america[39] = "units/payday2/characters/ene_veteran_lod_2/ene_veteran_lod_2"
 			self.unit_categories.FBI_suit_M4_MP5.unit_types.russia[39] = "units/payday2/characters/ene_veteran_lod_2/ene_veteran_lod_2"

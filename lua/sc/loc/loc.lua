@@ -5435,6 +5435,10 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 	--	["puzzle 1_desc"] = "N Z GUxrBvyBgL VVUPaiiZd Xx F aabLgAk (Hint: What's a very common way to encrypt a message?)",
 	--	["puzzle 1_longdesc"] = "uswksj, Affine: 'After Jesus said this, he looked toward heaven and prayed: Father, the hour has come. Glorify your Son, that your Son may glorify you.', Vinenere LOL 69, Rail Fence - Brooklyn",
 
+		["mutator_memez"] = "HeavyGunner's Influence",
+		["mutator_memez_desc"] = "Mememen are added to the spawn pool.",
+		["mutator_memez_longdesc"] = "Did you know that the Mememen are HeavyGunner's henchmen? Yeah well, they're coming for you. Don't worry, they're not real. The pain is unfortunately.",
+
 		--Crime Spree mutators
 		["mutator_cloakercuff"] = "Conjurer",
 		["mutator_cloakercuff_desc"] = "Cloaker melee strikes will now cuff players.",
