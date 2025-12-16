@@ -436,6 +436,7 @@
 		<hook file="sc/mutators/new/mutatorswolemedsandspoocs.lua" source_file="lib/mutators/basemutator"/>
 		<hook file="sc/mutators/new/mutatordeathvoxmedic.lua" source_file="lib/mutators/basemutator"/>
 		<hook file="sc/mutators/new/mutatorsafehousenightmare.lua" source_file="lib/mutators/basemutator"/>
+		<hook file="sc/mutators/new/mutatormememenbandaidfix.lua" source_file="lib/mutators/basemutator"/>
 		<!--<hook file="sc/mutators/new/mutatorfactionreplacer.lua" source_file="lib/mutators/basemutator"/>-->
 		<!--///NETWORKING\\\-->
 		<hook file="sc/network/base/hostnetworksession.lua" source_file="lib/network/base/hostnetworksession"/>

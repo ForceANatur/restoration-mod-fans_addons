@@ -1242,6 +1242,22 @@ function CharacterTweakData:_init_city_swat(presets)
 	self.city_swat_guard.use_radio = nil
 	table.insert(self._enemy_list, "city_swat_guard")
 
+	--Mememan 4, High Dodge chance, Takes no melee damage. Have fun! :D
+	self.city_swat_dodge_mememan = deep_clone(self.city_swat)
+	self.city_swat_dodge_mememan.tags = {"law", "custom", "special"}
+	self.city_swat_dodge_mememan.HEALTH_INIT = 42
+	self.city_swat_dodge_mememan.priority_shout_max_dis = 3000
+	self.city_swat_dodge_mememan.priority_shout = "g29"
+	self.city_swat_dodge_mememan.bot_priority_shout = "g29"
+	self.city_swat_dodge_mememan.is_special = true
+	self.city_swat_dodge_mememan.custom_shout = true
+	self.city_swat_dodge_mememan.damage.bullet_dodge_chance = 90
+	self.city_swat_dodge_mememan.headshot_dmg_mul = 6.9
+	self.city_swat_dodge_mememan.damage.melee_damage_mul = 0
+	self.city_swat_dodge_mememan.custom_voicework = "meme_man"
+	self.city_swat_dodge_mememan.surrender = nil
+	table.insert(self._enemy_list, "city_swat_dodge_mememan")
+
 	--Weekend
 	self.weekend = deep_clone(self.city_swat)
 	if self:get_ai_group_type() == "russia" then
@@ -1470,6 +1486,16 @@ function CharacterTweakData:_init_marshal_marksman(presets)
 		self.marshal_marksman_scripted.custom_voicework = "marshal_marksman"
 	end
 	table.insert(self._enemy_list, "marshal_marksman")
+
+	--Mememan Sniper
+	self.heavy_swat_sniper_mememan = deep_clone(self.heavy_swat_sniper)
+	self.heavy_swat_sniper_mememan.custom_voicework = "meme_man"
+	self.heavy_swat_sniper_mememan.yellow_blood = false
+	self.heavy_swat_sniper_mememan.HEALTH_INIT = 21
+	self.heavy_swat_sniper_mememan.headshot_dmg_mul = 1.69
+	self.heavy_swat_sniper_mememan.move_speed = presets.move_speed.lightning
+	self.heavy_swat_sniper_mememan.dodge = presets.dodge.elite
+	table.insert(self._enemy_list, "heavy_swat_sniper_mememan")
 end
 
 function CharacterTweakData:_init_gangster(presets)
@@ -19887,6 +19913,8 @@ function CharacterTweakData:character_map()
 		table.insert(char_map.basic.list, "ene_bulldozer_4_minion")		
 		table.insert(char_map.basic.list, "ene_mememan_1")
 		table.insert(char_map.basic.list, "ene_mememan_2")
+		table.insert(char_map.basic.list, "ene_mememan_3")
+		table.insert(char_map.basic.list, "ene_mememan_4")
 		table.insert(char_map.basic.list, "ene_bulldozer_biker_1")
 		table.insert(char_map.basic.list, "ene_guard_biker_1")
 		table.insert(char_map.basic.list, "ene_gang_black_enforcer")
