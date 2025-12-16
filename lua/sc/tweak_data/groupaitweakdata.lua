@@ -15231,6 +15231,7 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 				Idstring("units/payday2/characters/ene_mememan_1/ene_mememan_1"),
 				Idstring("units/payday2/characters/ene_mememan_2/ene_mememan_2"),
 				Idstring("units/payday2/characters/ene_mememan_3/ene_mememan_3"),
+				Idstring("units/payday2/characters/ene_mememan_4/ene_mememan_4"),
 				Idstring("units/payday2/characters/ene_veteran_lod_1/ene_veteran_lod_1"),
 				Idstring("units/payday2/characters/ene_veteran_lod_2/ene_veteran_lod_2")
 			},
@@ -15239,6 +15240,7 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 				Idstring("units/payday2/characters/ene_mememan_1/ene_mememan_1"),
 				Idstring("units/payday2/characters/ene_mememan_2/ene_mememan_2"),
 				Idstring("units/payday2/characters/ene_mememan_3/ene_mememan_3"),
+				Idstring("units/payday2/characters/ene_mememan_4/ene_mememan_4"),
 				Idstring("units/payday2/characters/ene_veteran_lod_1/ene_veteran_lod_1"),
 				Idstring("units/payday2/characters/ene_veteran_lod_2/ene_veteran_lod_2")
 			},
@@ -15247,6 +15249,7 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 				Idstring("units/payday2/characters/ene_mememan_1/ene_mememan_1"),
 				Idstring("units/payday2/characters/ene_mememan_2/ene_mememan_2"),
 				Idstring("units/payday2/characters/ene_mememan_3/ene_mememan_3"),
+				Idstring("units/payday2/characters/ene_mememan_4/ene_mememan_4"),
 				Idstring("units/payday2/characters/ene_veteran_lod_1/ene_veteran_lod_1"),
 				Idstring("units/payday2/characters/ene_veteran_lod_2/ene_veteran_lod_2")
 			},
@@ -15255,6 +15258,7 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 				Idstring("units/payday2/characters/ene_mememan_1/ene_mememan_1"),
 				Idstring("units/payday2/characters/ene_mememan_2/ene_mememan_2"),
 				Idstring("units/payday2/characters/ene_mememan_3/ene_mememan_3"),
+				Idstring("units/payday2/characters/ene_mememan_4/ene_mememan_4"),
 				Idstring("units/payday2/characters/ene_veteran_lod_1/ene_veteran_lod_1"),
 				Idstring("units/payday2/characters/ene_veteran_lod_2/ene_veteran_lod_2")
 			},
@@ -15263,6 +15267,7 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 				Idstring("units/payday2/characters/ene_mememan_1/ene_mememan_1"),
 				Idstring("units/payday2/characters/ene_mememan_2/ene_mememan_2"),
 				Idstring("units/payday2/characters/ene_mememan_3/ene_mememan_3"),
+				Idstring("units/payday2/characters/ene_mememan_4/ene_mememan_4"),
 				Idstring("units/payday2/characters/ene_veteran_lod_1/ene_veteran_lod_1"),
 				Idstring("units/payday2/characters/ene_veteran_lod_2/ene_veteran_lod_2")
 			},					
@@ -15271,6 +15276,7 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 				Idstring("units/payday2/characters/ene_mememan_1/ene_mememan_1"),
 				Idstring("units/payday2/characters/ene_mememan_2/ene_mememan_2"),
 				Idstring("units/payday2/characters/ene_mememan_3/ene_mememan_3"),
+				Idstring("units/payday2/characters/ene_mememan_4/ene_mememan_4"),
 				Idstring("units/payday2/characters/ene_veteran_lod_1/ene_veteran_lod_1"),
 				Idstring("units/payday2/characters/ene_veteran_lod_2/ene_veteran_lod_2")
 			},
@@ -15279,6 +15285,7 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 				Idstring("units/payday2/characters/ene_mememan_1/ene_mememan_1"),
 				Idstring("units/payday2/characters/ene_mememan_2/ene_mememan_2"),
 				Idstring("units/payday2/characters/ene_mememan_3/ene_mememan_3"),
+				Idstring("units/payday2/characters/ene_mememan_4/ene_mememan_4"),
 				Idstring("units/payday2/characters/ene_veteran_lod_1/ene_veteran_lod_1"),
 				Idstring("units/payday2/characters/ene_veteran_lod_2/ene_veteran_lod_2")
 			},
@@ -15287,6 +15294,7 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 				Idstring("units/payday2/characters/ene_mememan_1/ene_mememan_1"),
 				Idstring("units/payday2/characters/ene_mememan_2/ene_mememan_2"),
 				Idstring("units/payday2/characters/ene_mememan_3/ene_mememan_3"),
+				Idstring("units/payday2/characters/ene_mememan_4/ene_mememan_4"),
 				Idstring("units/payday2/characters/ene_veteran_lod_1/ene_veteran_lod_1"),
 				Idstring("units/payday2/characters/ene_veteran_lod_2/ene_veteran_lod_2")
 			}
