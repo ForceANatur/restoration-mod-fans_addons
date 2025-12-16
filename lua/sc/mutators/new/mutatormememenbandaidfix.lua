@@ -28,9 +28,12 @@ function MutatorMemezMalware:setup(data)
 
 	local unit_types_snipers = tweak_data.group_ai.unit_categories.titan_sniper.unit_types
 
+	local unit_types_sgt = tweak_data.group_ai.unit_categories.gensec_sgt.unit_types
+
 	local mememan_mini = Idstring("units/payday2/characters/ene_mememan_1/ene_mememan_1")
 	local mememan_shield = Idstring("units/payday2/characters/ene_mememan_2/ene_mememan_2")
 	local mememan_sniper = Idstring("units/payday2/characters/ene_mememan_3/ene_mememan_3")
+	local mememan_dodge = Idstring("units/payday2/characters/ene_mememan_4/ene_mememan_4")
 
 	table.insert(unit_types.america, mememan_mini)
 	table.insert(unit_types.russia, mememan_mini)
@@ -94,4 +97,13 @@ function MutatorMemezMalware:setup(data)
 	table.insert(unit_types_snipers.nypd, mememan_sniper)
 	table.insert(unit_types_snipers.lapd, mememan_sniper)
 	table.insert(unit_types_snipers.fbi, mememan_sniper)
+
+	table.insert(unit_types_sgt.america, mememan_dodge)
+	table.insert(unit_types_sgt.russia, mememan_dodge)
+	table.insert(unit_types_sgt.zombie, mememan_dodge)
+	table.insert(unit_types_sgt.federales, mememan_dodge)
+	table.insert(unit_types_sgt.murkywater, mememan_dodge)
+	table.insert(unit_types_sgt.nypd, mememan_dodge)
+	table.insert(unit_types_sgt.lapd, mememan_dodge)
+	table.insert(unit_types_sgt.fbi, mememan_dodge)
 end

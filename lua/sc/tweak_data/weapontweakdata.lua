@@ -1505,6 +1505,12 @@ local crew_wep_preset = {
 		self.g36_npc.alert_size = 2500
 		self.g36_npc.suppression = 2.6
 		self.g36_npc.FIRE_MODE = "auto"
+
+		self.g36_mememan_npc = deep_clone(self.g36_npc)
+		self.g36_mememan_npc.DAMAGE = 2.1
+		self.g36_mememan_npc.CLIP_AMMO_MAX = 100
+		self.g36_mememan_npc.usage = "is_lmg"
+		self.g36_mememan_npc.alert_size = 9999
 	end
 	
 	function WeaponTweakData:_init_data_mp9_npc()

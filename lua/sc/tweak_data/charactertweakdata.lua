@@ -1039,7 +1039,6 @@ function CharacterTweakData:_init_heavy_swat(presets)
 	self.heavy_swat_sniper_mememan.headshot_dmg_mul = 1.69
 	self.heavy_swat_sniper_mememan.move_speed = presets.move_speed.lightning
 	self.heavy_swat_sniper_mememan.dodge = presets.dodge.elite
-	self.heavy_swat_sniper_mememan.no_xmas_hat = true
 	table.insert(self._enemy_list, "heavy_swat_sniper_mememan")
 	
 	--Weekend Snipers
@@ -1253,6 +1252,22 @@ function CharacterTweakData:_init_city_swat(presets)
 	self.city_swat_guard.melee_weapon = "baton"
 	self.city_swat_guard.use_radio = nil
 	table.insert(self._enemy_list, "city_swat_guard")
+
+	--Mememan 4, High Dodge chance, Takes no melee damage. Have fun! :D
+	self.city_swat_dodge_mememan = deep_clone(self.city_swat)
+	self.city_swat_dodge_mememan.tags = {"law", "custom", "special"}
+	self.city_swat_dodge_mememan.HEALTH_INIT = 42
+	self.city_swat_dodge_mememan.priority_shout_max_dis = 3000
+	self.city_swat_dodge_mememan.priority_shout = "g29"
+	self.city_swat_dodge_mememan.bot_priority_shout = "g29"
+	self.city_swat_dodge_mememan.is_special = true
+	self.city_swat_dodge_mememan.custom_shout = true
+	self.city_swat_dodge_mememan.damage.bullet_dodge_chance = 90
+	self.city_swat_dodge_mememan.headshot_dmg_mul = 6.9
+	self.city_swat_dodge_mememan.damage.melee_damage_mul = 0
+	self.city_swat_dodge_mememan.custom_voicework = "meme_man"
+	self.city_swat_dodge_mememan.surrender = nil
+	table.insert(self._enemy_list, "city_swat_dodge_mememan")
 
 	--Weekend
 	self.weekend = deep_clone(self.city_swat)
@@ -19004,6 +19019,10 @@ Hooks:PostHook(CharacterTweakData, "_create_table_structure", "remod_create_tabl
 	--Highly modified CAR-4
 	table.insert(self.weap_ids, "m4_tacticool_snp")
 	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_sniper_tacticool/wpn_npc_sniper_tacticool"))
+
+	--fanni gee thirte sex 😂
+	table.insert(self.weap_ids, "g36_lol_npc")
+	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_g36_mememan/wpn_npc_g36_mememan"))
 end)
 -- EASY (UNUSED) --
 function CharacterTweakData:_set_easy()
@@ -19864,6 +19883,7 @@ function CharacterTweakData:character_map()
 		table.insert(char_map.basic.list, "ene_mememan_1")
 		table.insert(char_map.basic.list, "ene_mememan_2")
 		table.insert(char_map.basic.list, "ene_mememan_3")
+		table.insert(char_map.basic.list, "ene_mememan_4")
 		table.insert(char_map.basic.list, "ene_bulldozer_biker_1")
 		table.insert(char_map.basic.list, "ene_guard_biker_1")
 		table.insert(char_map.basic.list, "ene_gang_black_enforcer")

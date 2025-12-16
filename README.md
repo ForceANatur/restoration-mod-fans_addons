@@ -148,7 +148,7 @@ DMC: Assisting with creation of the weapons, skill trees and helping with overal
 
 Reno: Major asset and sound contributions. minor code contributions. Voicing Murkywater Special Forces.
 
-Jarey_: Major asset contributions and voicing the Titan Sniper.
+Jarey_: Major asset contributions and voicing the Titan Sniper. HD Weapon Replacement used as base for some custom npc weapons. (https://modworkshop.net/mod/34740)
 
 Zdann: Major asset contributions.
 
@@ -194,7 +194,7 @@ Porky da Corgi: creating the base textures for the grenadier and OMNIA Light
 
 Wekk: Telling us what LPF should mean and allowing us to implement "Less Clones, More Face Variations" mod and "Zeal Shield Illumination Fix" into the mod. Skulldozer ACP camo (https://modworkshop.net/mod/19356)
 
-Hoppip: Manufactured the Mind Blown graze rework, the insane laser assets used for enemy damage buffs and the Streamlined Heisting framework. 
+Hoppip: Manufactured the Mind Blown graze rework, the insane laser assets used for enemy damage buffs and the Streamlined Heisting framework. Mememan 3's weapon (https://modworkshop.net/mod/38772)
 
 Baddy: Quite big asset contributions. Prettier Gensec Units.
 
@@ -220,7 +220,7 @@ SonicSoapyBoi: Dapamoga for adjustment, tessiravannem and bug fix.
 
 Dorpenka: Updated Combat Harness viewmodel, chromatic aberration and civilian kill line fixes
 
-Rickerus: Providing assets for the ASU's head.
+Rickerus: Providing assets for the ASU's head and Improved ZEAL Marksman. (https://modworkshop.net/mod/24211)
 
 PlayBONK: Creating the shield bash animation.
 

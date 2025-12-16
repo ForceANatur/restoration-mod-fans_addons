@@ -1329,6 +1329,28 @@
 	<texture			path="units/payday2/weapons/wpn_npc_sniper_tacticool/wpn_npc_sniper_p1_df" />
 	<texture			path="units/payday2/weapons/wpn_npc_sniper_tacticool/wpn_npc_sniper_p1_nm" />
 
+	<!--MEME MAN 4: ULTIMATE DODGER-->
+	<object				path="units/payday2/characters/ene_mememan_4/ene_mememan_4" force="false"/>
+	<cooked_physics		path="units/payday2/characters/ene_mememan_4/ene_mememan_4" force="false"/>
+	<model				path="units/payday2/characters/ene_mememan_4/ene_mememan_4" force="false"/>
+	<unit				path="units/payday2/characters/ene_mememan_4/ene_mememan_4" force="false" load="true"/>
+	<material_config	path="units/payday2/characters/ene_mememan_4/ene_mememan_4" force="false"/>
+	<material_config	path="units/payday2/characters/ene_mememan_4/ene_mememan_4_contour" force="false"/>
+	<unit				path="units/payday2/characters/ene_mememan_4/ene_mememan_4_husk" force="false" load="true"/>
+
+	<texture			path="units/payday2/characters/ene_mememan_4/fbi_helmet_df" />
+	<texture			path="units/payday2/characters/ene_mememan_4/heads_atlas_df" />
+	<texture			path="units/payday2/characters/ene_mememan_4/swat_fbi_body_df" />
+
+	<!--fanni gee thity sex-->
+	<unit				path="units/payday2/weapons/wpn_npc_g36_mememan/wpn_npc_g36_mememan" force="false"/>
+	<object				path="units/payday2/weapons/wpn_npc_g36_mememan/wpn_npc_g36_mememan" force="false"/>
+	<model				path="units/payday2/weapons/wpn_npc_g36_mememan/wpn_npc_g36_mememan" force="false"/>
+	<material_config	path="units/payday2/weapons/wpn_npc_g36_mememan/wpn_npc_g36_mememan" force="false"/>
+	<cooked_physics		path="units/payday2/weapons/wpn_npc_g36_mememan/wpn_npc_g36_mememan" force="false"/>
+	<texture			path="units/payday2/weapons/wpn_npc_g36_mememan/g36_mememan_df" />
+	<texture			path="units/payday2/weapons/wpn_npc_g36_mememan/g36_mememan_nm" />
+
 	<!--Load helmet before anything related to new coppers-->
 	<!--This helmet is agony for anything new coppers related. Fuck this helmet. - FaN Scout-->
 	<object				path="units/pd2_mod_nc/characters/ene_acc_zeal_swat_helmet/ene_acc_zeal_swat_helmet" force="false"/>
