@@ -2,14 +2,7 @@
     <material render_template="generic:CONTOUR:DIFFUSE_TEXTURE:NORMALMAP:SELF_ILLUMINATION:SELF_ILLUMINATION_BLOOM:SKINNED_3WEIGHTS" unique="true" version="2" name="mtr_bulldozer">
         <bump_normal_texture file="units/pd2_mod_caps/characters/ene_bulldozer_captain/bulldozer_1_nm"/>
         <diffuse_texture file="units/pd2_mod_caps/characters/ene_bulldozer_captain/bulldozer_df"/>
-		<variable type="scalar" name="il_bloom" value="5"/>
-        <variable type="scalar" name="il_multiplier" value="neonsign"/>
-        <variable value="1 1 1" type="vector3" name="contour_color"/>
-        <variable value="0" type="scalar" name="contour_opacity"/>
-    </material>
-    <material render_template="generic:CONTOUR:DIFFUSE_TEXTURE:NORMALMAP:SELF_ILLUMINATION:SELF_ILLUMINATION_BLOOM:SKINNED_3WEIGHTS" unique="true" version="2" name="mtr_bulldozer_head">
-        <bump_normal_texture file="units/payday2/characters/shared_textures/bulldozer_nm"/>
-        <diffuse_texture file="units/payday2/characters/shared_textures/bulldozer_city_df"/>
+		<self_illumination_texture file="units/pd2_mod_caps/characters/ene_bulldozer_captain/bulldozer_il"/> 
 		<variable type="scalar" name="il_bloom" value="5"/>
         <variable type="scalar" name="il_multiplier" value="neonsign"/>
         <variable value="1 1 1" type="vector3" name="contour_color"/>

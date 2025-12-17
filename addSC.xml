@@ -1473,7 +1473,7 @@
 	<!-- ZEAL LMG Dozer Captain -->
 	<texture			path="units/pd2_mod_caps/characters/ene_bulldozer_captain/bulldozer_df"/>
 	<texture			path="units/pd2_mod_caps/characters/ene_bulldozer_captain/bulldozer_1_nm"/>
-	<texture			path="units/pd2_mod_caps/characters/ene_bulldozer_captain/lmg_head_il"/>
+	<texture			path="units/pd2_mod_caps/characters/ene_bulldozer_captain/bulldozer_il"/>
 	<material_config	path="units/pd2_mod_caps/characters/ene_bulldozer_captain/ene_bulldozer_captain" force="false"/>
 	<material_config	path="units/pd2_mod_caps/characters/ene_bulldozer_captain/ene_bulldozer_captain_contour" force="false"/>
 	<model				path="units/pd2_mod_caps/characters/ene_bulldozer_captain/ene_bulldozer_captain" force="false"/>
