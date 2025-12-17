@@ -3634,7 +3634,6 @@ function CharacterTweakData:_init_spring(presets)
 	self.tank_captain.damage.hurt_severity = presets.hurt_severities.only_light_hurt_no_explode
 	self.tank_captain.move_speed = presets.move_speed.slow_plus
 	self.tank_captain.rage_move_speed = presets.move_speed.fast
-	table.insert(self.tank_captain.tags, "medic")
 	table.insert(self._enemy_list, "tank_captain")
 end
 
