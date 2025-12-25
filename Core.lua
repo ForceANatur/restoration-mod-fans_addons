@@ -175,6 +175,10 @@ function restoration:Init()
 		Gensec_HQ = restoration.captain_types.autumn, --Gensec HQ Raid day 2
 		hwu = restoration.captain_types.autumn, -- Avalon's Shadow
 		skm_firestarter_2 = restoration.captain_types.autumn,--FBI Holdout
+		skm_tbh = restoration.captain_types.autumn,--TBA Holdout
+		money_tbh = restoration.captain_types.autumn,--TBA Heist
+		skm_tbh_xmas = restoration.captain_types.autumn,--TBA Holdout
+		money_tbh_xmas = restoration.captain_types.autumn,--TBA Heist
 
 		--I'm not typing out the whole name
 		help = restoration.captain_types.hvh, --Prison Nightmare
