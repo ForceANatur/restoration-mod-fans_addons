@@ -175,6 +175,10 @@ function restoration:Init()
 		Gensec_HQ = restoration.captain_types.autumn, --Gensec HQ Raid day 2
 		hwu = restoration.captain_types.autumn, -- Avalon's Shadow
 		skm_firestarter_2 = restoration.captain_types.autumn,--FBI Holdout
+		skm_tbh = restoration.captain_types.autumn,--TBA Holdout
+		money_tbh = restoration.captain_types.autumn,--TBA Heist
+		skm_tbh_xmas = restoration.captain_types.autumn,--TBA Holdout
+		money_tbh_xmas = restoration.captain_types.autumn,--TBA Heist
 
 		--I'm not typing out the whole name
 		help = restoration.captain_types.hvh, --Prison Nightmare
@@ -368,7 +372,11 @@ function restoration:Init()
 		"hogar",-- The House Robbery
 		"icing",	--Road Rage
 		"gunw_lvl",  -- Gun Waashing
-		"R&amp;B Bank" -- RNB Bank (Notoriety port)
+		"R&amp;B Bank", -- RNB Bank (Notoriety port)
+		"skm_tbh", --TBA
+		"skm_tbh_xmas", --TBA
+		"money_tbh", --TBA
+		"money_tbh_xmas" --TBA
 	}
 	--For levels that have aggressive scripted spawns, or spawn placement such that enemies are constantly spawned next to players.
 	restoration.very_tiny_levels = {

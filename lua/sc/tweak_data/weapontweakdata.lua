@@ -9380,8 +9380,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.new_mp5.desc_id = "bm_mp5_sc_desc"
 						self.new_mp5.BURST_FIRE = {
 							count = 3,
-							delay = 0.12,
-							recoil_mult = 0.6,
+							delay = 0.15,
+							recoil_mult = 0.5,
 							last_recoil_mult = 1.01
 						}
 						self.new_mp5.panic_suppression_chance = 0.05
@@ -10108,13 +10108,13 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					self.tecci.muzzleflash_silenced = "_dmc/effects/heavy_suppressed"
 					self.tecci.CLIP_AMMO_MAX = 100
 					self.tecci.AMMO_MAX = 360
-					self.tecci.fire_mode_data.fire_rate = 0.07692307
+					self.tecci.fire_mode_data.fire_rate = 0.07058823
 					self.tecci.CAN_TOGGLE_FIREMODE = true
 					self.tecci.panic_suppression_chance = 0.05
 					self.tecci.supported = true
 					self.tecci.ads_speed = 0.360
 					self.tecci.damage_falloff = {
-						start_dist = 1800,
+						start_dist = 2000,
 						end_dist = 5800,
 						min_mult = 0.6
 					}
@@ -10396,7 +10396,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					self.hk51b.supported = true
 					self.hk51b.ads_speed = 0.420
 					self.hk51b.damage_falloff = {
-						start_dist = 1200,
+						start_dist = 1600,
 						end_dist = 4800,
 						min_mult = 0.66667
 					}
@@ -10454,9 +10454,9 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.mg42.muzzleflash_silenced = "_dmc/effects/heavy_suppressed"
 						self.mg42.shell_ejection = "effects/payday2/particles/weapons/shells/shell_762_lmg"
 						self.mg42.supported = true
-						self.mg42.ads_speed = 0.500
+						self.mg42.ads_speed = 0.480
 						self.mg42.damage_falloff = {
-							start_dist = 2000,
+							start_dist = 2200,
 							end_dist = 6000,
 							min_mult = 0.53333
 						}
@@ -10519,7 +10519,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.hk21.supported = true
 						self.hk21.ads_speed = 0.520
 						self.hk21.damage_falloff = {
-							start_dist = 1600,
+							start_dist = 1800,
 							end_dist = 5100,
 							min_mult = 0.44444
 						}
@@ -10569,8 +10569,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.hcar.supported = true
 						self.hcar.ads_speed = 0.480
 						self.hcar.damage_falloff = {
-							start_dist = 1700,
-							end_dist = 5400,
+							start_dist = 2300,
+							end_dist = 5900,
 							min_mult = 0.4
 						}
 						self.hcar.stats = {
@@ -10620,7 +10620,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.m60.supported = true
 						self.m60.ads_speed = 0.560
 						self.m60.damage_falloff = {
-							start_dist = 1400,
+							start_dist = 2100,
 							end_dist = 6000,
 							min_mult = 0.33333
 						}
@@ -10680,7 +10680,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.par.supported = true
 						self.par.ads_speed = 0.540
 						self.par.damage_falloff = {
-							start_dist = 1000,
+							start_dist = 1800,
 							end_dist = 5800,
 							min_mult = 0.33333
 						}
@@ -10892,8 +10892,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							{4, self.stat_info.kick_tables.moderate_right_kick},
 							{7, self.stat_info.kick_tables.right_recoil},
 							{12, self.stat_info.kick_tables.moderate_kick},
-							{19, self.stat_info.kick_tables.left_recoil},
-							{36, self.stat_info.kick_tables.even_recoil}
+							{21, self.stat_info.kick_tables.left_recoil},
+							{34, self.stat_info.kick_tables.even_recoil}
 						}
 						self.amcar.supported = true
 						self.amcar.ads_speed = 0.300
@@ -16697,7 +16697,9 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.tilt.BURST_FIRE = {
 					count = 2,
 					rof_mult = 3,
-					delay = 0.15
+					delay = 0.15,
+					recoil_mult = 0.6,
+					last_recoil_mult = 1.02
 				}
 				self.tilt.ADAPTIVE_BURST_SIZE = false
 				self.tilt.fire_rate_init_count = 2
@@ -25027,6 +25029,117 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			end
 
 		--[[     RJC9000'S MODS     ]]--
+
+			if self.peacekeepermk1 then
+				self.peacekeepermk1.categories = {
+					"smg",
+					"pdw"
+				}
+				self.peacekeepermk1.recategorize = { "light_smg" }
+				self.peacekeepermk1.damage_type = "machine_gun"
+				self.peacekeepermk1.CLIP_AMMO_MAX = 30
+				self.peacekeepermk1.fire_mode_data.fire_rate = 0.0700116
+				self.peacekeepermk1.nato = true
+				self.peacekeepermk1.tactical_reload = 1
+				self.peacekeepermk1.AMMO_MAX = 150
+				self.peacekeepermk1.kick = self.stat_info.kick_tables.even_recoil
+				self.peacekeepermk1.kick_pattern = {
+					{0, self.stat_info.kick_tables.moderate_kick},
+					{3, self.stat_info.kick_tables.right_recoil},
+					{7, self.stat_info.kick_tables.even_recoil},
+					{9, self.stat_info.kick_tables.moderate_left_kick},
+					{12, self.stat_info.kick_tables.moderate_kick},
+					{15, self.stat_info.kick_tables.moderate_right_kick},
+					{17, self.stat_info.kick_tables.right_recoil}
+				}
+				self.peacekeepermk1.BURST_FIRE = false
+				self.peacekeepermk1.supported = true
+				self.peacekeepermk1.ads_speed = 0.220
+				self.peacekeepermk1.damage_falloff = {
+					start_dist = 1500,
+					end_dist = 3900,
+					min_mult = 0.55555
+				}
+				self.peacekeepermk1.stats = {
+					damage = 18,
+					spread = 77,
+					recoil = 81,
+					spread_moving = 7,
+					zoom = 1,
+					concealment = 24,
+					suppression = 12,
+					alert_size = 2,
+					extra_ammo = 101,
+					total_ammo_mod = 400,
+					value = 9,
+					reload = 25
+				}
+				self.peacekeepermk1.stats_modifiers = nil
+				self.peacekeepermk1.hs_mult = 1.33333
+				self.peacekeepermk1.armor_piercing_chance = 0.75
+				self.peacekeepermk1.panic_suppression_chance = 0.05
+				self.peacekeepermk1.lock_slide = true
+				self.peacekeepermk1.sounds.magazine_empty = "wp_rifle_slide_lock"
+				self.peacekeepermk1.reload_speed_multiplier = 0.9
+				self.peacekeepermk1.timers.reload_empty = 2.04
+				self.peacekeepermk1.timers.reload_exit_empty = 0.7
+				self.peacekeepermk1.timers.reload_not_empty = 1.64
+				self.peacekeepermk1.timers.reload_exit_not_empty = 0.64
+			end
+
+			if self.kord_6p67 then
+				self.kord_6p67.recategorize = { "light_ar" }
+				self.kord_6p67.damage_type = "assault_rifle"
+				self.kord_6p67.warsaw = true
+				self.kord_6p67.CLIP_AMMO_MAX = 30
+				self.kord_6p67.fire_mode_data.fire_rate = 0.0666667
+				self.kord_6p67.tactical_reload = 1
+				self.kord_6p67.AMMO_MAX = 150
+				self.kord_6p67.kick = self.stat_info.kick_tables.horizontal_recoil
+				self.kord_6p67.kick_pattern = {
+					{0, self.stat_info.kick_tables.horizontal_recoil},
+					{3, self.stat_info.kick_tables.right_recoil},
+					{10, self.stat_info.kick_tables.even_recoil},
+					{16, self.stat_info.kick_tables.left_recoil},
+					{23, self.stat_info.kick_tables.horizontal_recoil}
+				}
+				self.kord_6p67.BURST_FIRE = true
+				self.kord_6p67.BURST_FIRE = {
+					count = 2,
+					delay = 0.120,
+					recoil_mult = 0.9,
+					last_recoil_mult = 1.01
+				}
+				self.kord_6p67.supported = true
+				self.kord_6p67.ads_speed = 0.320
+				self.kord_6p67.damage_falloff = {
+					start_dist = 1500,
+					end_dist = 5000,
+					min_mult = 0.625
+				}
+				self.kord_6p67.stats = {
+					damage = 24,
+					spread = 71,
+					recoil = 71,
+					spread_moving = 5,
+					zoom = 1,
+					concealment = 25,
+					suppression = 8,
+					alert_size = 2,
+					extra_ammo = 101,
+					total_ammo_mod = 400,
+					value = 9,
+					reload = 25
+				}
+				self.kord_6p67.stats_modifiers = nil
+				self.kord_6p67.panic_suppression_chance = 0.05
+				self.kord_6p67.reload_not_empty_speed_multiplier = 1.1
+				self.kord_6p67.reload_speed_multiplier = 1.15
+				self.kord_6p67.timers.reload_empty = 3.87
+				self.kord_6p67.timers.reload_exit_empty = 0.8
+				self.kord_6p67.timers.reload_not_empty = 2.9
+				self.kord_6p67.timers.reload_exit_not_empty = 1.33
+			end
 
 			if self.scotia then
 				self.scotia.categories = { "assault_rifle" }
