@@ -319,10 +319,20 @@ local replacement_table = {
 	["units/pd2_dlc_hvh/characters/ene_city_heavy_r870/ene_city_heavy_r870"] = "units/pd2_mod_ngvh/characters/ene_ntl_heavyshotgun/ene_ntl_heavyshotgun",
 	["units/pd2_dlc_hvh/characters/ene_zeal_swat_heavy_2/ene_zeal_swat_heavy_2"] = "units/pd2_mod_ngvh/characters/ene_ntl_heavyshotgun/ene_ntl_heavyshotgun",
 	["units/pd2_dlc_hvh/characters/ene_sniper_hvh_2/ene_sniper_hvh_2"] = "units/pd2_mod_ngvh/characters/ene_ntl_groundsniper/ene_ntl_groundsniper",
-	["units/pd2_mod_halloween/characters/ene_medic_mp5/ene_medic_mp5"] = "units/pd2_mod_ngvh/characters/ene_ntl_medic/ene_ntl_medic",
 	["units/pd2_dlc_hvh/characters/ene_medic_hvh_m4/ene_medic_hvh_m4"] = "units/pd2_mod_ngvh/characters/ene_ntl_medic/ene_ntl_medic",
+
+	--Cruel Trance enemies as bravo zombies
+	["units/pd2_dlc_hvh/characters/ene_fbi_hvh_1/ene_fbi_hvh_1"] = "units/pd2_mod_cruel/characters/ene_fbi_1/ene_fbi_1",
+	["units/pd2_dlc_hvh/characters/ene_fbi_hvh_2/ene_fbi_hvh_2"] = "units/pd2_mod_cruel/characters/ene_fbi_2/ene_fbi_2",
+	["units/pd2_dlc_hvh/characters/ene_fbi_hvh_3/ene_fbi_hvh_3"] = "units/pd2_mod_cruel/characters/ene_fbi_4/ene_fbi_4",
+	["units/pd2_dlc_hvh/characters/ene_fbi_hvh_4/ene_fbi_hvh_4"] = "units/pd2_mod_cruel/characters/ene_fbi_3/ene_fbi_3",
+	["units/pd2_mod_halloween/characters/ene_medic_mp5/ene_medic_mp5"] = "units/pd2_mod_ngvh/characters/ene_ntl_medic/ene_ntl_medic",
+	["units/pd2_mod_halloween/characters/ene_zeal_medic/ene_zeal_medic"] = "units/pd2_mod_ngvh/characters/ene_ntl_medic/ene_ntl_medic",
 	["units/pd2_dlc_hvh/characters/ene_medic_hvh_r870/ene_medic_hvh_r870"] = "units/pd2_mod_ngvh/characters/ene_ntl_medic/ene_ntl_medic",
-	["units/pd2_mod_halloween/characters/ene_zeal_medic/ene_zeal_medic"] = "units/pd2_mod_ngvh/characters/ene_ntl_medic/ene_ntl_medic"
+	["units/pd2_mod_halloween/characters/ene_zeal_fbi_c45/ene_zeal_fbi_c45"] = "units/pd2_mod_cruel/characters/ene_zeal_hrt_1/ene_zeal_hrt_1",
+	["units/pd2_mod_halloween/characters/ene_zeal_fbi_m4/ene_zeal_fbi_m4"] = "units/pd2_mod_cruel/characters/ene_zeal_hrt_2/ene_zeal_hrt_2",
+	["units/pd2_mod_halloween/characters/ene_zeal_fbi_mp5/ene_zeal_fbi_mp5"] = "units/pd2_mod_cruel/characters/ene_zeal_hrt_3/ene_zeal_hrt_3",
+	["units/pd2_mod_halloween/characters/ene_zeal_fbi_r870/ene_zeal_fbi_r870"] = "units/pd2_mod_cruel/characters/ene_zeal_hrt_4/ene_zeal_hrt_4",
 }
 
 -- This table is for robots, don't edit this one

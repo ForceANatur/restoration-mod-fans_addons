@@ -294,7 +294,10 @@ logic_variants.city_swat_titan.attack = MarshalLogicAttack
 logic_variants.weekend_lmg = clone(security_variant)
 logic_variants.weekend_lmg.attack = MarshalLogicAttack		
 logic_variants.taser_titan_reaper = clone(security_variant)
-logic_variants.taser_titan_reaper.attack = MarshalLogicAttack			
+logic_variants.taser_titan_reaper.attack = MarshalLogicAttack
+
+logic_variants.fbi_cruel = security_variant
+logic_variants.hrt_cruel = security_variant
 
 --Set up boss logics
 logic_variants.mobster_boss = logic_variants.triad_boss
