@@ -54,8 +54,23 @@ StatisticsManager.special_unit_ids = {
 	"marshal_marksman",
 	"marshal_shield",
 	"snowman_boss",
+	"piggydozer",
 	"meme_man",
-	"meme_man_shield"
+	"meme_man_shield",
+	"heavy_swat_sniper_mememan",
+	"city_swat_dodge_mememan",
+	"spooc_swole",
+	"medic_buff",
+	"enforcer_swat",
+	"medic_heavy",
+	"medic_deathvox",
+	"tank_undeadtitan",
+	"tank_captain",
+	"heavygunner",
+	"atf_marksman",
+	"weekend_vanilla_snp",
+	"city_swat_rpg",
+	"city_swat_sergeant"
 }
 
 local old_stats = StatisticsManager.init
@@ -334,6 +349,76 @@ function StatisticsManager:init()
 			explosion = 0,
 			tied = 0
 		}
+	self._defaults.killed.enforcer_swat = {
+			count = 0,
+			head_shots = 0,
+			melee = 0,
+			explosion = 0,
+			tied = 0
+		}
+	self._defaults.killed.piggydozer = {
+			count = 0,
+			head_shots = 0,
+			melee = 0,
+			explosion = 0,
+			tied = 0
+		}
+	self._defaults.killed.medic_heavy = {
+			count = 0,
+			head_shots = 0,
+			melee = 0,
+			explosion = 0,
+			tied = 0
+		}
+	self._defaults.killed.medic_deathvox = {
+			count = 0,
+			head_shots = 0,
+			melee = 0,
+			explosion = 0,
+			tied = 0
+		}
+	self._defaults.killed.tank_undeadtitan = {
+			count = 0,
+			head_shots = 0,
+			melee = 0,
+			explosion = 0,
+			tied = 0
+		}
+	self._defaults.killed.tank_captain = {
+			count = 0,
+			head_shots = 0,
+			melee = 0,
+			explosion = 0,
+			tied = 0
+		}
+	self._defaults.killed.heavygunner = {
+			count = 0,
+			head_shots = 0,
+			melee = 0,
+			explosion = 0,
+			tied = 0
+		}
+	self._defaults.killed.atf_marksman = {
+			count = 0,
+			head_shots = 0,
+			melee = 0,
+			explosion = 0,
+			tied = 0
+		}
+	self._defaults.killed.city_swat_rpg = {
+			count = 0,
+			head_shots = 0,
+			melee = 0,
+			explosion = 0,
+			tied = 0
+		}
+	self._defaults.killed.city_swat_sergeant = {
+			count = 0,
+			head_shots = 0,
+			melee = 0,
+			explosion = 0,
+			tied = 0
+		}
 	--Meme Faction
 	self._defaults.killed.meme_man = {
 			count = 0,
@@ -363,6 +448,20 @@ function StatisticsManager:init()
 			explosion = 0,
 			tied = 0
 		}
+	self._defaults.killed.heavy_swat_sniper_mememan = {
+			count = 0,
+			head_shots = 0,
+			melee = 0,
+			explosion = 0,
+			tied = 0
+		}
+	self._defaults.killed.city_swat_dodge_mememan = {
+			count = 0,
+			head_shots = 0,
+			melee = 0,
+			explosion = 0,
+			tied = 0
+		}
 	--Weekend	
 	self._defaults.killed.weekend_dmr = {
 			count = 0,
@@ -371,7 +470,7 @@ function StatisticsManager:init()
 			explosion = 0,
 			tied = 0
 		}
-		self._defaults.killed.weekend_dmr_scripted = {
+	self._defaults.killed.weekend_dmr_scripted = {
 			count = 0,
 			head_shots = 0,
 			melee = 0,
@@ -391,7 +490,7 @@ function StatisticsManager:init()
 			melee = 0,
 			explosion = 0,
 			tied = 0
-		}		
+		}
 	self._defaults.killed.weekend_guard = {
 			count = 0,
 			head_shots = 0,
@@ -405,7 +504,28 @@ function StatisticsManager:init()
 			melee = 0,
 			explosion = 0,
 			tied = 0
-		}	
+		}
+	self._defaults.killed.weekend_vanilla_snp = {
+			count = 0,
+			head_shots = 0,
+			melee = 0,
+			explosion = 0,
+			tied = 0
+		}
+	self._defaults.killed.weekend_vanilla = {
+			count = 0,
+			head_shots = 0,
+			melee = 0,
+			explosion = 0,
+			tied = 0
+		}
+	self._defaults.killed.weekend_vanilla_heavy = {
+			count = 0,
+			head_shots = 0,
+			melee = 0,
+			explosion = 0,
+			tied = 0
+		}
 		
 end
 

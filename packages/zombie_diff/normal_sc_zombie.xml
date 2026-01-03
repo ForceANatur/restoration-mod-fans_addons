@@ -305,4 +305,72 @@
 	<unit				path="units/pd2_dlc_hvh/characters/ene_bulldozer_snowman/ene_bulldozer_snowman_husk" load="true"/>
 
 	<texture			path="units/pd2_dlc_hvh/characters/ene_bulldozer_snowman/ene_snowman_boss_df"/>
+
+	<!-- Cruel Trance FBI -->
+	<object				path="units/pd2_mod_cruel/characters/ene_fbi_1/ene_fbi_1"/>
+	<cooked_physics		path="units/pd2_mod_cruel/characters/ene_fbi_1/ene_fbi_1"/>
+	<model				path="units/pd2_mod_cruel/characters/ene_fbi_1/ene_fbi_1"/>
+	<unit				path="units/pd2_mod_cruel/characters/ene_fbi_1/ene_fbi_1" load="true"/>
+	<material_config	path="units/pd2_mod_cruel/characters/ene_fbi_1/ene_fbi_1"/>
+	<material_config	path="units/pd2_mod_cruel/characters/ene_fbi_1/ene_fbi_1_contour" />
+	<unit				path="units/pd2_mod_cruel/characters/ene_fbi_1/ene_fbi_1_husk" load="true"/>
+
+	<texture			path="units/pd2_mod_cruel/characters/ene_fbi_1/swat_heavy_nm"/>
+	<texture			path="units/pd2_mod_cruel/characters/ene_fbi_1/ene_fbi_1_body_df"/>
+	<texture			path="units/pd2_mod_cruel/characters/ene_fbi_1/swat_heavy_il"/>
+	<texture			path="units/pd2_mod_cruel/characters/ene_fbi_1/swat_heavy_head_nm"/>
+	<texture			path="units/pd2_mod_cruel/characters/ene_fbi_1/ene_fbi_1_head_df"/>
+	<texture			path="units/pd2_mod_cruel/characters/ene_fbi_1/swat_heavy_head_il"/>
+
+	<object				path="units/pd2_mod_cruel/characters/ene_acc_ene_fbi_2_helmet/ene_acc_ene_fbi_2_helmet"/>
+	<model				path="units/pd2_mod_cruel/characters/ene_acc_ene_fbi_2_helmet/ene_acc_ene_fbi_2_helmet"/>
+	<unit				path="units/pd2_mod_cruel/characters/ene_acc_ene_fbi_2_helmet/ene_acc_ene_fbi_2_helmet" load="true"/>
+	<material_config	path="units/pd2_mod_cruel/characters/ene_acc_ene_fbi_2_helmet/ene_acc_ene_fbi_2_helmet"/>
+
+	<object				path="units/pd2_mod_cruel/characters/ene_fbi_2/ene_fbi_2"/>
+	<cooked_physics		path="units/pd2_mod_cruel/characters/ene_fbi_2/ene_fbi_2"/>
+	<model				path="units/pd2_mod_cruel/characters/ene_fbi_2/ene_fbi_2"/>
+	<unit				path="units/pd2_mod_cruel/characters/ene_fbi_2/ene_fbi_2" load="true"/>
+	<material_config	path="units/pd2_mod_cruel/characters/ene_fbi_2/ene_fbi_2"/>
+	<material_config	path="units/pd2_mod_cruel/characters/ene_fbi_2/ene_fbi_2_contour" />
+	<unit				path="units/pd2_mod_cruel/characters/ene_fbi_2/ene_fbi_2_husk" load="true"/>
+
+	<texture			path="units/pd2_mod_cruel/characters/ene_fbi_2/ene_fbi_2_head_nm"/>
+	<texture			path="units/pd2_mod_cruel/characters/ene_fbi_2/ene_fbi_2_head_df"/>
+	<texture			path="units/pd2_mod_cruel/characters/ene_fbi_2/ene_fbi_2_head_il"/>
+	<texture			path="units/pd2_mod_cruel/characters/ene_fbi_2/ene_zeal_jerome_body_nm"/>
+	<texture			path="units/pd2_mod_cruel/characters/ene_fbi_2/ene_zeal_jerome_body_df"/>
+	<texture			path="units/pd2_mod_cruel/characters/ene_fbi_2/ene_zeal_jerome_body_il"/>
+	<texture			path="units/pd2_mod_cruel/characters/ene_fbi_2/ene_zeal_jerome_helmet_il"/>
+
+	<object				path="units/pd2_mod_cruel/characters/ene_acc_ene_fbi_3_helmet/ene_acc_ene_fbi_3_helmet"/>
+	<model				path="units/pd2_mod_cruel/characters/ene_acc_ene_fbi_3_helmet/ene_acc_ene_fbi_3_helmet"/>
+	<unit				path="units/pd2_mod_cruel/characters/ene_acc_ene_fbi_3_helmet/ene_acc_ene_fbi_3_helmet" load="true"/>
+	<material_config	path="units/pd2_mod_cruel/characters/ene_acc_ene_fbi_3_helmet/ene_acc_ene_fbi_3_helmet"/>
+
+	<object				path="units/pd2_mod_cruel/characters/ene_fbi_3/ene_fbi_3"/>
+	<cooked_physics		path="units/pd2_mod_cruel/characters/ene_fbi_3/ene_fbi_3"/>
+	<model				path="units/pd2_mod_cruel/characters/ene_fbi_3/ene_fbi_3"/>
+	<unit				path="units/pd2_mod_cruel/characters/ene_fbi_3/ene_fbi_3" load="true"/>
+	<material_config	path="units/pd2_mod_cruel/characters/ene_fbi_3/ene_fbi_3"/>
+	<material_config	path="units/pd2_mod_cruel/characters/ene_fbi_3/ene_fbi_3_contour" />
+	<unit				path="units/pd2_mod_cruel/characters/ene_fbi_3/ene_fbi_3_husk" load="true"/>
+
+	<texture			path="units/pd2_mod_cruel/characters/ene_fbi_3/ene_fbi_3_helmet_nm"/>
+	<texture			path="units/pd2_mod_cruel/characters/ene_fbi_3/ene_fbi_3_helmet_df"/>
+	<texture			path="units/pd2_mod_cruel/characters/ene_fbi_3/ene_fbi_3_helmet_il"/>
+	<texture			path="units/pd2_mod_cruel/characters/ene_fbi_3/ene_zeal_swat_3_il"/>
+	<texture			path="units/pd2_mod_cruel/characters/ene_fbi_3/ene_fbi_3_body_df"/>
+	<texture			path="units/pd2_mod_cruel/characters/ene_fbi_3/ene_zeal_swat_3_nm"/>
+
+	<object				path="units/pd2_mod_cruel/characters/ene_fbi_4/ene_fbi_4"/>
+	<cooked_physics		path="units/pd2_mod_cruel/characters/ene_fbi_4/ene_fbi_4"/>
+	<model				path="units/pd2_mod_cruel/characters/ene_fbi_4/ene_fbi_4"/>
+	<unit				path="units/pd2_mod_cruel/characters/ene_fbi_4/ene_fbi_4" load="true"/>
+	<material_config	path="units/pd2_mod_cruel/characters/ene_fbi_4/ene_fbi_4"/>
+	<material_config	path="units/pd2_mod_cruel/characters/ene_fbi_4/ene_fbi_4_contour" />
+	<unit				path="units/pd2_mod_cruel/characters/ene_fbi_4/ene_fbi_4_husk" load="true"/>
+
+	<df_nm_il			path="units/pd2_mod_cruel/characters/ene_fbi_4/casual_male_head"/>
+	<df_nm_il			path="units/pd2_mod_cruel/characters/ene_fbi_4/secret_service"/>
 </table>

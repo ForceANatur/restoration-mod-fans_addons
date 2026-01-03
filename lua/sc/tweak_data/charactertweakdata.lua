@@ -601,7 +601,12 @@ function CharacterTweakData:_init_fbi(presets)
 	self.vetlod.speech_prefix_count = nil		
 	self.vetlod.custom_voicework = "bruce_bitcrushed"
 	self.vetlod.access = "fbi"
-	table.insert(self._enemy_list, "vetlod")							
+	table.insert(self._enemy_list, "vetlod")
+
+	-- Cruel Trance FBI
+	self.fbi_cruel = deep_clone(self.fbi)
+	self.fbi_cruel.custom_voicework = "bravo_elite_murky"
+	table.insert(self._enemy_list, "fbi_cruel")
 end
 
 function CharacterTweakData:_init_medic(presets)	
@@ -858,6 +863,10 @@ function CharacterTweakData:_init_swat(presets)
 	self.hrt.steal_loot = true
 	self.hrt.custom_voicework = nil
 	table.insert(self._enemy_list, "hrt")
+
+	self.hrt_cruel = deep_clone(self.hrt)
+	self.hrt_cruel.custom_voicework = "bravo_murky"
+	table.insert(self._enemy_list, "hrt_cruel")
 	
 	self.hrt_titan = deep_clone(self.hrt)
 	self.hrt_titan.tags = {"law", "custom", "special"}
@@ -20510,6 +20519,20 @@ function CharacterTweakData:character_map()
 				"ene_titan_sniper",
 				"ene_titan_sniper_scripted",
 				"ene_titan_taser"
+			}
+		}
+
+		char_map.cruel = {
+			path = "units/pd2_mod_cruel/characters/",
+			list = {
+				"ene_fbi_1",
+				"ene_fbi_2",
+				"ene_fbi_3",
+				"ene_fbi_4",
+				"ene_zeal_hrt_1",
+				"ene_zeal_hrt_2",
+				"ene_zeal_hrt_3",
+				"ene_zeal_hrt_4"
 			}
 		}
 

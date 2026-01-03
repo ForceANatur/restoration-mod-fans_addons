@@ -27430,6 +27430,66 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 	-- [[ FaN's Addons ]]
 	-- doing this because i fucking hate manually doing all the edits
 
+		if self.lsw then
+			self.lsw.categories = {
+				"lmg",
+				"smg"
+			}
+			self.lsw.recategorize = { "light_mg" }
+			self.lsw.damage_type = "machine_gun"
+			self.lsw.nato = true
+			self.lsw.sms = sms_preset.lmg_60
+			self.lsw.weapon_movement_penalty = sms_preset.lmg_60
+			self.lsw.CLIP_AMMO_MAX = 50
+			self.lsw.AMMO_MAX = 100
+			self.lsw.FIRE_MODE = "auto"
+			self.lsw.fire_mode_data.fire_rate = 0.0923076
+			self.lsw.CAN_TOGGLE_FIREMODE = true
+			self.lsw.BURST_FIRE = false
+			self.lsw.kick = {}
+			self.lsw.kick = self.stat_info.kick_tables.random_recoil
+			self.lsw.kick_pattern = {
+				{0, self.stat_info.kick_tables.random_recoil},
+				{9, self.stat_info.kick_tables.left_recoil},
+				{15, self.stat_info.kick_tables.horizontal_recoil},
+				{19, self.stat_info.kick_tables.moderate_right_kick},
+				{27, self.stat_info.kick_tables.right_recoil},
+				{35, self.stat_info.kick_tables.left_recoil}
+			}
+			self.lsw.muzzleflash = "_dmc/effects/heavy_muzzle"
+			self.lsw.muzzleflash_silenced = "_dmc/effects/heavy_suppressed"
+			self.lsw.supported = true
+			self.lsw.ads_speed = 0.460
+			self.lsw.damage_falloff = {
+				start_dist = 2100,
+				end_dist = 6800,
+				min_mult = 0.4
+			}
+			self.lsw.stats = {
+				damage = 30,
+				spread = 67,
+				recoil = 71,
+				spread_moving = 5,
+				zoom = 1,
+				concealment = 15,
+				suppression = 7,
+				alert_size = 2,
+				extra_ammo = 101,
+				total_ammo_mod = 400,
+				value = 9,
+				reload = 25
+			}
+			self.lsw.stats_modifiers = nil
+			self.lsw.panic_suppression_chance = 0.05
+			self.lsw.reload_speed_multiplier = 0.8
+			self.lsw.timers.unequip = 0.5
+			self.lsw.timers.equip = 0.7
+			self.lsw.timers.reload_empty = 3.21
+			self.lsw.timers.reload_exit_empty = 0.7
+			self.lsw.timers.reload_not_empty = 2.35
+			self.lsw.timers.reload_exit_not_empty = 0.8
+		end
+
 		-- spy has a gun
 		if self.tf2_revolver then
 			self.tf2_revolver.recategorize = {"heavy_pis", "handcannon"}

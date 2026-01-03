@@ -6,6 +6,8 @@ These range from minor weapon tweaks to new features such as mutators.
 This branch is a build of the addons before the dev-epicness merge.
 Branch will likly be abandoned when Restoration Mod 13.0 comes out.
 
+If you don't want to redownload Restoration Mod again, download the standalone here: https://modworkshop.net/mod/54647
+
 # Changes:
 
 Vanilla units spawn across most factions. Don't like the look of them? Use a mod!

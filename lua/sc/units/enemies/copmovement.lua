@@ -94,6 +94,9 @@ action_variants.tank_undeadtitan.walk = TankCopActionWalk
 action_variants.heavy_swat_sniper_mememan = security_variant
 action_variants.city_swat_dodge_mememan = security_variant
 
+action_variants.fbi_cruel = security_variant
+action_variants.hrt_cruel = security_variant
+
 function CopMovement:post_init()
 	local unit = self._unit
 	self._ext_brain = unit:brain()
