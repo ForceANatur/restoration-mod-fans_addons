@@ -150,7 +150,7 @@ DMC: Assisting with creation of the weapons, skill trees and helping with overal
 
 Reno: Major asset and sound contributions. minor code contributions. Voicing Murkywater Special Forces.
 
-Jarey_: Major asset contributions and voicing the Titan Sniper. HD Weapon Replacement used as base for some custom npc weapons. (https://modworkshop.net/mod/34740)
+Jarey_: Major asset contributions and voicing the Titan Sniper. HD Weapon Replacement used as base for some custom npc weapons. Frag Bulldozer (Was given permission to turn into custom unit) (https://modworkshop.net/mod/34740) (https://modworkshop.net/mod/22181)
 
 Zdann: Major asset contributions.
 
