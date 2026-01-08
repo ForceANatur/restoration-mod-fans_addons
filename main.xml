@@ -436,6 +436,7 @@
 		<hook file="sc/mutators/new/mutatordeathvoxmedic.lua" source_file="lib/mutators/basemutator"/>
 		<hook file="sc/mutators/new/mutatorsafehousenightmare.lua" source_file="lib/mutators/basemutator"/>
 		<hook file="sc/mutators/new/mutatormememenbandaidfix.lua" source_file="lib/mutators/basemutator"/>
+		<hook file="sc/mutators/new/mutatorfragdozers.lua" source_file="lib/mutators/basemutator"/>
 		<!--<hook file="sc/mutators/new/mutatorfactionsreplacer.lua" source_file="lib/mutators/basemutator"/>-->
 		<!--///NETWORKING\\\-->
 		<hook file="sc/network/base/hostnetworksession.lua" source_file="lib/network/base/hostnetworksession"/>
@@ -832,4 +833,10 @@
 	<Package id="packages/deathvox_medic" file="packages/deathvox_medic.xml"/>
 	<Package id="packages/undead_titans" file="packages/safehouse_nightmare_dozers.xml"/>
 	<Package id="packages/bodybuilder_specials" file="packages/bodybuilder_specials.xml"/>
+	<!-- ///holy shit this is so fucking ugly\\\ -->
+	<Package id="packages/frag_bulldozers" file="packages/frag_dozers.xml"/>
+	<Package id="packages/frag_bulldozers_hvh" file="packages/frag_dozers_hvh.xml"/>
+	<Package id="packages/frag_bulldozers_akan" file="packages/frag_dozers_akan.xml"/>
+	<Package id="packages/frag_bulldozers_bex" file="packages/frag_dozers_bex.xml"/>
+	<Package id="packages/frag_bulldozers_murky" file="packages/frag_dozers_murky.xml"/>
 </mod>

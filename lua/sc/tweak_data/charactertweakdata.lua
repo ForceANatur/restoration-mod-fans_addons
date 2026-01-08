@@ -20536,5 +20536,17 @@ function CharacterTweakData:character_map()
 			}
 		}
 
+		char_map.boom = {
+			path = "units/pd2_mod_boom/characters/",
+			list = {
+				"ene_akan_dozer_m32",
+				"ene_bulldozer_frag",
+				"ene_bulldozer_frag_hvh",
+				"ene_bulldozer_frag_murky",
+				"ene_swat_dozer_policia_federale_m32",
+				"ene_zeal_bulldozer_frag"
+			}
+		}
+
 	return char_map
 end

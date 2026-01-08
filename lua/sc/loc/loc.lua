@@ -5439,6 +5439,10 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 		["mutator_memez_desc"] = "Mememen are added to the spawn pool.",
 		["mutator_memez_longdesc"] = "Did you know that the Mememen are HeavyGunner's henchmen? Yeah well, they're coming for you. Don't worry, they're not real. The pain is unfortunately.",
 
+		["mutator_fragdozers"] = "Frag Bulldozers",
+		["mutator_fragdozers_desc"] = "Bulldozers with M32s. Run.",
+		["mutator_fragdozers_longdesc"] = "Just don't.",
+
 		--Crime Spree mutators
 		["mutator_cloakercuff"] = "Conjurer",
 		["mutator_cloakercuff_desc"] = "Cloaker melee strikes will now cuff players.",

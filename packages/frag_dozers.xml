@@ -1,0 +1,93 @@
+<table directory="assets">	
+	<!-- Frag Dozer parts -->
+	<model path="units/pd2_mod_boom/characters/ene_acc_bulldozer_frag_throat/ene_acc_bulldozer_frag_throat"  force="false"/>
+	<model path="units/pd2_mod_boom/characters/ene_acc_bulldozer_frag_stomache/ene_acc_bulldozer_frag_stomache"  force="false"/>
+	<model path="units/pd2_mod_boom/characters/ene_acc_bulldozer_frag_neck/ene_acc_bulldozer_frag_neck"  force="false"/>
+	<model path="units/pd2_mod_boom/characters/ene_acc_bulldozer_frag_helmet_plate/ene_acc_bulldozer_frag_helmet_plate"  force="false"/>
+	<model path="units/pd2_mod_boom/characters/ene_acc_bulldozer_frag_chest/ene_acc_bulldozer_frag_chest"  force="false"/>
+	<model path="units/pd2_mod_boom/characters/ene_acc_bulldozer_frag_back/ene_acc_bulldozer_frag_back"  force="false"/>
+
+	<material_config path="units/pd2_mod_boom/characters/ene_acc_bulldozer_frag_throat/ene_acc_bulldozer_frag_throat" force="false"/>
+	<material_config path="units/pd2_mod_boom/characters/ene_acc_bulldozer_frag_stomache/ene_acc_bulldozer_frag_stomache" force="false"/>
+	<material_config path="units/pd2_mod_boom/characters/ene_acc_bulldozer_frag_neck/ene_acc_bulldozer_frag_neck" force="false"/>
+	<material_config path="units/pd2_mod_boom/characters/ene_acc_bulldozer_frag_helmet_plate/ene_acc_bulldozer_frag_helmet_plate" force="false"/>
+	<material_config path="units/pd2_mod_boom/characters/ene_acc_bulldozer_frag_chest/ene_acc_bulldozer_frag_chest" force="false"/>
+	<material_config path="units/pd2_mod_boom/characters/ene_acc_bulldozer_frag_back/ene_acc_bulldozer_frag_back" force="false"/>
+
+	<object path="units/pd2_mod_boom/characters/ene_acc_bulldozer_frag_throat/ene_acc_bulldozer_frag_throat" force="false"/>
+	<object path="units/pd2_mod_boom/characters/ene_acc_bulldozer_frag_stomache/ene_acc_bulldozer_frag_stomache" force="false"/>
+	<object path="units/pd2_mod_boom/characters/ene_acc_bulldozer_frag_neck/ene_acc_bulldozer_frag_neck" force="false"/>
+	<object path="units/pd2_mod_boom/characters/ene_acc_bulldozer_frag_helmet_plate/ene_acc_bulldozer_frag_helmet_plate" force="false"/>
+	<object path="units/pd2_mod_boom/characters/ene_acc_bulldozer_frag_chest/ene_acc_bulldozer_frag_chest" force="false"/>
+	<object path="units/pd2_mod_boom/characters/ene_acc_bulldozer_frag_back/ene_acc_bulldozer_frag_back" force="false"/>
+
+	<cooked_physics path="units/pd2_mod_boom/characters/ene_acc_bulldozer_frag_throat/ene_acc_bulldozer_frag_throat" force="false"/>
+	<cooked_physics path="units/pd2_mod_boom/characters/ene_acc_bulldozer_frag_stomache/ene_acc_bulldozer_frag_stomache" force="false"/>
+	<cooked_physics path="units/pd2_mod_boom/characters/ene_acc_bulldozer_frag_neck/ene_acc_bulldozer_frag_neck" force="false"/>
+	<cooked_physics path="units/pd2_mod_boom/characters/ene_acc_bulldozer_frag_helmet_plate/ene_acc_bulldozer_frag_helmet_plate" force="false"/>
+	<cooked_physics path="units/pd2_mod_boom/characters/ene_acc_bulldozer_frag_chest/ene_acc_bulldozer_frag_chest" force="false"/>
+	<cooked_physics path="units/pd2_mod_boom/characters/ene_acc_bulldozer_frag_back/ene_acc_bulldozer_frag_back" force="false"/>
+
+	<unit path="units/pd2_mod_boom/characters/ene_acc_bulldozer_frag_throat/ene_acc_bulldozer_frag_throat" force="false" load="true"/>
+	<unit path="units/pd2_mod_boom/characters/ene_acc_bulldozer_frag_stomache/ene_acc_bulldozer_frag_stomache" force="false" load="true"/>
+	<unit path="units/pd2_mod_boom/characters/ene_acc_bulldozer_frag_neck/ene_acc_bulldozer_frag_neck" force="false" load="true"/>
+	<unit path="units/pd2_mod_boom/characters/ene_acc_bulldozer_frag_helmet_plate/ene_acc_bulldozer_frag_helmet_plate" force="false" load="true"/>
+	<unit path="units/pd2_mod_boom/characters/ene_acc_bulldozer_frag_chest/ene_acc_bulldozer_frag_chest" force="false" load="true"/>
+	<unit path="units/pd2_mod_boom/characters/ene_acc_bulldozer_frag_back/ene_acc_bulldozer_frag_back" force="false" load="true"/>
+
+	<!-- Frag Dozer -->
+	<texture			path="units/pd2_mod_boom/characters/ene_bulldozer_frag/ene_bulldozer_minigun_df"/>
+	<material_config	path="units/pd2_mod_boom/characters/ene_bulldozer_frag/ene_bulldozer_frag" force="false"/>
+	<material_config	path="units/pd2_mod_boom/characters/ene_bulldozer_frag/ene_bulldozer_frag_contour" force="false"/>
+	<model				path="units/pd2_mod_boom/characters/ene_bulldozer_frag/ene_bulldozer_frag" force="false"/>
+	<unit				path="units/pd2_mod_boom/characters/ene_bulldozer_frag/ene_bulldozer_frag" force="false" load="true"/>
+	<unit				path="units/pd2_mod_boom/characters/ene_bulldozer_frag/ene_bulldozer_frag_husk" force="false" load="true"/>
+	<object				path="units/pd2_mod_boom/characters/ene_bulldozer_frag/ene_bulldozer_frag" force="false"/>
+	<sequence_manager	path="units/pd2_mod_boom/characters/ene_bulldozer_frag/ene_bulldozer_frag" force="false"/>
+
+	<!-- Zeal Frag Dozer parts -->
+	<model path="units/pd2_mod_boom/characters/ene_acc_zeal_bulldozer_frag_throat/ene_acc_zeal_bulldozer_frag_throat"  force="false"/>
+	<model path="units/pd2_mod_boom/characters/ene_acc_zeal_bulldozer_frag_stomache/ene_acc_zeal_bulldozer_frag_stomache"  force="false"/>
+	<model path="units/pd2_mod_boom/characters/ene_acc_zeal_bulldozer_frag_neck/ene_acc_zeal_bulldozer_frag_neck"  force="false"/>
+	<model path="units/pd2_mod_boom/characters/ene_acc_zeal_bulldozer_frag_helmet_plate/ene_acc_zeal_bulldozer_frag_helmet_plate"  force="false"/>
+	<model path="units/pd2_mod_boom/characters/ene_acc_zeal_bulldozer_frag_chest/ene_acc_zeal_bulldozer_frag_chest"  force="false"/>
+	<model path="units/pd2_mod_boom/characters/ene_acc_zeal_bulldozer_frag_back/ene_acc_zeal_bulldozer_frag_back"  force="false"/>
+
+	<material_config path="units/pd2_mod_boom/characters/ene_acc_zeal_bulldozer_frag_throat/ene_acc_zeal_bulldozer_frag_throat" force="false"/>
+	<material_config path="units/pd2_mod_boom/characters/ene_acc_zeal_bulldozer_frag_stomache/ene_acc_zeal_bulldozer_frag_stomache" force="false"/>
+	<material_config path="units/pd2_mod_boom/characters/ene_acc_zeal_bulldozer_frag_neck/ene_acc_zeal_bulldozer_frag_neck" force="false"/>
+	<material_config path="units/pd2_mod_boom/characters/ene_acc_zeal_bulldozer_frag_helmet_plate/ene_acc_zeal_bulldozer_frag_helmet_plate" force="false"/>
+	<material_config path="units/pd2_mod_boom/characters/ene_acc_zeal_bulldozer_frag_chest/ene_acc_zeal_bulldozer_frag_chest" force="false"/>
+	<material_config path="units/pd2_mod_boom/characters/ene_acc_zeal_bulldozer_frag_back/ene_acc_zeal_bulldozer_frag_back" force="false"/>
+
+	<object path="units/pd2_mod_boom/characters/ene_acc_zeal_bulldozer_frag_throat/ene_acc_zeal_bulldozer_frag_throat" force="false"/>
+	<object path="units/pd2_mod_boom/characters/ene_acc_zeal_bulldozer_frag_stomache/ene_acc_zeal_bulldozer_frag_stomache" force="false"/>
+	<object path="units/pd2_mod_boom/characters/ene_acc_zeal_bulldozer_frag_neck/ene_acc_zeal_bulldozer_frag_neck" force="false"/>
+	<object path="units/pd2_mod_boom/characters/ene_acc_zeal_bulldozer_frag_helmet_plate/ene_acc_zeal_bulldozer_frag_helmet_plate" force="false"/>
+	<object path="units/pd2_mod_boom/characters/ene_acc_zeal_bulldozer_frag_chest/ene_acc_zeal_bulldozer_frag_chest" force="false"/>
+	<object path="units/pd2_mod_boom/characters/ene_acc_zeal_bulldozer_frag_back/ene_acc_zeal_bulldozer_frag_back" force="false"/>
+
+	<cooked_physics path="units/pd2_mod_boom/characters/ene_acc_zeal_bulldozer_frag_throat/ene_acc_zeal_bulldozer_frag_throat" force="false"/>
+	<cooked_physics path="units/pd2_mod_boom/characters/ene_acc_zeal_bulldozer_frag_stomache/ene_acc_zeal_bulldozer_frag_stomache" force="false"/>
+	<cooked_physics path="units/pd2_mod_boom/characters/ene_acc_zeal_bulldozer_frag_neck/ene_acc_zeal_bulldozer_frag_neck" force="false"/>
+	<cooked_physics path="units/pd2_mod_boom/characters/ene_acc_zeal_bulldozer_frag_helmet_plate/ene_acc_zeal_bulldozer_frag_helmet_plate" force="false"/>
+	<cooked_physics path="units/pd2_mod_boom/characters/ene_acc_zeal_bulldozer_frag_chest/ene_acc_zeal_bulldozer_frag_chest" force="false"/>
+	<cooked_physics path="units/pd2_mod_boom/characters/ene_acc_zeal_bulldozer_frag_back/ene_acc_zeal_bulldozer_frag_back" force="false"/>
+
+	<unit path="units/pd2_mod_boom/characters/ene_acc_zeal_bulldozer_frag_throat/ene_acc_zeal_bulldozer_frag_throat" force="false" load="true"/>
+	<unit path="units/pd2_mod_boom/characters/ene_acc_zeal_bulldozer_frag_stomache/ene_acc_zeal_bulldozer_frag_stomache" force="false" load="true"/>
+	<unit path="units/pd2_mod_boom/characters/ene_acc_zeal_bulldozer_frag_neck/ene_acc_zeal_bulldozer_frag_neck" force="false" load="true"/>
+	<unit path="units/pd2_mod_boom/characters/ene_acc_zeal_bulldozer_frag_helmet_plate/ene_acc_zeal_bulldozer_frag_helmet_plate" force="false" load="true"/>
+	<unit path="units/pd2_mod_boom/characters/ene_acc_zeal_bulldozer_frag_chest/ene_acc_zeal_bulldozer_frag_chest" force="false" load="true"/>
+	<unit path="units/pd2_mod_boom/characters/ene_acc_zeal_bulldozer_frag_back/ene_acc_zeal_bulldozer_frag_back" force="false" load="true"/>
+
+	<!-- Zeal Frag Dozer -->
+	<texture			path="units/pd2_mod_boom/characters/ene_zeal_bulldozer_frag/ene_bulldozer_minigun_df"/>
+	<material_config	path="units/pd2_mod_boom/characters/ene_zeal_bulldozer_frag/ene_zeal_bulldozer_frag" force="false"/>
+	<material_config	path="units/pd2_mod_boom/characters/ene_zeal_bulldozer_frag/ene_zeal_bulldozer_frag_contour" force="false"/>
+	<model				path="units/pd2_mod_boom/characters/ene_zeal_bulldozer_frag/ene_zeal_bulldozer_frag" force="false"/>
+	<unit				path="units/pd2_mod_boom/characters/ene_zeal_bulldozer_frag/ene_zeal_bulldozer_frag" force="false" load="true"/>
+	<unit				path="units/pd2_mod_boom/characters/ene_zeal_bulldozer_frag/ene_zeal_bulldozer_frag_husk" force="false" load="true"/>
+	<object				path="units/pd2_mod_boom/characters/ene_zeal_bulldozer_frag/ene_zeal_bulldozer_frag" force="false"/>
+	<sequence_manager	path="units/pd2_mod_boom/characters/ene_zeal_bulldozer_frag/ene_zeal_bulldozer_frag" force="false"/>
+</table>
