@@ -1202,7 +1202,7 @@ local grips = {
 				desc_id = "bm_wp_upg_a_rip_auto_desc_sc",
 				stats = {
 					value = 9,
-					damage = -30
+					damage = -45
 				},
 				custom_stats = {
 					trail_effect = "_dmc/effects/warsaw_trail",
@@ -1218,7 +1218,7 @@ local grips = {
 				desc_id = "bm_wp_upg_a_rip_semi_desc_sc",
 				stats = {
 					value = 9,
-					damage = -30
+					damage = -60
 				},
 				custom_stats = {
 					trail_effect = "_dmc/effects/warsaw_trail",
@@ -1234,7 +1234,7 @@ local grips = {
 				desc_id = "bm_wp_upg_a_rip_pump_desc_sc",
 				stats = {
 					value = 9,
-					damage = -60
+					damage = -90
 				},
 				custom_stats = {
 					trail_effect = "_dmc/effects/warsaw_trail",
@@ -1249,7 +1249,7 @@ local grips = {
 			a_rip_heavy_override = {
 				stats = {
 					value = 9,
-					damage = -60
+					damage = -120
 				},
 				custom_stats = {
 					trail_effect = "_dmc/effects/warsaw_trail",
@@ -1266,22 +1266,24 @@ local grips = {
 				desc_id = "bm_wp_upg_a_dragons_breath_auto_desc_sc",
 				stats = {
 					value = 9,
-					damage = -30
+					total_ammo_mod = -102,
+					spread_multi = {1.5, 1.5},
 				},
 				custom_stats = {
 					ignore_rof_mult_anims = true,
-					ammo_pickup_max_mul = 0.95,
-					ammo_pickup_min_mul = 0.95,
+					ammo_pickup_max_mul = 0.8,
+					ammo_pickup_min_mul = 0.8,
 					rof_mult = 0.9,
-					falloff_start_mult = 1.4,
-					falloff_end_mult = 0.6,
+					falloff_start_mult = 1.2,
+					falloff_end_mult = 0.7,
 					damage_min_mult = 0.2,
 					ignore_statistic = true,
 					bullet_class = "FlameBulletBase",
 					armor_piercing_add = 0.01,
 					can_shoot_through_shield = false,
-					rays = 16,
-					trail_effect = "",
+					rays = 12,
+					trail_effect = "_dmc/effects/sterwers_trail_m_small",
+					trail_effect_npc = true,
 					muzzleflash = "effects/payday2/particles/weapons/shotgun/sho_muzzleflash_dragons_breath",
 					dot_data_name = "ammo_dragons_breath_auto"
 				}
@@ -1291,22 +1293,24 @@ local grips = {
 				desc_id = "bm_wp_upg_a_dragons_breath_semi_desc_sc",
 				stats = {
 					value = 9,
-					damage = -30
+					total_ammo_mod = -136,
+					spread_multi = {1.5, 1.5},
 				},
 				custom_stats = {
 					ignore_rof_mult_anims = true,
-					ammo_pickup_max_mul = 0.95,
-					ammo_pickup_min_mul = 0.95,
+					ammo_pickup_max_mul = 0.8,
+					ammo_pickup_min_mul = 0.8,
 					rof_mult = 0.9,
-					falloff_start_mult = 1.3,
+					falloff_start_mult = 1.2,
 					falloff_end_mult = 0.7,
 					damage_min_mult = 0.2,
 					ignore_statistic = true,
 					bullet_class = "FlameBulletBase",
 					armor_piercing_add = 0.01,
 					can_shoot_through_shield = false,
-					rays = 16,
-					trail_effect = "",
+					rays = 12,
+					trail_effect = "_dmc/effects/sterwers_trail_m_small",
+					trail_effect_npc = true,
 					muzzleflash = "effects/payday2/particles/weapons/shotgun/sho_muzzleflash_dragons_breath",
 					dot_data_name = "ammo_dragons_breath"
 				}
@@ -1316,20 +1320,22 @@ local grips = {
 				desc_id = "bm_wp_upg_a_dragons_breath_semi_desc_sc",
 				stats = {
 					value = 9,
-					damage = -40
+					total_ammo_mod = -136,
+					spread_multi = {1.5, 1.5},
 				},
 				custom_stats = {
-					ammo_pickup_max_mul = 0.95,
-					ammo_pickup_min_mul = 0.95,
-					falloff_start_mult = 1.3,
+					ammo_pickup_max_mul = 0.8,
+					ammo_pickup_min_mul = 0.8,
+					falloff_start_mult = 1.2,
 					falloff_end_mult = 0.7,
 					damage_min_mult = 0.2,
 					ignore_statistic = true,
 					bullet_class = "FlameBulletBase",
 					armor_piercing_add = 0.01,
 					can_shoot_through_shield = false,
-					rays = 16,
-					trail_effect = "",
+					rays = 12,
+					trail_effect = "_dmc/effects/sterwers_trail_m_small",
+					trail_effect_npc = true,
 					muzzleflash = "effects/payday2/particles/weapons/shotgun/sho_muzzleflash_dragons_breath",
 					dot_data_name = "ammo_dragons_breath"
 				}
@@ -1340,21 +1346,23 @@ local grips = {
 				supported = true,
 				stats = {
 					value = 9,
-					damage = -60
+					total_ammo_mod = -104,
+					spread_multi = {1.5, 1.5},
 				},
 				custom_stats = {
-					ammo_pickup_max_mul = 0.95,
-					ammo_pickup_min_mul = 0.95,
+					ammo_pickup_max_mul = 0.8,
+					ammo_pickup_min_mul = 0.8,
 					alt_rof_mult = 0.9,
-					falloff_start_mult = 1.3,
+					falloff_start_mult = 1.2,
 					falloff_end_mult = 0.7,
 					damage_min_mult = 0.2,
 					ignore_statistic = true,
 					bullet_class = "FlameBulletBase",
 					armor_piercing_add = 0.01,
 					can_shoot_through_shield = false,
-					rays = 16,
-					trail_effect = "",
+					rays = 12,
+					trail_effect = "_dmc/effects/sterwers_trail_m_small",
+					trail_effect_npc = true,
 					muzzleflash = "effects/payday2/particles/weapons/shotgun/sho_muzzleflash_dragons_breath",
 					dot_data_name = "ammo_dragons_breath_pump"
 				}
@@ -1363,20 +1371,22 @@ local grips = {
 			a_dragons_breath_heavy_override = {
 				stats = {
 					value = 9,
-					damage = -60
+					total_ammo_mod = -77,
+					spread_multi = {1.5, 1.5},
 				},
 				custom_stats = {
-					ammo_pickup_max_mul = 0.95,
-					ammo_pickup_min_mul = 0.95,
-					falloff_start_mult = 1.3,
+					ammo_pickup_max_mul = 0.8,
+					ammo_pickup_min_mul = 0.8,
+					falloff_start_mult = 1.2,
 					falloff_end_mult = 0.7,
 					damage_min_mult = 0.2,
 					ignore_statistic = true,
 					bullet_class = "FlameBulletBase",
 					armor_piercing_add = 0.01,
 					can_shoot_through_shield = false,
-					rays = 16,
-					trail_effect = "",
+					rays = 12,
+					trail_effect = "_dmc/effects/sterwers_trail_m_small",
+					trail_effect_npc = true,
 					muzzleflash = "effects/payday2/particles/weapons/shotgun/sho_muzzleflash_dragons_breath",
 					dot_data_name = "ammo_dragons_breath_heavy"
 				}
@@ -1395,7 +1405,7 @@ local grips = {
 					object_damage_mult_override = 0.21875,
 					hs_mult = 0.8,
 					hip_mult = 1.25,
-					falloff_start_mult = 1.2,
+					falloff_start_mult = 1.1,
 					falloff_end_mult = 0.8,
 					damage_min_mult = 0.75,
 					ammo_pickup_max_mul = 0.7,
@@ -1416,7 +1426,7 @@ local grips = {
 					object_damage_mult_override = 0.20833,
 					hs_mult = 0.8,
 					hip_mult = 1.25,
-					falloff_start_mult = 1.2,
+					falloff_start_mult = 1.1,
 					falloff_end_mult = 0.8,
 					damage_min_mult = 0.66667,
 					ammo_pickup_max_mul = 0.7,
@@ -1437,7 +1447,7 @@ local grips = {
 					object_damage_mult_override = 0.4375,
 					hs_mult = 0.8,
 					hip_mult = 1.25,
-					falloff_start_mult = 1.2,
+					falloff_start_mult = 1.1,
 					falloff_end_mult = 0.8,
 					damage_min_mult = 0.75,
 					ammo_pickup_max_mul = 0.7,
@@ -1457,7 +1467,7 @@ local grips = {
 					object_damage_mult_override = 0.675,
 					hs_mult = 0.8,
 					hip_mult = 1.25,
-					falloff_start_mult = 1.2,
+					falloff_start_mult = 1.1,
 					falloff_end_mult = 0.8,
 					damage_min_mult = 0.79999,
 					ammo_pickup_max_mul = 0.7,
@@ -19984,6 +19994,9 @@ end)
 					}
 					self.parts.wpn_fps_upg_o_specter.stance_mod.wpn_fps_snp_baltic = {
 						translation = Vector3(-0.005, -13.4, 0.7)
+					}
+					self.parts.wpn_fps_upg_o_specter.stance_mod.wpn_fps_snp_scar20 = {
+						translation = Vector3(-0.005, 6.5, -0.287)
 					}
 
 					self.parts.wpn_fps_upg_o_specter.stance_mod.wpn_fps_bow_stampede_ecs = {
@@ -39586,6 +39599,80 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 		end
 
 	--[[ TANGERINE'S MODS ]]
+		if self.parts.wpn_fps_snp_scar20_o_lpvo then
+			self.parts.wpn_fps_snp_scar20_o_lpvo.stats = {
+				value = 0,
+				zoom = 20
+			}
+			self.parts.wpn_fps_snp_scar20_o_lpvo.stance_mod = deep_clone(self.parts.wpn_fps_upg_o_specter.stance_mod)
+			for i, weap in pairs(self.parts.wpn_fps_snp_scar20_o_lpvo.stance_mod) do
+				if weap and weap.translation then
+					weap.translation = weap.translation + Vector3(0,-32,-0.01)
+				end
+			end
+			self.parts.wpn_fps_snp_scar20_o_lpvo.adds = {
+				"wpn_fps_upg_o_northtac_steelsight",
+				"wpn_fps_snp_scar20_o_lpvo_alt"
+			}
+
+			self.parts.wpn_fps_snp_scar20_o_lpvo_alt = deep_clone(self.parts.wpn_fps_snp_scar20_o_lpvo)
+			self.parts.wpn_fps_snp_scar20_o_lpvo_alt.pcs = nil
+			self.parts.wpn_fps_snp_scar20_o_lpvo_alt.forbids = nil
+			self.parts.wpn_fps_snp_scar20_o_lpvo_alt.adds = nil
+			self.parts.wpn_fps_snp_scar20_o_lpvo_alt.type = "extra"
+			self.parts.wpn_fps_snp_scar20_o_lpvo_alt.sub_type = "second_sight"
+			self.parts.wpn_fps_snp_scar20_o_lpvo_alt.perks = { "second_sight" }
+			self.parts.wpn_fps_snp_scar20_o_lpvo_alt.unit = "units/pd2_dlc_pxp4/weapons/wpn_fps_upg_o_schmidt/wpn_fps_upg_o_schmidt_magnified"
+			self.parts.wpn_fps_snp_scar20_o_lpvo_alt.third_unit = nil
+			self.parts.wpn_fps_snp_scar20_o_lpvo_alt.stats = {
+				value = 1,
+				gadget_zoom = 40
+			}
+			self.parts.wpn_fps_snp_scar20_o_lpvo_alt.custom_stats = {
+				use_primary_steelsight_unit = true
+			}
+			self.parts.wpn_fps_snp_scar20_o_lpvo_alt.stance_mod = deep_clone(self.parts.wpn_fps_snp_scar20_o_lpvo.stance_mod)
+			for i, weap in pairs(self.parts.wpn_fps_snp_scar20_o_lpvo_alt.stance_mod) do
+				if weap and weap.translation then
+					weap.translation = weap.translation + Vector3(0, 9, 0)
+				end
+			end
+
+			self.parts.wpn_fps_snp_scar20_b_short.supported = true
+			self.parts.wpn_fps_snp_scar20_b_short.stats = deep_clone(barrels.short_b2_stats)
+			self.parts.wpn_fps_snp_scar20_b_short.custom_stats = deep_clone(barrels.short_b2_stats)
+
+			self.parts.wpn_fps_snp_scar20_s_pdw.supported = true
+			self.parts.wpn_fps_snp_scar20_s_pdw.stats = deep_clone(stocks.adj_to_nocheeks_stats)
+			self.parts.wpn_fps_snp_scar20_s_pdw.custom_stats = deep_clone(stocks.adj_to_nocheeks_stats)
+			self.parts.wpn_fps_snp_scar20_s_no.supported = true
+			self.parts.wpn_fps_snp_scar20_s_no.stats = deep_clone(stocks.remove_adj_stats)
+			self.parts.wpn_fps_snp_scar20_s_no.custom_stats = deep_clone(stocks.remove_adj_stats)
+
+			for i, part_id in pairs(self.wpn_fps_snp_scar20.default_blueprint) do
+				attachment_list = {
+					"wpn_fps_upg_vg_ass_smg_afg",
+				}
+				for _, remove_id in ipairs(attachment_list) do
+					if part_id == remove_id then
+						self.wpn_fps_snp_scar20.default_blueprint[i] = "wpn_fps_upg_vg_ass_smg_afg_vanilla"
+					end
+				end
+			end
+			for i, part_id in pairs(self.wpn_fps_snp_scar20.uses_parts) do
+				attachment_list = {
+					"wpn_fps_upg_vg_ass_smg_afg",
+				}
+				for _, remove_id in ipairs(attachment_list) do
+					if part_id == remove_id then
+						self.wpn_fps_snp_scar20.uses_parts[i] = "wpn_fps_upg_vg_ass_smg_afg_vanilla"
+					end
+				end
+			end
+
+			self.wpn_fps_snp_scar20_npc.default_blueprint = deep_clone(self.wpn_fps_snp_scar20.default_blueprint)
+			self.wpn_fps_snp_scar20_npc.uses_parts = deep_clone(self.wpn_fps_snp_scar20.uses_parts)
+		end
 
 		if self.parts.wpn_fps_ass_scar16_b_short then
 			self.parts.wpn_fps_ass_scar16_b_short.supported = true
@@ -43139,10 +43226,10 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			self.parts.wpn_fps_ass_coyote_ammo_incendiary.no_cull = true
 			self.parts.wpn_fps_ass_coyote_ammo_incendiary.stats = { value = 0 }
 			self.parts.wpn_fps_ass_coyote_ammo_incendiary.custom_stats = {
-				bullet_class = "IncendiaryBulletBase",
+				bullet_class = "FlameBulletBase",
 				ignore_statistic = true,
 				trail_effect = "_dmc/effects/nato_trail",
-				dot_data_name = "ammo_dragons_breath"
+				dot_data_name = "ammo_dragons_breath_auto"
 			}
 		end
 
@@ -46975,7 +47062,7 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 				end
 			end
 
-		--The End: Destroyer
+		--Destroyer of Denouement
 			self.parts.wpn_fps_lmg_mg42_hina_cnuy = {
 				type = "legendary",
 				name_id = "bm_wskn_mg42_hina_cnuy",
@@ -46986,7 +47073,9 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 				third_unit = "units/payday2/weapons/wpn_upg_dummy/wpn_upg_dummy",
 				supported = true,
 				stats = { 
-					value = 0
+					value = 0,
+					reload = 6,
+					spread_multi = {1.5, 0.75}
 				},
 				custom_stats = { 
 					alt_desc = "bm_w_mg42_hinature_desc",
@@ -47015,11 +47104,14 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			}
 			for k, used_part_id in ipairs(self.wpn_fps_lmg_mg42.uses_parts) do
 				if self.parts[used_part_id] and self.parts[used_part_id].type then
-					if self.parts[used_part_id].type == "barrel" then
+					if self.parts[used_part_id].type == "barrel" and self.parts[used_part_id].pcs then
+						table.insert(self.parts.wpn_fps_lmg_mg42_hina_cnuy.forbids, used_part_id)
+						--[[
 						self.parts.wpn_fps_lmg_mg42_hina_cnuy.override[used_part_id] = {
 							override = {},
 							unit = "units/mods/weapons/wpn_fps_lmg_mg42_b_hinature/wpn_fps_lmg_mg42_b_hinature"
 						}
+						--]]
 					elseif self.parts[used_part_id].type == "barrel_ext" and not self.parts[used_part_id].sub_type then
 						self.parts.wpn_fps_lmg_mg42_hina_cnuy.override[used_part_id] = {
 							third_unit = "units/mods/weapons/wpn_fps_lmg_mg42_n_hinature/wpn_fps_lmg_mg42_n_hinature",
@@ -47118,7 +47210,7 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 				unit = "units/payday2/weapons/wpn_upg_dummy/wpn_upg_dummy",
 				third_unit = "units/payday2/weapons/wpn_upg_dummy/wpn_upg_dummy",
 				supported = true,
-				stats = { value = 0 },
+				stats = { value = 0, recoil = 6, concealment = -1 },
 				internal_part = false,
 				texture_bundle_folder = "boost_in_lootdrop",
 				alt_icon = "guis/dlcs/boost_in_lootdrop/textures/pd2/blackmarket/icons/mods/wpn_fps_upg_bonus_concealment_p3",
@@ -47187,12 +47279,21 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 				unit = "units/payday2/weapons/wpn_upg_dummy/wpn_upg_dummy",
 				third_unit = "units/payday2/weapons/wpn_upg_dummy/wpn_upg_dummy",
 				supported = true,
-				stats = { value = 0 },
+				stats = { 
+					value = 0, 
+					extra_ammo = 1, 
+					reload = 4,
+					recoil = -8
+				},
+				custom_stats = { 
+					rof_mult = 1.3333333,
+					is_internal = true 
+				},
 				internal_part = false,
 				texture_bundle_folder = "boost_in_lootdrop",
 				alt_icon = "guis/dlcs/boost_in_lootdrop/textures/pd2/blackmarket/icons/mods/wpn_fps_upg_bonus_concealment_p3",
 				has_description = true,
-				override = {}
+				override = {},
 			}
 			for k, used_part_id in ipairs(self.wpn_fps_sho_ben.uses_parts) do
 				if self.parts[used_part_id] and self.parts[used_part_id].type then
@@ -47222,7 +47323,8 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 				unit = "units/payday2/weapons/wpn_upg_dummy/wpn_upg_dummy",
 				third_unit = "units/payday2/weapons/wpn_upg_dummy/wpn_upg_dummy",
 				supported = true,
-				stats = { value = 0 },
+				stats = { value = 0, recoil = 2, concealment = 1, spread = -2 },
+				custom_stats = { ads_speed_mult = 0.9 },
 				internal_part = false,
 				texture_bundle_folder = "boost_in_lootdrop",
 				alt_icon = "guis/dlcs/boost_in_lootdrop/textures/pd2/blackmarket/icons/mods/wpn_fps_upg_bonus_concealment_p3",

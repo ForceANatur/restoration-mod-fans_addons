@@ -1,0 +1,12 @@
+<table directory="assets">	
+	<!-- Akan Frag Dozer -->
+	<texture			path="units/pd2_mod_boom/characters/ene_akan_dozer_m32/bulldozer_df"/>
+	<texture			path="units/pd2_mod_boom/characters/ene_akan_dozer_m32/maska_df"/>
+	<material_config	path="units/pd2_mod_boom/characters/ene_akan_dozer_m32/ene_akan_dozer_m32" force="false"/>
+	<material_config	path="units/pd2_mod_boom/characters/ene_akan_dozer_m32/ene_akan_dozer_m32_contour" force="false"/>
+	<model				path="units/pd2_mod_boom/characters/ene_akan_dozer_m32/ene_akan_dozer_m32" force="false"/>
+	<unit				path="units/pd2_mod_boom/characters/ene_akan_dozer_m32/ene_akan_dozer_m32" force="false" load="true"/>
+	<unit				path="units/pd2_mod_boom/characters/ene_akan_dozer_m32/ene_akan_dozer_m32_husk" force="false" load="true"/>
+	<object				path="units/pd2_mod_boom/characters/ene_akan_dozer_m32/ene_akan_dozer_m32" force="false"/>
+	<sequence_manager	path="units/pd2_mod_boom/characters/ene_akan_dozer_m32/ene_akan_dozer_m32" force="false"/>
+</table>

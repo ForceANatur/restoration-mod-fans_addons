@@ -768,12 +768,12 @@ restoration.ponrtracks = {
 	"wheresthevan",
 	"random"
 }
+
 restoration.snd_raffica = {
 	"snd_raffica_vanilla",
 	"snd_raffica_b92fs",
 	"snd_raffica_combo"
 }
-
 restoration.snd_sw500 = {
 	"snd_sw500_vanilla",
 	"snd_sw500_peacemaker",
@@ -1523,9 +1523,15 @@ function restoration:gen_ai_global_event(id, name, pos, rot, opts)
 	}
 end
 
-function restoration:gen_object_editor_trigger(id, name, pos, rot, opts)
+---Generate an object editor trigger
+---@param id number: id of element, start from 400000
+---@param name string: name of element for reference
+---@param pos Vector3: position for the element to be in
+---@param rot Rotation: direction the element is facing
+---@param opts? table: extra parameters
+function restoration:object_editor_trigger(id, name, opts)
 	opts = opts or {}
-	return {
+	local object_editor_trigger = {
 		id = id,
 		editor_name = name,
 		module = "CoreElementUnitSequenceTrigger",
@@ -1537,10 +1543,61 @@ function restoration:gen_object_editor_trigger(id, name, pos, rot, opts)
 			on_executed = opts.on_executed or {},
 			base_delay = opts.base_delay or 0,
 			enabled = opts.enabled or false,
+			callback = opts.callback or false,
 		},
 	}
+
+	return object_editor_trigger
 end
 
+---Generate a elementspecialobjectivegroup element
+---@param id number: id of element, start from 400000
+---@param name string: name of element for reference
+---@param opts? table: extra parameters
+function restoration:gen_sogroup(id, name, pos, rot, opts)
+	opts = opts or {}
+	local sogroup = {
+		id = id,
+		editor_name = name,
+		class = "ElementSpecialObjectiveGroup",
+		values = {
+			execute_on_startup = false,
+			position = pos,
+			rotation = rot,
+			use_instigator = false,
+			base_delay = opts.base_delay or 0,
+			base_chance = opts.base_chance or 1,
+			trigger_times = opts.trigger_times or 0,
+			mode = opts.mode or "recurring_cloaker_spawn",
+			followup_elements = opts.followup_elements or {},
+			on_executed = opts.on_executed or {},
+			enabled = true,
+			callback = opts.callback or false,
+		},
+	}
+	return sogroup
+end
+-- Based on Bank Heist's hiding Cloaker SO setup
+-- search_position must be the same for all GroupAI hiding SOs
+-- interrupt_dis is in meters
+-- The SO group element must also be in AI navigation (or at least able to be found by GroupAI)
+function restoration.get_hiding_cloaker_so_opts(so_action, search_position, interrupt_dis)
+	return {
+		SO_access = "1024",
+		scan = true,
+		align_position = true,
+		needs_pos_rsrv = true,
+		align_rotation = true,
+		no_arrest = true,
+		interrupt_dmg = 0,
+		action_duration_min = 120,
+		action_duration_max = 180,
+		so_action = so_action,
+		search_position = search_position,
+		interrupt_dis = interrupt_dis or 7,
+		interval = -1,
+	}
+end
 -- Log tiers
 -- "log" is for general logging that is useful for players and developers
 -- "debug" is for general logging that only really developers/tinkerers need
@@ -1763,7 +1820,7 @@ function BLT_CarryStacker:getWeightForType(carry_id, logger)
     local carry_type = tweak_data.carry[carry_id].type
     local movement_penalty = nil
 	logger("Using local movement penalties")
-	
+		
 	movement_penalty = tweak_data.carry.types[carry_type].weight
     local result = movement_penalty ~= nil 
         and ((100 -movement_penalty) / 100) 
@@ -1800,10 +1857,11 @@ function BLT_CarryStacker:CanCarry(carry_id, logger)
         "carry " .. tostring(carry_id))
     local check_weight = self.weight * self:getWeightForType(carry_id, logger)
 	local max_weight = tweak_data.player.max_carry_weight
-
+	
 	if managers.player:has_category_upgrade("carry", "increased_carry_weight") then
 		max_weight = max_weight - managers.player:upgrade_value("carry", "increased_carry_weight", 1)
 	end
+	
     logger("The current weight is " .. tostring(self.weight) .. 
         " and the new weight is " .. tostring(check_weight))
     local result = check_weight >= max_weight

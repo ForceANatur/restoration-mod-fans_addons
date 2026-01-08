@@ -1,0 +1,11 @@
+<table directory="assets">	
+	<!-- Zombie Frag Dozer -->
+	<texture			path="units/pd2_mod_boom/characters/ene_bulldozer_frag_hvh/bulldozer_saiga_hvh_df"/>
+	<material_config	path="units/pd2_mod_boom/characters/ene_bulldozer_frag_hvh/ene_bulldozer_frag_hvh" force="false"/>
+	<material_config	path="units/pd2_mod_boom/characters/ene_bulldozer_frag_hvh/ene_bulldozer_frag_hvh_contour" force="false"/>
+	<model				path="units/pd2_mod_boom/characters/ene_bulldozer_frag_hvh/ene_bulldozer_frag_hvh" force="false"/>
+	<unit				path="units/pd2_mod_boom/characters/ene_bulldozer_frag_hvh/ene_bulldozer_frag_hvh" force="false" load="true"/>
+	<unit				path="units/pd2_mod_boom/characters/ene_bulldozer_frag_hvh/ene_bulldozer_frag_hvh_husk" force="false" load="true"/>
+	<object				path="units/pd2_mod_boom/characters/ene_bulldozer_frag_hvh/ene_bulldozer_frag_hvh" force="false"/>
+	<sequence_manager	path="units/pd2_mod_boom/characters/ene_bulldozer_frag_hvh/ene_bulldozer_frag_hvh" force="false"/>
+</table>
