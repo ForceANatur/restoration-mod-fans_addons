@@ -268,10 +268,6 @@
 	<sequence_manager	path="units/world/architecture/secret_stash/props/secret_stash_hack_computer_interaction" force="true"/>
 	<sequence_manager	path="units/pd2_dlc_jolly/equipment/gen_interactable_saw/gen_interactable_saw" force="true"/>
 	<world				path="levels/narratives/classics/man/world" force="true"/>
-
-	
-	<!--PANIC ROOM-->
-	<mission			path="levels/narratives/classics/flat/world/world" force="true" unload="true"/>
 	
 	<!--Misc. Changes and Fixes to Base Game Objects-->
 	
