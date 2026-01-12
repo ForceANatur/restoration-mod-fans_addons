@@ -277,10 +277,6 @@
 	<sequence_manager	path="units/pd2_dlc_jolly/equipment/gen_interactable_saw/gen_interactable_saw" force="true"/>
 	<world				path="levels/narratives/classics/man/world" force="true"/>
 
-	
-	<!--PANIC ROOM-->
-	<mission			path="levels/narratives/classics/flat/world/world" force="true" unload="true"/>
-
 	<!--FBI Shotgun Concept-->
 	<object				path="units/payday2/characters/ene_fbi_4/ene_fbi_4" force="false"/>
 	<cooked_physics		path="units/payday2/characters/ene_fbi_4/ene_fbi_4" force="false"/>
