@@ -19120,7 +19120,9 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 	
 	--Titan Snipers/US Marshal squads
 	--These guys shouldn't exist on lower difficulties
-	if difficulty_index == 5 then
+	if difficulty_index <= 4 then
+		-- Nothing
+	elseif difficulty_index == 5 then
 		self.enemy_spawn_groups.titan_snipers = {
 			spawn_cooldown = 75,
 			max_nr_simultaneous_groups = 1,
