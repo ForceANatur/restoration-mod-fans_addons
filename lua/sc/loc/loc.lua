@@ -2564,7 +2564,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 				["bm_w_x_socom"] = "Akimbo Anubis .45s",
 				--S&W .500
 				["bm_w_shatters_fury"] = "Phoenix .500",
-				["bm_wp_shatters_fury_desc"] = "A massive .500 caliber revolver with insane kick and stopping power. Shatter's weapon of choice.\n#{skill_color}#Can pierce body armor, multiple enemies, shields and thin walls.##",
+				["bm_wp_shatters_fury_desc"] = "A massive .500 caliber revolver with insane kick and stopping power. Shatter's weapon of choice.\n#{skill_color}#Can pierce body armor, multiple enemies, shields within max damage range and thin walls.##",
 				["bm_wp_wpn_fps_pis_shatters_fury_b_comp1"] = "Horus Barrel",
 				["bm_wp_wpn_fps_pis_shatters_fury_b_comp2"] = "Shatter Barrel",
 				["bm_wp_wpn_fps_pis_shatters_fury_b_long"] = "Hathor Barrel",
@@ -2761,7 +2761,8 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 				["bm_chinchilla_sc_desc"] = "Powerful, accurate, and stylish. Handy for breaking through the more durable foes in DC.\n\n#{skill_color}#Deals 50% of its damage through body armor and can pierce multiple enemies.##",
 				["bm_x_chinchilla_sc_desc"] = "A sicario needs to ensure his mark is down, two of these will guarantee it.\n\n#{skill_color}#Deals 50% of its damage through body armor and can pierce multiple enemies.##",
 				--RUS-12
-				["bm_rsh12_sc_desc"] = "The absolute final word in one handed caliber pissing matches.\n\n#{skill_color}#Can pierce body armor, multiple enemies, shields and thin walls.##",
+				["bm_rsh12_sc_desc"] = "The absolute final word in one handed caliber pissing matches.\n\n#{skill_color}#Can pierce body armor, multiple enemies, shields within max damage range and thin walls.##",
+				["bm_rsh12_sc_iw_desc"] = "3-round burst ballistic pistol. Has a triple chamber stack for rapid three round bursts.\n\n#{skill_color}#Can pierce body armor, multiple enemies and thin walls.##",
 				--SAA/Peacemaker
 				["bm_ap_weapon_peacemaker_sc_desc"] = "#{risk}#The greatest handgun ever made.##\n\n#{skill_color}#Can pierce body armor, multiple enemies, shields and thin walls.##\n\nCan be #{skill_color}#fanned for an increased fire rate## at the cost of #{important_1}#more recoil, reduced effective range and the inabilty to aim down your sights.##",
 				["bm_wp_peacemaker_rifle_stock_desc"] = "Allows for aiming while fanning the hammer.",
@@ -2788,7 +2789,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 					--GSh18
 					["bm_gsh18_sc_desc"] = "#{skill_color}#Deals 50% of its damage through body armor.##",
 					--Nagant Revolver
-					["bm_m1895_sc_desc"] = "A late 19th century 7-shooter and one of the only revolvers that can make use of a suppressor. #{risk}#Strangely##, this one comes with a 6-shot cylinder instead.\n\n#{skill_color}#Can pierce body armor, multiple enemies, shields and thin walls.##\n\nCan be #{skill_color}#fanned for an increased fire rate## at the cost of #{important_1}#more recoil, reduced effective range and the inabilty to aim down your sights.##",
+					["bm_m1895_sc_desc"] = "A late 19th century 7-shooter and one of the only revolvers that can make use of a suppressor. #{risk}#Strangely##, this one comes with a 6-shot cylinder instead.\n\n#{skill_color}#Can pierce body armor, multiple enemies, shields within max damage range and thin walls.##\n\nCan be #{skill_color}#fanned for an increased fire rate## at the cost of #{important_1}#more recoil, reduced effective range and the inabilty to aim down your sights.##",
 					--AF2011
 					["bm_af2011_sc_desc"] = "Handgun made to celebrate a hundred years of an all-time classic. Now featuring #{risk}#double the barrels##!",
 					["bm_wp_upg_af2011_a_uno_desc"] = "Internal modification that makes the barrels fire separately rather than simultaneously.",
@@ -4870,7 +4871,6 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 				["bm_menu_ro_modifier"] = "Revolver Ocelot",
 				["bm_menu_ro_charm"] = "Revolver Ocelot",
 				["bm_menu_ro_grip"] = "Revolver Ocelot",
-
 				["bm_m134_sc_desc"] = "CRYPTIC METAPHOR...",
 				["bm_wp_upg_suppressor_boss"] = "\"CRAB BATTLE!!!\"\n\n#{skill_color}#Silences## your weapon and #{risk}#reduces the chance of enemies evading your aim.##"
 
@@ -5014,6 +5014,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 				["bm_super_sc_desc"] = "The ultimate demon slaying weapon, the pinnacle of shotguns, you think 'Why didn't they call it the Double Barrel?' Because it's better, because it's super!",
 				["menu_silence_expert_beta_sc"] = "Explosive Headshot",
 				["RestorationModDisableSoloBoonsDescID"] = "Disable the additional boons the player receives in solo play (Crime.net offline). You difficulty junkie.",
+				["bm_melee_fight_info"] = "KAKATTE KOI!\n\nParrying an enemy attack deals #{skill_color}#120## melee damage to them. This can be increased with skills.\n#{stats_negative}#I'M NOT GONNA SUGARCOAT IT\nR1 + (Triangle)##",
 			})
 		end
 
@@ -6297,13 +6298,13 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Perk_Decks_Eng", funct
 		--["menu_deck9_7_desc_sc"] = "Killing an enemy within ##$perk_value_1## meters regenerates ##$perk_value_2## armor; melee kills double the amount.\n\nThis perk shares its cooldown with Tension (Card 3) even if this perk was not triggered.\n\nYour dodge is increased by an additional ##$perk_value_3## points.",
 		--["menu_deck9_9_desc_sc"] = "Killing an enemy within ##$perk_value_1## meters has a ##$perk_value_2## chance to spread panic among your enemies in a ##$perk_value_3## meter radius around you; melee kills double the chance.\n\nPanic will make enemies go into short bursts of uncontrollable fear.\n\nThis perk shares its cooldown with Tension (Card 3) even if this perk was not triggered.\n\nDeck Completion Bonus: Your chance of getting a higher quality item during a PAYDAY is increased by ##10%.## ",
 
-		["menu_deck9_1_desc_sc"] = "You gain a combo meter.\n\nKilling enemies with melee weapons builds up your combo meter by a base value of #{skill_color}#$perk_value_1## points; you can have a maximum combo of #{skill_color}#$perk_value_2## points. Killing elite and special enemies will multiply the amount of combo points you get, with Bulldozers and Captains providing even more points.\n\nYour combo meter decays at a rate of #{important_1}#$perk_value_3## points every #{risk}#$perk_value_4## seconds.\n\nYou lose #{important_1}#$perk_value_5## points of combo when taking health damage; this cannot occur more than once every #{skill_color}#$perk_value_6## seconds.\nYou lose #{important_1}#$perk_value_7## points of combo when going into bleedout.\n\nEvery #{risk}#$perk_value_8## points of combo you have grants you #{skill_color}#$perk_value_9## damage resistance, to a maximum of #{skill_color}#$perk_value_10.##",
+		["menu_deck9_1_desc_sc"] = "You gain a combo meter.\n\nKilling enemies with melee weapons builds up your combo meter by a base value of #{skill_color}#$perk_value_1## points; you can have a maximum combo of #{skill_color}#$perk_value_2## points. Killing elite and special enemies will multiply the amount of combo points you get, with Bulldozers and Captains providing even more points.\n\nYour combo meter decays at a rate of #{important_1}#$perk_value_3## points every #{risk}#$perk_value_4## seconds.\n\nYour base point value and combo duration are increased by #{skill_color}#1## for each player-controlled crew member (#{skill_color}#3## max) not in custody.\n\nYou lose #{important_1}#$perk_value_5## points of combo when taking health damage; this cannot occur more than once every #{skill_color}#$perk_value_6## seconds.\nYou lose #{important_1}#$perk_value_7## points of combo when going into bleedout.\n\nEvery #{risk}#$perk_value_8## points of combo you have grants you #{skill_color}#$perk_value_9## damage resistance, to a maximum of #{skill_color}#$perk_value_10.##",
 
 		["menu_deck9_3_desc_sc"] = "Non-lethal melee strikes and non-melee kills will refresh your combo decay timer.\n\nEvery #{risk}#$perk_value_1## points of combo you have grants you #{skill_color}#$perk_value_2## faster movement speed, to a maximum of #{skill_color}#$perk_value_3.##\n\nYou gain #{skill_color}#$perk_value_4## dodge points.",
 
 		["menu_deck9_5_desc_sc"] = "Killing enemies with melee weapons regenerates #{skill_color}#$perk_value_1## of your stamina.\n\nFor every #{risk}#$perk_value_2## points of combo you have, killing enemies with melee weapons regenerates #{skill_color}#$perk_value_3## health, to a maximum of #{skill_color}#$perk_value_4.##\n\nYou carry #{skill_color}#$perk_value_5## additional body bag in your inventory.",
 
-		["menu_deck9_7_desc_sc"] = "For every #{risk}#$perk_value_2## points of armor you have your base combo value is increased by #{skill_color}#$perk_value_1## and it takes #{skill_color}#$perk_value_8## seconds longer to lose combo between instances of health damage.\n\nFor every #{risk}#$perk_value_3## points of combo you have, killing enemies fills your dodge meter by #{skill_color}#$perk_value_4## of your dodge rating, to a maximum of #{skill_color}#$perk_value_5.##\nMelee kills boost the amount by #{skill_color}#$perk_value_7.##\n\nYour dodge is increased by an additional #{skill_color}#$perk_value_6## points.",
+		["menu_deck9_7_desc_sc"] = "For every #{risk}#$perk_value_2## points of armor you have your base point value is increased by #{skill_color}#$perk_value_1## and it takes #{skill_color}#$perk_value_8## seconds longer to lose combo between instances of health damage.\n\nFor every #{risk}#$perk_value_3## points of combo you have, killing enemies fills your dodge meter by #{skill_color}#$perk_value_4## of your dodge rating, to a maximum of #{skill_color}#$perk_value_5.##\nMelee kills boost the amount by #{skill_color}#$perk_value_7.##\n\nYour dodge is increased by an additional #{skill_color}#$perk_value_6## points.",
 
 		["menu_deck9_9_desc_sc"] = "Your combo instead decays at a rate of #{skill_color}#$perk_value_1## points per tick.\n\nFor every #{risk}#$perk_value_2## points of combo you have, killing enemies using direct damage has a #{skill_color}#$perk_value_3## chance to spread panic among your enemies in a #{skill_color}#$perk_value_4## meter radius around you, to a maximum of #{skill_color}#$perk_value_5.##\nMelee kills boost the amount by #{skill_color}#$perk_value_6.##\n\nDeck Completion Bonus: Your chance of getting a higher quality item during a PAYDAY is increased by #{skill_color}#10%.## ",
 

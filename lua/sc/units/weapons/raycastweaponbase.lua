@@ -154,7 +154,7 @@ function RaycastWeaponBase.collect_hits(from, to, setup_data, weapon_unit)
 	local ai_vision_ids = Idstring("ai_vision")
 	local bulletproof_ids = Idstring("bulletproof")
 	local weap_base = weapon_unit and weapon_unit.base and weapon_unit:base()
-	local is_semi_snp = can_shoot_through_shield and weap_base and weap_base.categories and not weap_base:is_category("amr") and weap_base:is_category("semi_snp", "dmr_l", "dmr_h", "shotgun_auto", "shotgun_light") 
+	local is_semi_snp = can_shoot_through_shield and weap_base and weap_base.categories and not weap_base:is_category("amr", "big_iron") and weap_base:is_category("semi_snp", "dmr_l", "dmr_h", "shotgun_auto", "shotgun_light", "handcannon") 
 
 	--Just set this immediately.
 	local ray_hits = can_shoot_through_wall and World:raycast_wall("ray", from, to, "slot_mask", bullet_slotmask, "ignore_unit", ignore_unit, "thickness", 40, "thickness_mask", wall_mask)
@@ -171,8 +171,8 @@ function RaycastWeaponBase.collect_hits(from, to, setup_data, weapon_unit)
 		unit = hit.unit
 		u_key = unit:key()
 		local range = is_semi_snp and weap_base:get_damage_falloff(1, hit, managers.player:player_unit())
-			local near_falloff_distance = range and weap_base.near_falloff_distance
-			local distance = range and hit.distance
+		local near_falloff_distance = range and weap_base.near_falloff_distance
+		local distance = range and hit.distance
 		if not units_hit[u_key] then
 			units_hit[u_key] = true
 			unique_hits[#unique_hits + 1] = hit
@@ -188,12 +188,14 @@ function RaycastWeaponBase.collect_hits(from, to, setup_data, weapon_unit)
 				break
 			elseif hit.unit:in_slot(shield_mask) and alive(hit.unit:parent()) then
 				local parent_base = hit.unit:parent() and hit.unit:parent().base and hit.unit:parent():base()
-				if parent_base:has_tag("phalanx_vip") then
-					break
-				elseif parent_base:has_tag("shield_titan") and not can_shoot_through_titan_shield then
-					break
-				elseif parent_base:has_tag("shield") and (not can_shoot_through_shield or (is_semi_snp and distance > near_falloff_distance)) then
-					break
+				if parent_base then
+					if parent_base:has_tag("phalanx_vip") then
+						break
+					elseif parent_base:has_tag("shield_titan") and not can_shoot_through_titan_shield then
+						break
+					elseif parent_base:has_tag("shield") and (not can_shoot_through_shield or (is_semi_snp and distance > near_falloff_distance)) then
+						break
+					end
 				end
 			--[[
 				elseif hit.unit:in_slot(shield_mask) and (not can_shoot_through_shield or (is_semi_snp and distance > near_falloff_distance)) then
@@ -511,8 +513,28 @@ function RaycastWeaponBase:_fire_raycast(user_unit, from_pos, direction, dmg_mul
 
 	if dmg_mul ~= 0 and (not furthest_hit or furthest_hit.distance > 200) and alive(self._obj_fire) then
 		self._obj_fire:m_position(self._trail_effect_table.position)
-		mvec3_set(self._trail_effect_table.normal, mvec_spread_direction)
+		--mvec3_set(self._trail_effect_table.normal, mvec_spread_direction)
 
+		--Math to recalculate the normal vector of the tracer/trail to correctly start and end between the muzzle and the raycast hit position
+		--Overkill's "mvec3_set" above simply moves the whole normal vector in relation to the offset between the weapon muzzle's position in-world and the FPS camera
+			--this resulted in the end point of the trail being equally as offset to the point of impact as the muzzle is from the FPS camera
+		local impact_pos = Vector3()
+		if furthest_hit then
+			 mvec3_set(impact_pos, furthest_hit.position)
+		else --just spoof a point in the distance if there's nothing hit
+			 mvec3_set(impact_pos, mvec_spread_direction)
+			 mvec3_mul(impact_pos, ray_distance or 10000)
+			 mvec3_add(impact_pos, from_pos)
+		end
+
+		local new_normal = Vector3() --generate a new normal vector using the muzzle as the origin and the furthest hit as the end
+		mvec3_set(new_normal, impact_pos)
+		mvec3_sub(new_normal, self._trail_effect_table.position)
+
+		--There's still the limitation surrounding shots that go through things still appearing offset from any point of impact that isn't the last one
+			--since the offset of the muzzle makes it impossible to line up a trail through the new origin point, the area(s) shot through (which were calculated in relation to the camera) and the end point
+		mvec3_set(self._trail_effect_table.normal, new_normal)
+		
 		if not self._trail_length then
 			self._trail_length = World:effect_manager():get_initial_simulator_var_vector2(Idstring("effects/particles/weapons/sniper_trail"), Idstring("trail"), Idstring("simulator_length"), Idstring("size"))
 		end
@@ -522,17 +544,17 @@ function RaycastWeaponBase:_fire_raycast(user_unit, from_pos, direction, dmg_mul
 		self._trail_effect_table_sniper.effect = Idstring("effects/particles/weapons/vapor_trail_sc")
 		local trail_sniper = self._use_vapor_trail and World:effect_manager():spawn(self._trail_effect_table_sniper)
 
-		if furthest_hit then
-			if self._use_sniper_trail then
-				mvector3.set_y(self._trail_length, furthest_hit and furthest_hit.distance)
-				World:effect_manager():set_simulator_var_vector2(trail, Idstring("trail"), Idstring("simulator_length"), Idstring("size"), self._trail_length)
-			else
-				World:effect_manager():set_remaining_lifetime(trail, math_clamp((furthest_hit.distance - 100) / 10000, 0, furthest_hit.distance))
-			end
-			if self._use_vapor_trail then
-				mvector3.set_y(self._trail_length, furthest_hit and furthest_hit.distance)
-				World:effect_manager():set_simulator_var_vector2(trail_sniper, Idstring("trail"), Idstring("simulator_length"), Idstring("size"), self._trail_length)
-			end
+		local trail_length_y = furthest_hit and furthest_hit.distance or ray_distance or 10000
+		
+		if self._use_sniper_trail then
+			mvector3.set_y(self._trail_length, trail_length_y)
+			World:effect_manager():set_simulator_var_vector2(trail, Idstring("trail"), Idstring("simulator_length"), Idstring("size"), self._trail_length)
+		else
+			World:effect_manager():set_remaining_lifetime(trail, math_clamp((trail_length_y - 100) / 10000, 0, trail_length_y))
+		end
+		if self._use_vapor_trail then
+			mvector3.set_y(self._trail_length, trail_length_y)
+			World:effect_manager():set_simulator_var_vector2(trail_sniper, Idstring("trail"), Idstring("simulator_length"), Idstring("size"), self._trail_length)
 		end
 	end
 

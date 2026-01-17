@@ -2495,7 +2495,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 				["bm_w_x_socom"] = "아킴보 Anubis .45",
 				--S&W .500
 				["bm_w_shatters_fury"] = "Phoenix .500",
-				["bm_wp_shatters_fury_desc"] = "엄청난 반동과 저지력을 가진 거대한 .500 탄을 사용하는 리볼버입니다. 샤터가 사용하는 무기죠.\n#{skill_color}#방탄복, 다수의 적, 방패, 그리고 얇은 벽을 관통할 수 있습니다.##",
+				["bm_wp_shatters_fury_desc"] = "엄청난 반동과 저지력을 가진 거대한 .500 탄을 사용하는 리볼버입니다. 샤터가 사용하는 무기죠.\n#{skill_color}#방탄복, 다수의 적, 얇은 벽, 그리고 최대 피해량 사거리 내의 방패를 관통할 수 있습니다.##",
 				["bm_wp_wpn_fps_pis_shatters_fury_b_comp1"] = "호루스 총열",
 				["bm_wp_wpn_fps_pis_shatters_fury_b_comp2"] = "셰더 총열",
 				["bm_wp_wpn_fps_pis_shatters_fury_b_long"] = "하토르 총열",
@@ -2697,7 +2697,8 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 				["bm_chinchilla_sc_desc"] = "강력하고 정확하며 스타일리시합니다. DC에서 더 튼튼한 적을 돌파하는 데 편리하죠.\n\n#{skill_color}#무기 피해량의 50%가 방탄복을 관통하여 가하고 다수의 적을 관통할 수 있습니다.##",
 				["bm_x_chinchilla_sc_desc"] = "시카리오는 자신의 대상을 확실히 제거해야 하는데, 이 두 리볼버가 그것을 보장해 줄 겁니다.\n\n#{skill_color}#무기 피해량의 50%가 방탄복을 관통하여 가하고 다수의 적을 관통할 수 있습니다.##",
 				--RUS-12
-				["bm_rsh12_sc_desc"] = "한 손으로 벌이는 구경 대결의 최종 종결자입니다.\n\n#{skill_color}#방탄복, 다수의 적, 방패, 그리고 얇은 벽을 관통할 수 있습니다.##",
+				["bm_rsh12_sc_desc"] = "한 손으로 벌이는 구경 대결의 최종 종결자입니다.\n\n#{skill_color}#방탄복, 다수의 적, 얇은 벽, 그리고 최대 피해량 사거리 내의 방패를 관통할 수 있습니다.##",
+				["bm_rsh12_sc_iw_desc"] = "3점사 탄도 권총. 빠른 3점사 사격이 가능한 삼중 약실 구조를 갖추고 있습니다.\n\n#{skill_color}#방탄복, 다수의 적, 방패, 그리고 얇은 벽을 관통할 수 있습니다.##",
 				--SAA/Peacemaker
 				["bm_ap_weapon_peacemaker_sc_desc"] = "#{risk}#역사상 가장 뛰어난 권총.##\n\n#{skill_color}#방탄복, 다수의 적, 방패, 그리고 얇은 벽을 관통할 수 있습니다.##\n\n#{important_1}#반동이 증가하고 유효 사거리가 감소하며 조준이 불가능해지는 대신## #{skill_color}#발사 속도가 증가하는## 팬링을 할 수 있습니다.",
 				--SAA/Peacemaker
@@ -2723,7 +2724,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 					--GSh18
 					["bm_gsh18_sc_desc"] = "#{skill_color}#무기 피해량의 50%가 방탄복을 관통하여 가합니다.##",
 					--Nagant Revolver
-					["bm_m1895_sc_desc"] = "19세기 후반에 개발된 7연발 리볼버이자 소음기를 사용할 수 있는 몇 안 되는 리볼버 중 하나입니다. 하지만 #{risk}#이상하게도## 이 모델은 6연발 실린더를 장착하고 있습니다.\n\n#{skill_color}#방탄복, 다수의 적, 방패, 그리고 얇은 벽을 관통할 수 있습니다.##\n\n#{important_1}#반동이 증가하고 유효 사거리가 감소하며 조준이 불가능해지는 대신## #{skill_color}#발사 속도가 증가하는## 팬링을 할 수 있습니다.",
+					["bm_m1895_sc_desc"] = "19세기 후반에 개발된 7연발 리볼버이자 소음기를 사용할 수 있는 몇 안 되는 리볼버 중 하나입니다. 하지만 #{risk}#이상하게도## 이 모델은 6연발 실린더를 장착하고 있습니다.\n\n#{skill_color}#방탄복, 다수의 적, 얇은 벽, 그리고 최대 피해량 사거리 내의 방패를 관통할 수 있습니다.##\n\n#{important_1}#반동이 증가하고 유효 사거리가 감소하며 조준이 불가능해지는 대신## #{skill_color}#발사 속도가 증가하는## 팬링을 할 수 있습니다.",
 					--AF2011
 					["bm_af2011_sc_desc"] = "시대를 초월한 명작의 100주년을 기념하기 위해 제작된 권총입니다. 이제 #{risk}#총열이 두 배##로 늘었습니다!",
 					["bm_wp_upg_af2011_a_uno_desc"] = "총열이 동시에 발사되지 않고 개별적으로 발사되도록 만드는 내부 개조품입니다.",
@@ -6138,12 +6139,12 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Perk_Decks_Eng", funct
 		--["menu_deck9_7_desc_sc"] = "Killing an enemy within ##$perk_value_1## meters regenerates ##$perk_value_2## armor; melee kills double the amount.\n\nThis perk shares its cooldown with Tension (Card 3) even if this perk was not triggered.\n\nYour dodge is increased by an additional ##$perk_value_3## points.",
 		--["menu_deck9_9_desc_sc"] = "Killing an enemy within ##$perk_value_1## meters has a ##$perk_value_2## chance to spread panic among your enemies in a ##$perk_value_3## meter radius around you; melee kills double the chance.\n\n공포감은 적들이 잠시 동안 엄청난 두려움에 떨게 만듭니다.\n\nThis perk shares its cooldown with Tension (Card 3) even if this perk was not triggered.\n\n덱 완료 보너스: PAYDAY 카드에서 높은 등급의 아이템을 얻을 확률이 ##10%## 상승합니다. ",
 
-		["menu_deck9_1_desc_sc"] = "콤보 미터를 얻습니다.\n\n근접 무기로 적을 처치하면 콤보 미터가 기본 값의 #{skill_color}#$perk_value_1##점 채우며, 최대 콤보는 #{skill_color}#$perk_value_2##점입니다. 정예 및 특수 적을 처치하면 콤보 게이지가 몇 배로 채워지며, 불도저와 캡틴을 처치하면 더 많은 콤보를 얻을 수 있습니다.\n\n콤보 미터는 #{risk}#$perk_value_4##초마다 #{important_1}#$perk_value_3##점씩 감소합니다.\n\n체력 피해를 입으면 콤보 미터가 #{important_1}#$perk_value_5##점 줄어들고, 이 효과는 #{skill_color}#$perk_value_6##초당 한 번만 발동합니다.\n출혈 상태가 되면 콤보 #{important_1}#$perk_value_7##점을 잃습니다.\n\n콤보 #{risk}#$perk_value_8##점마다 #{skill_color}#$perk_value_9##의 피해 저항이 부여되며, 최대 #{skill_color}#$perk_value_10##까지 증가합니다.",
+		["menu_deck9_1_desc_sc"] = "콤보 미터를 얻습니다.\n\n근접 무기로 적을 처치하면 콤보 미터가 기본 값의 #{skill_color}#$perk_value_1##점 채우며, 최대 콤보는 #{skill_color}#$perk_value_2##점입니다. 정예 및 특수 적을 처치하면 콤보 게이지가 몇 배로 채워지며, 불도저와 캡틴을 처치하면 더 많은 콤보를 얻을 수 있습니다.\n\n콤보 미터는 #{risk}#$perk_value_4##초마다 #{important_1}#$perk_value_3##점씩 감소합니다.\n\n구금당하지 않은 플레이어 팀원 한 명당 기본 점수와 콤보 지속 시간이 #{skill_color}#1##씩 증가합니다.(최대 #{skill_color}#3##까지)\n\n체력 피해를 입으면 콤보 미터가 #{important_1}#$perk_value_5##점씩 줄어들고, 이 효과는 #{skill_color}#$perk_value_6##초당 한 번만 발동합니다.\n출혈 상태가 되면 콤보 #{important_1}#$perk_value_7##점을 잃습니다.\n\n콤보 #{risk}#$perk_value_8##점마다 #{skill_color}#$perk_value_9##의 피해 저항이 부여되며, 최대 #{skill_color}#$perk_value_10##까지 증가합니다.",
 
 		["menu_deck9_3_desc_sc"] = "치명적이지 않은 근접 공격 혹은 근접 무기를 제외한 다른 무기로 적을 처치하면 콤보 감소 타이머가 초기화됩니다.\n\n콤보 #{risk}#$perk_value_1##점씩 쌓일 때마다 이동 속도가 #{skill_color}#$perk_value_2## 빨라지며, 최대 #{skill_color}#$perk_value_3##까지 증가합니다.\n\n회피율이 #{skill_color}#$perk_value_4## 증가합니다.",
 		["menu_deck9_5_desc_sc"] = "근접 무기로 적을 죽이면 스태미나를 #{skill_color}#$perk_value_1## 회복합니다.\n\n콤보 #{risk}#$perk_value_2##점마다 근접 무기로 적을 처치하면 체력이 #{skill_color}#$perk_value_3##씩 회복되며, 최대 #{skill_color}#$perk_value_4##까지 회복됩니다.\n\n인벤토리에 시체 가방을 #{skill_color}#$perk_value_5##개 더 소지합니다.",
 
-		["menu_deck9_7_desc_sc"] = "방탄력의 #{risk}#$perk_value_2## 마다 기본 콤보 값이 #{skill_color}#$perk_value_1## 증가하고, 체력 피해가 발생할 때마다 콤보가 끊어지는 데 걸리는 시간이 #{skill_color}#$perk_value_8##초 더 증가합니다.\n\n콤보가 #{risk}#$perk_value_3##점 증가할 때마다 적을 처치하면 회피 미터가 회피율의 #{skill_color}#$perk_value_4## 채워지며, 최대 #{skill_color}#$perk_value_5##까지 채웁니다.\n근접 공격으로 처치하면 추가로 #{skill_color}#$perk_value_7## 증가합니다.\n\n회피율이 추가로 #{skill_color}#$perk_value_6## 증가합니다.",
+		["menu_deck9_7_desc_sc"] = "방탄력의 #{risk}#$perk_value_2## 마다 포인트 값이 #{skill_color}#$perk_value_1## 증가하고, 체력 피해가 발생할 때마다 콤보가 끊어지는 데 걸리는 시간이 #{skill_color}#$perk_value_8##초 더 증가합니다.\n\n콤보가 #{risk}#$perk_value_3##점 증가할 때마다 적을 처치하면 회피 미터가 회피율의 #{skill_color}#$perk_value_4## 채워지며, 최대 #{skill_color}#$perk_value_5##까지 채웁니다.\n근접 공격으로 처치하면 추가로 #{skill_color}#$perk_value_7## 증가합니다.\n\n회피율이 추가로 #{skill_color}#$perk_value_6## 증가합니다.",
 
 		["menu_deck9_9_desc_sc"] = "콤보는 대신 간격당 #{skill_color}#$perk_value_1##의 비율로 줄어듭니다.\n\n콤보 #{risk}#$perk_value_2##점마다 직접 피해를 가해 적을 처치하면 #{skill_color}#$perk_value_3##의 확률로 주변 #{skill_color}#$perk_value_4##미터 이내의 적에게 공포감을 퍼뜨릴 수 있으며, 최대 확률은 #{skill_color}#$perk_value_5##입니다.\n근접 공격으로 처치하면 이 확률이 #{skill_color}#$perk_value_6## 증가합니다.\n\n덱 완료 보너스: PAYDAY 카드에서 높은 등급의 아이템을 얻을 확률이 #{skill_color}#10%## 상승합니다. ",
 
