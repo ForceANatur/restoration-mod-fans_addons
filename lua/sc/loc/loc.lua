@@ -4813,12 +4813,13 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 				["bm_m16_sc_desc"] = "I'll give you a clip so you can do some damage",
 				["bm_w_x_type54"] = weapon_names == 2 and "The twin colts" or "The twin crosskills",
 				["bm_akmsu_sc_desc"] = "A small rifle useful for taking down #{stat_maxed}#BIG MEN##. Not to be underestimated as this rifle can hold its own in just about any scenario.",
-				["bm_w_kedr_sc_desc"] = "(REFERENCE REMOVED DUE TO THE CREATOR OF THE FORK NOT LIKING THIS ONE ANYMORE DUE TO THE CREATOR DISTANCING HIMSELF FROM IT)",
+				["bm_w_kedr_sc_desc"] = "[DATA EXPUNGED]",
 				["bm_w_rc_auto9_desc"] = "Dead or alive; you're coming with me.",
 				["bm_menu_sc_huntsman_desc"] = "The ultimate demon slaying weapon, the pinnacle of shotguns, you think 'Why didn't they call it the Double Barrel?' Because it's better, because it's super!",
 				["bm_super_sc_desc"] = "The ultimate demon slaying weapon, the pinnacle of shotguns, you think 'Why didn't they call it the Double Barrel?' Because it's better, because it's super!",
 				["menu_silence_expert_beta_sc"] = "Explosive Headshot",
 				["RestorationModDisableSoloBoonsDescID"] = "Disable the additional boons the player receives in solo play (Crime.net offline). You difficulty junkie.",
+				["bm_melee_fight_info"] = "KAKATTE KOI!\n\nParrying an enemy attack deals #{skill_color}#120## melee damage to them. This can be increased with skills.\n#{stats_negative}#I'M NOT GONNA SUGARCOAT IT\nR1 + (Triangle)##",
 			})
 		end
 
