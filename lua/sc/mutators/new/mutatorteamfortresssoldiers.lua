@@ -21,8 +21,8 @@ function MutatorRocketGrunts:setup(data)
 	local unit_types = tweak_data.group_ai.unit_categories.titan_sniper.unit_types
 	local rpg_guy_suffer = "units/pd2_mod_sharks/characters/ene_rpg_grunt/ene_rpg_grunt"
 
-    if not PackageManager:loaded("packages/miscassetsmutators") then
-		PackageManager:load("packages/miscassetsmutators")
+    if not PackageManager:loaded("packages/rpg_grunts") then
+		PackageManager:load("packages/rpg_grunts")
 	end
 
 	table.insert(unit_types.america, rpg_guy_suffer)
