@@ -897,6 +897,7 @@
 	<Package id="packages/deathvox_medic" file="packages/deathvox_medic.xml"/>
 	<Package id="packages/undead_titans" file="packages/safehouse_nightmare_dozers.xml"/>
 	<Package id="packages/bodybuilder_specials" file="packages/bodybuilder_specials.xml"/>
+	<Package id="packages/rpg_grunts" file="packages/rpg_grunts.xml"/>
 	<!-- ///holy shit this is so fucking ugly\\\ -->
 	<Package id="packages/frag_bulldozers" file="packages/frag_dozers.xml"/>
 	<Package id="packages/frag_bulldozers_hvh" file="packages/frag_dozers_hvh.xml"/>

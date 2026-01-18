@@ -227,7 +227,7 @@ Miss Miki: PONR anti-grief fixes and other contributions/fixes
 
 MrVavlo: For the CHARMing weapon CHARM that's full of CHARM
 
-Keithy: New Coppers' Assets
+Keithy: New Coppers' Assets, HECU Murky (https://modworkshop.net/mod/19426)
 
 Marshie: Russian localisation
 

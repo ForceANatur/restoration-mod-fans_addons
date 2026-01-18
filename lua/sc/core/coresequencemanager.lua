@@ -1,7 +1,9 @@
+if not CoreSequenceManager then return end
 
 function CoreSequenceManager.UnitElement:save_by_unit(unit, data)
 	local state = {}
 	local changed = false
+
 	for name, _ in pairs(self._bodies) do
 		local body = unit.body and unit:body(name)
 		if body and body:extension() and body:extension().damage then
@@ -18,3 +20,18 @@ function CoreSequenceManager.UnitElement:save_by_unit(unit, data)
 
 	return changed
 end
+
+function CoreSequenceManager.UnitElement:load_by_unit(unit, data)
+	local state = data.UnitElement
+
+	if state then
+		for name, _ in pairs(self._bodies) do
+			local body = unit.body and unit:body(name)
+			if body and body:extension() and body:extension().damage then
+				body:extension().damage:load(state)
+			end
+		end
+	end
+end
+
+--log("CoreSequenceManager changes loaded!")
