@@ -298,6 +298,16 @@ logic_variants.taser_titan_reaper.attack = MarshalLogicAttack
 
 logic_variants.fbi_cruel = security_variant
 logic_variants.hrt_cruel = security_variant
+logic_variants.weekend_cruel = security_variant
+logic_variants.weekend_vanilla_heavy_cruel = security_variant
+logic_variants.shield_cruel = security_variant
+logic_variants.weekend_lmg_cruel = security_variant
+logic_variants.weekend_lmg_cruel_assault = security_variant
+logic_variants.phalanx_minion_cruel = clone(security_variant)
+logic_variants.phalanx_minion_cruel.attack = ShieldLogicAttack
+logic_variants.phalanx_minion_cruel.intimidated = nil
+logic_variants.phalanx_minion_cruel.flee = nil
+logic_variants.phalanx_minion_cruel_break = security_variant
 
 --Set up boss logics
 logic_variants.mobster_boss = logic_variants.triad_boss

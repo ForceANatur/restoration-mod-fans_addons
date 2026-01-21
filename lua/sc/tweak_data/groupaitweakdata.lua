@@ -9666,7 +9666,7 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 				},
 				zombie = {
 					Idstring("units/pd2_mod_omnia/characters/ene_bulldozer_minigun/ene_bulldozer_minigun"),
-					Idstring("units/pd2_dlc_hvh/characters/ene_bulldozer_minigun/ene_bulldozer_minigun")
+					Idstring("units/pd2_dlc_hvh/characters/ene_bulldozer_minigun_classic/ene_bulldozer_minigun_classic")
 				},					
 				russia = {
 					Idstring("units/pd2_mod_omnia/characters/ene_bulldozer_minigun/ene_bulldozer_minigun"),
@@ -9678,7 +9678,7 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 				},
 				federales = {
 					Idstring("units/pd2_mod_omnia/characters/ene_bulldozer_minigun/ene_bulldozer_minigun"),
-					Idstring("units/pd2_dlc_bex/characters/ene_bulldozer_minigun/ene_bulldozer_minigun")
+					Idstring("units/pd2_dlc_bex/characters/ene_swat_dozer_policia_federale_minigun/ene_swat_dozer_policia_federale_minigun")
 				},
 				nypd = {
 					Idstring("units/pd2_mod_omnia/characters/ene_bulldozer_minigun/ene_bulldozer_minigun"),

@@ -1315,6 +1315,11 @@ function CharacterTweakData:_init_city_swat(presets)
 		self.weekend_guard.access = "security"
 	end
 	table.insert(self._enemy_list, "weekend_guard")
+
+	self.weekend_cruel = deep_clone(self.weekend)
+	-- temp until i can get a va for this
+	self.weekend_cruel.custom_voicework = "bravo_murky"
+	table.insert(self._enemy_list, "weekend_cruel")
 	
 	--Titan SWAT (LMG)
 	self.city_swat_titan = deep_clone(self.city_swat)
@@ -1403,6 +1408,22 @@ function CharacterTweakData:_init_city_swat(presets)
 		self.weekend_lmg.yellow_blood = false
 	end
 	table.insert(self._enemy_list, "weekend_lmg")
+
+	--Cruel Trance variant
+	self.weekend_lmg_cruel = deep_clone(self.weekend_lmg)
+	self.weekend_lmg_cruel.custom_voicework = "murky_heavygunner"
+	table.insert(self._enemy_list, "weekend_lmg_cruel")
+
+	self.weekend_lmg_cruel_assault = deep_clone(self.city_swat_titan_assault)
+	self.weekend_lmg_cruel_assault.speech_prefix_p1 = "null"
+	self.weekend_lmg_cruel_assault.speech_prefix_p2 = nil
+	self.weekend_lmg_cruel_assault.speech_prefix_count = nil
+	self.weekend_lmg_cruel_assault.HEALTH_INIT = 28.125
+	self.weekend_lmg_cruel_assault.headshot_dmg_mul = 3.3125
+	self.weekend_lmg_cruel_assault.heal_cooldown = 1.875
+	self.weekend_lmg_cruel_assault.can_throw_frag = true
+	self.weekend_lmg_cruel_assault.custom_voicework = "murky_heavygunner"
+	table.insert(self._enemy_list, "weekend_lmg_cruel_assault")
 	
 	--Weekend LMG (Guard Variant)
 	self.weekend_elite_guard = deep_clone(self.weekend_lmg)
@@ -3248,6 +3269,12 @@ function CharacterTweakData:_init_shield(presets)
 		self.shield.custom_voicework = nil
 	end
 	table.insert(self._enemy_list, "shield")
+
+	self.shield_cruel = deep_clone(self.shield)
+	self.shield_cruel.custom_voicework = "tswat_ru"
+	self.shield_cruel.damage.hurt_severity = presets.hurt_severities.only_explosion_hurts
+	self.shield_cruel.damage.shield_knocked = true
+	table.insert(self._enemy_list, "shield_cruel")
 end
 
 function CharacterTweakData:_init_phalanx_minion(presets)	
@@ -3313,6 +3340,11 @@ function CharacterTweakData:_init_phalanx_minion(presets)
 	self.phalanx_minion_assault.spawn_sound_event_3 = "hos_shield_indication_sound_terminator_style" --that's a big ass name
 	self.phalanx_minion_assault.no_retreat = false
 	table.insert(self._enemy_list, "phalanx_minion_assault")
+
+	self.phalanx_minion_cruel = deep_clone(self.phalanx_minion_assault)
+	self.phalanx_minion_cruel.custom_voicework = "murky_tswat"
+	self.phalanx_minion_cruel.marshal_logic = true
+	table.insert(self._enemy_list, "phalanx_minion_cruel")
 end
 
 function CharacterTweakData:_init_phalanx_vip(presets)
@@ -3519,7 +3551,21 @@ end
 	self.phalanx_vip_break.marshal_logic = true	
 	self.phalanx_vip_break.can_be_healed = false
 	self.phalanx_vip_break.tmp_invulnerable_on_tweak_change = 15
-	table.insert(self._enemy_list, "phalanx_vip_break")		
+	table.insert(self._enemy_list, "phalanx_vip_break")
+
+	self.phalanx_minion_cruel_break = deep_clone(self.city_swat_titan)
+	self.phalanx_minion_cruel_break.custom_voicework = "murky_tswat"
+	self.phalanx_minion_cruel_break.HEALTH_INIT = 28.5
+	self.phalanx_minion_cruel_break.headshot_dmg_mul = 2.75
+	self.phalanx_minion_cruel_break.damage.hurt_severity = presets.hurt_severities.titan
+	self.phalanx_minion_cruel_break.damage.bullet_damage_mul = 1
+	self.phalanx_minion_cruel_break.damage.explosion_damage_mul = 1
+	self.phalanx_minion_cruel_break.damage.tase_damage_mul = 1
+	self.phalanx_minion_cruel_break.modify_health_on_tweak_change = true
+	self.phalanx_minion_cruel_break.tmp_invulnerable_on_tweak_change = 2
+	self.phalanx_minion_cruel_break.marshal_logic = true
+	self.phalanx_minion_cruel_break.is_special = false
+	table.insert(self._enemy_list, "phalanx_minion_cruel_break")
 end
 
 function CharacterTweakData:_init_spring(presets)
@@ -4467,6 +4513,11 @@ function CharacterTweakData:_init_weekend_vanilla_heavy(presets)
 	self.weekend_vanilla_heavy.surrender = presets.surrender.bravo_hard
 	self.weekend_vanilla_heavy.damage_resistance = presets.damage_resistance.heavy_swat
 	table.insert(self._enemy_list, "weekend_vanilla_heavy")
+
+	self.weekend_vanilla_heavy_cruel = deep_clone(self.weekend)
+	self.weekend_vanilla_heavy_cruel.custom_voicework = "murky_shield"
+	self.weekend_vanilla_heavy_cruel.damage_resistance = presets.damage_resistance.heavy_swat	-- testing showed the same hp values
+	table.insert(self._enemy_list, "weekend_vanilla_heavy_cruel")
 end
 
 -- Ground Snipers throw grenades a lot more
@@ -20529,10 +20580,20 @@ function CharacterTweakData:character_map()
 				"ene_fbi_2",
 				"ene_fbi_3",
 				"ene_fbi_4",
+				"ene_zeal_cloaker",
 				"ene_zeal_hrt_1",
 				"ene_zeal_hrt_2",
 				"ene_zeal_hrt_3",
-				"ene_zeal_hrt_4"
+				"ene_zeal_hrt_4",
+				"ene_zeal_swat",
+				"ene_zeal_swat_heavy",
+				"ene_zeal_swat_shield",
+				"ene_zeal_tazer",
+				"ene_murkywater_1",
+				"ene_murkywater_2",
+				"ene_male_marshal_marksman_1",
+				"ene_male_marshal_marksman_2",
+				"ene_phalanx_1"
 			}
 		}
 

@@ -1,0 +1,29 @@
+<materials version="3">
+    <material render_template="generic:DIFFUSE_TEXTURE:NORMALMAP:SELF_ILLUMINATION" name="mtr_nshield" version="2">
+        <diffuse_texture file="units/pd2_mod_cruel/characters/ene_acc_shield_new_swat/shield_df"/>
+        <bump_normal_texture file="units/pd2_mod_cruel/characters/ene_acc_shield_new_swat/shield_nm"/>
+		<self_illumination_texture file="units/pd2_mod_cruel/characters/ene_acc_shield_new_swat/shield_il"/>
+		<variable type="scalar" name="il_multiplier" value="megatron"/>
+    </material>
+	
+	<material name="mtr_glass" render_template="opacity:CUBE_ENVIRONMENT_MAPPING:CUBE_FRESNEL:DIFFUSE_TEXTURE" version="2">
+        <variable value="0 1 0.2" type="vector3" name="fresnel_settings"/>
+        <opacity_texture file="units/pd2_mod_cruel/characters/ene_acc_shield_new_swat/ene_acc_zeal_shield_glass_op"/>
+        <diffuse_texture file="units/pd2_mod_cruel/characters/ene_acc_shield_new_swat/ene_acc_zeal_shield_glass_df"/>
+        <reflection_texture type="cubemap" global_texture="current_global_texture"/>
+	</material>
+	
+	<material name="mtr_glass_dmg" render_template="opacity:CUBE_ENVIRONMENT_MAPPING:CUBE_FRESNEL:DIFFUSE_TEXTURE" version="2">
+        <variable value="0 1 0.2" type="vector3" name="fresnel_settings"/>
+        <opacity_texture file="units/pd2_mod_cruel/characters/ene_acc_shield_new_swat/ene_acc_zeal_shield_glass_op"/>
+        <diffuse_texture file="units/pd2_mod_cruel/characters/ene_acc_shield_new_swat/ene_acc_zeal_shield_glass_df"/>
+        <reflection_texture type="cubemap" global_texture="current_global_texture"/>
+	</material>
+
+    <material name="mtr_light_il" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP:SELF_ILLUMINATION" version="2">
+        <diffuse_texture file="units/pd2_mod_cruel/characters/ene_acc_shield_new_swat/shield_lamp_df"/>
+        <bump_normal_texture file="units/pd2_mod_cruel/characters/ene_acc_shield_new_swat/shield_lamp_nm"/>
+        <self_illumination_texture file="units/pd2_mod_cruel/characters/ene_acc_shield_new_swat/shield_lamp_il"/>
+        <variable value="monitor" type="scalar" name="il_multiplier"/>
+    </material>
+</materials>

@@ -224,28 +224,30 @@ elseif ai_type == z then
 		--Zombie FBI Shield
 		["units/pd2_mod_halloween/characters/ene_shield_2/ene_shield_2"] = "units/pd2_mod_halloween/characters/ene_shield_1/ene_shield_1",
 		
-		--Normal Bravo Units as a placeholder 
-		--Undead Bravo Rifle
+		--Cruel Trance enemies as bravo zombies
+		--Rifles
 		["units/pd2_mod_halloween/characters/ene_fbi_swat_1/ene_fbi_swat_1"] = "units/pd2_mod_bravo/characters/ene_bravo_rifle/ene_bravo_rifle",
 		["units/pd2_mod_halloween/characters/ene_city_swat_1/ene_city_swat_1"] = "units/pd2_mod_bravo/characters/ene_bravo_rifle/ene_bravo_rifle",
-		["units/pd2_mod_halloween/characters/ene_zeal_city_1/ene_zeal_city_1"] = "units/pd2_mod_bravo/characters/ene_bravo_rifle/ene_bravo_rifle",
+		["units/pd2_mod_halloween/characters/ene_zeal_city_1/ene_zeal_city_1"] = "units/pd2_mod_cruel/characters/ene_zeal_swat/ene_zeal_swat",
 		
 		["units/pd2_mod_halloween/characters/ene_fbi_swat_3/ene_fbi_swat_3"] = "units/pd2_mod_ngvh/characters/ene_ntl_swat_3/ene_ntl_swat_3",
 		["units/pd2_mod_halloween/characters/ene_city_swat_3/ene_city_swat_3"] = "units/pd2_mod_ngvh/characters/ene_ntl_swat_3/ene_ntl_swat_3",
 		["units/pd2_mod_halloween/characters/ene_zeal_city_3/ene_zeal_city_3"] = "units/pd2_mod_ngvh/characters/ene_ntl_swat_3/ene_ntl_swat_3",		
 		
-		--Undead Bravo Shotgun
+		--Shotguns
 		["units/pd2_mod_halloween/characters/ene_fbi_swat_2/ene_fbi_swat_2"] = "units/pd2_mod_bravo/characters/ene_bravo_shotgun/ene_bravo_shotgun",
 		["units/pd2_mod_halloween/characters/ene_city_swat_2/ene_city_swat_2"] = "units/pd2_mod_bravo/characters/ene_bravo_shotgun/ene_bravo_shotgun",
-		["units/pd2_mod_halloween/characters/ene_zeal_city_2/ene_zeal_city_2"] = "units/pd2_mod_bravo/characters/ene_bravo_shotgun/ene_bravo_shotgun",
+		["units/pd2_mod_halloween/characters/ene_zeal_city_2/ene_zeal_city_2"] = "units/pd2_mod_cruel/characters/ene_zeal_swat/ene_zeal_swat",
 		
-		--Undead Bravo LMG
-		["units/pd2_mod_halloween/characters/ene_skele_swat/ene_skele_swat"] = "units/pd2_mod_bravo/characters/ene_bravo_lmg/ene_bravo_lmg",	
+		--Titans
+		["units/pd2_mod_halloween/characters/ene_skele_swat/ene_skele_swat"] = "units/pd2_mod_cruel/characters/ene_murkywater_1/ene_murkywater_1",
+		["units/pd2_mod_halloween/characters/ene_skele_swat_2/ene_skele_swat_2"] = "units/pd2_mod_cruel/characters/ene_murkywater_2/ene_murkywater_2",
 		
-		--Undead Bravo DMR
-		["units/pd2_mod_halloween/characters/ene_titan_sniper/ene_titan_sniper"] = "units/pd2_mod_bravo/characters/ene_bravo_dmr/ene_bravo_dmr",
+		--Snipers
+		["units/pd2_mod_halloween/characters/ene_titan_sniper/ene_titan_sniper"] = "units/pd2_mod_cruel/characters/ene_male_marshal_marksman_1/ene_male_marshal_marksman_1",
+		["units/pd2_mod_halloween/characters/ene_marshal_marksman_1/ene_marshal_marksman_1"] = "units/pd2_mod_cruel/characters/ene_male_marshal_marksman_2/ene_male_marshal_marksman_2",
 
-		--Vanilla Bravo
+		--Vanilla Zombie Bravo
 		["units/pd2_dlc_hvh/characters/ene_fbi_swat_hvh_1/ene_fbi_swat_hvh_1"] = "units/pd2_mod_ngvh/characters/ene_ntl_swat_1/ene_ntl_swat_1",
 		["units/pd2_dlc_hvh/characters/ene_city_swat_1/ene_city_swat_1"] = "units/pd2_mod_ngvh/characters/ene_ntl_swat_1/ene_ntl_swat_1",
 		["units/pd2_dlc_hvh/characters/ene_zeal_swat/ene_zeal_swat"] = "units/pd2_mod_ngvh/characters/ene_ntl_swat_1/ene_ntl_swat_1",
@@ -262,7 +264,7 @@ elseif ai_type == z then
 		["units/pd2_dlc_hvh/characters/ene_sniper_hvh_2/ene_sniper_hvh_2"] = "units/pd2_mod_ngvh/characters/ene_ntl_groundsniper/ene_ntl_groundsniper",
 		["units/pd2_dlc_hvh/characters/ene_medic_hvh_m4/ene_medic_hvh_m4"] = "units/pd2_mod_ngvh/characters/ene_ntl_medic/ene_ntl_medic",
 
-		--Cruel Trance enemies as bravo zombies
+		--Other units
 		["units/pd2_dlc_hvh/characters/ene_fbi_hvh_1/ene_fbi_hvh_1"] = "units/pd2_mod_cruel/characters/ene_fbi_1/ene_fbi_1",
 		["units/pd2_dlc_hvh/characters/ene_fbi_hvh_2/ene_fbi_hvh_2"] = "units/pd2_mod_cruel/characters/ene_fbi_2/ene_fbi_2",
 		["units/pd2_dlc_hvh/characters/ene_fbi_hvh_3/ene_fbi_hvh_3"] = "units/pd2_mod_cruel/characters/ene_fbi_4/ene_fbi_4",
@@ -274,6 +276,12 @@ elseif ai_type == z then
 		["units/pd2_mod_halloween/characters/ene_zeal_fbi_m4/ene_zeal_fbi_m4"] = "units/pd2_mod_cruel/characters/ene_zeal_hrt_2/ene_zeal_hrt_2",
 		["units/pd2_mod_halloween/characters/ene_zeal_fbi_mp5/ene_zeal_fbi_mp5"] = "units/pd2_mod_cruel/characters/ene_zeal_hrt_3/ene_zeal_hrt_3",
 		["units/pd2_mod_halloween/characters/ene_zeal_fbi_r870/ene_zeal_fbi_r870"] = "units/pd2_mod_cruel/characters/ene_zeal_hrt_4/ene_zeal_hrt_4",
+		["units/pd2_mod_halloween/characters/ene_zeal_swat_heavy_sc/ene_zeal_swat_heavy_sc"] = "units/pd2_mod_cruel/characters/ene_zeal_swat_heavy/ene_zeal_swat_heavy",
+		["units/pd2_mod_halloween/characters/ene_zeal_swat_heavy_r870_sc/ene_zeal_swat_heavy_r870_sc"] = "units/pd2_mod_cruel/characters/ene_zeal_swat_heavy/ene_zeal_swat_heavy",
+		["units/pd2_mod_halloween/characters/ene_zeal_swat_shield/ene_zeal_swat_shield"] = "units/pd2_mod_cruel/characters/ene_zeal_swat_shield/ene_zeal_swat_shield",
+		["units/pd2_mod_halloween/characters/ene_zeal_tazer/ene_zeal_tazer"] = "units/pd2_mod_cruel/characters/ene_zeal_tazer/ene_zeal_tazer",
+		--["units/pd2_mod_halloween/characters/ene_zeal_cloaker/ene_zeal_cloaker"] = "units/pd2_mod_cruel/characters/ene_zeal_cloaker/ene_zeal_cloaker",
+		["units/pd2_mod_halloween/characters/ene_phalanx_1_assault/ene_phalanx_1_assault"] = "units/pd2_mod_cruel/characters/ene_phalanx_1/ene_phalanx_1",
 	}
 elseif ai_type == ny then
 	replacement_table = {
