@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <unit type="items" slot="8" >
-    <network sync="spawn"/>
+    <network sync="spawn" remote_unit="units/pd2_mod_cruel/characters/ene_acc_shield_phalanx/ene_acc_shield_phalanx_dummy"/>
     <object file="units/pd2_mod_cruel/characters/ene_acc_shield_phalanx/ene_acc_shield_phalanx" />
     <dependencies>
         <depends_on bnk="soundbanks/regular_sfx"/>
@@ -22,4 +22,8 @@
 			<var name="_collision_sfx_quite_time" value="0.1"/>
 		</extension>
 	</extensions>
+	
+	<sounds>
+		<default_soundsource source="rp_ene_acc_shield_phalanx"/>
+	</sounds>
 </unit>
