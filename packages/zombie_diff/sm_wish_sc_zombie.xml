@@ -727,8 +727,8 @@
 	<texture			path="units/pd2_mod_cruel/characters/shared_textures/ene_marshal_equipment_merc_il"/>
 
 	<!--M416 for Phalanx-->
-	<texture			path="units/pd2_mod_lapd/weapons/wpn_npc_m416/m416_atlas_df" />		
-	<texture			path="units/pd2_mod_lapd/weapons/wpn_npc_m416/m416_atlas_nm" />		
+	<texture			path="units/pd2_mod_lapd/weapons/wpn_npc_m416/m416_atlas_df" />
+	<texture			path="units/pd2_mod_lapd/weapons/wpn_npc_m416/m416_atlas_nm" />
 	<model				path="units/pd2_mod_lapd/weapons/wpn_npc_m416/wpn_npc_m416" force="false"/>
 	<object				path="units/pd2_mod_lapd/weapons/wpn_npc_m416/wpn_npc_m416" force="false"/>
 	<unit_mat			path="units/pd2_mod_lapd/weapons/wpn_npc_m416/wpn_npc_m416" />
@@ -762,6 +762,12 @@
 	<model				path="units/pd2_mod_cruel/characters/ene_phalanx_1/ene_phalanx_1" force="false"/>
 	<material_config	path="units/pd2_mod_cruel/characters/ene_phalanx_1/ene_phalanx_1" force="false"/>
 	<material_config	path="units/pd2_mod_cruel/characters/ene_phalanx_1/ene_phalanx_1_contour" force="false"/>
+
+	<texture			path="units/pd2_mod_cruel/characters/ene_acc_shield_phalanx/shield_phalanx_df"/>
+	<df_nm_il			path="units/pd2_mod_cruel/characters/ene_phalanx_1/bravo_ru_head"/>
+	<df_nm_il			path="units/pd2_mod_cruel/characters/ene_phalanx_1/bravo_shotgun_ru"/>
+	<texture			path="units/pd2_mod_cruel/characters/ene_phalanx_1/bravo_rifle_helmet_ru_df"/>
+	<texture			path="units/pd2_mod_cruel/characters/ene_phalanx_1/bravo_rifle_helmet_ru_il"/>
 
 	<!--New Coppers Bravos so vanilla units don't get left out-->
 	<!--Load helmet before anything-->
