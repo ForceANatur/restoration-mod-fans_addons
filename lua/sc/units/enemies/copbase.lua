@@ -1490,6 +1490,28 @@ local bravo_heavy = {
 		"g3a3_npc"
 	}
 }
+local cruel_zeal = {
+	zeal_light = {
+		"mp5",
+		"m4",
+		"ump",
+		"g36",
+		"shepheard",
+		"r870",
+		"benelli",
+		"saiga",
+		"spas12",
+		"ksg"
+	},
+	zeal_heavy = {
+		"ump",
+		"bravo_rifle",
+		"g3a3_npc",
+		"benelli",
+		"bravo_shotgun",
+		"spas12",
+	}
+}
 local weapon_mapping = {
 -- Beat cops
 	[("units/payday2/characters/ene_cop_1/ene_cop_1"):key()] = cop.pistol,
@@ -1591,7 +1613,10 @@ local weapon_mapping = {
 	[("units/pd2_mod_dave/characters/ene_dave_hvh/ene_dave_hvh"):key{}] = dave.all_the_guns,
 -- Bravo Heavy
 	[("units/pd2_mod_ng/characters/ene_ntl_heavyswat/ene_ntl_heavyswat"):key{}] = bravo_heavy.rifle_heavy,
-	[("units/pd2_mod_ngvh/characters/ene_ntl_heavyswat/ene_ntl_heavyswat"):key{}] = bravo_heavy.rifle_heavy
+	[("units/pd2_mod_ngvh/characters/ene_ntl_heavyswat/ene_ntl_heavyswat"):key{}] = bravo_heavy.rifle_heavy,
+-- Cruel Trance ZEAL
+	[("units/pd2_mod_cruel/characters/ene_zeal_swat/ene_zeal_swat"):key{}] = cruel_zeal.zeal_light,
+	[("units/pd2_mod_cruel/characters/ene_zeal_swat_heavy/ene_zeal_swat_heavy"):key{}] = cruel_zeal.zeal_heavy,
 }
 
 Hooks:PreHook(CopBase, "post_init", "MIX_post_init", function(self)

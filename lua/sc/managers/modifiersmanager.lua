@@ -173,7 +173,7 @@ local replacement_table = {
 	-- Zombies
 	["units/pd2_mod_halloween/characters/ene_fbi_swat_1/ene_fbi_swat_1"] = "units/pd2_mod_bravo/characters/ene_bravo_rifle/ene_bravo_rifle",
 	["units/pd2_mod_halloween/characters/ene_city_swat_1/ene_city_swat_1"] = "units/pd2_mod_bravo/characters/ene_bravo_rifle/ene_bravo_rifle",
-	["units/pd2_mod_halloween/characters/ene_zeal_city_1/ene_zeal_city_1"] = "units/pd2_mod_bravo/characters/ene_bravo_rifle/ene_bravo_rifle",
+	["units/pd2_mod_halloween/characters/ene_zeal_city_1/ene_zeal_city_1"] = "units/pd2_mod_cruel/characters/ene_zeal_swat/ene_zeal_swat",
 	-- Murkywater
 	["units/pd2_mod_sharks/characters/ene_fbi_swat_1/ene_fbi_swat_1"] = "units/pd2_mod_bravo/characters/ene_bravo_rifle_murky/ene_bravo_rifle_murky",
 	["units/pd2_mod_sharks/characters/ene_city_swat_1/ene_city_swat_1"] = "units/pd2_mod_bravo/characters/ene_bravo_rifle_murky/ene_bravo_rifle_murky",
@@ -206,7 +206,7 @@ local replacement_table = {
 	-- Zombies
 	["units/pd2_mod_halloween/characters/ene_fbi_swat_2/ene_fbi_swat_2"] = "units/pd2_mod_bravo/characters/ene_bravo_shotgun/ene_bravo_shotgun",
 	["units/pd2_mod_halloween/characters/ene_city_swat_2/ene_city_swat_2"] = "units/pd2_mod_bravo/characters/ene_bravo_shotgun/ene_bravo_shotgun",
-	["units/pd2_mod_halloween/characters/ene_zeal_city_2/ene_zeal_city_2"] = "units/pd2_mod_bravo/characters/ene_bravo_shotgun/ene_bravo_shotgun",
+	["units/pd2_mod_halloween/characters/ene_zeal_city_2/ene_zeal_city_2"] = "units/pd2_mod_cruel/characters/ene_zeal_swat/ene_zeal_swat",
 	["units/pd2_mod_halloween/characters/ene_fbi_swat_3/ene_fbi_swat_3"] = "units/pd2_mod_ngvh/characters/ene_ntl_swat_3/ene_ntl_swat_3",
 	["units/pd2_mod_halloween/characters/ene_city_swat_3/ene_city_swat_3"] = "units/pd2_mod_ngvh/characters/ene_ntl_swat_3/ene_ntl_swat_3",
 	["units/pd2_mod_halloween/characters/ene_zeal_city_3/ene_zeal_city_3"] = "units/pd2_mod_ngvh/characters/ene_ntl_swat_3/ene_ntl_swat_3",
@@ -241,7 +241,8 @@ local replacement_table = {
 		default = "units/pd2_mod_bravo/characters/ene_bravo_lmg_ru/ene_bravo_lmg_ru",
 	},
 	-- Zombies
-	["units/pd2_mod_halloween/characters/ene_skele_swat/ene_skele_swat"] = "units/pd2_mod_bravo/characters/ene_bravo_lmg/ene_bravo_lmg",
+	["units/pd2_mod_halloween/characters/ene_skele_swat/ene_skele_swat"] = "units/pd2_mod_cruel/characters/ene_murkywater_1/ene_murkywater_1",
+	["units/pd2_mod_halloween/characters/ene_skele_swat_2/ene_skele_swat_2"] = "units/pd2_mod_cruel/characters/ene_murkywater_2/ene_murkywater_2",
 	-- Murkywater
 	["units/pd2_mod_sharks/characters/ene_titan_rifle/ene_titan_rifle"] = "units/pd2_mod_bravo/characters/ene_bravo_lmg_murky/ene_bravo_lmg_murky",
 
@@ -256,7 +257,8 @@ local replacement_table = {
 		default = "units/pd2_mod_bravo/characters/ene_bravo_dmr_ru/ene_bravo_dmr_ru",
 	},
 	-- Zombies
-	["units/pd2_mod_halloween/characters/ene_titan_sniper/ene_titan_sniper"] = "units/pd2_mod_bravo/characters/ene_bravo_dmr/ene_bravo_dmr",
+	["units/pd2_mod_halloween/characters/ene_titan_sniper/ene_titan_sniper"] = "units/pd2_mod_cruel/characters/ene_male_marshal_marksman_1/ene_male_marshal_marksman_1",
+	["units/pd2_mod_halloween/characters/ene_marshal_marksman_1/ene_marshal_marksman_1"] = "units/pd2_mod_cruel/characters/ene_male_marshal_marksman_2/ene_male_marshal_marksman_2",
 	-- Murkywater
 	["units/pd2_mod_sharks/characters/ene_titan_sniper/ene_titan_sniper"] = "units/pd2_mod_bravo/characters/ene_bravo_dmr_murky/ene_bravo_dmr_murky",
 
@@ -333,6 +335,12 @@ local replacement_table = {
 	["units/pd2_mod_halloween/characters/ene_zeal_fbi_m4/ene_zeal_fbi_m4"] = "units/pd2_mod_cruel/characters/ene_zeal_hrt_2/ene_zeal_hrt_2",
 	["units/pd2_mod_halloween/characters/ene_zeal_fbi_mp5/ene_zeal_fbi_mp5"] = "units/pd2_mod_cruel/characters/ene_zeal_hrt_3/ene_zeal_hrt_3",
 	["units/pd2_mod_halloween/characters/ene_zeal_fbi_r870/ene_zeal_fbi_r870"] = "units/pd2_mod_cruel/characters/ene_zeal_hrt_4/ene_zeal_hrt_4",
+	["units/pd2_mod_halloween/characters/ene_zeal_swat_heavy_sc/ene_zeal_swat_heavy_sc"] = "units/pd2_mod_cruel/characters/ene_zeal_swat_heavy/ene_zeal_swat_heavy",
+	["units/pd2_mod_halloween/characters/ene_zeal_swat_heavy_r870_sc/ene_zeal_swat_heavy_r870_sc"] = "units/pd2_mod_cruel/characters/ene_zeal_swat_heavy/ene_zeal_swat_heavy",
+	["units/pd2_mod_halloween/characters/ene_zeal_swat_shield/ene_zeal_swat_shield"] = "units/pd2_mod_cruel/characters/ene_zeal_swat_shield/ene_zeal_swat_shield",
+	["units/pd2_mod_halloween/characters/ene_zeal_tazer/ene_zeal_tazer"] = "units/pd2_mod_cruel/characters/ene_zeal_tazer/ene_zeal_tazer",
+	--["units/pd2_mod_halloween/characters/ene_zeal_cloaker/ene_zeal_cloaker"] = "units/pd2_mod_cruel/characters/ene_zeal_cloaker/ene_zeal_cloaker",
+	["units/pd2_mod_halloween/characters/ene_phalanx_1_assault/ene_phalanx_1_assault"] = "units/pd2_mod_cruel/characters/ene_phalanx_1/ene_phalanx_1",
 }
 
 -- This table is for robots, don't edit this one
