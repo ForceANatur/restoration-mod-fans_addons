@@ -4514,9 +4514,8 @@ function CharacterTweakData:_init_weekend_vanilla_heavy(presets)
 	self.weekend_vanilla_heavy.damage_resistance = presets.damage_resistance.heavy_swat
 	table.insert(self._enemy_list, "weekend_vanilla_heavy")
 
-	self.weekend_vanilla_heavy_cruel = deep_clone(self.weekend)
+	self.weekend_vanilla_heavy_cruel = deep_clone(self.weekend_vanilla_heavy)
 	self.weekend_vanilla_heavy_cruel.custom_voicework = "murky_shield"
-	self.weekend_vanilla_heavy_cruel.damage_resistance = presets.damage_resistance.heavy_swat	-- testing showed the same hp values
 	table.insert(self._enemy_list, "weekend_vanilla_heavy_cruel")
 end
 
