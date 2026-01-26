@@ -541,9 +541,18 @@
 	<unit				path="units/pd2_mod_sharks/characters/ene_murky_elite_guard_3/ene_murky_elite_guard_3" force="false" load="true"/>
 	<unit				path="units/pd2_mod_sharks/characters/ene_murky_elite_guard_3/ene_murky_elite_guard_3_husk" force="false" load="true"/> 
 
-	<!--Titan RPG-->
+	<!--Titan RPG (Suffer)-->
+	<object				path="units/pd2_mod_sharks/characters/ene_rpg_grunt/ene_rpg_grunt"/>
+	<cooked_physics		path="units/pd2_mod_sharks/characters/ene_rpg_grunt/ene_rpg_grunt"/>
+	<model				path="units/pd2_mod_sharks/characters/ene_rpg_grunt/ene_rpg_grunt"/>
+	<sequence_manager	path="units/pd2_mod_sharks/characters/ene_rpg_grunt/ene_rpg_grunt"/>
+	<material_config	path="units/pd2_mod_sharks/characters/ene_rpg_grunt/ene_rpg_grunt"/>
+	<material_config	path="units/pd2_mod_sharks/characters/ene_rpg_grunt/ene_rpg_grunt_contour"/>
 	<unit				path="units/pd2_mod_sharks/characters/ene_rpg_grunt/ene_rpg_grunt" force="false" load="true"/>
 	<unit				path="units/pd2_mod_sharks/characters/ene_rpg_grunt/ene_rpg_grunt_husk" force="false" load="true"/>
+
+    <texture			path="units/pd2_mod_sharks/characters/ene_rpg_grunt/murkyclava_df" />
+	<texture			path="units/pd2_mod_sharks/characters/ene_rpg_grunt/murkywater2_df" />
 	
 	<!--Omnia LPF-->
 	<object				path="units/pd2_dlc_vip/characters/ene_omnia_lpf/ene_omnia_lpf" force="false"/>
