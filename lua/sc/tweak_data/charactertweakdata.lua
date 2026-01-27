@@ -4558,6 +4558,7 @@ function CharacterTweakData:_init_city_swat_rpg(presets)
 	self.city_swat_rpg.damage.explosion_damage_mul = 1
 	self.city_swat_rpg.damage.tase_damage_mul = 1
 	self.city_swat_rpg.custom_voicework = "rpg_grunt"
+	self.city_swat_rpg.shooting_death = false
 	table.insert(self._enemy_list, "city_swat_rpg")
 end
 
@@ -20653,4 +20654,5 @@ function CharacterTweakData:character_map()
 
 	return char_map
 end
+
 
