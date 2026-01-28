@@ -97,7 +97,11 @@ local enemies_visor = {
 	ids_func("units/pd2_mod_nypd/characters/ene_nypd_heavy_m4/ene_nypd_heavy_m4"),
 	ids_func("units/pd2_mod_nypd/characters/ene_nypd_heavy_m4/ene_nypd_heavy_m4_husk"),                 
 	ids_func("units/pd2_mod_nypd/characters/ene_nypd_heavy_r870/ene_nypd_heavy_r870"),
-	ids_func("units/pd2_mod_nypd/characters/ene_nypd_heavy_r870/ene_nypd_heavy_r870_husk"),                 	
+	ids_func("units/pd2_mod_nypd/characters/ene_nypd_heavy_r870/ene_nypd_heavy_r870_husk"),
+	ids_func("units/pd2_mod_nc/characters/ene_police_heavygunner/ene_police_heavygunner"),
+	ids_func("units/pd2_mod_nc/characters/ene_police_heavygunner/ene_police_heavygunner_husk"),
+	ids_func("units/pd2_mod_halloween/characters/ene_police_heavygunner/ene_police_heavygunner"),
+	ids_func("units/pd2_mod_halloween/characters/ene_police_heavygunner/ene_police_heavygunner_husk"),
 }
 
 local enemies_plink = {
@@ -157,6 +161,8 @@ local enemies_plink = {
 	ids_func("units/pd2_mod_reapers/characters/ene_fbi_heavy_r870/ene_fbi_heavy_r870"),
 	ids_func("units/pd2_mod_reapers/characters/ene_fbi_heavy_r870/ene_fbi_heavy_r870_husk"),
 	
+	ids_func("units/pd2_dlc_bph/characters/ene_murky_heavyg/ene_murky_heavyg"),
+	ids_func("units/pd2_dlc_bph/characters/ene_murky_heavyg/ene_murky_heavyg_husk"),
 }
 
 local grenadier_smash = {
