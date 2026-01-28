@@ -33,14 +33,15 @@ ContourExt._types.mark_enemy_through_walls = {
 }
 ContourExt._types.mark_enemy.priority = 6 -- Lower priority for mark_enemy so that mark_enemy_through_walls can overwrite it.
 
--- Reindexes the indexed_types table. Technically, this is only necessary for contours that would effect units (i.e., mark_enemy_through_walls), but we may as well index every Resmod-defined contour.
-ContourExt.indexed_types = {}
+-- The distance-based marking contours now no longer give a default damage bonus.
+-- Meanwhile, the non-distance based ones now give a damage bonus on distance too.
+-- For the why, see PlayerManager:get_contour_for_marked_enemy().
+ContourExt._types.mark_unit_dangerous_damage_bonus.damage_bonus_distance = 1
+ContourExt._types.mark_unit_dangerous_damage_bonus_distance.damage_bonus = nil
+ContourExt._types.mark_enemy_damage_bonus.damage_bonus_distance = 1
+ContourExt._types.mark_enemy_damage_bonus_distance.damage_bonus = nil
 
-for name, preset in pairs(ContourExt._types) do
-	table.insert(ContourExt.indexed_types, name)
-end
-
-table.sort(ContourExt.indexed_types)
+table.insert(ContourExt.indexed_types, "mark_enemy_through_walls")
 
 if #ContourExt.indexed_types > 128 then
 	Application:error("[ContourExt] max # contour presets exceeded!")
@@ -102,6 +103,9 @@ end
 if do_outline then
 	self._contour_list = self._contour_list or {}
 	local data = self._types[type]
+	
+	if not data then return end
+
 	local fadeout = data.fadeout
 
 	if data.fadeout_silent and managers.groupai:state():whisper_mode() then
@@ -391,6 +395,7 @@ else -- for Smooth Contours
 			local data = setup.data
 			local is_current = index == 1
 			local opacity = nil
+			local turn_off = nil
 			if is_current and data.ray_check then
 				local turn_on = nil
 				local cam_pos = managers.viewport:get_current_camera_position()
@@ -440,7 +445,6 @@ else -- for Smooth Contours
 			elseif is_current and setup.fadeout_start_t then
 				opacity = (t - setup.fadeout_start_t) / setup.fadeout_length
 				opacity = 1 - math.max(opacity, 0)
-				
 			end
 			
 			

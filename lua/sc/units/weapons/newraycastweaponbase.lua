@@ -1009,6 +1009,7 @@ function NewRaycastWeaponBase:_update_stats_values(disallow_replenish, ammo_data
 	self._can_shoot_through_titan_shield = self._can_shoot_through_titan_shield or self:weapon_tweak_data().can_shoot_through_titan_shield or false --implementing Heavy AP
 	self._shield_pierce_damage_mult = self:weapon_tweak_data().shield_pierce_damage_mult or 0.5
 	self._ammo_ratio = self:weapon_tweak_data().ammo_ratio or 1
+	self._kick_pattern = self._kick_pattern or self:weapon_tweak_data().kick_pattern
 
 	self._warsaw = self:weapon_tweak_data().warsaw
 	self._nato = self:weapon_tweak_data().nato
@@ -1190,6 +1191,10 @@ function NewRaycastWeaponBase:_update_stats_values(disallow_replenish, ammo_data
 				self:weapon_tweak_data().CAN_TOGGLE_FIREMODE = stats.can_toggle_firemode
 			end
 
+			if stats.kick_pattern then
+				self._kick_pattern = stats.kick_pattern
+			end
+			
 			--BURST STUFF HERE
 			if stats.burst_fire then
 				local burst_data = stats.burst_fire
@@ -1237,8 +1242,9 @@ function NewRaycastWeaponBase:_update_stats_values(disallow_replenish, ammo_data
 
 			if stats.adj_timers then
 				if self:weapon_tweak_data().timers then
-					self:weapon_tweak_data().timers.reload_empty = stats.adj_timers.reload_empty or self:weapon_tweak_data().timers.reload_empty
-					self:weapon_tweak_data().timers.reload_not_empty = stats.adj_timers.reload_not_empty or self:weapon_tweak_data().timers.reload_not_empty
+					--self:weapon_tweak_data().timers.reload_empty = stats.adj_timers.reload_empty or self:weapon_tweak_data().timers.reload_empty
+					--self:weapon_tweak_data().timers.reload_not_empty = stats.adj_timers.reload_not_empty or self:weapon_tweak_data().timers.reload_not_empty
+					self._alt_reload_not_empty = stats.adj_timers.reload_not_empty
 					self._alt_reload_exit_empty = stats.adj_timers.reload_exit_empty
 					self._alt_reload_exit_not_empty = stats.adj_timers.reload_exit_not_empty
 				end
@@ -1793,7 +1799,8 @@ function NewRaycastWeaponBase:fire_rate_multiplier( ignore_anims )
 	if self:is_category("assault_rifle", "snp") and has_sharpshooter then
 		local temp_mult = managers.player:temporary_upgrade_value("temporary", "headshot_fire_rate_mult", 1)
 		if self:fire_mode() ~= "single" then
-			temp_mult = ((temp_mult - 1) * 0.35) + 1
+			local auto_mult = tweak_data.upgrades.sharpshooter_auto_mult
+			temp_mult = ((temp_mult - 1) * auto_mult) + 1
 		end
 		multiplier = multiplier * temp_mult
 	end 
@@ -2351,20 +2358,19 @@ function NewRaycastWeaponBase:set_scope_range_distance(distance)
 
 			local digital_gui = part and part.unit:digital_gui()
 
-			is_visible = (part and part.steelsight_visible == nil or part.steelsight_visible == steelsight_swap_state) or nil
+			is_visible = (part and (part.steelsight_visible == nil or part.steelsight_visible == steelsight_swap_state)) or nil
 
 			if digital_gui and digital_gui.number_set then
 				part.unit:digital_gui():number_set(distance and math.round(distance) or false, false)
-				if distance then
-					if (distance * 100) < falloff_start then
-						part.unit:digital_gui()._title_text:set_color( not is_visible and scope_colors.off or green_display and scope_colors.green or scope_colors.red )
-					elseif (distance * 100) > falloff_start and (distance * 100) < falloff_end then
-						part.unit:digital_gui()._title_text:set_color( not is_visible and scope_colors.off or green_display and scope_colors.greenmid or scope_colors.redmid )
-					elseif (distance * 100) > falloff_end then
-						part.unit:digital_gui()._title_text:set_color( not is_visible and scope_colors.off or green_display and scope_colors.greenlow or scope_colors.redlow )
-					end
-				else
+				local dist = distance and distance * 100
+				if not dist then
 					part.unit:digital_gui()._title_text:set_color( not is_visible and scope_colors.off or green_display and scope_colors.greenno or scope_colors.redno )
+				elseif dist < falloff_start then
+					part.unit:digital_gui()._title_text:set_color( not is_visible and scope_colors.off or green_display and scope_colors.green or scope_colors.red )
+				elseif dist < falloff_end then
+					part.unit:digital_gui()._title_text:set_color( not is_visible and scope_colors.off or green_display and scope_colors.greenlow or scope_colors.redlow )
+				else
+					part.unit:digital_gui()._title_text:set_color( not is_visible and scope_colors.off or green_display and scope_colors.greenmid or scope_colors.redmid )
 				end
 			end
 
@@ -2372,16 +2378,15 @@ function NewRaycastWeaponBase:set_scope_range_distance(distance)
 
 			if digital_gui_upper and digital_gui_upper.number_set then
 				part.unit:digital_gui_upper():number_set(distance and math.round(distance) or false, false)
-				if distance then
-					if (distance * 100) < falloff_start then
-						part.unit:digital_gui_upper()._title_text:set_color( not is_visible and scope_colors.off or scope_colors.green )
-					elseif (distance * 100) > falloff_start and (distance * 100) < falloff_end then
-						part.unit:digital_gui_upper()._title_text:set_color( not is_visible and scope_colors.off or scope_colors.greenmid )
-					elseif (distance * 100) > falloff_end then
-						part.unit:digital_gui_upper()._title_text:set_color( not is_visible and scope_colors.off or scope_colors.greenlow )
-					end
-				else
+				local dist = distance and distance * 100
+				if not dist then
 					part.unit:digital_gui_upper()._title_text:set_color( not is_visible and scope_colors.off or scope_colors.greenno )
+				elseif dist < falloff_start then
+					part.unit:digital_gui_upper()._title_text:set_color( not is_visible and scope_colors.off or scope_colors.green )
+				elseif dist < falloff_end then
+					part.unit:digital_gui_upper()._title_text:set_color( not is_visible and scope_colors.off or scope_colors.greenlow )
+				else
+					part.unit:digital_gui_upper()._title_text:set_color( not is_visible and scope_colors.off or scope_colors.greenmid )
 				end
 			end
 		end

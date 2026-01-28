@@ -148,7 +148,7 @@ function FireTweakData:_init_dot_entries_fire(entries)
 		dot_length = 3.1,
 		dot_trigger_chance = 1
 	}
-	fire_entries.proj_launcher_incendiary_arbiter = { --25MM Incendiary Rounds
+	fire_entries.proj_launcher_incendiary_spam = {
 		dot_trigger_max_distance = false,
 		dot_damage = 3.0,
 		dot_length = 2.1,
@@ -159,6 +159,12 @@ function FireTweakData:_init_dot_entries_fire(entries)
 		dot_damage = 3.0,
 		dot_length = 1.1,
 		dot_trigger_chance = 1
+	}
+	fire_entries.proj_launcher_incendiary_arbiter = { --25MM Incendiary Rounds
+		dot_trigger_max_distance = false,
+		dot_damage = 0.0,
+		dot_length = 0.1,
+		dot_trigger_chance = 0
 	}
 
 	--GROUND FIRES
