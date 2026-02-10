@@ -622,12 +622,15 @@ Hooks:Add("LocalizationManagerPostInit", "ResMod_english_Localization_Init", fun
 
 		["heist_contact_shatter"] = "Jackal",
 		["heist_contact_akashic"] = "Nico",
+		["heist_contact_self_insert"] = "'FaN Scout'",
 
 		["menu_contacts_shatter"] = "CRIMENET Affiliates",
 
 		["heist_contact_jackal_description"] = "Jackal started out working for GenSec, but quit after an incident with human trafficking, tied to GenSec and OMNIA.\n\nNow, he works for CRIMENET, bringing the fight to their front door.",
 
 		["heist_contact_akashic_description"] = "Formerly a high ranking lieutenant working under Hector Morales, Nicolas 'Nico' René is now commanding the remnants of the Sinaloan Cartel operating in the USA.\nTheir numbers are small, and the larger Colombian cartel has no intention of helping them -- or repairing the relationship with CRIMENET.\n\nAbsorbing various smaller gangs operating on the east coast and allying with CRIMENET, he'll provide his resources in exchange for their services.",
+
+		["heist_contact_self_insert_description"] = "Tron Hison, prefering to go as 'FaN Scout', was just like any other civilian. That is, until he slipped a little note to the PAYDAY gang claiming whereabouts of information regarding various company secrets. OMNIA was not an exception and neither was GenSec.\nThanks to his status as an any other civilian, he's able to eavesdrop to various conversations.\n\n'I really gotta get rid of my phone. The first thing they do is track the phone.'", -- not actually my name lol like hell im giving out my name for real this time lol
 
 		["bm_msk_shatter_true"] = "Shatter",
 		["bm_msk_shatter_true_desc"] = "The legendary mask that has only been spoken of in hushed tones.\n\nOf course, it's just a duplicate.\n\nThere's something much more special about the real one, but I think you'll like a copy just as much.\n\nThe Phoenix symbolizes re-birth, a timeless being that can never truly be killed.  Attempting to smite one down, it will strike back in an awesome show of flames and combustion.",

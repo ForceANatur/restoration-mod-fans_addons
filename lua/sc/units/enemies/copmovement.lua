@@ -96,15 +96,19 @@ action_variants.city_swat_dodge_mememan = security_variant
 
 action_variants.fbi_cruel = security_variant
 action_variants.hrt_cruel = security_variant
+action_variants.fbi_vet_cruel = security_variant
 action_variants.weekend_cruel = security_variant
 action_variants.weekend_vanilla_heavy_cruel = security_variant
 action_variants.shield_cruel = security_variant
+action_variants.shield_cruel_fbi = security_variant
 action_variants.weekend_lmg_cruel = security_variant
 action_variants.weekend_lmg_cruel_assault = security_variant
 action_variants.phalanx_minion_cruel = clone(security_variant)
 action_variants.phalanx_minion_cruel.hurt = ShieldActionHurt
 action_variants.phalanx_minion_cruel.walk = ShieldCopActionWalk
 action_variants.phalanx_minion_cruel_break = security_variant
+action_variants.medic_cruel = security_variant
+action_variants.teto = security_variant
 
 function CopMovement:post_init()
 	local unit = self._unit

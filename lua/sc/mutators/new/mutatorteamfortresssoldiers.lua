@@ -19,7 +19,7 @@ function MutatorRocketGrunts:setup(data)
 	local difficulty = Global.game_settings and Global.game_settings.difficulty or "normal"
 	local difficulty_index = tweak_data:difficulty_to_index(difficulty)
 	local unit_types = tweak_data.group_ai.unit_categories.titan_sniper.unit_types
-	local rpg_guy_suffer = "units/pd2_mod_sharks/characters/ene_rpg_grunt/ene_rpg_grunt"
+	local rpg_guy_suffer = Idstring("units/pd2_mod_sharks/characters/ene_rpg_grunt/ene_rpg_grunt")
 
     if not PackageManager:loaded("packages/rpg_grunts") then
 		PackageManager:load("packages/rpg_grunts")
@@ -27,7 +27,7 @@ function MutatorRocketGrunts:setup(data)
 
 	table.insert(unit_types.america, rpg_guy_suffer)
 	table.insert(unit_types.russia, rpg_guy_suffer)
-	table.insert(unit_types.zombie, rpg_guy_suffer)
+	table.insert(unit_types.zombie, Idstring("units/pd2_mod_halloween/characters/ene_rpg_grunt/ene_rpg_grunt"))
 	table.insert(unit_types.federales, rpg_guy_suffer)
 	table.insert(unit_types.murkywater, rpg_guy_suffer)
 	table.insert(unit_types.nypd, rpg_guy_suffer)

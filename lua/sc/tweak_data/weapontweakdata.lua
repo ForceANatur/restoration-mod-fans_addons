@@ -1210,6 +1210,12 @@ local crew_wep_preset = {
 		self.gewehr3_npc.suppression = 1.3
 		self.gewehr3_npc.auto.fire_rate = 0.1
 		self.gewehr3_npc.usage = "is_lmg"
+
+		--SCAR Heavy
+		self.scar_heavy_npc = deep_clone(self.m4_npc)
+		self.scar_heavy_npc.sounds.prefix = "scar_npc"
+		self.scar_heavy_npc.DAMAGE = 2.8
+		self.scar_heavy_npc.CLIP_AMMO_MAX = 20
 	end
 	
 	function WeaponTweakData:_init_data_m4_yellow_npc()
@@ -1389,6 +1395,14 @@ local crew_wep_preset = {
 		self.mp5_tactical_npc.has_suppressor = "suppressed_a"
 		self.mp5_tactical_npc.alert_size = 0
 		self.mp5_tactical_npc.suppression = 0.1
+
+		--Akimbo Cloaker Mp5 (do not use, animation is fucked)
+		--[[self.x_mp5_tactical_npc = deep_clone(self.mp5_tactical_npc)
+		self.x_mp5_tactical_npc.CLIP_AMMO_MAX = 60
+		self.x_mp5_tactical_npc.NR_CLIPS_MAX = 10
+		self.x_mp5_tactical_npc.hold ="akimbo_pistol"
+		self.x_mp5_tactical_npc.usage = "is_lmg"
+		]]--
 		
 		--T. Cloaker Mp5
 		self.mp5_cloak_npc = deep_clone(self.mp5_npc)
@@ -1488,6 +1502,11 @@ local crew_wep_preset = {
 		self.mac11_npc.reload = "uzi"
 		self.mac11_npc.suppression = 2.8
 		self.mac11_npc.FIRE_MODE = "auto"
+
+		self.mac11_sil_npc = deep_clone(self.mac11_npc)
+		self.mac11_sil_npc.has_suppressor = "suppressed_a"
+		self.mac11_sil_npc.usage = "is_lmg"
+		self.mac11_sil_npc.CLIP_AMMO_MAX = 30
 	end
 	
 	function WeaponTweakData:_init_data_g36_npc()
@@ -1619,6 +1638,11 @@ local crew_wep_preset = {
 		self.deagle_npc.anim_usage = "is_pistol"
 		self.deagle_npc.hold = "pistol"
 		self.deagle_npc.reload = "pistol"
+
+		self.x_deagle_npc = deep_clone(self.x_raging_bull_meme_npc)
+		self.x_deagle_npc.DAMAGE = 4
+		self.x_deagle_npc.CLIP_AMMO_MAX = 16
+		self.x_deagle_npc.sounds.prefix = "deagle_npc"
 	end
 
 	--Marshal Shield Phase 2 Shotgun
@@ -26798,6 +26822,56 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			self.fg42.sounds.fire_single = "hk23e_fire_single"
 			self.fg42.sounds.fire_auto = "hk23e_fire"
 			self.fg42.sounds.stop_fire = "hk23e_stop"
+		end
+
+		if self.littlest then
+			self.littlest.recategorize = { "break_shot" }
+			self.littlest.categories = { "shotgun" }
+			self.littlest.damage_type = "shotgun_heavy"
+			self.littlest.damage_type_single_ray = "anti_materiel"
+			self.littlest.use_data.selection_index = 1
+			self.littlest.rays = 8
+			self.littlest.muzzleflash = "effects/payday2/particles/weapons/big_51b_auto_fps" --"effects/particles/shotgun/shotgun_gen"
+			self.littlest.AMMO_MAX = 15
+			self.littlest.sounds.fire = "huntsman_fire"
+			self.littlest.sounds.fire_single = "huntsman_fire"
+			self.littlest.fire_mode_data = {}
+			self.littlest.fire_mode_data.fire_rate = 0.2
+			self.littlest.kick = self.stat_info.kick_tables.vertical_kick
+			self.littlest.kick_pattern = {
+				{0, self.stat_info.kick_tables.vertical_kick},
+				{2, self.stat_info.kick_tables.pattern_r4},
+				{3, self.stat_info.kick_tables.pattern_v4},
+			}
+			self.littlest.supported = true
+			self.littlest.ads_speed = 0.180
+			self.littlest.swap_speed_multiplier = 1.5
+			self.littlest.damage_falloff = {
+				start_dist = 300,
+				end_dist = 1500,
+				min_mult = 0.125
+			}
+			self.littlest.stats = {
+				damage = 240,
+				spread = 50,
+				recoil = 25,
+				spread_moving = 6,
+				zoom = 1,
+				concealment = 32,
+				suppression = 6,
+				alert_size = 2,
+				extra_ammo = 101,
+				total_ammo_mod = 400,
+				value = 1,
+				reload = 25
+			}
+			self.littlest.stats_modifiers = nil
+			self.littlest.timers = deep_clone(self.huntsman.timers)
+			self.littlest.reload_speed_multiplier = 1.12
+			self.littlest.panic_suppression_chance = 0.05
+			if BeardLib.Utils:FindMod("Restored Mosconi Reload Animation") then
+				self.littlest.animations.ignore_nonemptyreload = true
+			end
 		end
 
 		if self.abzats then

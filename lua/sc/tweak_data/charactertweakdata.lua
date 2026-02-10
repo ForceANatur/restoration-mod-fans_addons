@@ -424,6 +424,13 @@ function CharacterTweakData:_init_cop(presets)
 	self.dave.speech_prefix_count = nil   
 	self.dave.heal_cooldown = 5
 	self.dave.overheal_mult = 1
+	table.insert(self._enemy_list, "dave")
+
+	self.teto = deep_clone(self.dave)
+	self.teto.HEALTH_INIT = 30
+	self.teto.headshot_dmg_mul = 3
+	self.teto.custom_voicework = "kasane_teto"
+	table.insert(self._enemy_list, "teto")
 end
 
 function CharacterTweakData:_init_fbi(presets)	
@@ -537,8 +544,15 @@ function CharacterTweakData:_init_fbi(presets)
 	self.fbi_vet_boss.rescue_hostages = false
 	self.fbi_vet_boss.steal_loot = false	
 	self.fbi_vet_boss.gas_on_death = false
-	table.insert(self._enemy_list, "fbi_vet_boss")	
-		
+	table.insert(self._enemy_list, "fbi_vet_boss")
+
+	self.fbi_vet_cruel = deep_clone(self.fbi_vet)
+	self.fbi_vet_cruel.HEALTH_INIT = 24
+	self.fbi_vet_cruel.headshot_dmg_mul = 2
+	--temp until i can ask hylie for her voice
+	self.fbi_vet_cruel.custom_voicework = "bruce"
+	table.insert(self._enemy_list, "fbi_vet_cruel")
+
 	self.meme_man = deep_clone(self.fbi_vet)		
 	self.meme_man.tags = {"law", "tank", "special"}		
 	self.meme_man.HEALTH_INIT = 500
@@ -659,6 +673,10 @@ function CharacterTweakData:_init_medic(presets)
 	self.medic.can_be_healed = true
 	self.medic.heal_cooldown = 10
 	table.insert(self._enemy_list, "medic")
+
+	self.medic_cruel = deep_clone(self.medic)
+	self.medic_cruel.custom_voicework = "murky_medic"
+	table.insert(self._enemy_list, "medic_cruel")
 
 	--ugly heavy medic
 	self.medic_heavy = deep_clone(self.medic)
@@ -3275,6 +3293,10 @@ function CharacterTweakData:_init_shield(presets)
 	self.shield_cruel.damage.hurt_severity = presets.hurt_severities.only_explosion_hurts
 	self.shield_cruel.damage.shield_knocked = true
 	table.insert(self._enemy_list, "shield_cruel")
+
+	self.shield_cruel_fbi  = deep_clone(self.shield_cruel)
+	self.shield_cruel_fbi.custom_voicework = "bravo_elite"
+	table.insert(self._enemy_list, "shield_cruel_fbi")
 end
 
 function CharacterTweakData:_init_phalanx_minion(presets)	
@@ -19082,6 +19104,22 @@ Hooks:PostHook(CharacterTweakData, "_create_table_structure", "remod_create_tabl
 	--fanni gee thirte sex 😂
 	table.insert(self.weap_ids, "g36_lol_npc")
 	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_g36_mememan/wpn_npc_g36_mememan"))
+
+	--Akimbo Cloaker MP5 (unused)
+	--table.insert(self.weap_ids, "x_mp5_tactical")
+	--table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_mp5_tactical/wpn_npc_x_mp5_tactical"))
+
+	--Akimbo Deagles
+	table.insert(self.weap_ids, "x_deagle")
+	table.insert(self.weap_unit_names, Idstring("units/pd2_dlc_usm2/weapons/wpn_npc_deagle/wpn_npc_x_deagle"))
+
+	--SCAR Heavy
+	table.insert(self.weap_ids, "scar_heavy")
+	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_scar_heavy/wpn_npc_scar_heavy"))
+
+	--PDTH Mark 10
+	table.insert(self.weap_ids, "mac11_sup")
+	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_mac11_sup/wpn_npc_mac11_sup"))
 end)
 -- EASY (UNUSED) --
 function CharacterTweakData:_set_easy()
@@ -20492,7 +20530,8 @@ function CharacterTweakData:character_map()
 				"ene_marshal_marksman_1",
 				"ene_marshal_shield_1",
 				"ene_police_heavygunner",
-				"ene_undead_titan"
+				"ene_undead_titan",
+				"ene_rpg_grunt"
 			}
 		}
 
@@ -20576,10 +20615,15 @@ function CharacterTweakData:character_map()
 		char_map.cruel = {
 			path = "units/pd2_mod_cruel/characters/",
 			list = {
+				"ene_cop_4",
 				"ene_fbi_1",
 				"ene_fbi_2",
 				"ene_fbi_3",
 				"ene_fbi_4",
+				"ene_fbi_swat_1",
+				"ene_fbi_swat_2",
+				"ene_fbi_heavy_1",
+				"ene_fbi_heavy_r870",
 				"ene_zeal_cloaker",
 				"ene_zeal_hrt_1",
 				"ene_zeal_hrt_2",
@@ -20593,7 +20637,20 @@ function CharacterTweakData:character_map()
 				"ene_murkywater_2",
 				"ene_male_marshal_marksman_1",
 				"ene_male_marshal_marksman_2",
-				"ene_phalanx_1"
+				"ene_phalanx_1",
+				"ene_shield_1",
+				"ene_sniper_1",
+				"ene_hoxton_breakout_guard_1",
+				"ene_medic_m4",
+				"ene_medic_r870",
+				"ene_city_shield",
+				"ene_city_heavy_g36",
+				"ene_city_heavy_r870",
+				"ene_city_swat_1",
+				"ene_city_swat_2",
+				"ene_city_swat_3",
+				"ene_city_swat_r870",
+				"ene_spook_1"
 			}
 		}
 

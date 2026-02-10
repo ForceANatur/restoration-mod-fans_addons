@@ -192,7 +192,7 @@ test-1: adding the package loading system, updating the network code, expanding 
 
 Porky da Corgi: creating the base textures for the grenadier and OMNIA Light
 
-Wekk: Telling us what LPF should mean and allowing us to implement "Less Clones, More Face Variations" mod and "Zeal Shield Illumination Fix" into the mod. Skulldozer ACP camo (https://modworkshop.net/mod/19356)
+Wekk: Telling us what LPF should mean and allowing us to implement "Less Clones, More Face Variations" mod and "Zeal Shield Illumination Fix" into the mod. Skulldozer ACP camo (https://modworkshop.net/mod/19356) Better Zombie Faces (https://modworkshop.net/mod/29586)
 
 Hoppip: Manufactured the Mind Blown graze rework, the insane laser assets used for enemy damage buffs and the Streamlined Heisting framework. Mememan 3's weapon (https://modworkshop.net/mod/38772)
 
@@ -231,6 +231,8 @@ Miss Miki: PONR anti-grief fixes and other contributions/fixes
 MrVavlo: For the CHARMing weapon CHARM that's full of CHARM
 
 Keithy: New Coppers' Assets, HECU Murky (https://modworkshop.net/mod/19426)
+
+Nazuna ~Invitine~: Cruel Trance enemies (https://modworkshop.net/mod/44480)
 
 Marshie: Russian localisation
 

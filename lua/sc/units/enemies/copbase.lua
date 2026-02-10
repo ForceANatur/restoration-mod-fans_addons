@@ -995,12 +995,14 @@ local cop = {
 local swat = {
 	rifle_light = {
 		"mp5",
-		"ump"
+		"ump",
+		"amcar",
 	},
 	rifle_heavy = {
 		"mp5",
 		"m4",
-		"ump"
+		"ump",
+		"amcar",
 	}
 }
 --FBI and Medics
@@ -1011,10 +1013,12 @@ local fbi = {
 	},
 	rifle_agent = {
 		"mp5",
+		"amcar",
 		"m4"
 	},
 	rifle_light = {
 		"mp5",
+		"amcar",
 		"m4"
 	},
 	rifle_heavy = {
@@ -1040,7 +1044,7 @@ local gensec = {
 	},
 	rifle_heavy = {
 		"g36",
-		"g3a3_npc",
+		"amcar",
 		"m249"
 	},
 	shotgun = {
@@ -1057,13 +1061,16 @@ local zeal = {
 		"m4",
 		"mp5",
 		"ump",
-		"shepheard"
+		"shepheard",
+		"amcar",
 	},
 	rifle_heavy = {
 		"m4",
 		"g36",
 		"ump",
 		"g3a3_npc",
+		"scar_heavy",
+		"amcar",
 		"m249"
 	},
 	shotgun_heavy = {
@@ -1097,6 +1104,7 @@ local murkywater = {
 		"scar_murky",
 		"ump",
 		"scar_npc",
+		"amcar",
 		"shepheard"
 	},
 	rifle_heavy = {
@@ -1105,7 +1113,7 @@ local murkywater = {
 		"ump",
 		"shepheard",
 		"g3a3_npc",
-		"m249",
+		"scar_heavy",
 		"m249",
 		"m249",
 		"m249",
@@ -1125,12 +1133,14 @@ local federales = {
 		"mp5",
 		"m4",
 		"ump",
-		"shepheard"
+		"shepheard",
+		"amcar"
 	},
 	rifle_heavy = {
 		"m4",
 		"ump",
 		"g3a3_npc",
+		"amcar",
 		"m249"
 	},
 	shotgun = {
@@ -1152,10 +1162,9 @@ local dave = {
 		"g36",
 		"m249",
 		"g3a3_npc",
-	--	"m1911_npc",
-	--	"deagle",
-	--	"lmg_titan",
-	--	"aa12_npc",
+		"m1911_npc",
+		"deagle",
+		"scar_heavy",
 		"mateba_ap",
 		"m14_sniper_npc",
 		"atf_ddm4v7",
@@ -1163,9 +1172,19 @@ local dave = {
 		"hk21_sc",
 		"shepheard",
 		"spas12",
-		"ksg"
+		"ksg",
 	--	"mini", -- funny, but i think it's too goofy
-	--	"railgun_npc"
+		"mac11_sup",
+		"amcar"
+	},
+	kasane_teto = {
+		"mac11_sup",
+		"m249",
+		"g3a3_npc",
+		"m14_sniper_npc",
+		"atf_ddm4v7",
+		"mateba_ap",
+		"hk21_sc"
 	}
 }
 local bravo_heavy = {
@@ -1181,6 +1200,8 @@ local cruel_zeal = {
 		"ump",
 		"g36",
 		"shepheard",
+		"scar_heavy",
+		"amcar",
 		"r870",
 		"benelli",
 		"saiga",
@@ -1295,6 +1316,7 @@ local weapon_mapping = {
 -- Dave's guns
 	[("units/pd2_mod_dave/characters/ene_big_dave/ene_big_dave"):key{}] = dave.all_the_guns,
 	[("units/pd2_mod_dave/characters/ene_dave_hvh/ene_dave_hvh"):key{}] = dave.all_the_guns,
+	[("units/pd2_mod_cruel/characters/ene_sniper_1/ene_sniper_1"):key{}] = dave.kasane_teto,
 -- Bravo Heavy
 	[("units/pd2_mod_ng/characters/ene_ntl_heavyswat/ene_ntl_heavyswat"):key{}] = bravo_heavy.rifle_heavy,
 	[("units/pd2_mod_ngvh/characters/ene_ntl_heavyswat/ene_ntl_heavyswat"):key{}] = bravo_heavy.rifle_heavy,
