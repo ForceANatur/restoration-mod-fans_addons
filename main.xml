@@ -197,6 +197,7 @@
 					<!--hook file="sc/units/weapons/newraycastweaponbase.lua" source_file="lib/units/weapons/newraycastweaponbase"-->
 					<hook file="sc/units/weapons/newnpcraycastweaponbase.lua" source_file="lib/units/weapons/newnpcraycastweaponbase"/>
 					<hook file="sc/units/weapons/newflamethrowerbase.lua" source_file="lib/units/weapons/newflamethrowerbase"/>
+					<hook file="sc/units/weapons/newnpcflamethrowerbase.lua" source_file="lib/units/weapons/newnpcflamethrowerbase"/>
 					<hook file="sc/units/weapons/flamethrowereffectextension.lua" source_file="lib/units/weapons/flamethrowereffectextension"/>
 					<hook file="sc/units/weapons/shotgunbase.lua" source_file="lib/units/weapons/shotgun/shotgunbase"/>
 					<hook file="sc/units/weapons/raycastweaponbase.lua" source_file="lib/units/weapons/raycastweaponbase"/>
@@ -542,7 +543,7 @@
 						<option type="number" default_value="1" min="0.7" max="1.2" step="0.1" show_value="true" name="PocoCrimenetScale"/>
 				</option_group>
 				<option_group name="INFOHUD">
-					<option type="bool" default_value="false" name="Info_Hud"/>
+					<option type="bool" default_value="true" name="Info_Hud"/>
 					<option type="number" default_value="36" min="24" max="48" step="2" show_value="true" name="Info_Size"/>
 					<option type="number" default_value="8" min="1" max="8" step="1" show_value="true" name="Info_Count"/>
 					<!-- Mastermind -->
@@ -723,6 +724,7 @@
 					<option type="bool" default_value="false" name="BigMan"/>
 				</option_group>
 				<divider name="tod_divider" size="14"/>
+				<option type="bool" default_value="true" name="HearNonLocalPECM"/>
 				<option type="bool" default_value="false" name="AltLastDownColor"/>
 				<option type="bool" default_value="false" name="NoBleedoutTilt"/>
 				<option type="bool" default_value="false" name="CloakerTurn"/>

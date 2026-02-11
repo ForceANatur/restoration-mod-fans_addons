@@ -511,7 +511,7 @@ function RaycastWeaponBase:_fire_raycast(user_unit, from_pos, direction, dmg_mul
 
 	local furthest_hit = ray_hits[#ray_hits]
 
-	if dmg_mul ~= 0 and (not furthest_hit or furthest_hit.distance > 200) and alive(self._obj_fire) then
+	if dmg_mul ~= 0 and (not furthest_hit or self._is_beam or furthest_hit.distance > 200) and alive(self._obj_fire) then
 		self._obj_fire:m_position(self._trail_effect_table.position)
 		--mvec3_set(self._trail_effect_table.normal, mvec_spread_direction)
 
@@ -862,6 +862,16 @@ function RaycastWeaponBase:run_and_shoot_allowed()
 		allowed = allowed or managers.player:has_category_upgrade(category, "hip_run_and_shoot")
 	end
 	
+	return allowed
+end
+
+function RaycastWeaponBase:run_and_shoot_no_sprintout()
+	local allowed = nil
+
+	for _, category in ipairs(self:categories()) do
+		allowed = allowed or managers.player:has_category_upgrade(category, "hip_run_and_shoot")
+	end
+
 	return allowed
 end
 
@@ -1770,7 +1780,7 @@ function BleedBulletBase:give_damage_dot(col_ray, weapon_unit, attacker_unit, da
 	return defense_data
 end
 
-function InstantExplosiveBulletBase:on_collision(col_ray, weapon_unit, user_unit, damage, blank, no_sound)
+function InstantExplosiveBulletBase:on_collision(col_ray, weapon_unit, user_unit, damage, blank, no_sound, di_mult)
 	local hit_unit = col_ray.unit
 	user_unit = alive(user_unit) and user_unit or nil
 	weapon_unit = alive(weapon_unit) and weapon_unit or nil
@@ -1798,9 +1808,10 @@ function InstantExplosiveBulletBase:on_collision(col_ray, weapon_unit, user_unit
 		local overkill = managers.player:temporary_upgrade_value("temporary", "overkill_damage_multiplier", 1)
 		local weap_base = weapon_unit:base()
 		local tweak_data = weap_base and ((weap_base.weapon_tweak_data and weap_base:weapon_tweak_data()) or (weap_base._tweak_projectile_entry and tweak_data.projectiles[weap_base._tweak_projectile_entry]))
-		local di_percent = (tweak_data and tweak_data.direct_damage_percent) or 0.5
+		local di_percent = ((tweak_data and tweak_data.direct_damage_percent) or 0.5) * (di_mult or 1)
+		local object_damage_mult = weap_base and weap_base.get_object_damage_mult and weap_base:get_object_damage_mult()
 		self.super:on_collision(col_ray, weapon_unit, user_unit, (damage * di_percent) * overkill, blank, no_sound)
-		self:on_collision_server(tmp_vec1, col_ray.normal, damage * 1, user_unit, weapon_unit, managers.network:session():local_peer():id())
+		self:on_collision_server(tmp_vec1, col_ray.normal, damage * 1, user_unit, weapon_unit, managers.network:session():local_peer():id(), nil, object_damage_mult)
 
 		return {
 			variant = "explosion",
@@ -1884,6 +1895,7 @@ function InstantExplosiveBulletBase:on_collision_client(position, normal, damage
 end
 
 function ConcussiveInstantBulletBase:give_impact_damage(col_ray, weapon_unit, user_unit, damage, ...)
+	--[[
 	if col_ray.unit:character_damage().on_concussion then
 		local conc_tweak = alive(weapon_unit) and weapon_unit:base().concussion_tweak and weapon_unit:base():concussion_tweak()
 		local conc_mul = conc_tweak and conc_tweak.mul or tweak_data.character.concussion_multiplier
@@ -1899,7 +1911,7 @@ function ConcussiveInstantBulletBase:give_impact_damage(col_ray, weapon_unit, us
 			managers.environment_controller:set_concussion_grenade(col_ray.unit:movement():m_head_pos(), true, 0, 0, conc_mul, true, true)
 			col_ray.unit:character_damage():on_concussion(sound_eff_mul, false, sound_tweak)
 		end
-	elseif Network:is_server() and col_ray.unit:character_damage().stun_hit then
+	else--]] if Network:is_server() and col_ray.unit:character_damage().stun_hit then
 		local function can_stun(hit_unit)
 			local brain_ext = hit_unit:brain()
 

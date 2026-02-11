@@ -42,14 +42,9 @@ local tswat_high = { -- Majority of T SWAT need higher effect position
 	Idstring("units/pd2_mod_reapers/characters/ene_titan_shotgun/ene_titan_shotgun"),
 	Idstring("units/pd2_mod_reapers/characters/ene_titan_shotgun/ene_titan_shotgun_husk")
 }
+
 --[[
-local units_low = { -- Zeal heavies and grenadier need lower effect position
-	Idstring("units/pd2_dlc_gitgud/characters/ene_grenadier_1/ene_grenadier_1"),
-	Idstring("units/pd2_dlc_gitgud/characters/ene_grenadier_1/ene_grenadier_1_husk"),
-	Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_sc/ene_zeal_swat_heavy_sc"),
-	Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_sc/ene_zeal_swat_heavy_sc_husk"),
-	Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_r870_sc/ene_zeal_swat_heavy_r870_sc"),
-	Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_r870_sc/ene_zeal_swat_heavy_r870_sc_husk"),
+local units_low = { -- Zeal heavies and grenadier (Zombies) need lower effect position
 	Idstring("units/pd2_mod_halloween/characters/ene_grenadier_1/ene_grenadier_1"),
 	Idstring("units/pd2_mod_halloween/characters/ene_grenadier_1/ene_grenadier_1_husk"),
 	Idstring("units/pd2_mod_halloween/characters/ene_zeal_swat_heavy_sc/ene_zeal_swat_heavy_sc"),
@@ -58,6 +53,7 @@ local units_low = { -- Zeal heavies and grenadier need lower effect position
 	Idstring("units/pd2_mod_halloween/characters/ene_zeal_swat_heavy_r870_sc/ene_zeal_swat_heavy_r870_sc_husk")
 }
 --]]
+
 local hrt_exclude_list = { -- for HRT enemies where usual effect position will be better
 	Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_fbi_m4/ene_zeal_fbi_m4"),
 	Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_fbi_m4/ene_zeal_fbi_m4_husk"),
@@ -176,15 +172,17 @@ function CopBase:enable_lpf_buff(state)
 	if table.contains(tswat_high, unit_name) then
 		effect_pos = effect_high
 	end
+	
 	--[[
 	if table.contains(units_low, unit_name) then
 		effect_pos = effect_low
 	end
 	--]]
+	
 	if unit == "taser_titan" and faction ~= "zombie" then
 		effect_pos = effect_high
 	end
-
+		
 	if string.match(unit, "tank") then
 		effect_pos = effect_tank
 		if unit == "tank_titan" then
@@ -202,6 +200,7 @@ end
 function CopBase:disable_lpf_buff()
 	if self._overheal_unit then
 		World:effect_manager():fade_kill(self._overheal_unit)
+		self._overheal_unit = nil
 	end
 end
 
@@ -225,14 +224,31 @@ function CopBase:lpf_heal_effect(overheal)
 	end
 end
 
-function CopBase:enable_asu_laser(state)
+--- Enables the ASU laser *and* applies the damage boost if it doesn't already exist.
+--- @param boost number Percentage by which to boost damage. Typically 0.1 to 0.2 for a 10%-20% damage boost.
+--- @param t number The time when the buff was applied.
+--- @param keep_forever boolean If true, the damage boost should be kept forever (typically from Medics or Dozer faceplate breaking).
+function CopBase:enable_asu_laser(boost, t, keep_forever)
+	self._last_asu_buff_t = t
+
+	self._asu_keep_forever = self._asu_keep_forever or keep_forever -- Cannot remove forever buff!
+	if self._asu_buff_id then
+		return
+	end
+	self._asu_buff_id = self:add_buff("base_damage", boost)
+
 	local weapon = self._unit:inventory():equipped_unit()
 	if weapon and alive(weapon) then
-		weapon:base():set_asu_laser_enabled(state)
+		weapon:base():set_asu_laser_enabled(true)
 	end
 end
 
-function CopBase:disable_asu_laser(state)
+function CopBase:disable_asu_laser()
+	if self._asu_buff_id then
+		self:remove_buff_by_id("base_damage", self._asu_buff_id)
+		self._asu_buff_id = nil
+	end
+
 	local weapon = self._unit:inventory():equipped_unit()
 	if weapon and alive(weapon) then
 		weapon:base():set_asu_laser_enabled(false)
@@ -318,7 +334,22 @@ Hooks:PostHook(CopBase, "post_init", "postinithooksex", function(self)
 		end
 	end		
 	
+	self._last_asu_buff_t = 0 -- To keep track of when the ASU buff was last applied.
+	self._asu_buff_id = nil -- If not nil, we know we already have an ASU buff applied to us.
+	self._asu_keep_forever = false -- Some damage boosts should stick around forever.
+
+	--- I've been running into issues where CopMovement doesn't recognise decay_buffs().
+	--- So one way I thought I could force the issue was by setting a "flag" to signal
+	--- we're ready.
+	self._may_decay_buffs = true
 end)
+
+--- Forces the ASU buff to disappear if the unit hasn't been affected by an ASU unit's buff in a bit.
+function CopBase:decay_buffs(t)
+	if self._last_asu_buff_t and self._last_asu_buff_t + (tweak_data.asu_buff_decay_delay or 10) < t and not self._asu_keep_forever then
+		self:disable_asu_laser()
+	end
+end
 
 local enemy_variations_texas_pd_table = {
 	["units/pd2_mod_lapd/characters/ene_swat_1/ene_swat_1"] = "awesometexpd",
@@ -1062,8 +1093,8 @@ function CopBase:default_weapon_name(...)
 	local faction = tweak_data.levels:get_ai_group_type()
 	local difficulty = tweak_data:difficulty_to_index(Global.game_settings and Global.game_settings.difficulty or "normal")
 	local weapon_override = weapons_map[job] and weapons_map[job][self._unit:name():key()] or weapons_map[self._unit:name():key()]
-
-	--For Jungle Inferno Mutator
+	
+	-- For Jungle Inferno Mutator
 	if not self._weapon_set and restoration and restoration.disco_inferno and not self._char_tweak.no_mutator_weapon_override then
 		self._default_weapon_id = "flamethrower"
 		self._weapon_set = true		
@@ -1224,7 +1255,7 @@ function CopBase:default_weapon_name(...)
 		end
 	end
 	
-	--For High Noon mutator
+	-- For High Noon mutator
 	if not self._weapon_set and restoration and restoration.high_noon and not self._char_tweak.no_mutator_weapon_override then
 		if self._tweak_table == "autumn" then
 			self._default_weapon_id = "x_peacemaker"
@@ -1245,7 +1276,7 @@ function CopBase:default_weapon_name(...)
 			self._default_weapon_id = "mossberg"
 			self._weapon_set = true
 		end
-	end
+	end	
 	
 	-- Have White Titandozers use Grenade Launchers/AA-12s like their Reaper counterparts in Russia/Mexico heists (mostly for Holiday Effects and consistency with factions)
 	if self._tweak_table == "tank_hw" and (faction == "russia" or faction == "federales") then

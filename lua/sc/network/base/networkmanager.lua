@@ -5,17 +5,11 @@
 -- 		self:register_handler("RestorationMod__unit", RestorationMod__UnitNetworkHandler)
 -- 	end
 -- end)
-NetworkMatchMakingEPIC._BUILD_SEARCH_INTEREST_KEY = "restoration_13_FaNScout_v21"
-NetworkMatchMakingSTEAM._BUILD_SEARCH_INTEREST_KEY = "restoration_13_FaNScout_v21"
+NetworkMatchMakingEPIC._BUILD_SEARCH_INTEREST_KEY = "restoration_13_dev_FaNScout_v21"
+NetworkMatchMakingSTEAM._BUILD_SEARCH_INTEREST_KEY = "restoration_13_dev_FaNScout_v21"
 
 local current_key = NetworkMatchMakingSTEAM._BUILD_SEARCH_INTEREST_KEY
 local standard_str = 'NetworkMatchMakingSTEAM._BUILD_SEARCH_INTEREST_KEY = \"'
-
---Compatibility for BeardLib Editor just in case.
-if BLE and BLE:RunningFix() then
-	NetworkMatchMakingEPIC._BUILD_SEARCH_INTEREST_KEY  = NetworkMatchMakingSTEAM._BUILD_SEARCH_INTEREST_KEY .. "_editor"
-	NetworkMatchMakingSTEAM._BUILD_SEARCH_INTEREST_KEY = NetworkMatchMakingSTEAM._BUILD_SEARCH_INTEREST_KEY .. "_editor"
-end
 
 -- Invite-Link-on-Discord support
 
@@ -23,12 +17,24 @@ local function find_key(page, str)
 	local _, st = string.find(tostring(page), str)
 	local en, _ = string.find(tostring(page), '"', st + 1)
 	local key = string.sub(tostring(page), st + 1, en - 1)
-	
+
 	return key
 end
 
 local function setup_discord_link(gold_key)
-	local user_resmod_version = "FaN Scout (Dev branch)"
+	local is_gold = false
+
+	if gold_key == current_key then
+		is_gold = true
+	end
+
+	local user_resmod_version = ""
+
+	if is_gold then
+		user_resmod_version = "Gold"
+	else
+		user_resmod_version = "Dev (FaN Scout's Addons)"
+	end
 
 	DiscordLink:set_attributes({
 		channel_id = "584795639309664375",
@@ -37,7 +43,6 @@ local function setup_discord_link(gold_key)
 		version_identifier = user_resmod_version,
 	})
 end
-
 if DiscordLink then
 	dohttpreq("https://raw.githubusercontent.com/payday-restoration/restoration-mod/gold/lua/sc/network/base/networkmanager.lua", function(page)
 		setup_discord_link(find_key(page, standard_str))

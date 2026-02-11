@@ -451,21 +451,21 @@ function PlayerManager:on_killshot(killed_unit, variant, headshot, weapon_id)
 	--Leech stuff
 	if self:has_activate_temporary_upgrade("temporary", "copr_ability") then
 		local kill_life_leech = self:upgrade_value_nil("player", "copr_kill_life_leech")
-		local static_damage_ratio = self:upgrade_value_nil("player", "copr_static_damage_ratio")
+		local static_damage_segment_size = self:upgrade_value_nil("player", "copr_static_damage_ratio")
 		local static_damage_ratio_mult = self:upgrade_value_nil("player", "copr_static_damage_ratio_mult") or 1
-		static_damage_ratio = static_damage_ratio * static_damage_ratio_mult
+		static_damage_segment_size = static_damage_segment_size * static_damage_ratio_mult
 		
-		if kill_life_leech and static_damage_ratio and damage_ext then
+		if kill_life_leech and static_damage_segment_size and damage_ext then
 			self._copr_kill_life_leech_num = (self._copr_kill_life_leech_num or 0) + 1
 
 			if kill_life_leech <= self._copr_kill_life_leech_num then
 				self._copr_kill_life_leech_num = 0
-				local current_health_ratio = damage_ext:health_ratio()
-				local wanted_health_ratio = math.floor((current_health_ratio + 0.01 + static_damage_ratio) / static_damage_ratio) * static_damage_ratio
-				local health_regen = wanted_health_ratio - current_health_ratio
+				local current_health = damage_ext:get_real_health()
+				local wanted_health = math.floor((current_health + 0.01 + static_damage_segment_size) / static_damage_segment_size) * static_damage_segment_size
+				local health_regen = wanted_health - current_health
 
 				if health_regen > 0 then
-					damage_ext:restore_health(health_regen)
+					damage_ext:restore_health(health_regen, true)
 					damage_ext:on_copr_killshot()
 				end
 			end
@@ -483,7 +483,7 @@ function PlayerManager:on_killshot(killed_unit, variant, headshot, weapon_id)
 	end
 
 	if variant == "melee" then
-		--Biker Armor Regen
+		--Leech Armor Regen (from old Biker)
 		if self:has_category_upgrade("player", "biker_armor_regen") then
 			damage_ext:tick_biker_armor_regen(self:upgrade_value("player", "biker_armor_regen")[3])
 		end
@@ -638,6 +638,12 @@ function PlayerManager:_check_resmod_sociopath(player_unit, killed_unit, variant
 					break
 				end
 			end
+
+			if self:has_category_upgrade("player", "buildup_meter_rick") then
+				local ene_mult_mod = self:upgrade_value("player", "buildup_meter_rick", 0).ene_mult_mod or 1
+				ene_mult = math.lerp(1, (ene_mult or 1), ene_mult_mod)
+			end
+
 			return ene_mult or 1
 		end
 		return 1
@@ -1266,6 +1272,34 @@ function PlayerManager:on_lethal_headshot_dealt(attacker_unit, attack_data)
 	end
 end
 
+function PlayerManager:_on_expert_handling_event(unit, attack_data)
+	local attacker_unit = attack_data.attacker_unit
+	local variant = attack_data.variant
+	local is_bullet = variant and (variant == "bullet" or variant == "fire_bullet")
+
+	if attacker_unit == self:player_unit() and self:is_current_weapon_of_category("pistol") and is_bullet and not self._coroutine_mgr:is_running(PlayerAction.ExpertHandling) then
+		local data = self:upgrade_value("pistol", "stacked_accuracy_bonus", nil)
+
+		if data and type(data) ~= "number" then
+			self._coroutine_mgr:add_coroutine(PlayerAction.ExpertHandling, PlayerAction.ExpertHandling, self, data.accuracy_bonus, data.max_stacks, Application:time() + data.max_time)
+		end
+	end
+end
+
+function PlayerManager:_on_enter_trigger_happy_event(unit, attack_data)
+	local attacker_unit = attack_data.attacker_unit
+	local variant = attack_data.variant
+	local is_bullet = variant and (variant == "bullet" or variant == "fire_bullet")
+
+	if attacker_unit == self:player_unit() and is_bullet and not self._coroutine_mgr:is_running("trigger_happy") and self:is_current_weapon_of_category("pistol") then
+		local data = self:upgrade_value("pistol", "stacking_hit_damage_multiplier", 0)
+
+		if data and type(data) ~= "number" then
+			self._coroutine_mgr:add_coroutine("trigger_happy", PlayerAction.TriggerHappy, self, data.damage_bonus, data.max_stacks, Application:time() + data.max_time)
+		end
+	end
+end
+
 --Add extra checks to make sure that it only looks for killing headshots done with valid guns.
 function PlayerManager:_on_enter_ammo_efficiency_event(unit, attack_data)
 	if not self._coroutine_mgr:is_running("ammo_efficiency") then
@@ -1306,9 +1340,11 @@ function PlayerManager:get_max_grenades(grenade_id)
 
 	--Jack of all trades basic grenade count increase.
 	--MAY be source of grenade syncing issues due to interaction with get_max_grenades_by_peer_id(). Is worth investigating some time.
+	local is_cooldown = tweak_data:get_raw_value("blackmarket", "projectiles", grenade_id, "base_cooldown")
 	local is_perk_throwable = tweak_data:get_raw_value("blackmarket", "projectiles", grenade_id, "base_cooldown") and not tweak_data:get_raw_value("blackmarket", "projectiles", grenade_id, "base_cooldown_no_perk")
-	if max_amount and not is_perk_throwable then
-		max_amount = math.ceil(max_amount * self:upgrade_value("player", "throwables_multiplier", 1.0))
+	local throwables_multiplier = (not is_cooldown and self:upgrade_value("player", "throwables_multiplier", 1.0)) or 1
+	if max_amount and not is_perk_throwable then 
+		max_amount = math.ceil(max_amount * throwables_multiplier)
 	end
 	max_amount = managers.modifiers:modify_value("PlayerManager:GetThrowablesMaxAmount", max_amount)
 
@@ -1348,10 +1384,12 @@ function PlayerManager:_internal_load()
 		amount = self:get_grenade_amount(peer_id) or amount
 	end
 	
+	local is_cooldown = grenade.base_cooldown
 	local is_perk_throwable = grenade.base_cooldown and not grenade.base_cooldown_no_perk
+	local throwables_multiplier = (not is_cooldown and self:upgrade_value("player", "throwables_multiplier", 1)) or 1
 	if amount and not is_perk_throwable then --*Should* stop perk deck actives from being increased.
 		amount = managers.modifiers:modify_value("PlayerManager:GetThrowablesMaxAmount", amount) --Crime spree throwables mod.
-		amount = math.ceil(amount * self:upgrade_value("player", "throwables_multiplier", 1.0)) --JOAT Basic
+		amount = math.ceil(amount * throwables_multiplier) --JOAT Basic
 	end
 
 	self:_set_grenade({
@@ -1974,6 +2012,63 @@ function PlayerManager:add_cable_ties(amount)
 	self:update_synced_cable_ties_to_peers(new_amount)
 end
 
+-- While the ampoule is active, the old biker "gain HP on crew kill" effect is turned off.
+Hooks:PreHook(PlayerManager, "chk_wild_kill_counter", "res_chk_wild_kill_counter", function(self, _, _)
+	if self:has_activate_temporary_upgrade("temporary", "copr_ability") then
+		return
+	end
+end)
+
+-- Store the Leech user's armour when they activate the Ampoule, to the grant it back to them.
+Hooks:PreHook(PlayerManager, "_attempt_copr_ability", "res_attempt_copr_ability_store_armour", function(self, _, _)
+	if self:has_activate_temporary_upgrade("temporary", "copr_ability") then
+		return false
+	end
+
+	local player_unit = self:player_unit()
+
+	if alive(player_unit) then
+		player_unit:character_damage():add_stored_armor(player_unit:character_damage():get_real_armor())
+	end
+end)
+
+-- Store the Leech user's armour when they activate the Ampoule, to the grant it back to them.
+Hooks:PostHook(PlayerManager, "_attempt_copr_ability", "res_attempt_copr_ability_fix_display", function(self, _, _)
+	local result = Hooks:GetReturn()
+	local character_damage = self:local_player():character_damage()
+	if result and character_damage then
+		-- Playing it safe with the potential division by 0 (even though I'm not sure if it could even happen).
+		local static_damage_ratio = self:upgrade_value("player", "copr_static_damage_ratio", 0) / math.max(character_damage:_max_health(), 0.01)
+		managers.hud:set_copr_indicator(true, static_damage_ratio)
+	end
+end)
+
+-- Leech now uses fixed HP segment sizes instead of max HP percentages, and
+-- when the Ampoule's effects end, it should consume any stored armour and give it to the player.
+Hooks:OverrideFunction(PlayerManager, "clbk_copr_ability_ended", function(self)
+	self:deactivate_temporary_upgrade("temporary", "copr_ability")
+
+	local player_unit = self:local_player()
+	local character_damage = alive(player_unit) and player_unit:character_damage()
+
+	if character_damage then
+		local static_damage_segment_size = self:upgrade_value("player", "copr_static_damage_ratio", 0) - 1e-08
+		local out_of_health = character_damage:get_real_health() < static_damage_segment_size
+		local risen_from_dead = self:get_property("copr_risen", false) == true
+
+		character_damage:on_copr_ability_deactivated()
+
+		if out_of_health or risen_from_dead then
+			character_damage:force_into_bleedout(false, risen_from_dead)
+		else
+			character_damage:consume_stored_armor()
+		end
+	end
+
+	self:set_property("copr_risen", nil)
+	managers.hud:set_copr_indicator(false)
+end)
+
 --Accounts for max quantity changes when adding deployable equipment
 function PlayerManager:add_deployable_equipment(equipment_id, amount)
 	local equipment, index = self:equipment_data_by_name(equipment_id)
@@ -2153,6 +2248,10 @@ Hooks:PostHook(PlayerManager, "can_carry", "ResCarryStackerCanCarry", function(s
     return check_weight >= max_weight
 end)
 
+Hooks:PreHook(PlayerManager, "drop_carry", "ResCarryStackerPreDropCarry", function(self, _)
+	self._player_state_before_drop = self._current_state
+end)
+
 --- Makes the timing before you can interact again consistent. That's it.
 --- We DO base it on the synced_carry_stacker length rather than synced_carry, though this is
 --- because of the code reorganisation that mandates we trust the host with dropping stuff.
@@ -2166,6 +2265,15 @@ Hooks:PostHook(PlayerManager, "drop_carry", "ResCarryStackerDropCarry", function
 
 	self:update_carrystacker_hud(peer_id)
 	self:recalculate_carried_weights()
+
+	if not self._player_state_before_drop then
+		return
+	end
+	if self._player_state_before_drop == "carry" then
+		managers.player:set_player_state("standard")
+	else
+		managers.player:set_player_state(self._player_state_before_drop)
+	end
 end)
 
 --- This is a bit delayed compared to the original CarryStacker implementation where this (or rather
@@ -2288,4 +2396,9 @@ Hooks:PreHook(PlayerManager, "clear_carry", "ResCarryStackerPreClearCarry", func
 	end
 
 	self:update_removed_synced_carry_stacker_to_peers()
+end)
+
+Hooks:PostHook(PlayerManager, "sync_carry_data", "ResSyncCarryData", function(self, _, _, _, _, _, _, _, _, _, _, peer_id)
+	self:recalculate_carried_weights()
+	self:update_carrystacker_hud(peer_id)
 end)

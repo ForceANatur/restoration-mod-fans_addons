@@ -1,6 +1,6 @@
 --Remove ASU Laser when they surrender
 Hooks:PostHook(CopLogicIntimidated, "enter", "fuck_enter", function(data, new_logic_name, enter_params)
-	data.unit:base():disable_asu_laser(true)
+	data.unit:base():disable_asu_laser()
 end)
 
 --Remove OMNIA buffs/no pager on tie down
@@ -40,6 +40,14 @@ function CopLogicIntimidated._do_tied(data, aggressor_unit)
 		data.unit:interaction():set_active(true, true, false)
 	end
 
+	-- Show when intimidated guards will increase suspicion.
+	if not data.brain:is_pager_started() and managers.groupai:state():whisper_mode() and not managers.mutators:modify_value("CopMovement:VanillaPoliceCall", false) and data.unit:unit_data().has_alarm_pager then
+		managers.enemy:register_intimidated_guard(data.unit, data.t)
+		LuaNetworking:SendToPeers("sync_intimidated_guard_data",data.unit:id(), tostring(data.t))
+		data.unit:interaction():set_tweak_data("intimidated_guard_checkin")
+		data.unit:interaction():set_active(true, true, false)
+	end
+
 	if data.unit:unit_data().mission_element then
 		data.unit:unit_data().mission_element:event("tied", data.unit)
 	end	
@@ -62,6 +70,11 @@ function CopLogicIntimidated._do_tied(data, aggressor_unit)
 
 	managers.groupai:state():on_criminal_suspicion_progress(nil, data.unit, nil)
 end
+
+Hooks:PostHook(CopLogicIntimidated, "on_enemy_weapons_hot", "res_on_enemy_weapons_hot", function(data)
+	managers.enemy:unregister_intimidated_guard(data.unit:id())
+	LuaNetworking:SendToPeers("sync_intimidated_guard_data_delete",data.unit:id())
+end)
 
 -- Tweak hostage rescue conditions
 function CopLogicIntimidated.rescue_SO_verification(ignore_this, data, unit, ...)

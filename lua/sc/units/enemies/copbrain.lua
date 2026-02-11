@@ -206,16 +206,14 @@ logic_variants.medic_summers = security_variant
 logic_variants.fbi_vet = security_variant
 logic_variants.spooc_gangster = clone(security_variant)
 logic_variants.spooc_gangster.idle = SpoocLogicIdle
-logic_variants.spooc_gangster.attack = SpoocLogicAttack
+logic_variants.spooc_gangster.attack = SpoocLogicAttack	
 logic_variants.fbi_vet_boss = security_variant
 logic_variants.vetlod = security_variant	
 logic_variants.meme_man = security_variant	
 logic_variants.meme_man_shield = clone(security_variant)
 logic_variants.meme_man_shield.attack = ShieldLogicAttack
 logic_variants.meme_man_shield.intimidated = nil
-logic_variants.meme_man_shield.flee = nil
-logic_variants.heavygunner = security_variant
-logic_variants.medic_heavy = security_variant
+logic_variants.meme_man_shield.flee = nil	
 logic_variants.spring = clone(security_variant)
 logic_variants.spring.attack = TankCopLogicAttack
 logic_variants.enforcer = clone(security_variant)
@@ -253,26 +251,6 @@ logic_variants.spooc_titan.attack = SpoocLogicAttack
 logic_variants.taser_titan = clone(security_variant)
 logic_variants.autumn = clone(security_variant)	
 logic_variants.boom_titan = clone(security_variant)
-logic_variants.city_swat_rpg = security_variant
-logic_variants.weekend_vanilla = security_variant
-logic_variants.weekend_vanilla_heavy = security_variant
-logic_variants.weekend_vanilla_snp = security_variant
-logic_variants.spooc_swole = clone(security_variant)
-logic_variants.spooc_swole.idle = SpoocLogicIdle
-logic_variants.spooc_swole.attack = SpoocLogicAttack
-logic_variants.medic_buff = security_variant
-logic_variants.atf_marksman = clone(security_variant)
-logic_variants.atf_marksman.attack = MarshalLogicAttack
-logic_variants.medic_deathvox = security_variant
-logic_variants.city_swat_sergeant = security_variant
-logic_variants.tank_captain = clone(security_variant)
-logic_variants.tank_captain.attack = TankCopLogicAttack
-logic_variants.enforcer_swat = security_variant
-logic_variants.tank_undeadtitan = clone(security_variant)
-logic_variants.tank_undeadtitan.attack = TankCopLogicAttack
-logic_variants.heavy_swat_sniper_mememan = clone(security_variant)
-logic_variants.heavy_swat_sniper_mememan.attack = MarshalLogicAttack
-logic_variants.city_swat_dodge_mememan = security_variant
 
 logic_variants.heavy_swat_sniper = clone(security_variant)
 logic_variants.heavy_swat_sniper.attack = MarshalLogicAttack
@@ -294,20 +272,7 @@ logic_variants.city_swat_titan.attack = MarshalLogicAttack
 logic_variants.weekend_lmg = clone(security_variant)
 logic_variants.weekend_lmg.attack = MarshalLogicAttack		
 logic_variants.taser_titan_reaper = clone(security_variant)
-logic_variants.taser_titan_reaper.attack = MarshalLogicAttack
-
-logic_variants.fbi_cruel = security_variant
-logic_variants.hrt_cruel = security_variant
-logic_variants.weekend_cruel = security_variant
-logic_variants.weekend_vanilla_heavy_cruel = security_variant
-logic_variants.shield_cruel = security_variant
-logic_variants.weekend_lmg_cruel = security_variant
-logic_variants.weekend_lmg_cruel_assault = security_variant
-logic_variants.phalanx_minion_cruel = clone(security_variant)
-logic_variants.phalanx_minion_cruel.attack = ShieldLogicAttack
-logic_variants.phalanx_minion_cruel.intimidated = nil
-logic_variants.phalanx_minion_cruel.flee = nil
-logic_variants.phalanx_minion_cruel_break = security_variant
+logic_variants.taser_titan_reaper.attack = MarshalLogicAttack			
 
 --Set up boss logics
 logic_variants.mobster_boss = logic_variants.triad_boss
@@ -315,6 +280,10 @@ logic_variants.chavez_boss = logic_variants.triad_boss
 logic_variants.hector_boss = logic_variants.triad_boss
 logic_variants.drug_lord_boss = logic_variants.triad_boss
 logic_variants.biker_boss = logic_variants.triad_boss
+
+Hooks:PostHook(CopBrain, "init", "res_init", function(self, unit)
+	self._intimidation_t = 0 -- In Stealth, when the cop was intimidated
+end)
 
 -- Update immediately once we have our pathing results instead of waiting for the next update
 -- Not posthooking _add_pathing_result instead of these two just in case the path gets modified before navlink delays are applied in clbk_pathing_results

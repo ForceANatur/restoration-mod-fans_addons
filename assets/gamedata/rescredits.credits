@@ -59,6 +59,7 @@
 	<text text="IareAwesome17" type="name"/>
 	<text text="Miss Miki" type="name"/>
 	<text text="MrVavlo" type="name"/>
+	<text text="Cerapter" type="name"/>
 	<br/>
 	<text text="Sound Contributions" type="title"/>
 	<br/>
@@ -67,6 +68,12 @@
 	<text text="JimTheCookie" type="name"/>
 	<text text="DryBittenCuticles" type="name"/>
 	<text text="MarioInATopHat" type="name"/>
+	<text text="FaN Scout" type="name"/>
+	<text text="GunStrikerFMJ" type="name"/>
+	<text text="Novasov" type="name"/>
+	<text text="FlowerX" type="name"/>
+	<text text="Mezz" type="name"/>
+	<text text="Vinesauce Joel" type="name"/>
 	<br/>
 	<text text="Testers" type="title"/>
 	<br/>
@@ -81,6 +88,43 @@
 	<text text="LR_Daring" type="name"/>
 	<text text="Gullwingdoor " type="name"/>
 	<text text="Bobctopus" type="name"/>
+	<br/>
+	<text text="Asset Providers" type="title"/>
+	<br/>
+	<text text="Wekk" type="name"/>
+	<text text="Keithy" type="name"/>
+	<text text="Nazuna ~Invitine~ " type="name"/>
+	<text text="Jarey" type="name"/>
+	<text text="Hoppip" type="name"/>
+	<text text="Rickerus" type="name"/>
+	<br/>
+	<text text="Major Bug and Crash fixes" type="title"/>
+	<text text="Akiko Npriko" type="name"/>
+	<br/>
+	<text text="Every Voiceline Used As Preference" type="title"/>
+	<text text="Coach (L4D2)" type="name"/>
+	<text text="Robot Spy (Team Fortress 2)" type="name"/>
+	<text text="GSG9 (Counter Strike)" type="name"/>
+	<text text="Phoenix (Counter Strike)" type="name"/>
+	<text text="Mercenary (Open Fortress)" type="name"/>
+	<text text="Soldier (Team Fortess 2)" type="name"/>
+	<text text="Trooper (Typical Colors 2)" type="name"/>
+	<text text="Bill (Left 4 Dead Spanish Dub)" type="name"/>
+	<text text="Annihilator (Typical Colors 2)" type="name"/>
+	<text text="Alliance (Unit: Classified)" type="name"/>
+	<text text="SAS (Counter Strike)" type="name"/>
+	<text text="Zulu Squad (Spec Ops: The Line)" type="name"/>
+	<text text="Robot Heavy (Team Fortress 2)" type="name"/>
+	<text text="Brute (Typical Colors 2)" type="name"/>
+	<text text="Arsonist (Typical Colors 2)" type="name"/>
+	<text text="Heavy Weapons Guy (Team Fortress 2: Russian Dub)" type="name"/>
+	<text text="Robot Pyro (Team Fortress 2)" type="name"/>
+	<text text="Marskman (Typical Colors 2)" type="name"/>
+	<text text="Flanker (Typical Colors 2)" type="name"/>
+	<text text="Seal Team 6 (Counter Strike)" type="name"/>
+	<text text="Sniper (Team Fortress 2)" type="name"/>
+	<text text="Bill (Left 4 Dead Russian Dub)" type="name"/>
+	<text text="Nick (Left 4 Dead 2 Russian Dub)" type="name"/>
 	<br/>
 	<text text="The Mod's Edits" type="title"/>
 	<br/>
