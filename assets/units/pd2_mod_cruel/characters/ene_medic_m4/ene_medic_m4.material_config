@@ -38,21 +38,25 @@
 		<variable type="scalar" name="il_bloom" value="5"/> 
         <variable type="scalar" name="il_multiplier" value="neonsign"/>
     </material>
-
-    <material name="mtr_head_lod1" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP:RL_COPS:SELF_ILLUMINATION:SELF_ILLUMINATION_BLOOM:SKINNED_3WEIGHTS" version="2">
+	
+	<material name="mtr_head_lod1" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP:RL_COPS:SELF_ILLUMINATION:SELF_ILLUMINATION_BLOOM:SKINNED_3WEIGHTS" version="2" >
         <bump_normal_texture file="units/pd2_mod_cruel/characters/ene_medic_m4/ene_medic_head_nm" mip="1"/>
         <diffuse_texture file="units/pd2_mod_cruel/characters/ene_medic_m4/ene_medic_head_df" mip="1"/>
 		<self_illumination_texture file="units/pd2_mod_cruel/characters/ene_medic_m4/ene_medic_head_il"/>
 		<variable type="scalar" name="il_bloom" value="5"/> 
         <variable type="scalar" name="il_multiplier" value="neonsign"/>
+        <variable value="1 1 1" type="vector3" name="contour_color"/>
+        <variable value="0" type="scalar" name="contour_opacity"/>
     </material>
-
-    <material name="mtr_body_lod1" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP:RL_COPS:SELF_ILLUMINATION:SELF_ILLUMINATION_BLOOM:SKINNED_3WEIGHTS" version="2">
+    
+    <material name="mtr_body_lod1" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP:RL_COPS:SELF_ILLUMINATION:SELF_ILLUMINATION_BLOOM:SKINNED_3WEIGHTS" version="2" >
         <bump_normal_texture file="units/pd2_mod_cruel/characters/ene_medic_m4/ene_medic_nm" mip="1"/>
         <diffuse_texture file="units/pd2_mod_cruel/characters/ene_medic_m4/ene_medic_df" mip="1"/>
 		<self_illumination_texture file="units/pd2_mod_cruel/characters/ene_medic_m4/ene_medic_il"/>
 		<variable type="scalar" name="il_bloom" value="5"/> 
         <variable type="scalar" name="il_multiplier" value="neonsign"/>
+        <variable value="1 1 1" type="vector3" name="contour_color"/>
+        <variable value="0" type="scalar" name="contour_opacity"/>
     </material>
 	
     <material name="mtr_shoulderpads_lod1" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP:RL_COPS:SELF_ILLUMINATION:SELF_ILLUMINATION_BLOOM:SKINNED_3WEIGHTS" version="2">
@@ -62,13 +66,16 @@
 		<variable type="scalar" name="il_bloom" value="5"/> 
         <variable type="scalar" name="il_multiplier" value="neonsign"/>
     </material>
-
-    <material name="mtr_helmet_lod1" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP:SELF_ILLUMINATION:SELF_ILLUMINATION_BLOOM" version="2">
+	
+	<material name="mtr_helmet_lod1" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP:SELF_ILLUMINATION:SELF_ILLUMINATION_BLOOM"  version="2" >
         <bump_normal_texture    file="units/pd2_mod_cruel/characters/ene_medic_m4/ene_medic_head_nm"/>
         <diffuse_texture        file="units/pd2_mod_cruel/characters/ene_medic_m4/ene_medic_head_df"/>
 		<self_illumination_texture file="units/pd2_mod_cruel/characters/ene_medic_m4/ene_medic_head_il"/>
 		<variable type="scalar" name="il_bloom" value="5"/> 
         <variable type="scalar" name="il_multiplier" value="neonsign"/>
+        <variable value="1 1 1" type="vector3" name="contour_color"/>
+        <variable value="0"     type="scalar" name="contour_opacity"/>
     </material>
+
     <material name="shadow_caster" render_template="shadow_caster_only:SKINNED_1WEIGHT" version="2"/>
 </materials>
