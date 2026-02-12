@@ -1208,6 +1208,12 @@ local crew_wep_preset = {
 		self.gewehr3_npc.suppression = 1.3
 		self.gewehr3_npc.auto.fire_rate = 0.1
 		self.gewehr3_npc.usage = "is_lmg"
+
+		--SCAR Heavy
+		self.scar_heavy_npc = deep_clone(self.m4_npc)
+		self.scar_heavy_npc.sounds.prefix = "scar_npc"
+		self.scar_heavy_npc.DAMAGE = 2.8
+		self.scar_heavy_npc.CLIP_AMMO_MAX = 20
 	end
 
 	function WeaponTweakData:_init_data_m4_yellow_npc()
@@ -1388,6 +1394,14 @@ local crew_wep_preset = {
 		self.mp5_tactical_npc.alert_size = 0
 		self.mp5_tactical_npc.suppression = 0.1
 
+		--Akimbo Cloaker Mp5 (do not use, animation is fucked)
+		--[[self.x_mp5_tactical_npc = deep_clone(self.mp5_tactical_npc)
+		self.x_mp5_tactical_npc.CLIP_AMMO_MAX = 60
+		self.x_mp5_tactical_npc.NR_CLIPS_MAX = 10
+		self.x_mp5_tactical_npc.hold ="akimbo_pistol"
+		self.x_mp5_tactical_npc.usage = "is_lmg"
+		]]--
+
 		--T. Cloaker Mp5
 		self.mp5_cloak_npc = deep_clone(self.mp5_npc)
 
@@ -1486,6 +1500,11 @@ local crew_wep_preset = {
 		self.mac11_npc.reload = "uzi"
 		self.mac11_npc.suppression = 2.8
 		self.mac11_npc.FIRE_MODE = "auto"
+
+		self.mac11_sil_npc = deep_clone(self.mac11_npc)
+		self.mac11_sil_npc.has_suppressor = "suppressed_a"
+		self.mac11_sil_npc.usage = "is_lmg"
+		self.mac11_sil_npc.CLIP_AMMO_MAX = 30
 	end
 
 	function WeaponTweakData:_init_data_g36_npc()
@@ -1617,6 +1636,11 @@ local crew_wep_preset = {
 		self.deagle_npc.anim_usage = "is_pistol"
 		self.deagle_npc.hold = "pistol"
 		self.deagle_npc.reload = "pistol"
+
+		self.x_deagle_npc = deep_clone(self.x_raging_bull_meme_npc)
+		self.x_deagle_npc.DAMAGE = 4
+		self.x_deagle_npc.CLIP_AMMO_MAX = 16
+		self.x_deagle_npc.sounds.prefix = "deagle_npc"
 	end
 
 	--Marshal Shield Phase 2 Shotgun

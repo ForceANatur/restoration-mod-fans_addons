@@ -336,6 +336,14 @@ tweak_data.narrative.contacts.akashic.description_id	= "heist_contact_akashic_de
 tweak_data.narrative.contacts.akashic.image		= "guis/textures/pd2/crimenet_portrait_hector"
 tweak_data.narrative.contacts.akashic.package = "packages/contact_hector"
 tweak_data.narrative.contacts.akashic.assets_gui = Idstring( "guis/mission_briefing/preload_contact_hector" )
+
+--Self Insert narrative entry
+tweak_data.narrative.contacts.self_insert				= {}
+tweak_data.narrative.contacts.self_insert.name_id					= "heist_contact_self_insert"
+tweak_data.narrative.contacts.self_insert.description_id	= "heist_contact_self_insert_description"
+tweak_data.narrative.contacts.self_insert.image		= "guis/textures/pd2/crimenet_portrait_interupt"
+tweak_data.narrative.contacts.self_insert.package = "packages/contact_interupt"
+tweak_data.narrative.contacts.self_insert.assets_gui = Idstring( "guis/mission_briefing/preload_contact_interupt" )
 --District descriptions
 if restoration.Options:GetValue("HUD/UI/District") then
 	tweak_data.gui.crime_net.regions = {

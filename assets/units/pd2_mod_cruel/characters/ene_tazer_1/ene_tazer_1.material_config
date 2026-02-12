@@ -1,0 +1,36 @@
+<materials version="3" group="ene_tazer_1">
+	<material name="mtr_head" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP:RL_COPS:SELF_ILLUMINATION:SELF_ILLUMINATION_BLOOM:SKINNED_3WEIGHTS" version="2">
+        <bump_normal_texture    file="units/payday2/characters/ene_tazer_1/tazer_head_nm"/>
+        <diffuse_texture        file="units/payday2/characters/ene_tazer_1/tazer_head_df"/>
+		<self_illumination_texture file="units/payday2/characters/ene_tazer_1/tazer_head_il"/>
+						      <variable type="scalar" name="il_bloom" value="3"/>
+                              <variable type="scalar" name="il_multiplier" value="sun"/>
+	</material>
+	<material name="mtr_head_lod" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP:RL_COPS:SELF_ILLUMINATION:SELF_ILLUMINATION_BLOOM:SKINNED_3WEIGHTS" version="2">
+	    <bump_normal_texture    file="units/payday2/characters/ene_tazer_1/tazer_head_nm" mip="1"/>
+		<diffuse_texture 		file="units/payday2/characters/ene_tazer_1/tazer_head_df" mip="1"/>
+		<self_illumination_texture file="units/payday2/characters/ene_tazer_1/tazer_head_il"/>
+		                      <variable type="scalar" name="il_bloom" value="3"/>
+                              <variable type="scalar" name="il_multiplier" value="sun"/>
+	</material>
+
+	<material name="mtr_body" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP:RL_COPS:SELF_ILLUMINATION:SELF_ILLUMINATION_BLOOM:SKINNED_3WEIGHTS" version="2">
+		<bump_normal_texture 	file="units/payday2/characters/ene_tazer_1/tazer_body_nm"/>
+		<diffuse_texture 		file="units/payday2/characters/ene_tazer_1/tazer_body_df"/>
+		<self_illumination_texture file="units/payday2/characters/ene_tazer_1/tazer_body_il"/>
+		<variable type="scalar" name="il_bloom" value="5"/>
+        <variable type="scalar" name="il_multiplier" value="neonsign"/>
+	</material>
+	<material name="mtr_body_lod" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP:RL_COPS:SELF_ILLUMINATION:SELF_ILLUMINATION_BLOOM:SKINNED_3WEIGHTS" version="2">
+	    <bump_normal_texture 	file="units/payday2/characters/ene_tazer_1/tazer_body_nm" mip="1"/>
+		<diffuse_texture 		file="units/payday2/characters/ene_tazer_1/tazer_body_df" mip="1"/>
+		<self_illumination_texture file="units/payday2/characters/ene_tazer_1/tazer_body_il"/>
+		<variable type="scalar" name="il_bloom" value="5"/>
+        <variable type="scalar" name="il_multiplier" value="neonsign"/>
+	</material>
+
+	
+    <material name="shadow_caster" render_template="shadow_caster_only:SKINNED_1WEIGHT" version="2"/>
+</materials>
+
+

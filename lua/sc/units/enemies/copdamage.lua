@@ -75,6 +75,8 @@ local enemies_visor = {
 	ids_func("units/pd2_mod_nc/characters/ene_police_heavygunner/ene_police_heavygunner_husk"),
 	ids_func("units/pd2_mod_halloween/characters/ene_police_heavygunner/ene_police_heavygunner"),
 	ids_func("units/pd2_mod_halloween/characters/ene_police_heavygunner/ene_police_heavygunner_husk"),
+	ids_func("units/pd2_mod_cruel/characters/ene_fbi_heavy_1/ene_fbi_heavy_1"),
+	ids_func("units/pd2_mod_cruel/characters/ene_fbi_heavy_1/ene_fbi_heavy_1_husk"),
 }
 
 local enemies_plink = {	  
