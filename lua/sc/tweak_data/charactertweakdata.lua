@@ -1,4 +1,4 @@
-local job = Global.level_data and Global.level_data.level_id
+﻿local job = Global.level_data and Global.level_data.level_id
 local enemy_melee_damage_base = 4.5
 local enemy_melee_damage_good = 6.75
 local enemy_melee_damage_expert = 9
@@ -19120,6 +19120,10 @@ Hooks:PostHook(CharacterTweakData, "_create_table_structure", "remod_create_tabl
 	--PDTH Mark 10
 	table.insert(self.weap_ids, "mac11_sup")
 	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_mac11_sup/wpn_npc_mac11_sup"))
+
+	--Barrett M95
+	table.insert(self.weap_ids, "m95_npc")
+	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_m95/wpn_npc_m95"))
 end)
 -- EASY (UNUSED) --
 function CharacterTweakData:_set_easy()
