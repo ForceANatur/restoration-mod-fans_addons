@@ -1293,15 +1293,13 @@ local crew_wep_preset = {
 		--self.railgun_npc.sounds.prefix = "barrett_npc"
 
 		--so called sniper captain barrett
-		--[[
 		self.m95_npc = deep_clone(self.m14_sniper_npc)
 		self.m95_npc.sounds.prefix = "barrett_npc"
 		self.m95_npc.muzzleflash = "effects/payday2/particles/weapons/50cal_auto"
 		self.m95_npc.shell_ejection = "effects/payday2/particles/weapons/shells/shell_sniper_m95"
-		self.m95_npc.DAMAGE = 9
+		self.m95_npc.DAMAGE = 27	-- if this is too lethal, then ill take it down a bit
 		self.m95_npc.CLIP_AMMO_MAX = 4
 		self.m95_npc.suppression = 7
-		]]--
 
 		self.m14_sniper_mememan_npc = deep_clone(self.m14_sniper_npc)
 		self.m14_sniper_mememan_npc.DAMAGE = 4.5	--so we dont instantly die

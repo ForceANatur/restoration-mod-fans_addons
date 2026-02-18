@@ -1434,6 +1434,16 @@
 	<object				path="units/pd2_mod_caps/characters/ene_bulldozer_captain/ene_bulldozer_captain" force="false"/>
 	<sequence_manager	path="units/pd2_mod_caps/characters/ene_bulldozer_captain/ene_bulldozer_captain" force="false"/>
 
+	<!--Thanatos for captain-->
+	<material_config	path="units/payday2/weapons/wpn_npc_m95/wpn_npc_m95" force="false"/>
+	<model				path="units/payday2/weapons/wpn_npc_m95/wpn_npc_m95" force="false"/>
+	<object				path="units/payday2/weapons/wpn_npc_m95/wpn_npc_m95" force="false"/>
+	<cooked_physics		path="units/payday2/weapons/wpn_npc_m95/wpn_npc_m95" force="false"/>
+	<unit				path="units/payday2/weapons/wpn_npc_m95/wpn_npc_m95" force="false"/>
+	<sequence_manager	path="units/payday2/weapons/wpn_npc_m95/wpn_npc_m95" force="false"/>
+	<texture			path="units/payday2/weapons/wpn_npc_m95/m95_df" force="true"/>
+	<texture			path="units/payday2/weapons/wpn_npc_m95/m95_nm" force="true"/>
+
 	<unit path="units/pd2_dlc_usm1/weapons/wpn_npc_dmr/wpn_npc_dmr" force="true" />
 
 	<!--Big Dave-->

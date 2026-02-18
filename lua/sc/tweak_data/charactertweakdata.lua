@@ -19141,6 +19141,10 @@ Hooks:PostHook(CharacterTweakData, "_create_table_structure", "remod_create_tabl
 	--PDTH Mark 10
 	table.insert(self.weap_ids, "mac11_sup")
 	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_mac11_sup/wpn_npc_mac11_sup"))
+
+	--Barrett M95
+	table.insert(self.weap_ids, "m95_npc")
+	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_m95/wpn_npc_m95"))
 end)
 
 function CharacterTweakData:_set_easy()
