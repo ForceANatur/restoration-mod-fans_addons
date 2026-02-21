@@ -350,6 +350,48 @@ function PlayerStandard:_check_action_throw_projectile(t, input)
 	return true
 end
 
+function PlayerStandard:_start_action_throw_projectile(t, input)
+	self._equipped_unit:base():tweak_data_anim_stop("fire")
+	self:_interupt_action_reload(t)
+	self:_interupt_action_steelsight(t)
+	self:_interupt_action_running(t)
+	self:_interupt_action_charging_weapon(t)
+
+	self._state_data.projectile_idle_wanted = nil
+	self._state_data.throwing_projectile = true
+	self._state_data.projectile_start_t = nil
+	local projectile_entry = managers.blackmarket:equipped_projectile()
+
+	self:_stance_entered()
+
+	if self._state_data.projectile_global_value then
+		self._camera_unit:anim_state_machine():set_global(self._state_data.projectile_global_value, 0)
+	end
+
+	self._state_data.projectile_global_value = tweak_data.blackmarket.projectiles[projectile_entry].anim_global_param or "projectile_frag"
+
+	self._camera_unit:anim_state_machine():set_global(self._state_data.projectile_global_value, 1)
+
+	local current_state_name = self._camera_unit:anim_state_machine():segment_state(self:get_animation("base"))
+	local throw_allowed_expire_t = tweak_data.blackmarket.projectiles[projectile_entry].throw_allowed_expire_t or 0.15
+	self._state_data.projectile_throw_allowed_t = t + (current_state_name ~= self:get_animation("projectile_throw_state") and throw_allowed_expire_t or 0)
+
+	if current_state_name == self:get_animation("projectile_throw_state") then
+		self._ext_camera:play_redirect(self:get_animation("projectile_idle"))
+
+		return
+	end
+
+	local offset = nil
+
+	if current_state_name == self:get_animation("projectile_exit_state") then
+		local segment_relative_time = self._camera_unit:anim_state_machine():segment_relative_time(self:get_animation("base"))
+		offset = (1 - segment_relative_time) * 0.9
+	end
+
+	self._ext_camera:play_redirect(self:get_animation("projectile_enter"), 999, offset) --make the holstering of the drawn weapon instant
+end
+
 function PlayerStandard:_check_action_throw_grenade(t, input)
 	local action_wanted = input.btn_throw_grenade_press
 
@@ -373,6 +415,39 @@ function PlayerStandard:_check_action_throw_grenade(t, input)
 	self._queue_burst = nil
 
 	return action_wanted
+end
+
+function PlayerStandard:_start_action_throw_grenade(t, input)
+	self:_interupt_action_reload(t)
+	self:_interupt_action_steelsight(t)
+	self:_interupt_action_running(t)
+	self:_interupt_action_charging_weapon(t)
+
+	local equipped_grenade = managers.blackmarket:equipped_grenade()
+	local projectile_tweak = tweak_data.blackmarket.projectiles[equipped_grenade]
+	local speed_mult = projectile_tweak and projectile_tweak.speed_mult or 1
+
+	if self._projectile_global_value then
+		self._camera_unit:anim_state_machine():set_global(self._projectile_global_value, 0)
+
+		self._projectile_global_value = nil
+	end
+
+	if projectile_tweak.anim_global_param then
+		self._projectile_global_value = projectile_tweak.anim_global_param
+
+		self._camera_unit:anim_state_machine():set_global(self._projectile_global_value, 1)
+	end
+
+	local delay = self:_get_projectile_throw_offset()
+
+	managers.network:session():send_to_peers_synched("play_distance_interact_redirect_delay", self._unit, "throw_grenade", delay)
+	self._ext_camera:play_redirect(Idstring(projectile_tweak.animation or "throw_grenade"), 999) --make the holstering of the drawn weapon instant
+	--Unfortunately the actual anim for throwing a grenade is done from the animation state side of things (a.k.a. not lua sided)
+
+	self._state_data.throw_grenade_expire_t = t + (projectile_tweak.expire_t or 1.1)
+
+	self:_stance_entered()
 end
 
 function PlayerStandard:_action_interact_forbidden()
@@ -2378,14 +2453,27 @@ end
 function PlayerStandard:_update_melee_timers(t, input)
 	local melee_entry = managers.blackmarket:equipped_melee_weapon()
 	local melee_weapon = tweak_data.blackmarket.melee_weapons[melee_entry]
+	if not melee_weapon then
+		return
+	end
+	local special_weapon = melee_weapon.special_weapon
+	local charge_time = melee_weapon.stats.charge_time
 	local instant = melee_weapon.instant
 	local no_hit_shaker = melee_weapon.no_hit_shaker
-	local melee_charger = melee_weapon.special_weapon and melee_weapon.special_weapon == "charger"
+	local melee_charger = special_weapon and special_weapon == "charger"
 	local angle = self._stick_move and mvector3.angle(self._stick_move, math.Y)
 	local moving_forwards = angle and angle <= 15
 	local can_run = self._unit:movement():is_above_stamina_threshold()
 	local lerp_value = self:_get_melee_charge_lerp_value(t)
 	local max_charge = lerp_value and lerp_value >= 0.99
+	local pre_calc_hit_ray = melee_weapon.hit_pre_calculation
+	local speed = melee_weapon.stats.speed_mult or 1
+	local anim_speed = melee_weapon.anim_speed_mult or 1
+	speed = speed * anim_speed
+	speed = speed * managers.player:upgrade_value("player", "melee_swing_multiplier", 1)
+	local melee_damage_delay = (melee_weapon.melee_damage_delay or 0) / speed
+	local lerp_value_offset = self:_get_melee_charge_lerp_value(t, melee_damage_delay)
+	local max_charge_offset = lerp_value_offset and lerp_value_offset >= 0.99
 	--local has_charged_range = self._melee_charge_bonus and self._melee_charge_bonus == true
 	--local charge_bonus_range = has_charged_range and melee_weapon.stats.charge_bonus_range or 0
 	--local range = melee_weapon.stats.range + charge_bonus_range
@@ -2400,13 +2488,7 @@ function PlayerStandard:_update_melee_timers(t, input)
 		else
 			self._ext_camera:play_redirect(self:get_animation("idle"))
 		end
-		if not instant then
-			self._camera_unit:base():unspawn_melee_item()
-			self._camera_unit:base():show_weapon()
-		end
 	elseif self._state_data.meleeing then
-		local lerp_value = self:_get_melee_charge_lerp_value(t)
-
 		self._camera_unit:anim_state_machine():set_parameter(self:get_animation("melee_charge_state"), "charge_lerp", math.bezier({
 			0,
 			0,
@@ -2425,12 +2507,25 @@ function PlayerStandard:_update_melee_timers(t, input)
 	end
 
 	-- No stamina regen while actively charging an attack with "charger" type melee weapons at max charge
-	if melee_charger and self._state_data.meleeing and max_charge then
-		self._unit:movement():_restart_stamina_regen_timer()
+	if max_charge and self._state_data.meleeing then
+		local melee_flash = restoration.Options:GetValue("WEAPONS/WeaponHandling/MeleeChargeFlash") or false
+		if not self._trigger_max_charge and melee_flash and charge_time > 0.01 then
+			local effect_alpha = (restoration.Options:GetValue("WEAPONS/WeaponHandling/MeleeChargeA") or 0.5)
+			local effect_r = (restoration.Options:GetValue("WEAPONS/WeaponHandling/MeleeChargeR") or 1)
+			local effect_g = (restoration.Options:GetValue("WEAPONS/WeaponHandling/MeleeChargeG") or 1)
+			local effect_b = (restoration.Options:GetValue("WEAPONS/WeaponHandling/MeleeChargeB") or 1)
+			managers.hud:activate_effect_screen(0.2, Vector3(effect_r, effect_g, effect_b) * effect_alpha, "melee_max_charge", "topbottomrim")
+			self._trigger_max_charge = true
+		end
+		if melee_charger and self._state_data.meleeing then
+			self._unit:movement():_restart_stamina_regen_timer()
+		end
+	else
+		self._trigger_max_charge = nil
 	end
 
 	if self._state_data.meleeing then
-		if lerp_value >= 1 and melee_weapon.special_weapon == "taser" and not self._state_data._stop_melee_sound_check then
+		if max_charge and melee_weapon.special_weapon == "taser" and not self._state_data._stop_melee_sound_check then
 			self._state_data._stop_melee_sound_check = true
 			self._unit:sound():play("tasered_loop")
 		elseif melee_weapon.special_weapon == "megumin" then
@@ -2440,7 +2535,7 @@ function PlayerStandard:_update_melee_timers(t, input)
 			end
 			managers.environment_controller:set_downed_value(math.lerp(0, 40, lerp_value))
 			managers.player:apply_slow_debuff(1, math.lerp(0.2, 0.8, lerp_value), nil, true)
-			managers.hud:activate_effect_screen(1, {math.lerp(0, 0.8, lerp_value), math.lerp(0, 0.08, lerp_value), 0})
+			managers.hud:activate_effect_screen(1, {math.lerp(0, 0.8, lerp_value), math.lerp(0, 0.08, lerp_value), 0}, "megumin")
 		end
 	else
 		self._state_data._drain_stamina = nil
@@ -2458,7 +2553,7 @@ function PlayerStandard:_update_melee_timers(t, input)
 	end
 
 	--Trigger chainsaw damage and update timer.
-	if self:_is_meleeing() and ((melee_weapon.chainsaw and not melee_charger) or (melee_charger and self._running and moving_forwards and can_run and max_charge)) and self._state_data.chainsaw_t and self._state_data.chainsaw_t < t then
+	if self:_is_meleeing() and ((melee_weapon.chainsaw and not melee_charger) or (melee_charger and self._running and moving_forwards and can_run and max_charge_offset)) and self._state_data.chainsaw_t and self._state_data.chainsaw_t < t then
 		self:_do_chainsaw_damage(t)
 		self._state_data.chainsaw_t = t + (melee_weapon.chainsaw.tick_delay * (1 + (1 - managers.player:upgrade_value("player", "melee_swing_multiplier", 1))))
 	end
@@ -2568,7 +2663,7 @@ function PlayerStandard:_update_melee_timers(t, input)
 					for i = 2, #hit_unit.col_rays do
 						local next_hit = hit_unit.col_rays[i]
 						--bum off the hit priority table in the character damage class of an enemy unit to get the best hit location if multiple raycasts cover said unit
-						--generally speaking it's head > plates and visor (Dozers) > everywhere else
+						--generally speaking it's head > plates and visor (Dozers) > Taser/Grenadier bags + LPF antenna >  everywhere else
 						if char_dmg_ext:chk_body_hit_priority(best_hit.body, next_hit.body) then
 							best_hit = next_hit
 						end
@@ -2592,7 +2687,7 @@ function PlayerStandard:_update_melee_timers(t, input)
 					end
 				end
 
-				local result = self:_do_melee_damage(t, nil, nil, nil, nil, best_hit.unit, best_hit, nil, true, true)
+				local result = self:_do_melee_damage(t, nil, nil, nil, nil, best_hit.unit, best_hit, nil, true, true, nil, lerp_value_offset)
 
 				if result and result.type and result.type == "death" and is_enemy then
 					kills = kills + 1
@@ -2609,10 +2704,15 @@ function PlayerStandard:_update_melee_timers(t, input)
 					end
 				end
 			end
-			if hit_body then
-				self:_play_melee_sound(melee_entry, "hit_body")
-			elseif hit_gen then
-				self:_play_melee_sound(melee_entry, "hit_gen")
+
+			if #all_hits ~= 0 and special_weapon == "taser" and not max_charge_offset then
+				self._unit:sound():play("melee_hit_gen", nil, false)
+			else
+				if hit_body then
+					self:_play_melee_sound(melee_entry, "hit_body")
+				elseif hit_gen then
+					self:_play_melee_sound(melee_entry, "hit_gen")
+				end
 			end
 		else
 			self:_do_melee_damage(t, nil, self._state_data.melee_hit_ray)
@@ -2737,8 +2837,7 @@ function PlayerStandard:_get_melee_charge_lerp_value(t, offset)
 	if not self._state_data.melee_start_t then
 		return 0
 	end
-
-	return math.clamp(t - self._state_data.melee_start_t - offset, 0, max_charge_time) / max_charge_time
+	return math.clamp((t - self._state_data.melee_start_t - offset) / max_charge_time, 0, 1)
 end
 
 function PlayerStandard:_do_action_melee(t, input, skip_damage)
@@ -2944,6 +3043,36 @@ function PlayerStandard:_update_run_and_shoot_anim(t)
 	end
 end
 
+function PlayerStandard:_update_fat_fuck(t)
+	local pm = managers.player
+	local is_solo = nil
+	if not restoration.Options:GetValue("OTHER/DisableSoloBoons") then
+		if Global and Global.game_settings and Global.game_settings.single_player then
+			is_solo = true
+		end	
+	end
+	if not pm then return end
+	local peer_id = managers.network:session():local_peer():id()
+	local remaining_cdata = pm:get_synced_carry_stacker(peer_id) or {}
+	local max_weight = pm and pm:get_max_carry_weight()
+	local current_weight = pm and pm._weight
+	local carry_ratio = (1 - current_weight) / (1 - max_weight)
+	local overweight = not is_solo and remaining_cdata and #remaining_cdata > 0 and carry_ratio >= 0.66
+	if overweight and not pm._fat_fuck then
+		pm._fat_fuck = true --tossing bags does wonky stuff in playerstandard so the flag goes in playermanager
+		if self._state_data.in_full_steelsight then
+			managers.hud:show_hint({ time = 2, text = managers.localization:text("hud_hint_fatty") })
+			self._fat_fuck_t = t + 2
+		end
+		self:_interupt_action_steelsight()
+	elseif pm._fat_fuck and not overweight then
+		pm._fat_fuck = nil
+		if self._steelsight_wanted ~= true and self._controller:get_input_bool("secondary_attack") then
+			self._steelsight_wanted = true
+		end
+	end
+end
+
 --Updates burst fire and minigun spinup.
 Hooks:PreHook(PlayerStandard, "update", "ResWeaponUpdate", function(self, t, dt)
 	if alive(self._equipped_unit) then
@@ -2952,6 +3081,7 @@ Hooks:PreHook(PlayerStandard, "update", "ResWeaponUpdate", function(self, t, dt)
 		self:_shooting_move_speed_timer(t, dt)
 		self:_last_shot_recoil_t(t, dt)
 	end
+	self:_update_fat_fuck(t)
 	self:_update_js_t(t, dt)
 	self:_update_d_scope_t(t, dt)
 	self:_update_spread_stun_t(t, dt)
@@ -3375,16 +3505,16 @@ function PlayerStandard:_stance_entered(unequipped, timemult)
 		stance_id = self._equipped_unit:base():get_stance_id()
 		if not self._state_data.in_steelsight then
 			stance_id = self._equipped_unit:base():get_hipfire_stance_id()
+
+			local use_big_scope_offset = restoration.Options:GetValue("WEAPONS/WEAPONANIMS/BigScopeOffset")
+			if use_big_scope_offset and self._equipped_unit:base()._has_big_scope then
+				stance_mod.translation = stance_mod.translation + Vector3(1, 0, -2)
+				stance_mod.rotation = stance_mod.rotation * Rotation(0, 0, 3)
+			end
 		end
 
 		if self._state_data.in_steelsight and self._equipped_unit:base().stance_mod then
 			stance_mod = self._equipped_unit:base():stance_mod() or stance_mod
-		end
-
-		local use_big_scope_offset = restoration.Options:GetValue("WEAPONS/WEAPONANIMS/BigScopeOffset")
-		if use_big_scope_offset and self._equipped_unit:base()._has_big_scope and not self._state_data.in_steelsight then
-			stance_mod.translation = stance_mod.translation + Vector3(1, 0, -2)
-			stance_mod.rotation = stance_mod.rotation * Rotation(0, 0, 3)
 		end
 	end
 
@@ -3583,7 +3713,7 @@ function PlayerStandard:_check_action_steelsight(t, input)
 		end
 	elseif input.btn_steelsight_press or self._steelsight_wanted then
 
-		if self._state_data.in_steelsight then
+		if self._state_data.in_steelsight and not self._setting_hold_to_steelsight then 
 			self:_end_action_steelsight(t)
 
 			new_action = true
@@ -3639,7 +3769,11 @@ function PlayerStandard:_start_action_steelsight(t, gadget_state)
 		end
 	end
 	--Here!
-	if self:_changing_weapon() or self:_is_overheating() or self:_is_reloading() or self:_interacting() and not managers.player:has_category_upgrade("player", "no_interrupt_interaction") or self:_is_meleeing() or self._use_item_expire_t or self:_is_throwing_projectile() or self:_on_zipline() or self._d_scope_t or (self._is_sliding and not self._equipped_unit:base():run_and_shoot_allowed()) then
+	if managers.player._fat_fuck or self:_changing_weapon() or self:_is_overheating() or self:_is_reloading() or self:_interacting() and not managers.player:has_category_upgrade("player", "no_interrupt_interaction") or self:_is_meleeing() or self._use_item_expire_t or self:_is_throwing_projectile() or self:_on_zipline() or self._d_scope_t or (self._is_sliding and not self._equipped_unit:base():run_and_shoot_allowed()) then
+		if managers.player._fat_fuck and (self._fat_fuck_t or 0) < t and not self._steelsight_wanted then
+			self._fat_fuck_t = t + 2
+			managers.hud:show_hint({ time = 2, text = managers.localization:text("hud_hint_fatty") })
+		end
 		self._steelsight_wanted = true
 
 		return
@@ -3868,11 +4002,18 @@ function PlayerStandard:_calc_melee_hit_ray(t, sphere_cast_radius, from, directi
 	return col_ray
 end
 
-function PlayerStandard:_do_melee_damage(t, bayonet_melee, melee_hit_ray, melee_entry, hand_id, hit_unit, col_ray, dmg_div, no_shaker, no_sound, no_effect)
+function PlayerStandard:_do_melee_damage(t, bayonet_melee, melee_hit_ray, melee_entry, hand_id, hit_unit, col_ray, dmg_div, no_shaker, no_sound, no_effect, charge_lerp)
 	melee_entry = melee_entry or managers.blackmarket:equipped_melee_weapon()
 	local instant_hit = tweak_data.blackmarket.melee_weapons[melee_entry].instant
 	local melee_damage_delay = tweak_data.blackmarket.melee_weapons[melee_entry].melee_damage_delay or 0
-	local charge_lerp_value = instant_hit and 0 or self:_get_melee_charge_lerp_value(t, melee_damage_delay)
+	local charge_bonus_start = tweak_data.blackmarket.melee_weapons[melee_entry].charge_bonus_start or nil
+	local speed = tweak_data.blackmarket.melee_weapons[melee_entry].stats.speed_mult or 1
+	local anim_speed = tweak_data.blackmarket.melee_weapons[melee_entry].anim_speed_mult or 1
+	speed = speed * anim_speed
+	speed = speed * managers.player:upgrade_value("player", "melee_swing_multiplier", 1)
+	melee_damage_delay = melee_damage_delay / speed
+	local charge_lerp_value = charge_lerp or instant_hit and 0 or self:_get_melee_charge_lerp_value(t, melee_damage_delay)
+
 	local sphere_cast_radius = 20
 	local col_ray = col_ray or nil
 	local make_effect = bayonet_melee or tweak_data.blackmarket.melee_weapons[melee_entry].make_effect or nil
@@ -3911,7 +4052,7 @@ function PlayerStandard:_do_melee_damage(t, bayonet_melee, melee_hit_ray, melee_
 				self._unit:sound():play("fairbairn_hit_body", nil, false)
 			elseif alt_sound and alt_sound[1] then
 				self._unit:sound():play(alt_sound[1], nil, false)
-			elseif special_weapon == "taser" and charge_lerp_value ~= 1 then --Feedback for non-charged attacks with shock weapons. Might not do anything, need to verify.
+			elseif special_weapon == "taser" and charge_lerp_value < 0.99 then --Feedback for non-charged attacks with shock weapons. Might not do anything, need to verify.
 				self._unit:sound():play("melee_hit_gen", nil, false)
 			else
 				if not no_sound then
@@ -3936,7 +4077,7 @@ function PlayerStandard:_do_melee_damage(t, bayonet_melee, melee_hit_ray, melee_
 				self._unit:sound():play("knife_hit_gen", nil, false)
 			elseif alt_sound and alt_sound[2] then
 				self._unit:sound():play(alt_sound[2], nil, false)
-			elseif special_weapon == "taser" and charge_lerp_value ~= 1 then --Feedback for non-charged attacks with shock weapons. Might not do anything, need to verify.
+			elseif special_weapon == "taser" and charge_lerp_value < 0.99 then --Feedback for non-charged attacks with shock weapons. Might not do anything, need to verify.
 				self._unit:sound():play("melee_hit_gen", nil, false)
 			else
 				if not no_sound then
@@ -4214,7 +4355,7 @@ function PlayerStandard:_do_melee_damage(t, bayonet_melee, melee_hit_ray, melee_
 			end
 			]]
 
-			return defense_data
+			return defense_data or col_ray
 		else
 			self:_perform_sync_melee_damage(hit_unit, col_ray, damage, damage_effect)
 		end
@@ -4821,7 +4962,11 @@ function PlayerStandard:_find_pickups(t)
 
 		if pickup:pickup() and pickup:pickup():pickup(self._unit) then
 			if may_find_grenade then
-				managers.player:regain_throwable_from_ammo() --Replace vanilla coroutine
+				if managers.player:got_max_grenades() and managers.player._throwable_chance then
+					managers.player._throwable_chance.amount = 0
+				else
+					managers.player:regain_throwable_from_ammo() --Replace vanilla coroutine
+				end
 			end
 
 			for id, weapon in pairs(self._unit:inventory():available_selections()) do
@@ -5411,7 +5556,7 @@ if AdvMov and AdvMov.settings then --Everything here was originally from Solo Qu
 					local dash_base_t = dash_stats.grace_t
 					if ch_dmg and self._last_t + dash_base_t > ((self._last_dash_iframes or 0) + dash_base_t) then
 						local effect_alpha = (restoration.Options:GetValue("AdVMovResOpt/AdvMovSlideScreenEffectAlpha") or 0.5)
-						managers.hud:activate_effect_screen(dash_base_t, Vector3(0.625, 0.625, 1.0) * effect_alpha, true)
+						managers.hud:activate_effect_screen(dash_base_t, Vector3(0.625, 0.625, 1.0) * effect_alpha, "AdvMov_dodge", "topbottomrim")
 						ch_dmg._last_received_dmg = math.huge
 						ch_dmg._next_allowed_dmg_t = Application:digest_value(self._last_t + dash_base_t, true)
 					end
@@ -5474,7 +5619,7 @@ if AdvMov and AdvMov.settings then --Everything here was originally from Solo Qu
 					local dash_t_cap = (full_dodge and dash_stats.grace_cap_dodge) or dash_stats.grace_cap
 					local iframes = (math.min( dash_t_cap, (dash_base_t + dodge_t)) * ((dash_fatigue and dash_stats.fatigue_mult) or 1))
 					local effect_alpha = (restoration.Options:GetValue("AdVMovResOpt/AdvMovDashScreenEffectAlpha") or 0.8) * ((dash_fatigue and 0.5) or 1)
-					managers.hud:activate_effect_screen(iframes, ((last_dash and Vector3(1.0, 1.0, 0.625)) or (dash_fatigue and Vector3(1.0, 0.625, 0.625)) or Vector3(0.625, 0.625, 1.0)) * effect_alpha, true)
+					managers.hud:activate_effect_screen(iframes, ((last_dash and Vector3(1.0, 1.0, 0.625)) or (dash_fatigue and Vector3(1.0, 0.625, 0.625)) or Vector3(0.625, 0.625, 1.0)) * effect_alpha, "AdvMov_dodge", "topbottomrim")
 					ch_dmg._last_received_dmg = math.huge
 					ch_dmg._next_allowed_dmg_t = Application:digest_value(self._last_t + iframes, true)
 					if dash_fatigue then

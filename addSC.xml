@@ -96,7 +96,9 @@
 	<texture			path="guis/textures/pd2/skilltree/info_doctor_bag_health_regen" force="false" load="false"/>
 	<texture			path="guis/textures/pd2/skilltree/info_survive_one_hit" force="false" load="false"/> <!-- Yakuza Oni Irezumi -->
 	<texture			path="guis/textures/pd2/skilltree/info_sneaky_bastard" force="false" load="false"/>
-
+	<texture			path="guis/textures/pd2/skilltree/info_cohesion" force="false" load="false"/>
+	<texture			path="guis/textures/pd2/skilltree/info_heisters_in_aura" force="false" load="false"/>
+	<texture			path="guis/textures/pd2/skilltree/info_dig_in_your_heels" force="false" load="false"/>
 
 	<model				path="units/payday2/props/str_prop_alley_trash_container/str_prop_alley_trash_container" force="true"/>
 	<texture			path="units/payday2/props/str_prop_alley_trash_container/str_prop_alley_trash_container_df" force="true"/>
@@ -2073,6 +2075,13 @@
 	<model				path="units/payday2/weapons/wpn_npc_child_grenade/wpn_npc_child_grenade"/>
 	<object				path="units/payday2/weapons/wpn_npc_child_grenade/wpn_npc_child_grenade"/>
 	<unit				path="units/payday2/weapons/wpn_npc_child_grenade/wpn_npc_child_grenade" load="true"/>
+
+	<!-- Grenadier Grenades -->
+	<unit path="units/weapons/gas_grenade/gas_grenade_husk" load="true"/>
+	<unit path="units/weapons/gas_grenade/gas_grenade" load="true"/>
+	<!-- Trails for Tear Gas Grenades -->
+	<effect				path="effects/payday2/particles/weapons/tear_gas_trail_red"/>
+	<effect				path="effects/payday2/particles/weapons/tear_gas_trail_green"/>
 	
     <!--not shit secret masks-->
 	<object				path="units/pd2_dlc_sms/masks/sms_01/msk_sms_01" force="true"/>

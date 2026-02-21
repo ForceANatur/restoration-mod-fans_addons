@@ -8,7 +8,7 @@ function PlayerDamage:init(unit)
 	self._lives_init = managers.modifiers:modify_value("PlayerDamage:GetMaximumLives", self._lives_init)
 	self._unit = unit
 	self._max_health_reduction = managers.player:upgrade_value("player", "max_health_reduction", 1)
-	self._healing_reduction = managers.player:upgrade_value("player", "healing_reduction", 1)
+	self._healing_reduction = managers.player:upgrade_value("player", "healing_reduction", 1) -- Hijacked to also use as healing increase,from Biker
 	self._revives = Application:digest_value(0, true)
 	self._uppers_elapsed = 0
 
@@ -18,6 +18,7 @@ function PlayerDamage:init(unit)
 	self._next_temp_health_decay_t = 0 --When to hit hitman temp health with decay next.
 	self._leech_stored_armor = 0 -- Used to store the Leech's armour while they are using the ampoule.
 	self:replenish() --Sets a number of things, mostly resetting armor, health, and ui stuff. Vanilla code.
+	self._biker_damage_taken = 0 -- Keeps tracks of amount of damage taken for Biker's Cohesion loss.
 
 	local player_manager = managers.player
 	self._bleed_out_health = Application:digest_value(tweak_data.player.damage.BLEED_OUT_HEALTH_INIT * player_manager:upgrade_value("player", "bleed_out_health_multiplier", 1), true)
@@ -67,6 +68,8 @@ function PlayerDamage:init(unit)
 	end
 
 	self._damage_to_hot_stack = {}
+	self._hot_decay_t = nil
+	self._hot_next_heal_t = nil
 	self._armor_stored_health = 0
 	self._can_take_dmg_timer = 0
 	self._regen_on_the_side_timer = 0
@@ -181,6 +184,13 @@ function PlayerDamage:init(unit)
 		self._listener_holder:add("on_revive", {"on_revive"}, callback(self, self, "_on_revive_event"))
 	else
 		self:_init_standard_listeners()
+	end
+
+	-- Biker: Back To It, revival with stacks
+	if managers.player:has_category_upgrade("player", "biker_stacks_on_revive") then
+		self._listener_holder:add("_biker_revive_with_stacks", {
+			"on_revive"
+		}, callback(self, self, "_on_biker_revive_with_stacks"))
 	end
 
 	if player_manager:has_category_upgrade("player", "revive_damage_reduction") and player_manager:has_category_upgrade("player", "revive_damage_reduction") then
@@ -402,7 +412,7 @@ function PlayerDamage:_apply_damage(attack_data, damage_info, variant, t)
 		attack_data.damage = attack_data.damage - health_subtracted
 		if not _G.IS_VR then --Add screen effect to signify armor piercing attack.
 			local effect_alpha = (restoration.Options:GetValue("HUD/Extra/ScreenEffectAlpha") or 1)
-			managers.hud:activate_effect_screen(0.75, Vector3(1, 0.2, 0) * effect_alpha)
+			managers.hud:activate_effect_screen(0.75, Vector3(1, 0.2, 0) * effect_alpha, "armor_piercing")
 		end
 	else
 		attack_data.damage = attack_data.damage * armor_reduction_multiplier
@@ -597,7 +607,7 @@ function PlayerDamage:damage_bullet(attack_data)
 					}
 					self._unit:camera():play_shaker(vars[math.random(#vars)], 0.02)
 					self._unit:movement():current_state()._spread_stun_t = 0.5
-					managers.hud:activate_effect_screen(0.75, Vector3(0.6, 0.3, 0.1) * effect_alpha)
+					managers.hud:activate_effect_screen(0.75, Vector3(0.6, 0.3, 0.1) * effect_alpha, "dt_suppress")
 				end
 
 				--Shotgunner
@@ -611,7 +621,6 @@ function PlayerDamage:damage_bullet(attack_data)
 					local conc_mul = (conc_tweak and conc_tweak.mul or tweak_data.character.concussion_multiplier or 1) * flashbang_mul
 					local sound_tweak = conc_tweak and conc_tweak.sound_duration
 					local sound_eff_mul = (sound_tweak and sound_tweak.mul or 0.3) * flashbang_mul
-					log(tostring( conc_mul ))
 					if distance < range then
 						local vars = {
 							"melee_hit",
@@ -620,7 +629,7 @@ function PlayerDamage:damage_bullet(attack_data)
 						self._unit:camera():play_shaker(vars[math.random(#vars)], 0.25, 0.5)
 						local d_scope_t = 1.5 * flashbang_mul
 						self._unit:movement():current_state()._d_scope_t = d_scope_t
-						managers.hud:activate_effect_screen(d_scope_t, Vector3(0.35, 0.25, 0.1) * effect_alpha)
+						managers.hud:activate_effect_screen(d_scope_t, Vector3(0.35, 0.25, 0.1) * effect_alpha, "dt_sgunner")
 						managers.environment_controller:set_concussion_grenade(self._unit:movement():m_head_pos(), true, 0, 0, conc_mul, true, true)
 						self:on_concussion(sound_eff_mul, false, sound_tweak)
 					end
@@ -637,6 +646,10 @@ function PlayerDamage:damage_bullet(attack_data)
 			else
 				pm:unregister_message(Message.OnPlayerDodge, "dodge_ricochet_bullets")
 			end
+
+			--if 0 < self:get_real_armor() then
+				self:_check_chico_heal(attack_data, true)
+			--end
 
 			self._unit:sound():play("Play_star_hit")
 			if attack_data.damage > 0 then
@@ -1213,7 +1226,7 @@ end)
 
 --Include deflection in calcs. Doesn't work in cases where armor is pierced, but I can't be assed to fix it.
 --Also ignores temp hp in max health calcs. Not important for now, but may be in the future.
-function PlayerDamage:_check_chico_heal(attack_data)
+function PlayerDamage:_check_chico_heal(attack_data, dodge_clamp)
 	if managers.player:has_activate_temporary_upgrade("temporary", "chico_injector") then
 		local dmg_to_hp_ratio = managers.player:temporary_upgrade_value("temporary", "chico_injector", 0)
 
@@ -1225,7 +1238,8 @@ function PlayerDamage:_check_chico_heal(attack_data)
 			end
 		end
 
-		local health_received = attack_data.damage * dmg_to_hp_ratio
+		local max_health_conversion = dodge_clamp and math.min(attack_data.damage, self:_max_armor()) or attack_data.damage
+		local health_received = max_health_conversion * dmg_to_hp_ratio
 
 		if self._armor_broken then
 			local deflection = math.max(self._deflection - (managers.player:upgrade_value("player", "frenzy_deflection", 0) * (1 - self:health_ratio())), self._max_deflection)
@@ -1363,6 +1377,10 @@ function PlayerDamage:_calc_health_damage_no_deflection(attack_data)
 	health_subtracted = self:get_real_health()
 	if managers.player:has_category_upgrade("player", "dodge_stacking_heal") and attack_data.damage > 0.0 then --End Rogue health regen.
 		self._damage_to_hot_stack = {}
+		self._hot_decay_t = nil
+		self._hot_next_heal_t = nil
+	    managers.hud:set_stacks(self._hot_type, #self._damage_to_hot_stack)
+	    managers.hud:start_buff(self._hot_type, 0)
 	end
 
 	local attacker_unit = attack_data and attack_data.attacker_unit
@@ -1422,6 +1440,8 @@ function PlayerDamage:_calc_health_damage_no_deflection(attack_data)
 	end
 
 	health_subtracted = health_subtracted - self:get_real_health()
+
+	self:biker_lose_stacks_on_damage(health_subtracted, tweak_data.upgrades.biker_damage_weighs_for_stack_loss.health or 2)
 	
 	if not self_damage and managers.player:has_activate_temporary_upgrade("temporary", "copr_ability") and health_subtracted > 0 then
 		local teammate_heal_level = managers.player:upgrade_level_nil("player", "copr_teammate_heal")
@@ -1575,6 +1595,13 @@ function PlayerDamage:_update_regenerate_timer(t, dt)
 		regenerate_timer_tick = regenerate_timer_tick * tweak_data.upgrades.smoke_screen_armor_regen[1]
 	end
 
+	-- Biker's armour regen bonus.
+	if managers.player:has_team_category_upgrade("player", "biker_armour_regen_bonus") then
+		local cohesion_steps = managers.player:get_cohesion_stacks_as_treated()
+		local extra_regen_timer_tick = 1 + managers.player:team_upgrade_value("player", "biker_armour_regen_bonus", 0) * cohesion_steps
+		regenerate_timer_tick = regenerate_timer_tick * extra_regen_timer_tick
+	end
+
 	self._regenerate_timer = math.max(self._regenerate_timer - regenerate_timer_tick, 0)
 
 	if self._regenerate_timer <= 0 then
@@ -1677,6 +1704,13 @@ Hooks:PostHook(PlayerDamage, "update" , "ResDamageInfoUpdate" , function(self, u
 	local healing_reduction_ratio = tweak_data.upgrades.frenzy_healing_reduction_ratio or 1
 	self._healing_reduction = 1 * 1 - ( (pm:upgrade_value("player", "frenzy_deflection", 0) * healing_reduction_ratio) * (self:health_ratio()) )
 
+	-- Biker: increased healing potency from Stick Together.
+    if managers.player:has_team_category_upgrade("player", "biker_crew_heal_potency") then
+		local potency_amount = managers.player:get_cohesion_stacks_as_treated()
+
+		self._healing_reduction = self._healing_reduction + managers.player:team_upgrade_value("player", "biker_crew_heal_potency", 0) * potency_amount
+	end
+
 	--Add passive dodge increases. Start with bot dodge boost.
 	local passive_dodge = pm:upgrade_value("team", "crew_add_dodge", 0)
 
@@ -1727,7 +1761,7 @@ Hooks:PostHook(PlayerDamage, "update" , "ResDamageInfoUpdate" , function(self, u
 		if self._leech_max_hp_cache ~= max_hp then
 			self._leech_max_hp_cache = max_hp
 			local static_damage_ratio = pm:upgrade_value("player", "copr_static_damage_ratio", 0) / math.max(self._leech_max_hp_cache, 0.01)
-			managers.hud:update_leech_notches(static_damage_ratio)
+			managers.hud:set_copr_indicator(true, static_damage_ratio)
 		end
 	end
 
@@ -1746,6 +1780,38 @@ Hooks:PostHook(PlayerDamage, "update" , "ResDamageInfoUpdate" , function(self, u
 			end
 		end
 end)
+
+--Rewrote how stacks are added
+function PlayerDamage:add_damage_to_hot()
+    if self:need_revive() or self:dead() or self._check_berserker_done then
+        return
+    end
+
+    local t = TimerManager:game():time()
+    local tick_time = self._doh_data.tick_time or 1
+    local total_ticks = (self._doh_data.total_ticks or 1) + managers.player:upgrade_value("player", "damage_to_hot_extra_ticks", 0)
+    local stack_duration = total_ticks * tick_time
+
+    if self:got_max_doh_stacks() then
+        self._hot_decay_t = t + stack_duration
+
+        if #self._damage_to_hot_stack > 0 then
+            self._damage_to_hot_stack[1] = stack_duration
+        end
+	    managers.hud:set_stacks(self._hot_type, #self._damage_to_hot_stack)
+	    managers.hud:start_buff(self._hot_type, stack_duration)
+        return
+    end
+
+    table.insert(self._damage_to_hot_stack, stack_duration)
+    self._hot_decay_t = t + stack_duration
+    if not self._hot_next_heal_t then
+        self._hot_next_heal_t = t + 0.01
+    end
+
+    managers.hud:set_stacks(self._hot_type, #self._damage_to_hot_stack)
+    managers.hud:start_buff(self._hot_type, stack_duration)
+end
 
 --Deals with resmod's health regen changes.
 function PlayerDamage:_upd_health_regen(t, dt)
@@ -1767,32 +1833,45 @@ function PlayerDamage:_upd_health_regen(t, dt)
 		end
 	end
 
-	if #self._damage_to_hot_stack > 0 then
-		repeat
-			local next_doh = self._damage_to_hot_stack[1]
-			local done = not next_doh or TimerManager:game():time() < next_doh.next_tick
+	local stack_count = #self._damage_to_hot_stack
+	local tick_time = self._doh_data.tick_time or 1
+	if stack_count > 0 then
+	    if self._hot_next_heal_t and t >= self._hot_next_heal_t then
+	        local regen_rate = self._hot_amount * stack_count
+	        self:restore_health(regen_rate, true)
+	        self._hot_next_heal_t = t + tick_time
+	    end
 
-			if not done then
-				local regen_rate = self._hot_amount
+	    if self._hot_decay_t and t >= self._hot_decay_t then
+	        table.remove(self._damage_to_hot_stack, 1)
 
-				self:restore_health(regen_rate, true)
-
-				next_doh.ticks_left = next_doh.ticks_left - 1
-
-				if next_doh.ticks_left == 0 then
-					table.remove(self._damage_to_hot_stack, 1)
-				else
-					next_doh.next_tick = next_doh.next_tick + (self._doh_data.tick_time or 1)
-				end
-
-				table.sort(self._damage_to_hot_stack, function (x, y)
-					return x.next_tick < y.next_tick
-				end)
-			end
-		until done
+	        if #self._damage_to_hot_stack > 0 then
+	            local total_ticks = (self._doh_data.total_ticks or 1) + managers.player:upgrade_value("player", "damage_to_hot_extra_ticks", 0)
+	            local next_duration = total_ticks * tick_time
+	            self._hot_decay_t = t + next_duration
+	            managers.hud:start_buff(self._hot_type, next_duration)
+	        else
+	            self._hot_decay_t = nil
+	            self._hot_next_heal_t = nil
+	        end
+	        managers.hud:set_stacks(self._hot_type, #self._damage_to_hot_stack)
+	    end
 	end
 
 	managers.hud:set_stacks(self._hot_type, #self._damage_to_hot_stack)
+
+	-- Biker: Dig In Your Heels regen.
+	if managers.player:has_team_category_upgrade("player", "biker_regen_health") then
+		local biker_diyh_timer = (managers.player:team_upgrade_value("player", "biker_regen_health").seconds or 5)
+		self._biker_regen_t = self._biker_regen_t or t + biker_diyh_timer
+		if self._biker_regen_t <= t then
+			self._biker_regen_t = t + biker_diyh_timer
+			local cohesion_steps = managers.player:get_cohesion_stacks_as_treated()
+			local heal = (managers.player:team_upgrade_value("player", "biker_regen_health").amount or 0) * cohesion_steps
+			self:restore_health(heal, true, not managers.player:has_category_upgrade("player","biker_causer_of_regen"))
+			managers.hud:start_cooldown("dig_in_your_heels", biker_diyh_timer)
+		end
+	end
 
 	--OFFYERROCKER'S MERC PERK DECK
 	--[ [
@@ -1930,6 +2009,10 @@ function PlayerDamage:_check_bleed_out(can_activate_berserker, ignore_movement_s
 
 		self._hurt_value = 0.2
 		self._damage_to_hot_stack = {}
+		self._hot_decay_t = nil
+		self._hot_next_heal_t = nil
+	    managers.hud:set_stacks(self._hot_type, #self._damage_to_hot_stack)
+	    managers.hud:start_buff(self._hot_type, 0)
 
 		managers.environment_controller:set_downed_value(0)
 		SoundDevice:set_rtpc("downed_state_progression", 0)
@@ -1986,6 +2069,7 @@ function PlayerDamage:_calc_armor_damage(attack_data)
 		health_subtracted = self:get_real_armor()
 
 		self:change_armor(-attack_data.damage)
+		self:biker_lose_stacks_on_damage(attack_data.damage, tweak_data.upgrades.biker_damage_weighs_for_stack_loss.armour or 1)
 
 		health_subtracted = health_subtracted - self:get_real_armor()
 
@@ -2509,3 +2593,46 @@ Hooks:OverrideFunction(PlayerDamage, "on_copr_heal_received", function(self, hea
 		end
 	end
 end)
+
+function PlayerDamage:_on_biker_revive_with_stacks()
+	local stacks = managers.player:upgrade_value("player", "biker_stacks_on_revive", 0)
+	if stacks and stacks > 0 then
+		managers.player:update_cohesion_stacks_for_peers({
+			amount = stacks,
+			to_tend = nil
+		}, {}, false)
+	end
+end
+
+--- Causes the player to potentially lose Cohesion stacks from damage taken.
+--- @param damage_taken number The amount of damage taken.
+--- @param weight number A number to multiply the damage_taken number with. Used typically to distinguish between health and armour damage, with health damage counting as double. See biker_damage_weighs_for_stack_loss for what this means.
+function PlayerDamage:biker_lose_stacks_on_damage(damage_taken, weight)
+	if damage_taken <= 0 or not managers.player:has_team_category_upgrade("player", "biker_damage_to_lose") then
+		return
+	end
+
+	self._biker_damage_taken = self._biker_damage_taken or 0
+	local damage_bound = managers.player:team_upgrade_value("player", "biker_damage_to_lose", 10000)
+	local cohesion_loss = 0
+
+	self._biker_damage_taken = self._biker_damage_taken + damage_taken * weight * 10
+
+	while self._biker_damage_taken > damage_bound do
+		cohesion_loss = cohesion_loss + 1
+		self._biker_damage_taken = self._biker_damage_taken - damage_bound
+	end
+
+	if cohesion_loss > 0 then
+		local cohesion = managers.player:get_synced_cohesion_stacks(managers.network:session():local_peer():id())
+
+		if not cohesion or not cohesion.amount then
+			return
+		end
+
+		managers.player:update_cohesion_stacks_for_peers({
+			amount = math.max(0,(cohesion.amount or cohesion_loss) - cohesion_loss),
+			to_tend = nil
+		}, {}, false)
+	end
+end

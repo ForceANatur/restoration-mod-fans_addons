@@ -126,6 +126,12 @@ Hooks:Add("LocalizationManagerPostInit", "ResMod_english_Localization_Init", fun
 				["RestorationModInfo_sociopathDescID"] = "Enables or disables tracking of this perk deck.",
 				["RestorationModInfo_survive_one_hitTitleID"] = "Oni Irezumi (Yakuza)",
 				["RestorationModInfo_survive_one_hitDescID"] = "Enables or disables tracking the active state this specific perk.",
+				["RestorationModInfo_cohesionTitleID"] = "Cohesion (Biker)",
+				["RestorationModInfo_cohesionDescID"] = "Enables or disables tracking the Cohesion stacks from this perk deck.\nNumber shows every 8 stacks of Cohesion.",
+				["RestorationModInfo_heisters_in_auraTitleID"] = "Heisters in Proximity (Biker)",
+				["RestorationModInfo_heisters_in_auraDescID"] = "Enables or disables tracking how many players are nearby for this perk deck.",
+				["RestorationModInfo_dig_in_your_heelsTitleID"] = "Dig In Your Heels! (Biker)",
+				["RestorationModInfo_dig_in_your_heelsDescID"] = "Enables or disables tracking of this specific perk.",
 
 				["RestorationModother_buffsTitleID"] = "===Other===",
 				["RestorationModother_buffsDescID"] = "Buff trackers for aspects that don't have skills or perks directly linked to them.",
@@ -149,6 +155,16 @@ Hooks:Add("LocalizationManagerPostInit", "ResMod_english_Localization_Init", fun
 				["RestorationModNoSwapOnReviveDescID"] = "Disables the forced weapon swap upon being revived when going down with a primary without Undying Aced.",
 				["RestorationModProjectileMagnetismTitleID"] = "Projectile Magnetism",
 				["RestorationModProjectileMagnetismDescID"] = "Toggles the magnetism/tracking effect of non-explosive projectiles.",
+				["RestorationModMeleeChargeFlashTitleID"] = "Melee Charge Flash Effect",
+				["RestorationModMeleeChargeFlashDescID"] = "Enables a brief flash along the top and bottom of your screen when your melee weapon is fully charged.",
+				["RestorationModMeleeChargeATitleID"] = "Effect Strength",
+				["RestorationModMeleeChargeADescID"] = "",
+				["RestorationModMeleeChargeRTitleID"] = "Red",
+				["RestorationModMeleeChargeRDescID"] = "",
+				["RestorationModMeleeChargeGTitleID"] = "Green",
+				["RestorationModMeleeChargeGDescID"] = "",
+				["RestorationModMeleeChargeBTitleID"] = "Blue",
+				["RestorationModMeleeChargeBDescID"] = "",
 
 			["RestorationModWEAPONINPUTSOptionsButtonTitleID"] = "Input Options",
 			["RestorationModWEAPONINPUTSOptionsButtonDescID"] = "Options for weapon inputs.",
@@ -172,8 +188,8 @@ Hooks:Add("LocalizationManagerPostInit", "ResMod_english_Localization_Init", fun
 				["RestorationModSeparateBowADSDescID"] = "Disables forced aiming with bows when drawing an arrow. While enabled, your reload key is used to let down your drawn arrow.",
 				["RestorationModSprintCancelTitleID"] = "Evasion Aced Sprint Cancels Reload",
 				["RestorationModSprintCancelDescID"] = "Toggle whether or not if *STARTING* a sprint will cancel any on-going reload when you have aced the \"Evasion\" skill. Reloading while actively sprinting is unaffected.",
-				["RestorationModManualReloadsTitleID"] = "Manual Reloads",
-				["RestorationModManualReloadsDescID"] = "Disables automatic reloads when your magazine is empty. NOTE: Setting is ignored if the \"Reload Marathon\" mutator is active.",
+				["RestorationModManualReloadsTitleID"] = AFR and "Manual Reloads (MOD CONFLICT)" or "Manual Reloads",
+				["RestorationModManualReloadsDescID"] =  AFR and "\"Auto Fire & Reload\" is installed and renders this option non-functional." or "Disables automatic reloads when you fire the last shot in your magazine. NOTE: Setting is ignored if the \"Reload Marathon\" mutator is active.",
 
 			["RestorationModWEAPONSOUNDSOptionsButtonTitleID"] = "Sound Options",
 			["RestorationModWEAPONSOUNDSOptionsButtonDescID"] = "Options for weapon sounds.",
@@ -1432,7 +1448,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Eng", function(loc)
 		["bm_wp_upg_a_slug_spam_desc"] = "Fires a lead slug that #{skill_color}#deals 75% of its damage through body armor, pierces enemies, shields within max damage range and thin walls.##",
 		["bm_wp_upg_a_slug_desc"] = "Fires a lead slug that #{skill_color}#pierces body armor, multiple enemies, shields and thin walls.##",
 		["bm_wp_upg_a_slug_titan_desc"] = "Fires a lead slug that #{skill_color}#pierces body armor, multiple enemies, shields, titan-shields and thin walls.##",
-		["bm_wp_upg_a_explosive_desc_sc"] = "Fires an #{heat_warm_color}#explosive## slug with a blast radius of #{skill_color}#2## meters.\nSlugs have #{skill_color}#no falloff## but #{risk}#damage is split between the slug and explosion.##",
+		["bm_wp_upg_a_explosive_desc_sc"] = "Fires an #{heat_warm_color}#explosive## slug with a blast radius of #{skill_color}#2## meters.\n#{skill_color}#The explosion does its full damage at all ranges.##\nDirect hits deal an additional #{skill_color}#50%## more damage that counts as bullet damage.",
 		["bm_wp_upg_a_custom_desc"] = "Fires #{important_1}#6## heavier pellets that deal #{skill_color}#increased damage to the body;## #{risk}#headshots only receive a minor boost in damage.##",
 		["bm_wp_upg_a_custom_4_desc"] = "Fires #{important_1}#4## heavier pellets that deal #{skill_color}#increased damage to the body;## #{risk}#headshots only receive a minor boost in damage.##",
 		--["bm_wp_upg_a_dragons_breath_auto_desc_sc"] = "Fires magnesium shards that have up to a #{skill_color}#15%## chance to #{heat_warm_color}#set enemies on fire##, dealing #{heat_warm_color}#90## damage over #{skill_color}#2## seconds.\n\n#{risk}#Chance is reduced over range and can only stun enemies before damage falloff starts.##", --NOT IN USE
@@ -2425,14 +2441,16 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 		["hud_hint_bipod_air"] = "Cannot mount while airborne",
 		["hud_hint_bipod_lean"] = "Cannot mount while leaning",
 		["hud_hint_bipod_midstance"] = "Cannot mount while changing stances",
+		["hud_hint_fatty"] = "dude you got too much weight on you drop a bag or something",
+		--["hud_hint_fatty"] = "you cant ads because youre carrying too much",
 
-		["hud_interact_autumn_disable"] = "Disabled by Captain Autumn!",
+		["hud_interact_autumn_disable"] = "Captain Autumn says: 'FUCK YOU HAHAHAHAHA'",
 
 		["hud_assault_restored_down"] = "Assault Survived - Restoring 1 Down",
 		["hud_assault_remaining_single"] = "1 Assault Remaining Until Down Restore",
 		["hud_assault_remaining_plural"] = " Assaults Remaining Until Down Restore",
 
-		["menu_es_rep_upgrade"] = "",	--???--
+		["menu_es_rep_upgrade"] = "",	--???-- honestly i dont have a clue either - FaN
 
 		["bm_w_r0991"] = "AR-15 Varmint Pistol",
 
@@ -2464,44 +2482,45 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 		["bm_wp_upg_i_autofire_desc"] = "Locks your weapon to #{risk}#full-auto##.",
 
 		--Throwables--
-		["bm_dynamite_desc"] = "Damage: #{risk}#$damage## \nRadius: #{skill_color}#4m## \nFuse: #{skill_color}#3s##\nAmmo Box Pickup Chance: #{skill_color}#$pickup## \n- Reduced bounce and roll compared to other thrown explosives\n\nDesigned to effectively blast through rock. Even more effective at blasting through people.",
+		["bm_dynamite_desc"] = "Damage: #{risk}#$damage## \nRadius: #{skill_color}#4m## \nFuse: #{skill_color}#3s##\nAmmo Box Return Rate: #{skill_color}#$pickup_1 to $pickup_2## \n- Reduced bounce and roll compared to other thrown explosives\n\nDesigned to effectively blast through rock. Even more effective at blasting through people.",
 		--Frag
-		["bm_grenade_frag_desc"] = "Damage: #{risk}#$damage## \nRadius: #{skill_color}#5m## \nFuse: #{skill_color}#3s##\nAmmo Box Pickup Chance: #{skill_color}#$pickup## \n\nThe classic explosive hand grenade. Is there any more to say?",
+		["bm_grenade_frag_desc"] = "Damage: #{risk}#$damage## \nRadius: #{skill_color}#5m## \nFuse: #{skill_color}#3s##\nAmmo Box Return Rate: #{skill_color}#$pickup_1 to $pickup_2## \n\nThe classic explosive hand grenade. Is there any more to say?",
 		--Community Frag
-		["bm_grenade_frag_com_desc"] = "Damage: #{risk}#$damage## \nRadius: #{skill_color}#5m## \nFuse: #{skill_color}#3s##\nAmmo Box Pickup Chance: #{skill_color}#$pickup## \n\nA sleek new look to the classic hand grenade, sure to provide that OVERKILL touch to each blast.",
+		["bm_grenade_frag_com_desc"] = "Damage: #{risk}#$damage## \nRadius: #{skill_color}#5m## \nFuse: #{skill_color}#3s##\nAmmo Box Return Rate: #{skill_color}#$pickup_1 to $pickup_2## \n\nA sleek new look to the classic hand grenade, sure to provide that OVERKILL touch to each blast.",
 		--Community Frag 2
-		["bm_grenade_dada_com_desc"] = "Damage: #{risk}#$damage## \nRadius: #{skill_color}#5m## \nFuse: #{skill_color}#3s##\nAmmo Box Pickup Chance: #{skill_color}#$pickup## \n\nThe doll's outer layers hides its explosive inner workings. A tribute to the Motherland.",
+		["bm_grenade_dada_com_desc"] = "Damage: #{risk}#$damage## \nRadius: #{skill_color}#5m## \nFuse: #{skill_color}#3s##\nAmmo Box Return Rate: #{skill_color}#$pickup_1 to $pickup_2## \n\nThe doll's outer layers hides its explosive inner workings. A tribute to the Motherland.",
 		--Sticky
 		["bm_grenade_sticky_grenade"] = "Semtex Grenade",
-		["bm_grenade_sticky_grenade_desc"] = "Damage: #{risk}#$damage## \nRadius: #{skill_color}#4m## \nFuse: #{skill_color}#2.5s##\nAmmo Box Pickup Chance: #{skill_color}#$pickup## \n\nThrowable explosive compound that will stick to most surfaces, including people!",
+		["bm_grenade_sticky_grenade_desc"] = "Damage: #{risk}#$damage## \nRadius: #{skill_color}#4m## \nFuse: #{skill_color}#2.5s##\nAmmo Box Return Rate: #{skill_color}#$pickup_1 to $pickup_2## \n\nThrowable explosive compound that will stick to most surfaces, including people!",
 		--Snowball
 		["bm_grenade_xmas_snowball"] = "Snowball", --there is a fucking space at the end of the original string
 		["bm_grenade_xmas_snowball_desc"] = "Damage (Impact): #{skill_color}#90##\nDamage (Blast): #{risk}#180## \nRadius: #{skill_color}#1m## \nFuse: #{skill_color}#Impact## \nRegen Rate: #{skill_color}#1 snowball every $regen##\nAmmo Box Regen Bonus: #{skill_color}#$regen_t##  \n\nDunk them in water, toss them in the freezer and you got yourself a deadly throwing weapon. Simple.",
 		--Zapper
-		["bm_grenade_electric_desc"] = "Damage: #{skill_color}#400## \nRadius: #{skill_color}#5m## \nFuse: #{skill_color}#3s##\nAmmo Box Pickup Chance: #{skill_color}#$pickup## \n- #{skill_color}#Electrocutes most enemies## \n\nShrapnel is all well and good but some things need to be fried, and this little beauty is a rather practical beast for dishing out some damage with high voltage.",
+		["bm_grenade_electric_desc"] = "Damage: #{skill_color}#400## \nRadius: #{skill_color}#5m## \nFuse: #{skill_color}#3s##\nAmmo Box Return Rate: #{skill_color}#$pickup_1 to $pickup_2## \n- #{skill_color}#Electrocutes and stuns## most enemies\n- #{important_1}#Titan-Shields, Titan-Tasers, Titan-Bulldozers and Captains are immune to its stunning effects## \n\nShrapnel is all well and good but some things need to be fried, and this little beauty is a rather practical beast for dishing out some damage with high voltage.",
 		--Molotov
-		["bm_grenade_molotov_desc"] = "Damage (Blast): #{heat_warm_color}#30## \nDamage (Burn): #{heat_warm_color}#180 over 3s## \nRadius (Blast): #{skill_color}#3m## \nFuse: #{skill_color}#Impact## \nDamage (Fire Pool): #{heat_warm_color}#1200 over 10s## \nRadius (Fire Pool): #{skill_color}#3.75m##\nAmmo Box Pickup Chance: #{skill_color}#$pickup## \n- The fire pool has a #{skill_color}#50%## chance to #{heat_warm_color}#ignite## enemies, causing most to panic. \n \nA breakable bottle of flammable liquid with a burning rag. It is cheap, simple and highly effective. Burn it all down.",
-		["bm_grenade_molotov_desc_short"] = "Damage (Blast): #{heat_warm_color}#30## \nDamage (Burn): #{heat_warm_color}#180 over 3s## \nRadius (Blast): #{skill_color}#3m## \nFuse: #{skill_color}#Impact## \nDamage (Fire Pool): #{heat_warm_color}#1200 over 10s## \nRadius (Fire Pool): #{skill_color}#3.75m##\nAmmo Box Pickup Chance: #{skill_color}#$pickup## \n- The fire pool has a #{skill_color}#50%## chance to #{heat_warm_color}#ignite## enemies, causing most to panic.",
+		["bm_grenade_molotov_desc"] = "Damage (Blast): #{heat_warm_color}#30## \nDamage (Burn): #{heat_warm_color}#180 over 3s## \nRadius (Blast): #{skill_color}#3m## \nFuse: #{skill_color}#Impact## \nDamage (Fire Pool): #{heat_warm_color}#1200 over 10s## \nRadius (Fire Pool): #{skill_color}#3.75m##\nAmmo Box Return Rate: #{skill_color}#$pickup_1 to $pickup_2## \n- The fire pool has a #{skill_color}#50%## chance to #{heat_warm_color}#ignite## enemies, causing most to panic. \n \nA breakable bottle of flammable liquid with a burning rag. It is cheap, simple and highly effective. Burn it all down.",
+		["bm_grenade_molotov_desc_short"] = "Damage (Blast): #{heat_warm_color}#30## \nDamage (Burn): #{heat_warm_color}#180 over 3s## \nRadius (Blast): #{skill_color}#3m## \nFuse: #{skill_color}#Impact## \nDamage (Fire Pool): #{heat_warm_color}#1200 over 10s## \nRadius (Fire Pool): #{skill_color}#3.75m##\nAmmo Box Return Rate: #{skill_color}#$pickup_1 to $pickup_2## \n- The fire pool has a #{skill_color}#50%## chance to #{heat_warm_color}#ignite## enemies, causing most to panic.",
 		--Incendiary
-		["bm_grenade_fir_com_desc"] = "Damage (Blast): #{heat_warm_color}#120## \nRadius (Blast): #{skill_color}#4.5m## \nFuse: #{skill_color}#2.5s## \nDamage (Fire Pool): #{heat_warm_color}#1440 over 12s## \nRadius (Fire Pool): #{skill_color}#3.75m##\nAmmo Box Pickup Chance: #{skill_color}#$pickup## \n- The fire pool has a #{skill_color}#50%## chance to #{heat_warm_color}#ignite## enemies, causing most to panic.\n\nA self igniting phosphorus container. Perfect for bouncing off walls and around corners towards your enemies.",
+		["bm_grenade_fir_com_desc"] = "Damage (Blast): #{heat_warm_color}#120## \nRadius (Blast): #{skill_color}#4.5m## \nFuse: #{skill_color}#2.5s## \nDamage (Fire Pool): #{heat_warm_color}#1440 over 12s## \nRadius (Fire Pool): #{skill_color}#3.75m##\nAmmo Box Return Rate: #{skill_color}#$pickup_1 to $pickup_2## \n- The fire pool has a #{skill_color}#50%## chance to #{heat_warm_color}#ignite## enemies, causing most to panic.\n\nA self igniting phosphorus container. Perfect for bouncing off walls and around corners towards your enemies.",
+		["bm_grenade_fir_com_desc_short"] = "Damage (Blast): #{heat_warm_color}#120## \nRadius (Blast): #{skill_color}#4.5m## \nFuse: #{skill_color}#2.5s## \nDamage (Fire Pool): #{heat_warm_color}#1440 over 12s## \nRadius (Fire Pool): #{skill_color}#3.75m##\nAmmo Box Return Rate: #{skill_color}#$pickup_1 to $pickup_2## \n- The fire pool has a #{skill_color}#50%## chance to #{heat_warm_color}#ignite## enemies, causing most to panic.",
 		--Concussion
-		["bm_concussion_desc"] = "Radius: #{skill_color}#10m##\nAmmo Box Pickup Chance: #{skill_color}#$pickup## \n- Stuns enemies for up to #{skill_color}#4s##\n- Enemy accuracy reduced by #{skill_color}#50%## for #{skill_color}#7s## \n- #{important_1}#Titan-Shields, Titan-Bulldozers and Captains are immune to its stunning effects## \n\nThis stunning little beauty will take everyone's breath away, giving you that extra moment to kill them.",
+		["bm_concussion_desc"] = "Radius: #{skill_color}#10m##\nAmmo Box Return Rate: #{skill_color}#$pickup_1 to $pickup_2## \n- Stuns enemies for up to #{skill_color}#4s##\n- Enemy accuracy reduced by #{skill_color}#50%## for #{skill_color}#7s## \n- #{important_1}#Titan-Shields, Titan-Tasers, Titan-Bulldozers and Captains are immune to its stunning effects## \n\nThis stunning little beauty will take everyone's breath away, giving you that extra moment to kill them.",
 		--Gas
 		["bm_grenade_poison_gas_grenade"] = "Manticore-6 Grenade",
-		["bm_grenade_poison_gas_grenade_desc"] = "Damage: #{stats_positive}#300 over 10s## \nRadius: #{skill_color}#6m## \nDuration (Gas Cloud): #{skill_color}#12s## \nFuse: #{skill_color}#1s after remaining stationary## \nAmmo Box Pickup Chance: #{skill_color}#$pickup##\n- #{skill_color}#100%## chance to stun most enemies in range of the gas\n- #{important_1}#Shields, Bulldozers, Medics, Grenadiers and Captains are immune to its stunning effects##\n- #{important_1}#Enemies cannot be poisoned by the same gas cloud more than once## \n\nThis experimental bio-weapon will emit a sweeping cloud of toxic gas that targets specific genotypes; has been engineered to not harm you or your crew. Victims will experience violent coughing, nausea, vomiting and is lethal to all but the toughest of enemies.\n\nTruly a war-criminal's weapon of choice, peko.",
-		["bm_grenade_poison_gas_grenade_desc_short"] = "Damage: #{stats_positive}#300 over 10s## \nRadius: #{skill_color}#6m## \nDuration (Gas Cloud): #{skill_color}#12s## \nFuse: #{skill_color}#1s after remaining stationary##\nAmmo Box Pickup Chance: #{skill_color}#$pickup## \n- #{skill_color}#100%## chance to stun most enemies in range of the gas\n- #{important_1}#Shields, Bulldozers, Medics, Grenadiers and Captains are immune to its stunning effects##\n- #{important_1}#Enemies cannot be poisoned by the same gas cloud more than once##",
+		["bm_grenade_poison_gas_grenade_desc"] = "Damage: #{stats_positive}#300 over 10s## \nRadius: #{skill_color}#6m## \nDuration (Gas Cloud): #{skill_color}#12s## \nFuse: #{skill_color}#1s after remaining stationary## \nAmmo Box Return Rate: #{skill_color}#$pickup_1 to $pickup_2##\n- #{skill_color}#100%## chance to stun most enemies in range of the gas\n- #{important_1}#Shields, Bulldozers, Medics, Grenadiers and Captains are immune to its stunning effects##\n- #{important_1}#Enemies cannot be poisoned by the same gas cloud more than once## \n\nThis experimental bio-weapon will emit a sweeping cloud of toxic gas that targets specific genotypes; has been engineered to not harm you or your crew. Victims will experience violent coughing, nausea, vomiting and is lethal to all but the toughest of enemies.\n\nTruly a war-criminal's weapon of choice, peko.",
+		["bm_grenade_poison_gas_grenade_desc_short"] = "Damage: #{stats_positive}#300 over 10s## \nRadius: #{skill_color}#6m## \nDuration (Gas Cloud): #{skill_color}#12s## \nFuse: #{skill_color}#1s after remaining stationary##\nAmmo Box Return Rate: #{skill_color}#$pickup_1 to $pickup_2## \n- #{skill_color}#100%## chance to stun most enemies in range of the gas\n- #{important_1}#Shields, Bulldozers, Medics, Grenadiers and Captains are immune to its stunning effects##\n- #{important_1}#Enemies cannot be poisoned by the same gas cloud more than once##",
 
 		--Throwing Cards
-		["bm_wpn_prj_ace_desc"] = "Damage: #{skill_color}#$damage##\nAmmo Box Pickup Chance: #{skill_color}#$pickup## \n- #{skill_color}#Can be retrieved##\n- #{skill_color}#Hits and kills trigger melee skills and perks## \n\nThrowing cards with added weight and a razor edge. A real killer hand of cards.",
+		["bm_wpn_prj_ace_desc"] = "Damage: #{skill_color}#$damage##\nAmmo Box Return Rate: #{skill_color}#$pickup_1 to $pickup_2## \n- #{skill_color}#Can be retrieved##\n- #{skill_color}#Hits and kills can trigger melee skills in the Brawler sub-tree and melee-focused perks## \n\nThrowing cards with added weight and a razor edge. A real killer hand of cards.",
 		--Throwing Stars/Shuriken
-		["bm_wpn_prj_four_desc"] = "Damage (Impact): #{skill_color}#$damage## \nDamage (Poison): #{stats_positive}#120 over 4s##\nAmmo Box Pickup Chance: #{skill_color}#$pickup## \n- #{skill_color}#Can be retrieved##\n- #{risk}#Direct## #{skill_color}#hits and kills trigger melee skills and perks##\n- #{skill_color}#50%## chance to stun most enemies every #{skill_color}#0.5s##\n- #{important_1}#Shields, Bulldozers, Grenadiers and Captains are immune to its stunning effects.## \n\nThe throwing star has a long history filled with blood and battle. These poison coated stainless steel stars will pose a lethal threat to anyone in your way.",
-		["bm_wpn_prj_four_desc_short"] = "Damage (Impact): #{skill_color}#$damage## \nDamage (Poison): #{stats_positive}#120 over 4s##\nAmmo Box Pickup Chance: #{skill_color}#$pickup## \n- #{skill_color}#Can be retrieved##\n- #{risk}#Direct## #{skill_color}#hits and kills trigger melee skills and perks##\n- #{skill_color}#50%## chance to stun most enemies every #{skill_color}#0.5s##\n- #{important_1}#Shields, Bulldozers, Grenadiers and Captains are immune to its stunning effects.##",
+		["bm_wpn_prj_four_desc"] = "Damage (Impact): #{skill_color}#$damage## \nDamage (Poison): #{stats_positive}#120 over 4s##\nAmmo Box Return Rate: #{skill_color}#$pickup_1 to $pickup_2## \n- #{skill_color}#Can be retrieved##\n- #{risk}#Direct## #{skill_color}#hits and kills can trigger melee skills in the Brawler sub-tree and melee-focused perks##\n- #{skill_color}#50%## chance to stun most enemies every #{skill_color}#0.5s##\n- #{important_1}#Shields, Bulldozers, Grenadiers and Captains are immune to its stunning effects.## \n\nThe throwing star has a long history filled with blood and battle. These poison coated stainless steel stars will pose a lethal threat to anyone in your way.",
+		["bm_wpn_prj_four_desc_short"] = "Damage (Impact): #{skill_color}#$damage## \nDamage (Poison): #{stats_positive}#120 over 4s##\nAmmo Box Return Rate: #{skill_color}#$pickup_1 to $pickup_2## \n- #{skill_color}#Can be retrieved##\n- #{risk}#Direct## #{skill_color}#hits and kills trigger melee skills in the Brawler sub-tree and perks##\n- #{skill_color}#50%## chance to stun most enemies every #{skill_color}#0.5s##\n- #{important_1}#Shields, Bulldozers, Grenadiers and Captains are immune to its stunning effects.##",
 		--Javelin
-		["bm_wpn_prj_jav_desc"] = "Damage: #{skill_color}#$damage##\nAmmo Box Pickup Chance: #{skill_color}#$pickup## \n- #{skill_color}#Can be retrieved##\n- #{skill_color}#Hits and kills trigger melee skills and perks## \n\nWith its origins lost in cloudy pre-history, the javelin is a simple weapon. After all, it's a thrown stick with a pointy end that ruins someone's day.",
+		["bm_wpn_prj_jav_desc"] = "Damage: #{skill_color}#$damage##\nAmmo Box Return Rate: #{skill_color}#$pickup_1 to $pickup_2## \n- #{skill_color}#Can be retrieved##\n- #{skill_color}#Hits and kills can trigger melee skills in the Brawler sub-tree and melee-focused perks## \n\nWith its origins lost in cloudy pre-history, the javelin is a simple weapon. After all, it's a thrown stick with a pointy end that ruins someone's day.",
 		--Throwing Axe
-		["bm_wpn_prj_hur_desc"] = "Damage: #{skill_color}#$damage##\nAmmo Box Pickup Chance: #{skill_color}#$pickup## \n- #{skill_color}#Can be retrieved##\n- #{skill_color}#Hits and kills trigger melee skills and perks## \n\nThey say a sharp axe is never wrong. A thrown sharp axe couldn't be any more right.",
+		["bm_wpn_prj_hur_desc"] = "Damage: #{skill_color}#$damage##\nAmmo Box Return Rate: #{skill_color}#$pickup_1 to $pickup_2## \n- #{skill_color}#Can be retrieved##\n- #{skill_color}#Hits and kills can trigger melee skills in the Brawler sub-tree and melee-focused perks## \n\nThey say a sharp axe is never wrong. A thrown sharp axe couldn't be any more right.",
 		--Throwing Knife
-		["bm_wpn_prj_target_desc"] = "Damage: #{skill_color}#$damage##\nAmmo Box Pickup Chance: #{skill_color}#$pickup## \n- #{skill_color}#Can be retrieved##\n- #{skill_color}#Hits and kills trigger melee skills and perks## \n\nA solid backup plan and a reliable tactic for a precise and silent kill.",
+		["bm_wpn_prj_target_desc"] = "Damage: #{skill_color}#$damage##\nAmmo Box Return Rate: #{skill_color}#$pickup_1 to $pickup_2## \n- #{skill_color}#Can be retrieved##\n- #{skill_color}#Hits and kills can trigger melee skills in the Brawler sub-tree and melee-focused perks## \n\nA solid backup plan and a reliable tactic for a precise and silent kill.",
 
 		--Perk Deck Throwables
 		["bm_grenade_copr_ability"] = "Ampule",
@@ -5332,7 +5351,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 		["loading_equip_skills_res_5"] = "Wolf has upgraded our Sentry Guns to allow field repairs. It takes some time, but they will automatically repair once you initiate it.",
 		["loading_equip_skills_res_6"] = "If you have Sentry AP rounds unlocked, you can choose your default ammo type in the Equipment menu.",
 		["loading_equip_skills_res_7"] = "Perk Decks give significant damage bonuses and many of them provide rare and precious healing abilities.",
-		["loading_equip_skills_res_8"] = "Crew Chief, Armorer, Muscle, Crook, Gambler, and Biker are basic but consistent perk decks.",
+		["loading_equip_skills_res_8"] = "Crew Chief, Armorer, Muscle, Crook, and Gambler are basic but consistent perk decks.",
 		["loading_equip_skills_res_9"] = "Hitman has been reworked into a low long-term survivability and consistency perk deck, but in exchange allows you to gain huge stores of 'Temporary HP' to power through tough spots.",
 		["loading_equip_skills_res_10"] = "Crew Chief is a team-focused perk deck that grants small but useful buffs to you and your teammates and more buffs if you have multiple hostages. It pairs well with The Controller tree in Mastermind.",
 		["loading_equip_skills_res_11"] = "Gambler is a team-focused perk deck that grants a little HP and bonus ammo to teammates when you pick ammo up. Pairs well with skills that grant extra ammo drops.",
@@ -5366,6 +5385,9 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 		["loading_equip_skills_res_39"] = "Weapons that fire multiple projectiles per-individual shot, like non-slug firing shotguns, will knock back most enemies in close range.",
 		["loading_equip_skills_res_40"] = "Your weapon's accuracy stat also has an impact on its horizontal recoil.",
 		["loading_equip_skills_res_41"] = "Your weapon's stabilty stat also has an impact on its hipfire accuracy.",
+		["loading_equip_skills_res_42"] = "Looking for the old Biker perk deck? It's now part of the Leech perk deck.",
+		["loading_equip_skills_res_43"] = "The Biker perk deck has been reworked to encourage sticking close to your team. The longer your crew is together, the more you all benefit from the bonuses you chose in the perk deck.",
+		["loading_equip_skills_res_44"] = "The Biker perk deck doesn't care from where you obtain Cohesion stacks, only that you have them. Two heisters using Biker can grant their team the majority of the bonuses by choosing different card choices.",
 		--Misc Hints
 		["loading_misc_res_title"] = "FaN's Restoration Mod Addons Trivia",
 		["loading_misc_res_1"] = "This mod of a mod was made public on Jul 21, 2024.",
@@ -5572,9 +5594,9 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 		["mutator_CG22_desc"] = "Some heists will have a christmas tree that spawns presents to shred or give to Hajrudin.",
 		["mutator_CG22_longdesc"] = "PAYDAY 2 2022 Christmas Event:\n\nChristmas Trees that appear on some heists will drop Christmas presents. Christmas Presents can either be shredded for temporary buffs during the heist, or given to Hajrudin for bonus XP, Cash, or Continental Coins. Doing either has a chance to spawn the Freeze-Thrower wielding Snowman Dozer.",
 
-		["mutator_thecandlesburnoutforyou"] = "Reload Marathon",
-		["mutator_thecandlesburnoutforyou_desc"] = "Disables the auto-reload that occurs when emptying your magazine; Reloads require a manual input",
-		["mutator_thecandlesburnoutforyou_longdesc"] = "Disables the auto-reload that occurs when emptying your magazine; Reloads require a manual input",
+		["mutator_thecandlesburnoutforyou"] =  AFR and "Reload Marathon (MOD CONFLICT)" or "Reload Marathon",
+		["mutator_thecandlesburnoutforyou_desc"] = AFR and "mate you got \"Auto Fire & Reload\" this mutator does nothing lol" or "Disables the auto-reload that occurs when emptying your magazine; Reloads require a manual input",
+		["mutator_thecandlesburnoutforyou_longdesc"] = AFR and "mate you got \"Auto Fire & Reload\" this mutator does nothing lol" or "Disables the auto-reload that occurs when emptying your magazine; Reloads require a manual input",
 
 		["mutator_letthesleepinggoddie"] = "Magazine Martyr",
 		["mutator_letthesleepinggoddie_desc"] = "Upon a non-empty reload, ammo from the previous magazine is lost.",
@@ -5979,7 +6001,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 
 				--Fully Loaded--
 				["menu_bandoliers_beta_sc"] = "Fully Loaded",
-				["menu_bandoliers_desc_sc"] = "BASIC: #{owned}#$basic##\nYou pick up #{skill_color}#$skill_value_p1## more ammo from ammo boxes.\n\nACE: #{owned}#$pro##\nYour total ammo capacity is increased by #{skill_color}#$skill_value_b1.##\n\nYour base chance to pick up a throwable is raised by #{skill_color}#$skill_value_p2##; chance is increased by an additional #{skill_color}#$skill_value_p3## each time you don't find one and will reset to base when you do.\n\n#{risk}#NOTE: You cannot pick up regenerative or cooldown-based throwables.##",
+				["menu_bandoliers_desc_sc"] = "BASIC: #{owned}#$basic##\nYou pick up #{skill_color}#$skill_value_b1## more ammo from ammo boxes.\n\nYou carry #{skill_color}#$skill_value_b2## more throwables.\n\n#{risk}#NOTE: Does not apply to regenerative or cooldown-based throwables.##\n\nACE: #{owned}#$pro##\nYour total ammo capacity is increased by #{skill_color}#$skill_value_p1.##\n\nThe amount of ammo boxes needed to find another throwable is lowered by #{skill_color}#$skill_value_p2.##\n\n#{risk}#NOTE: Does not apply to regenerative or cooldown-based throwables.##",
 
 		--[[   TECHNICIAN   ]]--
 
@@ -5998,7 +6020,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 
 				--Jack of all Trades
 				["menu_jack_of_all_trades_beta_sc"] = "Jack of All Trades",
-				["menu_jack_of_all_trades_beta_desc_sc"] = "BASIC: #{owned}#$basic##\nYou carry #{skill_color}#$skill_value_b1## more throwables.\n\n#{risk}#NOTE: Does not apply to throwables that regenerate or come from perk decks.##\n\nACE: #{owned}#$pro##\n#{skill_color}#You can now equip a second deployable to bring with you.## Pressing #{skill_color}#$BTN_CHANGE_EQ## will allow you to toggle between deployables.\n\nYou carry #{important_1}#50%## the normal amount of your second deployable, to a minimum of #{skill_color}#1.##",
+				["menu_jack_of_all_trades_beta_desc_sc"] = "BASIC: #{owned}#$basic##\nTEMP-SPACE\n\nACE: #{owned}#$pro##\n#{skill_color}#You can now equip a second deployable to bring with you.## Pressing #{skill_color}#$BTN_CHANGE_EQ## will allow you to toggle between deployables.\n\nYou carry #{important_1}#50%## the normal amount of your second deployable, to a minimum of #{skill_color}#1.##",
 
 				--Sentry Tower Defense--
 				["menu_tower_defense_beta_sc"] = "Tower Defense",
@@ -6196,7 +6218,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 
 				--Pumping Iron--
 				["menu_steroids_beta_sc"] = "Pumping Iron",
-				["menu_steroids_beta_desc_sc"] = "BASIC: #{owned}#$basic##\nYou swing and charge melee weapons #{skill_color}#$skill_value_b1## faster.\n\nACE: #{owned}#$pro##\nYou swing and charge melee weapons an additional #{skill_color}#$skill_value_p1## faster.",
+				["menu_steroids_beta_desc_sc"] = "BASIC: #{owned}#$basic##\nYou swing and charge melee weapons #{skill_color}#$skill_value_b1## faster.\n\n#{item_stage_2}#A setting to indicate a melee weapon is fully charged can be found in Restoration Mod's weapon options.##\n\nACE: #{owned}#$pro##\nYou swing and charge melee weapons an additional #{skill_color}#$skill_value_p1## faster.",
 
 				--Bloodthirst--
 				["menu_bloodthirst_sc"] = "Bloodthirst",
@@ -6269,7 +6291,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Perk_Decks_Eng", funct
 		["menu_deck4_3_desc_sc"] = "Your dodge is increased by an additional ##$perk_value_1## points.",
 		["menu_deck4_5_desc_sc"] = "Your dodge meter will be filled to ##200%## of its normal maximum when you are revived.\n\nYour camera loop duration is increased by ##20## seconds.",
 		["menu_deck4_7_desc_sc"] = "Your dodge is increased by an additional ##$perk_value_1## points.",
-		["menu_deck4_9_desc_sc"] = "Dodging an attack causes you to regenerate ##$perk_value_1## health every second for the next ##$perk_value_2## seconds. This effect can stack but all stacks are lost whenever you take health damage.\n\nDeck completion Bonus: Your chance of getting a higher quality item during PAYDAY is increased by ##10%.##",
+		["menu_deck4_9_desc_sc"] = "Dodging an attack causes you to regenerate ##$perk_value_1## health every second for the next ##$perk_value_2## seconds. This effect can stack up to ##$perk_value_3## times but all stacks are lost whenever you take health damage.\n\nDeck completion Bonus: Your chance of getting a higher quality item during PAYDAY is increased by ##10%.##",
 
 		--Hitman--
 		["menu_deck5_1_sc"] = "Gun-fu",
@@ -6402,10 +6424,9 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Perk_Decks_Eng", funct
 		["menu_anarc_disable"] = "#{important_1}#(youre using anarchist so this effect does not trigger)##",
 
 		--Scarface--
-		["menu_deck17_1_desc_sc"] = "Unlocks the #{skill_color}#Injector## for use in place of a throwable.\n\nActivating the Injector will heal you for #{skill_color}#$perk_value_1## of all damage taken for #{skill_color}#$perk_value_2## seconds; you can still take damage during the effect.\n\nThe Injector can only be used once every #{important_1}#$perk_value_3## seconds; each kill you perform will shorten the cooldown timer by #{skill_color}#$perk_value_4## seconds.",
-		["menu_deck17_3_desc_sc"] = "Your movement speed is increased by #{skill_color}#$perk_value_1## while the Injector is active.",
-		["menu_deck17_5_desc_sc"] = "You are now healed for #{skill_color}#$perk_value_1## of all damage taken for ##$perk_value_2## seconds while the Injector is active.\n\nWhile the Injector is active, #{risk}#nearby enemies will prefer targeting you whenever possible.## ",
-		["menu_deck17_7_desc_sc"] = "The amount of health received during the Injector effect is increased by #{skill_color}#$perk_value_1## while below #{skill_color}#$perk_value_2## health.",
+		["menu_deck17_1_desc_sc"] = "Unlocks the #{skill_color}#Injector## for use in place of a throwable.\n\nActivating the Injector will heal you for #{skill_color}#$perk_value_1## of all damage taken or damage dodged for #{skill_color}#$perk_value_2## seconds; you can still take damage during the effect.\n\n#{risk}#NOTE: The amount of damage dodged to convert to healing is limited by your maximum armor.##\n\nThe Injector can only be used once every #{important_1}#$perk_value_3## seconds; each kill you perform will shorten the cooldown timer by #{skill_color}#$perk_value_4## seconds.",		["menu_deck17_3_desc_sc"] = "Your movement speed is increased by #{skill_color}#$perk_value_1## while the Injector is active.\n\nYou gain ##$perk_value_2## dodge points.",
+		["menu_deck17_5_desc_sc"] = "You are now healed for #{skill_color}#$perk_value_1## of all damage taken or all damage dodged while your armor is up for ##$perk_value_2## seconds while the Injector is active.\n\nWhile the Injector is active, #{risk}#nearby enemies will prefer targeting you whenever possible.## ",
+		["menu_deck17_7_desc_sc"] = "The amount of health received during the Injector effect is increased by #{skill_color}#$perk_value_1## while below #{skill_color}#$perk_value_2## health.\n\nYou gain an additional #{skill_color}#$perk_value_3## dodge points.",
 		["menu_deck17_9_desc_sc"] = "For every #{skill_color}#$perk_value_1## health gained during the Injector effect while at maximum health, the recharge time of the Injector is reduced by #{skill_color}#$perk_value_2## seconds.\n\nDeck Completion Bonus: Your chance of getting a higher quality item during a PAYDAY is increased by #{skill_color}#10%.##",
 
 		--10 feet higher--
@@ -6430,11 +6451,45 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Perk_Decks_Eng", funct
 		["menu_deck20_9_desc_sc"] = "Each enemy you kill will reduce the cooldown of the Gas Dispenser by ##$perk_value_1## seconds.\n\nEach enemy the tagged unit kills will reduce the cooldown of the Gas Dispenser by ##$perk_value_2## seconds until you are no longer paired.\n\nDeck Completion Bonus: Your chance of getting a higher quality item during a PAYDAY is increased by ##10%.##",
 
 		--Biker--
-		["menu_deck16_1_desc_sc"] = "Every time you or your crew performs a kill you will gain #{skill_color}#$perk_value_1## health. This can only occur once every #{important_1}#$perk_value_2## seconds.",
-		["menu_deck16_3_desc_sc"] = "You regenerate ##$perk_value_1## armor every ##$perk_value_2## seconds.",
-		["menu_deck16_5_desc_sc"] = "Every ##$perk_value_1## armor missing reduces cooldown to kill regen by ##$perk_value_2## seconds.\n\nYou bag corpses and interact with hostages ##$perk_value_3## faster.",
-		["menu_deck16_7_desc_sc"] = "You now regenerate ##$perk_value_1## armor every ##$perk_value_2## seconds.\n\nKilling an enemy with a melee weapon causes the next armor regen tick to occur ##$perk_value_3## second sooner.",
-		["menu_deck16_9_desc_sc"] = "Every ##$perk_value_1## armor missing increases the number of health gained from kills by ##$perk_value_2.##\n\nDeck Completion Bonus: Your chance of getting a higher quality item during a PAYDAY is increased by ##10%.##",
+		["menu_deck16_1_desc_sc"] = "You emit a #{skill_color}#$perk_value_1## aura while not downed. You and allies inside it gain Cohesion stacks.\nCohesion moves toward a target value equal to #{skill_color}#$perk_value_2 x the number of crew members in your aura## (including you), rising if below the target and falling if above it, adjusting faster the larger the gap.\nCrew members lose #{important_1}#$perk_value_3## Cohesion for every #{skill_color}#$perk_value_4## damage taken (health damage counts double).\n\n#{risk}#NOTE: If multiple Biker auras overlap, allies use the highest target value available. Cohesion gain rate does not stack from multiple Bikers. Card benefits don't stack, but Cohesion from any source counts toward all selected benefits.##",
+		["menu_deck16_1_short_sc"] = "Crew members gain Cohesion stacks. Crew members' Cohesion stacks increase from proximity to one another, and decrease otherwise or when taking damage. Cohesion stacks incur benefits based on card choices.",
+		["menu_deck16_1_1_sc"] = "Stick Together!",
+		["menu_deck16_1_1_desc_sc"] = "Healing that crew members receive is #{skill_color}#$perk_value_1## more potent for every 8 stacks of Cohesion they have.",
+		["menu_deck16_1_2_sc"] = "Conserve Ammo!",
+		["menu_deck16_1_2_desc_sc"] = "Crew members gain an additional #{skill_color}#$perk_value_1## ammo for from ammo boxes picked up for every 8 stacks of Cohesion they have.",
+
+		["menu_deck16_3_desc_sc"] = "For the purposes of benefits from this perk deck, you are always treated #{skill_color}#as if you had $perk_value_1 more stacks of Cohesion than you actually have.##\n\nYour dodge is increased by #{skill_color}#$perk_value_2## points.",
+		["menu_deck16_3_1_sc"] = "Lead By Example!",
+		["menu_deck16_3_1_desc_sc"] = "The amount of Cohesion stacks you gain from proximity to crew members is increased by #{skill_color}#$perk_value_1.##\nThe amount of Cohesion stacks you lose from the lack of proximity or being downed is increased by #{important_1}#$perk_value_2.##",
+		["menu_deck16_3_2_sc"] = "Hold The Line!",
+		["menu_deck16_3_2_desc_sc"] = "The amount of Cohesion stacks you gain from proximity to crew members is decreased by #{important_1}#$perk_value_1.##\nThe amount of Cohesion stacks you lose from the lack of proximity or being downed is decreased by #{skill_color}#$perk_value_2.##",
+		["menu_deck16_3_3_sc"] = "Standard Tactics!",
+		["menu_deck16_3_3_desc_sc"] = "No additional effects.",
+
+		["menu_deck16_5_desc_sc"] = "You bag corpses and interact with hostages ##$perk_value_1## faster.",
+		["menu_deck16_5_1_sc"] = "Keep Moving!",
+		["menu_deck16_5_1_desc_sc"] = "Crew members gain a #{skill_color}#$perk_value_1## movement speed bonus for every 8 stacks of Cohesion they have.",
+		["menu_deck16_5_2_sc"] = "Shoot And Scoot!",
+		["menu_deck16_5_2_desc_sc"] = "Crew members gain a #{skill_color}#$perk_value_1## reload speed bonus for every 8 stacks of Cohesion they have.",
+
+		["menu_deck16_7_desc_sc"] = "Your dodge is increased by an additional #{skill_color}#$perk_value_1## points.",
+		["menu_deck16_7_1_sc"] = "Back To It!",
+		["menu_deck16_7_1_desc_sc"] = "You gain #{skill_color}#$perk_value_1## Cohesion stacks when you are revived.",
+		["menu_deck16_7_2_sc"] = "Earn Your Keep!",
+		["menu_deck16_7_2_desc_sc"] = "You and any crew members nearby gain #{skill_color}#$perk_value_1## Cohesion stack for every #{skill_color}#$perk_value_2## kill(s) you perform.\nThis effect stacks with other Biker users who have this card selected.\n\n#{risk}#NOTE: Cohesion stacks gained this way cannot increase a crew members' Cohesion stacks beyond the amount it would tend to normally.##",
+		["menu_deck16_7_2_short_sc"] = "You and any crew members nearby gain #{skill_color}#$perk_value_1## Cohesion stack for every #{skill_color}#$perk_value_2## kill(s) you perform.",
+
+		["menu_deck16_9_desc_sc"] = "Crew members' Cohesion stacks now tend to #{skill_color}#$perk_value_1 + $perk_value_2 times the amount of crew members nearby.##\n\nDeck Completion Bonus: Your chance of getting a higher quality item during a PAYDAY is increased by #{skill_color}#10%.##",
+		["menu_deck16_9_1_sc"] = "Dig In Your Heels!",
+		["menu_deck16_9_1_desc_sc"] = "Crew members now only lose stacks for every #{skill_color}#$perk_value_1## damage taken.\nAdditionally, crew members regain #{skill_color}#$perk_value_2## health every $perk_value_3 seconds for every 8 stacks of Cohesion they have.",
+		["menu_deck16_9_2_sc"] = "Stand Firm!",
+		["menu_deck16_9_2_desc_sc"] = "Crew members regenerate armor #{skill_color}#$perk_value_1## faster for every 8 stacks of Cohesion they have.\nIn addition, crew members gain an additional #{skill_color}#$perk_value_2## armor for every 8 stacks of Cohesion they have.\n\n#{risk}#NOTE: This additional armor is added before any other multiplications to one's armor, such as Stoic's Virtue (Card 1), and is based on your armor's base armor value.##",
+		["menu_deck16_9_2_short_sc"] = "Crew members regenerate armor #{skill_color}#$perk_value_1## faster for every 8 stacks of Cohesion they have. In addition, crew members gain an additional #{skill_color}#$perk_value_2## armor for every 8 stacks of Cohesion they have.",
+		["menu_deck16_9_3_sc"] = "Keep Pressing On!",
+		["menu_deck16_9_3_desc_sc"] = "Crew members' stamina regenerates #{skill_color}#$perk_value_1## faster for every 8 stacks of Cohesion they have.\nAdditionally, the benefits from Keep Moving! (Card 5, Choice 1) and Shoot and Scoot! (Card 5, Choice 2) are increased by #{skill_color}#$perk_value_2##.",
+		["menu_deck16_9_4_sc"] = "Press The Advantage!",
+		["menu_deck16_9_4_desc_sc"] = "Crew members gain #{skill_color}#$perk_value_1## Cohesion stack for every #{skill_color}#$perk_value_2## kills they or a crew member nearby performs.\nKills are tracked separately for each crew member.\n\nUnlike Earn Your Keep! (Card 7, Choice 2), this can go past what the amount each crew member's Cohesion stacks would tend to.",
+		["menu_deck16_9_4_short_sc"] = "Crew members gain #{skill_color}#$perk_value_1## Cohesion stack for every #{skill_color}#$perk_value_2## kills they or a crew member nearby performs.",
 
 		--Yakuza--
 		["menu_deck12_1_desc_sc"] = "The lower your health, the faster your dodge meter will passively fill up.\n\nWhen your health is below ##100%##, your dodge meter fills by up to ##$perk_value_1## of your dodge every second.\n\nYour dodge is increased by ##$perk_value_2## points.",
@@ -6537,9 +6592,9 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Perk_Decks_Eng", funct
 			--Anarchist
 			["menu_deck15_mrwi_desc"] = "Instead of fully regenerating armor when out of combat, The Anarchist will periodically regenerate armor at a rate equivalent to ##8## armor per second. Heavier armor regenerates more armor per tick, but has a longer delay between ticks.\n\nNOTE: Skills and perks that increase the armor recovery rate are disabled when using this perk deck.\n\nCivilians intimidated by you and your crew remain intimidated ##$perk_value_1## longer.",
 			--Biker
-			["menu_deck16_mrwi_desc"] = "Every time you or your crew kill an enemy you will gain #{skill_color}#$perk_value_1## health. This can only occur once every #{important_1}#$perk_value_2## seconds.\n\nYou bag corpses and interact with hostages #{skill_color}#$perk_value_3## faster.",
+			["menu_deck16_mrwi_desc"] = "You emit a #{skill_color}#$perk_value_1## aura while not downed. You and allies inside it gain Cohesion stacks.\nCohesion moves toward a target value equal to #{skill_color}#$perk_value_2 x the number of crew members in your aura## (including you), rising if below the target and falling if above it, adjusting faster the larger the gap.\nCrew members lose #{important_1}#$perk_value_3## Cohesion for every #{skill_color}#$perk_value_4## damage taken (health damage counts double).\nCrew members gain a #{skill_color}#$perk_value_5## movement speed bonus for every 8 stacks of Cohesion they have.\n\n#{risk}#NOTE: If multiple Biker auras overlap, allies use the highest target value available. Cohesion gain rate does not stack from multiple Bikers. Card benefits don't stack, but Cohesion from any source counts toward all selected benefits.##\n\nYou bag corpses and interact with hostages #{skill_color}#$perk_value_6## faster.",
 			--Kingpin
-			["menu_deck17_mrwi_desc"] = "Unlocks the #{skill_color}#Injector## for use in place of a throwable.\n\nActivating the Injector will heal you for #{skill_color}#$perk_value_1## of all damage taken for #{skill_color}#$perk_value_2## seconds.\n\nYou can still take damage during the effect.\n\nYour movement speed is increased by #{skill_color}#$perk_value_3## while the Injector is active.\n\nThe Injector can only be used once every #{important_1}#$perk_value_4## seconds; each kill you perform will shorten the cooldown timer by #{skill_color}#$perk_value_5## seconds.",
+			["menu_deck17_mrwi_desc"] = "Unlocks the #{skill_color}#Injector## for use in place of a throwable.\n\nActivating the Injector will heal you for #{skill_color}#$perk_value_1## of all damage taken or damage dodged for #{skill_color}#$perk_value_2## seconds.\n\n#{risk}#NOTE: The amount of damage dodged to convert to healing is limited by your maximum armor.##\n\nYou can still take damage during the effect.\n\nYour movement speed is increased by #{skill_color}#$perk_value_3## while the Injector is active.\n\nThe Injector can only be used once every #{important_1}#$perk_value_4## seconds; each kill you perform will shorten the cooldown timer by #{skill_color}#$perk_value_5## seconds.",
 			--Sicario
 			["menu_deck18_mrwi_desc"] = "Unlocks the #{skill_color}#Smoke Bomb## for use in place of a standard throwable.\n\nWhen deployed, the smoke bomb creates a smoke screen that lasts for #{skill_color}#$perk_value_1## seconds. While standing inside the smoke screen, you and your allies regenerate armor #{skill_color}#$perk_value_2## faster. Any enemies that stand in the smoke will see their accuracy reduced by #{skill_color}#$perk_value_3.##\n\nThe Smoke Bomb has a #{important_1}#$perk_value_4## second cooldown; killing enemies will reduce this cooldown by #{skill_color}#$perk_value_5## seconds.\n\nYour dodge is increased by #{skill_color}#$perk_value_6## points.\n\nYou carry #{skill_color}#$perk_value_7## additional body bag in your inventory.",
 			--Stoic

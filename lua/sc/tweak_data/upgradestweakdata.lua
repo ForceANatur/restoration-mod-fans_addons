@@ -368,6 +368,42 @@ Hooks:PostHook(UpgradesTweakData, "init", "ResLevelTableInit", function(self, tw
 	self:_money_weapon_definitions()
 end)
 
+-- Ordnance bag definitions
+function UpgradesTweakData:_grenade_crate_definitions()
+
+	self.definitions.grenade_crate = {
+		equipment_id = "grenade_crate",
+		slot = 1,
+		dlc = "mxm",
+		category = "equipment",
+		name_id = "menu_equipment_grenade_crate"
+	}
+
+	-- I've taken this from the ammo_bag_definitions, and I'm gonna be honest, I've no idea why that one
+	-- has so much shit in it. Definitions typically just have name_id and category.
+	for i, _ in ipairs(self.values.grenade_crate.ammo_increase) do
+		self.definitions["grenade_crate_ammo_increase" .. i] = {
+			name_id = "grenade_crate_ammo_increase" .. i,
+			category = "equipment_upgrade",
+			upgrade = {
+				upgrade = "ammo_increase",
+				category = "grenade_crate",
+				value = i
+			}
+		}
+	end
+
+	self.definitions.grenade_crate_quantity = {
+		name_id = "menu_grenade_crate_quantity",
+		category = "equipment_upgrade",
+		upgrade = {
+			value = 1,
+			upgrade = "quantity",
+			category = "grenade_crate"
+		}
+	}
+end
+
 --Money thrower definitions
 function UpgradesTweakData:_money_weapon_definitions()
 	self.definitions.money = {
@@ -632,6 +668,10 @@ Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "ResSkillsInit", function(
 		1.3,
 		1.2
 	}
+
+	-- Ordnance bag
+	self.ordnance_bag_ammo = 0.25
+	self.ordnance_bag_grenades = 4
 	
 	self.values.player.corpse_dispose_amount = {2, 3}
 	self.values.bodybags_bag.quantity = {1}
@@ -1159,19 +1199,18 @@ Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "ResSkillsInit", function(
 			--Fully Loaded
 				--Basic
 					self.values.player.extra_ammo_multiplier = {1.25}
+					self.values.player.throwables_multiplier = {1.3}
 				--Ace
 					self.values.player.fully_loaded_pick_up_multiplier = {1.5}
-					self.values.player.regain_throwable_from_ammo = {
-						{chance = 0.05, chance_inc = 0.01}
-					}
-					
+					self.values.player.regain_throwable_from_ammo = {2.0} --non-linear mult, 2x translates to a 50% increase
+
 					self.skill_descs.bandoliers = {
-						skill_value_b1 = tostring(self.values.player.extra_ammo_multiplier[1] % 1 * 100).."%", -- +Max ammo capacity
-						skill_value_p1 = tostring(self.values.player.fully_loaded_pick_up_multiplier[1] % 1 * 100).."%", -- Increase ammo pick up
-						skill_value_p2 = tostring(self.values.player.regain_throwable_from_ammo[1].chance * 100).."%", --Chance to pick up throwable from ammo boxes
-						skill_value_p3 = tostring(self.values.player.regain_throwable_from_ammo [1].chance_inc * 100).."%" -- Increase chance to pick up throwable if ammo box didn't give one
+						skill_value_b1 = tostring(self.values.player.fully_loaded_pick_up_multiplier[1] % 1 * 100).."%", -- Increase ammo pick up
+						skill_value_b2 = tostring(self.values.player.throwables_multiplier[1] % 1 * 100).."%", -- more throwables
+						skill_value_p1 = tostring(self.values.player.extra_ammo_multiplier[1] % 1 * 100).."%", -- +Max ammo capacity
+						skill_value_p2 = tostring(math.floor((1 - 1 / self.values.player.regain_throwable_from_ammo[1]) * 100)) .. "%", --Chance to pick up throwable from ammo boxes
 					}
-		
+
 	--TECHNICIAN--
 		--Fortress--
 			--Logistician
@@ -1211,12 +1250,15 @@ Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "ResSkillsInit", function(
 		
 			--Jack of All Trades
 				--Basic
-					self.values.player.throwables_multiplier = {1.3}
+					self.values.grenade_crate = self.values.grenade_crate or {}
+					self.values.grenade_crate.ammo_increase = {2}
 				--Ace
+					self.values.grenade_crate.quantity = {1}
 					self.values.player.second_deployable = {true}
 					
 					self.skill_descs.engineering = {
-						skill_value_b1 = tostring(self.values.player.throwables_multiplier[1] % 1 * 100).."%" -- more throwables
+						skill_value_b1 = tostring((self.values.grenade_crate.ammo_increase[1] - 1) * self.ordnance_bag_ammo * 100).."%", -- More ammo for weapons
+						skill_value_p1 = tostring(self.values.grenade_crate.quantity[1] + 1) -- Quantity of ammo bags
 					}
 	
 			--Tower Defense
@@ -2210,7 +2252,7 @@ Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "ResSkillsInit", function(
 		armors_allowed = {"level_1", "level_2", "level_3", "level_4", "level_5", "level_6", "level_7"},
 		works_with_armor_kit = true,
 		tick_time = 1,
-		total_ticks = 5,
+		total_ticks = 3,
 		max_stacks = 5,
 		stacking_cooldown = 0.1,
 		add_stack_sources = {
@@ -2284,8 +2326,8 @@ Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "ResSkillsInit", function(
 	self.damage_to_hot_data = {
 		armors_allowed = {"level_5"},
 		works_with_armor_kit = true,
-		tick_time = 1,
-		total_ticks = 3,
+		tick_time = 0.5,
+		total_ticks = 4,
 		max_stacks = 5,
 		stacking_cooldown = 0.5,
 		add_stack_sources = {
@@ -2304,9 +2346,9 @@ Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "ResSkillsInit", function(
 		}
 	}
 	self.values.player.damage_to_hot = {
-		0.2,
-		0.3,
-		0.4,
+		0.05,
+		0.10,
+		0.15,
 		
 		0.0 --Unused
 	}
@@ -2325,8 +2367,8 @@ Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "ResSkillsInit", function(
 		armors_allowed = {"level_1", "level_2", "level_3", "level_4", "level_5", "level_6", "level_7"},
 		works_with_armor_kit = true,
 		tick_time = 1,
-		total_ticks = 5,
-		max_stacks = 67,
+		total_ticks = 3,
+		max_stacks = 5,
 		stacking_cooldown = 0.0,
 		add_stack_sources = {
 			bullet = false,
@@ -2781,33 +2823,134 @@ Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "ResSkillsInit", function(
 		0.3
 	}
 	
-	--Fat benis :DDDDD
-	--biker?
-	self.wild_trigger_time = 5
-	self.wild_max_triggers_per_time = 1
-	self.values.player.wild_health_amount = {0.2}
-	self.values.player.wild_armor_amount = {0.0}
-	self.values.player.less_health_wild_armor = {{
-		0.0,
-		0.0
-	}}
-	self.values.player.less_health_wild_cooldown = {{
-		0.0,
-		0.0
-	}}
-	self.values.player.less_armor_wild_health = {{
-		0.25,
-		0.1
-	}}
-	self.values.player.less_armor_wild_cooldown = {{
-		0.25,
-		0.5
-	}}
+	-- Linchp- I mean, Biker
 
-	self.values.player.biker_armor_regen = {
-		--Amount regenerated per tick, time between ticks, time fast forwarded when melee kills are done.
-		{1.0, 5.0, 0.0},
-		{2.0, 5.0, 1.0} 
+	self.biker_proximity = 1800 -- Centimetres proximity required to gain Cohesion stacks.
+	self.biker_per_crew_member = 8 -- The amount of Cohesion stacks per crew, used for tendency determination and "for every X" number.
+	self.biker_change_t = 1 -- In seconds, how frequently do Cohesion stacks change.
+	self.biker_hard_limit = 4 -- The maximum amount of players we'll ever consider for Cohesion counting. In case of Big Lobby mods, we shouldn't escalate to ridiculous amounts.
+	-- Represents how much a loss of a specific "resource" equals in damage taken. I.e., is taking health damage worse than taking armour damage for the purposes of Cohesion stack loss?
+	self.biker_damage_weighs_for_stack_loss = {
+		health = 2,
+		armour = 1
+	}
+
+	-- Cohesion stacks gained per second per crew member nearby.
+	self.biker_cohesion_gain = 1
+
+	-- Cohesion stacks lost per second when trending downwards.
+	self.biker_cohesion_loss = 2
+
+	-- Sets up the 18 metre radius Cohesion stack gaining aura.
+	self.values.player.biker_emit_aura = {
+		true
+	}
+
+	-- How much damage must be taken to lose a stack of Cohesion.
+	self.values.team.player.biker_damage_to_lose = {
+		25, -- default
+		50 -- Dig In Your Heels
+	}
+
+	-- Healing potency increase from Stick Together, per crew member.
+	self.values.team.player.biker_crew_heal_potency = {
+		0.04
+	}
+
+	-- Ammo pickup multiplier.
+	self.values.team.player.biker_ammo_pickup_boost = {
+		0.02
+	}
+
+	-- Percentage value, the movespeed increases for the team per Cohesion.
+	self.values.team.player.biker_crew_movespeed_bonus = {
+		0.02
+	}
+
+	-- Percentage value, the movespeed increases for the team per Cohesion.
+	self.values.team.player.biker_crew_reload_bonus = {
+		0.02
+	}
+
+	-- Increase any tendency the player has by this amount of stacks.
+	self.values.team.player.biker_increase_default_tendency = {
+		8
+	}
+
+	-- HP regeneration based on stacks.
+	self.values.team.player.biker_regen_health = {
+		{
+			amount = 0.025, -- This much health per X Cohesion stacks.
+			seconds = 5 -- This often.
+		}
+	}
+
+	-- Literally only exists to determine who should the Dig in Your Heels regeneration affect when someone has Berserker.
+	self.values.player.biker_causer_of_regen = {
+		true
+	}
+
+	-- How much faster should armour be regenerated based on stacks, in percentages.
+	self.values.team.player.biker_armour_regen_bonus = {
+		0.02
+	}
+
+	-- Additional armour granted to players per Cohesion stack. Percent, based on the base armour value.
+	self.values.team.player.biker_additional_armour = {
+		0.02
+	}
+
+	-- How much faster should stamina regenerate based on stacks.
+	self.values.team.player.biker_stamina_regen_bonus = {
+		0.02
+	}
+
+	-- Additional bonus for the move / reload speed bonus. As they're mutually-exclusive choices, sadly I cannot make use of upgrading them.
+	self.values.team.player.biker_additional_move_reload_bonus = {
+		0.01
+	}
+
+	-- How many Cohesion stacks should everyone nearby gain when a crew member kills an amount of enemies.
+	-- Kills are tracked individually.
+	self.values.team.player.biker_crew_kill_stack_reward = {
+		{
+			enemies = 4,
+			stacks = 1
+		}
+	}
+
+	-- Adds a fixed amount of Cohesion stacks to any effects that want Cohesion values specifically.
+	self.values.player.biker_treat_as_more_cohesion = {
+		8
+	}
+
+	-- Concrete values on how the biker user's stacks could change.
+	self.values.player.biker_stack_change_adjustments = {
+		{
+			gain = 1,
+			loss = 1
+		},
+		{
+			gain = -0.5,
+			loss = -1
+		},
+		{
+			gain = 0,
+			loss = 0
+		}
+	}
+
+	-- How many Cohesion stacks should be gained on revive with Back To It!.
+	self.values.player.biker_stacks_on_revive = {
+		48
+	}
+
+	-- How many Cohesion stacks should everyone nearby gain when you kill X amount of enemies.
+	self.values.player.biker_personal_kill_stack_reward = {
+		{
+			enemies = 1,
+			stacks = 1
+		}
 	}
 
 	--Tag Team--
@@ -2908,6 +3051,34 @@ Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "ResSkillsInit", function(
 	self.copr_regen_grace = 1
 	self.copr_ability_cooldown = 45
 	self.copr_risen_cooldown_add = 45
+
+	-- Since Biker was merged into Leech, I just moved the biker stuff here.
+	self.wild_trigger_time = 5
+	self.wild_max_triggers_per_time = 1
+	self.values.player.wild_health_amount = {0.2}
+	self.values.player.wild_armor_amount = {0.0}
+	self.values.player.less_health_wild_armor = {{
+		0.0,
+		0.0
+	}}
+	self.values.player.less_health_wild_cooldown = {{
+		0.0,
+		0.0
+	}}
+	self.values.player.less_armor_wild_health = {{
+		0.25,
+		0.1
+	}}
+	self.values.player.less_armor_wild_cooldown = {{
+		0.25,
+		0.5
+	}}
+
+	self.values.player.biker_armor_regen = {
+		--Amount regenerated per tick, time between ticks, time fast forwarded when melee kills are done.
+		{1.0, 5.0, 0.0},
+		{2.0, 5.0, 1.0} 
+	}
 
 	--Copycat
 	local health_boost = 0.05
@@ -3084,7 +3255,8 @@ Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "ResSkillsInit", function(
 	}
 	self.specialization_descs[4][9] = {
 		perk_value_1 = tostring(self.values.player.heal_over_time[1] * 10), -- HP regen per tick
-		perk_value_2 = tostring(self.dodge_to_hot_data.total_ticks/self.dodge_to_hot_data.tick_time) -- Duration of 1 stack
+		perk_value_2 = tostring(self.dodge_to_hot_data.total_ticks/self.dodge_to_hot_data.tick_time), -- Duration of 1 stack
+		perk_value_3 = tostring(self.dodge_to_hot_data.max_stacks) -- Max amount of stacks
 	}
 	
 	--Hitman
@@ -3353,8 +3525,8 @@ Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "ResSkillsInit", function(
 	
 	--Grinder
 	self.specialization_descs[11][1] = {
-		perk_value_1 = tostring(self.values.player.damage_to_hot[1] * 10), -- HP regen per tick
-		perk_value_2 = tostring(self.damage_to_hot_data.total_ticks/self.damage_to_hot_data.tick_time), -- Duration of 1 stack
+		perk_value_1 = tostring(self.values.player.damage_to_hot[1] * 20), -- HP regen per tick
+		perk_value_2 = tostring(self.damage_to_hot_data.total_ticks*self.damage_to_hot_data.tick_time), -- Duration of 1 stack
 		perk_value_3 = tostring(self.damage_to_hot_data.max_stacks),-- Max amount of stacks
 		perk_value_4 = tostring(self.damage_to_hot_data.stacking_cooldown), -- Stacking CD
 		perk_value_5 = tostring(self.values.player.level_5_armor_addend_grinder[1] * -10), -- Flak Jacket armor reduction
@@ -3362,14 +3534,14 @@ Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "ResSkillsInit", function(
 		perk_value_7 = tostring(self.values.player.level_5_deflection_addend_grinder[1] * -100), -- Flak Jacket deflection reduction
 	}
 	self.specialization_descs[11][3] = {
-		perk_value_1 = tostring((self.values.player.damage_to_hot[2] - self.values.player.damage_to_hot[1]) * 10),-- Additional HP regen per tick
+		perk_value_1 = tostring((self.values.player.damage_to_hot[2] - self.values.player.damage_to_hot[1]) * 20),-- Additional HP regen per tick
 	}
 	self.specialization_descs[11][5] = {
-		perk_value_1 = tostring(self.values.player.damage_to_hot_extra_ticks[1]), -- Additional duration for stack
+		perk_value_1 = tostring(self.values.player.damage_to_hot_extra_ticks[1]*self.damage_to_hot_data.tick_time), -- Additional duration for stack
 		perk_value_2 = "2" -- Body bag cases quantity. Not defined here so beware
 	}
 	self.specialization_descs[11][7] = {
-		perk_value_1 = tostring((self.values.player.damage_to_hot[3] - self.values.player.damage_to_hot[2]) * 10) -- Another additional HP regen per tick
+		perk_value_1 = tostring((self.values.player.damage_to_hot[3] - self.values.player.damage_to_hot[2]) * 20) -- Another additional HP regen per tick
 	}
 	self.specialization_descs[11][9] = {
 		perk_value_1 = tostring(self.values.player.hot_speed_bonus[1] * 100).."%", -- Movement speed bonus per stack
@@ -3460,27 +3632,92 @@ Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "ResSkillsInit", function(
 	
 	--Biker
 	self.specialization_descs[16][1] = {
-		perk_value_1 = tostring(self.values.player.wild_health_amount[1] * 10), -- HP regen per (team) kill
-		perk_value_2 = tostring(self.wild_trigger_time), -- CD of this ability
+		perk_value_1 = tostring(self.biker_proximity / 100), -- Proximity requirement
+        perk_value_2 = tostring(self.biker_per_crew_member), -- Tendency per crew member
+        perk_value_3 = tostring(self.biker_damage_weighs_for_stack_loss.armour), -- Cohesion lost from taking damage
+        perk_value_4 = tostring(self.values.team.player.biker_damage_to_lose[1]) -- Damage to be taken to lose stacks
 	}
 	self.specialization_descs[16][3] = {
-		perk_value_1 = tostring(self.values.player.biker_armor_regen[1][1] * 10), -- Passive armor regen
-		perk_value_2 = tostring(self.values.player.biker_armor_regen[1][2]) -- CD of armor regen ability
+        perk_value_1 = tostring(self.values.player.biker_treat_as_more_cohesion[1]), -- Treat as having this many extra Cohesion stacks
+        perk_value_2 = tostring(self.values.player.passive_dodge_chance[1] * 100) -- Passive dodge increase
 	}
 	self.specialization_descs[16][5] = {
-		perk_value_1 = tostring(self.values.player.less_armor_wild_cooldown[1][1] * 100).."%", -- Missing armor reduce ability's CD
-		perk_value_2 = tostring(self.values.player.less_armor_wild_cooldown[1][2]), -- CD reduction per missing armor
-		perk_value_3 = tostring(self.values.player.corpse_dispose_speed_multiplier[1] * 100).."%" -- Faster interaction with civs + bagging corpses
+		perk_value_1 = tostring(self.values.player.corpse_dispose_speed_multiplier[1] * 100).."%" -- Faster interaction with civs + bagging corpses
 	}
 	self.specialization_descs[16][7] = {
-		perk_value_1 = tostring(self.values.player.biker_armor_regen[2][1] * 10), -- Passive armor regen buff
-		perk_value_2 = tostring(self.values.player.biker_armor_regen[2][2]), -- CD of armor regen ability
-		perk_value_3 = tostring(self.values.player.biker_armor_regen[2][3]) -- CD reduction on melee kill
+        perk_value_1 = tostring((self.values.player.passive_dodge_chance[2] - self.values.player.passive_dodge_chance[1]) * 100) -- Passive dodge increase
 	}
 	self.specialization_descs[16][9] = {
-		perk_value_1 = tostring(self.values.player.less_armor_wild_health[1][1] * 100).."%", -- Missing armor increase HP per kill
-		perk_value_2 = tostring(self.values.player.less_armor_wild_health[1][2] * 10) -- Additional HP regen per missing armor
+        perk_value_1 = tostring(self.values.team.player.biker_increase_default_tendency[1]), -- Additional default tendency
+        perk_value_2 = tostring(self.biker_per_crew_member) -- Tendency per crew member
 	}
+
+	self.multi_choice_specialization_descs[16] = { 
+		[1] = {}, 
+		[3] = {}, 
+		[5] = {}, 
+		[7] = {},
+		[9] = {} 
+	} -- Table setup for Biker's card choices.
+
+    self.multi_choice_specialization_descs[16][1][1] = { -- Stick Together
+        perk_value_1 = tostring(self.values.team.player.biker_crew_heal_potency[1] * 100)..'%' -- Increased healing potency
+    }
+
+    self.multi_choice_specialization_descs[16][1][2] = { -- Conserve Ammo
+        perk_value_1 = tostring(self.values.team.player.biker_ammo_pickup_boost[1] * 100)..'%' -- Ammo pickup boost
+    }
+
+    self.multi_choice_specialization_descs[16][3][1] = { -- Lead By Example
+        perk_value_1 = tostring(math.abs((self.biker_cohesion_gain + self.values.player.biker_stack_change_adjustments[1].gain) / self.biker_cohesion_gain - 1) * 100)..'%', -- Cohesion stack change from proximity
+        perk_value_2 = tostring(math.abs((self.biker_cohesion_loss + self.values.player.biker_stack_change_adjustments[1].loss) / self.biker_cohesion_loss - 1) * 100)..'%' -- Cohesion stack change from lack proximity
+    }
+
+    self.multi_choice_specialization_descs[16][3][2] = { -- Hold The Line
+        perk_value_1 = tostring(math.abs((self.biker_cohesion_gain + self.values.player.biker_stack_change_adjustments[2].gain) / self.biker_cohesion_gain - 1) * 100)..'%', -- Cohesion stack change from proximity
+        perk_value_2 = tostring(math.abs((self.biker_cohesion_loss + self.values.player.biker_stack_change_adjustments[2].loss) / self.biker_cohesion_loss - 1) * 100)..'%' -- Cohesion stack change from lack proximity
+    }
+
+    -- Standard Tactics!
+    -- Doesn't need adding stuff.
+
+    self.multi_choice_specialization_descs[16][5][1] = { -- Keep Moving
+        perk_value_1 = tostring(self.values.team.player.biker_crew_movespeed_bonus[1] * 100)..'%' -- Movement increase
+    }
+
+    self.multi_choice_specialization_descs[16][5][2] = { -- Shoot and Scoot
+        perk_value_1 = tostring(self.values.team.player.biker_crew_reload_bonus[1] * 100)..'%' -- Reload increase
+    }
+
+    self.multi_choice_specialization_descs[16][7][1] = { -- Back To It
+        perk_value_1 = tostring(self.values.player.biker_stacks_on_revive[1]) -- Stacks on revival
+    }
+
+    self.multi_choice_specialization_descs[16][7][2] = { -- Earn Your Keep
+        perk_value_1 = tostring(self.values.player.biker_personal_kill_stack_reward[1].stacks), -- Stacks on kill
+        perk_value_2 = tostring(self.values.player.biker_personal_kill_stack_reward[1].enemies) -- Per kills
+    }
+
+    self.multi_choice_specialization_descs[16][9][1] = { -- Dig In Your Heels
+        perk_value_1 = tostring(self.values.team.player.biker_damage_to_lose[2]), -- Increased damage to lose stacks
+        perk_value_2 = tostring(self.values.team.player.biker_regen_health[1].amount * 10), -- HP regained
+        perk_value_3 = tostring(self.values.team.player.biker_regen_health[1].seconds) -- this often
+    }
+
+    self.multi_choice_specialization_descs[16][9][2] = { -- Stand Firm
+        perk_value_1 = tostring(self.values.team.player.biker_armour_regen_bonus[1] * 100)..'%', -- Armour regen
+        perk_value_2 = tostring(self.values.team.player.biker_additional_armour[1] * 100)..'%' -- Additional armour percent
+    }
+
+    self.multi_choice_specialization_descs[16][9][3] = { -- Keep Pressing On
+        perk_value_1 = tostring(self.values.team.player.biker_stamina_regen_bonus[1] * 100)..'%', -- Stamina regen
+        perk_value_2 = tostring(math.abs((self.values.team.player.biker_additional_move_reload_bonus[1] + self.values.team.player.biker_crew_movespeed_bonus[1])/ self.values.team.player.biker_crew_movespeed_bonus[1] - 1) * 100)..'%' -- Movement / reload speed increase (this assumes they are the same, and this is specifically for movement)
+    }
+
+    self.multi_choice_specialization_descs[16][9][4] = { -- Press The Advantage
+        perk_value_1 = tostring(self.values.team.player.biker_crew_kill_stack_reward[1].stacks), -- Stacks on kill
+        perk_value_2 = tostring(self.values.team.player.biker_crew_kill_stack_reward[1].enemies) -- Per kills
+    }
 	
 	--Kingpin
 	self.specialization_descs[17][1] = {
@@ -3490,7 +3727,8 @@ Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "ResSkillsInit", function(
 		perk_value_4 = "1" -- CD reduction on kill. Not defined here (?)
 	}
 	self.specialization_descs[17][3] = {
-		perk_value_1 = tostring(self.values.player.chico_injector_speed[1] % 1 * 100).."%" -- Movement speed bonus when injector is active
+		perk_value_1 = tostring(self.values.player.chico_injector_speed[1] % 1 * 100).."%", -- Movement speed bonus when injector is active
+        perk_value_2 = tostring(self.values.player.passive_dodge_chance[1] * 100) -- Passive dodge increase
 	}
 	self.specialization_descs[17][5] = {
 		perk_value_1 = tostring(self.values.temporary.chico_injector[3][1] * 100).."%", -- HP regen on damage taken
@@ -3498,7 +3736,8 @@ Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "ResSkillsInit", function(
 	}
 	self.specialization_descs[17][7] = {
 		perk_value_1 = tostring(self.values.player.chico_injector_low_health_multiplier[1][2] * 100).."%", -- HP regen buff on low HP
-		perk_value_2 = tostring(self.values.player.chico_injector_low_health_multiplier[1][1] * 100).."%" -- HP threshold for HP regen buff
+		perk_value_2 = tostring(self.values.player.chico_injector_low_health_multiplier[1][1] * 100).."%", -- HP threshold for HP regen buff
+        perk_value_3 = tostring((self.values.player.passive_dodge_chance[2] - self.values.player.passive_dodge_chance[1]) * 100) -- Passive dodge increase
 	}
 	self.specialization_descs[17][9] = {
 		perk_value_1 = tostring(self.values.player.chico_injector_health_to_speed[1][1] * 10), -- Gives CD reduction for every X HP "healed" at max HP
@@ -3762,7 +4001,7 @@ Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "ResSkillsInit", function(
 		perk_value_7 = tostring((1 - self.values.player.alarm_pager_speed_multiplier[1]) * 100).."%" -- Faster pager interaction
 	}
 	self.multi_choice_specialization_descs[23][9][11] = {--Grinder
-		perk_value_1 = tostring(self.values.player.damage_to_hot[1] * 10), -- HP regen per tick
+		perk_value_1 = tostring(self.values.player.damage_to_hot[1] * 20), -- HP regen per tick
 		perk_value_2 = tostring(self.damage_to_hot_data.total_ticks/self.damage_to_hot_data.tick_time), -- Duration of 1 stack
 		perk_value_3 = tostring(self.damage_to_hot_data.max_stacks),-- Max amount of stacks
 		perk_value_4 = tostring(self.damage_to_hot_data.stacking_cooldown), -- Stacking CD
@@ -3791,9 +4030,12 @@ Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "ResSkillsInit", function(
 		perk_value_1 = tostring(self.values.team.player.civ_intimidation_mul[1] % 1 * 100).."%" -- Civs intimidated longer
 	}
 	self.multi_choice_specialization_descs[23][9][16] = { --Biker
-		perk_value_1 = tostring(self.values.player.wild_health_amount[1] * 10), -- HP regen per (team) kill
-		perk_value_2 = tostring(self.wild_trigger_time), -- CD of this ability
-		perk_value_3 = tostring(self.values.player.corpse_dispose_speed_multiplier[1] * 100).."%" -- Faster interaction with civs + bagging corpses
+		perk_value_1 = tostring(self.biker_proximity / 100).." meter", -- Proximity requirement
+        perk_value_2 = tostring(self.biker_per_crew_member), -- Tendency per crew member
+        perk_value_3 = tostring(self.biker_damage_weighs_for_stack_loss.armour), -- Cohesion lost from taking damage
+        perk_value_4 = tostring(self.values.team.player.biker_damage_to_lose[1]), -- Damage to be taken to lose stacks
+        perk_value_5 = tostring(self.values.team.player.biker_crew_movespeed_bonus[1] * 100)..'%', -- Movement increase
+		perk_value_6 = tostring(self.values.player.corpse_dispose_speed_multiplier[1] * 100).."%" -- Faster interaction with civs + bagging corpses
 	}
 	self.multi_choice_specialization_descs[23][9][17] = { --Kingpin
 		perk_value_1 = tostring(self.values.temporary.chico_injector[4][1] * 100).."%", -- HP regen on damage taken
@@ -4099,9 +4341,11 @@ function UpgradesTweakData.mrwi_deck9_options()
 			name_id = "menu_st_spec_16",
 			desc_id = "menu_deck16_mrwi_desc",
 			upgrades = {
-				"player_wild_health_amount_1",
+				"player_biker_aura",
+				"team_biker_damage_to_lose_1",
+				"team_biker_crew_movespeed_bonus",
 				"team_civ_intimidation_mul",
-				"player_passive_loot_drop_multiplier_1"	
+				"player_passive_loot_drop_multiplier_1"
 			}
 		},
 		{ --Kingpin
@@ -6061,7 +6305,234 @@ function UpgradesTweakData:_player_definitions()
 		}
 	}
 
+	-- The "aura", the 18 metres proximity around the Biker user.
+    self.definitions.player_biker_aura = {
+		name_id = "menu_player_biker_aura",
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "biker_emit_aura",
+			category = "player"
+		}
+	}
+
+    -- Treats the user as having more Cohesion for effects.
+    self.definitions.player_biker_treat_as_more_cohesion = {
+		name_id = "menu_player_biker_treat_as_more_cohesion",
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "biker_treat_as_more_cohesion",
+			category = "player"
+		}
+	}
+
+	-- Change Cohesion gain and loss.
+    self.definitions.player_biker_stack_change_adjustments_1 = {
+		name_id = "menu_player_biker_stack_change_adjustments_1",
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "biker_stack_change_adjustments",
+			category = "player"
+		}
+	}
+    self.definitions.player_biker_stack_change_adjustments_2 = {
+		name_id = "menu_player_biker_stack_change_adjustments_2",
+		category = "feature",
+		upgrade = {
+			value = 2,
+			upgrade = "biker_stack_change_adjustments",
+			category = "player"
+		}
+	}
+    self.definitions.player_biker_stack_change_adjustments_3 = {
+		name_id = "menu_player_biker_stack_change_adjustments_3",
+		category = "feature",
+		upgrade = {
+			value = 3,
+			upgrade = "biker_stack_change_adjustments",
+			category = "player"
+		}
+	}
+
+    -- Cohesion stacks on revive.
+    self.definitions.player_biker_stacks_on_revive = {
+		name_id = "menu_player_biker_stacks_on_revive",
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "biker_stacks_on_revive",
+			category = "player"
+		}
+	}
+
+    -- Cohesion stacks on kills.
+    self.definitions.player_biker_personal_kill_stack_reward = {
+		name_id = "menu_player_biker_personal_kill_stack_reward",
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "biker_personal_kill_stack_reward",
+			category = "player"
+		}
+	}
+
+    -- Signifies the current player as the one who is (one of) the source(s) of Dig In Your Heels regen.
+    self.definitions.player_biker_causer_of_regen = {
+		name_id = "menu_player_biker_causer_of_regen",
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "biker_causer_of_regen",
+			category = "player"
+		}
+	}
 end
+
+Hooks:PostHook(UpgradesTweakData, "_team_definitions", "res_team_definitions", function(self)
+	-- Damage to take to lose Cohesion.
+    self.definitions.team_biker_damage_to_lose_1 = {
+		name_id = "menu_team_biker_damage_to_lose_1",
+		category = "team",
+		upgrade = {
+			value = 1,
+			upgrade = "biker_damage_to_lose",
+			category = "player"
+		}
+	}
+    self.definitions.team_biker_damage_to_lose_2 = {
+		name_id = "menu_team_biker_damage_to_lose_2",
+		category = "team",
+		upgrade = {
+			value = 2,
+			upgrade = "biker_damage_to_lose",
+			category = "player"
+		}
+	}
+
+    -- Crew healing potency increase from Cohesion stacks.
+    self.definitions.team_biker_crew_heal_potency = {
+		name_id = "menu_team_biker_crew_heal_potency",
+		category = "team",
+		upgrade = {
+			value = 1,
+			upgrade = "biker_crew_heal_potency",
+			category = "player"
+		}
+	}
+
+	-- Ammo pickup multiplier for the crew based on Cohesion stacks.
+	self.definitions.team_biker_ammo_pickup_multiplier = {
+		name_id = "menu_team_biker_ammo_pickup_multiplier",
+		category = "team",
+		upgrade = {
+			value = 1,
+			upgrade = "biker_ammo_pickup_boost",
+			category = "player"
+		}
+	}
+
+    -- Crew movespeed increase from Cohesion stacks.
+    self.definitions.team_biker_crew_movespeed_bonus = {
+		name_id = "menu_team_biker_crew_movespeed_bonus",
+		category = "team",
+		upgrade = {
+			value = 1,
+			upgrade = "biker_crew_movespeed_bonus",
+			category = "player"
+		}
+	}
+
+    -- Crew reload speed increase from Cohesion stacks.
+    self.definitions.team_biker_crew_reload_bonus = {
+		name_id = "menu_team_biker_crew_reload_bonus",
+		category = "team",
+		upgrade = {
+			value = 1,
+			upgrade = "biker_crew_reload_bonus",
+			category = "player"
+		}
+	}
+
+    -- Crew default tendency increase.
+    self.definitions.team_biker_increase_default_tendency = {
+		name_id = "menu_team_biker_increase_default_tendency",
+		category = "team",
+		upgrade = {
+			value = 1,
+			upgrade = "biker_increase_default_tendency",
+			category = "player"
+		}
+	}
+
+    -- Crew health regen from Cohesion stacks.
+    self.definitions.team_biker_regen_health = {
+		name_id = "menu_team_biker_regen_health",
+		category = "team",
+		upgrade = {
+			value = 1,
+			upgrade = "biker_regen_health",
+			category = "player"
+		}
+	}
+
+	-- Crew armour regen from Cohesion stacks.
+    self.definitions.team_biker_armour_regen_bonus = {
+		name_id = "menu_team_biker_armour_regen_bonus",
+		category = "team",
+		upgrade = {
+			value = 1,
+			upgrade = "biker_armour_regen_bonus",
+			category = "player"
+		}
+	}
+
+	-- Additional crew armour from Cohesion stacks.
+    self.definitions.team_biker_additional_armour = {
+		name_id = "menu_team_biker_additional_armour",
+		category = "team",
+		upgrade = {
+			value = 1,
+			upgrade = "biker_additional_armour",
+			category = "player"
+		}
+	}
+
+	-- Crew stamina regeneration speed from Cohesion stacks.
+    self.definitions.team_biker_stamina_regen_bonus = {
+		name_id = "menu_team_biker_stamina_regen_bonus",
+		category = "team",
+		upgrade = {
+			value = 1,
+			upgrade = "biker_stamina_regen_bonus",
+			category = "player"
+		}
+	}
+
+	-- Additional bonus to the movement and reload speed bonuses.
+	-- Yeeeeaaaah, kinda weirdly done.
+    self.definitions.team_biker_additional_move_reload_bonus = {
+		name_id = "menu_team_biker_additional_move_reload_bonus",
+		category = "team",
+		upgrade = {
+			value = 1,
+			upgrade = "biker_additional_move_reload_bonus",
+			category = "player"
+		}
+	}
+
+	-- Cohesion stack bonuses to everyone nearby whenever a crew member kills enough enemies.
+    self.definitions.team_biker_crew_kill_stack_reward = {
+		name_id = "menu_team_biker_crew_kill_stack_reward",
+		category = "team",
+		upgrade = {
+			value = 1,
+			upgrade = "biker_crew_kill_stack_reward",
+			category = "player"
+		}
+	}
+end)
 
 function UpgradesTweakData:_smg_definitions()
 	self.definitions.smg_reload_speed_multiplier = {

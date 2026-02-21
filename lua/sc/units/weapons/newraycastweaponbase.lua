@@ -1074,6 +1074,7 @@ function NewRaycastWeaponBase:_update_stats_values(disallow_replenish, ammo_data
 		self._single_fire_ap_add = self:weapon_tweak_data().SINGLE_FIRE_AP_ADD or 0
 	
 		self._object_damage_mult = self._object_damage_mult or self:weapon_tweak_data().object_damage_mult or 1
+		self._object_damage_mult_exp = self._object_damage_mult or self:weapon_tweak_data().object_damage_mult or 1
 		self._object_damage_mult_single_ray = self._object_damage_mult_single_ray or self:weapon_tweak_data().object_damage_mult_single_ray or 1
 		self._object_damage_mult_volley = self._object_damage_mult_volley or self:weapon_tweak_data().object_damage_mult_volley or 1
 		self._fire_rate_init_count = self._fire_rate_init_count or self:weapon_tweak_data().fire_rate_init_count or nil
@@ -1309,6 +1310,9 @@ function NewRaycastWeaponBase:_update_stats_values(disallow_replenish, ammo_data
 			if stats.object_damage_mult_override then		
 				self._object_damage_mult = stats.object_damage_mult_override
 				self._object_damage_mult_single_ray = stats.object_damage_mult_override
+			end
+			if stats.object_damage_mult_exp_override then		
+				self._object_damage_mult_exp = stats.object_damage_mult_exp_override
 			end
 			if stats.descope_on_fire then		
 				self._descope_on_fire = stats.descope_on_fire
@@ -1789,6 +1793,11 @@ function NewRaycastWeaponBase:precalculate_ammo_pickup()
 			pickup_multiplier = pickup_multiplier * managers.player:body_armor_value("skill_ammo_mul", nil, 1)
 		end
 
+		if managers.player:has_team_category_upgrade("player", "biker_ammo_pickup_boost") then
+			local cohesion_stacks = managers.player:get_cohesion_stacks_as_treated() or 0
+			pickup_multiplier = pickup_multiplier * (1 + managers.player:team_upgrade_value("player", "biker_ammo_pickup_boost", 0) * cohesion_stacks)
+		end
+
 		--Sharpeyed Team AI bonus, since now Enduring is a base thing
 		--Moved to RaycastWeaponBase:add_ammo; precalculate_ammo_pickup is first called on spawn *before* the crew bonus becomes active and renders it useless unless you leave custody or do something else to call this function after crew AI is active
 		--pickup_multiplier = pickup_multiplier + managers.player:crew_ability_upgrade_value("crew_scavenge", 1) - 1
@@ -1967,8 +1976,13 @@ end
 function NewRaycastWeaponBase:in_burst_mode()
 	if self._fire_mode == NewRaycastWeaponBase.IDSTRING_SINGLE and self._in_burst_mode and not self:gadget_overrides_weapon_functions() then
 		managers.hud:set_teammate_weapon_firemode_burst(self:selection_index())
+		if not self._afr_memory then
+			self._afr_memory = self._afr_is_single
+		end
+		self._afr_is_single = false
 		return true --self._fire_mode == NewRaycastWeaponBase.IDSTRING_SINGLE and self._in_burst_mode and not self:gadget_overrides_weapon_functions()
 	else
+		self._afr_is_single = self._afr_memory or nil
 		return false --self._fire_mode == NewRaycastWeaponBase.IDSTRING_SINGLE and self._in_burst_mode and not self:gadget_overrides_weapon_functions()
 	end
 end
@@ -2048,6 +2062,13 @@ function NewRaycastWeaponBase:reload_speed_multiplier()
 
 	multiplier = multiplier * self:reload_speed_stat()
 	multiplier = managers.modifiers:modify_value("WeaponBase:GetReloadSpeedMultiplier", multiplier)
+
+	if managers.player:has_team_category_upgrade("player", "biker_crew_reload_bonus") then
+		local potency_amount = managers.player:get_cohesion_stacks_as_treated()
+		local bonus = managers.player:team_upgrade_value("player", "biker_crew_reload_bonus", 0) + managers.player:team_upgrade_value("player", "biker_additional_move_reload_bonus", 0)
+
+		multiplier = multiplier * (1 + bonus * potency_amount)
+	end
 
 	--MERCENARY DECK
 	if managers.player:has_category_upgrade("player","kmerc_reload_speed_per_max_armor") then
@@ -2178,7 +2199,7 @@ function NewRaycastWeaponBase:_fire_raycast(user_unit, from_pos, direction, dmg_
 end
 
 
-function NewRaycastWeaponBase:get_damage_falloff(damage, col_ray, user_unit, dot_only)
+function NewRaycastWeaponBase:get_damage_falloff(damage, col_ray, user_unit, dot_only, ignore_ammo)
 	local is_rapidfire = self._burst_fire_range_multiplier and self:in_burst_mode()
 	local is_fullauto = self._auto_fire_range_multiplier and not self:is_single_shot()
 	local is_single = self:is_single_shot() and not self:in_burst_mode()
@@ -2201,7 +2222,7 @@ function NewRaycastWeaponBase:get_damage_falloff(damage, col_ray, user_unit, dot
 	--Initialize base info.
 
 	local has_mindblown_ace = managers.player:has_category_upgrade("player", "headshot_no_falloff") and self:is_single_shot() and self:is_category("assault_rifle", "snp") and check_col_ray_head --and (managers.player._last_no_falloff_headshot_t or 0) < self._unit:timer():time()
-	if (self._chf and check_col_ray_head) or --[[not self:in_burst_mode() and not is_rapidfire and]] (self._ammo_data and (self._ammo_data.bullet_class == "InstantExplosiveBulletBase")) or has_mindblown_ace then
+	if (self._chf and check_col_ray_head) or --[[not self:in_burst_mode() and not is_rapidfire and]] (not ignore_ammo and self._ammo_data and (self._ammo_data.bullet_class == "InstantExplosiveBulletBase")) or has_mindblown_ace then
 		--if has_mindblown_ace then
 			--managers.player._last_no_falloff_headshot_t = self._unit:timer():time() + (tweak_data.upgrades.headshot_no_falloff_cd or 0)
 		--end
