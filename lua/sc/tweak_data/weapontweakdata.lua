@@ -10848,8 +10848,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					}
 					self.shuno.stats = {
 						damage = 20,
-						spread = 29,
-						recoil = 85,
+						spread = 31,
+						recoil = 79,
 						spread_moving = 5,
 						zoom = 1,
 						concealment = 16,
@@ -37248,7 +37248,6 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 					table.insert(weap.categories, "akb_rifle")
 				end
 			end
-			table.insert(weap.categories, "tony")
 
 			if weap.recategorize and not weap.recoil_values then
 				--YandereDev moment (this isn't run every frame though)
