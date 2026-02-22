@@ -410,6 +410,11 @@ Hooks:Add("LocalizationManagerPostInit", "ResMod_english_Localization_Init", fun
 					["RestorationModBWAResmodADSSwayStrTitleID"] = "ADS Strength Multiplier",
 					["RestorationModBWAResmodADSSwayStrDescID"] = "Change the amount your weapon moves when looking around while ADS vs. base look-sway (Default 0.05)",
 
+		["RestorationModDebugOptionsTitleID"] = "===Debug Options===",
+		["RestorationModDebugOptionsDescID"] = "Degugging options - Do not leave these on!",
+			["RestorationModLogOutfitStringsTitleID"] = "Log Outfit String Calls",
+			["RestorationModLogOutfitStringsDescID"] = "Logs when outfit string updates are called through NetworkPeer - WILL CAUSE PERFORMANCE DROPS",
+
 		--EXTRA OPTIONS
 		["RestorationModHearNonLocalPECMTitleID"] = "Pocket ECM Sounds From Other Players",
 		["RestorationModHearNonLocalPECMDescID"] = "Play PECM sounds if other player activate it.",
@@ -5062,6 +5067,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 				["menu_silence_expert_beta_sc"] = "Explosive Headshot",
 				["RestorationModDisableSoloBoonsDescID"] = "Disable the additional boons the player receives in solo play (Crime.net offline). You difficulty junkie.",
 				["bm_melee_fight_info"] = "KAKATTE KOI!\n\nParrying an enemy attack deals #{skill_color}#120## melee damage to them. This can be increased with skills.\n#{stats_negative}#I'M NOT GONNA SUGARCOAT IT\nR1 + (Triangle)##",
+				["RestorationModLogOutfitStringsDescID"] = "Logs when outfit string updates are called through NetworkPeer - turn this off when youre done for those sweet sweet frames",
 			})
 		end
 
@@ -5332,7 +5338,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 		["loading_stealth_res_8"] = "While carrying any bag, you can be seen from much farther away, and will also be detected much faster while standing, sprinting, or jumping. Stay low and slow.",
 		["loading_stealth_res_9"] = "You get up to 4 ECMs instead of 2 like in vanilla, but they have half duration.",
 		["loading_stealth_res_10"] = "Suppressed weapons generate no noise in stealth.",
-		["loading_stealth_res_11"] = "You can take up to 4 cops hostage in stealth, just like in loud.",
+		["loading_stealth_res_11"] = "You can take up to 8 cops hostage in stealth, just like in loud.",
 		["loading_stealth_res_12"] = "Stealth is more forgiving, allowing for more recovery.",
 		["loading_stealth_res_13"] = "Guards will no longer instantly die from any source of damage while unalerted. Aim for the head, and bring something more damaging than your fists.",
 		["loading_stealth_res_14"] = "When the suspicion meter is full, you have 60 seconds to finish up what you started before the alarm is raised.",
@@ -6023,7 +6029,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 
 				--Jack of all Trades
 				["menu_jack_of_all_trades_beta_sc"] = "Jack of All Trades",
-				["menu_jack_of_all_trades_beta_desc_sc"] = "BASIC: #{owned}#$basic##\nTEMP-SPACE\n\nACE: #{owned}#$pro##\n#{skill_color}#You can now equip a second deployable to bring with you.## Pressing #{skill_color}#$BTN_CHANGE_EQ## will allow you to toggle between deployables.\n\nYou carry #{important_1}#50%## the normal amount of your second deployable, to a minimum of #{skill_color}#1.##",
+				["menu_jack_of_all_trades_beta_desc_sc"] = "BASIC: #{owned}#$basic##\nYour ordnance bags now restore an additional #{skill_color}#$skill_value_b1## ammunition on each use.\n\nACE: #{owned}#$pro##\nYou can now place #{skill_color}#$skill_value_p1## ordnance bags instead of just one.\n\n#{skill_color}#You can now equip a second deployable to bring with you.## Pressing #{skill_color}#$BTN_CHANGE_EQ## will allow you to toggle between deployables.\n\nYou carry #{important_1}#50%## the normal amount of your second deployable, to a minimum of #{skill_color}#1.##",
 
 				--Sentry Tower Defense--
 				["menu_tower_defense_beta_sc"] = "Tower Defense",
