@@ -1534,6 +1534,12 @@ local dave = {
 		"hk21_sc"
 	}
 }
+local medic_heavy = {
+	medic_heavy = {
+		"ump",
+		"scar_heavy"
+	}
+}
 local bravo_heavy = {
 	rifle_heavy = {
 		"bravo_rifle",
@@ -1660,6 +1666,9 @@ local weapon_mapping = {
 	[("units/pd2_dlc_bex/characters/ene_swat_policia_federale_city_r870/ene_swat_policia_federale_city_r870"):key()] = federales.shotgun,
 	[("units/pd2_dlc_bex/characters/ene_swat_heavy_policia_federale_r870/ene_swat_heavy_policia_federale_r870"):key()] = federales.shotgun,
 	[("units/pd2_dlc_bex/characters/ene_swat_heavy_policia_federale_fbi_r870/ene_swat_heavy_policia_federale_fbi_r870"):key()] = federales.shotgun,
+-- Heavy Medic get's his SCAR back
+	[("units/pd2_mod_nc/characters/ene_heavymedic_1/ene_heavymedic_1"):key{}] = medic_heavy.medic_heavy,
+	[("units/pd2_mod_halloween/characters/ene_heavymedic_1/ene_heavymedic_1"):key{}] = medic_heavy.medic_heavy,
 -- Dave's guns
 	[("units/pd2_mod_dave/characters/ene_big_dave/ene_big_dave"):key{}] = dave.all_the_guns,
 	[("units/pd2_mod_dave/characters/ene_dave_hvh/ene_dave_hvh"):key{}] = dave.all_the_guns,

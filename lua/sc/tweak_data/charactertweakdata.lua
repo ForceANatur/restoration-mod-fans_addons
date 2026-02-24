@@ -1029,6 +1029,8 @@ function CharacterTweakData:_init_heavy_swat(presets)
 		self.heavy_swat_sniper.custom_voicework = "tsniper_hvh"
 	elseif self:get_ai_group_type() == "murkywater" then
 		self.heavy_swat_sniper.custom_voicework = "murky_tsniper"
+	else
+		self.heavy_swat_sniper.custom_voicework = "tsniper"
 	end
 	if self:get_ai_group_type() == "murkywater" or self:get_ai_group_type() == "russia" or self:get_ai_group_type() == "federales" then
 		self.heavy_swat_sniper.yellow_blood = false
