@@ -237,7 +237,7 @@ elseif ai_type == z then
 		--Shotguns
 		["units/pd2_mod_halloween/characters/ene_fbi_swat_2/ene_fbi_swat_2"] = "units/pd2_mod_cruel/characters/ene_fbi_swat_2/ene_fbi_swat_2",
 		["units/pd2_mod_halloween/characters/ene_city_swat_2/ene_city_swat_2"] = "units/pd2_mod_cruel/characters/ene_city_swat_2/ene_city_swat_2",
-		["units/pd2_mod_halloween/characters/ene_zeal_city_2/ene_zeal_city_2"] = "units/pd2_mod_cruel/characters/ene_zeal_swat/ene_zeal_swat",
+		["units/pd2_mod_halloween/characters/ene_zeal_city_2/ene_zeal_city_2"] = "units/pd2_mod_cruel/characters/ene_zeal_swat_2/ene_zeal_swat_2",
 		
 		--Titans
 		["units/pd2_mod_halloween/characters/ene_skele_swat/ene_skele_swat"] = "units/pd2_mod_cruel/characters/ene_murkywater_1/ene_murkywater_1",
