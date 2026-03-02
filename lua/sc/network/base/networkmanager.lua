@@ -5,8 +5,8 @@
 -- 		self:register_handler("RestorationMod__unit", RestorationMod__UnitNetworkHandler)
 -- 	end
 -- end)
-NetworkMatchMakingEPIC._BUILD_SEARCH_INTEREST_KEY = "restoration_12.3.4.1_FaNScout_v21"
-NetworkMatchMakingSTEAM._BUILD_SEARCH_INTEREST_KEY = "restoration_12.3.4.1_FaNScout_v21"
+NetworkMatchMakingEPIC._BUILD_SEARCH_INTEREST_KEY = "restoration_12.3.4.1_FaNScout_v21_git"
+NetworkMatchMakingSTEAM._BUILD_SEARCH_INTEREST_KEY = "restoration_12.3.4.1_FaNScout_v21_git"
 
 local current_key = NetworkMatchMakingSTEAM._BUILD_SEARCH_INTEREST_KEY
 local standard_str = 'NetworkMatchMakingSTEAM._BUILD_SEARCH_INTEREST_KEY = \"'
