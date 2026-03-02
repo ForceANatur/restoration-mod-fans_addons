@@ -1555,6 +1555,8 @@ local cruel_zeal = {
 		"shepheard",
 		"scar_heavy",
 		"amcar",
+	},
+	zeal_light_shotgun = {
 		"r870",
 		"benelli",
 		"saiga",
@@ -1678,6 +1680,7 @@ local weapon_mapping = {
 	[("units/pd2_mod_ngvh/characters/ene_ntl_heavyswat/ene_ntl_heavyswat"):key{}] = bravo_heavy.rifle_heavy,
 -- Cruel Trance ZEAL
 	[("units/pd2_mod_cruel/characters/ene_zeal_swat/ene_zeal_swat"):key{}] = cruel_zeal.zeal_light,
+	[("units/pd2_mod_cruel/characters/ene_zeal_swat_2/ene_zeal_swat_2"):key{}] = cruel_zeal.zeal_light_shotgun,
 	[("units/pd2_mod_cruel/characters/ene_zeal_swat_heavy/ene_zeal_swat_heavy"):key{}] = cruel_zeal.zeal_heavy,
 }
 

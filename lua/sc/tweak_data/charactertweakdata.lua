@@ -20674,6 +20674,7 @@ function CharacterTweakData.character_map(...)
 				"ene_zeal_hrt_3",
 				"ene_zeal_hrt_4",
 				"ene_zeal_swat",
+				"ene_zeal_swat_2",
 				"ene_zeal_swat_heavy",
 				"ene_zeal_swat_shield",
 				"ene_zeal_tazer",

@@ -627,6 +627,16 @@
 	<df_nm_il			path="units/pd2_mod_cruel/characters/ene_zeal_swat/zeal_light_body"/>
 	<df_nm_il			path="units/pd2_mod_cruel/characters/ene_city_swat_r870/ene_city_swat_r870_helmet"/>
 
+	<unit				path="units/pd2_mod_cruel/characters/ene_zeal_swat_2/ene_zeal_swat_2" force="false" load="true"/>
+	<unit				path="units/pd2_mod_cruel/characters/ene_zeal_swat_2/ene_zeal_swat_2_husk" force="false" load="true"/>
+	<object				path="units/pd2_mod_cruel/characters/ene_zeal_swat_2/ene_zeal_swat_2" force="false"/>
+	<cooked_physics		path="units/pd2_mod_cruel/characters/ene_zeal_swat_2/ene_zeal_swat_2" force="false"/>
+	<model				path="units/pd2_mod_cruel/characters/ene_zeal_swat_2/ene_zeal_swat_2" force="false"/>
+	<material_config	path="units/pd2_mod_cruel/characters/ene_zeal_swat_2/ene_zeal_swat_2" force="false"/>
+	<material_config	path="units/pd2_mod_cruel/characters/ene_zeal_swat_2/ene_zeal_swat_2_contour" force="false"/>
+
+	<df_nm_il			path="units/pd2_mod_cruel/characters/ene_zeal_swat_2/zeal_light_body"/>
+
 	<object				path="units/pd2_mod_cruel/characters/ene_acc_zeal_swat_heavy_helmet/ene_acc_zeal_swat_heavy_helmet" force="false"/>
 	<cooked_physics		path="units/pd2_mod_cruel/characters/ene_acc_zeal_swat_heavy_helmet/ene_acc_zeal_swat_heavy_helmet" force="false"/>
 	<model				path="units/pd2_mod_cruel/characters/ene_acc_zeal_swat_heavy_helmet/ene_acc_zeal_swat_heavy_helmet" force="false"/>

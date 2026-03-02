@@ -206,7 +206,7 @@ local replacement_table = {
 	-- Zombies
 	["units/pd2_mod_halloween/characters/ene_fbi_swat_2/ene_fbi_swat_2"] = "units/pd2_mod_cruel/characters/ene_fbi_swat_2/ene_fbi_swat_2",
 	["units/pd2_mod_halloween/characters/ene_city_swat_2/ene_city_swat_2"] = "units/pd2_mod_cruel/characters/ene_city_swat_2/ene_city_swat_2",
-	["units/pd2_mod_halloween/characters/ene_zeal_city_2/ene_zeal_city_2"] = "units/pd2_mod_cruel/characters/ene_zeal_swat/ene_zeal_swat",
+	["units/pd2_mod_halloween/characters/ene_zeal_city_2/ene_zeal_city_2"] = "units/pd2_mod_cruel/characters/ene_zeal_swat_2/ene_zeal_swat_2",
 	["units/pd2_mod_halloween/characters/ene_fbi_swat_3/ene_fbi_swat_3"] = "units/pd2_mod_ngvh/characters/ene_ntl_swat_3/ene_ntl_swat_3",
 	["units/pd2_mod_halloween/characters/ene_city_swat_3/ene_city_swat_3"] = "units/pd2_mod_cruel/characters/ene_city_swat_3/ene_city_swat_3",
 	["units/pd2_mod_halloween/characters/ene_zeal_city_3/ene_zeal_city_3"] = "units/pd2_mod_ngvh/characters/ene_ntl_swat_3/ene_ntl_swat_3",
