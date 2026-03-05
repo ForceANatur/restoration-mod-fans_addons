@@ -1,0 +1,37 @@
+<materials version="3" group="civ_male_casual_1">
+	<material name="m_martin" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP:RL_CIVILIANS:SKINNED_3WEIGHTS" version="2">
+		<bump_normal_texture file="units/payday2/characters/shared_textures/martin_nm"/>
+		<diffuse_texture file="units/pd2_mod_caps/characters/ene_mememan_captain/martin_df"/>
+	</material>
+	<material name="m_martin_lod1" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP:RL_CIVILIANS:SKINNED_3WEIGHTS" version="2">
+		<bump_normal_texture file="units/payday2/characters/shared_textures/martin_nm"/>
+		<diffuse_texture file="units/pd2_mod_caps/characters/ene_mememan_captain/martin_df"/>
+	</material>
+	<material name="m_martin_lod2" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP:RL_CIVILIANS:SKINNED_3WEIGHTS" version="2">
+		<bump_normal_texture file="units/payday2/characters/shared_textures/martin_nm"/>
+		<diffuse_texture file="units/pd2_mod_caps/characters/ene_mememan_captain/martin_df"/>
+	</material>
+
+	<material name="mtr_casual_male_1" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP:RL_CIVILIANS:SKINNED_3WEIGHTS" version="2">
+		<bump_normal_texture file="units/payday2/characters/shared_textures/casual_male_1_nm" mip="1"/>
+		<diffuse_texture file="units/pd2_mod_caps/characters/ene_mememan_captain/casual_male_1_df"/>
+		<self_illumination_texture file="units/pd2_mod_caps/characters/ene_mememan_captain/casual_male_1_li"/> 
+		<variable type="scalar" name="il_bloom" value="5"/>
+		<variable type="scalar" name="il_multiplier" value="neonsign"/>
+	</material>
+	<material name="mtr_casual_male_1_lod1" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP:RL_CIVILIANS:SKINNED_3WEIGHTS" version="2">
+		<bump_normal_texture file="units/payday2/characters/shared_textures/casual_male_1_nm" mip="1"/>
+		<diffuse_texture file="units/pd2_mod_caps/characters/ene_mememan_captain/casual_male_1_df"/>
+		<self_illumination_texture file="units/pd2_mod_caps/characters/ene_mememan_captain/casual_male_1_li"/> 
+		<variable type="scalar" name="il_bloom" value="5"/>
+		<variable type="scalar" name="il_multiplier" value="neonsign"/>
+	</material>
+	<material name="mtr_casual_male_1_lod2" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP:RL_CIVILIANS:SKINNED_3WEIGHTS" version="2">
+		<bump_normal_texture file="units/payday2/characters/shared_textures/casual_male_1_nm" mip="1"/>
+		<diffuse_texture file="units/pd2_mod_caps/characters/ene_mememan_captain/casual_male_1_df"/>
+		<self_illumination_texture file="units/pd2_mod_caps/characters/ene_mememan_captain/casual_male_1_li"/> 
+		<variable type="scalar" name="il_bloom" value="5"/>
+		<variable type="scalar" name="il_multiplier" value="neonsign"/>
+	</material>
+	<material name="shadow_caster" render_template="shadow_caster_only:SKINNED_1WEIGHT" version="2"/>
+</materials>

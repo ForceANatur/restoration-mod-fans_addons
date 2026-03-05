@@ -273,6 +273,7 @@ logic_variants.tank_undeadtitan.attack = TankCopLogicAttack
 logic_variants.heavy_swat_sniper_mememan = clone(security_variant)
 logic_variants.heavy_swat_sniper_mememan.attack = MarshalLogicAttack
 logic_variants.city_swat_dodge_mememan = security_variant
+logic_variants.captain_ultra = clone(security_variant)
 
 logic_variants.heavy_swat_sniper = clone(security_variant)
 logic_variants.heavy_swat_sniper.attack = MarshalLogicAttack

@@ -65,6 +65,7 @@ function CharacterTweakData:init(tweak_data, presets)
 	self:_init_weekend_vanilla_heavy(presets)
 	self:_init_weekend_vanilla_snp(presets)
 	self:_init_city_swat_sergeant(presets)
+	self:_init_captain_ultra(presets)
 	self:_process_weapon_usage_table()
 	
 	--Dozer Armor Multiplier, lower means more EHP
@@ -4620,6 +4621,86 @@ function CharacterTweakData:_init_city_swat_sergeant(presets)
 		end
 	}
 	table.insert(self._enemy_list, "city_swat_sergeant")
+end
+
+--The REAL april fools captain, does all the captain things. Can even be healed by medics! Blame HeavyGunner for that.
+function CharacterTweakData:_init_captain_ultra(presets)
+	self.captain_ultra = deep_clone(presets.base)
+	self.captain_ultra.tags = {"law", "custom", "special", "captain"}
+	self.captain_ultra.move_speed = presets.move_speed.fast
+	self.captain_ultra.experience = {}
+	self.captain_ultra.no_retreat = true
+	self.captain_ultra.no_limping = true
+	self.captain_ultra.no_arrest = true
+	self.captain_ultra.surrender = nil
+	self.captain_ultra.weapon = deep_clone(presets.weapon.normal)
+	self.captain_ultra.detection = presets.detection.normal
+	self.captain_ultra.ends_assault_on_death = true
+	self.captain_ultra.damage_resistance = presets.damage_resistance.heavy_swat
+	self.captain_ultra.headshot_dmg_mul = 1.67
+	self.captain_ultra.announce_incomming = "incomming_captain"
+	self.captain_ultra.priority_shout = "f45"
+	self.captain_ultra.bot_priority_shout = "f45x_any"
+	self.captain_ultra.priority_shout_max_dis = 3000
+	self.captain_ultra.weapon_voice = "3"
+	self.captain_ultra.chatter = presets.enemy_chatter.swat
+	self.captain_ultra.flammable = true
+	self.captain_ultra.unintimidateable = true
+	self.captain_ultra.can_be_tased = false
+	self.captain_ultra.ecm_vulnerability = nil
+	self.captain_ultra.immune_to_knock_down = true
+	self.captain_ultra.immune_to_concussion = true
+	self.captain_ultra.ecm_hurts = {}
+	self.captain_ultra.damage.hurt_severity = presets.hurt_severities.no_hurts
+	self.captain_ultra.static_dodge_preset = true
+	self.captain_ultra.no_recoil = true
+	self.captain_ultra.is_special = true
+	self.captain_ultra.no_asu = false
+	self.captain_ultra.steal_loot = nil
+	self.captain_ultra.calls_in = nil
+	self.captain_ultra.use_animation_on_fire_damage = false
+	self.captain_ultra.melee_weapon = "fists_dozer"
+	self.captain_ultra.access = "swat"
+	self.captain_ultra.speech_prefix_p1 = nil
+	self.captain_ultra.speech_prefix_p2 = nil
+	self.captain_ultra.speech_prefix_count = nil
+	self.captain_ultra.yellow_blood = false
+	self.captain_ultra.heal_cooldown = 1
+	self.captain_ultra.suppression = nil
+	self.captain_ultra.no_omnia_heal = false
+	self.captain_ultra.can_be_healed = true
+	self.captain_ultra.do_autumn_blackout = true -- suffer
+	--Base health
+	self.captain_ultra.HEALTH_INIT = 999
+	self.captain_ultra.player_health_scaling_mul = 9.9
+	self.captain_ultra.custom_voicework = nil
+	self.captain_ultra.no_mutator_weapon_override = true
+--	self.captain_ultra.can_cloak = true
+--	--Cloaking stuff
+--	self.captain_ultra.uncloak_on_shoot_chance = 0.5
+--	self.captain_ultra.uncloak_on_melee_chance = 1
+--	self.captain_ultra.uncloak_on_tase_damage_chance = 1
+--
+--	self.captain_ultra.cloak_on_bullet_damage_chance = 0.5
+--	self.captain_ultra.cloak_on_fire_damage_chance = 0.5
+--	self.captain_ultra.cloak_on_explosive_damage_chance = 0
+	self.captain_ultra.do_omnia = true
+	self.captain_ultra.can_throw_frag = true
+	self.captain_ultra.grenade_type = "cluster_fuck"
+	self.captain_ultra.dt_suppress = {
+		range = 2000
+	}
+	self.captain_ultra.ewgf = {
+		duration = 2.5,
+		power = 4
+	}
+	self.captain_ultra.slowing_bullets = {
+		duration = 1,
+		power = 0.5,
+		range = 2000
+	}
+	self.captain_ultra.captain_type = restoration.captain_types.mega
+	table.insert(self._enemy_list, "captain_ultra")
 end
 
 function CharacterTweakData:_init_zombie(presets)
@@ -19124,6 +19205,10 @@ Hooks:PostHook(CharacterTweakData, "_create_table_structure", "remod_create_tabl
 	--Barrett M95
 	table.insert(self.weap_ids, "m95_npc")
 	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_m95/wpn_npc_m95"))
+
+	--god help us all
+	table.insert(self.weap_ids, "m95_auto_npc")
+	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_m95/wpn_npc_m95_fuck"))
 end)
 -- EASY (UNUSED) --
 function CharacterTweakData:_set_easy()
@@ -20464,7 +20549,8 @@ function CharacterTweakData:character_map()
 		char_map.caps = {
 			path = "units/pd2_mod_caps/characters/",
 			list = {
-				"ene_bulldozer_captain"
+				"ene_bulldozer_captain",
+				"ene_mememan_captain"
 			}
 		}
 

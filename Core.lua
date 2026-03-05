@@ -45,6 +45,11 @@ function restoration:Init()
 			spawn_group = "Cap_Cruel_T",
 			icon = "guis/textures/pd2/hud_buff_generic",
 			vs_line = "hud_assault_vip_heavygunner"
+		},
+		mega = {
+			spawn_group = "OHGODWHY",
+			icon = "guis/textures/pd2/hud_buff_mememan",
+			vs_line = "hud_assault_vip_heavygunner"
 		}
 	}
 	--Defines what captains spawn on what heists.
