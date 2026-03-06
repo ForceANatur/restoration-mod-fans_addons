@@ -10292,6 +10292,38 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 		ignore_spawn_cap = true
 	}
 
+	--leader of the mememen
+	self.unit_categories.OHGODWHY = {
+		unit_types = {
+			america = {
+				Idstring("units/pd2_mod_caps/characters/ene_mememan_captain/ene_mememan_captain")
+			},
+			russia = {
+				Idstring("units/pd2_mod_caps/characters/ene_mememan_captain/ene_mememan_captain")
+			},
+			zombie = {
+				Idstring("units/pd2_mod_caps/characters/ene_mememan_captain/ene_mememan_captain")
+			},					
+			murkywater = {
+				Idstring("units/pd2_mod_caps/characters/ene_mememan_captain/ene_mememan_captain")
+			},
+			federales = {
+				Idstring("units/pd2_mod_caps/characters/ene_mememan_captain/ene_mememan_captain")
+			},					
+			nypd = {
+				Idstring("units/pd2_mod_caps/characters/ene_mememan_captain/ene_mememan_captain")
+			},	
+			lapd = {
+				Idstring("units/pd2_mod_caps/characters/ene_mememan_captain/ene_mememan_captain")
+			},
+			fbi = {
+				Idstring("units/pd2_mod_caps/characters/ene_mememan_captain/ene_mememan_captain")
+			}		
+		},
+		access = access_type_all,
+		ignore_spawn_cap = true
+	}
+
 	--mutator unit categories
 	--nothing
 	self.unit_categories.null = {}
@@ -16201,6 +16233,31 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 		marshal_shield = {
 			"shield",
 			"ranged_fire"
+		},
+		--Addons Exclusive enemies
+		--Do that FBI Suit thing with some combat
+		sergeants = {
+			"flank",
+			"grouphrtr",
+			"rescue_hostages",
+			"deathguard",
+			"provide_support"
+		},
+		--Rush the criminal down
+		police_enforcer_murder = {
+			"charge",
+			"murder",
+			"deathguard"
+		},
+		--Do normal SWAT things
+		police_enforcer = {
+			"ranged_fire",
+			"provide_coverfire",
+			"provide_support",
+			"deathguard",
+			"groupcsr",
+			"smoke_grenade",
+			"flash_grenade"
 		}
 	}
 	self.enemy_spawn_groups = {}
@@ -19110,6 +19167,21 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 			}
 		}
 	}
+
+	self.enemy_spawn_groups.OHGODWHY = {
+		amount = 1,
+		force = true,
+		spawn = {
+			{
+				unit = "OHGODWHY",
+				freq = 1,
+				amount_min = 1,
+				amount_max = 1,
+				tactics = self._tactics.police_enforcer_murder,
+				rank = 1
+			}
+		}
+	}
 	
 	--Single Cloaker groups
 	self.enemy_spawn_groups.single_spooc = {
@@ -19333,11 +19405,11 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 	if difficulty_index >= 5 then
 		self.enemy_spawn_groups.sergeants = {
 			spawn_cooldown = 15,
-			max_nr_simultaneous_groups = 2,
+			max_nr_simultaneous_groups = 4,
 			initial_spawn_delay = 30,
 			amount = {
 				1,
-				1
+				2
 			},
 			spawn = {
 				{
@@ -19347,38 +19419,67 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					rank = 1,
 					freq = 1,
 					unit = "gensec_sgt",
-					tactics = self._tactics.FBI_suit
+					tactics = self._tactics.sergeants
 				}
 			},
-			spawn_point_chk_ref = table.list_to_set({
-				"FBI_Booms",
-				"FBI_defend_a",
-				"FBI_defend_b",
-				"FBI_defend_c",
-				"FBI_defend_d",
-				"FBI_stealth_a",
-				"FBI_stealth_a_boom",
-				"FBI_stealth_b",
-				"FBI_stealth_c",
-				"FBI_swats",
-				"FBI_heavys",
-				"FBI_heavys_boom",
-				"FBI_shields",
-				"FBI_shields_boom",
-				"GS_defend_b",
-				"GS_defend_c",
-				"GS_defend_d",
-				"GS_swats",
-				"GS_Heavys",
-				"GS_heavys_boom",
-				"GS_shields",
-				"GS_shields_boom",
-				"GS_Booms"
-			})
 		}
 	end
 
-	if difficulty_index >= 4 then
+	if difficulty_index <= 3 then
+		-- spawn nothing, hopefully
+		self.enemy_spawn_groups.police_enforcer = {}
+	elseif difficulty_index == 4 then
+		self.enemy_spawn_groups.police_enforcer = {
+			spawn_cooldown = 15,
+			max_nr_simultaneous_groups = 1,
+			initial_spawn_delay = 60,
+			amount = {
+				1,
+				1
+			},
+			spawn = {
+				{
+					respawn_cooldown = 25,
+					amount_min = 1,
+					amount_max = 2,
+					rank = 1,
+					freq = 1,
+					unit = "police_heavygunner",
+					tactics = self._tactics.police_enforcer
+				}
+			},
+		}
+	elseif difficulty_index == 5 then
+		self.enemy_spawn_groups.police_enforcer = {
+			spawn_cooldown = 15,
+			max_nr_simultaneous_groups = 1,
+			initial_spawn_delay = 60,
+			amount = {
+				1,
+				1
+			},
+			spawn = {
+				{
+					respawn_cooldown = 25,
+					amount_min = 1,
+					amount_max = 2,
+					rank = 1,
+					freq = 1,
+					unit = "police_heavygunner",
+					tactics = self._tactics.police_enforcer
+				},
+				{
+					respawn_cooldown = 25,
+					amount_min = 1,
+					amount_max = 1,
+					rank = 1,
+					freq = 0.25,
+					unit = "police_heavygunner",
+					tactics = self._tactics.police_enforcer_murder
+				}
+			},
+		}
+	elseif difficulty_index == 6 or 7 then
 		self.enemy_spawn_groups.police_enforcer = {
 			spawn_cooldown = 15,
 			max_nr_simultaneous_groups = 2,
@@ -19395,35 +19496,72 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					rank = 1,
 					freq = 1,
 					unit = "police_heavygunner",
-					tactics = self._tactics.FBI_heavy_shotgun
+					tactics = self._tactics.police_enforcer
+				},
+				{
+					respawn_cooldown = 25,
+					amount_min = 1,
+					amount_max = 1,
+					rank = 1,
+					freq = 0.5,
+					unit = "police_heavygunner",
+					tactics = self._tactics.police_enforcer_murder
 				}
 			},
-			spawn_point_chk_ref = table.list_to_set({
-				"FBI_Booms",
-				"FBI_defend_a",
-				"FBI_defend_b",
-				"FBI_defend_c",
-				"FBI_defend_d",
-				"FBI_stealth_a",
-				"FBI_stealth_a_boom",
-				"FBI_stealth_b",
-				"FBI_stealth_c",
-				"FBI_swats",
-				"FBI_heavys",
-				"FBI_heavys_boom",
-				"FBI_shields",
-				"FBI_shields_boom",
-				"GS_defend_b",
-				"GS_defend_c",
-				"GS_defend_d",
-				"GS_swats",
-				"GS_Heavys",
-				"GS_heavys_boom",
-				"GS_shields",
-				"GS_shields_boom",
-				"GS_Booms"
-			})
 		}
+	else
+		if pro_job then
+			self.enemy_spawn_groups.police_enforcer = {
+				spawn_cooldown = 15,
+				max_nr_simultaneous_groups = 3,
+				initial_spawn_delay = 45,
+				amount = {
+					1,
+					2
+				},
+				spawn = {
+					{
+						respawn_cooldown = 25,
+						amount_min = 1,
+						amount_max = 1,
+						rank = 1,
+						freq = 1,
+						unit = "police_heavygunner",
+						tactics = self._tactics.police_enforcer_murder
+					}
+				},
+			}
+		else
+			self.enemy_spawn_groups.police_enforcer = {
+				spawn_cooldown = 15,
+				max_nr_simultaneous_groups = 2,
+				initial_spawn_delay = 60,
+				amount = {
+					1,
+					2
+				},
+				spawn = {
+					{
+						respawn_cooldown = 25,
+						amount_min = 1,
+						amount_max = 2,
+						rank = 1,
+						freq = 1,
+						unit = "police_heavygunner",
+						tactics = self._tactics.police_enforcer
+					},
+					{
+						respawn_cooldown = 25,
+						amount_min = 1,
+						amount_max = 1,
+						rank = 1,
+						freq = 0.75,
+						unit = "police_heavygunner",
+						tactics = self._tactics.police_enforcer_murder
+					}
+				},
+			}
+		end
 	end
 
 	self.enemy_spawn_groups.snowman_boss = {

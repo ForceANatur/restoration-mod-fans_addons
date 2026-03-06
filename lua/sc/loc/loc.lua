@@ -5559,6 +5559,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 		["menu_mutator_captain_replace_hvh"] = "HHHTDFH",
 		["menu_mutator_captain_replace_heavyg"] = "HeavyGunner",
 		["menu_mutator_captain_replace_dzr_snp"] = "Mr. Cruel T",
+		["menu_mutator_captain_replace_mega"] = "ULTIMATE MAN",
 		["menu_mutator_captain_cooldown"] = "Captain Cooldown (in s)",
 		["menu_mutator_winter_blacklist_toggle"] = "Blacklist Winters for \"Random\" option",
 		["menu_mutator_spring_blacklist_toggle"] = "Blacklist Spring for \"Random\" option",
@@ -5567,6 +5568,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 		["menu_mutator_hvh_blacklist_toggle"] = "Blacklist HHHTDFH for \"Random\" option",
 		["menu_mutator_heavyg_blacklist_toggle"] = "Blacklist HeavyGunner for \"Random\" option",
 		["menu_mutator_dzr_snp_blacklist_toggle"] = "Blacklist Mr. Cruel T for \"Random\" option",
+		["menu_mutator_mega_blacklist_toggle"] = "Blacklist ULTIMATE MAN for \"Random\" option",
 		--["menu_mutator_bexvet_blacklist_toggle"] = "Blacklist El Chupacopra for \"Random\" option",	-- scrapped.
 		["mutator_captain_replace_desc"] = "Changes the Captain that spawns during a heist.",
 		["mutator_captain_replace_longdesc"] = "The Captain that will spawn during a heist will instead be the selected Captain.\n\nNote: Scripted Captain Encounters will be unchanged. Blacklisting all captains for \"Random\" option will sequence to use \"No Changes\" option.",

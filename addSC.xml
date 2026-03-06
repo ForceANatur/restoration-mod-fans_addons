@@ -705,6 +705,7 @@
 	<texture			path="guis/textures/pd2/hud_buff_halloween" force="false" load="false"/>
 	<texture			path="guis/textures/pd2/hud_buff_generic" force="false" load="false"/>
 	<texture			path="guis/textures/pd2/hud_buff_heavyg" force="false" load="false"/>
+	<texture			path="guis/textures/pd2/hud_buff_mememan" force="false" load="false"/>
 	<texture			path="guis/textures/restoration/bloodyscreen" force="false" load="false"/>
 	<texture			path="guis/textures/restoration/topbottomrim" force="false" load="false"/>
 	
@@ -1452,6 +1453,17 @@
 	<object				path="units/pd2_mod_caps/characters/ene_bulldozer_captain/ene_bulldozer_captain" force="false"/>
 	<sequence_manager	path="units/pd2_mod_caps/characters/ene_bulldozer_captain/ene_bulldozer_captain" force="false"/>
 
+	<!-- Mememan Captain -->
+	<texture			path="units/pd2_mod_caps/characters/ene_mememan_captain/martin_df"/>
+	<texture			path="units/pd2_mod_caps/characters/ene_mememan_captain/casual_male_1_df"/>
+	<texture			path="units/pd2_mod_caps/characters/ene_mememan_captain/casual_male_1_li"/>
+	<material_config	path="units/pd2_mod_caps/characters/ene_mememan_captain/ene_mememan_captain" force="false"/>
+	<material_config	path="units/pd2_mod_caps/characters/ene_mememan_captain/ene_mememan_captain_contour" force="false"/>
+	<model				path="units/pd2_mod_caps/characters/ene_mememan_captain/ene_mememan_captain" force="false"/>
+	<unit				path="units/pd2_mod_caps/characters/ene_mememan_captain/ene_mememan_captain" force="false" load="true"/>
+	<unit				path="units/pd2_mod_caps/characters/ene_mememan_captain/ene_mememan_captain_husk" force="false" load="true"/>
+	<object				path="units/pd2_mod_caps/characters/ene_mememan_captain/ene_mememan_captain" force="false"/>
+
 	<!--Thanatos for captain-->
 	<material_config	path="units/payday2/weapons/wpn_npc_m95/wpn_npc_m95" force="false"/>
 	<model				path="units/payday2/weapons/wpn_npc_m95/wpn_npc_m95" force="false"/>
@@ -1461,6 +1473,8 @@
 	<sequence_manager	path="units/payday2/weapons/wpn_npc_m95/wpn_npc_m95" force="false"/>
 	<texture			path="units/payday2/weapons/wpn_npc_m95/m95_df" force="true"/>
 	<texture			path="units/payday2/weapons/wpn_npc_m95/m95_nm" force="true"/>
+
+	<unit				path="units/payday2/weapons/wpn_npc_m95/wpn_npc_m95_fuck" force="false"/>
 
 	<unit path="units/pd2_dlc_usm1/weapons/wpn_npc_dmr/wpn_npc_dmr" force="true" />
 

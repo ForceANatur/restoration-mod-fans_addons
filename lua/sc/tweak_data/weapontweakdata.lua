@@ -1300,6 +1300,8 @@ local crew_wep_preset = {
 		self.m95_npc.DAMAGE = 27	-- if this is too lethal, then ill take it down a bit
 		self.m95_npc.CLIP_AMMO_MAX = 4
 		self.m95_npc.suppression = 7
+		self.m95_npc.use_sniper_trail = true
+		self.m95_npc.trail_effect = Idstring("effects/particles/weapons/sniper_trail_sc")
 
 		self.m14_sniper_mememan_npc = deep_clone(self.m14_sniper_npc)
 		self.m14_sniper_mememan_npc.DAMAGE = 4.5	--so we dont instantly die
@@ -1312,6 +1314,14 @@ local crew_wep_preset = {
 		self.m14_sniper_mememan_npc.fire_rate = 0.08571428571
 		self.m14_sniper_mememan_npc.use_sniper_trail = true
 		self.m14_sniper_mememan_npc.trail_effect = Idstring("effects/particles/weapons/sniper_trail_sc")
+
+		--god help us all
+		self.m95_full_auto_npc = deep_clone(self.m95_npc)
+		self.m95_full_auto_npc.categories = {"smg"}
+		self.m95_full_auto_npc.CLIP_AMMO_MAX = 999
+		self.m95_full_auto_npc.suppression = 999
+		self.m95_full_auto_npc.fire_rate = 0.08571428571
+		self.m95_full_auto_npc.usage = "is_lmg"
 	end
 
 	function WeaponTweakData:_init_data_heavy_snp_npc()
