@@ -2122,6 +2122,15 @@
 	<!-- Trails for Tear Gas Grenades -->
 	<effect				path="effects/payday2/particles/weapons/tear_gas_trail_red"/>
 	<effect				path="effects/payday2/particles/weapons/tear_gas_trail_green"/>
+
+	<!-- PDTH M79 -->
+	<object				path="units/payday2/weapons/wpn_npc_m79/wpn_npc_m79" force="false"/>
+	<cooked_physics		path="units/payday2/weapons/wpn_npc_m79/wpn_npc_m79" force="false"/>
+	<model				path="units/payday2/weapons/wpn_npc_m79/wpn_npc_m79" force="false"/>
+	<unit				path="units/payday2/weapons/wpn_npc_m79/wpn_npc_m79"  load="true"/>
+	<material_config	path="units/payday2/weapons/wpn_npc_m79/wpn_npc_m79" force="false"/>
+	<texture			path="units/payday2/weapons/wpn_npc_m79/m79_df"/>
+	<texture			path="units/payday2/weapons/wpn_npc_m79/m79_nm"/>
 	
     <!--not shit secret masks-->
 	<object				path="units/pd2_dlc_sms/masks/sms_01/msk_sms_01" force="true"/>
