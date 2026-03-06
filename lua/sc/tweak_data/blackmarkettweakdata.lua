@@ -1870,6 +1870,7 @@ function BlackMarketTweakData:_init_projectiles(tweak_data)
 		"launcher_incendiary_osipr",
 		"launcher_electric_osipr",
 		"launcher_poison_osipr",
+		"gas_grenade",
 		--Other mods
 		"tachi",
 		"nerf_dart_standard",
@@ -2028,6 +2029,17 @@ function BlackMarketTweakData:_init_projectiles(tweak_data)
 	self.projectiles.hatman_molotov.is_a_grenade = true
 	self.projectiles.hatman_molotov.add_trail_effect = true
 	self.projectiles.hatman_molotov.impact_detonation = true
+
+	-- Tear Gas grenades
+	self.projectiles.gas_grenade = {
+		name_id = "gas_grenade",
+		unit = "units/weapons/gas_grenade/gas_grenade",
+		unit_dummy = "units/weapons/gas_grenade/gas_grenade_husk",
+		throwable = false,
+		is_a_grenade = true,
+		add_trail_effect = true,
+		trail_effect_id = "effects/payday2/particles/weapons/tear_gas_trail_green"
+	}
 
 --SABR Grenade Launcher.
 	self.projectiles.launcher_frag_osipr = {

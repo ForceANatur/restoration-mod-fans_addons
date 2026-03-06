@@ -3,7 +3,7 @@ local difficulty_index = tweak_data:difficulty_to_index(difficulty)
 
 --Scale effects per difficulty
 function QuickCsGrenade:_setup_from_tweak_data()
-	local grenade_entry = self._tweak_projectile_entry or "cs_grenade_quick"
+	local grenade_entry = self._tweak_projectile_entry or "gas_grenade"
 	self._tweak_data = tweak_data.projectiles[grenade_entry]
 	self._radius = self._tweak_data.radius or 300
 	self._radius_blurzone_multiplier = self._tweak_data.radius_blurzone_multiplier or 1.3
