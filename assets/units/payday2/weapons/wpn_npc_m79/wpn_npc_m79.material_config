@@ -1,12 +1,15 @@
 <materials version="3" group="m14_npc">
-    <material name="weapon" version="2" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP:RL_3RD_WEAPONS:VERTEX_COLOR">
-        <bump_normal_texture file="units/weapons/texture/third_person_nm"/>
-        <diffuse_texture file="units/weapons/texture/third_person_df"/>
-    </material>
-    <material name="weapon_m79" version="2" render_template="generic:CUBE_ENVIRONMENT_MAPPING:DIFFUSE_TEXTURE:NORMALMAP:RL_3RD_WEAPONS">
-        <bump_normal_texture file="units/payday2/weapons/wpn_npc_m79/m79_nm"/>
-        <diffuse_texture file="units/payday2/weapons/wpn_npc_m79/m79_df"/>
-        <reflection_texture type="cubemap" file="environments/cubemaps/cubemap_street_01"/>
-    </material>
-    <material name="weapon_lod1" version="2" render_template="generic:RL_3RD_WEAPONS:VERTEX_COLOR"/>
+	<material name="weapon" version="2" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP:RL_3RD_WEAPONS:VERTEX_COLOR">
+		<bump_normal_texture file="units/weapons/texture/third_person_nm"/>
+		<diffuse_texture file="units/weapons/texture/third_person_df"/>
+	</material>
+	<material name="weapon_m79" version="2" render_template="generic:CUBE_ENVIRONMENT_MAPPING:DIFFUSE_TEXTURE:NORMALMAP:RL_3RD_WEAPONS">
+		<bump_normal_texture file="units/payday2/weapons/wpn_npc_m79/m79_nm"/>
+		<diffuse_texture file="units/payday2/weapons/wpn_npc_m79/m79_df"/>
+		<reflection_texture type="cubemap" file="environments/cubemaps/cubemap_street_01"/>
+	</material>
+	<material name="weapon_lod1" version="2" render_template="generic:RL_3RD_WEAPONS:VERTEX_COLOR"/>
+		<bump_normal_texture file="units/payday2/weapons/wpn_npc_m79/m79_nm"/>
+		<diffuse_texture file="units/payday2/weapons/wpn_npc_m79/m79_df"/>
+	</material>
 </materials>
