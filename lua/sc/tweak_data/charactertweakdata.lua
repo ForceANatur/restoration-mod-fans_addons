@@ -19232,6 +19232,10 @@ Hooks:PostHook(CharacterTweakData, "_create_table_structure", "remod_create_tabl
 	--god help us all
 	table.insert(self.weap_ids, "m95_auto_npc")
 	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_m95/wpn_npc_m95_fuck"))
+
+	--TEAR GAS! DONT BREATHE THIS!
+	table.insert(self.weap_ids, "m79_npc")
+	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_m79/wpn_npc_m79"))
 end)
 
 function CharacterTweakData:_set_easy()

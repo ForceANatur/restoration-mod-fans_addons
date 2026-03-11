@@ -1453,7 +1453,7 @@
 	<object				path="units/pd2_mod_caps/characters/ene_bulldozer_captain/ene_bulldozer_captain" force="false"/>
 	<sequence_manager	path="units/pd2_mod_caps/characters/ene_bulldozer_captain/ene_bulldozer_captain" force="false"/>
 
-	<!-- Mememan Captain -->
+	<!-- Mememan Captain (Disabled)
 	<texture			path="units/pd2_mod_caps/characters/ene_mememan_captain/martin_df"/>
 	<texture			path="units/pd2_mod_caps/characters/ene_mememan_captain/casual_male_1_df"/>
 	<texture			path="units/pd2_mod_caps/characters/ene_mememan_captain/casual_male_1_li"/>
@@ -1463,6 +1463,7 @@
 	<unit				path="units/pd2_mod_caps/characters/ene_mememan_captain/ene_mememan_captain" force="false" load="true"/>
 	<unit				path="units/pd2_mod_caps/characters/ene_mememan_captain/ene_mememan_captain_husk" force="false" load="true"/>
 	<object				path="units/pd2_mod_caps/characters/ene_mememan_captain/ene_mememan_captain" force="false"/>
+	-->
 
 	<!--Thanatos for captain-->
 	<material_config	path="units/payday2/weapons/wpn_npc_m95/wpn_npc_m95" force="false"/>
@@ -2096,6 +2097,15 @@
 	<!-- Trails for Tear Gas Grenades -->
 	<effect				path="effects/payday2/particles/weapons/tear_gas_trail_red"/>
 	<effect				path="effects/payday2/particles/weapons/tear_gas_trail_green"/>
+
+	<!-- PDTH M79 -->
+	<object				path="units/payday2/weapons/wpn_npc_m79/wpn_npc_m79" force="false"/>
+	<cooked_physics		path="units/payday2/weapons/wpn_npc_m79/wpn_npc_m79" force="false"/>
+	<model				path="units/payday2/weapons/wpn_npc_m79/wpn_npc_m79" force="false"/>
+	<unit				path="units/payday2/weapons/wpn_npc_m79/wpn_npc_m79"  load="true"/>
+	<material_config	path="units/payday2/weapons/wpn_npc_m79/wpn_npc_m79" force="false"/>
+	<texture			path="units/payday2/weapons/wpn_npc_m79/m79_df"/>
+	<texture			path="units/payday2/weapons/wpn_npc_m79/m79_nm"/>
 	
     <!--not shit secret masks-->
 	<object				path="units/pd2_dlc_sms/masks/sms_01/msk_sms_01" force="true"/>

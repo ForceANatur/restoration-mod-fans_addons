@@ -1253,6 +1253,11 @@ function CopBase:default_weapon_name(...)
 			self._default_weapon_id = "m32"
 			self._weapon_set = true
 		end
+
+		if self._tweak_table == "boom" then
+			self._default_weapon_id = "m79_npc"
+			self._weapon_set = true
+		end
 	end
 	
 	-- For High Noon mutator

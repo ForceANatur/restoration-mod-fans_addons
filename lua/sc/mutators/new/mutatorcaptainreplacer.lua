@@ -30,7 +30,7 @@ function MutatorCaptainReplacer:register_values(mutator_manager)
 	self:register_value("hvh_blacklist", false, "cpt_bl5")
 	self:register_value("heavyg_blacklist", false, "cpt_bl6")
 	self:register_value("dzr_snp_blacklist", false, "cpt_bl7")
-	self:register_value("mega_blacklist", false, "cpt_bl8")
+--	self:register_value("mega_blacklist", false, "cpt_bl8")
 	self:register_value("captain_cooldown", 2700, "cpt_cd")
 end
 
@@ -63,8 +63,8 @@ function MutatorCaptainReplacer:modify_value(id, value)
 				new_icon = "guis/textures/pd2/hud_buff_heavyg"
 			elseif new_icon == "dzr_snp" then
 				new_icon = "guis/textures/pd2/hud_buff_generic"
-			elseif new_icon == "mega" then
-				new_icon = "guis/textures/pd2/hud_buff_mememan"
+		--	elseif new_icon == "mega" then
+		--		new_icon = "guis/textures/pd2/hud_buff_mememan"
 		end
 		return new_icon
 	end
@@ -81,7 +81,7 @@ function MutatorCaptainReplacer:setup()
 	local spooky_preset = tweak_data.group_ai.enemy_spawn_groups.HVH_Boss
 	local heavyg_preset = tweak_data.group_ai.enemy_spawn_groups.boss_heavygunner
 	local dzr_snp_preset = tweak_data.group_ai.enemy_spawn_groups.Cap_Cruel_T
-	mega_preset = tweak_data.group_ai.enemy_spawn_groups.OHGODWHY
+--	local mega_preset = tweak_data.group_ai.enemy_spawn_groups.OHGODWHY
 	local new_captain = self:get_captain_override()
 	local new_cooldown = self:get_captain_cooldown()
 	if new_captain ~= "no_captain_override" then	
@@ -116,10 +116,10 @@ function MutatorCaptainReplacer:setup()
 				table.insert(captain_table, "dzr_snp")
 				num_of_captains = num_of_captains + 1
 			end
-			if not self:mega_blacklist() then
-				table.insert(captain_table, "mega")
-				num_of_captains = num_of_captains + 1
-			end
+		--	if not self:mega_blacklist() then
+		--		table.insert(captain_table, "mega")
+		--		num_of_captains = num_of_captains + 1
+		--	end
 			--[[for i, value in ipairs(captain_table) do
 				log("Captain Table "..tostring(i).." = "..tostring(value))
 			end--]]
@@ -174,8 +174,8 @@ function MutatorCaptainReplacer:setup()
 			tweak_data.group_ai.enemy_spawn_groups.Cap_Cruel_T = new_captain
 			tweak_data.group_ai.besiege.group_constraints.Cap_Cruel_T.cooldown = new_cooldown
 
-			tweak_data.group_ai.enemy_spawn_groups.OHGODWHY = new_captain
-			tweak_data.group_ai.besiege.group_constraints.OHGODWHY.cooldown = new_cooldown
+		--	tweak_data.group_ai.enemy_spawn_groups.OHGODWHY = new_captain
+		--	tweak_data.group_ai.besiege.group_constraints.OHGODWHY.cooldown = new_cooldown
 		else
 			tweak_data.group_ai.enemy_spawn_groups.Fake_Captain = new_captain
 			tweak_data.group_ai.besiege.assault.groups.Fake_Captain = {0, 0.1, 0.2}
@@ -213,9 +213,9 @@ function MutatorCaptainReplacer:dzr_snp_blacklist()
 	return self:value("dzr_snp_blacklist")
 end
 
-function MutatorCaptainReplacer:mega_blacklist()
-	return self:value("mega_blacklist")
-end
+--function MutatorCaptainReplacer:mega_blacklist()
+--	return self:value("mega_blacklist")
+--end
 
 function MutatorCaptainReplacer:get_captain_override(specific_day)
 --specific_day need only for settings
@@ -637,10 +637,7 @@ function MutatorCaptainReplacer:setup_options_gui(node)
 	new_item:set_value(self:dzr_snp_blacklist() and "on" or "off")
 	node:add_item(new_item)
 
-	new_item:set_value(self:mega_blacklist() and "on" or "off")
-	node:add_item(new_item)
-
-	local params = {
+--[[	local params = {
 		name = "mega_blacklist_toggle",
 		callback = "_update_mutator_value",
 		text_id = "menu_mutator_mega_blacklist_toggle",
@@ -680,6 +677,8 @@ function MutatorCaptainReplacer:setup_options_gui(node)
 	local new_item = node:create_item(data_node, params)
 
 	new_item:set_value(self:mega_blacklist() and "on" or "off")
+	node:add_item(new_item)
+]]
 	
 	self._node = node
 
@@ -730,9 +729,9 @@ function MutatorCaptainReplacer:_toggle_dzr_snp_blacklist(item)
 	self:set_value("dzr_snp_blacklist", item:value() == "on")
 end
 
-function MutatorCaptainReplacer:_toggle_mega_blacklist(item)
-	self:set_value("mega_blacklist", item:value() == "on")
-end
+--function MutatorCaptainReplacer:_toggle_mega_blacklist(item)
+--	self:set_value("mega_blacklist", item:value() == "on")
+--end
 
 function MutatorCaptainReplacer:reset_to_default()
 	self:clear_values()
@@ -792,10 +791,11 @@ function MutatorCaptainReplacer:reset_to_default()
 			toggle7:set_value(self:dzr_snp_blacklist() and "on" or "off")
 		end
 
-		local toggle8 = self._node:item("mega_blacklist_toggle")
+	--[[	local toggle8 = self._node:item("mega_blacklist_toggle")
 
 		if toggle8 then
 			toggle8:set_value(self:mega_blacklist() and "on" or "off")
 		end
+	]]--
 	end
 end

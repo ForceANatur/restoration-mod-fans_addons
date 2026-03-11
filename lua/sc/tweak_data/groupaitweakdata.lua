@@ -10292,7 +10292,7 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 		ignore_spawn_cap = true
 	}
 
-	--leader of the mememen
+	--[[leader of the mememen
 	self.unit_categories.OHGODWHY = {
 		unit_types = {
 			america = {
@@ -10323,6 +10323,7 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 		access = access_type_all,
 		ignore_spawn_cap = true
 	}
+	]]
 
 	--mutator unit categories
 	--nothing
@@ -19168,7 +19169,7 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 		}
 	}
 
-	self.enemy_spawn_groups.OHGODWHY = {
+	--[[self.enemy_spawn_groups.OHGODWHY = {
 		amount = 1,
 		force = true,
 		spawn = {
@@ -19182,6 +19183,7 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 			}
 		}
 	}
+	]]
 	
 	--Single Cloaker groups
 	self.enemy_spawn_groups.single_spooc = {
@@ -22107,6 +22109,7 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 	self.enemy_spawn_groups.SKM_Cap_Summers_W9 = deep_clone(self.enemy_spawn_groups.Cap_Summers)
 	self.enemy_spawn_groups.SKM_Cap_HeavyG_W9 = deep_clone(self.enemy_spawn_groups.boss_heavygunner)
 	self.enemy_spawn_groups.SKM_Cap_Cruel_T_W9 = deep_clone(self.enemy_spawn_groups.Cap_Cruel_T)
+	--self.enemy_spawn_groups.SKM_OHGODWHY_W9 = deep_clone(self.enemy_spawn_groups.Cap_Cruel_T)	-- no
 
 function GroupAITweakData:_init_enemy_spawn_groups_level(tweak_data, difficulty_index)
 end
@@ -23543,6 +23546,11 @@ function GroupAITweakData:_init_task_data(difficulty_index, difficulty)
 			min_diff = captain_min_diff,
 			sustain_only = true
 		},
+		--OHGODWHY = {
+		--	cooldown = captain_cooldown,
+		--	min_diff = captain_min_diff,
+		--	sustain_only = true
+		--},
 		Fake_Captain = {
 			cooldown = captain_cooldown,
 			min_diff = captain_min_diff,
@@ -23576,6 +23584,10 @@ function GroupAITweakData:_init_task_data(difficulty_index, difficulty)
 			cooldown = captain_cooldown,
 			sustain_only = true
 		},
+		--SKM_OHGODWHY_W9 = {
+		--	cooldown = captain_cooldown,
+		--	sustain_only = true
+		--},
 		CS_tanks = {
 			cooldown = dozer_cooldown
 		},

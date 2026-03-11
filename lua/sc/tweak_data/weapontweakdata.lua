@@ -2208,6 +2208,14 @@ local crew_wep_preset = {
 		self.rpg7_npc.projectile = "rocket_frag"
 		self.rpg7_npc.CLIP_AMMO_MAX = 1
 		self.rpg7_npc.looped_reload_speed = nil
+
+		--M79
+		self.m79_npc = deep_clone(self.m32_npc)
+		self.m79_npc.CLIP_AMMO_MAX = 1
+		self.m79_npc.gl_voiceline = true
+		self.m79_npc.projectile = "gas_grenade"
+		self.m79_npc.gl_cooldown_max = 10
+		self.m79_npc.gl_speaking_cooldown = 0.9
 	end
 
 	function WeaponTweakData:_init_data_mini_npc()
