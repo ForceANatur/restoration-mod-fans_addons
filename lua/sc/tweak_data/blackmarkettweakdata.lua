@@ -4208,7 +4208,7 @@ function BlackMarketTweakData:_init_melee_weapons(tweak_data)
 		
 		--melee_blunt
 		melee_anim = {
-			'baton','oldbaton','detector','shovel','shillelagh','whiskey','morning','branding_iron','slot_lever','hammer','tenderizer','croupier_rake','shock',
+			'baton','oldbaton','detector','shovel','shillelagh','whiskey','morning','branding_iron','slot_lever','hammer','tenderizer','croupier_rake','shock','funder_strike',
 			'spatula','swagger','selfie','chac',
 			'iceaxe'
 		}
@@ -4796,6 +4796,20 @@ function BlackMarketTweakData:_init_melee_weapons(tweak_data)
 			self.melee_weapons.taser.stats.charge_time = 0.8
 			self.melee_weapons.taser.stats.range = 165
 			self.melee_weapons.taser.stats.concealment = 29
+		--Zap Stick--
+			self.melee_weapons.funder_strike.info_id = "bm_melee_taser_info"
+			self.melee_weapons.funder_strike.tase_data = nil
+			self.melee_weapons.funder_strike.special_weapon = "taser"
+			self.melee_weapons.funder_strike.stats.cleave = 1
+			self.melee_weapons.funder_strike.stats.raycasts = 10
+			self.melee_weapons.funder_strike.stats.min_damage = 2.4
+			self.melee_weapons.funder_strike.stats.max_damage = 6.001
+			self.melee_weapons.funder_strike.stats.min_damage_effect = 3.0
+			self.melee_weapons.funder_strike.stats.max_damage_effect = 9.0
+			self.melee_weapons.funder_strike.stats.charge_time = 1.5
+			self.melee_weapons.funder_strike.stats.range = 170
+			self.melee_weapons.funder_strike.stats.concealment = 28
+			self.melee_weapons.funder_strike.stats.speed_mult = 1.0
 
 		--Money money money--
 		self.melee_weapons.moneybundle.info_id = "bm_melee_moneybundle_info"
