@@ -145,8 +145,8 @@ function MutatorCaptainReplacer:setup()
 		new_captain = heavyg_preset
 	elseif new_captain == "dzr_snp" then
 		new_captain = dzr_snp_preset
-	elseif new_captain == "mega" then
-		new_captain = mega_preset
+	--elseif new_captain == "mega" then
+	--	new_captain = mega_preset
 	end
 	-- Exclude double captain groups
 	local captain_type = restoration.captain_spawns[job]
@@ -288,11 +288,11 @@ function MutatorCaptainReplacer:setup_options_gui(node)
 			text_id = "menu_mutator_captain_replace_dzr_snp",
 			_meta = "option"
 		},
-		{
-			value = "mega",
-			text_id = "menu_mutator_captain_replace_mega",
-			_meta = "option"
-		},
+	--	{
+	--		value = "mega",
+	--		text_id = "menu_mutator_captain_replace_mega",
+	--		_meta = "option"
+	--	},
 		type = "MenuItemMultiChoice"
 	}
 	local new_item = node:create_item(data_node, params)

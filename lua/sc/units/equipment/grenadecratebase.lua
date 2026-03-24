@@ -27,11 +27,11 @@ function GrenadeCrateBase:take_grenade(unit)
 end
 
 --Overkill Grenade Case
-function GrenadeCrateDeployableBase.spawn(pos, rot, ammo_upgrade_lvl)
+function GrenadeCrateDeployableBase.spawn(pos, rot, ammo_upgrade_lvl, peer_id)
 	local unit_name = "units/pd2_dlc_mxm/equipment/gen_equipment_grenade_crate/gen_equipment_grenade_crate"
 	local unit = World:spawn_unit(Idstring(unit_name), pos, rot)
 
-	managers.network:session():send_to_peers_synched("sync_ordnance_bag_setup", unit, ammo_upgrade_lvl)
+	managers.network:session():send_to_peers_synched("sync_equipment_setup", unit, ammo_upgrade_lvl, peer_id or 0)
 	unit:base():setup(ammo_upgrade_lvl)
 
 	return unit
@@ -44,12 +44,12 @@ end
 
 function GrenadeCrateDeployableBase:setup(ammo_upgrade_lvl)
 	self._max_grenade_amount = tweak_data.upgrades.ordnance_bag_grenades
-	self._ammo_amount = tweak_data.upgrades.ordnance_bag_ammo * managers.player:upgrade_value_by_level("grenade_crate", "ammo_increase", ammo_upgrade_lvl)
+	self._ammo_amount = tweak_data.upgrades.ordnance_bag_ammo * math.max(managers.player:upgrade_value_by_level("grenade_crate", "ammo_increase", ammo_upgrade_lvl), 1)
 	
 	GrenadeCrateDeployableBase.super.setup(self)
 end
 
-function GrenadeCrateDeployableBase:sync_setup(ammo_upgrade_lvl)
+function GrenadeCrateDeployableBase:sync_setup(ammo_upgrade_lvl, peer_id)
 	if self._validate_clbk_id then
 		managers.enemy:remove_delayed_clbk(self._validate_clbk_id)
 

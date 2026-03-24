@@ -456,9 +456,6 @@
 
 	<unit				path="units/payday2/characters/ene_cop_2_forest/ene_cop_2_forest" load="true"/>
     <unit				path="units/payday2/characters/ene_cop_2_forest/ene_cop_2_forest_husk" load="true"/>
-	
-	<!--Parachute Collision edit (No more Boiling Point suicides)-->
-	<object				path="units/pd2_dlc_jerry/props/jry_equipment_parachute/jry_equipment_parachute_ragdoll" force="true"/>
 		
 	<!--Change to Armored Hector's Visor Texture (now uses the Hard Hat's visor texture, for consistency reasons.)-->
 	<material_config	path="units/pd2_mcmansion/characters/ene_male_hector_1/ene_male_hector_1" force="true" />
@@ -514,7 +511,8 @@
 
 	
 	<!-- secs -->
-	<unit				path="units/payday2/characters/ene_security_1/ene_security_1" force="true"/>
+	<!-- Disabling for now, the game does *not* like them being loaded like this t. SC -->
+	<!--unit				path="units/payday2/characters/ene_security_1/ene_security_1" force="true"/>
 	<unit				path="units/payday2/characters/ene_security_1/ene_security_1_husk" force="true"/>
 	<material_config	path="units/payday2/characters/ene_security_1/ene_security_1"/>
 	<material_config	path="units/payday2/characters/ene_security_1/ene_security_1_contour"/>
@@ -537,7 +535,7 @@
 	<unit				path="units/payday2/characters/ene_security_6/ene_security_6_husk" force="true"/>
 	
 	<unit				path="units/payday2/characters/ene_security_7/ene_security_7" force="true"/>
-	<unit				path="units/payday2/characters/ene_security_7/ene_security_7_husk" force="true"/>
+	<unit				path="units/payday2/characters/ene_security_7/ene_security_7_husk" force="true"/-->
 
 	<!-- murkywater -->
 	<unit				path="units/payday2/characters/ene_murkywater_1/ene_murkywater_1" force="true" load="true"/>
@@ -1648,8 +1646,17 @@
 	<texture			path="guis/dlcs/boost_in_lootdrop/textures/pd2/blackmarket/icons/mods/wpn_fps_upg_bonus_total_ammo_p3_sc"/>
 	<texture			path="guis/dlcs/boost_in_lootdrop/textures/pd2/blackmarket/icons/mods/wpn_fps_upg_bonus_team_exp_money_p3_sc"/>
 	
-	<!--Electric 40mm-->
+	<!--Ammo/Melee Status Icons-->
 	<texture			path="guis/textures/pd2/blackmarket/inv_mod_ammo_electric"/>
+	<texture			path="guis/textures/pd2/blackmarket/inv_mod_ammo_bleed"/>
+	<texture			path="guis/textures/pd2/blackmarket/melee_defense"/>
+	<texture			path="guis/textures/pd2/blackmarket/melee_parry"/>
+	<texture			path="guis/textures/pd2/blackmarket/melee_panic"/>
+	<texture			path="guis/textures/pd2/blackmarket/melee_headshot"/>
+	<texture			path="guis/textures/pd2/blackmarket/melee_backstab"/>
+	<texture			path="guis/textures/pd2/blackmarket/melee_chainsaw"/>
+	<texture			path="guis/textures/pd2/blackmarket/melee_charger"/>
+	<texture			path="guis/textures/pd2/blackmarket/melee_jackpot"/>
 
 	<!--Incendiary Grenade-->
 	<effect				path="effects/payday2/particles/explosions/grenade_incendiary_explosion_sc" load="false"/>

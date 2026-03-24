@@ -51,7 +51,9 @@ Hooks:PostHook(PlayerManager, "_setup", "ResSetup", function(_)
 end)
 
 --- Vomits out all the carried items from the player that wasn't in synced_carry.
-Hooks:PostHook(PlayerManager, "peer_dropped_out", "ResPeerDroppedOut", function(self, peer_id)
+Hooks:PostHook(PlayerManager, "peer_dropped_out", "ResPeerDroppedOut", function(self, peer)
+	local peer_id = peer:id()
+
 	if Network:is_server() then
 		local synced_carry_stacker_data = self:get_synced_carry_stacker(peer_id)
 
@@ -1545,6 +1547,9 @@ function PlayerManager:_internal_load()
 	local base_pickup_chance = (throw_tweak and throw_tweak.base_pickup_chance) or {0.01, 0.02}
 	self._throwable_chance = {min = base_pickup_chance[1], max = base_pickup_chance[2], amount = 0}
 
+	-- Throwable ammo regen-like logic for deployables, keys are deployable names, values are the current amount.
+	self._deployable_chance = {}
+
 	--Reset when players are spawned, just in case.
 	self._slow_data = {
 		duration = 0,
@@ -1934,11 +1939,27 @@ function PlayerManager:regain_throwable_from_ammo()
 		if self._throwable_chance then
 			local pickup_low = self._throwable_chance.min * skill_pickup_chance
 			local pickup_high = self._throwable_chance.max * skill_pickup_chance
-			local roll = math.random(pickup_low * 1000, pickup_high * 1000) / 1000 --math.random does not like decimals
+			local roll = math.rand(pickup_low, pickup_high)
 			self._throwable_chance.amount = (self._throwable_chance.amount or 0) + roll
 			if self._throwable_chance.amount >= 1 then
 				self:add_grenade_amount(1, true)
 				self._throwable_chance.amount = 0
+			end
+		end
+	end
+end
+
+function PlayerManager:regain_deployables_from_ammo()
+	for i, equipment in ipairs(self._equipment.selections) do
+		local pickup_low = tweak_data.equipments[equipment.equipment].pickup_low or 0
+		local pickup_high = tweak_data.equipments[equipment.equipment].pickup_high or 0
+		
+		if pickup_low > 0 and pickup_high > 0 then
+			local roll = math.rand(pickup_low, pickup_high)
+			self._deployable_chance[equipment.equipment] = (self._deployable_chance[equipment.equipment] or 0) + roll
+			if self._deployable_chance[equipment.equipment] >= 1 then
+				managers.player:add_deployable_equipment(equipment.equipment, 1)
+				self._deployable_chance[equipment.equipment] = 0
 			end
 		end
 	end

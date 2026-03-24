@@ -60,6 +60,7 @@ tweak_data.pistol = {
 	ads_moving_recoil = 1.1,
 	hipfire_spread_mult = 0.5
 }
+	tweak_data.pistol_special = deep_clone(tweak_data.pistol)
 	tweak_data.pistol_pdw = {
 		ads_move_speed_mult = 0.7 / tweak_data.pistol.ads_move_speed_mult
 	}
@@ -71,6 +72,7 @@ tweak_data.pistol = {
 		hipfire_spread_mult = 1.25 / tweak_data.pistol.hipfire_spread_mult,
 		hipfire_moving_spread_mult = 1.75
 	}
+		tweak_data.handcannon_special = deep_clone(tweak_data.handcannon)
 		tweak_data.yeehaw = {
 			ads_move_speed_mult = 0.8 / (tweak_data.pistol.ads_move_speed_mult * tweak_data.handcannon.ads_move_speed_mult),
 			hipfire_spread_mult = 0.5 / (tweak_data.pistol.hipfire_spread_mult * tweak_data.handcannon.hipfire_spread_mult)
@@ -256,6 +258,10 @@ tweak_data.snp = {
 		shake_mul = 1.1,
 		min_spread_mult = 3.5 / tweak_data.snp.min_spread_mult,
 	}
+		tweak_data.gauss = {
+			min_spread_mult = 1.5 / (tweak_data.amr.min_spread_mult * tweak_data.snp.min_spread_mult),
+			hipfire_spread_mult = 0.5 / (tweak_data.amr.hipfire_spread_mult * tweak_data.snp.hipfire_spread_mult)
+		}
 		tweak_data.semi_amr = {
 			min_spread_mult = 5 / (tweak_data.amr.min_spread_mult * tweak_data.snp.min_spread_mult),
 			hipfire_spread_mult = 14 / (tweak_data.amr.hipfire_spread_mult * tweak_data.snp.hipfire_spread_mult),
@@ -282,6 +288,7 @@ tweak_data.assault_rifle = {
 	shake_mul = 1.1,
 	min_spread_mult = 3
 }
+	tweak_data.assault_rifle_special = deep_clone(tweak_data.assault_rifle)
 	tweak_data.crb = {
 		swap_bonus = 1.05 / tweak_data.assault_rifle.swap_bonus,
 		min_spread_mult = 2.5 / tweak_data.assault_rifle.min_spread_mult,
@@ -830,7 +837,7 @@ tweak_data.projectiles.smoke_screen_grenade.curve_pow = 1
 tweak_data.projectiles.smoke_screen_grenade.range = 1500
 tweak_data.projectiles.smoke_screen_grenade.name_id = "bm_smoke_screen_grenade"
 tweak_data.projectiles.smoke_screen_grenade.duration = 12
-tweak_data.projectiles.smoke_screen_grenade.dodge_chance = 0.1
+tweak_data.projectiles.smoke_screen_grenade.dodge_chance = 0.2 -- Repurposed for minimum dodge points in smoke.
 tweak_data.projectiles.smoke_screen_grenade.init_timer = 0
 tweak_data.projectiles.smoke_screen_grenade.accuracy_roll_chance = 0.75
 tweak_data.projectiles.smoke_screen_grenade.accuracy_fail_spread = {5, 10}

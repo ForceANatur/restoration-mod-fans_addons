@@ -125,7 +125,7 @@ Hooks:Add("LocalizationManagerPostInit", "ResMod_english_Localization_Init", fun
 				["RestorationModInfo_survive_one_hitTitleID"] = "도깨비 문신 (야쿠자)",
 				["RestorationModInfo_survive_one_hitDescID"] = "해당 특성 덱의 활성 상태 표시를 활성화하거나 비활성화합니다.",
 				["RestorationModInfo_cohesionTitleID"] = "단결력 (바이커)",
-				["RestorationModInfo_cohesionDescID"] = "해당 특성 덱의 활성 상태 표시를 활성화하거나 비활성화합니다.\n숫자는 단결력 스택이 8개마다 표시됩니다.",
+				["RestorationModInfo_cohesionDescID"] = "해당 특성 덱의 활성 상태 표시를 활성화하거나 비활성화합니다.\n초로객 숫자는 단결력 스택이 8 스택일때 마다 표시됩니다.",
 				["RestorationModInfo_heisters_in_auraTitleID"] = "근처에 있는 하이스터 표시 (바이커)",
 				["RestorationModInfo_heisters_in_auraDescID"] = "해당 특성 덱의 활성 상태 표시를 활성화하거나 비활성화합니다.",
 				["RestorationModInfo_dig_in_your_heelsTitleID"] = "너의 가치를 보여라! (바이커)",
@@ -1472,7 +1472,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Eng", function(loc)
 		["bm_wp_upg_o_angled_desc"] = "조준하는 동안 #{skill_color}#$BTN_GADGET## 키를 눌러 주 광학 조준기와 각진 기계식 조준기 사이를 전환합니다.",
 		["bm_wp_upg_o_angled_1_1_desc"] = "조준하는 동안 #{skill_color}#$BTN_GADGET## 키를 눌러 주 광학 조준기와 각진 레드 닷 조준기 사이를 전환합니다.\n#{skill_color}#1.1배 배율.##",
 		["bm_wp_upg_o_angled_1_2_desc"] = "조준하는 동안 #{skill_color}#$BTN_GADGET## 키를 눌러 주 광학 조준기와 각진 레드 닷 조준기 사이를 전환합니다.\n#{skill_color}#1.2배 배율.##",
-		["bm_wp_upg_o_angled_laser_desc"] = "조준하는 동안 #{skill_color}#$BTN_GADGET## 키를 눌러 조준기와 조준점 사격 사이를 전환합니다.\n조준점 사격 시 조준 속도가 #{skill_color}#25%## 빨라지고, 조준 중 이동 속도 감소폭이 #{skill_color}#50%## 감소하는 대신 조준 중 명중률이 #{important_1}#크게 감소합니다.##\n\n#{risk}#가능하다면 레이저 부착물과 함께 사용하는 것을 권장드립니다.##", --VMP Point Shoot Laser
+		["bm_wp_upg_o_angled_laser_desc"] = "조준하는 동안 #{skill_color}#$BTN_GADGET## 키를 눌러 조준기와 조준점 사격 사이를 전환합니다.\n조준점 사격 시 조준 속도가 #{skill_color}#25%## 빨라지고, 조준 중 이동 속도 감소폭이 #{skill_color}#40%## 감소하는 대신 조준 중 명중률이 #{important_1}#크게 감소합니다.##\n\n#{risk}#가능하다면 레이저 부착물과 함께 사용하는 것을 권장드립니다.##", --VMP Point Shoot Laser
 		["bm_wp_upg_o_angled_aim_desc"] = "조준하는 동안 #{skill_color}#$BTN_GADGET## 키를 눌러 기본 조준과 기울어진 조준 사이를 전환합니다.", --VMP Point Shoot Laser
 
 		["bm_wp_upg_o_magnifier_desc"] = "조준하는 동안 #{skill_color}#$BTN_GADGET## 키를 눌러 확대경을 위아래로 뒤집습니다.\n#{risk}#3배 배율.##",
@@ -1728,7 +1728,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Eng", function(loc)
 		["bm_melee_freedom_info"] = "빨간색과 흰색이 번갈아 배열된 13개의 줄무늬, 깃대 끝 쪽 파란색 직사각형, 작고 흰색의 오각별 50개, 한 꼬집의 애국심, 두 컵의 자유, 그리고 부러진 깃대.\n\n짜잔. 이로써 당신은 치명적인 무기를 손에 넣었습니다.",
 		--Who needs pants?
 		["bm_melee_erica_info"] = "정신이 멀쩡한 사람이라면 이걸 던질 겁니다.\n\n살아있는 적에게 완전히 충전된 공격을 가하면 #{skill_color}#100%## 확률로 폭발하여 목표 적중 지점으로부터 #{skill_color}#5##미터 반경 내에 #{risk}#720##의 피해를 가합니다.",
-			["bm_melee_cqc20_info"] = "#{risk}#덤벼라!##\n\n살아있는 적에게 완전히 충전된 공격을 가하면 #{skill_color}#100%## 확률로 제어된 폭발이 발생하여 목표 적중 지점으로부터 #{skill_color}#2##미터 반경 내에 있는 적들에게 #{risk}#720##의 피해를 가합니다.",
+			["bm_melee_cqc20_info"] = "#{risk}#덤벼라!##\n\n살아있는 적에게 완전히 충전된 공격을 가하면 #{skill_color}#100%## 확률로 제어된 폭발이 발생하여 목표 적중 지점으로부터 #{skill_color}#2##미터 반경 내에 있는 적들에게 #{risk}#720##의 피해를 가합니다.\n\n#{important_1}#충전 속도는 스킬의 효과를 받지 않습니다.##",
 
 		--Hammer
 		["bm_melee_hammer_info"] = "\"목수의 기쁨\"은 자켓이 가장 좋아하는 망치입니다. 망치는 당신이 싫어하는 사람에게 둔탁한 타격을 가하기에 완벽한 도구죠.\n\n망치의 가장 흔한 용도는 못을 박거나, 부품을 맞추거나, 금속을 단조하거나, 물건을 부수는 것인데 자켓은 이런 용도로 쓰는 것에 별로 관심이 없습니다.",
@@ -1755,7 +1755,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Eng", function(loc)
 		["bm_melee_spatula_info"] = "이 근접 무기는 도로 건너편에 있는 경찰을 뭉개버리거나 다른 사람들이 경찰의 유해를 치우는 데 사용되는 이중 목적을 가졌습니다.\n\n이 경우에는 냅킨을 한 장 더 가져가십시오.",
 
 		--PIPPA NO
-		["bm_melee_mining_pick_info"] = "저 언덕에 금이 있다네! 여기서 '언덕'은 '이빨'을 뜻하지만 말이죠. 허나 언덕이든 이빨이든, 이 주철 스파이크를 휘두르는 것보다 더 빨리 금을 캐낼 수는 없을 것입니다.\n\n헤드샷 피해가 #{skill_color}#50%## 증가합니다.",
+		["bm_melee_mining_pick_info"] = "저 언덕에 금이 있다네! 여기서 '언덕'은 '이빨'을 뜻하지만 말이죠. 허나 언덕이든 이빨이든, 이 주철 스파이크를 휘두르는 것보다 더 빨리 금을 캐낼 수는 없을 것입니다.\n\n완전 충전 시 헤드샷 피해가 #{skill_color}#300%## 증가합니다.",
 		--Ebay Seller
 		["bm_melee_scalper_info"] = "승자에게는 전쟁과 권력, 지배의 상징입니다.\n\n그리고 패자에게는 정말, 정말 나쁜 머리 스타일이라는 상징이죠.",
 		--NAOW THIS IS A KNOIFE
@@ -1831,7 +1831,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Eng", function(loc)
 		--Selfie
 		["bm_melee_selfie_info"] = "혹스턴이 말하길, \"저 셀카봉을 들고 있는 멍청한 새끼 좀 봐. 정말 병신이군. 저거 강력해 보이는데, 저걸 빼앗아서 저 놈을 조져 버릴꺼야. 잠깐 돌아오겠...\"",
 		--Lara
-		["bm_melee_iceaxe_info"] = "앙헬 폭포 아래의 미끄러운 절벽을 오를 때는 단단한 바위를 파낼 수 있는 무언가가 필요하고 D.C.에서 은행을 털 때는 경찰의 헬멧을 파낼 수 있는 무언가가 필요합니다.\n\n헤드샷 피해가 #{skill_color}#50%## 증가합니다.",
+		["bm_melee_iceaxe_info"] = "앙헬 폭포 아래의 미끄러운 절벽을 오를 때는 단단한 바위를 파낼 수 있는 무언가가 필요하고 D.C.에서 은행을 털 때는 경찰의 헬멧을 파낼 수 있는 무언가가 필요합니다.\n\n완전 충전 시 헤드샷 피해가 #{skill_color}#200%## 증가합니다.",
 			["bm_melee_iceaxe_gen_info"] = "헤드샷 피해가 #{skill_color}#50%## 증가합니다.",
 		--Dive
 		["bm_melee_pugio_info"] = "단순하면서도 강력합니다. 목을 자르든, 엉킨 어망에 빠져나온 돌고래를 잘라내든, 잘 해내죠. 그리고 서프에서 뽐내며 허풍 떨 때 멋지게 보여줍니다.",
@@ -2832,6 +2832,8 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 					["bm_w_lc10_desc_sc"] = "뛰어난 사거리와 좋은 명중률을 갖춘 다재다능한 전자동 기관단총입니다. 인상적인 총알 속도와 높은 발사 속도로 적당한 피해를 가하죠.",
 					--REDACTED
 					["bm_w_redacted_desc_sc"] = "#{stats_positive}#편집됨##\n\n#{risk}#이 무기는 비조준 상태로 사격하면 2발씩 발사하고, 조준 상태로 사격하면 반자동으로 발사합니다.##",
+					--Ripper
+					["ghosts_ripper_vfg"] = "#{item_stage_2}#웃긴 사실을 알려드리자면 콜옵 고스트에서 나오는 리퍼는 전방 손잡이를 장착해도 외형적으로 바뀌지 않는데, 이는 이미 리퍼에 전방 손잡이가 이미 달려있다는 걸 간과한 것입니다.##",					
 
 			--[[ MGs ]]
 				--Bootleg/HK416c
@@ -4795,13 +4797,14 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 					["bm_melee_stick"] = "Shepherd's Crook",
 					["bm_melee_nin"] = "Paslode IM90i Nailgun",
 					["bm_melee_ballistic"] = "Ballistic Knives",
-					["bm_melee_wing"] = "Benchmade Model 42 Balisong",
+					["bm_melee_wing"] = "Benchmade Model 62 Balisong",
 					["bm_melee_cs"] = "Homelite Super 2 Chainsaw",
 					["bm_melee_brick"] = "Motorola DynaTAC 8000X",
 					["bm_melee_sword"] = "Pencil",
 					["bm_melee_oxide"] = "UVSR Taiga-1",
 					["bm_melee_selfie"] = "PolarPro PowerPole GoPro Extension",
 					["bm_melee_twins"] = "Shureido Sai",
+					["bm_melee_iceaxe"] = "Black Diamond Viper Ice Axe", --Looks to be a mix of the Black Diamond Viper (V2) and Cobra (V2) Ice Axes - the Viper's shaft and head connection style and the Cobra's grip
 
 				--[[THROWABLES]]
 					["bm_grenade_frag"] = "M67 파편 수류탄",
@@ -5107,8 +5110,8 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 		["bm_equipment_grenade_crate_desc"] = "군장 가방을 사용하려면, #{skill_color}#$BTN_USE_ITEM## 키를 길게 눌러 설치해야 합니다. 한 번 설치하게 되면 위치를 이동할 수 없지만, 당신과 당신의 팀원들이 #{skill_color}#$BTN_INTERACT## 키를 길게 눌러 총 탄약량의 #{skill_color}#$deployable_secondary_info##만큼 보충하고 투척 무기를 ##1##개를 보충할 수 있습니다.\n\n군장 가방은 #{skill_color}#$deployable_uses##번만 사용할 수 있으며, 군장 가방의 모습으로 얼마나 더 사용할 수 있는지 알 수 있습니다.\n\n군장 가방은 전투원이 폭발물 및 기타 투척물을 전투지역으로 운반할 때 사용하는 휴대용 가방입니다.\n\n#{important_1}#주의: 재생 또는 대기 시간 기반의 투척 무기는 보충할 수 업습니다.##",
 		["bm_equipment_grenade_crate_desc_short"] = "군장 가방을 사용하려면, #{skill_color}#$BTN_USE_ITEM## 키를 길게 눌러 설치해야 합니다. 한 번 설치하게 되면 위치를 이동할 수 없지만, 당신과 당신의 팀원들이 #{skill_color}#$BTN_INTERACT## 키를 길게 눌러 총 탄약량의 #{skill_color}#$deployable_secondary_info##만큼 보충하고 투척 무기를 ##1##개를 보충할 수 있습니다.\n\n군장 가방은 #{skill_color}#$deployable_uses##번만 사용할 수 있으며, 군장 가방의 모습으로 얼마나 더 사용할 수 있는지 알 수 있습니다.\n\n#{important_1}#주의: 재생 또는 대기 시간 기반의 투척 무기는 보충할 수 업습니다.##",
 		--Trip Mine
-		["bm_equipment_trip_mine_desc"] = "트립 마인을 사용하라면, #{skill_color}#$BTN_USE_ITEM## 키를 길게 눌러 설치해야 합니다. 격발용 레이저는 #{skill_color}#$BTN_INTERACT## 키를 눌러 폭발 모드와 센서 모드로 설정을 변경할 수 있습니다.\n\n성형작약탄을 사용하려면, #{skill_color}#$BTN_INTERACT.## 키를 길게 눌러 설치하여야 합니다. 필요한 수만큼 설치하면 몇 초 뒤에 폭발합니다. 탄약 상자를 획득할 때마다 #{skill_color}#1%## 확률로 트립 마인 #{skill_color}#1##개를 얻을 수 있습니다.\n\n트립 마인 주로 레이저를 지나는 적에게 피해를 주거나 처치하는 함정으로 사용합니다. 성형작약탄은 주로 문이나 금고를 터트리는 데 사용합니다. 둘 다 대부분의 전투 상황에서 유용한 장비로 사용될 수 있습니다.",
-		["bm_equipment_trip_mine_desc_short"] = "트립 마인을 사용하라면, #{skill_color}#$BTN_USE_ITEM## 키를 길게 눌러 설치하여야 합니다. 격발용 레이저는 #{skill_color}#$BTN_INTERACT## 키를 눌러 폭발 모드와 센서 모드로 설정을 변경할 수 있습니다.\n\n성형작약탄을 사용하려면, #{skill_color}#$BTN_INTERACT.## 키를 길게 눌러 설치하여야 합니다. 필요한 수만큼 설치하면 몇 초 뒤에 폭발합니다. 탄약 상자를 획득할 때마다 #{skill_color}#1%## 확률로 트립 마인 #{skill_color}#1##개를 얻을 수 있습니다.",
+		["bm_equipment_trip_mine_desc"] = "트립 마인을 사용하라면, #{skill_color}#$BTN_USE_ITEM## 키를 길게 눌러 설치해야 합니다. 격발용 레이저는 #{skill_color}#$BTN_INTERACT## 키를 눌러 폭발 모드와 센서 모드로 설정을 변경할 수 있습니다.\n\n성형작약탄을 사용하려면, #{skill_color}#$BTN_INTERACT.## 키를 길게 눌러 설치하여야 합니다. 필요한 수만큼 설치하면 몇 초 뒤에 폭발합니다.\n\n탄약 상자 회수율: #{skill_color}#$pickup_1에서 $pickup_2##\n\n트립 마인 주로 레이저를 지나는 적에게 피해를 주거나 처치하는 함정으로 사용합니다. 성형작약탄은 주로 문이나 금고를 터트리는 데 사용합니다. 둘 다 대부분의 전투 상황에서 유용한 장비로 사용될 수 있습니다.",
+		["bm_equipment_trip_mine_desc_short"] = "트립 마인을 사용하라면, #{skill_color}#$BTN_USE_ITEM## 키를 길게 눌러 설치하여야 합니다. 격발용 레이저는 #{skill_color}#$BTN_INTERACT## 키를 눌러 폭발 모드와 센서 모드로 설정을 변경할 수 있습니다.\n\n성형작약탄을 사용하려면, #{skill_color}#$BTN_INTERACT.## 키를 길게 눌러 설치하여야 합니다. 필요한 수만큼 설치하면 몇 초 뒤에 폭발합니다.\n\n탄약 상자 회수율: #{skill_color}#$pickup_1에서 $pickup_2##",
 		--Ammo Bag
 		["bm_equipment_ammo_bag_desc"] = "탄약 가방을 사용하려면, #{skill_color}#$BTN_USE_ITEM## 키를 길게 눌러 설치해야 합니다. 한 번 설치하게 되면 위치를 이동할 수 없지만, 당신과 당신의 팀원들이 #{skill_color}#$BTN_INTERACT## 키를 길게 눌러 탄약을 보충할 수 있습니다.\n\n탄약 가방은 당신의 무기 중 하나의 탄약을 #{skill_color}#$deployable_uses##번까지 완전히 보충할 수 있게 해주며, 가방을 들여다보면 얼마나 남았는지 알 수 있습니다.\n\n탄약 가방은 원래 군인들이 전투에 참여할 때 추가 탄약을 챙길 수 있도록 만든 휴대용 가방입니다.",
 		["bm_equipment_ammo_bag_desc_short"] = "탄약 가방을 사용하려면, #{skill_color}#$BTN_USE_ITEM## 키를 길게 눌러 설치해야 합니다. 한 번 설치하게 되면 위치를 이동할 수 없지만, 당신과 당신의 팀원들이 #{skill_color}#$BTN_INTERACT## 키를 길게 눌러 탄약을 보충할 수 있습니다.\n\n탄약 가방은 당신의 무기 중 하나의 탄약을 #{skill_color}#$deployable_uses##번까지 완전히 보충할 수 있게 해주며, 가방을 들여다보면 얼마나 남았는지 알 수 있습니다.",
@@ -5802,7 +5805,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 
 				--Transporter
 				["menu_pack_mule_beta_sc"] = "트랜스포터",
-				["menu_transporter_beta_desc_sc"] = "베이식: #{owned}#$basic##\n가방 운반 시 이동 속도 패널티가 보유한 방탄량 #{skill_color}#10##당 #{skill_color}#$skill_value_b1##씩 감소합니다.\n\n에이스: #{owned}#$pro##\n가방을 운반할 수 있는 최대 무게량이 #{skill_color}#$skill_value_p2## 증가합니다.\n\n#{risk}#참고: 기본 운반 무게량은 30이며, 가방 운반 시의 이동 속도 패널티는 여전히 적용됩니다.##",
+				["menu_transporter_beta_desc_sc"] = "베이식: #{owned}#$basic##\n가방 운반 시 이동 속도 패널티가 보유한 방탄량 #{skill_color}#10##당 #{skill_color}#$skill_value_b1##씩 감소합니다.\n\n에이스: #{owned}#$pro##\n가방 과적 운반 시 스태미나 소모 패널티가 보유한 방탄량 #{skill_color}#10##당 #{skill_color}#$skill_value_p1##씩 감소합니다.\n\n가방을 운반할 수 있는 최대 무게량이 #{skill_color}#$skill_value_p2## 증가합니다.\n\n#{risk}#참고: 기본 운반 무게량은 30이며, 가방 운반 시의 이동 속도 패널티는 여전히 적용됩니다.##",
 
 				--More Blood to Bleed--
 				["menu_iron_man_beta_sc"] = "아직 흘릴 피가 남아 있어",
@@ -5823,7 +5826,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 
 				--Bulletstorm--
 				["menu_ammo_reservoir_beta_sc"] = "탄환 폭풍",
-				["menu_ammo_reservoir_beta_desc_sc"] = "베이식: #{owned}#$basic##\n당신이 설치한 탄약 가방을 사용한 플레이어는 탄약을 보충한 이후 최대 #{skill_color}#5##초간 탄약 소모 없이 무기를 발사할 수 있습니다.\n\n보충하는 탄약량이 많을수록 지속 시간이 길어집니다.\n\n#{risk}#주의:## #{important_1}#발사기 및 폭발성 탄약을 사용하는 무기는## #{risk}#해당 스킬 효과를 받지 않습니다.##\n\n에이스: #{owned}#$pro##\n효과의 최대 지속 시간이 추가로 #{skill_color}#15##초 증가합니다.",
+				["menu_ammo_reservoir_beta_desc_sc"] = "베이식: #{owned}#$basic##\n당신이 설치한 탄약 가방을 사용한 플레이어는 탄약을 보충한 이후 최대 #{skill_color}#5##초간 탄약 소모 없이 무기를 발사할 수 있습니다.\n\n보충하는 탄약량이 많을수록 지속 시간이 길어집니다.\n\n#{risk}#주의:## #{important_1}#발사기, OVE9000 톱 및 폭발성 탄약을 사용하는 무기는## #{risk}#해당 스킬 효과를 받지 않습니다.##\n\n에이스: #{owned}#$pro##\n효과의 최대 지속 시간이 추가로 #{skill_color}#15##초 증가합니다.",
 
 				--Specialist Equipment formally Rip and Tear
 				["menu_portable_saw_beta_sc"] = "전문가 훈련",
@@ -5871,7 +5874,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 			--[[   BREACHER SUBTREE   ]]--
 				--Silent Drilling--
 				["menu_hardware_expert_beta_sc"] = "무소음 드릴링",
-				["menu_hardware_expert_beta_desc_sc"] = "베이식: #{owned}#$basic##\n#{skill_color}#드릴과 톱이 이제 소리를 내지 않습니다.## 시민과 경비는 경보를 울리기 위해 드릴이나 톱을 직접 목격해야 합니다.\n\n에이스: #{owned}#$pro##\n드릴과 톱 수리 속도가 #{skill_color}#$skill_value_p1## 빨라집니다.",
+				["menu_hardware_expert_beta_desc_sc"] = "베이식: #{owned}#$basic##\n#{skill_color}#드릴과 톱이 이제 소리를 내지 않습니다.## 시민과 경비는 경보를 울리기 위해 드릴이나 톱을 직접 목격해야 합니다.\n\n드릴과 톱 수리 속도가 #{skill_color}#$skill_value_p1## 빨라집니다.\n\n에이스: #{owned}#$pro##\n드릴과 톱 수리 속도가 추가로 #{skill_color}#$skill_value_p2## 빨라집니다.",
 
 				--Demoman
 				["menu_trip_mine_expert_beta_sc"] = "폭파광",
@@ -5883,8 +5886,8 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 
 				--Fire Trap--
 				["menu_more_fire_power_sc"] = "화염 함정",
-				["menu_more_fire_power_desc_sc"] = "베이식: #{owned}#$basic##\n당신이 설치한 트립 마인은 폭발 시 #{skill_color}#10##초 동안 폭발한 지점을 중심으로 #{skill_color}#7.5##미터 반경에 화염 지대를 생성합니다.\n\n트립 마인으로 생성된 화염은 자가 피해나 아군에게 피해를 주지 않습니다.\n\n에이스: #{owned}#$pro##\n최대 #{skill_color}#10##개의 트립 마인을 소지 및 설치할 수 있습니다.\n\n트립 마인의 피해량이 #{skill_color}#50%## 증가합니다.",
-
+				["menu_more_fire_power_desc_sc"] = "베이식: #{owned}#$basic##\n트립 마인 #{skill_color}#skill_value_p1##개를 소지 및 설치할 수 있습니다.\n\n당신이 설치한 트립 마인은 폭발 시 #{skill_color}#10##초 동안 폭발한 지점을 중심으로 #{skill_color}#7.5##미터 반경에 화염 지대를 생성합니다.\n\n트립 마인으로 생성된 화염은 자가 피해나 아군에게 피해를 주지 않습니다.\n\n에이스: #{owned}#$pro##\n트립 마인 #{skill_color}#skill_value_p2##개를 소지 및 설치할 수 있습니다.\n\n트립 마인의 피해량이 #{skill_color}#50%## 증가합니다.",
+				
 				--Expert Hardware
 				["menu_kick_starter_beta_sc"] = "하드웨어 전문가",
 				["menu_kick_starter_beta_desc_sc"] = "베이식: #{owned}#$basic##\n드릴과 톱이 고장난 후 #{skill_color}#$skill_value_b1## 확률로 자동으로 재시작합니다.\n\n에이스: #{owned}#$pro##\n드릴과 톱이 고장난 후 추가로 #{skill_color}#$skill_value_p1## 확률로 자동으로 재시작합니다.\n\n드릴과 톱의 작동을 방해하려는 적은 #{skill_color}#$skill_value_p2## 확률로 감전 공격을 받아 방해 행동을 멈춥니다.",
@@ -6270,7 +6273,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Perk_Decks_Eng", funct
 		["menu_deck17_9_desc_sc"] = "체력이 최대일 때 체력을 #{skill_color}#$perk_value_1##씩 회복 할때마다 주사기 재사용 대기 시간이 #{skill_color}#$perk_value_2##초씩 줄어듭니다.\n\n덱 완료 보너스: PAYDAY 카드에서 높은 등급의 아이템을 얻을 확률이 ##10%## 상승합니다.",
 
 		--10 feet higher--
-		["menu_deck18_1_desc_sc"] = "투척 무기 대신 사용할 수 있는 #{skill_color}#연막탄##이 잠금 해제됩니다.\n\n연막탄을 사용하면, #{skill_color}#$perk_value_1##초간 숨을 수 있는 연막을 형성합니다. 연막 속에 숨어 있으면, 당신과 팀원은 방탄력의 회복 속도가 #{skill_color}#$perk_value_2## 빨라집니다. 연막 속으로 들어간 적은 명중률이 #{skill_color}#$perk_value_3## 감소합니다.\n\n연막탄은 #{important_1}#$perk_value_4##초의 재사용 대기 시간이 있지만, 적을 처치하면 재사용 대기 시간이 #{skill_color}#$perk_value_5##초씩 감소합니다.\n\n회피율이 #{skill_color}#$perk_value_6## 증가합니다.",
+		["menu_deck18_1_desc_sc"] = "투척 무기 대신 사용할 수 있는 #{skill_color}#연막탄##이 잠금 해제됩니다.\n\n연막탄을 사용하면, #{skill_color}#$perk_value_1##초간 숨을 수 있는 연막을 형성합니다. 연막 속에 숨어 있으면, 당신과 팀원은 방탄력의 회복 속도가 #{skill_color}#$perk_value_2## 빨라지고, 회피율이 낮으면 #{skill_color}#$perk_value_3##로 설정됩니다. 연막 속으로 들어간 적은 명중률이 #{skill_color}#perk_value_4## 감소합니다.\n\n연막탄은 #{important_1}#$perk_value_5##초의 재사용 대기 시간이 있지만, 적을 처치하면 재사용 대기 시간이 #{skill_color}#$perk_value_6##초씩 감소합니다.\n\n회피율이 #{skill_color}#$perk_value_7## 증가합니다.",
 		["menu_deck18_3_desc_sc"] = "회피율이 추가로 ##$perk_value_1## 증가합니다.",
 		["menu_deck18_5_desc_sc"] = "공격을 회피하면 연막탄의 재사용 대기 시간이 ##$perk_value_1##초 감소합니다.\n\n인벤토리에 시체 가방을 ##$perk_value_2##개 더 소지합니다.",
 		["menu_deck18_7_desc_sc"] = "회피율이 추가로 ##$perk_value_1## 증가합니다.",
@@ -6436,7 +6439,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Perk_Decks_Eng", funct
 			--Kingpin
 			["menu_deck17_mrwi_desc"] = "투척 무기 대신 사용할 수 있는 #{skill_color}#주사기##가 잠금 해제됩니다.\n\n주사기를 사용하면 방탄복이 있을때 #{skill_color}#$perk_value_2##초 동안 받거나 회피한 모든 피해량의 #{skill_color}#$perk_value_1##만큼 회복합니다.\n\n효과가 지속되는 동안에도 피해를 받을 수 있습니다.\n\n주사기 사용 효과가 지속되는 동안 이동 속도가 #{skill_color}##$perk_value_3## 증가합니다.\n\n주사기는 #{important_1}#$perk_value_4##초마다 한 번만 쓸 수 있지만, 적을 처치할 때마다 재사용 대기 시간이 #{skill_color}#$perk_value_5##초씩 단축됩니다.",
 			--Sicario
-			["menu_deck18_mrwi_desc"] = "투척 무기 대신 사용할 수 있는 #{skill_color}#연막탄##이 잠금 해제됩니다.\n\n연막탄을 사용하면, #{skill_color}#$perk_value_1##초간 숨을 수 있는 연막을 형성합니다. 연막 속에 숨어 있으면, 당신과 팀원은 방탄력의 회복 속도가 #{skill_color}#$perk_value_2## 빨라집니다. 연막 속으로 들어간 적은 명중률이 #{skill_color}#$perk_value_3## 감소합니다.\n\n연막탄은 #{important_1}#$perk_value_4##초의 재사용 대기 시간이 있지만, 적을 처치하면 재사용 대기 시간이 #{skill_color}#$perk_value_5##초씩 감소합니다.\n\n회피율이 #{skill_color}#$perk_value_6## 증가합니다.\n\n인벤토리에 시체 가방을 #{skill_color}##$perk_value_7##개 더 소지합니다.",
+			["menu_deck18_mrwi_desc"] = "투척 무기 대신 사용할 수 있는 #{skill_color}#연막탄##이 잠금 해제됩니다.\n\n연막탄을 사용하면, #{skill_color}#$perk_value_1##초간 숨을 수 있는 연막을 형성합니다. 연막 속에 숨어 있으면, 당신과 팀원은 방탄력의 회복 속도가 #{skill_color}#$perk_value_2## 빨라지고, 회피율이 낮으면 #{skill_color}#$perk_value_3##로 설정됩니다. 연막 속으로 들어간 적은 명중률이 #{skill_color}#$perk_value_4## 감소합니다.\n\n연막탄은 #{important_1}#$perk_value_5##초의 재사용 대기 시간이 있지만, 적을 처치하면 재사용 대기 시간이 #{skill_color}#$perk_value_6##초씩 감소합니다.\n\n회피율이 #{skill_color}#$perk_value_7## 증가합니다.\n\n인벤토리에 시체 가방을 #{skill_color}##$perk_value_8##개 더 소지합니다.",
 			--Stoic
 			["menu_deck19_mrwi_desc"] = "투척 무기 대신 사용할 수 있는 #{skill_color}#힙 플라스크##가 잠금 해제됩니다.\n\n받은 피해의 #{skill_color}#$perk_value_1##가 #{skill_color}#$perk_value_2##초에 걸쳐 받습니다.\n\n플라스크를 사용하면 누적 피해를 즉시 무효화시킵니다.\n\n누적 피해가 무효화될 때, 남은 지속 피해의 #{skill_color}#$perk_value_3##만큼 회복합니다.\n\n플라스크는 #{important_1}#$perk_value_4##초의 재사용 대기 시간이 있습니다.\n\n방탄량이 #{important_1}#$perk_value_5## 감소하고 체력이 #{skill_color}#$perk_value_6## 증가합니다.\n\n방탄복이 파괴되었을때, 피해 유예 시간이 #{important_1}#$perk_value_8## 감소하지만 지속 피해를 무효화할 때 받는 다음 피해는 제외됩니다.\n#{risk}#주의: 회피 유예 시간은 영향을 받지 않습니다.##\n\n페이저를 응답하는 속도가 #{skill_color}#$perk_value_7## 빨라집니다.",
 			--Tag Team

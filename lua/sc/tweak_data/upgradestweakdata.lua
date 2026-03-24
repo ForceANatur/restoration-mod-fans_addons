@@ -966,12 +966,13 @@ Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "ResSkillsInit", function(
 				--Basic
 					self.values.shotgun.recoil_index_addend = {2}
 				--Ace
-					self.values.shotgun.extra_rays = {per_pellet and 0 or 3}
-					self.values.shotgun.damage_min_bonus = {per_pellet and 1.25 or 1}
+					self.values.shotgun.damage_min_bonus = {1.25}
+				--Unused
+					self.values.shotgun.extra_rays = {0}
 					
 					self.skill_descs.underdog = {
 						skill_value_b1 = tostring(self.values.shotgun.recoil_index_addend[1]), -- +Stability
-						skill_value_p1 = tostring((per_pellet and  self.values.shotgun.damage_min_bonus[1] % 1 * 100) or self.values.shotgun.extra_rays[1]) .. ((per_pellet and "%") or "") -- Ace Effect
+						skill_value_p1 = tostring(self.values.shotgun.damage_min_bonus[1] % 1 * 100) .. "%" -- Ace Effect
 					}
 
 			--Shotgun CQB
@@ -1065,12 +1066,15 @@ Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "ResSkillsInit", function(
 			--Transporter
 				--Basic
 					self.values.player.armor_carry_bonus = {1.005}
+
 				--Ace
+					self.values.player.armor_carry_stamina_drain_reduction = {1.05}
 					self.values.carry.movement_penalty_nullifier = {true}
 					self.values.carry.increased_carry_weight = {0.1}
 					
 					self.skill_descs.pack_mule = {
 						skill_value_b1 = tostring(math.ceil(self.values.player.armor_carry_bonus[1] % 1)/2).."%", -- Reducing movement penalty
+						skill_value_p1 = tostring(math.ceil(self.values.player.armor_carry_stamina_drain_reduction[1] % 1)/2).."%", -- Reduce overweight stamina drain penalty
 						skill_value_p2 = tostring(self.values.carry.increased_carry_weight[1] * 100) -- Increased Carry Weight)
 					}
 
@@ -1311,12 +1315,13 @@ Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "ResSkillsInit", function(
 					self.values.player.silent_drill = {true}
 				--Ace
 				self.values.player.drill_fix_interaction_speed_multiplier = {
-					0.5, --Aced
-					0.5 --Unused
+					0.75, --Basic
+					0.5 --Aced
 				}
 				
 				self.skill_descs.hardware_expert = {
-					skill_value_p1 = tostring(self.values.player.drill_fix_interaction_speed_multiplier[1] * 100).."%" -- Faster repair speed
+					skill_value_p1 = tostring((1 - self.values.player.drill_fix_interaction_speed_multiplier[1]) * 100).."%", -- Faster repair speed
+					skill_value_p2 = tostring((self.values.player.drill_fix_interaction_speed_multiplier[1] - self.values.player.drill_fix_interaction_speed_multiplier[2]) * 100).."%" 
 				}
 				
 			--Demoman
@@ -1324,7 +1329,7 @@ Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "ResSkillsInit", function(
 				self.values.player.trip_mine_deploy_time_multiplier = {
 					0.75, --Basic
 					0.5 --Unused
-				}					
+				}
 				--Ace
 				self.values.trip_mine.explosion_size_multiplier_1 = {1.3}
 				--Shaped Charge increase amount handled in tweakdata
@@ -1350,6 +1355,12 @@ Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "ResSkillsInit", function(
 					{10, 1.5} --Unused
 				}				
 				--Quantity Increase Located in tweakdata.lua since their quantity is hardcoded in the exe
+				
+				-- Annoying
+				self.skill_descs.more_fire_power = {
+					skill_value_p1 = tostring("7"), -- Trips Quantity
+					skill_value_p2 = tostring("10")
+				}
 
 			--Expert Hardware
 				--Basic
@@ -3742,10 +3753,11 @@ Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "ResSkillsInit", function(
 	self.specialization_descs[18][1] = {
 		perk_value_1 = "12", -- Duration of smoke. Not defined here (?)
 		perk_value_2 = tostring((self.smoke_screen_armor_regen[1] - 1) * 100).."%", -- Armor regen bonus while you inside the smoke screen
-		perk_value_3 = "75%", -- Accuracy debuff for enemies inside the smoke screen. Not defined here (?)
-		perk_value_4 = "35", --CD of smoke bomb. Not defined here
-		perk_value_5 = "2", -- CD reduction on kill
-		perk_value_6 = tostring(self.values.player.passive_dodge_chance[1] * 100) -- Passive dodge increase
+		perk_value_3 = "20", -- Minimum dodge while inside smoke. Can't reach it from here. :(
+		perk_value_4 = "75%", -- Accuracy debuff for enemies inside the smoke screen. Not defined here (?)
+		perk_value_5 = "35", --CD of smoke bomb. Not defined here
+		perk_value_6 = "2", -- CD reduction on kill
+		perk_value_7 = tostring(self.values.player.passive_dodge_chance[1] * 100) -- Passive dodge increase
 	}
 	self.specialization_descs[18][3] = {
 		perk_value_1 = tostring((self.values.player.passive_dodge_chance[2] - self.values.player.passive_dodge_chance[1]) * 100) -- Additional dodge
@@ -4041,11 +4053,12 @@ Hooks:PostHook(UpgradesTweakData, "_init_pd2_values", "ResSkillsInit", function(
 	self.multi_choice_specialization_descs[23][9][18] = { --Sicario
 		perk_value_1 = "12", -- Duration of smoke. Not defined here (?)
 		perk_value_2 = tostring((self.smoke_screen_armor_regen[1] - 1) * 100).."%", -- Armor regen bonus while you inside the smoke screen
-		perk_value_3 = "75%", -- Accuracy debuff for enemies inside the smoke screen. Not defined here (?)
-		perk_value_4 = "35", --CD of smoke bomb. Not defined here
-		perk_value_5 = "2", -- CD reduction on kill
-		perk_value_6 = tostring(self.values.player.passive_dodge_chance[1] * 100), -- Passive dodge increase
-		perk_value_7 = tostring(self.values.player.corpse_dispose_amount[2] - self.values.player.corpse_dispose_amount[1]) -- Additional body bag
+		perk_value_3 = "20", -- Minimum dodge while inside smoke. Can't reach it from here. :(
+		perk_value_4 = "75%", -- Accuracy debuff for enemies inside the smoke screen. Not defined here (?)
+		perk_value_5 = "35", --CD of smoke bomb. Not defined here
+		perk_value_6 = "2", -- CD reduction on kill
+		perk_value_7 = tostring(self.values.player.passive_dodge_chance[1] * 100), -- Passive dodge increase
+		perk_value_8 = tostring(self.values.player.corpse_dispose_amount[2] - self.values.player.corpse_dispose_amount[1]) -- Additional body bag
 	}
 	self.multi_choice_specialization_descs[23][9][19] = { --Stoic
 		perk_value_1 = tostring(self.values.player.damage_control_passive[2][1]).."%", -- % of damage converted into DoT 
@@ -4446,6 +4459,15 @@ function UpgradesTweakData:_player_definitions()
 		upgrade = {
 			value = 1,
 			upgrade = "scaling_pickup_area",
+			category = "player"
+		}
+	}
+	self.definitions.player_armor_carry_stamina_drain_reduction = {
+		name_id = "menu_armor_carry_stamina_drain_reduction_addition",
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "armor_carry_stamina_drain_reduction",
 			category = "player"
 		}
 	}	

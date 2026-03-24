@@ -2,7 +2,7 @@ local mvec1 = Vector3()
 local is_pro = Global.game_settings and Global.game_settings.one_down
 PlayerDamage._UPPERS_COOLDOWN = tweak_data.upgrades.values.first_aid_kit.uppers_cooldown
 
-function PlayerDamage:init(unit)
+Hooks:OverrideFunction(PlayerDamage, "init", function (self, unit)
 	self._lives_init = tweak_data.player.damage.LIVES_INIT
 	--No longer check for one_down.
 	self._lives_init = managers.modifiers:modify_value("PlayerDamage:GetMaximumLives", self._lives_init)
@@ -239,7 +239,7 @@ function PlayerDamage:init(unit)
 	self._can_play_tinnitus_clbk_func = callback(self, self, "clbk_tinnitus_toggle_changed")
 
 	managers.user:add_setting_changed_callback("accessibility_sounds_tinnitus", self._can_play_tinnitus_clbk_func)	
-end
+end)
 
 --check_ally_attack == check if the attack came from an ally at all.
 function PlayerDamage:is_friendly_fire(unit, check_ally_attack, is_explosive)
@@ -360,7 +360,7 @@ function PlayerDamage:_apply_damage(attack_data, damage_info, variant, t)
 
 	--Perform overall damage reduction calcs.
 	--NOTE: Stoic damage delay and Deflection are handled in _calc_health_damage()
-	attack_data.damage = attack_data.damage * pm:damage_reduction_skill_multiplier(variant)
+	attack_data.damage = attack_data.damage * ((not self_damage and pm:damage_reduction_skill_multiplier(variant)) or 1)
 	local damage_absorption = pm:damage_absorption()
 	if not self_damage and damage_absorption > 0 then
 		attack_data.damage = attack_data.damage - damage_absorption
@@ -405,7 +405,7 @@ function PlayerDamage:_apply_damage(attack_data, damage_info, variant, t)
 	if 0 >= self:get_real_armor() then
 		armor_reduction_multiplier = 1
 	end
-	local health_subtracted = self:_calc_armor_damage(attack_data)
+	local health_subtracted = self:_res_calc_armor_damage(attack_data)
 
 	--Apply health damage.
 	if ((attack_data.armor_piercing or variant == "explosion" or variant == "fire") and not self._unpierceable) or self_damage then
@@ -417,7 +417,7 @@ function PlayerDamage:_apply_damage(attack_data, damage_info, variant, t)
 	else
 		attack_data.damage = attack_data.damage * armor_reduction_multiplier
 	end
-	health_subtracted = health_subtracted + self:_calc_health_damage(attack_data)
+	health_subtracted = health_subtracted + self:_res_calc_health_damage(attack_data)
 
 	if health_subtracted > 0 then
 		self:_send_damage_drama(attack_data, health_subtracted)
@@ -937,7 +937,7 @@ function PlayerDamage:damage_melee(attack_data)
 	self._unit:movement():current_state()._d_scope_t = 0.6
 
 	local in_air = self._unit:movement():current_state():in_air()
-	local hit_in_air = self._unit:movement():current_state()._hit_in_air
+	local hit_in_air = self._unit:movement():current_state()._enemy_hit_in_air
 	
 	--Apply changes to actual melee push, this *can* be reduced to 0. Also don't allow players in bleedout to be pushed.
 	--Also don't allow for multiple pushes if in the air
@@ -946,7 +946,7 @@ function PlayerDamage:damage_melee(attack_data)
 		mvector3.multiply(attack_data.push_vel, push_multiplier)
 		self._unit:movement():current_state():push(attack_data.push_vel, true, 0.2, not force_crouch and true, force_crouch)
 		if in_air then
-			self._unit:movement():current_state()._hit_in_air = true
+			self._unit:movement():current_state()._enemy_hit_in_air = true
 		end
 	end
 	
@@ -1101,7 +1101,7 @@ function PlayerDamage:damage_killzone(attack_data)
 		self:mutator_update_attack_data(attack_data)
 		self:_check_chico_heal(attack_data)
 
-		local health_subtracted = self:_calc_armor_damage(attack_data)
+		local health_subtracted = self:_res_calc_armor_damage(attack_data)
 		attack_data.damage = attack_data.damage * armor_reduction_multiplier
 
 		--Ignores deflection and Stoic, just like it should for all other forms of DR.
@@ -1109,6 +1109,10 @@ function PlayerDamage:damage_killzone(attack_data)
 	end
 
 	self:_call_listeners(damage_info)
+end
+
+function PlayerDamage:stun_hit(attack_data)
+	return nil --self:damage_tase(attack_data)
 end
 
 --Refactored from vanilla. Applies damage linearly on a % basis starting with damage then health. 
@@ -1443,7 +1447,7 @@ function PlayerDamage:_calc_health_damage_no_deflection(attack_data)
 
 	self:biker_lose_stacks_on_damage(health_subtracted, tweak_data.upgrades.biker_damage_weighs_for_stack_loss.health or 2)
 	
-	if not self_damage and managers.player:has_activate_temporary_upgrade("temporary", "copr_ability") and health_subtracted > 0 then
+	if not self_damage and not self._ally_attack and managers.player:has_activate_temporary_upgrade("temporary", "copr_ability") and health_subtracted > 0 then
 		local teammate_heal_level = managers.player:upgrade_level_nil("player", "copr_teammate_heal")
 
 		if teammate_heal_level and self:get_real_health() > 0 then
@@ -1504,7 +1508,7 @@ function PlayerDamage:_calc_health_damage_no_deflection(attack_data)
 end
 
 --Applies deflection and stoic effects.
-function PlayerDamage:_calc_health_damage(attack_data)
+function PlayerDamage:_res_calc_health_damage(attack_data)
 	local attacker_unit = attack_data and attack_data.attacker_unit
 	local self_damage = attacker_unit and alive(attacker_unit) and attacker_unit == self._unit
 
@@ -1624,15 +1628,21 @@ function PlayerDamage:set_dodge_points()
 		+managers.player:body_armor_value("dodge")
 		+managers.player:skill_dodge_chance(false, false, false))
 		or 0.0
+
+	if self._dodge_points < tweak_data.projectiles.smoke_screen_grenade.dodge_chance and self._in_smoke_bomb > 0 then
+		self._dodge_points = tweak_data.projectiles.smoke_screen_grenade.dodge_chance
+	end
+
 	local current_diff = Global.game_settings.difficulty or "easy"
 	local is_pro = Global.game_settings and Global.game_settings.one_down
 	local difficulty_id = math.max(0, (tweak_data:difficulty_to_index(current_diff) or 0) - 2)			
 	local diff_reduction = difficulty_id and ((((difficulty_id == 4 or difficulty_id == 5) and 0.35) or (difficulty_id == 6 and 0.25) or 0.45) - ((is_pro and 0.1) or 0)) or 0.45
 	local grace_cap = (0.45 - (0.45 - diff_reduction))
 	self._dodge_interval = math.clamp(self._dodge_points, 0, grace_cap )
-	
 	if self._dodge_points > 0 then
 		managers.hud:unhide_dodge_panel(self._dodge_points)
+	else
+		managers.hud:hide_dodge_panel()
 	end
 end
 
@@ -1648,7 +1658,7 @@ function PlayerDamage:fill_dodge_meter(dodge_added, overfill)
 		elseif self._dodge_meter < 1.5 then
 			self._dodge_meter = math.max(math.min(self._dodge_meter + dodge_added, 1.5), 0.0)
 		end
-	elseif self:is_downed() then
+	else
 		self._dodge_meter = 0.0
 	end
 end
@@ -1699,6 +1709,12 @@ Hooks:PostHook(PlayerDamage, "update" , "ResDamageInfoUpdate" , function(self, u
 			end
 		end
 	end
+
+	if self._cached_in_smoke_bomb and self._cached_in_smoke_bomb ~= self._in_smoke_bomb then
+		self:set_dodge_points()
+	end
+
+	self._cached_in_smoke_bomb = self._in_smoke_bomb
 
 	--Frenzy inverse healing
 	local healing_reduction_ratio = tweak_data.upgrades.frenzy_healing_reduction_ratio or 1
@@ -2051,7 +2067,7 @@ function PlayerDamage:_check_bleed_out(can_activate_berserker, ignore_movement_s
 	end
 end
 
-function PlayerDamage:_calc_armor_damage(attack_data)
+function PlayerDamage:_res_calc_armor_damage(attack_data)
 
 	--OFFYERROCKER'S MERC PERK DECK
 	--[ [

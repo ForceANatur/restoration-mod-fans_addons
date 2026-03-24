@@ -171,6 +171,9 @@
 	<unit_obj			path="units/pd2_mod_nypd/characters/ene_bulldozer_1/debris/ene_acc_bulldozer_throat/ene_acc_bulldozer_throat" />
 	
 	<!-- saiga -->
+	<unit				path="units/pd2_mod_nypd/characters/ene_bulldozer_2/ene_bulldozer_2" load="true"/>
+    <unit				path="units/pd2_mod_nypd/characters/ene_bulldozer_2/ene_bulldozer_2_husk" load="true"/>	
+
 	<material_config	path="units/payday2/characters/ene_bulldozer_2_sc/ene_bulldozer_2_sc" />
 	<material_config	path="units/payday2/characters/ene_bulldozer_2_sc/ene_bulldozer_2_sc_contour" />			
 	

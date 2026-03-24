@@ -488,7 +488,7 @@ function SkillTreeTweakData:init(tweak_data)
 					},
 					[2] = {
 						upgrades = {
-							"shotgun_extra_rays",
+							--"shotgun_extra_rays",
 							"shotgun_damage_min_bonus"
 						},
 						cost = self.costs.pro
@@ -651,6 +651,7 @@ function SkillTreeTweakData:init(tweak_data)
 					[2] = {
 						upgrades = {
 							"carry_movement_penalty_nullifier",
+							"player_armor_carry_stamina_drain_reduction",
 							"carry_increased_carry_weight"
 						},
 						cost = self.costs.pro
@@ -981,13 +982,14 @@ function SkillTreeTweakData:init(tweak_data)
 					[1] = {
 						upgrades = {
 							"player_drill_alert",
-							"player_silent_drill"
+							"player_silent_drill",
+							"player_drill_fix_interaction_speed_multiplier_1"
 						},
 						cost = self.costs.default
 					},
 					[2] = {
 						upgrades = {
-							"player_drill_fix_interaction_speed_multiplier_1"
+							"player_drill_fix_interaction_speed_multiplier_2"
 						},
 						cost = self.costs.pro
 					}
@@ -1040,13 +1042,13 @@ function SkillTreeTweakData:init(tweak_data)
 					["icon_xy"] = {9, 9},
 					[1] = {
 						upgrades = {
-							"trip_mine_fire_trap_1"
+							"trip_mine_fire_trap_1",
+							"trip_mine_quantity_increase_1",
 						},
 						cost = self.costs.hightier
 					},
 					[2] = {
 						upgrades = {
-							"trip_mine_quantity_increase_1",
 							"trip_mine_quantity_increase_2",
 							"trip_mine_damage_multiplier_1"
 						},

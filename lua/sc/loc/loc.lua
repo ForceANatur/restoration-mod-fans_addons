@@ -1535,7 +1535,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Eng", function(loc)
 		["bm_wp_upg_o_angled_desc"] = "Press #{skill_color}#$BTN_GADGET## while aiming to switch between your main optic and the angled iron sights.",
 		["bm_wp_upg_o_angled_1_1_desc"] = "Press #{skill_color}#$BTN_GADGET## while aiming to switch between your main optic and the angled red-dot sight.\n#{skill_color}#1.1x magnification.##",
 		["bm_wp_upg_o_angled_1_2_desc"] = "Press #{skill_color}#$BTN_GADGET## while aiming to switch between your main optic and the angled red dot sight.\n#{skill_color}#1.2x magnification.##",
-		["bm_wp_upg_o_angled_laser_desc"] = "Press #{skill_color}#$BTN_GADGET## while aiming to switch between aiming down your sights and #{risk}#point shooting.##\nWhile point shooting you aim #{skill_color}#25%## faster and the movement speed reduction while aiming is reduced by #{skill_color}#50%## in exchange for a #{important_1}#large reduction in aimed accuracy.##\n\n#{risk}#The use of a laser gadget is highly recommended, whenever possible.##", --VMP Point Shoot Laser
+		["bm_wp_upg_o_angled_laser_desc"] = "Press #{skill_color}#$BTN_GADGET## while aiming to switch between aiming down your sights and #{risk}#point shooting.##\nWhile point shooting you aim #{skill_color}#25%## faster and the movement speed reduction while aiming is reduced by #{skill_color}#40%## in exchange for a #{important_1}#large reduction in aimed accuracy.##\n\n#{risk}#The use of a laser gadget is highly recommended, whenever possible.##", --VMP Point Shoot Laser
 		["bm_wp_upg_o_angled_aim_desc"] = "Press #{skill_color}#$BTN_GADGET## while aiming to switch between standard and canted aiming.##", --VMP Point Shoot Laser
 
 		["bm_wp_upg_o_magnifier_desc"] = "Press #{skill_color}#$BTN_GADGET## while aiming to flip the magnifier up/down.\n#{risk}#3x magnification.##",
@@ -1801,7 +1801,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Eng", function(loc)
 		["bm_melee_freedom_info"] = "Thirteen stripes of red alternating with white, a blue rectangle in the canton, fifty small, white, five-pointed stars, a pinch of patriotism, two cups of freedom and a broken flag pole.\n\nVoilà - you have yourself a deadly weapon.",
 		--Who needs pants?
 		["bm_melee_erica_info"] = "A sane person would throw this.\n\nFully charged hits against living enemies have a #{skill_color}#100%## chance to explode dealing #{risk}#720## damage in a #{skill_color}#5## meter radius from the point of impact.",
-			["bm_melee_cqc20_info"] = "#{risk}#GET SOME!##\n\nFully charged hits against living enemies have a #{skill_color}#100%## chance to set off a controlled explosion dealing #{risk}#720## damage to enemies in a #{skill_color}#2## meter radius from the point of impact.",
+			["bm_melee_cqc20_info"] = "#{risk}#GET SOME!##\n\nFully charged hits against living enemies have a #{skill_color}#100%## chance to set off a controlled explosion dealing #{risk}#720## damage to enemies in a #{skill_color}#2## meter radius from the point of impact.\n\n#{important_1}#Charge speed is unaffected by skills.##",
 
 		--Hammer
 		["bm_melee_hammer_info"] = "The \"Carpenter’s Delight\" is Jacket’s favorite hammer. The hammer is the perfect tool to deliver blunt blows to people you don’t like.\n\nThe most common uses for hammers are to drive nails, fit parts, forge metal, and break apart objects, none of which Jacket cares for particularly much.",
@@ -1828,7 +1828,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Eng", function(loc)
 		["bm_melee_spatula_info"] = "A melee weapon with a dual purpose – use it to smear a cop all across the road, and then let others use it to scoop up their remains.\n\nTake an extra napkin for this one.",
 
 		--PIPPA NO
-		["bm_melee_mining_pick_info"] = "There's gold in 'dem 'der hills! And by hills we mean teeth. But, hills or teeth, nothing digs the gold out faster than a swinging spike of pig iron.\n\nDeals #{skill_color}#50%## more headshot damage.",
+		["bm_melee_mining_pick_info"] = "There's gold in 'dem 'der hills! And by hills we mean teeth. But, hills or teeth, nothing digs the gold out faster than a swinging spike of pig iron.\n\nDeals #{skill_color}#300%## more headshot damage when fully charged.",
 		--Ebay Seller
 		["bm_melee_scalper_info"] = "For the victor, it is the symbol of war, of power and of dominance.\n\nFor the loser, it is the symbol of a really, really bad haircut.",
 		--NAOW THIS IS A KNOIFE
@@ -1904,7 +1904,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Eng", function(loc)
 		--Selfie
 		["bm_melee_selfie_info"] = "As Hoxton said, \"look at that fucking berk with the selfie-stick. What a bellend. I bet it's strong, though. Y'know, I should take it off him and twat him with it. Back in a mo...\"",
 		--Lara
-		["bm_melee_iceaxe_info"] = "When you're scaling the slick cliffs beneath Angel Falls, you need something that can gouge into the hard rock. When you're robbing banks in D.C., you need something that can gouge into the helmets of cops.\n\nDeals #{skill_color}#50%## more headshot damage.",
+		["bm_melee_iceaxe_info"] = "When you're scaling the slick cliffs beneath Angel Falls, you need something that can gouge into the hard rock. When you're robbing banks in D.C., you need something that can gouge into the helmets of cops.\n\nDeals #{skill_color}#200%## more headshot damage when fully charged.",
 			["bm_melee_iceaxe_gen_info"] = "Deals #{skill_color}#50%## more headshot damage.",
 		--Dive
 		["bm_melee_pugio_info"] = "Simple and strong. Whether you're cutting throats, or cutting dolphins free of tangling fishing nets, it gets the job done. And it looks badass on your hip when you come swaggering out of the surf.",
@@ -2902,6 +2902,8 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 					["bm_w_lc10_desc_sc"] = "Full-auto submachine gun. Well rounded with excellent damage range and good accuracy. Moderate damage with an impressive muzzle velocity and a high fire rate.",
 					--REDACTED
 					["bm_w_redacted_desc_sc"] = "#{stats_positive}#REDACTED##\n\n#{risk}#This weapon shoots in 2-round auto-bursts when fired from the hip and shoots in semi-auto when fired while aiming down the sights.##",
+					--Ripper
+					["ghosts_ripper_vfg"] = "#{item_stage_2}#The joke is that the Ripper in Ghosts could accept the foregrip attachment despite it presenting no visual change while also overlooking the fact it already has one built-in.##",
 					--Scudomnion
 					["bm_w_cagnali_desc"] = "Manufactured by Cagnali Industries for use with the C.I.A.R.S.S.E.A.\n\nOMNIA has taken note of this weapon's existence and are trying to improve where Dr. Lucia Cagnali failed.",
 					--Owen SMG
@@ -3147,7 +3149,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 				["bm_asval_sc_desc"] = "Tiny rifle bullets might do for your run of the mill gunfighter, but others might go for this gun.\n\nComes #{skill_color}#integrally suppressed## and #{skill_color}#deals 25% of its damage through body armor.##",
 				["bm_asval_spp_sc_desc"] = "Tiny rifle bullets might do for your run of the mill gunfighter, but others might go for this gun.\n\nComes #{skill_color}#integrally suppressed## and #{skill_color}#can pierce body armor, multiple enemies, shields within max damage range and thin walls.##",
 				["bm_wp_upg_i_asval_spp"] = "Valkyria SPP-ecial",
-				["bm_wp_upg_i_asval_spp_desc"] = "Upgraged internals mixed with specialized armor piercing ammo that can #{skill_color}#can pierce body armor, multiple enemies, shields within max damage range and thin walls.##",
+				["bm_wp_upg_i_asval_spp_desc"] = "Upgraded internals mixed with specialized armor piercing ammo that can #{skill_color}#can pierce body armor, multiple enemies, shields within max damage range and thin walls.##",
 				--Galil
 				["bm_galil_sc_desc"] = "A copycat of a rifle based on a Finnish design, which itself was also a derivative of the classic AK. Imitation is the sincerest form of flattery.\n\n#{skill_color}#Deals 25% of its damage through body armor.##",
 				["bm_galil_ap25_sc_desc"] = "A copycat of a rifle based on a Finnish design, which itself was also a derivative of the classic AK. Imitation is the sincerest form of flattery.\n\n#{skill_color}#Deals 50% of its damage through body armor.##",
@@ -4887,13 +4889,14 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 					["bm_melee_stick"] = "Shepherd's Crook",
 					["bm_melee_nin"] = "Paslode IM90i Nailgun",
 					["bm_melee_ballistic"] = "Ballistic Knives",
-					["bm_melee_wing"] = "Benchmade Model 42 Balisong",
+					["bm_melee_wing"] = "Benchmade Model 62 Balisong",
 					["bm_melee_cs"] = "Homelite Super 2 Chainsaw",
 					["bm_melee_brick"] = "Motorola DynaTAC 8000X",
 					["bm_melee_sword"] = "Pencil",
 					["bm_melee_oxide"] = "UVSR Taiga-1",
 					["bm_melee_selfie"] = "PolarPro PowerPole GoPro Extension",
 					["bm_melee_twins"] = "Shureido Sai",
+					["bm_melee_iceaxe"] = "Black Diamond Viper Ice Axe", --Looks to be a mix of the Black Diamond Viper (V2) and Cobra (V2) Ice Axes - the Viper's shaft and head connection style and the Cobra's grip
 
 				--[[THROWABLES]]
 					["bm_grenade_frag"] = "M67 Fragmentation Grenade",
@@ -5068,6 +5071,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 				["RestorationModDisableSoloBoonsDescID"] = "Disable the additional boons the player receives in solo play (Crime.net offline). You difficulty junkie.",
 				["bm_melee_fight_info"] = "KAKATTE KOI!\n\nParrying an enemy attack deals #{skill_color}#120## melee damage to them. This can be increased with skills.\n#{stats_negative}#I'M NOT GONNA SUGARCOAT IT\nR1 + (Triangle)##",
 				["RestorationModLogOutfitStringsDescID"] = "Logs when outfit string updates are called through NetworkPeer - turn this off when youre done for those sweet sweet frames",
+				["bm_melee_erica_info"] = "#{stats_negative}#You will never be a Caber Knight.##\n\nFully charged hits against living enemies have a #{skill_color}#100%## chance to explode dealing #{risk}#720## damage in a #{skill_color}#5## meter radius from the point of impact."
 			})
 		end
 
@@ -5206,8 +5210,8 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 		["bm_equipment_grenade_crate_desc"] = "To use the Ordnance Bag, you need to place it by holding #{skill_color}#$BTN_USE_ITEM.## Once placed it cannot be moved, but it can be used by you and your crew by holding #{skill_color}#$BTN_INTERACT## to replenish #{skill_color}#25%## of all of your weapons' ammo reserves and #{skill_color}#1## throwable.\n\nIt can only be used #{skill_color}#4## times; you can see how many uses are left by looking at the bag.\n\nThe Ordnance Bag is a portable bag carried by combat operatives to transport explosives and other throwable weapons into a battle zone.\n\n#{important_1}#NOTE: CANNOT BE USED TO RESTORE REGENERATING OR COOLDOWN-BASED THROWABLES.##",
 		["bm_equipment_grenade_crate_desc_short"] = "To use the Ordnance Bag, you need to place it by holding #{skill_color}#$BTN_USE_ITEM.## Once placed it cannot be moved, but it can be used by you and your crew by holding #{skill_color}#$BTN_INTERACT## to replenish #{skill_color}#25%## of all of your weapons' ammo reserves and #{skill_color}#1## throwable.\n\nIt can only be used #{skill_color}#4## times; you can see how many uses are left by looking at the bag.\n\n#{important_1}#NOTE: CANNOT BE USED TO RESTORE REGENERATING OR COOLDOWN-BASED THROWABLES.##",
 		--Trip Mine
-		["bm_equipment_trip_mine_desc"] = "To use a Trip Mine, you need to place one by holding #{skill_color}#$BTN_USE_ITEM.## The trigger laser can be toggled between its explosive and sensor modes by pressing #{skill_color}#$BTN_INTERACT.##\n\nTo use a Shaped Charge, you need to place one by holding #{skill_color}#$BTN_INTERACT.## Once the required number of charges have been placed they will detonate within a few seconds. You have a #{skill_color}#1%## chance to regain #{skill_color}#1## Trip Mine each time you pick up an ammo box.\n\nTrip Mines are basically traps that will hurt or kill enemies crossing the beam. Shaped Charges are commonly used to open safes and doors. Both are a good addition to all combat situations.",
-		["bm_equipment_trip_mine_desc_short"] = "To use a Trip Mine, you need to place one by holding #{skill_color}#$BTN_USE_ITEM.## The trigger laser can be toggled between its explosive and sensor modes by pressing #{skill_color}#$BTN_INTERACT.##\n\nTo use a Shaped Charge, you need to place one by holding #{skill_color}#$BTN_INTERACT.## Once the required number of charges have been placed they will detonate within a few seconds. You have a #{skill_color}#1%## chance to regain #{skill_color}#1## Trip Mine each time you pick up an ammo box.",
+		["bm_equipment_trip_mine_desc"] = "To use a Trip Mine, you need to place one by holding #{skill_color}#$BTN_USE_ITEM.## The trigger laser can be toggled between its explosive and sensor modes by pressing #{skill_color}#$BTN_INTERACT.##\n\nTo use a Shaped Charge, you need to place one by holding #{skill_color}#$BTN_INTERACT.## Once the required number of charges have been placed they will detonate within a few seconds.\n\nAmmo Box Return Rate: #{skill_color}#$pickup_1 to $pickup_2##\n\nTrip Mines are basically traps that will hurt or kill enemies crossing the beam. Shaped Charges are commonly used to open safes and doors. Both are a good addition to all combat situations.",
+		["bm_equipment_trip_mine_desc_short"] = "To use a Trip Mine, you need to place one by holding #{skill_color}#$BTN_USE_ITEM.## The trigger laser can be toggled between its explosive and sensor modes by pressing #{skill_color}#$BTN_INTERACT.##\n\nTo use a Shaped Charge, you need to place one by holding #{skill_color}#$BTN_INTERACT.## Once the required number of charges have been placed they will detonate within a few seconds.\n\nAmmo Box Return Rate: #{skill_color}#$pickup_1 to $pickup_2##",
 		--Ammo Bag
 		["bm_equipment_ammo_bag_desc"] = "To use the Ammo Bag, you need to place it by holding #{skill_color}#$BTN_USE_ITEM.## Once placed it cannot be moved, but it can be used by you and your crew by holding #{skill_color}#$BTN_INTERACT## to refill your ammo.\n\nIt can be used to fully replenish the ammo reserves of a weapon #{skill_color}#$deployable_uses## times; you can see how many uses are left by looking into the bag.\n\nThe Ammo Bag is a portable bag, originally intended to allow soldiers to carry extra ammunition with them into combat.",
 		["bm_equipment_ammo_bag_desc_short"] = "To use the Ammo Bag, you need to place it by holding #{skill_color}#$BTN_USE_ITEM.## Once placed it cannot be moved, but it can be used by you and your crew by holding #{skill_color}#$BTN_INTERACT## to refill your ammo.\n\nIt can be used to fully replenish the ammo reserves of a weapon #{skill_color}#$deployable_uses## times; you can see how many uses are left by looking into the bag.",
@@ -5975,7 +5979,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 
 				--Transporter
 				["menu_pack_mule_beta_sc"] = "Transporter",
-				["menu_transporter_beta_desc_sc"] = "BASIC: #{owned}#$basic##\nFor every #{skill_color}#10## points of armor you have, the movement penalty for carried bags is reduced by #{skill_color}#$skill_value_b1.##\n\nACE: #{owned}#$pro##\nYour max bag carry weight is increased by #{skill_color}#$skill_value_p2.##\n\n#{risk}#NOTE: The default carry weight is 45, and the movement penalty from the bag still applies.##",
+				["menu_transporter_beta_desc_sc"] = "BASIC: #{owned}#$basic##\nFor every #{skill_color}#10## points of armor you have, the movement penalty for carried bags is reduced by #{skill_color}#$skill_value_b1.##\n\nACE: #{owned}#$pro##\nFor every #{skill_color}#10## points of armor you have, the stamina drain penalty when overencumbered by bags is reduced by #{skill_color}#$skill_value_p1.##\n\nYour max bag carry weight is increased by #{skill_color}#$skill_value_p2.##\n\n#{risk}#NOTE: The default carry weight is 30, and the movement penalty from the bag still applies.##",
 
 				--More Blood to Bleed--
 				["menu_iron_man_beta_sc"] = "More Blood to Bleed",
@@ -5996,7 +6000,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 
 				--Bulletstorm--
 				["menu_ammo_reservoir_beta_sc"] = "Bulletstorm",
-				["menu_ammo_reservoir_beta_desc_sc"] = "BASIC: #{owned}#$basic##\nAmmo bags placed by you grant its users the ability to shoot without depleting their ammunition for up to #{skill_color}#5## seconds after replenishing ammo from it.\n\nThe more ammo replenished, the longer the duration of the effect.\n\n#{risk}#NOTE:## #{important_1}#Launchers and weapons using explosive ammo## #{risk}#do not receive the effects of this skill.##\n\nACE: #{owned}#$pro##\nIncreases the maximum possible duration of the effect by an additional #{skill_color}#15## seconds.",
+				["menu_ammo_reservoir_beta_desc_sc"] = "BASIC: #{owned}#$basic##\nAmmo bags placed by you grant its users the ability to shoot without depleting their ammunition for up to #{skill_color}#5## seconds after replenishing ammo from it.\n\nThe more ammo replenished, the longer the duration of the effect.\n\n#{risk}#NOTE:## #{important_1}#Launchers, the OVE9000 Saw, and weapons using explosive ammo## #{risk}#do not receive the effects of this skill.##\n\nACE: #{owned}#$pro##\nIncreases the maximum possible duration of the effect by an additional #{skill_color}#15## seconds.",
 
 				--Specialist Equipment formally Rip and Tear
 				["menu_portable_saw_beta_sc"] = "Specialist Training",
@@ -6044,7 +6048,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 			--[[   BREACHER SUBTREE   ]]--
 				--Silent Drilling--
 				["menu_hardware_expert_beta_sc"] = "Silent Drilling",
-				["menu_hardware_expert_beta_desc_sc"] = "BASIC: #{owned}#$basic##\nYour #{skill_color}#drills and saws are now silent##, civilians and guards have to see them in order to be alerted.\n\nACE: #{owned}#$pro##\nYou fix drills and saws #{skill_color}#$skill_value_p1## faster.",
+				["menu_hardware_expert_beta_desc_sc"] = "BASIC: #{owned}#$basic##\nYour #{skill_color}#drills and saws are now silent##, civilians and guards have to see them in order to be alerted.\n\nYou fix drills and saws #{skill_color}#$skill_value_p1## faster.\n\nACE: #{owned}#$pro##\nYou fix drills and saws an additional #{skill_color}#$skill_value_p2## faster.",
 
 				--Demoman
 				["menu_trip_mine_expert_beta_sc"] = "Demoman",
@@ -6056,7 +6060,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 
 				--Fire Trap--
 				["menu_more_fire_power_sc"] = "Fire Trap",
-				["menu_more_fire_power_desc_sc"] = "BASIC: #{owned}#$basic##\nYour trip mines now spread fire around the area of detonation for #{skill_color}#10## seconds in a #{skill_color}#7.5## meter radius.\n\nFire produced by trip mines do not deal self damage or friendly fire.\n\nACE: #{owned}#$pro##\nYou can now carry and plant #{skill_color}#10## trip mines.\n\nYour trip mine deals #{skill_color}#50%## more damage.",
+				["menu_more_fire_power_desc_sc"] = "BASIC: #{owned}#$basic##\nYou can now carry and plant #{skill_color}#$skill_value_p1## trip mines.\n\nYour trip mines now spread fire around the area of detonation for #{skill_color}#10## seconds in a #{skill_color}#7.5## meter radius.\n\nFire produced by trip mines do not deal self damage or friendly fire.\n\nACE: #{owned}#$pro##\nYou can now carry and plant #{skill_color}#$skill_value_p2## trip mines.\n\nYour trip mine deals #{skill_color}#50%## more damage.",
 
 				--Expert Hardware
 				["menu_kick_starter_beta_sc"] = "Expert Hardware",
@@ -6441,7 +6445,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Perk_Decks_Eng", funct
 		["menu_deck17_9_desc_sc"] = "For every #{skill_color}#$perk_value_1## health gained during the Injector effect while at maximum health, the recharge time of the Injector is reduced by #{skill_color}#$perk_value_2## seconds.\n\nDeck Completion Bonus: Your chance of getting a higher quality item during a PAYDAY is increased by #{skill_color}#10%.##",
 
 		--10 feet higher--
-		["menu_deck18_1_desc_sc"] = "Unlocks the #{skill_color}#Smoke Bomb## for use in place of a standard throwable.\n\nWhen deployed, the smoke bomb creates a smoke screen that lasts for #{skill_color}#$perk_value_1## seconds. While standing inside the smoke screen, you and your allies regenerate armor #{skill_color}#$perk_value_2## faster. Any enemies that stand in the smoke will see their accuracy reduced by #{skill_color}#$perk_value_3.##\n\nThe Smoke Bomb has a #{important_1}#$perk_value_4## second cooldown; killing enemies will reduce this cooldown by #{skill_color}#$perk_value_5## seconds.\n\nYour dodge is increased by #{skill_color}#$perk_value_6## points.",
+		["menu_deck18_1_desc_sc"] = "Unlocks the #{skill_color}#Smoke Bomb## for use in place of a standard throwable.\n\nWhen deployed, the smoke bomb creates a smoke screen that lasts for #{skill_color}#$perk_value_1## seconds. While standing inside the smoke screen, you and your allies regenerate armor #{skill_color}#$perk_value_2## faster, and have your dodge points set to #{skill_color}#$perk_value_3## if below that. Any enemies that stand in the smoke will see their accuracy reduced by #{skill_color}#$perk_value_4.##\n\nThe Smoke Bomb has a #{important_1}#$perk_value_5## second cooldown; killing enemies will reduce this cooldown by #{skill_color}#$perk_value_6## seconds.\n\nYour dodge is increased by #{skill_color}#$perk_value_7## points.",
 		["menu_deck18_3_desc_sc"] = "Your dodge is increased by an additional ##$perk_value_1## points.",
 		["menu_deck18_5_desc_sc"] = "Dodging an attack reduces the smoke bomb's cooldown by ##$perk_value_1## second.\n\nYou carry ##$perk_value_2## additional body bag in your inventory.",
 		["menu_deck18_7_desc_sc"] = "Your dodge is increased by an additional ##$perk_value_1## points.",
@@ -6607,7 +6611,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Perk_Decks_Eng", funct
 			--Kingpin
 			["menu_deck17_mrwi_desc"] = "Unlocks the #{skill_color}#Injector## for use in place of a throwable.\n\nActivating the Injector will heal you for #{skill_color}#$perk_value_1## of all damage taken or damage dodged for #{skill_color}#$perk_value_2## seconds.\n\n#{risk}#NOTE: The amount of damage dodged to convert to healing is limited by your maximum armor.##\n\nYou can still take damage during the effect.\n\nYour movement speed is increased by #{skill_color}#$perk_value_3## while the Injector is active.\n\nThe Injector can only be used once every #{important_1}#$perk_value_4## seconds; each kill you perform will shorten the cooldown timer by #{skill_color}#$perk_value_5## seconds.",
 			--Sicario
-			["menu_deck18_mrwi_desc"] = "Unlocks the #{skill_color}#Smoke Bomb## for use in place of a standard throwable.\n\nWhen deployed, the smoke bomb creates a smoke screen that lasts for #{skill_color}#$perk_value_1## seconds. While standing inside the smoke screen, you and your allies regenerate armor #{skill_color}#$perk_value_2## faster. Any enemies that stand in the smoke will see their accuracy reduced by #{skill_color}#$perk_value_3.##\n\nThe Smoke Bomb has a #{important_1}#$perk_value_4## second cooldown; killing enemies will reduce this cooldown by #{skill_color}#$perk_value_5## seconds.\n\nYour dodge is increased by #{skill_color}#$perk_value_6## points.\n\nYou carry #{skill_color}#$perk_value_7## additional body bag in your inventory.",
+			["menu_deck18_mrwi_desc"] = "Unlocks the #{skill_color}#Smoke Bomb## for use in place of a standard throwable.\n\nWhen deployed, the smoke bomb creates a smoke screen that lasts for #{skill_color}#$perk_value_1## seconds. While standing inside the smoke screen, you and your allies regenerate armor #{skill_color}#$perk_value_2## faster, and have your dodge points set to #{skill_color}#$perk_value_3## if below that. Any enemies that stand in the smoke will see their accuracy reduced by #{skill_color}#$perk_value_4.##\n\nThe Smoke Bomb has a #{important_1}#$perk_value_5## second cooldown; killing enemies will reduce this cooldown by #{skill_color}#$perk_value_6## seconds.\n\nYour dodge is increased by #{skill_color}#$perk_value_7## points.\n\nYou carry #{skill_color}#$perk_value_8## additional body bag in your inventory.",
 			--Stoic
 			["menu_deck19_mrwi_desc"] = "Unlocks the #{skill_color}#Hip Flask## for use in place of a throwable.\n\n#{skill_color}#$perk_value_1## of the damage taken to your health is applied over #{skill_color}#$perk_value_2## seconds.\n\nUsing the flask immediately negates any damage-over-time.\n\nWhenever damage-over-time is negated, you heal for #{skill_color}#$perk_value_3## of the remaining damage-over-time.\n\nThe flask has a #{important_1}#$perk_value_4## second cooldown.\n\nLose #{important_1}#$perk_value_5## of your armor and gain #{skill_color}#$perk_value_6## more health.\n\nWhile your armor your damage grace period is reduced by #{important_1}#$perk_value_8,## excluding the next hit you take when negating damage-over-time.\n#{risk}#NOTE: Your dodge grace period is unaffected.##\n\nYou answer pagers #{skill_color}#$perk_value_7## faster.",
 			--Tag Team
