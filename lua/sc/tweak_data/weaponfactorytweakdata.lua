@@ -1957,6 +1957,16 @@ end
 
 		--SECONDARIES
 
+			--WELROD
+				Hooks:PostHook(WeaponFactoryTweakData, "_init_welrod", "resmod_welrod", function(self)
+					self.parts.wpn_fps_pis_welrod_b_standard.supported = true
+					self.parts.wpn_fps_pis_welrod_b_standard.stats = {
+						value = 0,
+						alert_size = -1,
+						suppression = 12
+					}
+				end)
+
 			--MAXIM 9
 				Hooks:PostHook(WeaponFactoryTweakData, "_init_maxim9", "resmod_maxim9", function(self)
 

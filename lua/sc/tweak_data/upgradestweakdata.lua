@@ -236,7 +236,8 @@ Hooks:PostHook(UpgradesTweakData, "init", "ResLevelTableInit", function(self, tw
 					"shuno",
 					"holt",
 					"x_holt",
-					"x_korth"
+					"x_korth",
+					"welrod"
 				}
 			},
 		l32 = {
