@@ -36773,10 +36773,19 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			self.amcar4.stats_modifiers = nil
 			self.amcar4.kick = self.stat_info.kick_tables.even_recoil
 			self.amcar4.supported = true
-			self.amcar4.timers.reload_not_empty = 2.67
-			self.amcar4.timers.reload_empty = 3.43
-			self.amcar4.timers.reload_exit_empty = 0.55
-			self.amcar4.timers.reload_exit_not_empty = 0.5
+			if SystemFS:exists("assets/mod_overrides/AR15 Overhaul") then
+				self.amcar4.timers.reload_not_empty = 1.6
+				self.amcar4.timers.reload_empty = 2.3
+				self.amcar4.timers.reload_exit_empty = 0.88
+				self.amcar4.timers.reload_exit_not_empty = 0.7
+				self.amcar4.reload_speed_multiplier = 0.7455
+			else
+				self.amcar4.timers.reload_not_empty = 2.55
+				self.amcar4.timers.reload_empty = 3.43
+				self.amcar4.timers.reload_exit_empty = 1
+				self.amcar4.timers.reload_exit_not_empty = 0.95
+				self.amcar4.reload_speed_multiplier = 1.05
+			end
 			self.amcar4.fire_mode_data.fire_rate = 0.1
 			self.amcar4.CLIP_AMMO_MAX = 30
 			self.amcar4.AMMO_MAX = 120

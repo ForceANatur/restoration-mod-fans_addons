@@ -1,0 +1,15 @@
+<materials version="3" group="civ_male_tonis_manager">
+    <material unique="true" render_template="generic:CONTOUR:DIFFUSE_TEXTURE:NORMALMAP:SKINNED_3WEIGHTS" version="2" name="mtr_head">
+        <bump_normal_texture file="units/pd2_dlc_wwh/characters/ene_male_crew_02/ene_male_crew_head_02_nm"/>
+        <diffuse_texture file="units/pd2_dlc_wwh/characters/ene_male_crew_02/ene_male_crew_head_02_df"/>
+        <variable type="vector3" name="contour_color" value="1 1 1"/>
+        <variable type="scalar" name="contour_opacity" value="0"/>
+    </material>
+    <material unique="true" render_template="generic:CONTOUR:DIFFUSE_TEXTURE:NORMALMAP:SKINNED_3WEIGHTS" version="2" name="mtr_body">
+		<bump_normal_texture file="units/pd2_dlc1/characters/shared_textures/civ_male_bank_manager_2_nm"/>
+		<diffuse_texture file="units/payday2/characters/ene_mememan_5_kamikaze/civ_male_bank_manager_2_df"/>
+        <variable type="vector3" name="contour_color" value="1 1 1"/>
+        <variable type="scalar" name="contour_opacity" value="0"/>
+    </material>
+    <material render_template="shadow_caster_only:SKINNED_1WEIGHT" name="shadow_caster" version="2"/>
+</materials>

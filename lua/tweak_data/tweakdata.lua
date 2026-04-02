@@ -317,6 +317,14 @@ table.insert (tweak_data.gui.crime_net.codex,
 					desc_id = "heist_contact_akashic_description",
 					videos = {"shatter1"}
 				}
+			},
+			{
+				id = "self_insert",
+				name_id = "heist_contact_self_insert",
+				{
+					desc_id = "heist_contact_self_insert_description",
+					videos = {"shatter1"}
+				}
 			}
 
 		} )

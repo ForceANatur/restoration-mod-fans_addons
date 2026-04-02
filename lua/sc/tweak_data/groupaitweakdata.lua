@@ -9215,7 +9215,37 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 			},
 			access = access_type_all,
 			special_type = "tank"
-		}		
+		}
+		self.unit_categories.boom_M4203 = {
+			unit_types = {
+				america = {
+					Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze")
+				},
+				russia = {
+					Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze")
+				},
+				zombie = {
+					Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze")
+				},				
+				murkywater = {
+					Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze")
+				},
+				federales = {
+					Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze")
+				},				
+				nypd = {
+					Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze")
+				},
+				lapd = {
+					Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze")
+				},
+				fbi = {
+					Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze")
+				}
+			},
+			access = access_type_all,
+			special_type = "boom"
+		}
 	end
 	
 	--New Winters
@@ -10139,49 +10169,57 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 				Idstring("units/payday2/characters/ene_mememan_1/ene_mememan_1"),
 				Idstring("units/payday2/characters/ene_mememan_2/ene_mememan_2"),
 				Idstring("units/payday2/characters/ene_mememan_3/ene_mememan_3"),
-				Idstring("units/payday2/characters/ene_mememan_4/ene_mememan_4")
+				Idstring("units/payday2/characters/ene_mememan_4/ene_mememan_4"),
+				Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze")
 			},
 			russia = {
 				Idstring("units/payday2/characters/ene_mememan_1/ene_mememan_1"),
 				Idstring("units/payday2/characters/ene_mememan_2/ene_mememan_2"),
 				Idstring("units/payday2/characters/ene_mememan_3/ene_mememan_3"),
-				Idstring("units/payday2/characters/ene_mememan_4/ene_mememan_4")
+				Idstring("units/payday2/characters/ene_mememan_4/ene_mememan_4"),
+				Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze")
 			},
 			zombie = {
 				Idstring("units/payday2/characters/ene_mememan_1/ene_mememan_1"),
 				Idstring("units/payday2/characters/ene_mememan_2/ene_mememan_2"),
 				Idstring("units/payday2/characters/ene_mememan_3/ene_mememan_3"),
-				Idstring("units/payday2/characters/ene_mememan_4/ene_mememan_4")
+				Idstring("units/payday2/characters/ene_mememan_4/ene_mememan_4"),
+				Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze")
 			},
 			murkywater = {
 				Idstring("units/payday2/characters/ene_mememan_1/ene_mememan_1"),
 				Idstring("units/payday2/characters/ene_mememan_2/ene_mememan_2"),
 				Idstring("units/payday2/characters/ene_mememan_3/ene_mememan_3"),
-				Idstring("units/payday2/characters/ene_mememan_4/ene_mememan_4")
+				Idstring("units/payday2/characters/ene_mememan_4/ene_mememan_4"),
+				Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze")
 			},
 			federales = {
 				Idstring("units/payday2/characters/ene_mememan_1/ene_mememan_1"),
 				Idstring("units/payday2/characters/ene_mememan_2/ene_mememan_2"),
 				Idstring("units/payday2/characters/ene_mememan_3/ene_mememan_3"),
-				Idstring("units/payday2/characters/ene_mememan_4/ene_mememan_4")
+				Idstring("units/payday2/characters/ene_mememan_4/ene_mememan_4"),
+				Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze")
 			},					
 			nypd = {
 				Idstring("units/payday2/characters/ene_mememan_1/ene_mememan_1"),
 				Idstring("units/payday2/characters/ene_mememan_2/ene_mememan_2"),
 				Idstring("units/payday2/characters/ene_mememan_3/ene_mememan_3"),
-				Idstring("units/payday2/characters/ene_mememan_4/ene_mememan_4")
+				Idstring("units/payday2/characters/ene_mememan_4/ene_mememan_4"),
+				Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze")
 			},
 			lapd = {
 				Idstring("units/payday2/characters/ene_mememan_1/ene_mememan_1"),
 				Idstring("units/payday2/characters/ene_mememan_2/ene_mememan_2"),
 				Idstring("units/payday2/characters/ene_mememan_3/ene_mememan_3"),
-				Idstring("units/payday2/characters/ene_mememan_4/ene_mememan_4")
+				Idstring("units/payday2/characters/ene_mememan_4/ene_mememan_4"),
+				Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze")
 			},
 			fbi = {
 				Idstring("units/payday2/characters/ene_mememan_1/ene_mememan_1"),
 				Idstring("units/payday2/characters/ene_mememan_2/ene_mememan_2"),
 				Idstring("units/payday2/characters/ene_mememan_3/ene_mememan_3"),
-				Idstring("units/payday2/characters/ene_mememan_4/ene_mememan_4")
+				Idstring("units/payday2/characters/ene_mememan_4/ene_mememan_4"),
+				Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze")
 			}
 		},
 		access = access_type_all,
