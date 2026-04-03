@@ -1964,28 +1964,28 @@ function MutatorEnemyReplacer:_get_unit_group_boom(difficulty_index)
 				special_type = "boom",
 				unit_types = {
 					america = {
-						Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze")
+						Idstring("units/payday2/characters/ene_grenadier_1/ene_grenadier_1")
 					},
 					russia = {
-						Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze")
+						Idstring("units/pd2_mod_reapers/characters/ene_grenadier_1/ene_grenadier_1")
 					},
 					zombie = {
-						Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze")
+						Idstring("units/pd2_mod_halloween/characters/ene_grenadier_1/ene_grenadier_1")
 					},
 					murkywater = {
-						Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze")
+						Idstring("units/pd2_mod_sharks/characters/ene_grenadier_1/ene_grenadier_1")
 					},
 					federales = {
-						Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze")
+						Idstring("units/pd2_dlc_bex/characters/ene_grenadier_1/ene_grenadier_1")
 					},
 					nypd = {
-						Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze")
+						Idstring("units/pd2_mod_nypd/characters/ene_grenadier_1/ene_grenadier_1")
 					},
 					lapd = { 
-						Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze")
+						Idstring("units/payday2/characters/ene_grenadier_1/ene_grenadier_1")
 					},
 					fbi = {
-						Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze")
+						Idstring("units/payday2/characters/ene_grenadier_1/ene_grenadier_1")
 					}
 				},
 				access = access_type_all
@@ -1995,28 +1995,28 @@ function MutatorEnemyReplacer:_get_unit_group_boom(difficulty_index)
 				special_type = "boom",
 				unit_types = {
 					america = {
-						Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze")
+						Idstring("units/payday2/characters/ene_grenadier_1/ene_grenadier_1")
 					},
 					russia = {
-						Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze")
+						Idstring("units/pd2_mod_reapers/characters/ene_grenadier_1/ene_grenadier_1")
 					},
 					zombie = {
-						Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze")
+						Idstring("units/pd2_mod_halloween/characters/ene_grenadier_1/ene_grenadier_1")
 					},
 					murkywater = {
-						Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze")
+						Idstring("units/pd2_mod_sharks/characters/ene_grenadier_1/ene_grenadier_1")
 					},
 					federales = {
-						Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze")
+						Idstring("units/pd2_dlc_bex/characters/ene_grenadier_1/ene_grenadier_1")
 					},
 					nypd = {
-						Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze")
+						Idstring("units/pd2_mod_nypd/characters/ene_grenadier_1/ene_grenadier_1")
 					},
 					lapd = { 
-						Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze")
+						Idstring("units/payday2/characters/ene_grenadier_1/ene_grenadier_1")
 					},
 					fbi = {
-						Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze")
+						Idstring("units/payday2/characters/ene_grenadier_1/ene_grenadier_1")
 					}
 				},
 				access = access_type_all
@@ -2026,28 +2026,28 @@ function MutatorEnemyReplacer:_get_unit_group_boom(difficulty_index)
 				special_type = "boom",
 				unit_types = {
 					america = {
-						Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze")
+						Idstring("units/payday2/characters/ene_grenadier_1/ene_grenadier_1")
 					},
 					russia = {
-						Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze")
+						Idstring("units/pd2_mod_reapers/characters/ene_grenadier_1/ene_grenadier_1")
 					},
 					zombie = {
-						Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze")
+						Idstring("units/pd2_mod_halloween/characters/ene_grenadier_1/ene_grenadier_1")
 					},
 					murkywater = {
-						Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze")
+						Idstring("units/pd2_mod_sharks/characters/ene_grenadier_1/ene_grenadier_1")
 					},
 					federales = {
-						Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze")
+						Idstring("units/pd2_dlc_bex/characters/ene_grenadier_1/ene_grenadier_1")
 					},
 					nypd = {
-						Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze")
+						Idstring("units/pd2_mod_nypd/characters/ene_grenadier_1/ene_grenadier_1")
 					},
 					lapd = { 
-						Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze")
+						Idstring("units/payday2/characters/ene_grenadier_1/ene_grenadier_1")
 					},
 					fbi = {
-						Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze")
+						Idstring("units/payday2/characters/ene_grenadier_1/ene_grenadier_1")
 					}
 				},
 				access = access_type_all
@@ -2057,28 +2057,28 @@ function MutatorEnemyReplacer:_get_unit_group_boom(difficulty_index)
 			special_type = "boom",
 			unit_types = {
 					america = {
-						Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze")
+						Idstring("units/pd2_dlc_gitgud/characters/ene_grenadier_1/ene_grenadier_1")
 					},
 					russia = {
-						Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze")
+						Idstring("units/pd2_mod_reapers/characters/ene_grenadier_1/ene_grenadier_1")
 					},
 					zombie = {
-						Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze")
+						Idstring("units/pd2_mod_halloween/characters/ene_grenadier_1/ene_grenadier_1")
 					},
 					murkywater = {
-						Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze")
+						Idstring("units/pd2_mod_sharks/characters/ene_grenadier_1/ene_grenadier_1")
 					},
 					federales = {
-						Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze")
+						Idstring("units/pd2_dlc_bex/characters/ene_grenadier_1/ene_grenadier_1")
 					},
 					nypd = {
-						Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze")
+						Idstring("units/pd2_dlc_gitgud/characters/ene_grenadier_1/ene_grenadier_1")
 					},
 					lapd = { 
-						Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze")
+						Idstring("units/pd2_dlc_gitgud/characters/ene_grenadier_1/ene_grenadier_1")
 					},
 					fbi = {
-						Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze")
+						Idstring("units/pd2_dlc_gitgud/characters/ene_grenadier_1/ene_grenadier_1")
 					}
 				},
 				access = access_type_all
