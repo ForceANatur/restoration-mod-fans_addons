@@ -2073,6 +2073,10 @@ function CopDamage:die(attack_data)
 			self:kamikaze_bag_explode()
 		end
 	end
+
+	if self._unit:base()._tweak_table == "kamikaze" then
+		self:kamikaze_bag_explode()
+	end
 	
 	if self._char_tweak.reduce_summers_dr_on_death then
 		managers.groupai:state():_reduce_summers_dr(0.15)

@@ -4118,6 +4118,18 @@ function CharacterTweakData:_init_boom(presets)
 	self.boom.marshal_logic = true
 	self.boom.heal_cooldown = 7.5
 	table.insert(self._enemy_list, "boom")
+
+	-- insert serious sam kamikaze scream
+	self.kamikaze = deep_clone(self.boom)
+	self.kamikaze.move_speed = presets.move_speed.lightning
+	self.kamikaze.dodge = nil
+	self.kamikaze.use_gas = false
+	self.kamikaze.can_deploy_tear_gas = false
+	self.kamikaze.custom_voicework = "meme_man"
+	self.kamikaze.HEALTH_INIT = 1
+	self.kamikaze.headshot_dmg_mul = 15
+	self.kamikaze.damage.melee_damage_mul = 12345	-- even that toy knife wont save you
+	table.insert(self._enemy_list, "kamikaze")
 	
 	self.boom_summers = deep_clone(self.boom)
 	self.boom_summers.flammable = false
@@ -20074,6 +20086,7 @@ function CharacterTweakData:character_map()
 		table.insert(char_map.basic.list, "ene_mememan_2")
 		table.insert(char_map.basic.list, "ene_mememan_3")
 		table.insert(char_map.basic.list, "ene_mememan_4")
+		table.insert(char_map.basic.list, "ene_mememan_5_kamikaze")
 		table.insert(char_map.basic.list, "ene_bulldozer_biker_1")
 		table.insert(char_map.basic.list, "ene_guard_biker_1")
 		table.insert(char_map.basic.list, "ene_gang_black_enforcer")

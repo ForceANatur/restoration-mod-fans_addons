@@ -1,0 +1,11 @@
+<materials version="3" group="civ_male_tonis_manager">
+    <material render_template="generic:DIFFUSE_TEXTURE:NORMALMAP:RL_CIVILIANS:SKINNED_3WEIGHTS" name="mtr_head" version="2">
+        <bump_normal_texture file="units/pd2_dlc_wwh/characters/ene_male_crew_02/ene_male_crew_head_02_nm"/>
+        <diffuse_texture file="units/pd2_dlc_wwh/characters/ene_male_crew_02/ene_male_crew_head_02_df"/>
+    </material>
+    <material render_template="generic:DIFFUSE_TEXTURE:NORMALMAP:RL_CIVILIANS:SKINNED_3WEIGHTS" name="mtr_body" version="2">
+		<bump_normal_texture file="units/pd2_dlc1/characters/shared_textures/civ_male_bank_manager_2_nm"/>
+		<diffuse_texture file="units/payday2/characters/ene_mememan_5_kamikaze/civ_male_bank_manager_2_df"/>
+    </material>
+    <material render_template="shadow_caster_only:SKINNED_1WEIGHT" name="shadow_caster" version="2"/>
+</materials>

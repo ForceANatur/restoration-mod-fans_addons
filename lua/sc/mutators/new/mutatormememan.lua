@@ -43,6 +43,7 @@ for group, units_data in pairs(group_ai_tweak.unit_categories) do
 				Idstring("units/payday2/characters/ene_mememan_2/ene_mememan_2"),
 				Idstring("units/payday2/characters/ene_mememan_3/ene_mememan_3"),
 				Idstring("units/payday2/characters/ene_mememan_4/ene_mememan_4"),
+				Idstring("units/payday2/characters/ene_mememan_5_kamikaze/ene_mememan_5_kamikaze"),
 				Idstring("units/payday2/characters/ene_veteran_lod_1/ene_veteran_lod_1"),
 				Idstring("units/payday2/characters/ene_veteran_lod_2/ene_veteran_lod_2")					
 			}		
