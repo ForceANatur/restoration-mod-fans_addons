@@ -2030,6 +2030,114 @@ end
 						alert_size = -1,
 						suppression = 12
 					}
+
+					self.parts.wpn_fps_pis_welrod_shitfuck = {
+						type = "shitfuck",
+						name_id = "none",
+						stats = {
+							value = 1
+						},
+						unit = "units/pd2_dlc_gage_historical/weapons/wpn_fps_pis_c96/wpn_fps_pis_c96"
+					}
+
+					self.parts.wpn_fps_pis_welrod_b_standard.override.wpn_fps_upg_vg_ass_smg_verticalgrip = { a_obj = "a_fl_2" }
+					self.parts.wpn_fps_pis_welrod_b_standard.override.wpn_fps_upg_vg_ass_smg_stubby = { a_obj = "a_fl_2" }
+					self.parts.wpn_fps_pis_welrod_b_standard.override.wpn_fps_smg_schakal_vg_surefire = { a_obj = "a_fl_2" }
+
+					self.wpn_fps_pis_welrod.override = self.wpn_fps_pis_welrod.override or {}
+					self.wpn_fps_pis_welrod.adds = self.wpn_fps_pis_welrod.adds or {}
+
+					table.insert(self.wpn_fps_pis_welrod.uses_parts, "wpn_fps_smg_cobray_ns_barrelextension")
+					table.insert(self.wpn_fps_pis_welrod.uses_parts, "wpn_fps_ass_shak12_ns_suppressor")
+					table.insert(self.wpn_fps_pis_welrod.uses_parts, "wpn_fps_ass_shak12_ns_muzzle")
+					table.insert(self.wpn_fps_pis_welrod.uses_parts, "wpn_fps_upg_ns_ass_filter")
+					table.insert(self.wpn_fps_pis_welrod.uses_parts, "wpn_fps_upg_vg_ass_smg_verticalgrip")
+					table.insert(self.wpn_fps_pis_welrod.uses_parts, "wpn_fps_upg_vg_ass_smg_stubby")
+					table.insert(self.wpn_fps_pis_welrod.uses_parts, "wpn_fps_smg_schakal_vg_surefire")
+
+					attachment_list = {
+						"wpn_fps_upg_o_specter",
+						"wpn_fps_upg_o_aimpoint",
+						"wpn_fps_upg_o_docter",
+						"wpn_fps_upg_o_eotech",
+						"wpn_fps_upg_o_t1micro",
+						"wpn_fps_upg_o_rx30",
+						"wpn_fps_upg_o_rx01",
+						"wpn_fps_upg_o_reflex",
+						"wpn_fps_upg_o_eotech_xps",
+						"wpn_fps_upg_o_cmore",
+						"wpn_fps_upg_o_aimpoint_2",
+						"wpn_fps_upg_o_acog",
+						"wpn_fps_upg_o_cs",
+						"wpn_fps_upg_o_spot",
+						"wpn_fps_upg_o_bmg",
+						"wpn_fps_upg_o_uh",
+						"wpn_fps_upg_o_fc1",
+						"wpn_fps_upg_o_tf90",
+						"wpn_fps_upg_o_poe",
+						"wpn_fps_upg_o_health",
+						"wpn_fps_upg_o_hamr",
+						"wpn_fps_upg_o_atibal",
+					}
+					for _, add_uses_parts in ipairs(attachment_list) do
+						table.insert(self.wpn_fps_pis_welrod.uses_parts, add_uses_parts)
+						self.wpn_fps_pis_welrod.adds[add_uses_parts] = {"wpn_fps_pis_welrod_shitfuck", "wpn_fps_smg_thompson_o_adapter"}
+						self.wpn_fps_pis_welrod.override[add_uses_parts] = {
+							parent = "shitfuck",
+							a_obj = "a_rds"
+						}
+					end
+
+					self.wpn_fps_pis_welrod.override.wpn_fps_upg_o_hamr_reddot = {
+						parent = "shitfuck",
+						a_obj = "a_rds"
+					}
+					self.wpn_fps_pis_welrod.override.wpn_fps_upg_o_atibal_reddot = {
+						parent = "shitfuck",
+						a_obj = "a_rds"
+					}
+					self.wpn_fps_pis_welrod.override.wpn_fps_smg_thompson_o_adapter = {
+						parent = "shitfuck",
+						a_obj = "a_rds"
+					}
+
+					self.wpn_fps_pis_welrod.override.wpn_fps_smg_cobray_ns_barrelextension = {
+						parent = "lower_receiver",
+						a_obj = "a_ns",
+						forbids = {
+							"wpn_upg_o_marksmansight_front",
+							"wpn_fps_pis_welrod_o_standard_front"
+						}
+					}
+					self.wpn_fps_pis_welrod.override.wpn_fps_ass_shak12_ns_muzzle = {
+						parent = "lower_receiver",
+						a_obj = "a_ns",
+						forbids = {
+							"wpn_upg_o_marksmansight_front",
+							"wpn_fps_pis_welrod_o_standard_front"
+						}
+					}
+					self.wpn_fps_pis_welrod.override.wpn_fps_ass_shak12_ns_suppressor = {
+						parent = "lower_receiver",
+						a_obj = "a_ns",
+						forbids = {
+							"wpn_upg_o_marksmansight_front",
+							"wpn_fps_pis_welrod_o_standard_front"
+						}
+					}
+					self.wpn_fps_pis_welrod.override.wpn_fps_upg_ns_ass_filter = {
+						parent = "lower_receiver",
+						a_obj = "a_ns",
+						forbids = {
+							"wpn_upg_o_marksmansight_front",
+							"wpn_fps_pis_welrod_o_standard_front"
+						}
+					}
+
+
+					self.wpn_fps_pis_welrod_npc.adds = deep_clone(self.wpn_fps_pis_welrod.adds)
+					self.wpn_fps_pis_welrod_npc.override = deep_clone(self.wpn_fps_pis_welrod.override)
+					self.wpn_fps_pis_welrod_npc.uses_parts = deep_clone(self.wpn_fps_pis_welrod.uses_parts)
 				end)
 
 			--MAXIM 9
@@ -19400,6 +19508,9 @@ end
 						translation = Vector3(0, -14, -4.23),
 						rotation = Rotation(0, -0.5, 0)
 					}
+					self.parts.wpn_fps_upg_o_specter.stance_mod.wpn_fps_pis_welrod = {
+						translation = Vector3(0.02, -1.4, -4.466),
+					}
 
 					self.parts.wpn_fps_upg_o_specter.stance_mod.wpn_fps_smg_p90 = {
 						translation = Vector3(-0.005, 1.6, -3.028)
@@ -20839,6 +20950,10 @@ end
 						translation = Vector3(0, 0, -1.15)
 					}
 
+					self.parts.wpn_fps_upg_o_rmr.stance_mod.wpn_fps_pis_welrod = {
+						translation = Vector3(0, 0, -0.4),
+						scale = 0.65
+					}
 					self.parts.wpn_fps_upg_o_rmr.stance_mod.wpn_fps_pis_g22c = {
 						translation = Vector3(0, 0, -0.45),
 						rotation = Rotation(0, -0.3, 0)
@@ -22652,7 +22767,7 @@ end
 			self.parts.wpn_fps_upg_o_rikt.stance_mod = deep_clone(self.parts.wpn_fps_upg_o_rmr.stance_mod)
 			for i, weap in pairs(self.parts.wpn_fps_upg_o_rikt.stance_mod) do
 				if weap and weap.translation then
-					weap.translation = weap.translation + Vector3(0,0,-0.65)
+					weap.translation = weap.translation + (Vector3(0,0,-0.65) * (weap.scale or 1))
 				end
 			end
 			self.parts.wpn_fps_upg_o_rikt.stance_mod.wpn_fps_pis_bigglock = {
@@ -42910,6 +43025,22 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			self.parts.wpn_fps_snp_tf2sr_scope.stats = {
 				zoom = 40, base_zoom_off = 1
 			}
+
+			self.parts.wpn_fps_snp_tf2sr_receiver.supported = true
+			self.parts.wpn_fps_snp_tf2sr_receiver.custom_stats = {
+				battery_mag = {
+					no_tracers = true, --this just disables the automatic application of starwars tracers
+					no_overheat_yell = true,
+					no_charge_yell = true,
+					shut_up = true,
+					allow_anims = true,
+					overheat_descope_delay = 0.2,
+					overheat_pen = 1.4,
+					regen_ammo_time = 1,
+					regen_rate = 25,
+					regen_rate_overheat = 25,
+				}
+			}
 		end
 
 		if self.parts.wpn_fps_gauss_scope_std then
@@ -44296,12 +44427,12 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			self.parts.wpn_fps_pis_talon_battery.supported = true
 			self.parts.wpn_fps_pis_talon_battery.stats = { value = 10 }
 			self.parts.wpn_fps_pis_talon_battery.custom_stats = {
-				starwars = {
-					no_tracers = true, --this just disables the automatic application of starwars tracers
+				battery_mag = {
 					allow_anim_mults = true,
 					regen_ammo_time = 1,
 					regen_rate = 0.5,
 					can_reload = true,
+					allow_anims = true,
 					empty_no_regen = true,
 					mag_regen = true,
 					shut_up = true
@@ -44327,12 +44458,13 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			self.parts.wpn_fps_sickle_m_battery.adds = { "wpn_fps_hailstorm_sound_switch" }
 			self.parts.wpn_fps_sickle_m_battery.stats = { value = 10 }
 			self.parts.wpn_fps_sickle_m_battery.custom_stats = {
-				starwars = {
+				battery_mag = {
 					no_tracers = true, --this just disables the automatic application of starwars tracers
 					allow_anim_mults = true,
 					regen_ammo_time = 2,
 					regen_rate = 6.96,
 					can_reload = true,
+					allow_anims = true,
 					empty_no_regen = true,
 					mag_regen = true,
 					shut_up = true
@@ -44356,12 +44488,13 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 				value = 0
 			}
 			self.parts.wpn_fps_scythe_m_heatsink_std.custom_stats = {
-				starwars = {
+				battery_mag = {
 					shut_up = true,
 					no_tracers = true,
 					regen_ammo_time = 1.75, --delay to start regen 
 					regen_rate = 8.5, --speed of regen per second
 					can_reload = true,
+					allow_anims = true,
 					empty_no_regen = true, --no regen if mag is emptied
 					mag_regen = true --mag regens without using reserve ammo
 				}
@@ -44375,12 +44508,13 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			}
 			self.parts.wpn_fps_scythe_m_heatsink_highcap.custom_stats = {
 				ads_speed_mult = 1.2,
-				starwars = {
+				battery_mag = {
 					shut_up = true,
 					no_tracers = true,
 					regen_ammo_time = 2.75, --delay to start regen 
 					regen_rate = 4, --speed of regen per second
 					can_reload = true,
+					allow_anims = true,
 					empty_no_regen = true, --no regen if mag is emptied
 					mag_regen = true --mag regens without using reserve ammo
 				}
@@ -44393,12 +44527,13 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 				concealment = 2
 			}
 			self.parts.wpn_fps_scythe_m_heatsink_highdiss.custom_stats = {
-				starwars = {
+				battery_mag = {
 					shut_up = true,
 					no_tracers = true,
 					regen_ammo_time = 0.75, --delay to start regen 
 					regen_rate = 16.5, --speed of regen per second
 					can_reload = true,
+					allow_anims = true,
 					empty_no_regen = true, --no regen if mag is emptied
 					mag_regen = true --mag regens without using reserve ammo
 				}
@@ -53966,6 +54101,7 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 	end
 
 	local felony = {
+		"wpn_fps_pis_welrod",
 		"wpn_fps_pis_maxim9",
 		"wpn_fps_pis_lemming",
 
