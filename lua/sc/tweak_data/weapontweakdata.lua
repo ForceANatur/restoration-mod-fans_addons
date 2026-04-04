@@ -24494,6 +24494,60 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			end
 		
 		--[[     HYLIE'S MODS     ]]--
+			
+			if self.tf2sr then
+				self.tf2sr.upgrade_blocks = {
+					weapon = {
+						"clip_ammo_increase"
+					}
+				}
+				self.tf2sr.categories = {
+					"snp",
+					"piss",
+					"bump_stat_50",
+					"keep_ammo_max",
+				}
+				self.tf2sr.recategorize = { "light_snp" }
+				self.tf2sr.damage_type = "anti_materiel"
+				self.tf2sr.ignore_damage_upgrades = nil
+				self.tf2sr.has_description = true
+				self.tf2sr.CLIP_AMMO_MAX = 1
+				self.tf2sr.AMMO_MAX = 25
+				self.tf2sr.fire_mode_data.fire_rate = 1.5
+				self.tf2sr.fire_rate_multiplier = nil
+				self.tf2sr.kick = self.stat_info.kick_tables.none
+				self.tf2sr.supported = true
+				self.tf2sr.ads_speed = 0.200
+				self.tf2sr.damage_falloff = {
+					start_dist = 2000,
+					end_dist = 10000,
+					min_mult = 1
+				}
+				self.tf2sr.stats = {
+					damage = 25,
+					spread = 101,
+					recoil = 101,
+					spread_moving = 8,
+					zoom = 1,
+					concealment = 15,
+					suppression = 4,
+					alert_size = 2,
+					extra_ammo = 101,
+					total_ammo_mod = 400,
+					value = 9,
+					reload = 25
+				}
+				self.tf2sr.armor_piercing_chance = 1
+				self.tf2sr.stats_modifiers = nil
+				self.tf2sr.panic_suppression_chance = 0.05
+				self.tf2sr.reload_speed_multiplier = 1
+				self.tf2sr.no_reload_anims = true
+				self.tf2sr.always_play_anims = true
+				self.tf2sr.timers.reload_empty = 0.01
+				self.tf2sr.timers.reload_exit_empty = 0.01
+				self.tf2sr.timers.reload_not_empty = 0.01
+				self.tf2sr.timers.reload_exit_not_empty = 0.01
+			end
 
 			if self.m1918 then --RAID WW2 BAR
 				self.m1918.categories = { 

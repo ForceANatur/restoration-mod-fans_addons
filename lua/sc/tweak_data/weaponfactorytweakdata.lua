@@ -39386,6 +39386,30 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 		end
 
 	--[[ HYLIE'S MODS ]]
+
+		if self.parts.wpn_fps_snp_tf2sr_scope then
+			self.parts.wpn_fps_snp_tf2sr_scope.supported = true
+			self.parts.wpn_fps_snp_tf2sr_scope.stats = {
+				zoom = 40, base_zoom_off = 1
+			}
+
+			self.parts.wpn_fps_snp_tf2sr_receiver.supported = true
+			self.parts.wpn_fps_snp_tf2sr_receiver.custom_stats = {
+				battery_mag = {
+					no_tracers = true, --this just disables the automatic application of starwars tracers
+					no_overheat_yell = true,
+					no_charge_yell = true,
+					shut_up = true,
+					allow_anims = true,
+					overheat_descope_delay = 0.2,
+					overheat_pen = 1.4,
+					regen_ammo_time = 1,
+					regen_rate = 25,
+					regen_rate_overheat = 25,
+				}
+			}
+		end
+
 		if self.parts.wpn_fps_lmg_m1918_body_standard then
 			self.parts.wpn_fps_lmg_m1918_m_mount = {
 				type = "shitass_m",
