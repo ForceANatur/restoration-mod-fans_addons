@@ -681,7 +681,7 @@ function CharacterTweakData:_init_medic(presets)
 	self.medic_heavy = deep_clone(self.medic)
 	self.medic_heavy.HEALTH_INIT = 63
 	self.medic_heavy.headshot_dmg_mul = 1.6
-	self.medic_heavy.damage_resistance = presets.damage_resistance.heavy_swat
+	self.medic_heavy.damage_resistance = presets.damage_resistance.none
 	self.medic_heavy.move_speed = presets.move_speed.normal
 	self.medic_heavy.custom_voicework = "heavy_medic"
 	self.medic_heavy.dodge = presets.dodge.heavy
@@ -4564,12 +4564,10 @@ function CharacterTweakData:_init_weekend_vanilla_heavy(presets)
 	self.weekend_vanilla_heavy.move_speed = presets.move_speed.normal
 	self.weekend_vanilla_heavy.custom_voicework = "bravo_heavy"
 	self.weekend_vanilla_heavy.surrender = presets.surrender.bravo_hard
-	self.weekend_vanilla_heavy.damage_resistance = presets.damage_resistance.heavy_swat
 	table.insert(self._enemy_list, "weekend_vanilla_heavy")
 
-	self.weekend_vanilla_heavy_cruel = deep_clone(self.weekend)
+	self.weekend_vanilla_heavy_cruel = deep_clone(self.weekend_vanilla_heavy)
 	self.weekend_vanilla_heavy_cruel.custom_voicework = "murky_shield"
-	self.weekend_vanilla_heavy_cruel.damage_resistance = presets.damage_resistance.heavy_swat	-- testing showed the same hp values
 	table.insert(self._enemy_list, "weekend_vanilla_heavy_cruel")
 end
 
