@@ -3291,6 +3291,8 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 					["bm_dl_cyanide_desc"] = "#{stats_positive}#Fires cyanide-laced rounds that deal heavy damage after a few seconds## and #{skill_color}#can pierce body armor, shields and thin walls.##",
 					--SVT-40
 					["bm_wp_upg_i_avt40_desc"] = "Modified internals capable of #{risk}#fully automatic fire##.\nAnd you thought the M308 was hard to control.",
+					--Stalker Gauss Rifle
+					["bm_w_gauss_gun_desc"] = "Developed in the Zone and incorporating an electromagnetic bullet acceleration system, this sniper rifle is used exclusively within the Zone.\n\n#{skill_color}#Can pierce multiple enemies, their body armor, shields, titan-shields and thin walls.##",
 					--Travis Baker's Repeater
 					["wpn_fps_snp_baker_desc_sc"] = "#{skill_color}#Can pierce multiple enemies and shields.##",	-- this desc fucking sucks
 					--.300 Knockout
