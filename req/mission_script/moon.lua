@@ -6,6 +6,16 @@ local cloaker_spawn = {
 		preferred_spawn_groups = {"single_spooc"},
 	},
 }
+local entrance_spawns = {
+	values = {
+		interval = 15, 
+	},
+}
+local roof_spawns = {
+	values = {
+		interval = 19,
+	},
+}
 return {
 	-- Pro Job PONR 
 	[101196] = {
@@ -26,15 +36,19 @@ return {
 			trigger_times = 1,
 		},
 		on_executed = {
-			{ id = 400025, delay = 0}, 
+			{ id = 400024, delay = 0}, 
 		},
 	},
 	-- cloaker spawns 
-	[400016] = cloaker_spawn,
 	[400017] = cloaker_spawn,
 	[400018] = cloaker_spawn,
 	[400019] = cloaker_spawn,
 	[400020] = cloaker_spawn,
 	[400021] = cloaker_spawn,
-	[400022] = cloaker_spawn,
+	-- interval spawns 
+	[100131] = entrance_spawns,
+	[100130] = entrance_spawns,
+	[100019] = roof_spawns,
+	[100007] = roof_spawns,
+	[101470] = roof_spawns,
 }
