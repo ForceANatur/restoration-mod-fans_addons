@@ -4264,6 +4264,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 					["bm_wp_m134_barrel_short"] = "Compact Barrel",
 					--Custom MGs
 						["bm_w_mx63"] = "KAC LAMG",
+						["bm_w_scp_mg36"] = "H&K MG36",
 
 				--[[SHOTGUNS]]
 					--Saiga
