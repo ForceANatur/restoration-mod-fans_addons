@@ -95,6 +95,7 @@ action_variants.heavy_swat_sniper_mememan = security_variant
 action_variants.city_swat_dodge_mememan = security_variant
 action_variants.captain_ultra = clone(security_variant)
 action_variants.kamikaze = security_variant
+action_variants.hrt_titan_heavy = security_variant
 
 action_variants.fbi_cruel = security_variant
 action_variants.hrt_cruel = security_variant

@@ -5787,6 +5787,10 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 		["MutatorDeathvoxMedics_desc"] = "Do you remember Crackdown?",
 		["MutatorDeathvoxMedics_longdesc"] = "Whenever a Medic of any variety spawns, there is a 50% chance that it will be replaced with a Medic from Crackdown. \n\nNote: This medic does not have the Area Of Effect heal.",
 
+		["MutatorHeavyFBITitans"] = "Somewhat Better Response",
+		["MutatorHeavyFBITitans_desc"] = "Heavy ASU units are added to the spawn pool.",
+		["MutatorHeavyFBITitans_longdesc"] = "Whenever an ASU spawns, there is a 50% chance that it will be replaced with it's heavy variant.",
+
 	--	i fucking cant with the tweakdatas so this is getting sent to the cutting room floor
 	--	["mutator_aderaldozers"] = "Adrenaline Bulldozers",
 	--	["mutator_aderaldozers_desc"] = "Bulldozers move slightly faster.",
@@ -5823,6 +5827,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 		["menu_cs_modifier_spoocsquad"] = "Cloakers now tend to spawn in groups.",
 		["menu_cs_modifier_titandozer"] = "Whenever a Bulldozer of any variety spawns, there is a 20% chance that it will be replaced by a railgun weilding Titan Bulldozer.",
 		["menu_cs_modifier_heavymedics"] = "Whenever a Medic of any variety spawns, there is a 25% chance that it will be replaced with a Heavy Medic from HeavyGunner.",
+		["menu_cs_modifier_heavyfbititans"] = "Whenever an ASU spawns, it's replaced with a heavy variant of it.",
 	--	["menu_cs_modifier_fasttanks"] = "Bulldozers move slightly faster. Blackdozers have normal move speed.",
 
 		["bm_menu_skill"] = "Crew Boosts",

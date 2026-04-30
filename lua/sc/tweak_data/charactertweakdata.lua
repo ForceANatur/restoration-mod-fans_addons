@@ -925,6 +925,20 @@ function CharacterTweakData:_init_swat(presets)
 	self.hrt_titan.no_asu = true
 	self.hrt_titan.marshal_logic = true
 	table.insert(self._enemy_list, "hrt_titan")
+
+	self.hrt_titan_heavy = deep_clone(self.hrt_titan)
+	self.hrt_titan_heavy.HEALTH_INIT = 17.5
+	self.hrt_titan.headshot_dmg_mul = 1.9
+	self.hrt_titan_heavy.heal_cooldown = 2
+	self.hrt_titan_heavy.move_speed = presets.move_speed.normal
+	if self:get_ai_group_type() == "russia" or self:get_ai_group_type() == "federales" then
+		self.hrt_titan_heavy.custom_voicework = "asu_ru_heavy"
+	elseif self:get_ai_group_type() == "zombie" then
+		self.hrt_titan_heavy.custom_voicework = "silent"
+	else
+		self.hrt_titan_heavy.custom_voicework = "heavygunner"
+	end
+	table.insert(self._enemy_list, "hrt_titan_heavy")
 end
 
 function CharacterTweakData:_init_heavy_swat(presets)	
@@ -20218,7 +20232,9 @@ function CharacterTweakData.character_map(...)
 				"ene_fbi_titan_1",
 				"ene_titan_sniper",
 				"ene_titan_sniper_scripted",
-				"ene_titan_taser"
+				"ene_titan_taser",
+				"ene_fbi_titan_heavy_1",
+				"ene_fbi_titan_heavy_placeholder"
 			}
 		}
 	--gitgud
@@ -20677,7 +20693,8 @@ function CharacterTweakData.character_map(...)
 				"ene_marshal_shield_1",
 				"ene_police_heavygunner",
 				"ene_undead_titan",
-				"ene_rpg_grunt"
+				"ene_rpg_grunt",
+				"ene_fbi_titan_heavy_1"
 			}
 		}
 		
@@ -20753,7 +20770,8 @@ function CharacterTweakData.character_map(...)
 				"ene_spook_cloak_1",										
 				"ene_titan_sniper",
 				"ene_titan_sniper_scripted",
-				"ene_titan_taser"
+				"ene_titan_taser",
+				"ene_fbi_titan_heavy_1"
 			}
 		}
 

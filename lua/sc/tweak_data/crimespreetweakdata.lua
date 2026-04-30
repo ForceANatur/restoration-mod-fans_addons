@@ -696,6 +696,13 @@ function CrimeSpreeTweakData:init_modifiers(tweak_data)
 				icon = "crime_spree_no_hurt",
 				data = {}
 			},
+			--Beefy ASU units
+			{
+				id = "heavyfbititans",
+				class = "ModifierHeavyFBITitans",
+				icon = "crime_spree_heavies",
+				data = {}
+			},
 			--Beefy Medics
 			{
 				id = "heavymedics",

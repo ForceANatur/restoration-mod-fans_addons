@@ -1215,6 +1215,9 @@ function CopBase:default_weapon_name(...)
 		elseif self._tweak_table == "hrt" or self._tweak_table == "hrt_titan" then
 			self._default_weapon_id = "ump"
 			self._weapon_set = true
+		elseif self._tweak_table == "hrt_titan_heavy" then
+			self._default_weapon_id = "scar_heavy"
+			self._weapon_set = true
 		end
 
 		if self._tweak_table == "medic" then

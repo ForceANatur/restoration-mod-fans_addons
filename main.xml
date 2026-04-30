@@ -380,6 +380,7 @@
 		<hook file="sc/modifiers/new/modifierspoocsquad.lua" source_file="lib/modifiers/basemodifier"/>
 		<hook file="sc/modifiers/new/modifiertitantanks.lua" source_file="lib/modifiers/basemodifier"/>
 		<hook file="sc/modifiers/new/modifierheavymedics.lua" source_file="lib/modifiers/basemodifier"/>
+		<hook file="sc/modifiers/new/modifierheavyfbititans.lua" source_file="lib/modifiers/basemodifier"/>
 		<!--///MUTATORS\\\-->
 		<hook file="sc/managers/mutatorsmanager.lua" source_file="lib/managers/mutatorsmanager"/>
 		<hook file="sc/mutators/mutatorcloakereffect.lua" source_file="lib/mutators/mutatorcloakereffect"/>
@@ -444,6 +445,7 @@
 		<hook file="sc/mutators/new/mutatormememenbandaidfix.lua" source_file="lib/mutators/basemutator"/>
 		<hook file="sc/mutators/new/mutatorfragdozers.lua" source_file="lib/mutators/basemutator"/>
 		<hook file="sc/mutators/new/mutatoradvancedtraining.lua" source_file="lib/mutators/basemutator"/>
+		<hook file="sc/mutators/new/mutatorheavyfbititans.lua" source_file="lib/mutators/basemutator"/>
 		<!--<hook file="sc/mutators/new/mutatorfactionreplacer.lua" source_file="lib/mutators/basemutator"/>-->
 		<!--///NETWORKING\\\-->
 		<hook file="sc/network/base/hostnetworksession.lua" source_file="lib/network/base/hostnetworksession"/>
