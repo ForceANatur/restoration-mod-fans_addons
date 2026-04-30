@@ -458,6 +458,27 @@ function PlayerStandard:_action_interact_forbidden()
 end
 
 function PlayerStandard:_check_action_melee(t, input)
+
+	local melee_entry = managers.blackmarket:equipped_melee_weapon()
+	
+	--Stuff for Zdann's Truck-kun
+	if melee_entry == "sakura_dork" then
+		local charge_lerp_value = instant_hit and 0 or self:_get_melee_charge_lerp_value(t, melee_damage_delay)
+		local max_charge_time = tweak_data.blackmarket.melee_weapons[melee_entry].stats.charge_time
+		local melee_unit
+		if self._camera_unit:base()._melee_item_units and self._camera_unit:base()._melee_item_units[1] then
+			melee_unit = self._camera_unit:base()._melee_item_units[1]
+		end
+		if melee_unit ~= nil then
+			for _, material in ipairs(melee_unit:get_objects_by_type(Idstring("material"))) do
+				if material:name() == Idstring("mtr_dork_glow") then
+					material:set_variable(Idstring("uv0_speed"), Vector3(0, (max_charge_time / 2) / max_charge_time, 0)) --so the animated texture syncs with w/e the charge time is
+					material:set_time(math.min(1, charge_lerp_value))
+				end
+			end
+		end
+	end
+
 	if self._state_data.melee_attack_wanted then
 		if not self._state_data.melee_attack_allowed_t then
 			self._state_data.melee_attack_wanted = nil
@@ -497,7 +518,7 @@ function PlayerStandard:_check_action_melee(t, input)
 		return
 	end
 
-	local melee_entry = managers.blackmarket:equipped_melee_weapon()
+	--local melee_entry = managers.blackmarket:equipped_melee_weapon()
 	local instant = tweak_data.blackmarket.melee_weapons[melee_entry].instant
 
 	self:_start_action_melee(t, input, instant)
@@ -1267,6 +1288,29 @@ function PlayerStandard:_check_action_primary_attack(t, input, params)
 					local fired_func = self._primary_action_get_value.fired[fire_mode]
 					local spin_up_semi = not (self._already_fired and input.btn_primary_attack_state) and weap_base:weapon_tweak_data().spin_up_semi
 					local spin_up_check = (not spin_up_semi and fire_mode ~= "single") or spin_up_semi
+					local sam = weap_base._sam
+					local sam_hf = sam and sam.hf
+					if sam then
+						if self._state_data.in_full_steelsight then
+							local shots_fired = math.max(weap_base._shot_recoil_magnitude_count - 1 - (sam.start or 0), 0)  or 0
+							local shots_fired_mult
+							if sam.mod > 0 then
+								shots_fired_mult = math.clamp(sam.init - (shots_fired * sam.mod), sam.final, sam.init)
+							else
+								shots_fired_mult = math.clamp(sam.init - (shots_fired * sam.mod), sam.init, sam.final)
+							end
+							spread_mul = spread_mul * shots_fired_mult
+						elseif sam_hf and not self._state_data.in_full_steelsight then
+							local shots_fired = sam_hf and math.max(weap_base._shot_recoil_magnitude_count - 1 - (sam_hf.start or 0), 0)  or 0
+							local shots_fired_mult
+							if sam_hf.mod > 0 then
+								shots_fired_mult = math.clamp(sam_hf.init - (shots_fired * sam_hf.mod), sam_hf.final, sam_hf.init)
+							else
+								shots_fired_mult = math.clamp(sam_hf.init - (shots_fired * sam_hf.mod), sam_hf.init, sam_hf.final)
+							end
+							spread_mul = spread_mul * shots_fired_mult
+						end
+					end
 
 					if fired_func then
 						fired = fired_func(self, t, input, params, weap_unit, weap_base, start_shooting, fire_on_release, dmg_mul, nil, spread_mul, autohit_mul, suppression_mul)
@@ -3377,10 +3421,11 @@ function PlayerStandard:_last_shot_recoil_t(t, dt)
 	local in_burst = weap_base:in_burst_mode()
 	local auto_burst = in_burst and weap_base._auto_burst
 	local burst_delay = (in_burst and weap_base._burst_delay) or 0
-	local max_t = weap_base._kick_pattern and weap_base._kick_pattern.max_t or 0.35
+	local max_t = weap_base._kick_pattern and weap_base._kick_pattern.max_t or
+				weap_base._sam and weap_base._sam.max_t or 0.35
 	if weap_base then
 		if self._shooting then
-			self._last_recoil_t = math.clamp( ((fire_rate + burst_delay) / (weap_base:fire_rate_multiplier() * 0.8)) * 2 , math.max(0, math.lerp( 0.2, -0.25, fire_rate + burst_delay )) , max_t + burst_delay / ((not auto_burst and (weap_base:fire_rate_multiplier() / base_fire_rate_multiplier) ) or 1) )
+			self._last_recoil_t = math.clamp( ((fire_rate + burst_delay) / (weap_base:fire_rate_multiplier() * 0.8)) * 2 , math.max(0, math.lerp( 0.2, -0.25, fire_rate + burst_delay )) , max_t + (fire_rate * 0.5) + burst_delay / ((not auto_burst and (weap_base:fire_rate_multiplier() / base_fire_rate_multiplier) ) or 1) )
 		else
 			if self._last_recoil_t then
 				self._last_recoil_t = self._last_recoil_t - dt
@@ -4118,7 +4163,7 @@ function PlayerStandard:_calc_melee_hit_ray(t, sphere_cast_radius, from, directi
 	return col_ray
 end
 
-function PlayerStandard:_do_melee_damage(t, bayonet_melee, melee_hit_ray, melee_entry, hand_id, hit_unit, col_ray, dmg_div, no_shaker, no_sound, no_effect, charge_lerp, bypass_stacking)
+Hooks:OverrideFunction(PlayerStandard, "_do_melee_damage", function(self, t, bayonet_melee, melee_hit_ray, melee_entry, hand_id, hit_unit, col_ray, dmg_div, no_shaker, no_sound, no_effect, charge_lerp, bypass_stacking)
 	melee_entry = melee_entry or managers.blackmarket:equipped_melee_weapon()
 	local instant_hit = tweak_data.blackmarket.melee_weapons[melee_entry].instant
 	local melee_damage_delay = tweak_data.blackmarket.melee_weapons[melee_entry].melee_damage_delay or 0
@@ -4495,7 +4540,7 @@ function PlayerStandard:_do_melee_damage(t, bayonet_melee, melee_hit_ray, melee_
 		end
 	end
 	return col_ray
-end
+end)
 
 function PlayerStandard:_check_melee_special_damage(col_ray, character_unit, defense_data, melee_entry)
 	if not defense_data or defense_data.type == "death" then

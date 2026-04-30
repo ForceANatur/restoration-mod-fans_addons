@@ -1932,7 +1932,9 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Eng", function(loc)
 		["bm_melee_revenant_heirloom"] = "망자의 낫",
 		["bm_melee_revenant_heirloom_info"] = "#{important_1}#\"날 가까이서 보면 이미 늦은 거라고, 고깃덩어리.\"##",
 		--best girl
-		["bm_melee_megumins_staff_info"] = "완전히 충전되면 강력한 폭발을 일으킵니다!\n모든 표면이나 존재에게 최대 #{skill_color}#30##미터까지 시전할 수 있지만, #{risk}#공중에는 시전할 수 없습니다.##\n\n#{important_1}#충전 속도는 스킬의 영향을 받지 않습니다.\n충전하면 시야가 왜곡되고, 스태미나가 소모되며, 움직임이 점점 느려집니다.\n만일 성공적으로 폭발을 시전했다면 즉시 쓰러지며, 쓰러지는 것을 지연시키거나 막아주는 스킬과 특성 덱 효과는 무시됩니다.##",
+		["bm_melee_megumins_staff_info"] = "완전히 충전되면 강력한 폭렬 마법을 시전합니다!\n모든 표면이나 존재에게 최대 #{skill_color}#30##미터까지 시전할 수 있지만, #{risk}#공중에는 시전할 수 없습니다.##\n\n#{important_1}#충전 속도는 스킬의 영향을 받지 않습니다.\n충전하는 동안 달리기가 불가능해지고, 시야가 왜곡되며 스태미나가 소모되고, 이동 속도가 점점 느려집니다.\n성공적으로 폭렬 마법을 시전했다면 즉시 쓰러지며, 쓰러지는 것을 지연시키거나 막아주는 스킬과 특성 덱 효과는 무시됩니다.##",
+		--ISEKAI
+		["bm_melee_sakura_dork_info"] = "로켓 배송 요청 받았습니다!\n\n완전히 충전한 후 휘두르면 트럭 씨를 소환합니다.\n\n#{important_1}#충전 속도는 스킬의 영향을 받지 않습니다.\n충전하거나 공격하는 동안 달릴 수 없습니다.##",		
 		--fishe
 		["bm_melee_holy_mackerel_info"] = "#{item_stage_2}#레벨 42 생선##\n\n물고기에게 맞으면 아주 창피할 겁니다.",
 
@@ -3049,6 +3051,9 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 					["bm_mod3_sc_desc"] = "Valkyria 소총을 특별히 개조하여 인체공학적 설계로 개선하고 크기를 줄인 모델로, 핀란드 만의 러시아 해안 근처 지역에 벌어진 PMC 간의 무력 충돌에서 눈에 띄게 사용되었습니다.\n\n#{skill_color}#일체형 소음기##가 장착되어 있고 #{skill_color}#무기 피해량의 25%가 방탄복을 관통하여 가합니다.##",
 					-- Malyuk
 					["bm_wp_wpn_fps_ass_malima_xmag"] = "45발 탄창",
+					-- MW2 (2009 M4)
+					["bm_wp_wpn_fps_ass_noobtube_so_mw2"] = "모던2 (2009년) 볼트",
+					["bm_wp_wpn_fps_ass_noobtube_so_mw3"] = "모던3 (2011년) 볼트",					
 
 			--[[ DMRs ]]
 				--Little Friend
@@ -3206,7 +3211,9 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 					["bm_wp_upg_a_dl_a_cyanide_desc"] = "시안화물이 첨가된 총알은 2차 세계대전 당시 독일의 소음기 장착 볼트 액션 소총에서 영감을 받았습니다.\n\n이 탄은 #{skill_color}#목표 적중 이후 5초 후에 350의 피해를 가합니다.##\n\n#{important_1}#더 이상 추가 헤드샷 데미지를 가하지 않으며, 적을 관통할 수 없습니다.##",
 					["bm_dl_cyanide_desc"] = "#{stats_positive}#몇 초 후에 큰 피해를 가히는 시안화물이 첨가된 탄환을 발사하고## #{skill_color}#방탄복, 방패, 얇은 벽을 관통할 수 있습니다.##",
 					--SVT-40
-					["bm_wp_upg_i_avt40_desc"] = "#{risk}#완전 자동 발사##가 가능한 개조된 내부 장치.\n그리고 당신은 M308이 반동 제어가 어려웠다고 생각할 것입니다.",
+					["bm_wp_upg_i_avt40_desc"] = "#{risk}#완전 자동 발사##가 가능하게 개조된 부품이 장착되어 있습니다.\n그리고 M308가 다루기 힘들다고 생각하겠죠.",
+					--Stalker Gauss Rifle
+					["bm_w_gauss_gun_desc"] = "이 저격 소총은 존에서 개발되었고 전자기 탄도 가속 시스템을 탑재하고 있으며 존에서만 사용합니다.\n\n#{skill_color}#다수의 적, 방탄복, 방패, 타이탄 방패, 그리고 얇은 벽을 관통할 수 있습니다.##",					
 
 			--[[ SPECIALS ]]
 				--Saw

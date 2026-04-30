@@ -16,6 +16,11 @@ local disabled = {
 		enabled = false,
 	},
 }
+local so_action = {
+	values = {
+		so_action = "e_so_sneak_wait_crh_var3",
+	},
+}
 return {
 	-- Pro Job PONR 
 	[100296] = {
@@ -46,6 +51,13 @@ return {
 			},
 		},
 	},
+	-- OMNIA is coming for your ass
+	[100772] = {
+		spawn_bravos = pro_job,
+		values = {
+			time = 30,
+		},
+	},
 -- Bio Weapons Labs Defense 
 	[108051] = {
 		on_executed = {
@@ -56,6 +68,7 @@ return {
 	[102082] = {
 		on_executed = {
 			{ id = 400024, delay = 0 ,},
+			{ id = 400037, delay = 0 ,}, 
 		},
 	},
 	-- Disable a bunch of cheaty preferreds
@@ -66,6 +79,12 @@ return {
 	[107974] = disabled, -- wF
 	[107975] = disabled, -- entrance_preferreds
 	[101453] = disabled, -- entrance_preferreds004
+	-- Give some of these so_actions actual crouching anims cause some of them arent really crouching 
+	[103293] = so_action,
+	[103294] = so_action,
+	[103296] = so_action,
+	[103295] = so_action,
+	[103296] = so_action,
 	-- Spawnpoint Delays
 	-- ai_enemy_group_001
 	[100128] = low_interval,

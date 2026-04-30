@@ -2007,6 +2007,8 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Eng", function(loc)
 		["bm_melee_revenant_heirloom_info"] = "#{important_1}#\"You don't want to see this up close, skin bag.\"##",
 		--best girl
 		["bm_melee_megumins_staff_info"] = "Cast a powerful explosion when fully charged!\nCan be cast as far as #{skill_color}#30## meters on any surface or being; #{risk}#it cannot be cast into the air.##\n\n#{important_1}#Charge speed is unaffected by skills.\nCharging distorts vision, drains stamina and progressively slows down your movement.\nYou are instantly downed upon successfully casting an explosion; skills and perks that delay or save you from going down are ignored.##",
+		--ISEKAI
+		["bm_melee_sakura_dork_info"] = "Same day dork delivery, guaranteed!\n\nFully charge then swing to summon Truck-san.\n\n#{important_1}#Charge speed is unaffected by skills.\nYou cannot sprint while charging or attacking with this weapon.##",
 		--fishe
 		["bm_melee_holy_mackerel_info"] = "#{item_stage_2}#Level 42 Fish##\n\nGetting hit by a fish has got to be humiliating.",
 
@@ -3129,6 +3131,9 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 					["bm_mod3_sc_desc"] = "Special modification of the Valkyria with improved ergonomics and shortened dimensions, seeing notable use in armed conflicts between PMCs in areas near the Russian coast of the Gulf of Finland.\n\nComes #{skill_color}#integrally suppressed## and #{skill_color}#deals 25% of its damage through body armor.##",
 					-- Malyuk
 					["bm_wp_wpn_fps_ass_malima_xmag"] = "45 Round Mag",
+					-- MW2 (2009 M4)
+					["bm_wp_wpn_fps_ass_noobtube_so_mw2"] = "MW2 (2009) Bolt",
+					["bm_wp_wpn_fps_ass_noobtube_so_mw3"] = "MW3 (2011) Bolt",
 					--AMCAR-4
 					["bm_amcar4_sc_desc"] = "The AMCAR-4 is one of the most versatile assault rifle there is.\n\nThe good accuracy coupled with the high rate of fire prepares it's owner for any situation.",
 					--TAR-21
