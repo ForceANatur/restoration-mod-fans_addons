@@ -2739,6 +2739,9 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 				--PPK (Gruber)
 				["bm_ppk_sc_desc"] = "A compact alternative to larger, more dangerous firearms. A classic weapon with classic application.",
 				["bm_x_ppk_sc_desc"] = "For when you need to be less 007 and more Kingsman.",
+				--Makarov (Strix)
+				["bm_pmm_sc_desc"] = "This Soviet-era pistol continues to see combat around the world to this day. Its small size makes it easily concealable, but it still packs a punch when things get loud.",
+				["bm_x_pmm_sc_desc"] = "",
 				--M13
 				["bm_legacy_sc_desc"] = "West German design that was ultimately rejected in favor of the Bernetti, but will still hold its own in a fire fight.",
 				["bm_x_legacy_sc_desc"] = "Two pistols forgotten by history that will leave a legacy of lead in a room of your choosing.",
@@ -2777,6 +2780,8 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 				--Baby Deagle--
 				["bm_sparrow_sc_desc"] = "SEE YOU SPACE COWBOY...",
 				["bm_w_sparrow_sc_g_cowboy_desc"] = "YOU'RE GONNA CARRY THAT WEIGHT.",
+				--Ballerina 9mm (Pivot PCC)
+				["bm_speen_sc_desc"] = "A favorite amongst undercover operatives, this pistol-caliber carbine folds neatly away when not in use, making it easier to conceal.",
 				--Crosskill
 				["bm_1911_sc_desc"] = "When 9mm isn't enough, reach for this custom 1911A1 chambered in the powerful .45ACP. Top shelf brutality.",
 				["bm_x_1911_sc_desc"] = "While it doesn't have demonic powers, the carnage will certainly leave people screaming in terror.",
@@ -3374,6 +3379,9 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 					--PPK (Gruber)
 					["bm_w_ppk"] = "Gruber Kurz",
 					["bm_w_x_ppk"] = "Akimbo Gruber Kurzes",
+					--Strix (Makarov)
+					["bm_w_pmm"] = "Strix",
+					["bm_w_x_pmm"] = "Akimbo Strixes",
 					--M13
 					["bm_w_legacy"] = "M13",
 					["bm_w_x_legacy"] = "Akimbo M13s",
@@ -3412,6 +3420,8 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 					--Baby Deagle--
 					["bm_w_sparrow"] = "Sparrow 941",
 					["bm_w_x_sparrow"] = "Spike & Vicious",
+					--Ballerina
+					["bm_w_speen"] = "Ballerina 9mm",
 					--Crosskill
 					["bm_w_colt_1911"] = "Crosskill Operator II",
 					["bm_w_x_1911"] = "Mustang & Sally",
@@ -3934,8 +3944,12 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 					["bm_w_x_stech"] = "Akimbo Stechkins",
 					--Gruber
 					["bm_w_ppk"] = "Walther PPK/S",
+					["bm_w_x_ppk"] = "Akimbo PPKs",
 					["bm_wp_pis_ppk_g_laser"] = "Crimson Trace Laser Grip",
 					["bm_wp_pis_ppk_b_long"] = "PPKS Slide",
+					--Strix (Makarov)
+					["bm_w_pmm"] = "Makarov PM",
+					["bm_w_x_pmm"] = "Akimbo Makarovs",
 					--Chimano 88
 					["bm_w_glock_17"] = "Glock 17",
 					["bm_w_x_g17"] = "Akimbo Glock 17s",
@@ -3993,6 +4007,8 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 					["bm_wp_sparrow_body_941"] = "IWI Jericho 941F Kit",
 					["bm_wp_sparrow_g_cowboy"] = "Weighted Grip",
 					["bm_wp_sparrow_g_cowboy_desc"] = "YOU'RE GONNA CARRY THAT WEIGHT.",
+					--Ballerina
+					["bm_w_speen"] = "Trailblazer Pivot",
 
 					--SUB2000
 					["bm_w_sub2000"] = "Kel-Tec SUB-2000",
