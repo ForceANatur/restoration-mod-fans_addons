@@ -126,14 +126,14 @@ function FireTweakData:_init_dot_entries_fire(entries)
 	fire_entries.proj_molotov = { --Molotov
 		dot_trigger_chance = 1,
 		dot_damage = 3.0,
-		dot_length = 3.1,
+		dot_length = 4.1,
 		dot_trigger_max_distance = false,
 		is_molotov = true
 	}
 	fire_entries.proj_fire_com = { --Incendiary Grenade
 		dot_trigger_chance = 0,
 		dot_damage = 0.0,
-		dot_length = 0.1,
+		dot_length = 0.0,
 		dot_trigger_max_distance = false
 	}
 	fire_entries.proj_ray_frag = { --M202 FLASH Rounds
@@ -170,22 +170,32 @@ function FireTweakData:_init_dot_entries_fire(entries)
 	--GROUND FIRES
 	fire_entries.proj_molotov_groundfire = { --Molotov
 		is_molotov = true,
+		dot_length = 4.1,
+		dot_damage = 3.0,
 		dot_trigger_max_distance = false,
 		dot_trigger_chance = 0.5
 	}
 	fire_entries.proj_incendiary_groundfire = { --Incendiary Grenade
+		dot_length = 3.1,
+		dot_damage = 3.0,
 		dot_trigger_max_distance = false,
 		dot_trigger_chance = 0.5
 	}
 	fire_entries.proj_ray_groundfire = { --M202 FLASH Rounds
+		dot_length = 9.1,
+		dot_damage = 3.0,
 		dot_trigger_max_distance = false,
 		dot_trigger_chance = 0.5
 	}
 	fire_entries.proj_launcher_incendiary_groundfire = { --40MM Incendiary Rounds
+		dot_length = 3.1,
+		dot_damage = 3.0,
 		dot_trigger_max_distance = false,
 		dot_trigger_chance = 0.5
 	}
 	fire_entries.proj_launcher_incendiary_arbiter_groundfire = { --25MM Incendiary Rounds
+		dot_length = 3.1,
+		dot_damage = 3.0,
 		dot_trigger_max_distance = false,
 		dot_trigger_chance = 0.5
 	}

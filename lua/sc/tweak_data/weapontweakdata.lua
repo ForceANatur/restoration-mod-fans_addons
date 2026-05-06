@@ -118,12 +118,12 @@ local crew_wep_preset = {
 	},
 	sniper_auto = {
 		mag_capacity = 8,
-		fire_rate = 3.75,
+		fire_rate = 1.5,
 		damage = 9.0 / 1.25
 	},
 	sniper_bolt = {
 		mag_capacity = 5,
-		fire_rate = 7.5,
+		fire_rate = 3.3333,
 		damage = 18.0 / 1.25
 	}
 }
@@ -3526,7 +3526,7 @@ local crew_wep_preset = {
 		end
 
 		function WeaponTweakData:_init_data_awp_crew()
-			self.awp_crew.categories = clone(self.r700.categories)
+			self.awp_crew.categories = clone(self.awp.categories)
 			self.awp_crew.sounds.prefix = "awp_npc"
 			self.awp_crew.use_data.selection_index = 2
 			self.awp_crew.DAMAGE = crew_wep_preset.sniper_bolt.damage
@@ -3758,7 +3758,7 @@ function WeaponTweakData:_init_stats()
 	end
 
 	self.stats.damage = {}
-	for i = 0.1, 50.01, 0.1 do
+	for i = 0.0, 50.01, 0.1 do
 		table.insert(self.stats.damage, i)
 	end
 
@@ -7136,6 +7136,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.speen.has_description = true
 						self.speen.desc_id = "bm_speen_sc_desc"
 						self.speen.categories = {"pistol"}
+						self.speen.recategorize = {"light_pis"}
 						self.speen.CLIP_AMMO_MAX = 17
 						self.speen.AMMO_MAX = 60
 						self.speen.sounds.enter_steelsight = "secondary_steel_sight_enter"
@@ -7725,6 +7726,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.rsh12.armor_piercing_chance = 1
 
 				--SECONDARIES
+
 					--Model 54
 						self.type54.has_description = true
 						self.type54.desc_id = "bm_type54_sc_desc"
@@ -15277,7 +15279,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.hunter.fire_mode_data.fire_rate = 1
 						self.hunter.kick = self.stat_info.kick_tables.horizontal_recoil
 						self.hunter.supported = true
-						self.hunter.ads_speed = 0.200
+						self.hunter.ads_speed = 0.120
 						self.hunter.stats = {
 							damage = 120,
 							spread = 96,
@@ -15294,8 +15296,51 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						}
 						self.hunter.panic_suppression_chance = 0.05
 						self.hunter.stats_modifiers = {damage = 2}
+						self.hunter.sprintout_anim_offset = 0.015
 						self.hunter.timers.reload_exit_empty = 0.3
 						self.hunter.timers.reload_exit_not_empty = 0.3
+
+					--Dart Gun
+						self.dart.categories = {
+							"crossbow",
+							"crossbow_pistol"
+						}
+						self.dart.upgrade_blocks = {
+							weapon = {
+								"clip_ammo_increase"
+							}
+						}
+						self.dart.damage_type = "sniper"
+						self.dart.has_description = true
+						self.dart.desc_id = "bm_dart_sc_desc"
+						self.dart.AMMO_MAX = 15
+						self.dart.panic_suppression_chance = 0.05
+						self.dart.ignore_damage_upgrades = true
+						self.dart.fire_mode_data.fire_rate = 1
+						self.dart.kick = self.stat_info.kick_tables.horizontal_recoil
+						self.dart.supported = true
+						self.dart.ads_speed = 0.160
+						self.dart.stats = {
+							damage = 120,
+							spread = 96,
+							recoil = 95,
+							spread_moving = 8,
+							zoom = 1,
+							concealment = 30,
+							suppression = 20,
+							alert_size = 2,
+							extra_ammo = 101,
+							total_ammo_mod = 400,
+							value = 1,
+							reload = 25
+						}
+						self.dart.panic_suppression_chance = 0.05
+						self.dart.stats_modifiers = {damage = 2}
+						self.dart.sprintout_anim_offset = 0.015
+						self.dart.timers.reload_not_empty = 2.4
+						self.dart.timers.reload_exit_not_empty = 1.1
+						self.dart.timers.reload_empty = 2.4
+						self.dart.timers.reload_exit_empty = 1.1
 
 			--[[     LAUNCHERS     ]]
 
@@ -32989,10 +33034,11 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.ar23.panic_suppression_chance = 0.05
 				self.ar23.object_damage_mult = 0.66667 --scaled to match the object damage of 60 damage rifles
 				self.ar23.sounds.use_fix = nil
-				self.ar23.timers.reload_empty = 2.66
-				self.ar23.timers.reload_exit_empty = 0.87
-				self.ar23.timers.reload_not_empty = 2.10
-				self.ar23.timers.reload_exit_not_empty = 0.8
+				self.ar23.sounds.stop_fire = "m4_olympic_stop"
+				self.ar23.timers.reload_empty = 3.01
+				self.ar23.timers.reload_exit_empty = 0.95
+				self.ar23.timers.reload_not_empty = 2
+				self.ar23.timers.reload_exit_not_empty = 0.6
 			end
 
 			if self.ar59 then
@@ -38036,6 +38082,9 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 	for id, weap in pairs(self) do
 
 		if weap.categories and weap.stats then
+
+			weap.stats.damage = weap.stats.damage + 1 --lazy
+
 			if not weap.supported then
 				weap.always_play_anims = true
 				self:generate_custom_weapon_stats(weap)
@@ -38678,10 +38727,11 @@ function WeaponTweakData:calculate_ammo_pickup(weapon, id)
 	--Determine the damage tier the gun falls under.
 	weapon.AMMO_PICKUP = {0, 0}
 	local damage_mul = (weapon.stats_modifiers and weapon.stats_modifiers.damage) or 1
+	local weapon_damage = weapon.stats.damage - 1
 	for i, pickup_tier in ipairs(damage_tiers_pickup) do
 		weapon.AMMO_PICKUP[1] = pickup_tier.pickup[1]
 		weapon.AMMO_PICKUP[2] = pickup_tier.pickup[2]
-		if weapon.stats.damage * damage_mul <= pickup_tier.damage - 1 then --subtract 1 to counteract floating point error.
+		if weapon_damage * damage_mul <= pickup_tier.damage - 1 then --subtract 1 to counteract floating point error.
 			break
 		end
 	end
@@ -38700,7 +38750,7 @@ function WeaponTweakData:calculate_ammo_pickup(weapon, id)
 			((table.contains(weapon.categories, "minigun") and 3.3333) or ((table.contains(weapon.categories, "lmg") or true_shotgun) and 2) or 1)
 		damage_mul = (not exclude_calcs and (damage_mul * 2)) or damage_mul
 		if not table.contains(weapon.categories, "keep_ammo_max") and not table.contains(weapon.categories, "nothing") then
-			weapon.AMMO_MAX = math.ceil((3600 * (((weapon.use_data.selection_index == 2 or weapon.use_data.selection_index == 4) and 2) or 1) * total_dmg_mul)) / ((weapon.stats.damage * damage_mul) * hs_mult)
+			weapon.AMMO_MAX = math.ceil((3600 * (((weapon.use_data.selection_index == 2 or weapon.use_data.selection_index == 4) and 2) or 1) * total_dmg_mul)) / ((weapon_damage * damage_mul) * hs_mult)
 		end
 	end
 

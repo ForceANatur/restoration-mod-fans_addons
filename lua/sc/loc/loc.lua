@@ -1800,7 +1800,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Eng", function(loc)
 		--FREEDOM ISN'T FREE
 		["bm_melee_freedom_info"] = "Thirteen stripes of red alternating with white, a blue rectangle in the canton, fifty small, white, five-pointed stars, a pinch of patriotism, two cups of freedom and a broken flag pole.\n\nVoilà - you have yourself a deadly weapon.",
 		--Who needs pants?
-		["bm_melee_erica_info"] = "A sane person would throw this.\n\nFully charged hits against living enemies have a #{skill_color}#100%## chance to explode dealing #{risk}#720## damage in a #{skill_color}#5## meter radius from the point of impact.",
+		["bm_melee_erica_info"] = "A sane person would throw this.\n\nFully charged hits against living enemies have a #{skill_color}#100%## chance to explode dealing #{risk}#720## damage in a #{skill_color}#5## meter radius from the point of impact.\n\n#{important_1}#The explosion deals self-damage.##",
 			["bm_melee_cqc20_info"] = "#{risk}#GET SOME!##\n\nFully charged hits against living enemies have a #{skill_color}#100%## chance to set off a controlled explosion dealing #{risk}#720## damage to enemies in a #{skill_color}#2## meter radius from the point of impact.\n\n#{important_1}#Charge speed is unaffected by skills.##",
 
 		--Hammer
@@ -2214,6 +2214,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Eng", function(loc)
 		["bm_menu_btn_sell"] = "SELL WEAPON ($price)",
 		["bm_menu_btn_buy_selected_weapon"] = "BUY WEAPON ($price)",
 
+		["menu_persecond_suffix_short"] = "/s",
 		["menu_milliseconds_suffix_short"] = "ms", --milliseconds
 		["menu_meters_suffix_short"] = "m", --meters
 
@@ -2231,6 +2232,20 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Eng", function(loc)
 		["bm_menu_standing_range"] = "Falloff Start",
 		["bm_menu_damage_min"] = "Damage Min",
 		["bm_menu_moving_range"] = "Falloff End",
+
+		--Throwables
+		["bm_menu_damage_blast"] = "Damage (Blast)",
+		["bm_menu_range_blast"] = "Range (Blast)",
+		["bm_menu_time_blast"] = "Duration (Blast)",
+		["bm_menu_damage_impact"] = "Damage (Impact)",
+		["bm_menu_range_impact"] = "Range (Impact)",
+		["bm_menu_damage_pool"] = "Damage (Pool)",
+		["bm_menu_range_pool"] = "Range (Pool)",
+		["bm_menu_time_pool"] = "Duration (Pool)",
+		["bm_menu_damage_dot"] = "Damage (DOT)",
+		["bm_menu_range_dot"] = "Range (DOT)",
+		["bm_menu_time_dot"] = "Duration (DOT)",
+		["bm_menu_cooldown_reduction"] = "Pickup Reduction",
 
 		["bm_menu_attack_speed"] = "Repeat Delay",
 		["bm_menu_impact_delay"] = "Impact Delay",
@@ -3310,6 +3325,8 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 
 			--[[ SPECIALS ]]
 				--Saw
+				--Dart Gun
+				["bm_dart_sc_desc"] = "A quiet and adaptable weapon that can launch highly damaging darts at unsuspecting targets.\n\nComes equipped with powerful #{stats_positive}#Poison Darts## that can be exchanged for #{ghost_color}#Sedation Darts## or #{stat_maxed}#Revival-Stimulant Darts## to adjust to any challenge.\n ",
 				["bm_ap_saw_sc_desc"] = "#{skill_color}#Cuts through body armor.##",
 				["bm_ap_saw_blade_sc_desc"] = "Sharpens the blade enough to #{skill_color}#cut through body armor.##",
 				["bm_fast_motor_sc_desc"] = "Increases Rotations Per Minute by 15%.",
@@ -4666,6 +4683,8 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 					["bm_w_elastic"] = "Hoyt Carbon Spyder ZT 30 Bow",
 					["bm_wp_elastic_body_tactic"] = "Hoyt Ignite Riser",
 
+					["bm_w_dart"] = "Pneu-Dart X-2",
+
 				--Attachments
 
 					--Gadgets
@@ -5096,7 +5115,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 				["RestorationModDisableSoloBoonsDescID"] = "Disable the additional boons the player receives in solo play (Crime.net offline). You difficulty junkie.",
 				["bm_melee_fight_info"] = "KAKATTE KOI!\n\nParrying an enemy attack deals #{skill_color}#120## melee damage to them. This can be increased with skills.\n#{stats_negative}#I'M NOT GONNA SUGARCOAT IT\nR1 + (Triangle)##",
 				["RestorationModLogOutfitStringsDescID"] = "Logs when outfit string updates are called through NetworkPeer - turn this off when youre done for those sweet sweet frames",
-				["bm_melee_erica_info"] = "#{stats_negative}#You will never be a Caber Knight.##\n\nFully charged hits against living enemies have a #{skill_color}#100%## chance to explode dealing #{risk}#720## damage in a #{skill_color}#5## meter radius from the point of impact."
+				["bm_melee_erica_info"] = "#{stats_negative}#You will never be a Caber Knight.##\n\nFully charged hits against living enemies have a #{skill_color}#100%## chance to explode dealing #{risk}#720## damage in a #{skill_color}#5## meter radius from the point of impact.\n\n#{important_1}#The explosion deals self-damage.##"
 			})
 		end
 
@@ -6479,7 +6498,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Perk_Decks_Eng", funct
 		["menu_deck18_3_desc_sc"] = "Your dodge is increased by an additional ##$perk_value_1## points.",
 		["menu_deck18_5_desc_sc"] = "Dodging an attack reduces the smoke bomb's cooldown by ##$perk_value_1## second.\n\nYou carry ##$perk_value_2## additional body bag in your inventory.",
 		["menu_deck18_7_desc_sc"] = "Your dodge is increased by an additional ##$perk_value_1## points.",
-		["menu_deck18_9_desc_sc"] = "Your dodge meter fills up by ##$perk_value_1## of your dodge every second while you are inside of your smoke screen.\n\nDeck Completion Bonus: Your chance of getting a higher quality item during a PAYDAY is increased by ##10%.##",
+		["menu_deck18_9_desc_sc"] = "Your dodge meter fills up by ##$perk_value_1## of your dodge every second while you are inside of your smoke screen.\nAllies standing in your smoke screen have their dodge meters filled up by ##$perk_value_2## instead.\n\nDeck Completion Bonus: Your chance of getting a higher quality item during a PAYDAY is increased by ##10%.##",
 
 		--Sweet liquor eases the pain--
 		["menu_deck19_1_desc_sc"] = "Unlocks the #{skill_color}#Hip Flask## for use in place of a throwable.\n\n#{skill_color}#$perk_value_1## of the damage taken to your health is applied over #{skill_color}#$perk_value_2## seconds.\n\nUsing the flask immediately negates any damage-over-time.\n\nWhenever damage-over-time is negated, you heal for #{skill_color}#$perk_value_3## of the remaining damage-over-time.\n\nThe flask has a #{important_1}#$perk_value_4## second cooldown.\n\nLose #{important_1}#$perk_value_5## of your armor and gain #{skill_color}#$perk_value_6## more health.\n\nWhile your armor is broken, your damage grace period is reduced by #{important_1}#$perk_value_7,## excluding the next hit you take when negating damage-over-time.\n#{risk}#NOTE: Your dodge grace period is unaffected.##",

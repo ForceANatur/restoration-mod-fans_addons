@@ -64,6 +64,18 @@ Hooks:PostHook( InteractionTweakData, "init", "SC_interact", function(self)
 	self.res_lvl_assault_shatter.action_text_id = "res_lvl_assault_shatter_action"
 	self.res_lvl_assault_shatter.timer = 3
 	
+
+	-- Intimidated guards in stealth display when they next check in.
+	self.intimidated_guard_checkin = {
+		icon = "develop",
+		text_id = "intimidated_guard_checkin_active",
+		no_contour = true
+	}
+	self.intimidated_guard_checkin_pointless = {
+		icon = "develop",
+		text_id = "intimidated_guard_checkin_inactive",
+		no_contour = true
+	}
 	
 	self.start_sentrygun_repairmode = {
 		icon = "icon_repair",
@@ -629,6 +641,9 @@ Hooks:PostHook( InteractionTweakData, "init", "SC_interact", function(self)
 		sound_done = "bar_bag_generic_finished",
 		action_text_id = "hud_action_taking_grenades"
 	}
+
+	-- Tightens how close your crosshair has to the spy camera to interact with it.
+	self.spy_camera_access.dot_limit = 0.95
 	
 	--Gage package
 	self.gage_assignment.timer = 0		

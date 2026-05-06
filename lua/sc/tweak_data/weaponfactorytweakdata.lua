@@ -982,6 +982,27 @@ local muzzle_device = {
 			falloff_start_mult = 1.15,
 			falloff_end_mult = 1.15,
 			ads_speed_mult = 1.125
+		},
+	-- ++Stab +++Acc/Range -----Con
+		muzz_dual3_c = {
+			value = 7,
+			spread = 3,
+			recoil = 4,
+			concealment = -5,
+			falloff_start_mult = 1.15,
+			falloff_end_mult = 1.15,
+			ads_speed_mult = 1.125
+		},
+		supp_dual3_c = { --Extra Acc/range for Con
+			suppression = 12,
+			alert_size = -1,
+			value = 7,
+			spread = 4,
+			recoil = 4,
+			concealment = -6,
+			falloff_start_mult = 1.2,
+			falloff_end_mult = 1.2,
+			ads_speed_mult = 1.15
 		}
 }
 
@@ -2395,7 +2416,7 @@ end
 						prefix = "g_bullet_"
 					}
 					self.parts.wpn_fps_pis_g18c_m_mag_33rnd.custom_stats = {
-						ads_speed_mult = 1.1
+						ads_speed_mult = 1.15
 					}
 
 					--(STRYK 18c) Stock
@@ -2818,21 +2839,25 @@ end
 					self.wpn_fps_pis_x_stech_npc.uses_parts = deep_clone(self.wpn_fps_pis_x_stech.uses_parts)
 				end)
 
-				--MAKAROV
+			--MAKAROV
 				Hooks:PostHook(WeaponFactoryTweakData, "_init_pmm", "resmod_pmm", function(self)
 					self.parts.wpn_fps_pis_pmm_g_black.supported = true
 					self.parts.wpn_fps_pis_pmm_g_black.stats = deep_clone(grips.quickdraw_1)
 					self.parts.wpn_fps_pis_pmm_g_black.custom_stats = deep_clone(grips.quickdraw_1)
 
 					self.parts.wpn_fps_pis_pmm_slide_suppressed.supported = true
-					self.parts.wpn_fps_pis_pmm_slide_suppressed.stats = deep_clone(barrels.short_b1_stats)
-					self.parts.wpn_fps_pis_pmm_slide_suppressed.custom_stats = deep_clone(barrels.short_b1_stats)
+					self.parts.wpn_fps_pis_pmm_slide_suppressed.stats = {
+						value = 3,
+						spread = -1,
+						recoil = 2
+					}
+					self.parts.wpn_fps_pis_pmm_slide_suppressed.custom_stats = nil
 
 					self.parts.wpn_fps_pis_pmm_ns_suppressor.supported = true
 					self.parts.wpn_fps_pis_pmm_ns_suppressor.has_description = true
 					self.parts.wpn_fps_pis_pmm_ns_suppressor.desc_id = "bm_wp_upg_suppressor"
-					self.parts.wpn_fps_pis_pmm_ns_suppressor.stats = deep_clone(muzzle_device.supp_dual2_c)
-					self.parts.wpn_fps_pis_pmm_ns_suppressor.custom_stats= deep_clone(muzzle_device.supp_dual2_c)
+					self.parts.wpn_fps_pis_pmm_ns_suppressor.stats = deep_clone(muzzle_device.supp_dual3_c)
+					self.parts.wpn_fps_pis_pmm_ns_suppressor.custom_stats= deep_clone(muzzle_device.supp_dual3_c)
 					self.parts.wpn_fps_pis_pmm_ns_suppressor.perks = {"silencer"}
 				end)
 
@@ -4069,6 +4094,14 @@ end
 					}
 					self.parts.wpn_fps_smg_speen_magazine_extended.custom_stats = {
 						ads_speed_mult = 1.15
+					}
+
+					self.parts.wpn_fps_smg_speen_sights_rear_no_parent = {
+						a_obj = "a_o_rear",
+						type = "sight_special",
+						name_id = "bm_wp_speen_iron_sights",
+						unit = "units/pd2_dlc_esp/weapons/wpn_fps_smg_speen_pts/optics/wpn_fps_smg_speen_sights_rear_standard",
+						third_unit = "units/pd2_dlc_esp/weapons/wpn_third_smg_speen_pts/optics/wpn_third_smg_speen_sights_rear_standard"
 					}
 
 				end)
@@ -11418,6 +11451,15 @@ end
 					self.wpn_fps_ass_aug.override.wpn_fps_upg_o_mbus_front = {
 						a_obj = "a_of"
 					}
+					self.wpn_fps_ass_aug.override.wpn_fps_upg_o_arbiter_irons_dmc = {
+						unit = "units/pd2_dlc_esp/weapons/wpn_fps_smg_speen_pts/optics/wpn_fps_smg_speen_sights_front_standard",
+						third_unit = "units/pd2_dlc_esp/weapons/wpn_third_smg_speen_pts/optics/wpn_third_smg_speen_sights_front_standard",
+						a_obj = "a_of",
+						adds = {"wpn_fps_smg_speen_sights_rear_no_parent"},
+					}
+					self.wpn_fps_ass_aug.override.wpn_fps_smg_speen_sights_rear_no_parent = {
+						a_obj = "a_or"
+					}
 
 					--[[
 					self.wpn_fps_ass_aug.override.wpn_upg_o_marksmansight_rear_vanilla = {
@@ -11463,6 +11505,7 @@ end
 					table.insert(self.wpn_fps_ass_aug.uses_parts, "wpn_fps_upg_o_northtac_reddot")
 					table.insert(self.wpn_fps_ass_aug.uses_parts, "wpn_fps_upg_o_dd_irons_dmc")
 					table.insert(self.wpn_fps_ass_aug.uses_parts, "wpn_fps_upg_o_mbus_rear")
+					table.insert(self.wpn_fps_ass_aug.uses_parts, "wpn_fps_upg_o_arbiter_irons_dmc")
 
 					self.wpn_fps_ass_aug_npc.uses_parts = deep_clone(self.wpn_fps_ass_aug.uses_parts)
 
@@ -16658,11 +16701,22 @@ end
 						custom_stats = { big_scope = true }
 					}
 
+					self.wpn_fps_shot_saiga.override.wpn_fps_upg_o_arbiter_irons_dmc = {
+						unit = "units/pd2_dlc_esp/weapons/wpn_fps_smg_speen_pts/optics/wpn_fps_smg_speen_sights_front_standard",
+						third_unit = "units/pd2_dlc_esp/weapons/wpn_third_smg_speen_pts/optics/wpn_third_smg_speen_sights_front_standard",
+						a_obj = "a_of",
+						adds = {"wpn_fps_smg_speen_sights_rear_no_parent"},
+					}
+					self.wpn_fps_shot_saiga.override.wpn_fps_smg_speen_sights_rear_no_parent = {
+						a_obj = "a_or"
+					}
+
 					--Izhma Part Additions
 					--Drum Mag
 					table.insert(self.wpn_fps_shot_saiga.uses_parts, "wpn_upg_saiga_m_20rnd")
 					table.insert(self.wpn_fps_shot_saiga.uses_parts, "wpn_fps_upg_o_dd_irons_dmc")
 					table.insert(self.wpn_fps_shot_saiga.uses_parts, "wpn_fps_upg_o_mbus_rear")
+					table.insert(self.wpn_fps_shot_saiga.uses_parts, "wpn_fps_upg_o_arbiter_irons_dmc")
 
 					self.wpn_fps_shot_saiga_npc.override = deep_clone(self.wpn_fps_shot_saiga.override)
 					self.wpn_fps_shot_saiga_npc.uses_parts = deep_clone(self.wpn_fps_shot_saiga.uses_parts)
@@ -16837,10 +16891,20 @@ end
 					self.wpn_fps_sho_sko12.override.wpn_fps_upg_o_mbus_front = {
 						a_obj = "a_of"
 					}
+					self.wpn_fps_sho_sko12.override.wpn_fps_upg_o_arbiter_irons_dmc = {
+						unit = "units/pd2_dlc_esp/weapons/wpn_fps_smg_speen_pts/optics/wpn_fps_smg_speen_sights_front_standard",
+						third_unit = "units/pd2_dlc_esp/weapons/wpn_third_smg_speen_pts/optics/wpn_third_smg_speen_sights_front_standard",
+						a_obj = "a_of",
+						adds = {"wpn_fps_smg_speen_sights_rear_no_parent"},
+					}
+					self.wpn_fps_sho_sko12.override.wpn_fps_smg_speen_sights_rear_no_parent = {
+						a_obj = "a_or"
+					}
 
 					table.insert(self.wpn_fps_sho_sko12.uses_parts, "wpn_fps_smg_mac10_s_no")
 					table.insert(self.wpn_fps_sho_sko12.uses_parts, "wpn_fps_upg_o_dd_irons_dmc")
 					table.insert(self.wpn_fps_sho_sko12.uses_parts, "wpn_fps_upg_o_mbus_rear")
+					table.insert(self.wpn_fps_sho_sko12.uses_parts, "wpn_fps_upg_o_arbiter_irons_dmc")
 
 					self.wpn_fps_sho_sko12_npc.uses_parts = deep_clone(self.wpn_fps_sho_sko12.uses_parts)
 					self.wpn_fps_sho_sko12_npc.override = deep_clone(self.wpn_fps_sho_sko12.override)
@@ -17244,8 +17308,19 @@ end
 					self.wpn_fps_sho_striker.override.wpn_fps_upg_o_mbus_front = {
 						a_obj = "a_o_f"
 					}
+					self.wpn_fps_sho_striker.override.wpn_fps_upg_o_arbiter_irons_dmc = {
+						unit = "units/pd2_dlc_esp/weapons/wpn_fps_smg_speen_pts/optics/wpn_fps_smg_speen_sights_front_standard",
+						third_unit = "units/pd2_dlc_esp/weapons/wpn_third_smg_speen_pts/optics/wpn_third_smg_speen_sights_front_standard",
+						a_obj = "a_o_f",
+						adds = {"wpn_fps_smg_speen_sights_rear_no_parent"},
+					}
+					self.wpn_fps_sho_striker.override.wpn_fps_smg_speen_sights_rear_no_parent = {
+						a_obj = "a_o_r"
+					}
+
 					table.insert(self.wpn_fps_sho_striker.uses_parts, "wpn_fps_upg_o_dd_irons_dmc")
 					table.insert(self.wpn_fps_sho_striker.uses_parts, "wpn_fps_upg_o_mbus_rear")
+					table.insert(self.wpn_fps_sho_striker.uses_parts, "wpn_fps_upg_o_arbiter_irons_dmc")
 
 					self.wpn_fps_sho_striker_npc.override = deep_clone(self.wpn_fps_sho_striker.override)
 					self.wpn_fps_sho_striker_npc.uses_parts = deep_clone(self.wpn_fps_sho_striker.uses_parts)
@@ -19007,6 +19082,55 @@ end
 
 		--SECONDARIES
 
+			--PNUE-DART X-2
+				Hooks:PostHook(WeaponFactoryTweakData, "_init_dart", "resmod_dart", function(self)
+					self.parts.wpn_fps_upg_a_dart_poison.supported = true
+
+					self.parts.wpn_fps_upg_a_dart_daze.supported = true
+					self.parts.wpn_fps_upg_a_dart_daze.keep_damage = true
+					self.parts.wpn_fps_upg_a_dart_daze.stats = {
+						value = 1,
+						damage = -120
+					}
+					self.parts.wpn_fps_upg_a_dart_daze.custom_stats = {
+						launcher_grenade = "dart_daze"
+					}
+
+					self.parts.wpn_fps_upg_a_dart_revive.supported = true
+					self.parts.wpn_fps_upg_a_dart_revive.keep_damage = true
+					self.parts.wpn_fps_upg_a_dart_revive.stats = {
+						value = 1,
+						damage = -120,
+						total_ammo_mod = -266
+					}
+					self.parts.wpn_fps_upg_a_dart_revive.custom_stats = {
+						launcher_grenade = "dart_revive",
+						ammo_pickup_max_mul = 0.2,
+						ammo_pickup_min_mul = 0.1
+					}
+
+					self.parts.wpn_fps_spe_dart_magazine_high_pressure.supported = true
+					self.parts.wpn_fps_spe_dart_magazine_high_pressure.stats = {
+						value = 3,
+						recoil = -4,
+						spread = -5
+					}
+					self.parts.wpn_fps_spe_dart_magazine_high_pressure.custom_stats = {
+						hip_mult = 2,
+						launch_speed_mul = 1.25
+					}
+
+					self.parts.wpn_fps_spe_dart_magazine_high_capacity.supported = true
+					self.parts.wpn_fps_spe_dart_magazine_high_capacity.stats = {
+						value = 3,
+						concealment = -1
+					}
+					self.parts.wpn_fps_spe_dart_magazine_high_capacity.custom_stats = {
+						launch_speed_mul = 0.75,
+						charge_speed_mul = 0.5
+					}
+				end)
+
 			--CB1-50
 				Hooks:PostHook(WeaponFactoryTweakData, "_init_hunter", "resmod_hunter", function(self)
 
@@ -19663,6 +19787,7 @@ end
 						rotation = Rotation(-0.1, -0.31, 0)
 					}
 
+
 					self.parts.wpn_fps_upg_o_specter.stance_mod.wpn_fps_smg_p90 = {
 						translation = Vector3(-0.005, 1.6, -3.028)
 					}
@@ -19774,6 +19899,10 @@ end
 					}
 					self.parts.wpn_fps_upg_o_specter.stance_mod.wpn_fps_bow_ecp = {
 						translation = Vector3(-0.001, -1, -3.325)
+					}
+					self.parts.wpn_fps_upg_o_specter.stance_mod.wpn_fps_spe_dart = {
+						translation = Vector3(0.038, -5, -0.525),
+						rotation = Rotation(0, 0, -0.4)
 					}
 
 					self.parts.wpn_fps_upg_o_specter.stance_mod.wpn_fps_gre_m79 = {
@@ -25468,7 +25597,8 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			"wpn_fps_upg_o_45iron",
 			"wpn_fps_upg_o_45steel",
 			"wpn_fps_ass_shak12_o_carry_dummy",
-			"wpn_fps_hailstorm_o_irons"
+			"wpn_fps_hailstorm_o_irons",
+			"wpn_fps_upg_o_ak_scopemount"
 		},
 		dlc = "sc",
 		stance_mod = deep_clone(self.parts.wpn_fps_upg_o_specter.stance_mod)
@@ -45006,6 +45136,14 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 				falloff_start_mult = 0.5,
 				falloff_end_mult = 0.7
 			}
+			self.parts.wpn_fps_ck_ar23a_soundswitch.supported = true
+			self.parts.wpn_fps_ck_ar23a_soundswitch.custom_stats = {
+				sounds = {
+					fire = "ar23a_fire",
+					fire_single = "ar23a_fire",
+					fire_auto = "ar23a_fire",
+				}
+			}
 
 			self.parts.wpn_fps_ck_ar23p.supported = true
 			self.parts.wpn_fps_ck_ar23p.keep_damage = true
@@ -56970,6 +57108,9 @@ exclude = {
 	"wpn_fps_ass_osipr_m_gl_poison",
 	"wpn_fps_upg_a_underbarrel_hornet",
 	"wpn_fps_upg_a_grenade_launcher_hornet",
+	"wpn_fps_upg_a_dart_poison",
+	"wpn_fps_upg_a_dart_daze",
+	"wpn_fps_upg_a_dart_revive",
 }
 
 local no_vfgs = restoration and restoration.Options:GetValue("OTHER/GOTTAGETAGRIP")

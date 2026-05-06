@@ -327,6 +327,7 @@
 					<hook file="sc/units/equipment/sentrygunbase.lua" source_file="lib/units/equipment/sentry_gun/sentrygunbase"/>
 					<hook file="sc/units/equipment/sentrygunbrain.lua" source_file="lib/units/equipment/sentry_gun/sentrygunbrain"/>
 					<hook file="sc/units/equipment/sentryguncontour.lua" source_file="lib/units/equipment/sentry_gun/sentryguncontour"/>
+					<hook file="sc/units/equipment/spycamerabase.lua" source_file="lib/units/equipment/spy_camera/spycamerabase"/>
 				<!--ENV-->
 					<hook file="sc/units/environment/environmentfire.lua" source_file="lib/units/environment/environmentfire"/>
 				<hook file="sc/units/contourext.lua" source_file="lib/units/contourext"/>
@@ -347,6 +348,7 @@
 			<hook file="sc/utils/inventorydescription.lua" source_file="lib/utils/inventorydescription"/>
 			<hook file="sc/states/missionendstate.lua" source_file="lib/states/missionendstate"/>
 			<hook file="sc/states/menumainstate.lua" source_file="lib/states/menumainstate"/>
+			<hook file="sc/states/ingameaccesscamera.lua" source_file="lib/states/ingameaccesscamera"/>
 			<hook file="sc/entry.lua" source_file="lib/entry"/>
 		<!--///CRIMESPREE\\\-->
 		<hook file="sc/modifiers/modifierheavies.lua" source_file="lib/modifiers/modifierheavies"/>

@@ -964,6 +964,14 @@ function NewRaycastWeaponBase:old_update_stats_values(disallow_replenish, ammo_d
 			if stats.volley_rays then
 				self._volley_rays = stats.volley_rays
 			end
+
+			if stats.launch_speed_mul then
+				self._launch_speed_mul = stats.launch_speed_mul
+			end
+
+			if stats.charge_speed_mul then
+				self._charge_speed_mul = stats.charge_speed_mul
+			end
 		end
 	end
 
@@ -2972,6 +2980,12 @@ Hooks:PostHook(NewRaycastWeaponBase, "weapon_tweak_data", "res_weapon_tweak_data
 
 	if not self._parts then
 		return wtd
+	end
+
+	if self._name_id == "ar23" and self._parts then
+		local is_carbine = self._parts.wpn_fps_ck_ar23a
+		local has_drum = self._parts.wpn_fps_ass_ar23_m_drum
+		wtd.animations.reload_name_id = "ar23" .. ((is_carbine and "a") or "") .. ((has_drum and "_drum") or "")
 	end
 
 	if not g3_niphen and BeardLib.Utils:FindMod("JustAnotherG3 Reload") and self._name_id == "g3" then
