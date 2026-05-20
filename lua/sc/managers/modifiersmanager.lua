@@ -349,7 +349,7 @@ local replacement_table = {
 
 	["units/pd2_mod_halloween/characters/ene_veteran_cop_1/ene_veteran_cop_1"] = "units/pd2_mod_cruel/characters/ene_cop_4/ene_cop_4",
 	["units/pd2_mod_halloween/characters/ene_gensec_sgt/ene_gensec_sgt"] = "units/pd2_mod_cruel/characters/ene_hoxton_breakout_guard_1/ene_hoxton_breakout_guard_1",
-	["units/pd2_mod_dave/characters/ene_dave_hvh/ene_dave_hvh"] = "units/pd2_mod_cruel/characters/ene_sniper_1/ene_sniper_1",
+	["units/pd2_mod_halloween/characters/ene_wildcard/ene_wildcard"] = "units/pd2_mod_cruel/characters/ene_sniper_1/ene_sniper_1",
 }
 
 -- This table is for robots, don't edit this one

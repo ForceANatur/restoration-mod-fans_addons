@@ -44,6 +44,15 @@
 	<texture			path="units/pd2_dlc_pex/characters/shared_textures/ene_office_cops_head_atlas_nm" />	
 	<texture			path="units/pd2_dlc_bex/characters/ene_swat_medic_policia_federale/ene_murkywater_medic_head_policia_federale_df" />
 	<texture			path="units/pd2_dlc_bex/characters/ene_swat_medic_policia_federale/ene_murkywater_medic_body_policia_federale_df" />
+
+	<!--Wildcard Unit-->	
+	<unit				path="units/pd2_dlc_bex/characters/ene_policia_wildcard/ene_policia_wildcard" load="true"/>
+	<unit				path="units/pd2_dlc_bex/characters/ene_policia_wildcard/ene_policia_wildcard_husk" load="true"/>	
+	<object				path="units/pd2_dlc_bex/characters/ene_policia_wildcard/ene_policia_wildcard" />
+	<model				path="units/pd2_dlc_bex/characters/ene_policia_wildcard/ene_policia_wildcard" />
+	<material_config	path="units/pd2_dlc_bex/characters/ene_policia_wildcard/ene_policia_wildcard" />
+	<material_config	path="units/pd2_dlc_bex/characters/ene_policia_wildcard/ene_policia_wildcard_contour" />
+	<cooked_physics		path="units/pd2_dlc_bex/characters/ene_policia_wildcard/ene_policia_wildcard" />
 	
 	<!--Buluc Mansion cam guard-->
 	<add from_db="true" 	path="units/pd2_dlc_mex/characters/ene_mex_security_guard_3/ene_mex_security_guard_3" type="unit">
@@ -139,8 +148,6 @@
 	<material_config	path="units/pd2_dlc_bex/characters/ene_fbi_4/ene_fbi_4"/>
 	<material_config	path="units/pd2_dlc_bex/characters/ene_fbi_4/ene_fbi_4_contour"/>
 	<unit				path="units/pd2_dlc_bex/characters/ene_fbi_4/ene_fbi_4_husk" load="true"/>
-	<texture			path="units/pd2_dlc_bex/characters/ene_fbi_4/sjnp_beatcop_atlas_d" />
-	<texture			path="units/pd2_dlc_bex/characters/ene_fbi_4/sjnp_beatcop_atlas_n" />
 	
 	<!-- blue swats here -->
 	<!--AMCAR-->	

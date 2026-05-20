@@ -343,6 +343,15 @@
 	<texture			path="units/payday2/weapons/wpn_npc_scar_heavy/mk17_df" force="true"/>
 	<texture			path="units/payday2/weapons/wpn_npc_scar_heavy/mk17_nm" force="true"/>
 
+	<!--ye old pp bizon from older versions of resmod-->
+	<material_config	path="units/pd2_dlc_mad/weapons/wpn_npc_coal/wpn_npc_coal" force="false"/>
+	<model				path="units/pd2_dlc_mad/weapons/wpn_npc_coal/wpn_npc_coal" force="false"/>
+	<object				path="units/pd2_dlc_mad/weapons/wpn_npc_coal/wpn_npc_coal" force="false"/>
+	<cooked_physics		path="units/pd2_dlc_mad/weapons/wpn_npc_coal/wpn_npc_coal" force="false"/>
+	<unit				path="units/pd2_dlc_mad/weapons/wpn_npc_coal/wpn_npc_coal" force="false"/>
+	<texture			path="units/pd2_dlc_mad/weapons/wpn_npc_coal/coal_df" force="true"/>
+	<texture			path="units/pd2_dlc_mad/weapons/wpn_npc_coal/coal_nm" force="true"/>
+
 	<!--Unshootable Flashbangs-->
 	<sequence_manager	path="units/payday2/weapons/wpn_frag_sc_flashbang/wpn_frag_sc_flashbang" force="false"/>
 	<model				path="units/payday2/weapons/wpn_frag_sc_flashbang/wpn_frag_sc_flashbang" force="false"/>
@@ -1432,6 +1441,17 @@
 	<texture			path="units/pd2_mod_nc/characters/shared_textures/sgt_body_nm"/>
 	<texture			path="units/pd2_mod_nc/characters/shared_textures/sgt_gasmask_df"/>
 	<texture			path="units/pd2_mod_nc/characters/shared_textures/sgt_gasmask_nm"/>
+
+	<!--Wildcard Unit-->
+	<object				path="units/pd2_mod_nc/characters/ene_wildcard/ene_wildcard" force="false"/>
+	<cooked_physics		path="units/pd2_mod_nc/characters/ene_wildcard/ene_wildcard" force="false"/>
+	<model				path="units/pd2_mod_nc/characters/ene_wildcard/ene_wildcard" force="false"/>
+	<unit				path="units/pd2_mod_nc/characters/ene_wildcard/ene_wildcard" force="false" load="true"/>
+	<material_config	path="units/pd2_mod_nc/characters/ene_wildcard/ene_wildcard" force="false"/>
+	<material_config	path="units/pd2_mod_nc/characters/ene_wildcard/ene_wildcard_contour" force="true"/>
+	<unit				path="units/pd2_mod_nc/characters/ene_wildcard/ene_wildcard_husk" force="false" load="true"/>
+	<texture			path="units/pd2_mod_nc/characters/ene_wildcard/head_df"/>
+	<texture			path="units/pd2_mod_nc/characters/ene_wildcard/body_df"/>
 
 	<!-- ZEAL Dozer Captain Parts -->
 	<model path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_throat/ene_acc_bulldozer_throat"  force="false"/>

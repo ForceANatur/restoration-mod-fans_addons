@@ -7,6 +7,17 @@
 	<unit_mat			path="units/pd2_mod_reapers/weapons/wpn_npc_svd_sc/wpn_npc_svd_sc" force="false"/>
 
 	<!-- feds n cops     -->
+	<!--Wildcard-->
+	<object				path="units/pd2_mod_sharks/characters/ene_murky_wildcard/ene_murky_wildcard" force="false"/>
+	<cooked_physics		path="units/pd2_mod_sharks/characters/ene_murky_wildcard/ene_murky_wildcard" force="false"/>
+	<model				path="units/pd2_mod_sharks/characters/ene_murky_wildcard/ene_murky_wildcard" force="false"/>
+	<unit				path="units/pd2_mod_sharks/characters/ene_murky_wildcard/ene_murky_wildcard" force="false" load="true"/>
+	<material_config	path="units/pd2_mod_sharks/characters/ene_murky_wildcard/ene_murky_wildcard" force="false"/>
+	<material_config	path="units/pd2_mod_sharks/characters/ene_murky_wildcard/ene_murky_wildcard_contour" force="false"/>
+	<unit				path="units/pd2_mod_sharks/characters/ene_murky_wildcard/ene_murky_wildcard_husk" force="false" load="true"/>
+	<texture			path="units/pd2_mod_sharks/characters/ene_murky_wildcard/murkywater_d" force="false"/>
+	<texture			path="units/pd2_mod_sharks/characters/ene_murky_wildcard/murkywater_n" force="false"/>
+
 	<!--FBI 1-->
 	<object				path="units/pd2_mod_sharks/characters/ene_fbi_1/ene_fbi_1" force="false"/>
 	<cooked_physics		path="units/pd2_mod_sharks/characters/ene_fbi_1/ene_fbi_1" force="false"/>

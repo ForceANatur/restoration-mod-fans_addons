@@ -161,7 +161,7 @@ Teacyn: Writing the overhaul steam guide and providing valuable feedback to over
 
 Nelson01023: Setting up many enemy accessories and adding support for many custom weapons. Improving a bunch of assets & making new ones. Creating various Minor Heist Edits.
 
-Sgt. Joe: Providing base models and textures for the Federales Beatcops & ze NYPD assets + ze Russians Very big asset contributions very nice very awesome. Awesomeness!
+Sgt. Joe: Providing base models and textures for the Federales Beatcops & ze NYPD assets + ze Russians Very big asset contributions very nice very awesome. Awesomeness! (And old school enemies for murky wildcard)
 
 Iamgoofball: Birthed the Voiceline Framework, contributing to the development of Captain Summers and his team, original Grenade Launcher NPC base. So much win!
 
@@ -228,6 +228,8 @@ Miss Miki: PONR anti-grief fixes and other contributions/fixes
 MrVavlo: For the CHARMing weapon CHARM that's full of CHARM
 
 Keithy: New Coppers' Assets, HECU Murky (https://modworkshop.net/mod/19426)
+
+hitscanner: alesso heist guard texture fixes (https://modworkshop.net/mod/54519)
 
 Marshie: Russian localisation
 

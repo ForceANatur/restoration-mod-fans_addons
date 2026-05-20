@@ -51,5 +51,6 @@
 	"ene_titan_sniper" : "Alien Titan Sniper",
 	"ene_titan_sniper_scripted" : "Alien Titan Sniper",
 	"ene_titan_taser" : "Zombie Titan Taser",
-	"ene_gensec_sgt" : "Zombie GenSec Sergent"
+	"ene_gensec_sgt" : "Zombie GenSec Sergent",
+	"ene_wildcard" : "Slender Agent"
 }	

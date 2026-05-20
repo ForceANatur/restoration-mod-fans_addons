@@ -30,5 +30,6 @@
   "ene_grenadier" : "Murky Grenadier",
   "ene_murky_shield_fbi" : "Murkywater Marine Shield",
   "ene_murky_shield_yellow" : "Murkywater Tactical Security Shield",
-  "ene_murky_shield_city" : "Murkywater Elite Shield"
+  "ene_murky_shield_city" : "Murkywater Elite Shield",
+  "ene_murky_wildcard" : "Wildcard Murkywater Unit"
 }

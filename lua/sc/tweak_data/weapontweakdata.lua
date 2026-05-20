@@ -1447,6 +1447,12 @@ local crew_wep_preset = {
 		self.akmsu_tactical_smg_npc = deep_clone(self.mp5_tactical_npc)
 		self.akmsu_tactical_smg_npc.has_suppressor = "suppressed_c"
 
+		--pp bizon
+		self.coal_npc = deep_clone(self.mp5_npc)
+		self.coal_npc.sounds.prefix = "coal_npc"
+		self.coal_npc.CLIP_AMMO_MAX = 64
+		self.coal_npc.usage = "is_lmg"
+
 		--MPX
 		self.shepheard_npc = deep_clone(self.mp5_npc)
 		self.shepheard_npc.sounds.prefix = "shepheard_npc"

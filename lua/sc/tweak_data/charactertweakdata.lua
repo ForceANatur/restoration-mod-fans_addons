@@ -425,6 +425,18 @@ function CharacterTweakData:_init_cop(presets)
 	self.dave.overheal_mult = 1
 	table.insert(self._enemy_list, "dave")
 
+	-- non meme version of big dave
+	self.cop_wildcard = deep_clone(self.cop)
+	self.cop_wildcard.HEALTH_INIT = 10
+	self.cop_wildcard.melee_weapon = "fists_dozer"
+	self.cop_wildcard.move_speed = presets.move_speed.fast
+	if self:get_ai_group_type() == "zombie" then
+		self.cop_wildcard.custom_voicework = "wildcard_hvh"
+	else
+		self.cop_wildcard.custom_voicework = nil
+	end
+	table.insert(self._enemy_list, "cop_wildcard")
+
 	self.teto = deep_clone(self.dave)
 	self.teto.HEALTH_INIT = 30
 	self.teto.headshot_dmg_mul = 3
@@ -19260,6 +19272,10 @@ Hooks:PostHook(CharacterTweakData, "_create_table_structure", "remod_create_tabl
 	--TEAR GAS! DONT BREATHE THIS!
 	table.insert(self.weap_ids, "m79_npc")
 	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_m79/wpn_npc_m79"))
+
+	--PP-19 Bizon
+	table.insert(self.weap_ids, "coal_npc")
+	table.insert(self.weap_unit_names, Idstring("units/pd2_dlc_mad/weapons/wpn_npc_coal/wpn_npc_coal"))
 end)
 
 function CharacterTweakData:_set_easy()
@@ -20349,7 +20365,8 @@ function CharacterTweakData.character_map(...)
 				"civ_male_mariachi_02",
 				"civ_male_mariachi_03",
 				"civ_male_mariachi_04",
-				"ene_deathvox_fbi_heavyswat"
+				"ene_deathvox_fbi_heavyswat",
+				"ene_policia_wildcard"
 			}
 		}
 	--fully custom
@@ -20411,7 +20428,8 @@ function CharacterTweakData.character_map(...)
 				"ene_swat_2",
 				"ene_swat_3",
 				"ene_murky_sniper",
-				"ene_murky_sniper_2"
+				"ene_murky_sniper_2",
+				"ene_murky_wildcard"
 			}
 		}
 
@@ -20576,7 +20594,8 @@ function CharacterTweakData.character_map(...)
 				"ene_heavymedic_1",
 				"ene_police_heavygunner",
 				"ene_gensec_heavygunner",
-				"ene_gensec_sgt"
+				"ene_gensec_sgt",
+				"ene_wildcard"
 			}
 		}
 
@@ -20682,7 +20701,8 @@ function CharacterTweakData.character_map(...)
 				"ene_police_heavygunner",
 				"ene_undead_titan",
 				"ene_rpg_grunt",
-				"ene_fbi_titan_heavy_1"
+				"ene_fbi_titan_heavy_1",
+				"ene_wildcard"
 			}
 		}
 		
@@ -20759,7 +20779,8 @@ function CharacterTweakData.character_map(...)
 				"ene_titan_sniper",
 				"ene_titan_sniper_scripted",
 				"ene_titan_taser",
-				"ene_fbi_titan_heavy_1"
+				"ene_fbi_titan_heavy_1",
+				"ene_akan_wildcard"
 			}
 		}
 

@@ -85,6 +85,17 @@
 
 	<unit				path="units/pd2_mod_reapers/characters/ene_security_4/ene_security_4" force="false" load="true"/>
 	<unit				path="units/pd2_mod_reapers/characters/ene_security_4/ene_security_4_husk" force="false" load="true"/>
+
+	<!--Wildcard Unit-->
+	<unit				path="units/pd2_mod_reapers/characters/ene_akan_wildcard/ene_akan_wildcard" load="true"/>
+	<unit				path="units/pd2_mod_reapers/characters/ene_akan_wildcard/ene_akan_wildcard_husk" load="true"/>	
+	<object				path="units/pd2_mod_reapers/characters/ene_akan_wildcard/ene_akan_wildcard" />
+	<model				path="units/pd2_mod_reapers/characters/ene_akan_wildcard/ene_akan_wildcard" />
+	<material_config	path="units/pd2_mod_reapers/characters/ene_akan_wildcard/ene_akan_wildcard" />
+	<material_config	path="units/pd2_mod_reapers/characters/ene_akan_wildcard/ene_akan_wildcard_contour" />
+	<texture			path="units/pd2_mod_reapers/characters/ene_akan_wildcard/head_atlas_nm" />
+	<texture			path="units/pd2_mod_reapers/characters/ene_akan_wildcard/head_atlas_df" />
+	<texture			path="units/pd2_mod_reapers/characters/ene_akan_wildcard/akan_light_rifle_df" />
 	
 	<!--Reaper Cops-->
 	<!--Glock-->

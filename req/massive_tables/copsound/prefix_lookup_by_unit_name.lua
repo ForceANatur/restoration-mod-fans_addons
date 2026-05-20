@@ -28,6 +28,7 @@ local prefix_lookup_for_humans = {
 		"units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_sc/ene_zeal_swat_heavy_sc",
 		"units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_r870_sc/ene_zeal_swat_heavy_r870_sc",
 		"units/pd2_dlc_gitgud/characters/ene_zeal_swat_shield_sc/ene_zeal_swat_shield_sc",
+		"units/pd2_dlc_gitgud/characters/ene_zeal_fbi_r870/ene_zeal_fbi_r870",
 		-- NYPD Blue SWATs
 		"units/pd2_mod_nypd/characters/ene_nypd_heavy_m4/ene_nypd_heavy_m4",
 		"units/pd2_mod_nypd/characters/ene_nypd_heavy_r870/ene_nypd_heavy_r870",
@@ -174,6 +175,14 @@ local prefix_lookup_for_humans = {
 		-- OMNIA Snipers (they use "crew" models)
 		"units/pd2_mod_omnia/characters/ene_omnia_sniper/ene_omnia_sniper",
 		"units/pd2_mod_omnia/characters/ene_omnia_sniper_2/ene_omnia_sniper_2",
+	},
+	l5n_list = {
+		func = function(self, nr_variations)
+			return "l5n_"
+		end,
+		"units/payday2/characters/ene_fbi_4/ene_fbi_4",
+		"units/pd2_mod_sharks/characters/ene_fbi_4/ene_fbi_4",
+		"units/pd2_mod_sharks/characters/ene_murky_wildcard/ene_murky_wildcard",
 	},
 	female_enemy_list = {
 		func = function(self, nr_variations)

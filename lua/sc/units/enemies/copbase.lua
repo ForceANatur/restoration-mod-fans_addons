@@ -1261,6 +1261,11 @@ function CopBase:default_weapon_name(...)
 			self._default_weapon_id = "m79_npc"
 			self._weapon_set = true
 		end
+
+		if self._tweak_table == "medic_summers" then
+			self._default_weapon_id = "coal_npc"
+			self._weapon_set = true
+		end
 	end
 	
 	-- For High Noon mutator
@@ -1440,7 +1445,8 @@ local zeal = {
 local russia = {
 	rifle_light = {
 		"ak47_ass",
-		"akmsu_smg"
+		"akmsu_smg",
+		"coal_npc"
 	},
 	rifle_heavy = {
 		"ak47_ass_elite",
@@ -1450,6 +1456,10 @@ local russia = {
 		"fort_500",
 		"saiga",
 		"benelli"
+	},
+	hrt = {
+		"akmsu_smg",
+		"coal_npc"
 	}
 }
 --Murkywater
@@ -1460,7 +1470,8 @@ local murkywater = {
 		"ump",
 		"scar_npc",
 		"amcar",
-		"shepheard"
+		"shepheard",
+		"coal_npc"
 	},
 	rifle_heavy = {
 		"m4",
@@ -1489,7 +1500,8 @@ local federales = {
 		"m4",
 		"ump",
 		"shepheard",
-		"amcar"
+		"amcar",
+		"coal_npc"
 	},
 	rifle_heavy = {
 		"m4",
@@ -1508,6 +1520,7 @@ local federales = {
 local dave = {
 	all_the_guns = {
 		"c45",
+		"beretta92",
 		"raging_bull",
 		"mp5",
 		"r870",
@@ -1530,7 +1543,24 @@ local dave = {
 		"ksg",
 	--	"mini", -- funny, but i think it's too goofy
 		"mac11_sup",
-		"amcar"
+		"amcar",
+		"ak47_ass",
+		"coal_npc"
+	},
+	akan = {
+		"streak",
+		"x_streak",
+		"sr2_smg",
+		"ak47_ass",
+		"akmsu_smg",
+		"ak47_ass_elite",
+		"coal_npc",
+		"benelli",
+		"fort_500",
+		"saiga",
+		"mateba_ap",
+		"rpk_lmg",
+		"svd_snp"
 	},
 	kasane_teto = {
 		"mac11_sup",
@@ -1563,6 +1593,7 @@ local cruel_zeal = {
 		"shepheard",
 		"scar_heavy",
 		"amcar",
+		"coal_npc"
 	},
 	zeal_light_shotgun = {
 		"r870",
@@ -1626,6 +1657,8 @@ local weapon_mapping = {
 	[("units/pd2_dlc_mad/characters/ene_akan_fbi_swat_r870/ene_akan_fbi_swat_r870"):key()] = russia.shotgun,
 	[("units/pd2_dlc_mad/characters/ene_akan_fbi_heavy_r870/ene_akan_fbi_heavy_r870"):key()] = russia.shotgun,
 	[("units/pd2_dlc_mad/characters/ene_akan_fbi_swat_dw_r870/ene_akan_fbi_swat_dw_r870"):key()] = russia.shotgun,
+	[("units/pd2_mod_reapers/characters/ene_fbi_3/ene_fbi_3"):key()] = russia.hrt,
+	[("units/pd2_mod_reapers/characters/ene_drak_hrt_2/ene_drak_hrt_2"):key()] = russia.hrt,
 -- Zombie
 	[("units/pd2_dlc_hvh/characters/ene_cop_hvh_1/ene_cop_hvh_1"):key()] = cop.pistol,
 	[("units/pd2_dlc_hvh/characters/ene_cop_hvh_2/ene_cop_hvh_2"):key()] = cop.pistol,
@@ -1679,9 +1712,12 @@ local weapon_mapping = {
 -- Heavy Medic get's his SCAR back
 	[("units/pd2_mod_nc/characters/ene_heavymedic_1/ene_heavymedic_1"):key{}] = medic_heavy.medic_heavy,
 	[("units/pd2_mod_halloween/characters/ene_heavymedic_1/ene_heavymedic_1"):key{}] = medic_heavy.medic_heavy,
--- Dave's guns
-	[("units/pd2_mod_dave/characters/ene_big_dave/ene_big_dave"):key{}] = dave.all_the_guns,
-	[("units/pd2_mod_dave/characters/ene_dave_hvh/ene_dave_hvh"):key{}] = dave.all_the_guns,
+-- Wildcard
+	[("units/pd2_mod_nc/characters/ene_wildcard/ene_wildcard"):key{}] = dave.all_the_guns,
+	[("units/pd2_mod_reapers/characters/ene_akan_wildcard/ene_akan_wildcard"):key{}] = dave.akan,
+	[("units/pd2_mod_sharks/characters/ene_murky_wildcard/ene_murky_wildcard"):key{}] = dave.all_the_guns,
+	[("units/pd2_dlc_bex/characters/ene_policia_wildcard/ene_policia_wildcard"):key{}] = dave.all_the_guns,
+	[("units/pd2_mod_halloween/characters/ene_wildcard/ene_wildcard"):key{}] = dave.all_the_guns,
 	[("units/pd2_mod_cruel/characters/ene_sniper_1/ene_sniper_1"):key{}] = dave.kasane_teto,
 -- Bravo Heavy
 	[("units/pd2_mod_ng/characters/ene_ntl_heavyswat/ene_ntl_heavyswat"):key{}] = bravo_heavy.rifle_heavy,

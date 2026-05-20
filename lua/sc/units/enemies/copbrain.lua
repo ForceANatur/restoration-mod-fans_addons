@@ -299,6 +299,7 @@ logic_variants.taser_titan_reaper = clone(security_variant)
 logic_variants.taser_titan_reaper.attack = MarshalLogicAttack
 logic_variants.hrt_titan_heavy = clone(security_variant)
 logic_variants.hrt_titan_heavy.attack = MarshalLogicAttack
+logic_variants.cop_wildcard = security_variant
 
 logic_variants.fbi_cruel = security_variant
 logic_variants.hrt_cruel = security_variant
