@@ -67,10 +67,11 @@ tweak_data.upgrades.values.player.body_armor.dodge[9] = -0.5
 tweak_data.upgrades.values.player.body_armor.concealment[9] = -2
 tweak_data.upgrades.values.player.body_armor.damage_shake[9] = 0.1
 tweak_data.upgrades.values.player.body_armor.stamina[9] = 0.4
-tweak_data.upgrades.values.player.body_armor.skill_ammo_mul[9] = 1.175
+tweak_data.upgrades.values.player.body_armor.skill_ammo_mul[9] = 1.125
 tweak_data.upgrades.values.player.body_armor.regen_delay[9] = 5.5
 tweak_data.upgrades.values.player.body_armor.deflection[9] = 0.10
-tweak_data.upgrades.values.player.body_armor.skill_max_health_store[9] = 0.2
+tweak_data.upgrades.values.player.body_armor.skill_max_health_store[9] = 4.0
+tweak_data.upgrades.values.player.body_armor.skill_health_store_on_kill[9] = 0.0
 tweak_data.upgrades.values.player.body_armor.skill_kill_change_regenerate_speed[9] = 1.01
 tweak_data.upgrades.values.player.armor_grinding[1][9] = {5.8, 7.25}
 tweak_data.upgrades.values.player.damage_to_armor[1][9] = {11.2, 5}
@@ -439,5 +440,21 @@ if TF2SniperWeaponBase then
 		--cut the bit that's responsible for the descope on fire as res handles it elsewhere
 
 		return ray_res
+	end
+end
+
+--ABYSMAL DOGSHIT \o/ fix to keep both PocoHUD and the Mercenary Perk Deck happy
+--PocoHUD explicitly needs the output data from the vanilla "_calc_x_damage" functions it hooks into to draw its directional damage indicators
+--But PocoHUD localizes all its inner workings so intercepting its hooks into "_calc_x_damage" isn't going to work
+--The Mercenary Perk Deck loads late and overrides Resmod's version of the "_calc_x_damage" funcs, breaking things; I am not shoving a good chunk of PlayerDamage in here just to get around that
+--My initial fix was to just skirt around it with resmod-specific "_calc_x_damage" funcs but that broke PocoHUD's directional damage indicators
+--That said the Mercenary Perk Deck doesn't load so late as to override the GOAT that is 'entry.lua' (This file)
+--So you get this atrocity :^)
+if PlayerDamage then 
+	function PlayerDamage:_calc_armor_damage(attack_data, ...)
+		return self:_res_calc_armor_damage(attack_data, ...)
+	end
+	function PlayerDamage:_calc_health_damage(attack_data, ...)
+		return self:_res_calc_health_damage(attack_data, ...)
 	end
 end

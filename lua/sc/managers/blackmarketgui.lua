@@ -1050,14 +1050,14 @@ function BlackMarketGui:_get_armor_stats(name)
 			local base = 0
 			local mod = managers.player:body_armor_value("deflection", upgrade_level, 0)
 			base_stats[stat.name] = {value = (base + mod) * 100}
-			skill_stats[stat.name] = {value = managers.player:get_deflection_from_skills() * 100}
+			skill_stats[stat.name] = {value = managers.player:get_deflection_from_skills(name) * 100}
 		elseif stat.name == "regen_time" then
 			local base = managers.player:body_armor_value("regen_delay", upgrade_level, 0)
 			base_stats[stat.name] = {value = base}
 			if managers.player:has_category_upgrade("player", "armor_grinding") then
 				skill_stats[stat.name] = {value = tweak_data.upgrades.values.player.armor_grinding[1][upgrade_level][2] - base}
 			else
-				skill_stats[stat.name] = {value = base * managers.player:body_armor_regen_multiplier(false, 0) - base}
+				skill_stats[stat.name] = {value = base * managers.player:body_armor_regen_multiplier(false, 0, name) - base}
 			end
 		elseif stat.name == "damage_shake" then
 			local base = 10--tweak_data.gui.armor_damage_shake_base
@@ -3389,6 +3389,26 @@ function BlackMarketGui:_setup(is_start_page, component_data)
 					name = "time_dot",
 					suffix = managers.localization:text("menu_seconds_suffix_short")
 				},
+				--[[
+				{
+					range = true,
+					name = "damage"
+				},
+				{
+					range = true,
+					name = "dot",
+					suffix = managers.localization:text("menu_persecond_suffix_short")
+				},
+				{
+					range = true,
+					name = "time",
+					suffix = managers.localization:text("menu_seconds_suffix_short")
+				},
+				{
+					range = true,
+					name = "range"
+				},
+				--]]
 				{
 					inverse = true,
 					name = "cooldown",
@@ -5777,8 +5797,9 @@ function BlackMarketGui:update_info_text()
 		end
 
 		if managers.player:has_category_upgrade("player", "armor_health_store_amount") then --Add Ex-Pres per-kill armor regen bonus.
-			local amount = managers.player:body_armor_value("skill_max_health_store", upgrade_level, 1)
-			local multiplier = managers.player:upgrade_value("player", "armor_max_health_store_multiplier", 1)
+			local amount = managers.player:body_armor_value("skill_health_store_on_kill", upgrade_level, 1)
+			amount = amount + managers.player:upgrade_value("player", "armor_health_store_amount", 0)
+			local multiplier = 1--managers.player:upgrade_value("player", "armor_max_health_store_multiplier", 1)
 			local regen_speed = format_round((managers.player:body_armor_value("skill_kill_change_regenerate_speed", upgrade_level, 1) - 1) * 100)
 			local description = (managers.player:has_category_upgrade("player", "kill_change_regenerate_speed") and
 								managers.localization:to_upper_text("bm_menu_armor_max_health_store_2", {health_stored = format_round(amount * multiplier * tweak_data.gui.stats_present_multiplier), regen_bonus = regen_speed})
@@ -6834,11 +6855,7 @@ function BlackMarketGui:update_info_text()
 		end
 
 		if deployable_id == "sentry_gun" then
-			local ammo_cost = { --SentryGunBase isn't loaded outside of gameplay so I gotta dupe the cost table here, maybe I'll move it to tweak_data
-				0.4,
-				0.35,
-				0.3
-			}
+			local ammo_cost = tweak_data.upgrades.sentry_gun_ammo_cost
 			local cost_reduction = managers.player:has_category_upgrade(deployable_id, "cost_reduction") and managers.player:equiptment_upgrade_value(deployable_id, "cost_reduction") or 1
 			deployable_uses = ammo_cost[cost_reduction] * 100 .. "%"
 		end

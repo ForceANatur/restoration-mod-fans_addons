@@ -232,7 +232,7 @@ function PlayerManager:body_armor_skill_addend(override_armor)
 	return addend
 end
 
-function PlayerManager:body_armor_regen_multiplier(moving, health_ratio)
+function PlayerManager:body_armor_regen_multiplier(moving, health_ratio, override_armor)
 	local multiplier = 1
 	multiplier = multiplier * self:upgrade_value("player", "armor_regen_timer_multiplier_tier", 1)
 	multiplier = multiplier * self:upgrade_value("player", "armor_regen_timer_multiplier", 1)
@@ -240,6 +240,8 @@ function PlayerManager:body_armor_regen_multiplier(moving, health_ratio)
 	multiplier = multiplier * self:team_upgrade_value("armor", "regen_time_multiplier", 1)
 	multiplier = multiplier * self:team_upgrade_value("armor", "passive_regen_time_multiplier", 1)
 	multiplier = multiplier * self:upgrade_value("player", "perk_armor_regen_timer_multiplier", 1)
+
+	multiplier = multiplier * self:upgrade_value("player", tostring(override_armor or managers.blackmarket:equipped_armor(true, true)) .. "_armor_regen_timer_mult", 1)
 
 	if not moving then
 		multiplier = multiplier * managers.player:upgrade_value("player", "armor_regen_timer_stand_still_multiplier", 1)
@@ -273,6 +275,10 @@ function PlayerManager:movement_speed_multiplier(speed_state, bonus_multiplier, 
 	local multiplier = 1
 	local armor_penalty = self:mod_movement_penalty(self:body_armor_value("movement", upgrade_level, 1))
 	multiplier = multiplier + armor_penalty - 1
+
+	if upgrade_level == 7 then
+		multiplier = multiplier + self:upgrade_value("player", "level_7_armor_movement_speed_addend", 0)
+	end
 
 	if bonus_multiplier then
 		multiplier = multiplier + bonus_multiplier - 1
@@ -1370,13 +1376,16 @@ end
 
 --Get health damage reduction gained via skills.
 --Crashes mentioning this function mean that there is a syntax error in the file.
-function PlayerManager:get_deflection_from_skills()
+function PlayerManager:get_deflection_from_skills(override_armor)
 	local armor_data = tweak_data.blackmarket.armors[managers.blackmarket:equipped_armor(true, true)]
 	local addend = 0
 
 	local addend = 0
 
 	addend = addend + self:upgrade_value("player", "deflection_addend", 0)
+	
+	addend = addend + self:upgrade_value("player", tostring(override_armor or managers.blackmarket:equipped_armor(true, true)) .. "_armor_deflection_addend", 0)
+
 	--Grinder Flak Jacket deflection modifier
 	if armor_data.upgrade_level == 5 then
 		addend = addend + self:upgrade_value("player", "level_5_deflection_addend_grinder", 0)
@@ -1800,7 +1809,11 @@ function PlayerManager:_trigger_expres(equipped_unit, variant, killed_unit)
 	local player_unit = self:player_unit()
 
 	if alive(player_unit) then
-		player_unit:character_damage():add_armor_stored_health(self:upgrade_value("player", "armor_health_store_amount", 0))
+		local armor_data = tweak_data.blackmarket.armors[managers.blackmarket:equipped_armor(true, true)]
+		local upgrade_level = armor_data and armor_data.upgrade_level or 1
+		local amount = self:body_armor_value("skill_health_store_on_kill", upgrade_level, 1)
+		amount = amount + self:upgrade_value("player", "armor_health_store_amount", 0)
+		player_unit:character_damage():add_armor_stored_health(amount)
 	end
 end
 

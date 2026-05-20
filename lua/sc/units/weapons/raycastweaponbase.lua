@@ -234,15 +234,24 @@ end
 
 local ids_volley = Idstring("volley")
 function RaycastWeaponBase:get_object_damage_mult(is_explosion)
+	local mult = 1
 	if is_explosion then
-		return self._object_damage_mult_exp
-	elseif self._fire_mode and self._fire_mode == ids_volley then
-		return self._object_damage_mult_volley
-	elseif self._rays and self._rays == 1 and self._object_damage_mult_single_ray then
-		return self._object_damage_mult_single_ray
+			return self._object_damage_mult_exp
 	else
-		return self._object_damage_mult
+		if self._fire_mode and self._fire_mode == ids_volley and self._object_damage_mult_volley then
+			mult = self._object_damage_mult_volley
+		elseif self._rays and self._rays == 1 and self._object_damage_mult_single_ray then
+			mult = self._object_damage_mult_single_ray
+		elseif self._object_damage_mult then
+			mult = self._object_damage_mult
+		end
+
+		for _, category in ipairs(self:categories()) do
+			mult = mult * managers.player:upgrade_value(category, "object_damage_bonus", 1)
+		end
 	end
+
+	return mult
 end
 
 function RaycastWeaponBase:is_knock_down()
@@ -1596,7 +1605,7 @@ function FlameBulletBase:start_dot_damage(col_ray, weapon_unit, dot_data, weapon
 
 	if dot_data.use_weapon_damage_falloff_chance then
 		if weap_base and weap_base.get_damage_falloff then
-			chance = weap_base:get_damage_falloff(chance, col_ray, user_unit)
+			chance = weap_base:get_damage_falloff(chance, col_ray, user_unit, nil, nil, dot_data.falloff_chance_lerp or 1)
 		end
 	end
 
@@ -1662,6 +1671,10 @@ function FlameBulletBase:start_dot_damage(col_ray, weapon_unit, dot_data, weapon
 
 	if not friendly_fire then 
 		managers.fire:add_doted_enemy(data)
+	end
+
+	if dot_data.no_dot_stun then
+		return
 	end
 
 	if distance and dot_data.dot_stun_max_distance and weap_base and weap_base.near_falloff_distance and distance > weap_base.near_falloff_distance then

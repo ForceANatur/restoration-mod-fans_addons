@@ -1893,6 +1893,7 @@ function BlackMarketTweakData:_init_projectiles(tweak_data)
 		"dart_daze",
 		"dart_revive",
 		"laser_watch",
+		"flun_flare",
 		--Resmod projectiles
 		"bravo_frag",
 		"cluster_fuck",
@@ -2004,6 +2005,7 @@ function BlackMarketTweakData:_init_projectiles(tweak_data)
 	self.projectiles.sticky_grenade.no_cheat_count = true
 	self.projectiles.molotov.no_cheat_count = true
 	self.projectiles.fir_com.no_cheat_count = true
+	self.projectiles.flun_flare.no_cheat_count = true
 
 	--Animation overrides for grenades so they aren't shitty. Like seriously, Javelin throw for grenades..?	
 	--HE
@@ -3966,9 +3968,9 @@ function BlackMarketTweakData:_init_melee_weapons(tweak_data)
 			table.insert(melee_anim, "halloween_sword")
 			self:_clear_melee_anim_vars("halloween_sword")
 		end
-		if self.melee_weapons.zweihander then
-			table.insert(melee_anim, "zweihander")
-			self:_clear_melee_anim_vars("zweihander")
+		if self.melee_weapons.klara then
+			table.insert(melee_anim, "klara")
+			self:_clear_melee_anim_vars("klara")
 		end
 		if self.melee_weapons.broad then
 			table.insert(melee_anim, "broad")
@@ -4006,6 +4008,7 @@ function BlackMarketTweakData:_init_melee_weapons(tweak_data)
 		--made into an alternative directional set to "melee_great" that's suited for wider grips though it lacks the stab anim
 		melee_anim = {
 			'hockey','barbedwire','baseballbat','stick',
+			'bonk','bonk2',
 			'piggy_hammer','dingdong','alien_maul',
 			'beardy','fireaxe'
 		}
@@ -4036,7 +4039,8 @@ function BlackMarketTweakData:_init_melee_weapons(tweak_data)
 		end
 			--melee_beardy directional attacks without needing charge
 			melee_anim = {
-				'hockey','barbedwire','baseballbat','stick'
+				'hockey','barbedwire','baseballbat','stick',
+				'bonk','bonk2'
 			}
 			for i, melee_id in ipairs(melee_anim) do
 				if self.melee_weapons[melee_id] then
@@ -4913,8 +4917,11 @@ function BlackMarketTweakData:_init_melee_weapons(tweak_data)
 		self.melee_weapons.aziz.stats.speed_mult = 1.1
 
 		--woo free tasers--
-		self.melee_weapons.zeus.tase_data = nil
 		self.melee_weapons.zeus.special_weapon = "taser"
+		self.melee_weapons.zeus.tase_data = {
+			tase_strength = "light",
+			tase_strength_charged = "heavy",
+		}
 		self.melee_weapons.zeus.info_id = "bm_melee_zeus_info"
 		self.melee_weapons.zeus.stats.cleave = 1
 		self.melee_weapons.zeus.stats.raycasts = 8
@@ -4926,11 +4933,14 @@ function BlackMarketTweakData:_init_melee_weapons(tweak_data)
 		self.melee_weapons.zeus.stats.charge_time = 0.6
 		self.melee_weapons.zeus.stats.range = 155
 		self.melee_weapons.zeus.stats.concealment = 29
-		self.melee_weapons.zeus.stats.speed_mult = 1.1
+		self.melee_weapons.zeus.stats.speed_mult = 0.9
 			--RIP Buzzer meta--
 			self.melee_weapons.taser.info_id = "bm_melee_taser_info"
-			self.melee_weapons.taser.tase_data = nil
 			self.melee_weapons.taser.special_weapon = "taser"
+			self.melee_weapons.taser.tase_data = {
+				tase_strength = "light",
+				tase_strength_charged = "heavy",
+			}
 			self.melee_weapons.taser.stats.cleave = 1
 			self.melee_weapons.taser.stats.raycasts = 8
 			self.melee_weapons.taser.stats.min_damage = 1.2
@@ -4940,11 +4950,14 @@ function BlackMarketTweakData:_init_melee_weapons(tweak_data)
 			self.melee_weapons.taser.stats.charge_time = 0.8
 			self.melee_weapons.taser.stats.range = 165
 			self.melee_weapons.taser.stats.concealment = 29
-			self.melee_weapons.taser.stats.speed_mult = 1.1
+			self.melee_weapons.taser.stats.speed_mult = 0.9
 			--Zap Stick--
-			self.melee_weapons.funder_strike.info_id = "bm_melee_taser_info"
-			self.melee_weapons.funder_strike.tase_data = nil
+			--self.melee_weapons.funder_strike.info_id = "bm_melee_taser_info"
 			self.melee_weapons.funder_strike.special_weapon = "taser"
+			self.melee_weapons.funder_strike.tase_data = {
+				tase_strength = "heavy",
+				tase_strength_charged = "heavy",
+			}
 			self.melee_weapons.funder_strike.stats.cleave = 1
 			self.melee_weapons.funder_strike.stats.raycasts = 10
 			self.melee_weapons.funder_strike.stats.min_damage = 2.4
@@ -4954,7 +4967,7 @@ function BlackMarketTweakData:_init_melee_weapons(tweak_data)
 			self.melee_weapons.funder_strike.stats.charge_time = 1.5
 			self.melee_weapons.funder_strike.stats.range = 170
 			self.melee_weapons.funder_strike.stats.concealment = 28
-			self.melee_weapons.funder_strike.stats.speed_mult = 1.0
+			self.melee_weapons.funder_strike.stats.speed_mult = 0.8
 
 		--Money money money--
 		self.melee_weapons.moneybundle.info_id = "bm_melee_moneybundle_info"
@@ -5055,6 +5068,10 @@ function BlackMarketTweakData:_init_melee_weapons(tweak_data)
 		self.melee_weapons.slot_lever.stats.raycasts_charge = 15
 		self.melee_weapons.slot_lever.info_id = "bm_melee_slot_lever_info"
 		self.melee_weapons.slot_lever.special_weapon = "hyper_crit"
+		self.melee_weapons.slot_lever.crit_stats = {
+			chance = 0.05,
+			sound = "bell_ring"
+		}
 		self.melee_weapons.slot_lever.stats.min_damage = 4.5
 		self.melee_weapons.slot_lever.stats.max_damage = 9.001
 		self.melee_weapons.slot_lever.stats.min_damage_effect = 6.0
@@ -5299,6 +5316,8 @@ function BlackMarketTweakData:_init_melee_weapons(tweak_data)
 		self.melee_weapons.barbedwire.stats.range = 200
 		self.melee_weapons.barbedwire.stats.concealment = 25
 		self.melee_weapons.barbedwire.stats.speed_mult = 1.05
+		self.melee_weapons.barbedwire.headshot_damage_multiplier = 2
+		self.melee_weapons.barbedwire.charge_bonus_start = 0.99
 		--It has a crowbar we can't use--
 		self.melee_weapons.dingdong.info_id = "bm_melee_dingdong_info"
 		self.melee_weapons.dingdong.stats.cleave = 3
@@ -5381,6 +5400,41 @@ function BlackMarketTweakData:_init_melee_weapons(tweak_data)
 			self.melee_weapons.spoon.stats.speed_mult = 1.08
 			self.melee_weapons.spoon.stats.charge_bonus_start = 0.5
 			self.melee_weapons.spoon.stats.charge_bonus_speed = 1.25
+			--I'LL USE THIS FRYING PAN
+			self.melee_weapons.bonk.stats.cleave = 2
+			self.melee_weapons.bonk.stats.raycasts = 20
+			self.melee_weapons.bonk.stats.raycasts_h = 25
+			self.melee_weapons.bonk.stats.raycasts_charge_h = 25
+			self.melee_weapons.bonk.stats.min_damage = 6
+			self.melee_weapons.bonk.stats.max_damage = 12.001
+			self.melee_weapons.bonk.stats.min_damage_effect = 9.0
+			self.melee_weapons.bonk.stats.max_damage_effect = 12.0
+			self.melee_weapons.bonk.stats.charge_time = 2.1
+			self.melee_weapons.bonk.stats.range = 160
+			self.melee_weapons.bonk.stats.concealment = 28
+			self.melee_weapons.bonk.stats.speed_mult = 1.12
+			self.melee_weapons.bonk.stats.charge_bonus_start = 0.5
+			self.melee_weapons.bonk.stats.charge_bonus_speed = 1.25
+			--AS A DRYING PAN
+			self.melee_weapons.bonk2.special_weapon = "hyper_crit"
+			self.melee_weapons.bonk2.crit_stats = {
+				chance = 0.10,
+				sound = "cash_loot_drop_reveal"
+			}
+			self.melee_weapons.bonk2.stats.cleave = 2
+			self.melee_weapons.bonk2.stats.raycasts = 20
+			self.melee_weapons.bonk2.stats.raycasts_h = 25
+			self.melee_weapons.bonk2.stats.raycasts_charge_h = 25
+			self.melee_weapons.bonk2.stats.min_damage = 6
+			self.melee_weapons.bonk2.stats.max_damage = 12.001
+			self.melee_weapons.bonk2.stats.min_damage_effect = 9.0
+			self.melee_weapons.bonk2.stats.max_damage_effect = 12.0
+			self.melee_weapons.bonk2.stats.charge_time = 2.3
+			self.melee_weapons.bonk2.stats.range = 160
+			self.melee_weapons.bonk2.stats.concealment = 27
+			self.melee_weapons.bonk2.stats.speed_mult = 0.98
+			self.melee_weapons.bonk2.stats.charge_bonus_start = 0.5
+			self.melee_weapons.bonk2.stats.charge_bonus_speed = 1.25
 		--We'll put you in the hospital for free eh?--
 		self.melee_weapons.hockey.info_id = "bm_melee_hockey_info"
 		self.melee_weapons.hockey.stats.cleave = 1
@@ -5766,6 +5820,7 @@ function BlackMarketTweakData:_init_melee_weapons(tweak_data)
 		self.melee_weapons.chef.stats.concealment = 29
 		self.melee_weapons.chef.stats.speed_mult = 1.1
 		self.melee_weapons.chef.special_weapon = "panic"
+		self.melee_weapons.chef.ignore_charge_speed = true
 		--I wonder how many people caught that this is a Shawn the Sheep reference--
 		self.melee_weapons.shawn.info_id = "bm_melee_shawn_info"
 		self.melee_weapons.shawn.stats.cleave = 1
@@ -6097,10 +6152,10 @@ function BlackMarketTweakData:_init_melee_weapons(tweak_data)
 		self.melee_weapons.morning.stats.max_damage = 12.001
 		self.melee_weapons.morning.stats.min_damage_effect = 4.5
 		self.melee_weapons.morning.stats.max_damage_effect = 12.0
-		self.melee_weapons.morning.stats.charge_time = 1.8
+		self.melee_weapons.morning.stats.charge_time = 2.0
 		self.melee_weapons.morning.stats.range = 180
 		self.melee_weapons.morning.stats.concealment = 25
-		self.melee_weapons.morning.stats.speed_mult = 1.05
+		self.melee_weapons.morning.stats.speed_mult = 0.95
 
 		--FREEEEEEEDOM--
 		self.melee_weapons.freedom.info_id = "bm_melee_freedom_info"
@@ -6332,6 +6387,7 @@ Hooks:PostHook(BlackMarketTweakData, "init", "CustomMelee", function(self, tweak
 	end
 
 	self.melee_weapons.halloween_sword.attack_pattern = "bm_melee_pattern_great_no_stab"
+	self.melee_weapons.halloween_sword.ignore_charge_speed = true
 	self.melee_weapons.halloween_sword.stats.raycasts = 20
 	self.melee_weapons.halloween_sword.stats.raycasts_h = 30
 	self.melee_weapons.halloween_sword.stats.raycasts_charge = nil
@@ -6350,22 +6406,22 @@ Hooks:PostHook(BlackMarketTweakData, "init", "CustomMelee", function(self, tweak
 	self.melee_weapons.titham.stats.range = 230
 	self.melee_weapons.titham.stats.speed_mult = 0.93
 
-	self.melee_weapons.zweihander.info_id = "bm_melee_zweihander_info"
-	self.melee_weapons.zweihander.stats.cleave = 5
-	self.melee_weapons.zweihander.stats.raycasts = 25
-	self.melee_weapons.zweihander.stats.raycasts_h = 35
-	self.melee_weapons.zweihander.stats.raycasts_charge = 6
-	self.melee_weapons.zweihander.stats.min_damage = 9
-	self.melee_weapons.zweihander.stats.max_damage = 18.001
-	self.melee_weapons.zweihander.stats.min_damage_effect = 4.0
-	self.melee_weapons.zweihander.stats.max_damage_effect = 12.0
-	self.melee_weapons.zweihander.stats.charge_time = 2.5
-	self.melee_weapons.zweihander.stats.range = 250
-	self.melee_weapons.zweihander.stats.charge_bonus_start = 0.9
-	self.melee_weapons.zweihander.stats.charge_bonus_range = 50
-	self.melee_weapons.zweihander.stats.concealment = 25
-	self.melee_weapons.zweihander.stats.speed_mult = 0.91
-	self.melee_weapons.zweihander.counter_damage = 18
+	self.melee_weapons.klara.info_id = "bm_melee_klara_info"
+	self.melee_weapons.klara.stats.cleave = 5
+	self.melee_weapons.klara.stats.raycasts = 25
+	self.melee_weapons.klara.stats.raycasts_h = 35
+	self.melee_weapons.klara.stats.raycasts_charge = 6
+	self.melee_weapons.klara.stats.min_damage = 9
+	self.melee_weapons.klara.stats.max_damage = 18.001
+	self.melee_weapons.klara.stats.min_damage_effect = 4.0
+	self.melee_weapons.klara.stats.max_damage_effect = 12.0
+	self.melee_weapons.klara.stats.charge_time = 2.5
+	self.melee_weapons.klara.stats.range = 250
+	self.melee_weapons.klara.stats.charge_bonus_start = 0.9
+	self.melee_weapons.klara.stats.charge_bonus_range = 50
+	self.melee_weapons.klara.stats.concealment = 25
+	self.melee_weapons.klara.stats.speed_mult = 0.91
+	self.melee_weapons.klara.counter_damage = 18
 
 	self.melee_weapons.broad.anim_attack_charged_vars = nil
 	self.melee_weapons.broad.anim_attack_charged_left_vars = nil
@@ -6903,6 +6959,8 @@ Hooks:PostHook(BlackMarketTweakData, "init", "CustomMelee", function(self, tweak
 		self.melee_weapons.invincible.stats.raycasts_charge = 25
 		self.melee_weapons.invincible.dot_data_name = "melee_bleed"
 		self.melee_weapons.invincible.anim_speed_mult = 0.8695
+		self.melee_weapons.invincible.headshot_damage_multiplier = nil
+		self.melee_weapons.invincible.charge_bonus_start = nil
 	end
 	if self.melee_weapons.astranger then --Rikerus's L'Etranger (Pitchfork)
 		self.melee_weapons.astranger.info_id = "bm_melee_number_3_info"
@@ -6962,6 +7020,7 @@ Hooks:PostHook(BlackMarketTweakData, "init", "CustomMelee", function(self, tweak
 		self.melee_weapons.dragon_slayer.attack_pattern = "bm_melee_pattern_great_no_stab"
 		self.melee_weapons.dragon_slayer.info_id = "bm_melee_goat_info"
 		self.melee_weapons.dragon_slayer.special_weapon = "panic"
+		self.melee_weapons.dragon_slayer.ignore_charge_speed = true
 		self.melee_weapons.dragon_slayer.stats = deep_clone(self.melee_weapons.halloween_sword.stats)
 		self.melee_weapons.dragon_slayer.stats.min_damage_effect = 9.0
 		self.melee_weapons.dragon_slayer.stats.max_damage_effect = 24.0
@@ -7034,6 +7093,8 @@ Hooks:PostHook(BlackMarketTweakData, "init", "CustomMelee", function(self, tweak
 		self.melee_weapons.predator_wristblades.dot_data_name = "melee_bleed"
 		self.melee_weapons.predator_wristblades.stats = deep_clone(self.melee_weapons.barbedwire.stats)
 		self.melee_weapons.predator_wristblades.anim_speed_mult = 0.67
+		self.melee_weapons.predator_wristblades.headshot_damage_multiplier = nil
+		self.melee_weapons.predator_wristblades.charge_bonus_start = nil
 	end
 
 	if self.melee_weapons.revenant_heirloom then --PlayBONK, Masavik and Ommfe's Revenant Heirloom Scythe
@@ -7118,6 +7179,7 @@ Hooks:PostHook(BlackMarketTweakData, "init", "CustomMelee", function(self, tweak
 		self.melee_weapons.cqc20.stats.min_damage_effect = 6.0
 		self.melee_weapons.cqc20.stats.max_damage_effect = 6.0
 		self.melee_weapons.cqc20.stats.cleave = 1
+		self.melee_weapons.cqc20.stats.concealment = 20
 		self.melee_weapons.cqc20.stats.charge_bonus_start = nil
 		self.melee_weapons.cqc20.stats.charge_bonus_speed = nil
 		self.melee_weapons.cqc20.stats.charge_time = 3

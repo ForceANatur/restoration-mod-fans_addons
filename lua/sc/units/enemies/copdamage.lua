@@ -70,7 +70,6 @@ local enemies_visor = {
 	ids_func("units/pd2_mod_omnia/characters/ene_omnia_heavy/ene_omnia_heavy_husk"),	
 	ids_func("units/pd2_mod_omnia/characters/ene_grenadier_1/ene_grenadier_1"),
 	ids_func("units/pd2_mod_omnia/characters/ene_grenadier_1/ene_grenadier_1_husk"),
-	ids_func("units/pd2_mod_omnia/characters/ene_grenadier_1/ene_grenadier_1_husk"),
 	ids_func("units/pd2_mod_nc/characters/ene_police_heavygunner/ene_police_heavygunner"),
 	ids_func("units/pd2_mod_nc/characters/ene_police_heavygunner/ene_police_heavygunner_husk"),
 	ids_func("units/pd2_mod_halloween/characters/ene_police_heavygunner/ene_police_heavygunner"),
@@ -124,9 +123,7 @@ local enemies_plink = {
 	ids_func("units/pd2_mod_reapers/characters/ene_fbi_heavy_1/ene_fbi_heavy_1_husk"),
 	ids_func("units/pd2_mod_reapers/characters/ene_fbi_heavy_r870/ene_fbi_heavy_r870"),
 	ids_func("units/pd2_mod_reapers/characters/ene_fbi_heavy_r870/ene_fbi_heavy_r870_husk"),
-
-	ids_func("units/pd2_dlc_bph/characters/ene_murky_heavyg/ene_murky_heavyg"),
-	ids_func("units/pd2_dlc_bph/characters/ene_murky_heavyg/ene_murky_heavyg_husk"),
+	
 }
 
 local grenadier_smash = {
@@ -1020,10 +1017,11 @@ function CopDamage:damage_bullet(attack_data)
 		local pierce_armor = nil
 		
 		--Just as a fallback, ugly as sin but whatever
-		if attack_data.attacker_unit:base() and not attack_data.attacker_unit:base().sentry_gun and not weap_base.thrower_unit then
-			if attack_data.weapon_unit:base():armor_piercing_chance() and attack_data.weapon_unit:base():armor_piercing_chance() > 0 then
+		if attack_data.attacker_unit:base() and --[[not attack_data.attacker_unit:base().sentry_gun and]] not weap_base.thrower_unit then
+			local weapon_ap = attack_data.weapon_unit:base().armor_piercing_chance and attack_data.weapon_unit:base():armor_piercing_chance()
+			if weapon_ap and weapon_ap > 0 then
 				pierce_armor = true
-				damage = damage * attack_data.weapon_unit:base():armor_piercing_chance() or 1
+				damage = damage * weapon_ap or 1
 			end
 		end		
 
@@ -1146,11 +1144,11 @@ function CopDamage:damage_bullet(attack_data)
 	end
 
 	if not self._damage_reduction_multiplier and head then
-		local weapon_hs_mult = attack_data.weapon_unit:base()._hs_mult or 1
+		local is_captain = (self._unit:base():has_tag("captain") or self._unit:base():has_tag("boss"))
+		local weapon_hs_mult = (is_captain and 1) or attack_data.weapon_unit:base()._hs_mult or 1
 		local weapon_ene_hs_mult = attack_data.weapon_unit:base()._ene_hs_mult or 1
-		local is_captain = weapon_hs_mult > 1 and self._char_tweak.ends_assault_on_death
 		if self._char_tweak.headshot_dmg_mul then
-			damage = math.max( damage, damage * ((((self._char_tweak.headshot_dmg_mul - 1) * weapon_ene_hs_mult) + 1) * headshot_multiplier) * ((not is_captain and weapon_hs_mult) or 1) )
+			damage = math.max( damage, damage * ((((self._char_tweak.headshot_dmg_mul - 1) * weapon_ene_hs_mult) + 1) * headshot_multiplier) * weapon_hs_mult)
 		else
 			damage = self._health * 10
 		end
@@ -1674,10 +1672,9 @@ function CopDamage:damage_melee(attack_data)
 	local is_player = attack_data.attacker_unit == managers.player:player_unit() and true
 	local damage_clamp = self._char_tweak.DAMAGE_CLAMP_MELEE
 	
-	if hit_body and impenetrable_armour[hit_body:name():key()] then -- nothing
-		return
+	if hit_body and impenetrable_armour[hit_body:name():key()] then
+		--return
 	end
-
 
 	if is_player then
 		if self._char_tweak.priority_shout then
@@ -2203,10 +2200,6 @@ function CopDamage:die(attack_data)
 		if boom_boom then
 			self:kamikaze_bag_explode()
 		end
-	end
-
-	if self._unit:base()._tweak_table == "kamikaze" then
-		self:kamikaze_bag_explode()
 	end
 	
 	if self._char_tweak.reduce_summers_dr_on_death then
@@ -3065,7 +3058,9 @@ function CopDamage:damage_tase(attack_data)
 		self:_apply_damage_to_health(damage)
 	end
 
-	if result.type == "taser_tased" and (attack_data.forced or not self._unit:anim_data() or not self._unit:anim_data().act) then
+	if (result.type == "taser_tased" or result.type == "heavy_hurt") and (attack_data.forced or not self._unit:anim_data() or not self._unit:anim_data().act) then
+		self.is_tased = true
+
 		if self._tase_effect then
 			World:effect_manager():fade_kill(self._tase_effect)
 		end

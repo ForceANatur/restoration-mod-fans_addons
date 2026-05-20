@@ -92,29 +92,29 @@ local damage_set = {
 }
 local crew_wep_preset = {
 	smg = {
-		mag_capacity = 45,
+		mag_capacity = 42,
 		fire_rate = 0.0727272,
 		damage = 4.0
 	},
 	assault_rifle = {
-		mag_capacity = 25,
+		mag_capacity = 24,
 		fire_rate = 0.1090909,
 		damage = 6.0
 	},
 	lmg = {
-		mag_capacity = 100,
+		mag_capacity = 125,
 		fire_rate = 0.0833333,
 		damage = 3.6
 	},
 	shotgun_auto = {
-		mag_capacity = 8,
+		mag_capacity = 6,
 		fire_rate = 0.6,
-		damage = 7.0
+		damage = 9.0
 	},
 	shotgun_pump = {
-		mag_capacity = 5,
+		mag_capacity = 4,
 		fire_rate = 1.2,
-		damage = 13.0
+		damage = 18.0
 	},
 	sniper_auto = {
 		mag_capacity = 8,
@@ -132,13 +132,13 @@ local crew_wep_preset = {
 	function WeaponTweakData:_init_data_sentry_gun_npc()
 		self.sentry_gun.categories = {}
 		self.sentry_gun.name_id = "debug_sentry_gun"
-		self.sentry_gun.DAMAGE = 2.8
+		self.sentry_gun.DAMAGE = 3.0
 		self.sentry_gun.SUPPRESSION = 1
 		self.sentry_gun.SPREAD = 2
 		self.sentry_gun.FIRE_RANGE = 2500
 		self.sentry_gun.muzzleflash = "effects/payday2/particles/weapons/9mm_auto"
 		self.sentry_gun.muzzleflash_silenced = "effects/payday2/particles/weapons/9mm_auto_silence"
-		self.sentry_gun.auto.fire_rate = 0.175
+		self.sentry_gun.auto.fire_rate = 0.1875
 		self.sentry_gun.alert_size = 2500
 		self.sentry_gun.BAG_DMG_MUL = 0.25
 		self.sentry_gun.SHIELD_DMG_MUL = 0
@@ -5953,14 +5953,24 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.fmg9.stats_modifiers = nil
 						self.fmg9.panic_suppression_chance = 0.05
 						self.fmg9.swap_speed_multiplier = 0.45
+						local empty_timer = 3.42
+						local not_empty_timer = 1.87
 						self.fmg9.timers = {
-							reload_empty = 3.42,
+							reload_empty = empty_timer,
 							reload_exit_empty = 0.85,
-							reload_not_empty = 1.87,
-							reload_exit_not_empty = 0.8,
+							reload_not_empty = not_empty_timer,
+							reload_exit_not_empty = 1,
 							unequip = 1.7,
 							equip = 1.4
 						}
+						if SystemFS:exists("assets/mod_overrides/New Wasp-DS Animations V2") then
+							self.fmg9.timers.reload_empty = 2.4
+							self.fmg9.timers.reload_exit_empty = 0.66
+							self.fmg9.reload_speed_multiplier = self.fmg9.timers.reload_empty / empty_timer
+							self.fmg9.timers.reload_not_empty = 1.6
+							self.fmg9.timers.reload_exit_not_empty = 0.5
+							self.fmg9.reload_not_empty_speed_multiplier = self.fmg9.timers.reload_not_empty / (self.fmg9.reload_speed_multiplier * not_empty_timer)				
+						end
 						self.fmg9.use_unequip_swap = true
 
 					--Beretta Auto (93R)
@@ -9648,8 +9658,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.new_mp5.kick = self.stat_info.kick_tables.even_recoil
 						self.new_mp5.kick_pattern = {
 							{0, self.stat_info.kick_tables.moderate_right_kick},
-							{3, self.stat_info.kick_tables.harsh_right_kick},
 							{5, self.stat_info.kick_tables.horizontal_right_recoil},
+							{8, self.stat_info.kick_tables.right_recoil},
 							{12, self.stat_info.kick_tables.moderate_kick},
 							{16, self.stat_info.kick_tables.left_recoil},
 							{22, self.stat_info.kick_tables.moderate_left_kick},
@@ -9692,8 +9702,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.x_mp5.kick = self.stat_info.kick_tables.even_recoil
 						self.x_mp5.kick_pattern = {
 							{0, self.stat_info.kick_tables.moderate_right_kick},
-							{3, self.stat_info.kick_tables.harsh_right_kick},
 							{5, self.stat_info.kick_tables.horizontal_right_recoil},
+							{8, self.stat_info.kick_tables.right_recoil},
 							{12, self.stat_info.kick_tables.moderate_kick},
 							{16, self.stat_info.kick_tables.left_recoil},
 							{22, self.stat_info.kick_tables.moderate_left_kick},
@@ -14869,7 +14879,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.boot.AMMO_MAX = 30
 						self.boot.CLIP_AMMO_MAX = 6
 						self.boot.fire_mode_data.fire_rate = 1.2
-						self.boot.fire_rate_multiplier = 1.1
+						self.boot.fire_rate_multiplier = 1.2
 						self.boot.rays = 8
 						self.boot.muzzleflash = "effects/payday2/particles/weapons/big_51b_auto_fps" --"effects/particles/shotgun/shotgun_gen"
 						self.boot.kick = self.stat_info.kick_tables.right_kick
@@ -15714,6 +15724,52 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						self.rpg7.timers.reload_exit_empty = 3.1
 						self.rpg7.timers.reload_exit_not_empty = 3.1
 
+					--Flare Gun
+						self.flun.categories = {
+							"grenade_launcher",
+							"gl_pistol",
+							"keep_ammo_max"
+						}
+						self.flun.upgrade_blocks = {
+							weapon = {
+								"clip_ammo_increase"
+							}
+						}
+						self.flun.has_description = true
+						self.flun.fire_mode_data.fire_rate = 0.3
+						self.flun.AMMO_MAX = 15
+						self.flun.kick = self.stat_info.kick_tables.moderate_kick
+						self.flun.rays = 1
+						self.flun.alt_shotgunraycast = true
+						self.flun.supported = true
+						self.flun.ads_speed = 0.160
+						self.flun.damage_falloff = {
+							start_dist = 300,
+							end_dist = 1800,
+							min_mult = 0.1333
+						}
+						self.flun.stats = {
+							damage = 30,
+							spread = 51,
+							recoil = 51,
+							spread_moving = 5,
+							zoom = 1,
+							concealment = 30,
+							suppression = 8,
+							alert_size = 2,
+							extra_ammo = 101,
+							total_ammo_mod = 400,
+							value = 1,
+							reload = 25
+						}
+						self.flun.stats_modifiers = { damage = 2 }
+						self.flun.reload_speed_multiplier = 1
+						self.flun.timers.reload_empty = 1.62
+						self.flun.timers.reload_exit_empty = 1
+						self.flun.timers.reload_not_empty = 1.62
+						self.flun.timers.reload_exit_not_empty = 1
+						self.flun.panic_suppression_chance = 0.05
+
 			--OVE9000 SAW
 				self.saw.has_description = true
 				self.saw.upgrade_blocks = {
@@ -15842,7 +15898,10 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			--self.shatters_fury.animations.reload_name_id = "chinchilla"
 			self.shatters_fury.reload_speed_multiplier = 0.67
 			self.shatters_fury.force_shake = true
-			blanket_timer("shatters_fury", shared_timers.rage)
+			self.shatters_fury.timers.reload_empty = 1.44
+			self.shatters_fury.timers.reload_exit_empty = 1.2
+			self.shatters_fury.timers.reload_not_empty = 1.44
+			self.shatters_fury.timers.reload_exit_not_empty = 1.2
 			--this line doesn't do shit
 			--self.shatters_fury.custom = true
 		end
@@ -16005,9 +16064,9 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			}
 			self.socom.stats_modifiers = nil
 			self.socom.panic_suppression_chance = 0.05
+			self.socom.lock_slide_alt = true
 			--self.socom.animations.reload_name_id = "sparrow"
-			self.socom.timers.reload_exit_empty = 0.7
-			self.socom.timers.reload_exit_not_empty = 0.65
+			blanket_timer("socom", shared_timers.glock)
 		end
 		--Akimbo Anubis .45
 		if self.x_socom then
@@ -25556,12 +25615,12 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.rem1858.supported = true
 				self.rem1858.ads_speed = 0.180
 				self.rem1858.damage_falloff = {
-					start_dist = 1200,
-					end_dist = 3200,
+					start_dist = 900,
+					end_dist = 3000,
 					min_mult = 0.333333
 				}
 				self.rem1858.stats = {
-					damage = 90,
+					damage = 60,
 					spread = 82,
 					recoil = 45,
 					spread_moving = 9,
@@ -25578,6 +25637,10 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.rem1858.panic_suppression_chance = 0.05
 				self.rem1858.use_unequip_swap = true
 				self.rem1858.swap_speed_multiplier = 0.63
+				self.rem1858.hs_mult = 1.5
+				self.rem1858.armor_piercing_chance = 0.5
+				self.rem1858.can_shoot_through_enemy = true
+				self.rem1858.can_shoot_through_enemy_unlim = true
 				self.rem1858.always_play_anims = true
 				self.rem1858.timers.reload_empty = 2.2
 				self.rem1858.timers.reload_exit_empty = 1.69
@@ -31661,6 +31724,99 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			end
 
 		--[[     HYLIE'S MODS     ]]--
+
+			if self.minecraft_bow then
+				-- I am placing blocks and shit cuz I'm in fuckin' MINECRAAAAAAAAAAFT
+				-- OOOOOOOOOOOOOOOHHHHHHHHHHHHHH MYYYYYYYYYYYYYYYYYYYYYYYY GOOOOOOOOOOOOOOOOOOOOOOOOOD
+				-- IS THAT FUCKIN PIG BECAUSE IM FUCKIN STEEEEEEEEEEEEEVE IIIIIIII AAAAAAAAAMM FUUUUUUUUUCKIN STEEEEEEEEEVE FUCK YEAH
+				self.minecraft_bow.upgrade_blocks = {
+					weapon = {
+						"clip_ammo_increase"
+					}
+				}
+				self.minecraft_bow.categories = {
+					"bow",
+					"nothing",
+				}
+				self.minecraft_bow.damage_type = "sniper"
+				self.minecraft_bow.has_description = true
+				self.minecraft_bow.desc_id = "bm_minecraft_bow_sc_desc"
+				self.minecraft_bow.kick = self.stat_info.kick_tables.none
+				self.minecraft_bow.charge_data.max_t = 1
+				self.minecraft_bow.not_allowed_in_bleedout = false
+				self.minecraft_bow.supported = true
+				self.minecraft_bow.ads_speed = 0.5
+				self.minecraft_bow.stats = {
+					damage = 10, -- 100 damage minimum, charge up to deal more (like in Minecraft!)
+					spread = 100,
+					recoil = 100,
+					spread_moving = 12,
+					zoom = 1,
+					concealment = 29,
+					suppression = 20,
+					alert_size = 2,
+					extra_ammo = 101,
+					total_ammo_mod = 400,
+					value = 1,
+					reload = 25
+				}
+				self.minecraft_bow.panic_suppression_chance = 0.05
+				self.minecraft_bow.stats_modifiers = {damage = 10}
+				self.minecraft_bow.no_reload_anims = true
+				self.minecraft_bow.timers.reload_not_empty = 0.01
+				self.minecraft_bow.timers.reload_empty = self.minecraft_bow.timers.reload_not_empty
+				self.minecraft_bow.timers.reload_exit_not_empty = 0.01
+				self.minecraft_bow.timers.reload_exit_empty = self.minecraft_bow.timers.reload_exit_not_empty
+			end
+
+			if self.minecraft_bow_alpha then
+				-- I AM BUILDIN SHIIIIIIIIIIIIIIIIT I AM FUCKIIIIIN STIIIIIIIIIIICK
+				-- Yes indeed
+				-- FLINTDHWEKUJFBUWOIEBDFUOIEWQGFUOWEBFUOWBOUFBWOUEFBUO FRIGGIDY GIDDYGIDDIGJKFKJRHUF
+				self.minecraft_bow_alpha.upgrade_blocks = {
+					weapon = {
+						"clip_ammo_increase"
+					}
+				}
+				self.minecraft_bow_alpha.categories = {
+					"bow",
+					"nothing",
+				}
+				self.minecraft_bow_alpha.damage_type = "sniper"
+				self.minecraft_bow_alpha.has_description = true
+				self.minecraft_bow_alpha.desc_id = "bm_minecraft_bow_alpha_sc_desc"
+				self.minecraft_bow_alpha.kick = self.stat_info.kick_tables.none
+				self.minecraft_bow_alpha.charge_data.max_t = 1
+				self.minecraft_bow_alpha.not_allowed_in_bleedout = false
+				self.minecraft_bow_alpha.supported = true
+				self.minecraft_bow_alpha.ads_speed = 0.001
+				self.minecraft_bow_alpha.stats = {
+					damage = 40, -- 400 damage to replicate Minecraft Classic's bows that used to deal 2 hearts (4HP) of damage per hit
+					spread = 88,
+					recoil = 88,
+					spread_moving = 12,
+					zoom = 1,
+					concealment = 29,
+					suppression = 20,
+					alert_size = 2,
+					extra_ammo = 101,
+					total_ammo_mod = 400,
+					value = 1,
+					reload = 25
+				}
+				self.minecraft_bow_alpha.damage_falloff = {
+					start_dist = 3000,
+					end_dist = 9000,
+					min_mult = 1
+				}
+				self.minecraft_bow_alpha.panic_suppression_chance = 0.05
+				self.minecraft_bow_alpha.stats_modifiers = {damage = 10}
+				self.minecraft_bow_alpha.no_reload_anims = true
+				self.minecraft_bow_alpha.timers.reload_not_empty = 0.01
+				self.minecraft_bow_alpha.timers.reload_empty = self.minecraft_bow_alpha.timers.reload_not_empty
+				self.minecraft_bow_alpha.timers.reload_exit_not_empty = 0.01
+				self.minecraft_bow_alpha.timers.reload_exit_empty = self.minecraft_bow_alpha.timers.reload_exit_not_empty
+			end
 
 			if self.tf2sr then
 				self.tf2sr.upgrade_blocks = {
@@ -38478,9 +38634,9 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							final = 1,
 							start = 0,
 							hf = {
-								mod = -0.05,
+								mod = -0.2,
 								init = 1,
-								final = 1.25,
+								final = 1.8,
 								start = 1
 							}
 						}
@@ -38502,9 +38658,9 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							final = 1,
 							start = 0,
 							hf = {
-								mod = -0.1,
+								mod = -0.25,
 								init = 1,
-								final = 1.5,
+								final = 1.8,
 								start = 1
 							}
 						}
@@ -38526,9 +38682,9 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							final = 1,
 							start = 0,
 							hf = {
-								mod = -0.25,
+								mod = -0.5,
 								init = 1,
-								final = 2,
+								final = 1.8,
 								start = 1
 							}
 						}
@@ -38545,8 +38701,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							4
 						},
 						sam = {
-							mod = 2,
-							init = 4,
+							mod = 1.5,
+							init = 3,
 							final = 1,
 							start = 0
 						}
@@ -38564,7 +38720,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 						},
 						sam = {
 							mod = 1,
-							init = 4,
+							init = 3,
 							final = 1,
 							start = 0
 						}
@@ -38581,7 +38737,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							6
 						},
 						sam = {
-							mod = 2,
+							mod = 1.5,
 							init = 3,
 							final = 1,
 							start = 0
@@ -38604,7 +38760,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							final = 1,
 							start = 0,
 							hf = {
-								mod = -0.2,
+								mod = -0.34,
 								init = 1,
 								final = 2,
 								start = 1
@@ -38628,7 +38784,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							final = 1,
 							start = 0,
 							hf = {
-								mod = -0.25,
+								mod = -0.5,
 								init = 1,
 								final = 2,
 								start = 1
@@ -38652,9 +38808,9 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 							final = 1,
 							start = 0,
 							hf = {
-								mod = -0.5,
+								mod = -1,
 								init = 1,
-								final = 3,
+								final = 2,
 								start = 1
 							}
 						}
