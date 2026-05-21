@@ -1856,11 +1856,11 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Eng", function(loc)
 		--Slot Lever
 		["bm_melee_slot_lever_info"] = "GIMME A JACKPOT!\n\nHas a #{skill_color}#5%## chance to deal #{skill_color}#10x## times the damage and knockdown.",
 		--ZAP ZAP MOTHERFUCKER
-		["bm_melee_taser_info"] = "This is the one you have been waiting for. Exact sweet, electrifying revenge against those smug tasers. Eat it, lightning bolt!\n\n#{skill_color}#Electrocutes on impact,## stunning most enemies; a fully charged strike is needed to stun special and elite enemies.\n#{important_1}#Titan-Shields, Titan-Tasers, Titan-Bulldozers and Captains are immune to its stunning effects.##",
+		["bm_melee_taser_info"] = "This is the one you have been waiting for. Exact sweet, electrifying revenge against those smug tasers. Eat it, lightning bolt!\n\n#{skill_color}#Electrocutes on impact,## stunning most enemies; a fully charged strike is needed to stun special and elite enemies.\n#{important_1}#Enforcers, Titan-Shields, Titan-Tasers, Titan-Bulldozers and Captains are immune to its stunning effects.##",
 		--ALSO ZAP ZAP MOTHERFUCKER
-		["bm_melee_zeus_info"] = "This piece of melee equipment might look unstable. But relax, it was made by some kid on the internet, so it’s perfectly safe! Homebrewed and experimental electricity in a gloriously stunning way.\n\n#{skill_color}#Electrocutes on impact,## stunning most enemies; a fully charged strike is needed to stun special and elite enemies.\n#{important_1}#Titan-Shields, Titan-Tasers, Titan-Bulldozers and Captains are immune to its stunning effects.##",
+		["bm_melee_zeus_info"] = "This piece of melee equipment might look unstable. But relax, it was made by some kid on the internet, so it’s perfectly safe! Homebrewed and experimental electricity in a gloriously stunning way.\n\n#{skill_color}#Electrocutes on impact,## stunning most enemies; a fully charged strike is needed to stun special and elite enemies.\n#{important_1}#Enforcers, Titan-Shields, Titan-Tasers, Titan-Bulldozers and Captains are immune to its stunning effects.##",
 		--ALSO ALSO ZAP ZAP MOTHERFUCKER
-		["bm_melee_funder_info"] = "Zappy stick\n\n#{skill_color}#Electrocutes on impact,## stunning most enemies; a fully charged strike is needed to stun special and elite enemies.\n#{important_1}#Titan-Shields, Titan-Tasers, Titan-Bulldozers and Captains are immune to its stunning effects.##",
+		["bm_melee_funder_strike_info"] = "Zappy stick\n\n#{skill_color}#Electrocutes on impact,## stunning most enemies; a fully charged strike is needed to stun special and elite enemies.\n#{important_1}#Enforcers, Titan-Shields, Titan-Tasers, Titan-Bulldozers and Captains are immune to its stunning effects.##",
 		--PANPAKAPAN!
 		["bm_melee_bonk_info"] = "Not for cooking...",
 		["bm_melee_bonk2_info"] = "#{risk}#WINNER WINNER CHICKEN DINNER!##\n\nHas a #{skill_color}#10%## chance to deal #{skill_color}#10x## times the damage and knockdown.",
@@ -5127,7 +5127,8 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 				["RestorationModDisableSoloBoonsDescID"] = "Disable the additional boons the player receives in solo play (Crime.net offline). You difficulty junkie.",
 				["bm_melee_fight_info"] = "KAKATTE KOI!\n\nParrying an enemy attack deals #{skill_color}#120## melee damage to them. This can be increased with skills.\n#{stats_negative}#I'M NOT GONNA SUGARCOAT IT\nR1 + (Triangle)##",
 				["RestorationModLogOutfitStringsDescID"] = "Logs when outfit string updates are called through NetworkPeer - turn this off when youre done for those sweet sweet frames",
-				["bm_melee_erica_info"] = "#{stats_negative}#You will never be a Caber Knight.##\n\nFully charged hits against living enemies have a #{skill_color}#100%## chance to explode dealing #{risk}#720## damage in a #{skill_color}#5## meter radius from the point of impact.\n\n#{important_1}#The explosion deals self-damage.##"
+				["bm_melee_erica_info"] = "#{stats_negative}#You will never be a Caber Knight.##\n\nFully charged hits against living enemies have a #{skill_color}#100%## chance to explode dealing #{risk}#720## damage in a #{skill_color}#5## meter radius from the point of impact.\n\n#{important_1}#The explosion deals self-damage.##",
+				["bm_melee_bonk_info"] = "#{risk}#STOUT SHAKO FOR 2 REFINED##"
 			})
 		end
 
