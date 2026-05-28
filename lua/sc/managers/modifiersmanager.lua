@@ -160,6 +160,30 @@ local replacement_table = {
 	-- LAPD
 	["units/pd2_mod_lapd/characters/ene_shield_2/ene_shield_2"] = "units/pd2_mod_lapd/characters/ene_shield_1/ene_shield_1",
 
+	-- Other America Shields into Bravo Shields
+	-- FBI
+	["units/payday2/characters/ene_shield_1_sc/ene_shield_1_sc"] = "units/pd2_mod_bravo/characters/ene_bravo_shield/ene_bravo_shield",
+	["units/pd2_mod_nypd/characters/ene_shield_1/ene_shield_1"] = "units/pd2_mod_bravo/characters/ene_bravo_shield/ene_bravo_shield",
+	["units/pd2_mod_lapd/characters/ene_shield_1/ene_shield_1"] = "units/pd2_mod_bravo/characters/ene_bravo_shield/ene_bravo_shield",
+
+	-- GenSec
+	["units/payday2/characters/ene_shield_gensec/ene_shield_gensec"] = "units/pd2_mod_bravo/characters/ene_bravo_shield/ene_bravo_shield",
+	["units/pd2_mod_nypd/characters/ene_shield_gensec/ene_shield_gensec"] = "units/pd2_mod_bravo/characters/ene_bravo_shield/ene_bravo_shield",
+	["units/pd2_mod_lapd/characters/ene_city_shield/ene_city_shield"] = "units/pd2_mod_bravo/characters/ene_bravo_shield/ene_bravo_shield",
+
+	-- ZEAL
+	["units/pd2_dlc_gitgud/characters/ene_zeal_swat_shield_sc/ene_zeal_swat_shield_sc"] = "units/pd2_mod_bravo/characters/ene_bravo_shield/ene_bravo_shield",
+
+	-- Vanilla units
+	["units/payday2/characters/ene_shield_1/ene_shield_1"] = "units/pd2_mod_ng/characters/ene_ntl_shield/ene_ntl_shield",
+	["units/payday2/characters/ene_city_shield/ene_city_shield"] = "units/pd2_mod_ng/characters/ene_ntl_shield/ene_ntl_shield",
+	["units/pd2_dlc_gitgud/characters/ene_zeal_swat_shield/ene_zeal_swat_shield"] = "units/pd2_mod_ng/characters/ene_ntl_shield/ene_ntl_shield",
+
+	--Zombies
+	["units/pd2_dlc_hvh/characters/ene_shield_hvh_1/ene_shield_hvh_1"] = "units/pd2_mod_ngvh/characters/ene_ntl_shield/ene_ntl_shield",
+	--["units/pd2_dlc_hvh/characters/ene_city_shield/ene_city_shield"] = "units/pd2_mod_ngvh/characters/ene_ntl_shield/ene_ntl_shield",	-- I didn't make a zombie variant of the vanilla unit. Pester me if you want it.
+	["units/pd2_dlc_hvh/characters/ene_zeal_swat_shield/ene_zeal_swat_shield"] = "units/pd2_mod_ngvh/characters/ene_ntl_shield/ene_ntl_shield",
+
 	-- FBI/GenSec/ZEAL SWAT turn into Bravo SWAT
 	-- Murky UMP SWAT turn into OMNIA UMP SWAT instead, they're at the bottom of this table
 	-- America/Default
@@ -346,6 +370,7 @@ local replacement_table = {
 	["units/pd2_mod_halloween/characters/ene_fbi_heavy_r870_sc/ene_fbi_heavy_r870_sc"] = "units/pd2_mod_cruel/characters/ene_fbi_heavy_r870/ene_fbi_heavy_r870",
 	["units/pd2_mod_halloween/characters/ene_city_heavy_g36/ene_city_heavy_g36"] = "units/pd2_mod_cruel/characters/ene_city_heavy_g36/ene_city_heavy_g36",
 	["units/pd2_mod_halloween/characters/ene_spook_1/ene_spook_1"] = "units/pd2_mod_cruel/characters/ene_spook_1/ene_spook_1",
+	["units/pd2_mod_halloween/characters/ene_shield_gensec/ene_shield_gensec"] = "units/pd2_mod_cruel/characters/ene_city_shield/ene_city_shield",
 
 	["units/pd2_mod_halloween/characters/ene_veteran_cop_1/ene_veteran_cop_1"] = "units/pd2_mod_cruel/characters/ene_cop_4/ene_cop_4",
 	["units/pd2_mod_halloween/characters/ene_gensec_sgt/ene_gensec_sgt"] = "units/pd2_mod_cruel/characters/ene_hoxton_breakout_guard_1/ene_hoxton_breakout_guard_1",

@@ -3337,6 +3337,20 @@ function CharacterTweakData:_init_shield(presets)
 	self.shield_cruel_fbi  = deep_clone(self.shield_cruel)
 	self.shield_cruel_fbi.custom_voicework = "bravo_elite"
 	table.insert(self._enemy_list, "shield_cruel_fbi")
+
+	self.shield_weekend = deep_clone(self.shield)
+	self.shield_weekend.damage.hurt_severity = presets.hurt_severities.only_explosion_hurts
+	self.shield_weekend.damage.shield_knocked = true
+	self.shield_weekend.HEALTH_INIT = 20
+	self.shield_weekend.headshot_dmg_mul = 3.8
+	self.shield_weekend.custom_voicework = "bravo_elite"
+	table.insert(self._enemy_list, "shield_weekend")
+
+	self.shield_weekend_vanilla = deep_clone(self.shield_weekend)
+	self.shield_weekend_vanilla.HEALTH_INIT = 18
+	self.shield_weekend_vanilla.headshot_dmg_mul = 2.8
+	self.shield_weekend_vanilla.custom_voicework = "swat_pd3"
+	table.insert(self._enemy_list, "shield_weekend_vanilla")
 end
 
 function CharacterTweakData:_init_phalanx_minion(presets)	
@@ -3751,6 +3765,7 @@ function CharacterTweakData:_init_spring(presets)
 	self.tank_captain.damage.hurt_severity = presets.hurt_severities.only_light_hurt_no_explode
 	self.tank_captain.move_speed = presets.move_speed.slow_plus
 	self.tank_captain.rage_move_speed = presets.move_speed.fast
+	self.tank_captain.melee_concuss = false	-- he crashes the game when doing so
 	table.insert(self._enemy_list, "tank_captain")
 end
 
@@ -20579,7 +20594,8 @@ function CharacterTweakData.character_map(...)
 				"ene_bravo_dmr_mex",
 				"ene_bravo_lmg_mex",
 				"ene_bravo_rifle_mex",
-				"ene_bravo_shotgun_mex"
+				"ene_bravo_shotgun_mex",
+				"ene_bravo_shield"
 			}
 		}
 		
@@ -20612,7 +20628,8 @@ function CharacterTweakData.character_map(...)
 				"ene_ntl_swat_1",
 				"ene_ntl_swat_2",
 				"ene_ntl_swat_3",
-				"ene_ntl_medic"
+				"ene_ntl_medic",
+				"ene_ntl_shield"
 			}
 		}
 
@@ -20625,7 +20642,8 @@ function CharacterTweakData.character_map(...)
 				"ene_ntl_swat_1",
 				"ene_ntl_swat_2",
 				"ene_ntl_swat_3",
-				"ene_ntl_medic"
+				"ene_ntl_medic",
+				"ene_ntl_shield"
 			}
 		}
 

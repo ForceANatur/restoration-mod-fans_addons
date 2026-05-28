@@ -307,7 +307,11 @@ function AchievementsTweakData:init(tweak_data)
 		enemies = {
 			"medic_summers",
 			"medic",
-			"omnia_lpf"			
+			"omnia_lpf",
+			"medic_cruel",
+			"medic_heavy",
+			"medic_buff",
+			"medic_deathvox"
 		}
 	}
 	
@@ -320,7 +324,8 @@ function AchievementsTweakData:init(tweak_data)
 			"sniper",
 			"marshal_marksman",
 			"heavy_swat_sniper",
-			"weekend_dmr"
+			"weekend_dmr",
+			"weekend_vanilla_snp"
 		}
 	}
 	--Weapon Kill Stuff
@@ -331,7 +336,8 @@ function AchievementsTweakData:init(tweak_data)
 			"sniper",
 			"marshal_marksman",
 			"heavy_swat_sniper",
-			"weekend_dmr"
+			"weekend_dmr",
+			"weekend_vanilla_snp"
 		},
 		mask = "nixon"
 	}
@@ -345,7 +351,10 @@ function AchievementsTweakData:init(tweak_data)
 			"phalanx_minion",
 			"phalanx_vip", --why not?
 			"phalanx_minion_assault",
-			"marshal_shield"
+			"marshal_shield",
+			"shield_cruel",
+			"shield_cruel_fbi",
+			"shield_weekend"
 		}
 	}
 	

@@ -295,6 +295,49 @@
 	<!-- titans end -->
  
 	<!-- bravos	 -->
+	<!--bravo shield-->
+	<object				path="units/pd2_mod_bravo/characters/ene_acc_zeal_swat_helmet/ene_acc_zeal_swat_helmet" force="false"/>
+	<cooked_physics		path="units/pd2_mod_bravo/characters/ene_acc_zeal_swat_helmet/ene_acc_zeal_swat_helmet" force="false"/>
+	<model				path="units/pd2_mod_bravo/characters/ene_acc_zeal_swat_helmet/ene_acc_zeal_swat_helmet" force="false"/>
+	<unit				path="units/pd2_mod_bravo/characters/ene_acc_zeal_swat_helmet/ene_acc_zeal_swat_helmet" force="false" load="true"/>
+	<material_config	path="units/pd2_mod_bravo/characters/ene_acc_zeal_swat_helmet/ene_acc_zeal_swat_helmet" force="false"/>
+
+	<object				path="units/pd2_mod_bravo/characters/ene_acc_bravo_shield/ene_acc_bravo_shield" force="false"/>
+	<cooked_physics		path="units/pd2_mod_bravo/characters/ene_acc_bravo_shield/ene_acc_bravo_shield" force="false"/>
+	<model				path="units/pd2_mod_bravo/characters/ene_acc_bravo_shield/ene_acc_bravo_shield" force="false"/>
+	<unit				path="units/pd2_mod_bravo/characters/ene_acc_bravo_shield/ene_acc_bravo_shield" force="false" load="true"/>
+	<material_config	path="units/pd2_mod_bravo/characters/ene_acc_bravo_shield/ene_acc_bravo_shield" force="false"/>
+	<sequence_manager	path="units/pd2_mod_bravo/characters/ene_acc_bravo_shield/ene_acc_bravo_shield" force="false"/>
+	<df_nm				path="units/pd2_mod_bravo/characters/ene_acc_bravo_shield/shield"/>
+
+	<object				path="units/pd2_mod_bravo/characters/ene_bravo_shield/ene_bravo_shield" />
+	<cooked_physics		path="units/pd2_mod_bravo/characters/ene_bravo_shield/ene_bravo_shield" />
+	<model				path="units/pd2_mod_bravo/characters/ene_bravo_shield/ene_bravo_shield" />
+	<unit				path="units/pd2_mod_bravo/characters/ene_bravo_shield/ene_bravo_shield"  load="true"/>
+	<material_config	path="units/pd2_mod_bravo/characters/ene_bravo_shield/ene_bravo_shield" />
+	<material_config	path="units/pd2_mod_bravo/characters/ene_bravo_shield/ene_bravo_shield_contour" />
+	<unit				path="units/pd2_mod_bravo/characters/ene_bravo_shield/ene_bravo_shield_husk"  load="true"/>
+
+	<df_nm				path="units/pd2_mod_bravo/characters/ene_bravo_shield/ene_national_guard_head_atlas"/>
+	<df_nm				path="units/pd2_mod_bravo/characters/ene_bravo_shield/ene_zeal_swat_shield"/>
+	<df_nm_op			path="units/pd2_mod_bravo/characters/ene_acc_zeal_swat_helmet/helmet_ng"/>
+
+	<!--new coppers ntl shield-->
+	<object				path="units/pd2_mod_ng/characters/ene_acc_ntl_shield/ene_acc_ntl_shield" force="false"/>
+	<cooked_physics		path="units/pd2_mod_ng/characters/ene_acc_ntl_shield/ene_acc_ntl_shield" force="false"/>
+	<model				path="units/pd2_mod_ng/characters/ene_acc_ntl_shield/ene_acc_ntl_shield" force="false"/>
+	<unit				path="units/pd2_mod_ng/characters/ene_acc_ntl_shield/ene_acc_ntl_shield" force="false" load="true"/>
+	<material_config	path="units/pd2_mod_ng/characters/ene_acc_ntl_shield/ene_acc_ntl_shield" force="false"/>
+	<texture			path="units/pd2_mod_ng/characters/ene_acc_ntl_shield/ene_acc_shield_lights_df"/>
+
+	<object				path="units/pd2_mod_ng/characters/ene_ntl_shield/ene_ntl_shield" />
+	<cooked_physics		path="units/pd2_mod_ng/characters/ene_ntl_shield/ene_ntl_shield" />
+	<model				path="units/pd2_mod_ng/characters/ene_ntl_shield/ene_ntl_shield" />
+	<unit				path="units/pd2_mod_ng/characters/ene_ntl_shield/ene_ntl_shield"  load="true"/>
+	<material_config	path="units/pd2_mod_ng/characters/ene_ntl_shield/ene_ntl_shield" />
+	<material_config	path="units/pd2_mod_ng/characters/ene_ntl_shield/ene_ntl_shield_contour" />
+	<unit				path="units/pd2_mod_ng/characters/ene_ntl_shield/ene_ntl_shield_husk"  load="true"/>
+
 	<!--bravo dmr-->
 	<unit				path="units/pd2_mod_bravo/characters/ene_bravo_dmr/ene_bravo_dmr"  load="true"/>
 	<unit				path="units/pd2_mod_bravo/characters/ene_bravo_dmr/ene_bravo_dmr_husk"  load="true"/>

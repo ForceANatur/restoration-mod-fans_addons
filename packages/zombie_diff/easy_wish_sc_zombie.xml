@@ -526,6 +526,22 @@
 	<material_config	path="units/pd2_mod_ngvh/characters/ene_ntl_groundsniper/ene_ntl_groundsniper_contour" force="true"/>
 	<unit				path="units/pd2_mod_ngvh/characters/ene_ntl_groundsniper/ene_ntl_groundsniper_husk" force="false" load="true"/>
 
+	<!--new coppers ntl shield-->
+	<object				path="units/pd2_mod_ng/characters/ene_acc_ntl_shield/ene_acc_ntl_shield" force="false"/>
+	<cooked_physics		path="units/pd2_mod_ng/characters/ene_acc_ntl_shield/ene_acc_ntl_shield" force="false"/>
+	<model				path="units/pd2_mod_ng/characters/ene_acc_ntl_shield/ene_acc_ntl_shield" force="false"/>
+	<unit				path="units/pd2_mod_ng/characters/ene_acc_ntl_shield/ene_acc_ntl_shield" force="false" load="true"/>
+	<material_config	path="units/pd2_mod_ng/characters/ene_acc_ntl_shield/ene_acc_ntl_shield" force="false"/>
+	<texture			path="units/pd2_mod_ng/characters/ene_acc_ntl_shield/ene_acc_shield_lights_df"/>
+
+	<object				path="units/pd2_mod_ngvh/characters/ene_ntl_shield/ene_ntl_shield" />
+	<cooked_physics		path="units/pd2_mod_ngvh/characters/ene_ntl_shield/ene_ntl_shield" />
+	<model				path="units/pd2_mod_ngvh/characters/ene_ntl_shield/ene_ntl_shield" />
+	<unit				path="units/pd2_mod_ngvh/characters/ene_ntl_shield/ene_ntl_shield"  load="true"/>
+	<material_config	path="units/pd2_mod_ngvh/characters/ene_ntl_shield/ene_ntl_shield" />
+	<material_config	path="units/pd2_mod_ngvh/characters/ene_ntl_shield/ene_ntl_shield_contour" />
+	<unit				path="units/pd2_mod_ngvh/characters/ene_ntl_shield/ene_ntl_shield_husk"  load="true"/>
+
 	<!--Unit Textures-->
 	<texture			path="units/pd2_mod_ngvh/characters/shared_textures/national_guard_face_nm"/>
 	<texture			path="units/pd2_mod_ngvh/characters/shared_textures/national_guard_face_df"/>
