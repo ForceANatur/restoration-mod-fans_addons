@@ -14225,8 +14225,8 @@ end
 				self.parts.wpn_fps_ass_shak12_o_carry_dummy.override.wpn_fps_upg_o_northtac_alt = deep_clone(self.parts.wpn_fps_ass_shak12_o_carry_dummy.override.wpn_fps_upg_o_specter)
 				for i, weap in pairs(self.parts.wpn_fps_ass_shak12_o_carry_dummy.override.wpn_fps_upg_o_northtac_alt.stance_mod) do
 					if weap and weap.translation then
-						weap.translation = weap.translation + Vector3(-0.045, -5, -5.1)
-						weap.rotation = (weap.rotation or Rotation(0,0,0)) * Rotation(-0.07, 0, 0)
+						weap.translation = weap.translation + Vector3(0, -5, -5.1)
+						weap.rotation = (weap.rotation or Rotation(0,0,0)) * Rotation(0, 0, 0)
 					end
 				end
 
@@ -20321,6 +20321,9 @@ end
 						translation = Vector3(-0.0, 5.6, -0.46),
 						rotation = Rotation(0.01, -0.05, 0)
 					}
+					self.parts.wpn_fps_upg_o_specter.stance_mod.wpn_fps_ass_tilt = {
+						translation = Vector3(-0.012, -7.4, -0.09)
+					}
 
 					self.parts.wpn_fps_upg_o_specter.stance_mod.wpn_fps_ass_ghosts_badger = {
 						translation = Vector3(0.03, 1.1, -0.50),
@@ -20561,6 +20564,7 @@ end
 					self.parts.wpn_fps_upg_o_specter.stance_mod.wpn_fps_snp_l115 = {
 						translation = Vector3(-0.02, -3, -3.521)
 					}
+
 			--Milspec Scope Back-up Irons
 			self.parts.wpn_fps_upg_o_specter_piggyback.stats = {
 				value = 1,
@@ -22093,7 +22097,7 @@ end
 			self.parts.wpn_fps_upg_o_ak_scopemount.supported = true
 			self.parts.wpn_fps_upg_o_ak_scopemount.depends_on = nil
 			self.parts.wpn_fps_upg_o_ak_scopemount.adds = {
-				"wpn_fps_gre_arbiter_o_standard"
+				"wpn_fps_gre_arbiter_o_standard_no_forbid"
 			}
 			self.parts.wpn_fps_upg_o_ak_scopemount.stats = { value = 0 }
 			self.parts.wpn_fps_upg_o_ak_scopemount.custom_stats = { big_scope = true }
@@ -22102,7 +22106,7 @@ end
 			self.parts.wpn_fps_upg_o_ak_scopemount.override.wpn_fps_smg_akmsu_body_lowerreceiver = { adds = {"wpn_fps_ak_bolt"} }
 			self.parts.wpn_fps_upg_o_ak_scopemount.override.wpn_fps_lmg_rpk_body_lowerreceiver = { adds = {"wpn_fps_ak_bolt"} }
 			self.parts.wpn_fps_upg_o_ak_scopemount.override.wpn_fps_ass_akm_nomag = { adds = {"wpn_fps_ak_bolt"} }
-			self.parts.wpn_fps_upg_o_ak_scopemount.override.wpn_fps_gre_arbiter_o_standard = {
+			self.parts.wpn_fps_upg_o_ak_scopemount.override.wpn_fps_gre_arbiter_o_standard_no_forbid = {
 				a_obj = "a_o_sm",
 				stance_mod = {
 					wpn_fps_ass_74 = { translation = Vector3(-0.005, 15.5, -4.6) + Vector3(0, -10, 0.42) },
@@ -22244,8 +22248,8 @@ end
 			self.parts.wpn_fps_upg_o_ak_scopemount.override.wpn_fps_upg_o_northtac_alt = deep_clone(self.parts.wpn_fps_upg_o_ak_scopemount.override.wpn_fps_upg_o_specter)
 			for i, weap in pairs(self.parts.wpn_fps_upg_o_ak_scopemount.override.wpn_fps_upg_o_northtac_alt.stance_mod) do
 				if weap and weap.translation then
-					weap.translation = weap.translation + Vector3(-0.045, -5, -5.1)
-					weap.rotation = (weap.rotation or Rotation(0,0,0)) * Rotation(-0.07, 0, 0)
+					weap.translation = weap.translation + Vector3(0, -5, -5.1)
+					weap.rotation = (weap.rotation or Rotation(0,0,0)) * Rotation(0, 0, 0)
 				end
 			end
 
@@ -22505,12 +22509,12 @@ end
 			self.parts.wpn_fps_upg_o_m14_scopemount.depends_on = nil
 			self.parts.wpn_fps_upg_o_m14_scopemount.supported = true
 			self.parts.wpn_fps_upg_o_m14_scopemount.adds = {
-				"wpn_fps_gre_arbiter_o_standard"
+				"wpn_fps_gre_arbiter_o_standard_no_forbid"
 			}
 			self.parts.wpn_fps_upg_o_m14_scopemount.stats = {
 				value = 0
 			}
-			self.parts.wpn_fps_upg_o_m14_scopemount.override.wpn_fps_gre_arbiter_o_standard = {
+			self.parts.wpn_fps_upg_o_m14_scopemount.override.wpn_fps_gre_arbiter_o_standard_no_forbid = {
 				a_obj = "a_o_sm",
 				stance_mod = {
 					wpn_fps_ass_m14 = {
@@ -22641,8 +22645,8 @@ end
 			self.parts.wpn_fps_upg_o_m14_scopemount.override.wpn_fps_upg_o_northtac_alt = deep_clone(self.parts.wpn_fps_upg_o_m14_scopemount.override.wpn_fps_upg_o_specter)
 			for i, weap in pairs(self.parts.wpn_fps_upg_o_m14_scopemount.override.wpn_fps_upg_o_northtac_alt.stance_mod) do
 				if weap and weap.translation then
-					weap.translation = weap.translation + Vector3(-0.045, -5, -5.1)
-					weap.rotation = (weap.rotation or Rotation(0,0,0)) * Rotation(-0.07, 0, 0)
+					weap.translation = weap.translation + Vector3(0, -5, -5.1)
+					weap.rotation = (weap.rotation or Rotation(0,0,0)) * Rotation(0, 0, 0)
 				end
 			end
 
@@ -23558,8 +23562,8 @@ end
 			self.parts.wpn_fps_upg_ak_body_upperreceiver_zenitco.override.wpn_fps_upg_o_northtac_alt = deep_clone(self.parts.wpn_fps_upg_ak_body_upperreceiver_zenitco.override.wpn_fps_upg_o_specter)
 			for i, weap in pairs(self.parts.wpn_fps_upg_ak_body_upperreceiver_zenitco.override.wpn_fps_upg_o_northtac_alt.stance_mod) do
 				if weap and weap.translation then
-					weap.translation = weap.translation + Vector3(-0.045, -5, -5.1)
-					weap.rotation = (weap.rotation or Rotation(0,0,0)) * Rotation(-0.07, 0, 0)
+					weap.translation = weap.translation + Vector3(0, -5, -5.1)
+					weap.rotation = (weap.rotation or Rotation(0,0,0)) * Rotation(0, 0, 0)
 				end
 			end
 
@@ -23665,7 +23669,8 @@ end
 			}
 			self.parts.wpn_fps_upg_o_northtac.adds = {
 				"wpn_fps_upg_o_northtac_reddot", --reddot is now the 2x stand-in
-				"wpn_fps_upg_o_northtac_alt" --This is the reddot; only doing this as "wpn_fps_upg_o_northtac_reddot" is always chosen as the 1st sight to get switched to, dunno what determines order
+				"wpn_fps_upg_o_northtac_alt", --This is the reddot; only doing this as "wpn_fps_upg_o_northtac_reddot" is always chosen as the 1st sight to get switched to, dunno what determines order
+				"wpn_fps_upg_o_northtac_lens" --for the red tint of the lens; needed for a fix to the reddot to have corrected parallax projection
 			}
 			self.parts.wpn_fps_upg_o_northtac.forbids = {
 				"wpn_fps_amcar_uupg_body_upperreciever",
@@ -23687,6 +23692,13 @@ end
 				value = 1,
 				gadget_zoom = 10
 			}
+			self.parts.wpn_fps_upg_o_northtac_reddot.visibility = {
+				{
+					objects = {
+						g_reddot = false
+					}
+				}
+			}
 			self.parts.wpn_fps_upg_o_northtac_reddot.custom_stats = {
 				use_primary_steelsight_unit = true
 			}
@@ -23697,6 +23709,14 @@ end
 					--weap.translation = weap.translation + Vector3(0,-22,-0.01)
 				end
 			end
+
+			self.parts.wpn_fps_upg_o_northtac_lens = {
+				type = "extra",
+				parent = "sight",
+				name_id = "bm_wpn_fps_upg_o_northtac",
+				unit = "units/pd2_dlc_pxp3/weapons/wpn_fps_upg_o_northtac/wpn_fps_upg_o_northtac_reddot_lens",
+				stats = { value = 0 }
+			}
 
 			self.parts.wpn_fps_upg_o_northtac_alt = deep_clone(self.parts.wpn_fps_upg_o_northtac)
 			self.parts.wpn_fps_upg_o_northtac_alt.pcs = nil
@@ -23715,8 +23735,8 @@ end
 			self.parts.wpn_fps_upg_o_northtac_alt.stance_mod = deep_clone(self.parts.wpn_fps_upg_o_specter.stance_mod)
 			for i, weap in pairs(self.parts.wpn_fps_upg_o_northtac_alt.stance_mod) do
 				if weap and weap.translation then
-					weap.translation = weap.translation + Vector3(-0.045, -5, -5.1)
-					weap.rotation = (weap.rotation or Rotation(0,0,0)) * Rotation(-0.07, 0, 0)
+					weap.translation = weap.translation + Vector3(0, -5, -5.1)
+					weap.rotation = (weap.rotation or Rotation(0,0,0)) * Rotation(0, 0, 0)
 				end
 			end
 
@@ -24774,11 +24794,11 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 
 	for used_part_id, k in pairs(self.parts.wpn_fps_upg_o_ak_scopemount.override) do
 		if self.parts[used_part_id] and self.parts[used_part_id].type then
-			if self.parts[used_part_id].type == "sight" and used_part_id ~= "wpn_fps_gre_arbiter_o_standard" then
+			if self.parts[used_part_id].type == "sight" and used_part_id ~= "wpn_fps_gre_arbiter_o_standard_no_forbid" then
 				self.parts.wpn_fps_upg_o_ak_scopemount.override[used_part_id] = self.parts.wpn_fps_upg_o_ak_scopemount.override[used_part_id] or {}
 				self.parts.wpn_fps_upg_o_ak_scopemount.override[used_part_id].forbids = self.parts.wpn_fps_upg_o_ak_scopemount.override[used_part_id].forbids or {}
-				if not table.contains(self.parts.wpn_fps_upg_o_ak_scopemount.override[used_part_id].forbids, "wpn_fps_gre_arbiter_o_standard") then
-					table.insert(self.parts.wpn_fps_upg_o_ak_scopemount.override[used_part_id].forbids, "wpn_fps_gre_arbiter_o_standard")
+				if not table.contains(self.parts.wpn_fps_upg_o_ak_scopemount.override[used_part_id].forbids, "wpn_fps_gre_arbiter_o_standard_no_forbid") then
+					table.insert(self.parts.wpn_fps_upg_o_ak_scopemount.override[used_part_id].forbids, "wpn_fps_gre_arbiter_o_standard_no_forbid")
 				end
 			end
 		end
@@ -24796,11 +24816,11 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 	end
 	for used_part_id, k in pairs(self.parts.wpn_fps_upg_o_m14_scopemount.override) do
 		if self.parts[used_part_id] and self.parts[used_part_id].type then
-			if self.parts[used_part_id].type == "sight" and used_part_id ~= "wpn_fps_gre_arbiter_o_standard" then
+			if self.parts[used_part_id].type == "sight" and used_part_id ~= "wpn_fps_gre_arbiter_o_standard_no_forbid" then
 				self.parts.wpn_fps_upg_o_m14_scopemount.override[used_part_id] = self.parts.wpn_fps_upg_o_m14_scopemount.override[used_part_id] or {}
 				self.parts.wpn_fps_upg_o_m14_scopemount.override[used_part_id].forbids = self.parts.wpn_fps_upg_o_m14_scopemount.override[used_part_id].forbids or {}
-				if not table.contains(self.parts.wpn_fps_upg_o_m14_scopemount.override[used_part_id].forbids, "wpn_fps_gre_arbiter_o_standard") then
-					table.insert(self.parts.wpn_fps_upg_o_m14_scopemount.override[used_part_id].forbids, "wpn_fps_gre_arbiter_o_standard")
+				if not table.contains(self.parts.wpn_fps_upg_o_m14_scopemount.override[used_part_id].forbids, "wpn_fps_gre_arbiter_o_standard_no_forbid") then
+					table.insert(self.parts.wpn_fps_upg_o_m14_scopemount.override[used_part_id].forbids, "wpn_fps_gre_arbiter_o_standard_no_forbid")
 				end
 			end
 		end
@@ -28498,6 +28518,12 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			end
 
 	--[[ RJC9000'S MODS ]]
+
+		if self.parts.wpn_fps_ass_mikon_handguard_10 then --RJC's build of carl's R5
+			self.parts.wpn_fps_ass_mikon_bolt.sound_switch = {
+				suppressed = "regular_b"
+			}
+		end
 
 		if self.parts.wpn_fps_ass_noobtube_so_mw2 then
 			self.parts.wpn_fps_ass_noobtube_flash_hider.supported = true
@@ -41145,6 +41171,22 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 			self.parts.wpn_fps_ass_tilt_stock_none.supported = true
 			self.parts.wpn_fps_ass_tilt_stock_none.stats = deep_clone(stocks.remove_folder_stats)
 			self.parts.wpn_fps_ass_tilt_stock_none.custom_stats = deep_clone(stocks.remove_folder_stats)
+
+			self.wpn_fps_ass_tilt.override = self.wpn_fps_ass_tilt.override or {}
+			self.wpn_fps_ass_tilt.override.wpn_fps_upg_i_burstfire = {
+				custom_stats = {
+					info_lock_burst = true,
+					burst_fire = {
+						count = 2,
+						delay = 0.2,
+						recoil_mult = 0.1,
+						last_recoil_mult = 0.6,
+						lock = true
+					},
+					rof_mult = 3
+				}
+			}
+
 		end
 
 	--[[ ZDANN'S MODS ]]
@@ -43192,8 +43234,8 @@ Hooks:PostHook( WeaponFactoryTweakData, "create_bonuses", "SC_mods", function(se
 				self.parts.wpn_fps_ass_ak_body_creedmoor.override.wpn_fps_upg_o_northtac_alt = deep_clone(self.parts.wpn_fps_ass_ak_body_creedmoor.override.wpn_fps_upg_o_specter)
 				for i, weap in pairs(self.parts.wpn_fps_ass_ak_body_creedmoor.override.wpn_fps_upg_o_northtac_alt.stance_mod) do
 					if weap and weap.translation then
-						weap.translation = weap.translation + Vector3(-0.045, -5, -5.1)
-						weap.rotation = (weap.rotation or Rotation(0,0,0)) * Rotation(-0.07, 0, 0)
+						weap.translation = weap.translation + Vector3(0, -5, -5.1)
+						weap.rotation = (weap.rotation or Rotation(0,0,0)) * Rotation(0, 0, 0)
 					end
 				end
 				self.parts.wpn_fps_ass_ak_body_creedmoor.adds = {

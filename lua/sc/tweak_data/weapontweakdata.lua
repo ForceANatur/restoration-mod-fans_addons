@@ -18154,7 +18154,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.mikon.FIRE_MODE = "auto"
 				self.mikon.CLIP_AMMO_MAX = 30
 				self.mikon.AMMO_MAX = 150
-				self.mikon.fire_mode_data.fire_rate = 0.1
+				self.mikon.fire_mode_data.fire_rate = 0.095087
 				self.mikon.kick = self.stat_info.kick_tables.moderate_kick
 				self.mikon.kick_pattern = {
 					{0, self.stat_info.kick_tables.right_kick},
@@ -18166,8 +18166,8 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				self.mikon.supported = true
 				self.mikon.ads_speed = 0.340
 				self.mikon.damage_falloff = {
-					start_dist = 3600,
-					end_dist = 7000,
+					start_dist = 3200,
+					end_dist = 5500,
 					min_mult = 0.5
 				}
 				self.mikon.stats = {
@@ -18186,10 +18186,16 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 				}
 				self.mikon.stats_modifiers = nil
 				self.mikon.panic_suppression_chance = 0.05
+				self.mikon.reload_offset = {
+					reload = 0.066,
+					reload_not_empty = 0.033
+				}
 				self.mikon.lock_slide = true
-				self.mikon.reload_speed_multiplier = 1.05
 				self.mikon.sounds.magazine_empty = "wp_rifle_slide_lock"
-				self.mikon.timers = deep_clone(self.new_m4.timers)
+				self.mikon.timers.reload_not_empty = 1.35
+				self.mikon.timers.reload_exit_not_empty = 0.9
+				self.mikon.timers.reload_empty = 2.3
+				self.mikon.timers.reload_exit_empty = 0.7
 			end
 
 		--[[     ZDANN'S MODS     ]]--
@@ -31726,6 +31732,50 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 
 		--[[     HYLIE'S MODS     ]]--
 
+			if self.wz96 then -- Wz.96 Beryl
+				self.wz96.nato = true
+				self.wz96.recategorize = { "light_ar" }
+				self.wz96.damage_type = "assault_rifle"
+				self.wz96.tactical_reload = 1
+				self.wz96.CLIP_AMMO_MAX = 30
+				self.wz96.AMMO_MAX = 150
+				self.wz96.fire_mode_data.fire_rate = 0.08571428
+				self.wz96.kick = self.stat_info.kick_tables.moderate_right_kick
+				self.wz96.kick_pattern = {
+					{0, self.stat_info.kick_tables.right_kick},
+					{6, self.stat_info.kick_tables.moderate_left_kick},
+					{10, self.stat_info.kick_tables.moderate_kick},
+					{12, self.stat_info.kick_tables.moderate_right_kick},
+					{18, self.stat_info.kick_tables.moderate_kick},
+					{22, self.stat_info.kick_tables.moderate_right_kick}
+				}
+				self.wz96.supported = true
+				self.wz96.ads_speed = 0.320
+				self.wz96.damage_falloff = {
+					start_dist = 2500,
+					end_dist = 6000,
+					min_mult = 0.5
+				}
+				self.wz96.stats = {
+					damage = 24,
+					spread = 82,
+					recoil = 77,
+					spread_moving = 6,
+					zoom = 1,
+					concealment = 25,
+					suppression = 9,
+					alert_size = 2,
+					extra_ammo = 101,
+					total_ammo_mod = 400,
+					value = 1,
+					reload = 25
+				}
+				self.wz96.stats_modifiers = nil
+				self.wz96.panic_suppression_chance = 0.05
+				self.wz96.timers.reload_exit_empty = 0.8
+				self.wz96.timers.reload_exit_not_empty = 1.4
+			end
+
 			if self.minecraft_bow then
 				-- I am placing blocks and shit cuz I'm in fuckin' MINECRAAAAAAAAAAFT
 				-- OOOOOOOOOOOOOOOHHHHHHHHHHHHHH MYYYYYYYYYYYYYYYYYYYYYYYY GOOOOOOOOOOOOOOOOOOOOOOOOOD
@@ -38407,7 +38457,7 @@ Hooks:PostHook( WeaponTweakData, "init", "SC_weapons", function(self)
 			end
 
 			if table.contains(weap.categories, "dmr_h") or table.contains(weap.categories, "snp") or table.contains(weap.categories, "mmg") then
-				weap.sounds.fire_single3 = "saiga_npc1a_end"
+				--weap.sounds.fire_single3 = "saiga_npc1a_end"
 			end
 
 			if table.contains(weap.categories, "lmg") or table.contains(weap.categories, "minigun") then

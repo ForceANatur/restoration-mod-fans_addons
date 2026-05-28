@@ -17227,7 +17227,8 @@ function CharacterTweakData:_presets(tweak_data)
 		combat = {},
 		recon = {},
 		guard = {},
-		ntl = {}
+		ntl = {},
+		dazed = {}
 	}
 	presets.detection.normal.idle.dis_max = 10000
 	presets.detection.normal.idle.angle_max = 120
@@ -17247,6 +17248,10 @@ function CharacterTweakData:_presets(tweak_data)
 	presets.detection.normal.ntl.dis_max = 4000
 	presets.detection.normal.ntl.angle_max = 60
 	presets.detection.normal.ntl.delay = {0.2, 2}
+	presets.detection.normal.dazed.dis_max = 2000
+	presets.detection.normal.dazed.angle_max = 60
+	presets.detection.normal.dazed.delay = {1, 6}
+	presets.detection.normal.dazed.use_uncover_range = true
 	presets.detection.normal_undercover = {
 		idle = {},
 		combat = {},
@@ -17295,6 +17300,7 @@ function CharacterTweakData:_presets(tweak_data)
 	presets.detection.guard.guard.angle_max = 120
 	presets.detection.guard.guard.delay = {0, 0}
 	presets.detection.guard.ntl = presets.detection.normal.ntl
+	presets.detection.guard.dazed = presets.detection.normal.dazed
 	presets.detection.sniper = {
 		idle = {},
 		combat = {},
