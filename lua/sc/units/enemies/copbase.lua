@@ -1266,6 +1266,11 @@ function CopBase:default_weapon_name(...)
 			self._default_weapon_id = "coal_npc"
 			self._weapon_set = true
 		end
+
+		if self._tweak_table == "tank_mini" then
+			self._default_weapon_id = "m60"
+			self._weapon_set = true
+		end
 	end
 	
 	-- For High Noon mutator
@@ -1545,7 +1550,8 @@ local dave = {
 		"mac11_sup",
 		"amcar",
 		"ak47_ass",
-		"coal_npc"
+		"coal_npc",
+		"m60"
 	},
 	akan = {
 		"streak",
@@ -1569,7 +1575,8 @@ local dave = {
 		"m14_sniper_npc",
 		"atf_ddm4v7",
 		"mateba_ap",
-		"hk21_sc"
+		"hk21_sc",
+		"m60"
 	}
 }
 local medic_heavy = {

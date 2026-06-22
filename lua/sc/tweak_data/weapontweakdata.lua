@@ -1214,6 +1214,18 @@ local crew_wep_preset = {
 		self.scar_heavy_npc.sounds.prefix = "scar_npc"
 		self.scar_heavy_npc.DAMAGE = 2.8
 		self.scar_heavy_npc.CLIP_AMMO_MAX = 20
+
+		--oops moving this here while using the m4_npc should work
+		self.m14_sniper_mememan_npc = deep_clone(self.m4_npc)
+		self.m14_sniper_mememan_npc.sounds.prefix = "sniper_npc"
+		self.m14_sniper_mememan_npc.DAMAGE = 4.5	--so we dont instantly die
+		self.m14_sniper_mememan_npc.can_shoot_through_enemy = false
+		self.m14_sniper_mememan_npc.can_shoot_through_shield = false
+		self.m14_sniper_mememan_npc.can_shoot_through_wall = false
+		self.m14_sniper_mememan_npc.CLIP_AMMO_MAX = 20
+		self.m14_sniper_mememan_npc.suppression = 6.9
+		self.m14_sniper_mememan_npc.use_sniper_trail = true
+		self.m14_sniper_mememan_npc.trail_effect = Idstring("effects/particles/weapons/sniper_trail_sc")
 	end
 
 	function WeaponTweakData:_init_data_m4_yellow_npc()
@@ -1302,18 +1314,6 @@ local crew_wep_preset = {
 		self.m95_npc.suppression = 7
 		self.m95_npc.use_sniper_trail = true
 		self.m95_npc.trail_effect = Idstring("effects/particles/weapons/sniper_trail_sc")
-
-		self.m14_sniper_mememan_npc = deep_clone(self.m14_sniper_npc)
-		self.m14_sniper_mememan_npc.DAMAGE = 4.5	--so we dont instantly die
-		self.m14_sniper_mememan_npc.can_shoot_through_enemy = false
-		self.m14_sniper_mememan_npc.can_shoot_through_shield = false
-		self.m14_sniper_mememan_npc.can_shoot_through_wall = false
-		self.m14_sniper_mememan_npc.CLIP_AMMO_MAX = 20
-		self.m14_sniper_mememan_npc.suppression = 6.9
-		self.m14_sniper_mememan_npc.usage = "is_lmg"
-		self.m14_sniper_mememan_npc.fire_rate = 0.08571428571
-		self.m14_sniper_mememan_npc.use_sniper_trail = true
-		self.m14_sniper_mememan_npc.trail_effect = Idstring("effects/particles/weapons/sniper_trail_sc")
 
 		--god help us all
 		self.m95_full_auto_npc = deep_clone(self.m95_npc)
@@ -2134,6 +2134,9 @@ local crew_wep_preset = {
 		--M60
 		self.m60_npc = deep_clone(self.m249_npc)
 		self.m60_npc.sounds.prefix = "m60_npc"
+		self.m60_npc.DAMAGE = 3.4
+		self.m60_npc.CLIP_AMMO_MAX = 100
+		self.m60_npc.auto.fire_rate = 0.1
 
 		--Bravo LMG--
 		self.m249_bravo_npc = deep_clone(self.hk23_sc_npc)

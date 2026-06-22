@@ -25,7 +25,7 @@ ModifierHeavyMedics.medics = {
 	Idstring("units/pd2_dlc_bex/characters/ene_swat_medic_policia_federale_r870/ene_swat_medic_policia_federale_r870")
 }
 
-ModifierMedicAdrenaline.zombiemedic = {
+ModifierHeavyMedics.zombiemedic = {
 	Idstring("units/pd2_dlc_hvh/characters/ene_medic_hvh_m4/ene_medic_hvh_m4"),
 	Idstring("units/pd2_dlc_hvh/characters/ene_medic_hvh_r870/ene_medic_hvh_r870"),
 	Idstring("units/pd2_mod_halloween/characters/ene_medic_mp5/ene_medic_mp5"),
@@ -35,7 +35,7 @@ ModifierMedicAdrenaline.zombiemedic = {
 function ModifierHeavyMedics:modify_value(id, value)
 	if id == "GroupAIStateBesiege:SpawningUnit" then
 		local is_medic = table.contains(ModifierHeavyMedics.medics, value)
-		local is_zombiemedic = table.contains(ModifierMedicAdrenaline.zombiemedic, value)
+		local is_zombiemedic = table.contains(ModifierHeavyMedics.zombiemedic, value)
 		
 		if is_medic and math.random(0,100) <= 25 then
 			return Idstring("units/pd2_mod_nc/characters/ene_heavymedic_1/ene_heavymedic_1")

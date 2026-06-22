@@ -151,6 +151,8 @@ function MutatorGrenadeMayhem:setup(data)
 		char_tweak.medic_summers.grenade_toss_chance = 0.4
 		char_tweak.heavygunner.can_throw_frag = true
 		char_tweak.heavygunner.grenade_toss_chance = 0.8
+		char_tweak.tank_captain.can_throw_frag = true
+		char_tweak.tank_captain.grenade_type = "cluster_fuck"
 	end
 	
 end

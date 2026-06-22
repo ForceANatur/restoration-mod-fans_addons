@@ -1963,7 +1963,17 @@
 	<material_config	path="units/payday2/weapons/wpn_npc_benelli/wpn_npc_benelli" force="true"/>
 	
 	<!--Dozer NPC Benelli-->
-	<unit_obj			path="units/payday2/weapons/wpn_npc_benelli_dozer/wpn_npc_benelli_dozer" load="false"/>		
+	<unit_obj			path="units/payday2/weapons/wpn_npc_benelli_dozer/wpn_npc_benelli_dozer" load="false"/>
+
+	<!--NPC M60 (Due to the weapon being murky exclusive)-->
+	<cooked_physics		path="units/payday2/weapons/wpn_npc_m60/wpn_npc_m60" force="false"/>
+	<material_config	path="units/payday2/weapons/wpn_npc_m60/wpn_npc_m60" force="false"/>
+	<model				path="units/payday2/weapons/wpn_npc_m60/wpn_npc_m60" force="false"/>
+	<object				path="units/payday2/weapons/wpn_npc_m60/wpn_npc_m60" force="false"/>
+	<sequence_manager	path="units/payday2/weapons/wpn_npc_m60/wpn_npc_m60" force="false"/>
+	<unit				path="units/payday2/weapons/wpn_npc_m60/wpn_npc_m60" force="false" load="false"/>
+	<texture			path="units/payday2/weapons/wpn_npc_m60/wpn_npc_m60_df" force="false"/>
+	<texture			path="units/payday2/weapons/wpn_npc_m60/wpn_npc_m60_nm" force="false"/>
 	
 	<!--NPC M308 again? Might need to look into that other texture-->
 	<model				path="units/payday2/weapons/wpn_npc_scar_murkywater/wpn_npc_scar_murkywater" force="true"/>

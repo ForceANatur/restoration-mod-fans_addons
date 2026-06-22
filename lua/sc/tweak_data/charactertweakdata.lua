@@ -3759,13 +3759,14 @@ function CharacterTweakData:_init_spring(presets)
 	self.tank_captain.HEALTH_INIT = 1500
 	self.tank_captain.headshot_dmg_mul = 4
 	self.tank_captain.can_throw_frag = false
-	self.tank_captain.custom_voicework = nil
+	self.tank_captain.custom_voicework = "mr_cruel_t"
 	self.tank_captain.captain_type = restoration.captain_types.dzr_snp
 	self.tank_captain.announce_incomming = "incomming_captain"
 	self.tank_captain.damage.hurt_severity = presets.hurt_severities.only_light_hurt_no_explode
 	self.tank_captain.move_speed = presets.move_speed.slow_plus
 	self.tank_captain.rage_move_speed = presets.move_speed.fast
 	self.tank_captain.melee_concuss = false	-- he crashes the game when doing so
+	self.tank_captain.chatter = presets.enemy_chatter.swat -- talk damn it
 	table.insert(self._enemy_list, "tank_captain")
 end
 
