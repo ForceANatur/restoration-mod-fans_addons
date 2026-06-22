@@ -3,7 +3,9 @@
 This is a couple of edits to Restoration Mod fitted for my liking.
 These range from minor weapon tweaks to new features such as mutators.
 
-If you don't want to redownload Restoration Mod again, download the standalone here: https://modworkshop.net/mod/54647 (WARNING, FOR GOLD BRANCH ONLY)
+If you don't want to redownload Restoration Mod again, download the standalone here: (FOR GOLD BRANCH ONLY)
+- https://modworkshop.net/mod/54647
+- https://github.com/ForceANatur/Restoration-Mod-FaNs-Addons-Standalone
 
 # Changes:
 
