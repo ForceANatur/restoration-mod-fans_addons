@@ -56,6 +56,63 @@ function PlayerStandard:init(unit)
 	end
 end
 
+local _get_input_old = PlayerStandard._get_input
+function PlayerStandard:_get_input(t, ...)
+	local input = _get_input_old(self, t, ...)
+
+	if input then
+		self:_fullysemiautomatic(t, input)
+	end
+
+	return input
+end
+
+--Based off of Hoppip's Auto-Fire & Reload code
+function PlayerStandard:_fullysemiautomatic(t, input)
+	local pressed = self._controller:get_any_input_pressed()
+	local released = self._controller:get_any_input_released()
+	local downed = self._controller:get_any_input()
+	local any_input = pressed or released or downed
+	if input and AFR then --Intercepts AFR inputs to have them go back to using actual player inputs
+		if input.btn_reload_press then
+			input.btn_reload_press = pressed and self._controller:get_input_pressed("reload")
+		end
+		if input.btn_primary_attack_press then
+			if self._single_shot_autofire then
+				input.btn_primary_attack_press = pressed and self._controller:get_input_pressed("primary_attack")
+			else
+				input.btn_primary_attack_press = any_input and self._controller:get_input_pressed("primary_attack")
+			end
+		end
+	end
+	local penis_music = restoration.Options:GetValue("WEAPONS/WEAPONINPUTS/FULLYSEMIAUTOMATIC")
+	local martyrdommy = restoration.Options:GetValue("WEAPONS/WEAPONINPUTS/ManualReloads") or 1
+	if self._equipped_unit then
+		local weap_base = self._equipped_unit:base()
+		local action_forbidden
+		if weap_base then
+			local can_reload = weap_base.clip_empty and weap_base:clip_empty() and (self.RUN_AND_RELOAD or not self._running) 
+			if martyrdommy == 2 and can_reload then
+				action_forbidden = weap_base:out_of_ammo() --[[and not self:_is_using_bipod()]] or tweak_data.weapon.stat_info.reload_marathon
+				if can_reload and not action_forbidden then
+					input.btn_reload_press = true
+				end
+			elseif penis_music then
+				action_forbidden = self:_is_reloading() or weap_base.charge_multiplier or weap_base:out_of_ammo() or weap_base:clip_empty()
+				if input.btn_primary_attack_state and not action_forbidden then
+					local fire_rate = weap_base:weapon_fire_rate() / weap_base:fire_rate_multiplier(true)
+					local burst_mult = (weap_base:in_burst_mode() and 4) or 1
+					local delay = 0.25 * burst_mult
+					if t >= weap_base._next_fire_allowed + math.min((fire_rate * delay), 0.1 * burst_mult) then
+						input.btn_primary_attack_press = true
+					end
+				end
+			end
+		end
+	end
+	return input
+end
+
 --Allows night vision to be used with any mask.
 function PlayerStandard:set_night_vision_state(state)
 	local mask_id = managers.blackmarket:equipped_mask().mask_id
@@ -1108,7 +1165,7 @@ function PlayerStandard:_check_action_primary_attack(t, input, params)
 				if weap_base and weap_base:alt_fire_active() and weap_base._alt_fire_data and weap_base._alt_fire_data.ignore_always_play_anims and not weap_base:second_sight_spread_mult() then
 					force_ads_recoil_anims = nil
 				end
-				local manual_reloads = tweak_data.weapon.stat_info.reload_marathon or restoration.Options:GetValue("WEAPONS/WEAPONINPUTS/ManualReloads")
+				local manual_reloads = (tweak_data.weapon.stat_info.reload_marathon and 3) or restoration.Options:GetValue("WEAPONS/WEAPONINPUTS/ManualReloads") or 1
 				local queue_inputs = restoration.Options:GetValue("WEAPONS/WEAPONINPUTS/QueuedShooting")
 				local queue_window = restoration.Options:GetValue("WEAPONS/WEAPONINPUTS/QueuedShootingWindow") or 0.5
 				local queue_exlude = restoration.Options:GetValue("WEAPONS/WEAPONINPUTS/QueuedShootingExclude") or 0.6
@@ -1134,7 +1191,7 @@ function PlayerStandard:_check_action_primary_attack(t, input, params)
 					self._queue_burst = nil
 					self._queue_fire = nil
 
-					if params and params.no_reload or self:_is_using_bipod() --[[or is_pro]] or manual_reloads then
+					if params and params.no_reload or self:_is_using_bipod() --[[or is_pro]] or manual_reloads == 3 then
 						if input.btn_primary_attack_press then
 							weap_base:dryfire()
 						end
@@ -1577,7 +1634,7 @@ function PlayerStandard:_check_action_primary_attack(t, input, params)
 
 							DelayedCalls:Add("clip_empty", 0.1, function ()
 								if not alive(self._unit) then return end
-								if not self.tased and not self:_changing_weapon() and not self:_is_charging_weapon() and not self:_is_meleeing() and not self:_is_reloading() and weap_base:clip_empty() and not manual_reloads then
+								if not self.tased and not self:_changing_weapon() and not self:_is_charging_weapon() and not self:_is_meleeing() and not self:_is_reloading() and weap_base:clip_empty() and manual_reloads ~= 3 then
 									self:_start_action_reload_enter(t + 0.1)
 								end
 							end)
@@ -1608,6 +1665,16 @@ function PlayerStandard:_check_action_primary_attack(t, input, params)
 			self._spin_up_shoot = nil
 		end
 	end
+
+    -- HD2 Railgun band-aid solution
+	    if input.btn_primary_attack_release then
+		    if alive(self._equipped_unit) then 
+			    local wpn_base = self._equipped_unit:base()
+			    if wpn_base.charging and wpn_base:charging() then 
+				    wpn_base._railgun_release_ready = true
+			    end
+		    end
+	    end
 
 	self:_chk_action_stop_shooting(new_action, input, params)
 
@@ -2511,7 +2578,7 @@ function PlayerStandard:_do_chainsaw_damage(t)
 			if character_unit:character_damage().dead and not character_unit:character_damage():dead() then
 				if managers.player:has_category_upgrade("player", "buildup_meter") and managers.player:has_category_upgrade("player", "buildup_meter_refresh") and managers.player._buildup_meter and managers.player._buildup_meter > 0 then
 					local groupai = managers.groupai and managers.groupai:state()
-					local additional_players = ((groupai and math.min((groupai:num_alive_players() or 1) - 1, 3)) or 0) * tweak_data.upgrades.socio_affinity_bonus_steps
+					local additional_players = ((groupai and math.min((groupai:num_alive_criminals() or 1) - 1, 3)) or 0) * tweak_data.upgrades.socio_affinity_bonus_steps
 					local combo_t_mod = (managers.player:has_category_upgrade("player", "buildup_meter_zack") and managers.player:upgrade_value("player", "buildup_meter_zack", 0).combo_t_mod) or 0
 					local combo_t = managers.player:upgrade_value("player", "buildup_meter", 0).combo_t + additional_players + combo_t_mod
 					managers.player._buildup_meter_t = combo_t
@@ -2895,7 +2962,8 @@ function PlayerStandard:_update_melee_timers(t, input)
 		end
 		if input and input.btn_meleet_state then
 			if melee_weapon.force_play_charge then
-				self:_play_melee_sound(managers.blackmarket:equipped_melee_weapon(), "equip")
+			self._ext_camera:play_redirect(self:get_animation("melee_charge"), nil, 0)
+				--self:_play_melee_sound(managers.blackmarket:equipped_melee_weapon(), "equip")
 			end
 			self._state_data.melee_charge_wanted = not instant and true
 		end
@@ -4568,7 +4636,7 @@ Hooks:OverrideFunction(PlayerStandard, "_do_melee_damage", function(self, t, bay
 			if character_unit:character_damage().dead and not character_unit:character_damage():dead() and managers.enemy:is_enemy(character_unit) then
 				if managers.player:has_category_upgrade("player", "buildup_meter") and managers.player:has_category_upgrade("player", "buildup_meter_refresh") and managers.player._buildup_meter and managers.player._buildup_meter > 0 then
 					local groupai = managers.groupai and managers.groupai:state()
-					local additional_players = ((groupai and math.min((groupai:num_alive_players() or 1) - 1, 3)) or 0) * tweak_data.upgrades.socio_affinity_bonus_steps
+					local additional_players = ((groupai and math.min((groupai:num_alive_criminals() or 1) - 1, 3)) or 0) * tweak_data.upgrades.socio_affinity_bonus_steps
 					local combo_t_mod = (managers.player:has_category_upgrade("player", "buildup_meter_zack") and managers.player:upgrade_value("player", "buildup_meter_zack", 0).combo_t_mod) or 0
 					local combo_t = managers.player:upgrade_value("player", "buildup_meter", 0).combo_t + additional_players  + combo_t_mod
 					managers.player._buildup_meter_t = combo_t
@@ -5270,7 +5338,7 @@ function PlayerStandard:_check_action_deploy_underbarrel(t, input)
 	end
 
 	--Removed the ADS check so you can swap to the underbarrel while doing that, also for Kick Starter top tier skill
-	action_forbidden = self:_is_throwing_projectile() or self:_is_meleeing() or self:is_equipping() or self:_changing_weapon() or self:shooting() or self:is_switching_stances() or self:_interacting() and not managers.player:has_category_upgrade("player", "no_interrupt_interaction") or can_toggle == nil
+	action_forbidden = self:_is_throwing_projectile() or self:_is_meleeing() or self:is_equipping() or self:_changing_weapon() or self:shooting() or self:is_switching_stances() or self:_interacting() or self:_in_burst() and not managers.player:has_category_upgrade("player", "no_interrupt_interaction") or can_toggle == nil
 
 	if not action_forbidden then
 		self:_interupt_action_reload(t)
@@ -5358,6 +5426,11 @@ end
 --Fixes weapons using shotgun-style reloads occasionally only loading one shell in
 Hooks:PostHook(PlayerStandard, "_interupt_action_reload", "ResInterruptReloadFix", function(self, t)
 	self._queue_reload_interupt = nil
+	local weap_base = self._equipped_unit:base()
+	local weapon_tweak = weap_base and weap_base:weapon_tweak_data()
+	if weapon_tweak and weapon_tweak.lock_slide_allow_mag_empty and weap_base:clip_not_empty() then
+		weap_base:tweak_data_anim_play("magazine_empty")
+	end
 end)
 
 --Randomized inspect animations since rnd() doesn't work in anim xml

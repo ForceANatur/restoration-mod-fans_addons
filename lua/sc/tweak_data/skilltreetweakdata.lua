@@ -96,7 +96,10 @@ function SkillTreeTweakData:init(tweak_data)
 		"player_civ_calming_alerts",
 		"player_detection_risk_stamina_regen",
 		"player_detection_risk_dash_count",
-		"player_armor_pickup_mul"
+		"player_armor_pickup_mul",
+		"smoke_screen_grenade",					-- From old Sicario
+		"player_sicario_multiplier",			-- From old Sicario
+		"player_smoke_screen_ally_dodge_bonus"	-- From old Sicario
 	}
 
 --[[   SKILLTREES   ]]--
@@ -119,6 +122,7 @@ function SkillTreeTweakData:init(tweak_data)
 					},
 					[2] = {
 						upgrades = {
+							"player_revive_damage_reduction_2",
 							"player_revive_health_boost"
 						},
 						cost = self.costs.pro
@@ -687,7 +691,7 @@ function SkillTreeTweakData:init(tweak_data)
 					[1] = {
 						upgrades = {
 							"player_headshot_regen_armor_bonus_1",
-							"player_headshot_regen_armor_bonus_cd_reduction_2"
+							"player_headshot_regen_armor_bonus_cd_reduction_1"
 						},
 						cost = self.costs.hightier
 					},
@@ -2068,12 +2072,13 @@ function SkillTreeTweakData:init(tweak_data)
 			{
 				upgrades = {
 					"player_passive_health_multiplier_1",
-					"player_passive_health_multiplier_2"
+					"player_passive_health_multiplier_2",
+					"player_passive_dodge_chance_1"
 				},
 				cost = 200,
 				icon_xy = {0, 0},
 				name_id = "menu_deck1_1",
-				desc_id = "menu_deck2_1_desc_sc"
+				desc_id = "menu_deck1_1_desc_sc"
 			},
 			deck2,
 			{
@@ -2081,7 +2086,7 @@ function SkillTreeTweakData:init(tweak_data)
 					"team_passive_stamina_multiplier_1",
 					"team_passive_stamina_multiplier_2",
 					"player_passive_intimidate_range_mul",
-					"player_passive_dodge_chance_1"
+					"player_passive_dodge_chance_2"
 				},
 				cost = 400,
 				icon_xy = {2, 0},
@@ -2104,7 +2109,7 @@ function SkillTreeTweakData:init(tweak_data)
 			{
 				upgrades = {
 					"player_tier_armor_multiplier_1",
-					"player_passive_dodge_chance_2"
+					"player_passive_dodge_chance_3"
 				},
 				cost = 2400,
 				icon_xy = {6, 0},
@@ -2157,6 +2162,7 @@ function SkillTreeTweakData:init(tweak_data)
 				upgrades = {
 					"player_passive_health_multiplier_5",
 					"player_passive_health_multiplier_6",
+					"player_muscle_regen",
 					"player_corpse_dispose_speed_multiplier",
 					"player_civ_move_multiplier"
 				},
@@ -2202,6 +2208,7 @@ function SkillTreeTweakData:init(tweak_data)
 				upgrades = {
 					"player_tier_armor_multiplier_1",
 					"player_tier_armor_multiplier_2",
+					"player_level_1_armor_multiplier_1",
 					"player_level_2_armor_multiplier_1",
 					"player_level_3_armor_multiplier_1",
 					"player_level_4_armor_multiplier_1"
@@ -2228,9 +2235,10 @@ function SkillTreeTweakData:init(tweak_data)
 				upgrades = {
 					"player_tier_armor_multiplier_5",
 					"bodybags_bag_quantity",
-					"player_level_2_dodge_addend_1",
-					"player_level_3_dodge_addend_1",
-					"player_level_4_dodge_addend_1"
+					--"player_level_2_dodge_addend_1",
+					--"player_level_3_dodge_addend_1",
+					--"player_level_4_dodge_addend_1"
+					"player_passive_dodge_chance_2"
 				},
 				cost = 1000,
 				icon_xy = {0, 2},
@@ -2241,9 +2249,13 @@ function SkillTreeTweakData:init(tweak_data)
 			{
 				upgrades = {
 					"player_perk_armor_regen_timer_multiplier_1",
-					"player_level_2_dodge_addend_2",
-					"player_level_3_dodge_addend_2",
-					"player_level_4_dodge_addend_2"
+					--"player_level_2_dodge_addend_2",
+					--"player_level_3_dodge_addend_2",
+					--"player_level_4_dodge_addend_2"
+					--"player_level_2_armor_deflection_addend",
+					--"player_level_3_armor_deflection_addend",
+					--"player_level_4_armor_deflection_addend",
+					"player_passive_dodge_chance_3"
 				},
 				cost = 2400,
 				icon_xy = {6, 1},
@@ -2255,9 +2267,11 @@ function SkillTreeTweakData:init(tweak_data)
 				upgrades = {
 					"player_perk_armor_regen_timer_multiplier_2",
 					"player_passive_loot_drop_multiplier_1",
+					"player_level_1_armor_multiplier_2",
 					"player_level_2_armor_multiplier_2",
 					"player_level_3_armor_multiplier_2",
-					"player_level_4_armor_multiplier_2"
+					"player_level_4_armor_multiplier_2",
+					"team_passive_armor_regen_time_multiplier"
 				},
 				cost = 4000,
 				icon_xy = {0, 8},
@@ -2357,6 +2371,7 @@ function SkillTreeTweakData:init(tweak_data)
 			{
 				upgrades = {
 					"player_store_temp_health_2",
+					"player_temp_health_dodge_addend",
 					"player_corpse_dispose_amount_2"
 				},
 				cost = 1000,
@@ -2414,7 +2429,9 @@ function SkillTreeTweakData:init(tweak_data)
 			deck2,
 			{
 				upgrades = {
+					"player_close_contact_dodge_addend",
 					"player_killshot_regen_armor_bonus",
+					"player_killshot_regen_dodge_bonus",
 					--"player_level_2_dodge_addend_1",
 					--"player_level_3_dodge_addend_1",
 					--"player_level_4_dodge_addend_1"
@@ -2546,10 +2563,15 @@ function SkillTreeTweakData:init(tweak_data)
 			name_id = "menu_st_spec_8",
 			desc_id = "menu_st_spec_8_desc",
 			dlc = "character_pack_dragan",
-			category = "defensive",
+			category = {
+				"supportive",
+				"offensive"
+			},
 			{
 				upgrades = {
-					"player_damage_dampener_close_contact_1"
+					"player_infiltrator_stacks_on_ranged_kills",
+					"player_infiltrator_stack_to_centimetres_1",
+					"player_damage_dampener_close_contact_2"
 				},
 				cost = 200,
 				icon_xy = {3, 4},
@@ -2559,7 +2581,8 @@ function SkillTreeTweakData:init(tweak_data)
 			deck2,
 			{
 				upgrades = {
-					"player_damage_dampener_close_contact_2",
+					"player_infiltrator_heal_on_kill",
+					"player_infiltrator_extra_mark_time_1",
 					"player_passive_dodge_chance_1"
 				},
 				cost = 400,
@@ -2570,10 +2593,9 @@ function SkillTreeTweakData:init(tweak_data)
 			deck4,
 			{
 				upgrades = {
-					"player_damage_dampener_close_contact_3",
-					"melee_stacking_hit_expire_t",
-					"melee_stacking_hit_damage_multiplier_1",
-					"player_tape_loop_duration_2"
+					"player_infiltrator_re_mark_on_kill",
+					"player_infiltrator_extra_mark_time_2",
+					"player_close_contact_dodge_addend"
 				},
 				cost = 1000,
 				icon_xy = {5, 4},
@@ -2583,7 +2605,9 @@ function SkillTreeTweakData:init(tweak_data)
 			deck6,
 			{
 				upgrades = {
-					"melee_stacking_hit_damage_multiplier_2",
+					"player_infiltrator_default_marking_distance",
+					"player_infiltrator_heal_multiplier_on_melee_kill",
+					"player_infiltrator_extra_mark_time_3",
 					"player_passive_dodge_chance_2"
 				},
 				cost = 2400,
@@ -2594,9 +2618,9 @@ function SkillTreeTweakData:init(tweak_data)
 			deck8,
 			{
 				upgrades = {
-					"player_heal_over_time",
-					"player_melee_stacking_heal",
-					"player_passive_loot_drop_multiplier_1"
+					"player_passive_loot_drop_multiplier_1",
+					"player_infiltrator_damage_penalty_on_marking",
+					"player_infiltrator_extra_mark_time_4"
 				},
 				cost = 4000,
 				icon_xy = {7, 4},
@@ -2689,6 +2713,11 @@ function SkillTreeTweakData:init(tweak_data)
 				"buildup_meter_hurt_decay_mod_1",
 				"buildup_meter_hurt_decay_mod_2",
 				"buildup_meter_hurt_decay_mod_3",
+				"buildup_meter_elude_2",
+				"buildup_meter_elude_3",
+				"buildup_meter_elude_4",
+				"buildup_meter_elude_5",
+				"buildup_meter_elude_6",
 			},
 			texture_bundle_folder = "sc",
 			icon_xy = {0, 3}
@@ -3637,6 +3666,7 @@ function SkillTreeTweakData:init(tweak_data)
 			{
 				upgrades = {
 					"temporary_chico_injector_3",
+					"player_chico_injector_dodge_addend",
 					"player_chico_preferred_target"
 				},
 				cost = 1000,
@@ -3675,64 +3705,62 @@ function SkillTreeTweakData:init(tweak_data)
 	local sc_wall = {
 			name_id = "menu_st_spec_18",
 			desc_id = "menu_st_spec_18_desc",
-			force_icon = 1,
-			category = {
-				"supportive",
-				"activated"
-			},
+			dlc = "character_pack_dragan",
+			category = "defensive",
 			{
 				upgrades = {
-					"player_passive_dodge_chance_1",
-					"smoke_screen_grenade"
+					"player_damage_dampener_close_contact_1",
+					"player_close_contact_dodge_addend",
 				},
 				cost = 200,
-				icon_xy = {0, 0},
-				texture_bundle_folder = "max",
+				icon_xy = {3, 4},
 				name_id = "menu_deck18_1",
 				desc_id = "menu_deck18_1_desc_sc"
 			},
 			deck2,
 			{
 				upgrades = {
-					"player_passive_dodge_chance_2"
+					"player_damage_dampener_close_contact_2",
+					"player_passive_dodge_chance_1"
 				},
 				cost = 400,
-				icon_xy = {1, 2},
+				icon_xy = {4, 4},
 				name_id = "menu_deck18_3",
 				desc_id = "menu_deck18_3_desc_sc"
 			},
 			deck4,
 			{
 				upgrades = {
-					"player_bomb_cooldown_reduction",
-					"player_corpse_dispose_amount_2"
+					"player_damage_dampener_close_contact_3",
+					"melee_stacking_hit_expire_t",
+					"melee_stacking_hit_damage_multiplier_1",
+					"player_tape_loop_duration_2"
 				},
 				cost = 1000,
-				texture_bundle_folder = "max",
-				icon_xy = {3, 0},
+				icon_xy = {5, 4},
 				name_id = "menu_deck18_5",
 				desc_id = "menu_deck18_5_desc_sc"
 			},
 			deck6,
 			{
 				upgrades = {
-					"player_passive_dodge_chance_3"
+					"melee_stacking_hit_damage_multiplier_2",
+					"player_passive_dodge_chance_2"
 				},
 				cost = 2400,
-				icon_xy = {3, 2},
+				icon_xy = {6, 4},
 				name_id = "menu_deck18_7",
 				desc_id = "menu_deck18_7_desc_sc"
 			},
 			deck8,
 			{
 				upgrades = {
-					"player_sicario_multiplier",
-					"player_smoke_screen_ally_dodge_bonus",
+					"player_heal_over_time",
+					"player_melee_stacking_heal",
 					"player_passive_loot_drop_multiplier_1"
 				},
 				cost = 4000,
-				icon_xy = {0, 1},
-				texture_bundle_folder = "max",
+				icon_xy = {7, 4},
 				name_id = "menu_deck18_9",
 				desc_id = "menu_deck18_9_desc_sc"
 			}
@@ -3770,7 +3798,8 @@ function SkillTreeTweakData:init(tweak_data)
 				desc_id = "menu_deck19_3_desc_sc",
 				name_id = "menu_deck19_3",
 				upgrades = {
-					"player_damage_control_cooldown_drain_1"
+					"player_damage_control_cooldown_drain_1",
+					"player_passive_dodge_chance_1"
 				},
 				icon_xy = {
 					1,

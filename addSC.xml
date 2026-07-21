@@ -75,6 +75,8 @@
 	<texture			path="guis/textures/pd2/skilltree/info_revive_damage_reduction" force="false" load="false"/> <!-- Combat Medic -->
 	<texture			path="guis/textures/pd2/skilltree/info_desperado" force="false" load="false"/>
 	<texture			path="guis/textures/pd2/skilltree/info_grinder" force="false" load="false"/>
+	<texture			path="guis/textures/pd2/skilltree/info_muscle" force="false" load="false"/>
+	<texture			path="guis/textures/pd2/skilltree/info_stoic" force="false" load="false"/>
 	<texture			path="guis/textures/pd2/skilltree/info_infiltrator" force="false" load="false"/>
 	<texture			path="guis/textures/pd2/skilltree/info_sociopath" force="false" load="false"/>
 	<texture			path="guis/textures/pd2/skilltree/info_body_expertise" force="false" load="false"/>
@@ -2333,6 +2335,10 @@
 
 	<!--Fixed wrong sound trigger for pump when shooting; now matches the pump sound used for empty reloads. Fix by Zdann-->
 	<animation			path="anims/fps/m590/m590_recoil" force="true"/>
+
+	<!-- AKMSU-based akimbo MP5 reload anims (for audio/timing) -->
+	<animation			path="anims/fps/x_mp5/x_mp5_reload"/>
+	<animation			path="anims/fps/x_mp5/x_mp5_reload_not_empty"/>
 
 	<!-- Bearable G3 FPS Animations -->
 	<animation			path="anims/fps/g3_niphen/g3_niphen_com_var5"/>

@@ -592,13 +592,16 @@
 					<divider name="tod_divider" size="7"/>
 					<button name="perk_buffs" disabled="true"/>
 					<option type="bool" default_value="true" name="Info_crew_chief"/>
+					<option type="bool" default_value="true" name="Info_muscle"/> <!-- Muscle's regen -->
 					<option type="bool" default_value="true" name="Info_rogue"/>
 					<option type="bool" default_value="true" name="Info_crook"/>
 					<option type="bool" default_value="true" name="Info_grinder"/>
 					<option type="bool" default_value="true" name="Info_gambler"/>
-					<option type="bool" default_value="true" name="Info_infiltrator"/>
+					<option type="bool" default_value="true" name="Info_intelligence"/> <!-- Infiltrator's Intelligence stacks -->
+					<option type="bool" default_value="true" name="Info_sicario"/>
 					<option type="bool" default_value="true" name="Info_sociopath"/>
 					<option type="bool" default_value="true" name="Info_survive_one_hit"/> <!-- Yakuza Oni Irezumi -->
+					<option type="bool" default_value="true" name="Info_stoic"/> <!-- Stoic's delayed healing -->
 					<option type="bool" default_value="true" name="Info_cohesion"/> <!-- Biker's Cohesion display -->
 					<option type="bool" default_value="true" name="Info_heisters_in_aura"/> <!-- Biker helper display for how many players are around -->
 					<option type="bool" default_value="true" name="Info_dig_in_your_heels"/> <!-- Biker regeneration timer -->
@@ -652,6 +655,14 @@
 					<option type="number" default_value="1.0" min="0" max="1" step="0.01" show_value="true" name="MeleeChargeB"/>
 				</option_group>
 				<option_group name="WEAPONINPUTS">
+					<divider name="tod_divider" size="32"/>
+					<option type="bool" default_value="false" name="FULLYSEMIAUTOMATIC"/>
+					<divider name="tod_divider" size="14"/>
+					<option type="multichoice" default_value="1" name="ManualReloads" values_tbl="restoration.reload_type"/>
+					<button name="ManualReloadsDEFAULT" disabled="true"/>
+					<button name="ManualReloadsAUTOMATIC" disabled="true"/>
+					<button name="ManualReloadsMANUAL" disabled="true"/>
+					<divider name="tod_divider" size="14"/>
 					<option type="bool" default_value="true" name="QueuedShooting"/>
 					<option type="number" default_value="1" min="0.01" max="1" step="0.01" show_value="true" name="QueuedShootingWindow"/>
 					<option type="number" default_value="100" min="1" max="800" step="1" show_value="true" name="QueuedShootingExclude"/>

@@ -3329,16 +3329,19 @@ function CharacterTweakData:_init_shield(presets)
 	table.insert(self._enemy_list, "shield")
 
 	self.shield_cruel = deep_clone(self.shield)
+	self.shield_cruel.tags = {"law", "shield", "special"}
 	self.shield_cruel.custom_voicework = "tswat_ru"
 	self.shield_cruel.damage.hurt_severity = presets.hurt_severities.only_explosion_hurts
 	self.shield_cruel.damage.shield_knocked = true
 	table.insert(self._enemy_list, "shield_cruel")
 
 	self.shield_cruel_fbi  = deep_clone(self.shield_cruel)
+	self.shield_cruel_fbi.tags = {"law", "shield", "special"}
 	self.shield_cruel_fbi.custom_voicework = "bravo_elite"
 	table.insert(self._enemy_list, "shield_cruel_fbi")
 
 	self.shield_weekend = deep_clone(self.shield)
+	self.shield_weekend.tags = {"law", "shield", "special"}
 	self.shield_weekend.damage.hurt_severity = presets.hurt_severities.only_explosion_hurts
 	self.shield_weekend.damage.shield_knocked = true
 	self.shield_weekend.HEALTH_INIT = 20
@@ -3347,6 +3350,7 @@ function CharacterTweakData:_init_shield(presets)
 	table.insert(self._enemy_list, "shield_weekend")
 
 	self.shield_weekend_vanilla = deep_clone(self.shield_weekend)
+	self.shield_weekend_vanilla.tags = {"law", "shield", "special"}
 	self.shield_weekend_vanilla.HEALTH_INIT = 18
 	self.shield_weekend_vanilla.headshot_dmg_mul = 2.8
 	self.shield_weekend_vanilla.custom_voicework = "swat_pd3"

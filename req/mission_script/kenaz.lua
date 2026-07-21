@@ -8,9 +8,24 @@ local disable = {
 		enabled = false,
 	},
 }
+local standard_spawn = {
+	values = {
+		interval = 10,
+	},
+}
+local rappel_spawn = {
+	values = {
+		interval = 35,
+	},
+}
 local middle_spawn = {
 	values = {
 		interval = 35,
+	},
+}
+local cloaker_spawn = {
+	values = {
+		interval = 90,
 	},
 }
 return {
@@ -35,27 +50,28 @@ return {
 			{ id = 400005, delay = 0, },
 		},
 	},
+	-- Disable the scripted stuff from startup
+	[100048] = {
+		on_executed = {
+			{ id = 400009, delay = 0, },
+			{ id = 400021, delay = 0, },
+			{ id = 400028, delay = 0, },
+		},
+	},
 	-- FWB  vault styled ambush (you know, when the vault door opens and a swarm of enemies are waiting for you. yeah that one)
 	-- Enabale them when the heist goes loud 
 	[101756] = {
 		on_executed = {
-			{id = 400032, delay = 0,},
+			{ id = 400010, delay = 0, },
+			{ id = 400022, delay = 0, },
+			{ id = 400029, delay = 0, },
 		},
 	},
 	-- Spawn units  when the vault door opens 
 	[100851] = {
 		on_executed = {
-			{ id = 400008, delay = 0, },
-			{ id = 400009, delay = 0, },
 			{ id = 400012, delay = 0, },
-			{ id = 400013, delay = 0, },
-			{ id = 400014, delay = 0, },
-			{ id = 400015, delay = 0, },
-			{ id = 400020, delay = 0, },
-			{ id = 400022, delay = 0, },
 			{ id = 400023, delay = 0, },
-			{ id = 400026, delay = 0, },
-			{ id = 400028, delay = 0, },
 			{ id = 400030, delay = 0, },
 		},
 	},
@@ -120,6 +136,23 @@ return {
 			},
 		},
 	},
-	-- inrease interval of middle spawn 
+	--  tweaked interval spawn(s) 
 	[103218] = middle_spawn,
+	[100192] = standard_spawn,
+	[100231] = standard_spawn,
+	[100571] = standard_spawn,
+	[102898] = standard_spawn,
+	[102899] = standard_spawn,
+	[102900] = standard_spawn,
+	[103169] = standard_spawn,
+	[103170] = standard_spawn,
+	[103171] = standard_spawn,
+	[103172] = standard_spawn,
+	[103244] = rappel_spawn, -- xtras
+	[103245] = rappel_spawn,
+	[103246] = rappel_spawn,
+	[102035] = cloaker_spawn,
+	[102036] = cloaker_spawn,
+	[102037] = cloaker_spawn,
+	[102038] = cloaker_spawn,
 }

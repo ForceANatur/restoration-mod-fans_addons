@@ -63,6 +63,7 @@ function RaycastWeaponBase:setup(setup_data, damage_multiplier)
 	self._shots_without_releasing_trigger = 0
 	self._shot_recoil_pattern_count = 0
 	self._shot_recoil_magnitude_count = 0
+	self._min_shots_reset = 0
 end
 
 function RaycastWeaponBase:get_damage_type()
@@ -154,7 +155,7 @@ function RaycastWeaponBase.collect_hits(from, to, setup_data, weapon_unit)
 	local ai_vision_ids = Idstring("ai_vision")
 	local bulletproof_ids = Idstring("bulletproof")
 	local weap_base = weapon_unit and weapon_unit.base and weapon_unit:base()
-	local is_semi_snp = can_shoot_through_shield and weap_base and weap_base.categories and not weap_base:is_category("amr", "big_iron") and weap_base:is_category("semi_snp", "dmr_l", "dmr_h", "shotgun_auto", "shotgun_light", "handcannon") 
+	local is_semi_snp = can_shoot_through_shield and weap_base and weap_base.categories and not weap_base:is_category("amr", "big_iron") and (not weap_base:is_category("snp") or (weap_base:is_category("snp") and weap_base:is_category("semi_snp")) )
 
 	--Just set this immediately.
 	local ray_hits = can_shoot_through_wall and World:raycast_wall("ray", from, to, "slot_mask", bullet_slotmask, "ignore_unit", ignore_unit, "thickness", 40, "thickness_mask", wall_mask)
@@ -809,7 +810,10 @@ function RaycastWeaponBase:fire(from_pos, direction, dmg_mul, shoot_player, spre
 		self:_check_alert(ray_res.rays, from_pos, direction, user_unit)
 	end
 
-	self:_build_suppression(ray_res.enemies_in_cone, suppr_mul)
+	local dmg_adjusted_suppr_mult = (self:_get_current_damage(dmg_mul) / tweak_data.weapon_suppression.damage_line)^(tweak_data.weapon_suppression.exponent) * (suppr_mul or 0)
+	dmg_adjusted_suppr_mult = math.min(dmg_adjusted_suppr_mult, tweak_data.weapon_suppression.max_suppr_mult)
+
+	self:_build_suppression(ray_res.enemies_in_cone, dmg_adjusted_suppr_mult)
 	managers.player:send_message(Message.OnWeaponFired, nil, self._unit, ray_res)
 
 	--Autofire soundfix integration.

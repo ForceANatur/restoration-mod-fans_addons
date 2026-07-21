@@ -9,6 +9,10 @@ Day = os.date("%d")
 restoration._mod_path = restoration:GetPath()
 function restoration:Init()
 	restoration.log_shit("SC: LOADING: " .. self.ModPath)
+
+	-- Global to check for to make it easy for other mods to check for the overhaul existing
+	restoration.is_overhaul = true
+
 	restoration.captain_types = {
 		winter = {
 			spawn_group = "Cap_Winters",
@@ -864,6 +868,12 @@ restoration.queued_impact_effects_type = {
 	--All weapons have their impact FX all put into a queue for sequential playback at the cost of having impact playback potentially lagging behind if too many get queued too quickly
 }
 
+restoration.reload_type = {
+	"reload_type_default",
+	"reload_type_automatic",
+	"reload_type_manual"
+}
+
 restoration.nvgcolor = {
 	"resmod_nvg_default",
 	"resmod_nvg_blue"
@@ -1603,6 +1613,28 @@ function restoration.get_hiding_cloaker_so_opts(so_action, search_position, inte
 		interrupt_dis = interrupt_dis or 7,
 		interval = -1,
 	}
+end
+---Generate a prefered remove element
+---@param id number: id of element, start from 400000
+---@param name string: name of element for reference
+---@param opts? table: extra parameters
+function restoration:gen_preferedremove(id, name, opts)
+	opts = opts or {}
+	local preferedremove = {
+		id = id,
+		editor_name = name,
+		class = "ElementEnemyPreferedRemove",
+		values = {
+			execute_on_startup = false,
+			base_delay = opts.base_delay or 0,
+			trigger_times = opts.trigger_times or 0,
+			elements = opts.elements or {},
+			on_executed = opts.on_executed or {},
+			enabled = true,
+			callback = opts.callback or false,
+		},
+	}
+	return preferedremove
 end
 -- Log tiers
 -- "log" is for general logging that is useful for players and developers

@@ -52,9 +52,9 @@ Hooks:OverrideFunction(PlayerDamage, "init", function (self, unit)
 
 	managers.sequence:add_inflict_updator_body("fire", self._unit:key(), self._inflict_damage_body:key(), self._inflict_damage_body:extension().damage)
 
-	--Load alternate heal over time tweakdata if player is using Infiltrator or Rogue.
+	--Load alternate heal over time tweakdata if player is using Sicario or Rogue.
 	if player_manager:has_category_upgrade("player", "melee_stacking_heal") then
-		self._hot_type = "infiltrator"
+		self._hot_type = "sicario"
 		self._doh_data = tweak_data.upgrades.melee_to_hot_data or {}
 		self._hot_amount = managers.player:upgrade_value("player", "heal_over_time", 0)
 	elseif player_manager:has_category_upgrade("player", "dodge_stacking_heal") then
@@ -232,7 +232,14 @@ Hooks:OverrideFunction(PlayerDamage, "init", function (self, unit)
 		chunks = {}
 	}
 
+	-- For Stoic's healing method.
+	self._delayed_healing = {
+		epsilon = 0.001,
+		chunks = {}
+	}
+
 	self:clear_delayed_damage()
+	self:clear_delayed_healing()
 	
 	self._slowdowns = {}
 	self._can_play_tinnitus = not managers.user:get_setting("accessibility_sounds_tinnitus") or false
@@ -1232,6 +1239,10 @@ function PlayerDamage:damage_fall(data)
 	return true
 end
 
+Hooks:PostHook(PlayerDamage, "on_downed", "res_on_downed", function(self)
+	self:clear_delayed_healing()
+end)
+
 Hooks:PostHook(PlayerDamage, "_regenerated" , "ResRegenerated" , function(self, no_messiah)
 	--Apply new method to handle refilling messiah charges.
 	if no_messiah then
@@ -1313,8 +1324,8 @@ function PlayerDamage:revive(silent)
 	self._downed_start_time = nil
 
 	--Skip this if player was also downed by a cloaker kick/taser shock.
-	if not arrested and not self._keep_health_on_revive then
-		self:set_health(self:_max_health() * (tweak_data.player.damage.REVIVE_HEALTH_STEPS[self._revive_health_i] + managers.player:upgrade_value("player", "extra_revive_health", 0)) * (self._revive_health_multiplier or 1) * managers.player:upgrade_value("player", "revived_health_regain", 1))
+	if not arrested and not self._keep_health_on_revive then	
+		self:set_health(self:_max_health() * (tweak_data.player.damage.REVIVE_HEALTH_STEPS[self._revive_health_i] + (self._revive_health_multiplier or 0) + managers.player:upgrade_value("player", "extra_revive_health", 0)) * managers.player:upgrade_value("player", "revived_health_regain", 1))
 		
 		self:set_armor(self:_max_armor())
 		self._revive_health_i = math.min(#tweak_data.player.damage.REVIVE_HEALTH_STEPS, self._revive_health_i + 1)
@@ -1417,7 +1428,7 @@ function PlayerDamage:_calc_health_damage_no_deflection(attack_data)
 			local hurt_t_mod = (pm:has_category_upgrade("player", "buildup_meter_quickening") and (math.floor(self:_raw_max_armor()/pm:upgrade_value("player", "buildup_meter_quickening",0).armor_steps) * pm:upgrade_value("player", "buildup_meter_quickening", 0).hurt_t_mod)) or 0
 			local hurt_t = pm:upgrade_value("player", "buildup_meter", 0).hurt_t
 			local groupai = managers.groupai and managers.groupai:state()
-			local additional_players = ((groupai and math.min((groupai:num_alive_players() or 1) - 1, 3)) or 0) * tweak_data.upgrades.socio_affinity_bonus_steps
+			local additional_players = ((groupai and math.min((groupai:num_alive_criminals() or 1) - 1, 3)) or 0) * tweak_data.upgrades.socio_affinity_bonus_steps
 			local combo_t_mod = (pm:has_category_upgrade("player", "buildup_meter_zack") and pm:upgrade_value("player", "buildup_meter_zack", 0).combo_t_mod) or 0
 			local combo_t = pm:upgrade_value("player", "buildup_meter", 0).combo_t + additional_players + combo_t_mod
 			pm._buildup_meter = math.max( 0, managers.player._buildup_meter - hurt_decay )
@@ -1642,13 +1653,24 @@ end
 
 --Init function for dodge points to cache the value.
 function PlayerDamage:set_dodge_points()
+	local pm = managers.player
 	self._dodge_points = (tweak_data.player.damage.DODGE_INIT 
-		+managers.player:body_armor_value("dodge")
-		+managers.player:skill_dodge_chance(false, false, false))
+		+ pm:body_armor_value("dodge")
+		+ pm:skill_dodge_chance(false, false, false))
 		or 0.0
 
 	if self._dodge_points < tweak_data.projectiles.smoke_screen_grenade.dodge_chance and self._in_smoke_bomb > 0 then
 		self._dodge_points = tweak_data.projectiles.smoke_screen_grenade.dodge_chance
+	end
+
+	if self._has_perk_underdog then
+		self._dodge_points = self._dodge_points + pm:upgrade_value("player", "close_contact_dodge_addend", 0)
+	elseif self._has_chico_dodge then
+		self._dodge_points = self._dodge_points + pm:upgrade_value("player", "chico_injector_dodge_addend", 0)
+	elseif self._temp_health_dodge then
+		self._dodge_points = self._dodge_points + pm:upgrade_value("player", "temp_health_dodge_addend", 0)
+	elseif self._pecm_active then
+		self._dodge_points = self._dodge_points + pm:upgrade_value("player", "pocket_ecm_jammer_base", 0).dodge_addend
 	end
 
 	local current_diff = Global.game_settings.difficulty or "easy"
@@ -1656,7 +1678,7 @@ function PlayerDamage:set_dodge_points()
 	local difficulty_id = math.max(0, (tweak_data:difficulty_to_index(current_diff) or 0) - 2)			
 	local diff_reduction = difficulty_id and ((((difficulty_id == 4 or difficulty_id == 5) and 0.35) or (difficulty_id == 6 and 0.25) or 0.45) - ((is_pro and 0.1) or 0)) or 0.45
 	local grace_cap = (0.45 - (0.45 - diff_reduction))
-	self._dodge_interval = math.clamp(self._dodge_points, 0, grace_cap )
+	self._dodge_interval = math.clamp(self._dodge_points, 0, grace_cap)
 	if self._dodge_points > 0 then
 		managers.hud:unhide_dodge_panel(self._dodge_points)
 	else
@@ -1715,6 +1737,13 @@ function PlayerDamage:cloak_or_shock_incap(damage)
 	self._keep_health_on_revive = true
 end
 
+function PlayerDamage:get_cocaine_stacks()
+	local pm = managers.player
+	local cocaine_dodge_regen = ((pm:get_local_cocaine_damage_absorption_ratio() or 0) / 10) * pm:upgrade_value("player", "cocaine_stack_absorption_multiplier", 1)
+
+	return cocaine_dodge_regen
+end
+
 Hooks:PostHook(PlayerDamage, "update" , "ResDamageInfoUpdate" , function(self, unit, t, dt)
 	local pm = managers.player
 	self._in_smoke_bomb = 0.0
@@ -1732,6 +1761,38 @@ Hooks:PostHook(PlayerDamage, "update" , "ResDamageInfoUpdate" , function(self, u
 				self._selected_smoke_screen = smoke_screen
 			end
 		end
+	end
+
+	-- Stoic: delayed healing
+	self:_update_delayed_healing(t, dt)
+
+	--Has PECM
+	local has_pecm_heal = managers.player:has_category_upgrade("team", "pocket_ecm_heal_on_kill")
+	local player_inv = has_pecm_heal and self._unit.inventory and self._unit:inventory()
+	local pecm_active = player_inv and player_inv._jammer_data
+	if pecm_active ~= self._pecm_active then
+		self._pecm_active = pecm_active
+		self:set_dodge_points()
+	end
+	--Has Infil/Crook Dodge
+	local has_perk_underdog = managers.player:has_category_upgrade("player", "close_contact_dodge_addend") and managers.player:has_activate_temporary_upgrade("temporary", "dmg_dampener_close_contact")
+	if has_perk_underdog ~= self._has_perk_underdog then
+		self._has_perk_underdog = has_perk_underdog
+		self:set_dodge_points()
+	end
+
+	--Kingpin Injector
+	local has_chico = managers.player:has_activate_temporary_upgrade("temporary", "chico_injector")
+	if has_chico ~= self._has_chico_dodge then
+		self._has_chico_dodge = has_chico
+		self:set_dodge_points()
+	end
+
+	--Hitman Temp HP Dodge
+	local has_temp_hp_dodge = managers.player:has_category_upgrade("player", "temp_health_dodge_addend") and self:has_temp_health()
+	if has_temp_hp_dodge ~= self._temp_health_dodge then
+		self._temp_health_dodge = has_temp_hp_dodge
+		self:set_dodge_points()
 	end
 
 	if self._cached_in_smoke_bomb and self._cached_in_smoke_bomb ~= self._in_smoke_bomb then
@@ -1759,12 +1820,20 @@ Hooks:PostHook(PlayerDamage, "update" , "ResDamageInfoUpdate" , function(self, u
 		passive_dodge = passive_dodge + (1 - self:health_ratio()) * pm:upgrade_value("player", "dodge_regen_damage_health_ratio_multiplier", 0)
 	end
 
-	--Sicario capstone skill.
+	--Dodge meter boosts from being in your / your ally's smoke screen.
 	if self._in_smoke_bomb == 2.0 then
 		passive_dodge = passive_dodge + pm:upgrade_value("player", "sicario_multiplier", 0)
 	elseif self._in_smoke_bomb == 1.0 and self._selected_smoke_screen then
 		passive_dodge = passive_dodge + self._selected_smoke_screen:dodge_bonus()
 	end
+
+	--Maniac
+	if managers.player:has_category_upgrade("player", "cocaine_stacking") then
+		local cocaine_dodge_regen = self:get_cocaine_stacks()
+
+		passive_dodge = passive_dodge + cocaine_dodge_regen
+	end
+
 
 	if alive(self._unit) and self._unit.movement and self._unit:movement() then
 		local unit_movement = self._unit:movement() 
@@ -1976,7 +2045,7 @@ function PlayerDamage:_check_bleed_out(can_activate_berserker, ignore_movement_s
 		if managers.player:has_category_upgrade("player", "buildup_meter") and managers.player._buildup_meter then
 			local pm = managers.player
 			local groupai = managers.groupai and managers.groupai:state()
-			local additional_players = ((groupai and math.min((groupai:num_alive_players() or 1) - 1, 3)) or 0) * tweak_data.upgrades.socio_affinity_bonus_steps
+			local additional_players = ((groupai and math.min((groupai:num_alive_criminals() or 1) - 1, 3)) or 0) * tweak_data.upgrades.socio_affinity_bonus_steps
 			local combo_t_mod = (pm:has_category_upgrade("player", "buildup_meter_zack") and pm:upgrade_value("player", "buildup_meter_zack", 0).combo_t_mod) or 0
 			local combo_t = pm:upgrade_value("player", "buildup_meter", 0).combo_t + additional_players + combo_t_mod
 			if managers.player:has_category_upgrade("player", "buildup_meter_earl") then
@@ -2677,4 +2746,93 @@ function PlayerDamage:biker_lose_stacks_on_damage(damage_taken, weight)
 			to_tend = nil
 		}, {}, false)
 	end
+end
+
+-- Stoic: keeps track of and manages Stoic's delayed healing.
+--
+-- Almost literally one-to-one with the delayed damage function, just restores HP instead of doing damage.
+-- I originally put this in the delayed damage chunks, but then decided against it for primarily HUD reasons.
+-- Not only would it confuse the DoT display (if you had equal delayed healing and DoT, your healthbar would show nothing),
+-- it could potentially confuse other HUDs that have specific expectations of the DoT when they receive it (for example, that it is positive).
+-- Also doing negative damage would just be a mess.
+function PlayerDamage:_update_delayed_healing(t, dt)
+	local no_chunks = #self._delayed_healing.chunks == 0
+	local time_for_tick = self._delayed_healing.next_tick and t < self._delayed_healing.next_tick
+
+	if no_chunks or time_for_tick then
+		return
+	end
+
+	self._delayed_healing.next_tick = t + 1
+
+	local total_tick = 0
+	local remaining_chunks = {}
+
+	for _, damage_chunk in ipairs(self._delayed_healing.chunks) do
+		total_tick = total_tick + damage_chunk.tick
+		damage_chunk.remaining = damage_chunk.remaining - damage_chunk.tick
+
+		if damage_chunk.remaining > self._delayed_healing.epsilon then
+			table.insert(remaining_chunks, damage_chunk)
+		end
+	end
+
+	self._delayed_healing.chunks = remaining_chunks
+	local remaining_healing = self:remaining_delayed_healing()
+
+	if #self._delayed_healing.chunks == #remaining_chunks then
+		if managers.hud then
+			managers.hud:start_buff("stoic", 1.0) -- TODO: change to Stoic
+			managers.hud:set_stacks("stoic", math.floor(remaining_healing * 100) / 10) -- TODO: change to Stoic
+		end
+	end
+
+	if total_tick > 0 then
+		self:restore_health(total_tick, true)
+	end
+
+	if remaining_healing == 0 then
+		self._delayed_healing.next_tick = nil
+	end
+end
+
+-- Stoic: the function to use to add delayed healing to a player.
+-- 
+-- Same thoughts as with PlayerDamage:_update_delayed_healing(), see that.
+function PlayerDamage:delay_healing(healing, seconds)
+	local healing_chunk = {
+		tick = healing / seconds,
+		remaining = healing
+	}
+
+	if not self._delayed_healing.next_tick then
+		self._delayed_healing.next_tick = TimerManager:game():time() + 1
+	end
+
+	table.insert(self._delayed_healing.chunks, healing_chunk)
+end
+
+-- Stoic: simply returns the healing that is yet to be given to the player.
+-- 
+-- Same thoughts as with PlayerDamage:_update_delayed_healing(), see that.
+function PlayerDamage:remaining_delayed_healing()
+	local remaining_healing = 0
+
+	for _, healing_chunk in ipairs(self._delayed_healing.chunks) do
+		remaining_healing = remaining_healing + healing_chunk.remaining
+	end
+
+	return remaining_healing
+end
+
+-- Stoic: ...clears the delayed healing. Should be self-explanatory.
+-- 
+-- Same thoughts as with PlayerDamage:_update_delayed_healing(), see that.
+function PlayerDamage:clear_delayed_healing()
+	local remaining_healing = self:remaining_delayed_healing()
+
+	self._delayed_healing.chunks = {}
+	self._delayed_healing.next_tick = nil
+
+	return remaining_healing
 end
