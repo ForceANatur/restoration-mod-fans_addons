@@ -123,7 +123,12 @@ local enemies_plink = {
 	ids_func("units/pd2_mod_reapers/characters/ene_fbi_heavy_1/ene_fbi_heavy_1_husk"),
 	ids_func("units/pd2_mod_reapers/characters/ene_fbi_heavy_r870/ene_fbi_heavy_r870"),
 	ids_func("units/pd2_mod_reapers/characters/ene_fbi_heavy_r870/ene_fbi_heavy_r870_husk"),
-	
+
+	ids_func("units/pd2_dlc_vip/characters/ene_fbi_titan_heavy_1/ene_fbi_titan_heavy_1"),
+	ids_func("units/pd2_dlc_vip/characters/ene_fbi_titan_heavy_1/ene_fbi_titan_heavy_1_husk"),
+
+	ids_func("units/pd2_mod_halloween/characters/ene_fbi_titan_heavy_1/ene_fbi_titan_heavy_1"),
+	ids_func("units/pd2_mod_halloween/characters/ene_fbi_titan_heavy_1/ene_fbi_titan_heavy_1_husk"),
 }
 
 local grenadier_smash = {
