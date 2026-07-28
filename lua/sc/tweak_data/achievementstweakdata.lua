@@ -341,6 +341,16 @@ function AchievementsTweakData:init(tweak_data)
 		},
 		mask = "nixon"
 	}
+	-- Fix for UMP For Me, UMP For You not stacking on ASU 
+	self.enemy_kill_achievements.pim_3 = {
+            stat = "pim_3_stats",
+            weapon_type = "smg",
+            difficulty = overkill_and_above,
+            enemy_tags_any = {
+                "hrt_titan",
+				"special"
+            }
+    }
 	
 	self.enemy_kill_achievements.fool_me_once = {
 		weapon = "m45",
@@ -438,6 +448,8 @@ function AchievementsTweakData:init(tweak_data)
 		stat = "gage4_10_stats",
 		enemies = {
 			"tank",
+			"tank_black",
+			"tank_skull",
 			"tank_medic",
 			"tank_mini",
 			"tank_titan",

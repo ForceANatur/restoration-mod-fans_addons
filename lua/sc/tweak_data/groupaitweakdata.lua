@@ -7200,7 +7200,7 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 					Idstring("units/pd2_mod_nypd/characters/ene_grenadier_1/ene_grenadier_1")
 				},
 				lapd = {
-					Idstring("units/payday2/characters/ene_grenadier_1/ene_grenadier_1")
+					Idstring("units/pd2_mod_lapd/characters/ene_grenadier_1/ene_grenadier_1")
 				},
 				fbi = {
 					Idstring("units/payday2/characters/ene_grenadier_1/ene_grenadier_1")

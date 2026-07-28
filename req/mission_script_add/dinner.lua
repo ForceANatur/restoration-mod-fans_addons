@@ -1,6 +1,7 @@
 local murkies_responders = {
 	"units/payday2/characters/ene_murkywater_1/ene_murkywater_1",
 	"units/payday2/characters/ene_murkywater_2/ene_murkywater_2",
+	"units/pd2_mod_sharks/characters/ene_murky_wildcard/ene_murky_wildcard"
 }
 local difficulty = tweak_data:difficulty_to_index(Global.game_settings and Global.game_settings.difficulty or "normal")
 local pro_job = Global.game_settings and Global.game_settings.one_down

@@ -316,6 +316,7 @@ local replacement_table = {
 	["units/pd2_dlc_gitgud/characters/ene_zeal_swat/ene_zeal_swat"] = "units/pd2_mod_ng/characters/ene_ntl_swat_1/ene_ntl_swat_1",
 	["units/payday2/characters/ene_fbi_swat_2/ene_fbi_swat_2"] = "units/pd2_mod_ng/characters/ene_ntl_benelli/ene_ntl_benelli",
 	["units/payday2/characters/ene_city_swat_2/ene_city_swat_2"] = "units/pd2_mod_ng/characters/ene_ntl_benelli/ene_ntl_benelli",
+	["units/payday2/characters/ene_city_swat_r870/ene_city_swat_r870"] = "units/pd2_mod_ng/characters/ene_ntl_benelli/ene_ntl_benelli",
 	["units/pd2_dlc_gitgud/characters/ene_zeal_swat_2/ene_zeal_swat_2"] = "units/pd2_mod_ng/characters/ene_ntl_benelli/ene_ntl_benelli",
 	["units/payday2/characters/ene_fbi_heavy_1/ene_fbi_heavy_1"] = "units/pd2_mod_ng/characters/ene_ntl_heavyswat/ene_ntl_heavyswat",
 	["units/payday2/characters/ene_city_heavy_g36/ene_city_heavy_g36"] = "units/pd2_mod_ng/characters/ene_ntl_heavyswat/ene_ntl_heavyswat",
