@@ -75,7 +75,9 @@ local enemies_visor = {
 	ids_func("units/pd2_mod_halloween/characters/ene_police_heavygunner/ene_police_heavygunner"),
 	ids_func("units/pd2_mod_halloween/characters/ene_police_heavygunner/ene_police_heavygunner_husk"),
 	ids_func("units/pd2_mod_cruel/characters/ene_fbi_heavy_1/ene_fbi_heavy_1"),
-	ids_func("units/pd2_mod_cruel/characters/ene_fbi_heavy_1/ene_fbi_heavy_1_husk")
+	ids_func("units/pd2_mod_cruel/characters/ene_fbi_heavy_1/ene_fbi_heavy_1_husk"),
+	ids_func("units/pd2_mod_cruel/characters/ene_police_heavygunner/ene_police_heavygunner"),
+	ids_func("units/pd2_mod_cruel/characters/ene_police_heavygunner/ene_police_heavygunner_husk")
 }
 
 local enemies_plink = {	  
@@ -1419,6 +1421,10 @@ function CopDamage:damage_bullet(attack_data)
 
 			if self._unit:base()._tweak_table == "spring" and (weapon_id == "m134" or weapon_id == "shuno") then
 				managers.challenges_res:set_flag("spring_test")
+			end
+
+			if self._unit:base()._tweak_table == "tank_captain" and (weapon_id == "m95") then
+				managers.challenges_res:set_flag("cruel_t_death")
 			end
 		elseif attack_data.attacker_unit:base().sentry_gun then
 			if Network:is_server() then

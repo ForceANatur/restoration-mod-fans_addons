@@ -378,6 +378,13 @@ function ChallengesTweakData:init()
         flag_id = "spring_test",
     }
 
+    self.new_challenges.cruel_t_death = {
+        title_id = "ch_cruel_t_death",
+        description_id = "ch_cruel_t_death_desc",
+        xp = gigantic_xp,
+        flag_id = "cruel_t_death",
+    }
+
 	self.weapon = {}
 
 

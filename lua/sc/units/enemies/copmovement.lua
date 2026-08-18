@@ -115,6 +115,7 @@ action_variants.phalanx_minion_cruel.walk = ShieldCopActionWalk
 action_variants.phalanx_minion_cruel_break = security_variant
 action_variants.medic_cruel = security_variant
 action_variants.teto = security_variant
+action_variants.enforcer_swat_cruel = security_variant
 
 function CopMovement:post_init()
 	local unit = self._unit

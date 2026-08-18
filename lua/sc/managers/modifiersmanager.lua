@@ -372,6 +372,7 @@ local replacement_table = {
 	["units/pd2_mod_halloween/characters/ene_city_heavy_g36/ene_city_heavy_g36"] = "units/pd2_mod_cruel/characters/ene_city_heavy_g36/ene_city_heavy_g36",
 	["units/pd2_mod_halloween/characters/ene_spook_1/ene_spook_1"] = "units/pd2_mod_cruel/characters/ene_spook_1/ene_spook_1",
 	["units/pd2_mod_halloween/characters/ene_shield_gensec/ene_shield_gensec"] = "units/pd2_mod_cruel/characters/ene_city_shield/ene_city_shield",
+	["units/pd2_mod_halloween/characters/ene_police_heavygunner/ene_police_heavygunner"] = "units/pd2_mod_cruel/characters/ene_police_heavygunner/ene_police_heavygunner",
 
 	["units/pd2_mod_halloween/characters/ene_veteran_cop_1/ene_veteran_cop_1"] = "units/pd2_mod_cruel/characters/ene_cop_4/ene_cop_4",
 	["units/pd2_mod_halloween/characters/ene_gensec_sgt/ene_gensec_sgt"] = "units/pd2_mod_cruel/characters/ene_hoxton_breakout_guard_1/ene_hoxton_breakout_guard_1",

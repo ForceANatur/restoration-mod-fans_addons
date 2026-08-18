@@ -1692,6 +1692,20 @@ function CharacterTweakData:_init_gangster(presets)
 		self.enforcer_swat.custom_voicework = "heavygunner"
 	end
 	table.insert(self._enemy_list, "enforcer_swat")
+
+	-- bravo variants, moves faster, but much more squishy
+	self.enforcer_swat_cruel = deep_clone(self.enforcer_swat)
+	self.enforcer_swat_cruel.HEALTH_INIT = 175
+	self.enforcer_swat_cruel.headshot_dmg_mul = 3.575
+	self.enforcer_swat_cruel.move_speed = presets.move_speed.fast
+	self.enforcer_swat_cruel.can_throw_frag = true
+	self.enforcer_swat_cruel.grenade_toss_chance = 0.2
+	if self:get_ai_group_type() == "zombie" then
+		self.enforcer_swat_cruel.custom_voicework = "cruel_enforcer"
+	else
+		self.enforcer_swat_cruel.custom_voicework = nil
+	end
+	table.insert(self._enemy_list, "enforcer_swat_cruel")
 end
 
 function CharacterTweakData:_init_biker(presets)
@@ -20855,7 +20869,8 @@ function CharacterTweakData.character_map(...)
 				"ene_city_swat_2",
 				"ene_city_swat_3",
 				"ene_city_swat_r870",
-				"ene_spook_1"
+				"ene_spook_1",
+				"ene_police_heavygunner"
 			}
 		}
 

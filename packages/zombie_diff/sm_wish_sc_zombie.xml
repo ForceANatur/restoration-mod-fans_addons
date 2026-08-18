@@ -1220,4 +1220,17 @@
 
 	<texture			path="units/pd2_mod_halloween/characters/ene_fbi_titan_heavy_1/spook_heavy_df" />
 	<texture			path="units/pd2_mod_halloween/characters/ene_fbi_titan_heavy_1/heads_atlas_df" />
+
+	<!--Hyper/Cruel Enforcer-->
+	<object				path="units/pd2_mod_cruel/characters/ene_police_heavygunner/ene_police_heavygunner" force="false"/>
+	<cooked_physics		path="units/pd2_mod_cruel/characters/ene_police_heavygunner/ene_police_heavygunner" force="false"/>
+	<model				path="units/pd2_mod_cruel/characters/ene_police_heavygunner/ene_police_heavygunner" force="false"/>
+	<unit				path="units/pd2_mod_cruel/characters/ene_police_heavygunner/ene_police_heavygunner" force="false" load="true"/>
+	<material_config	path="units/pd2_mod_cruel/characters/ene_police_heavygunner/ene_police_heavygunner" force="false"/>
+	<material_config	path="units/pd2_mod_cruel/characters/ene_police_heavygunner/ene_police_heavygunner_contour" force="true"/>
+	<unit				path="units/pd2_mod_cruel/characters/ene_police_heavygunner/ene_police_heavygunner_husk" force="false" load="true"/>
+	<texture			path="units/pd2_mod_cruel/characters/ene_police_heavygunner/helmets_atlas_df"/>
+	<texture			path="units/pd2_mod_cruel/characters/ene_police_heavygunner/swat_body_df"/>
+	<texture			path="units/pd2_mod_cruel/characters/ene_police_heavygunner/helmets_atlas_il"/>
+	<texture			path="units/pd2_mod_cruel/characters/ene_police_heavygunner/swat_body_il"/>
 </table>

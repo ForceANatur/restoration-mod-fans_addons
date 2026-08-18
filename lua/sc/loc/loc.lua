@@ -1211,6 +1211,8 @@ Hooks:Add("LocalizationManagerPostInit", "ResMod_english_Localization_Init", fun
 		["ch_winters_test_desc"] = "Kill Captain Winters while he holding shield with only using Switchblade or Wing Butterfly Knife",
 		["ch_spring_test"] = "Mine's Bigger Than Yours",
 		["ch_spring_test_desc"] = "Kill Captain Spring with only using Vulcan Minigun or XL 5.56 Microgun",
+		["ch_cruel_t_death"] = "Taste Of Your Own Medicine",
+		["ch_cruel_t_death_desc"] = "Defeat Mr. Cruel T with the Thanatos 95/Barrett M95. Yes, DEFEAT, not KILL. He's coming back for more.",
 
 		["ch_pdth_style_fwb"] = "Old School: First World Bank",
 		["ch_pdth_style_fwb_desc"] = "Complete First World Bank on OVERKILL difficuly or above, wearing Two-piece Suit or LBV, having no skills, using Innatae or Tabula Rasa perk decks, Weapon Butt melee and weapons from PD:TH",

@@ -319,6 +319,7 @@ logic_variants.phalanx_minion_cruel.flee = nil
 logic_variants.phalanx_minion_cruel_break = security_variant
 logic_variants.medic_cruel = security_variant
 logic_variants.teto = security_variant
+logic_variants.enforcer_swat_cruel = security_variant
 
 --Set up boss logics
 logic_variants.mobster_boss = logic_variants.triad_boss
