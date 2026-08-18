@@ -19,7 +19,16 @@ local boat_spawn = {
 		interval = 30,
 	},
 }
-
+local disabled = {
+	values = {
+		enabled = false,
+	},
+}
+local enabled = {
+	values = {
+		enabled = true,
+	},
+}
 return {
 -- get rid of roof dozers (that are not even on the roof lmao)
 	[100434] = {
@@ -27,9 +36,25 @@ return {
 			{ id = 100365, remove = true },
 		},
 	},
-	--Pro Job PONR 
+	--Pro Job PONR
+	-- Butcher Crew backing you up
+	-- Endless assault during rope objective
+	-- a solution to end the assault :)
 	[100914] = {
-		ponr = ponr_value
+		ponr = ponr_value,
+	},
+	[100042] = {
+		hunt = true,
+	},
+	[100926] = {
+		on_executed = {
+			{id = 400006, delay = 0},
+		},
+	},
+	[100988] = {
+		on_executed = {
+			{ id = 400031, delay = 5},
+		},
 	},
 	--The love story of 2 beat cops
 	[101241] = fbi_access,
@@ -45,4 +70,9 @@ return {
 	[100605] = window_spawn,
 	[100177] = boat_spawn,
 	[100737] = boat_spawn,
-}	
+	-- make Snipers respawn and restore unused ones 
+-- make Snipers respawn and re-enable unused ones
+	[100520] = enabled,
+	[100545] = enabled,
+	[100557] = enabled,
+}

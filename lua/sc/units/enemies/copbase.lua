@@ -1063,6 +1063,13 @@ local weapons_map = {
 	[Idstring("units/pd2_mod_friday/characters/ene_security_fri_1/ene_security_fri_1"):key()] = {"m1911_npc", "mp5"},
 	[Idstring("units/pd2_mod_friday/characters/ene_security_fri_2/ene_security_fri_2"):key()] = {"m1911_npc", "mp5"},
 	[Idstring("units/pd2_mod_friday/characters/ene_security_fri_3/ene_security_fri_3"):key()] = {"m1911_npc", "mp5"},
+
+	-- Alaskan Deal 
+	["wwh"] = {
+		[Idstring("units/pd2_dlc_wwh/characters/ene_male_crew_01/ene_male_crew_01"):key()] = {"m1911_npc", "ak47", "r870", "raging_bull"},
+		[Idstring("units/pd2_dlc_wwh/characters/ene_male_crew_02/ene_male_crew_02"):key()] = {"scar_murky", "ump", "m4"},
+		[Idstring("units/pd2_dlc_wwh/characters/ene_female_crew/ene_female_crew"):key()] = {"c45", "mac11", "mossberg", "ak47", "raging_bull"},
+	},
 	
 	-- Vanilla Murkies with variety weapons
 	[Idstring("units/payday2/characters/ene_murkywater_1/ene_murkywater_1"):key()] = {"ump", "m4", "scar_murky"},
@@ -1103,6 +1110,12 @@ local weapons_map = {
 	[Idstring("units/pd2_dlc_spa/characters/npc_spa/npc_spa"):key()] = "beretta92",
 	[Idstring("units/payday2/characters/npc_old_hoxton_prisonsuit_2/npc_old_hoxton_prisonsuit_2"):key()] = "beretta92",
 	[Idstring("units/pd2_dlc_berry/characters/npc_locke/npc_locke"):key()] = "beretta92",
+	-- Zeal Medics now use UMPs cause they need dmg for some reason 
+	[Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_medic/ene_zeal_medic"):key()] = "ump",
+	-- Brabo US Dozer now uses either Benelli or AA12
+	[Idstring("units/pd2_mod_bravo/characters/ene_bravo_bulldozer/ene_bravo_bulldozer"):key()] = {"benelli_dozer", "aa12_dozer"},
+	-- OMNIA Skully now uses scaled bravo M60 to match his colors
+	[Idstring("units/pd2_mod_omnia/characters/ene_bulldozer_3/ene_bulldozer_3"):key()] = "m60_om_dozer",
 
 	-- Giving vanilla units the right guns
 	[Idstring("units/pd2_dlc_mad/characters/ene_akan_cs_tazer_ak47_ass/ene_akan_cs_tazer_ak47_ass")] = "ak47_yellow"

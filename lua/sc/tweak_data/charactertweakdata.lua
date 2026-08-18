@@ -2952,7 +2952,7 @@ function CharacterTweakData:_init_tank(presets)
 	--Benelli (Bravo) Dozer
 	self.tank_mini = deep_clone(self.tank)
 	self.tank_mini.HEALTH_INIT = 625
-	self.tank_mini.headshot_dmg_mul = 15.625
+	self.tank_mini.headshot_dmg_mul = 9.5
 	self.tank_mini.weapon = deep_clone(presets.weapon.normal)
 	self.tank_mini.can_throw_frag = true
 	self.tank_mini.grenade_toss_chance = 0.4
@@ -19134,6 +19134,10 @@ Hooks:PostHook(CharacterTweakData, "_create_table_structure", "remod_create_tabl
 	--Dozer M500
 	table.insert(self.weap_ids, "m500_dozer")
 	table.insert(self.weap_unit_names, Idstring("units/pd2_dlc_bex/weapons/wpn_npc_m500_dozer/wpn_npc_m500_dozer"))	
+
+	-- OMNIA Dozer M60
+	table.insert(self.weap_ids, "m60_om_dozer") 
+	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_m60_om_dozer/wpn_npc_m60_om_dozer"))
 
 	--Meme Akimbo Raging Bulls
 	table.insert(self.weap_ids, "x_raging_bull_meme_npc")
