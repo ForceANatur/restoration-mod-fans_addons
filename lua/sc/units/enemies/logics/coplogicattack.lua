@@ -162,7 +162,7 @@ function CopLogicAttack.aim_allow_fire(shoot, aim, data, my_data) -- doesn't rea
 				elseif not data.unit:base():has_tag("tank") and data.unit:base():has_tag("medic") then
 					managers.groupai:state():chk_say_enemy_chatter(data.unit, data.m_pos, "aggressive")
 				elseif data.unit:base():has_tag("shield") and (not my_data.shield_knock_cooldown or my_data.shield_knock_cooldown < data.t) then
-					if data.unit:base()._tweak_table == "phalanx_minion" or data.unit:base()._tweak_table == "phalanx_minion_assault" or data.unit:base()._tweak_table == "marshal_shield" or data.unit:base()._tweak_table == "shield_cruel" or data.unit:base()._tweak_table == "shield_cruel_fbi" or data.unit:base()._tweak_table == "shield_weekend" then
+					if data.unit:base()._tweak_table == "phalanx_minion" or data.unit:base()._tweak_table == "phalanx_minion_assault" or data.unit:base()._tweak_table == "marshal_shield" then
 						data.unit:sound():play("hos_shield_indication_sound_terminator_style", nil, true) --that's a big ass name
 					else
 						data.unit:sound():play("shield_identification", nil, true)
@@ -398,7 +398,7 @@ function CopLogicAttack._update_cover(data)
 	local focus_enemy = data.attention_obj
 	local objective = data.objective
 
-	if not focus_enemy or not focus_enemy.nav_tracker or focus_enemy.reaction < AIAttentionObject.REACT_COMBAT or objective and objective.shield_cover_unit then
+	if not focus_enemy or not focus_enemy.nav_tracker or (focus_enemy.unit and not alive(focus_enemy.unit)) or focus_enemy.reaction < AIAttentionObject.REACT_COMBAT or objective and objective.shield_cover_unit then
 		if best_cover and mvector3.distance_sq(best_cover[1][1], data.m_pos) > 100 ^ 2 then
 			CopLogicAttack._set_best_cover(data, my_data, nil)
 		end

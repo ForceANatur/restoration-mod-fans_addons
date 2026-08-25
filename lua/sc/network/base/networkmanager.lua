@@ -5,20 +5,37 @@
 -- 		self:register_handler("RestorationMod__unit", RestorationMod__UnitNetworkHandler)
 -- 	end
 -- end)
-NetworkMatchMakingEPIC._BUILD_SEARCH_INTEREST_KEY = "restoration_13_dev_FaNScout_v21_asu_heavy1"
-NetworkMatchMakingSTEAM._BUILD_SEARCH_INTEREST_KEY = "restoration_13_dev_FaNScout_v21_asu_heavy1"
+local restoration_build_key = "restoration_13_dev_FaNScout"
 
-local current_key = NetworkMatchMakingSTEAM._BUILD_SEARCH_INTEREST_KEY
+-- Diesel 3.0 / 64-bit does not guarantee both matchmaking implementations exist.
+if NetworkMatchMakingEPIC then
+	NetworkMatchMakingEPIC._BUILD_SEARCH_INTEREST_KEY = restoration_build_key
+end
+
+if NetworkMatchMakingSTEAM then
+	NetworkMatchMakingSTEAM._BUILD_SEARCH_INTEREST_KEY = restoration_build_key
+end
+
+local current_key = restoration_build_key
 local standard_str = 'NetworkMatchMakingSTEAM._BUILD_SEARCH_INTEREST_KEY = \"'
 
 -- Invite-Link-on-Discord support
 
 local function find_key(page, str)
-	local _, st = string.find(tostring(page), str)
-	local en, _ = string.find(tostring(page), '"', st + 1)
-	local key = string.sub(tostring(page), st + 1, en - 1)
+	local page_str = tostring(page)
+	local _, st = string.find(page_str, str, 1, true)
 
-	return key
+	if not st then
+		return nil
+	end
+
+	local en = string.find(page_str, '"', st + 1, true)
+
+	if not en then
+		return nil
+	end
+
+	return string.sub(page_str, st + 1, en - 1)
 end
 
 local function setup_discord_link(gold_key)
@@ -31,7 +48,7 @@ local function setup_discord_link(gold_key)
 	local user_resmod_version = ""
 
 	if is_gold then
-		user_resmod_version = "Gold"
+		user_resmod_version = "This message should not appear, if it does, please tell FaN Scout with screenshot."
 	else
 		user_resmod_version = "Dev (FaN Scout's Addons)"
 	end

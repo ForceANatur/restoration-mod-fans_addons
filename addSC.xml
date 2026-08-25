@@ -1529,7 +1529,8 @@
 
 	<unit				path="units/payday2/weapons/wpn_npc_m95/wpn_npc_m95_fuck" force="false"/>
 
-	<unit path="units/pd2_dlc_usm1/weapons/wpn_npc_dmr/wpn_npc_dmr" force="true" />
+	<!--Vanilla npc dmr failsafe-->
+	<unit				path="units/pd2_dlc_usm1/weapons/wpn_npc_dmr/wpn_npc_dmr" force_if_not_loaded="true"/>
 
 	<!--Big Dave-->
 	<object				path="units/pd2_mod_dave/characters/ene_big_dave/ene_big_dave" force="false"/>
