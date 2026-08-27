@@ -1571,6 +1571,7 @@ local dave = {
 		"g3a3_npc",
 		"m1911_npc",
 		"deagle",
+		"scar_murky",
 		"scar_heavy",
 		"mateba_ap",
 		"m14_sniper_npc",
