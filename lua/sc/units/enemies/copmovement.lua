@@ -76,6 +76,46 @@ action_variants.taser_titan = clone(security_variant)
 action_variants.taser_titan_reaper = clone(security_variant)
 action_variants.boom_titan = clone(security_variant)
 
+action_variants.city_swat_rpg = security_variant
+action_variants.weekend_vanilla = security_variant
+action_variants.weekend_vanilla_heavy = security_variant
+action_variants.weekend_vanilla_snp = security_variant
+action_variants.spooc_swole = security_variant
+action_variants.medic_buff = security_variant
+action_variants.atf_marksman = security_variant
+action_variants.medic_deathvox = security_variant
+action_variants.city_swat_sergeant = security_variant
+action_variants.tank_captain = clone(security_variant)
+action_variants.tank_captain.walk = TankCopActionWalk
+action_variants.enforcer_swat = security_variant
+action_variants.tank_undeadtitan = clone(security_variant)
+action_variants.tank_undeadtitan.walk = TankCopActionWalk
+action_variants.heavy_swat_sniper_mememan = security_variant
+action_variants.city_swat_dodge_mememan = security_variant
+action_variants.captain_ultra = clone(security_variant)
+action_variants.kamikaze = security_variant
+action_variants.hrt_titan_heavy = security_variant
+action_variants.cop_wildcard = security_variant
+action_variants.shield_weekend = security_variant
+action_variants.shield_weekend_vanilla = security_variant
+
+action_variants.fbi_cruel = security_variant
+action_variants.hrt_cruel = security_variant
+action_variants.fbi_vet_cruel = security_variant
+action_variants.weekend_cruel = security_variant
+action_variants.weekend_vanilla_heavy_cruel = security_variant
+action_variants.shield_cruel = security_variant
+action_variants.shield_cruel_fbi = security_variant
+action_variants.weekend_lmg_cruel = security_variant
+action_variants.weekend_lmg_cruel_assault = security_variant
+action_variants.phalanx_minion_cruel = clone(security_variant)
+action_variants.phalanx_minion_cruel.hurt = ShieldActionHurt
+action_variants.phalanx_minion_cruel.walk = ShieldCopActionWalk
+action_variants.phalanx_minion_cruel_break = security_variant
+action_variants.medic_cruel = security_variant
+action_variants.teto = security_variant
+action_variants.enforcer_swat_cruel = security_variant
+
 function CopMovement:post_init()
 	local unit = self._unit
 	self._ext_brain = unit:brain()

@@ -61,8 +61,24 @@ function MutatorsManager:init()
 		MutatorReloadMarathon:new(self),
 		MutatorMagazineMartyr:new(self),
 		MutatorNoAmmoDrop:new(self),
-		--MutatorHighNoon:new(self)
+		-- Fork Content
+		MutatorUMP4U2:new(self),
+		-- anything under here is ❌
+--[[	MutatorOopsAllSpecials:new(self),
+		MutatorPiggyBulldozer:new(self),
+		MutatorSnipersAndSnipers:new(self),
+		MutatorMoreSpecials:new(self),
+		MutatorHighNoon:new(self),
+		MutatorHeavyMedics:new(self),
+		MutatorRocketGrunts:new(self),
+		MutatorSWOLENBOYS:new(self),
+		MutatorDeathvoxMedics:new(self),
+		MutatorSafehouseNightmareHell:new(self),
+		MutatorMemezMalware:new(self),
+		MutatorFragDozers:new(self),
 		MutatorAdvancedTraining:new(self),
+		MutatorHeavyFBITitans:new(self)
+		]]--
 	}
 	self._active_mutators = {}
 	local activate = Global.mutators and Global.mutators.active_on_load

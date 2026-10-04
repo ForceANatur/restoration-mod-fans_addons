@@ -1,0 +1,39 @@
+Lua:
+- The self insert.
+- The many loc.lua changes
+- tipstweakdata.lua
+- Randomized weapons
+- Mutators (Code pasted from fanscout branch)
+- Bravo units (modifiersmanager.lua)
+- Mr. Cruel T's challenge
+
+Units:
+- Voicelines from fanscout branch, especially the other factions
+- HeavyGunner's icon
+- Everything marked with (❌)
+- NPC Weapons marked with (❌)
+- Bravo units
+- Other units for the non america factions
+
+Other units that need to be done:
+- FBI 4
+- ZEAL pistol hrt
+- HeavyGunner
+- Heavy Medic
+- ATF Marksman
+- Zombie faction edits
+- Undead Titandozer
+- Swole Clocker and Medics
+- Crackdown Medics
+- Heavy ASU
+- National Guard Shield
+- Mememan 3, 4, and 5
+
+NPC Weapons:
+- ATF DDM4 V7
+- Mateba Model 6
+- HK G3A3
+- Highly modified CAR-4 (Mememan 3 weapon)
+- fanni gee thirte sex 😂 (Mememan 4 weapon)
+- SCAR Heavy
+- PP-19 Bizon

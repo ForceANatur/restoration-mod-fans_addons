@@ -435,6 +435,8 @@
 		<hook file="sc/mutators/new/mutatornoammodrop.lua" source_file="lib/mutators/basemutator"/>
 		<hook file="sc/mutators/new/mutatoradvancedtraining.lua" source_file="lib/mutators/basemutator"/>
 		<!--<hook file="sc/mutators/new/mutatorfactionreplacer.lua" source_file="lib/mutators/basemutator"/>-->
+		<!--///FORK MUTATORS GO HERE\\\-->
+		<hook file="sc/mutators/new/mutatorumpforyoutoo.lua" source_file="lib/mutators/basemutator"/>
 		<!--///NETWORKING\\\-->
 		<hook file="sc/network/base/hostnetworksession.lua" source_file="lib/network/base/hostnetworksession"/>
 		<hook file="sc/network/base/networkpeer.lua" source_file="lib/network/base/networkpeer"/>
@@ -894,9 +896,6 @@
 	<Package id="packages/res_load_russia" file="packages/res/load/russia.xml"/>
 	<Package id="packages/res_load_zombie" file="packages/res/load/zombie.xml"/>
 
-
-	<!--///DIFF PACKAGES ZOMBIE\\\-->
-
-	<!--///DIFF PACKAGES REAPERS\\\-->
-
+	<!-- fork content -->
+	<Package id="packages/fanscout" file="packages/res/load/fanscout.xml"/>
 </mod>

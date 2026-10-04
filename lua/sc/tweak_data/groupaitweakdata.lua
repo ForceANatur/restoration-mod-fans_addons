@@ -13762,6 +13762,134 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 		access = access_type_all,
 		ignore_spawn_cap = true
 	}
+
+	--Assault Enforcers
+	--This unfortunately means the flaming guy is more common
+	--thank god i got rid of the flaming guy on mexico
+	self.unit_categories.police_heavygunner = {
+		unit_types = {
+			america = {
+				Idstring("units/pd2_mod_nc/characters/ene_police_heavygunner/ene_police_heavygunner")
+			},
+			russia = {
+				Idstring("units/pd2_mod_reapers/characters/ene_subject_enforcer/ene_subject_enforcer")	-- might need a new model for this, flaming guy sucks ass
+			},
+			zombie = {
+				Idstring("units/pd2_mod_halloween/characters/ene_police_heavygunner/ene_police_heavygunner")
+			},
+			murkywater = {
+				Idstring("units/pd2_dlc_bph/characters/ene_murky_heavyg/ene_murky_heavyg")
+			},
+			federales = {
+				Idstring("units/pd2_dlc_bex/characters/ene_deathvox_fbi_heavyswat/ene_deathvox_fbi_heavyswat")
+			},
+			nypd = {
+				Idstring("units/pd2_mod_nc/characters/ene_police_heavygunner/ene_police_heavygunner")
+			},
+			lapd = {
+				Idstring("units/pd2_mod_nc/characters/ene_police_heavygunner/ene_police_heavygunner")
+			},
+			fbi = {
+				Idstring("units/pd2_mod_nc/characters/ene_police_heavygunner/ene_police_heavygunner")
+			}
+		},
+		access = access_type_all
+	}
+
+	--wildcard units
+	self.unit_categories.wildcard = {
+		unit_types = {
+			america = {
+				Idstring("units/pd2_mod_nc/characters/ene_wildcard/ene_wildcard")
+			},
+			russia = {
+				Idstring("units/pd2_mod_reapers/characters/ene_akan_wildcard/ene_akan_wildcard")
+			},
+			zombie = {
+				Idstring("units/pd2_mod_halloween/characters/ene_wildcard/ene_wildcard")
+			},
+			murkywater = {
+				Idstring("units/pd2_mod_sharks/characters/ene_murky_wildcard/ene_murky_wildcard")
+			},
+			federales = {
+				Idstring("units/pd2_dlc_bex/characters/ene_policia_wildcard/ene_policia_wildcard")
+			},
+			nypd = {
+				Idstring("units/pd2_mod_nc/characters/ene_wildcard/ene_wildcard")
+			},
+			lapd = {
+				Idstring("units/pd2_mod_nc/characters/ene_wildcard/ene_wildcard")
+			},
+			fbi = {
+				Idstring("units/pd2_mod_nc/characters/ene_wildcard/ene_wildcard")
+			}
+		},
+		access = access_type_all
+	}
+
+	self.unit_categories.gensec_sgt = {
+		unit_types = {
+			america = {
+				Idstring("units/pd2_mod_nc/characters/ene_gensec_sgt/ene_gensec_sgt")
+			},
+			russia = {
+				Idstring("units/pd2_mod_nc/characters/ene_gensec_sgt/ene_gensec_sgt")
+			},
+			zombie = {
+				Idstring("units/pd2_mod_halloween/characters/ene_gensec_sgt/ene_gensec_sgt")
+			},
+			murkywater = {
+				Idstring("units/pd2_dlc_bph/characters/ene_murky_sgt/ene_murky_sgt")
+			},
+			federales = {
+				Idstring("units/pd2_dlc_bex/characters/ene_policia_sgt/ene_policia_sgt")
+			},
+			nypd = {
+				Idstring("units/pd2_mod_nc/characters/ene_gensec_sgt/ene_gensec_sgt")
+			},
+			lapd = {
+				Idstring("units/pd2_mod_nc/characters/ene_gensec_sgt/ene_gensec_sgt")
+			},
+			fbi = {
+				Idstring("units/pd2_mod_nc/characters/ene_gensec_sgt/ene_gensec_sgt")
+			}
+		},
+		access = access_type_all,
+	--	special_type = "sergeant"	--broken? might have fucked up adding this
+	}
+
+	--Sniper Dozer Captain
+	--Spawns alone
+	self.unit_categories.Cap_Cruel_T = {
+		unit_types = {
+			america = {
+				Idstring("units/pd2_mod_caps/characters/ene_bulldozer_captain/ene_bulldozer_captain")
+			},
+			russia = {
+				Idstring("units/pd2_mod_caps/characters/ene_bulldozer_captain/ene_bulldozer_captain")
+			},
+			zombie = {
+				Idstring("units/pd2_mod_caps/characters/ene_bulldozer_captain/ene_bulldozer_captain")
+			},					
+			murkywater = {
+				Idstring("units/pd2_mod_caps/characters/ene_bulldozer_captain/ene_bulldozer_captain")
+			},
+			federales = {
+				Idstring("units/pd2_mod_caps/characters/ene_bulldozer_captain/ene_bulldozer_captain")
+			},					
+			nypd = {
+				Idstring("units/pd2_mod_caps/characters/ene_bulldozer_captain/ene_bulldozer_captain")
+			},	
+			lapd = {
+				Idstring("units/pd2_mod_caps/characters/ene_bulldozer_captain/ene_bulldozer_captain")
+			},
+			fbi = {
+				Idstring("units/pd2_mod_caps/characters/ene_bulldozer_captain/ene_bulldozer_captain")
+			}		
+		},
+		access = access_type_all,
+		ignore_spawn_cap = true
+	}
 	
 end
 	
@@ -14389,6 +14517,31 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 		marshal_shield = {
 			"shield",
 			"ranged_fire"
+		},
+		--Addons Exclusive enemies
+		--Do that FBI Suit thing with some combat
+		sergeants = {
+			"flank",
+			"grouphrtr",
+			"rescue_hostages",
+			"deathguard",
+			"provide_support"
+		},
+		--Rush the criminal down
+		police_enforcer_murder = {
+			"charge",
+			"murder",
+			"deathguard"
+		},
+		--Do normal SWAT things
+		police_enforcer = {
+			"ranged_fire",
+			"provide_coverfire",
+			"provide_support",
+			"deathguard",
+			"groupcsr",
+			"smoke_grenade",
+			"flash_grenade"
 		}
 	}
 	self.enemy_spawn_groups = {}
@@ -14398,6 +14551,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 			{
 				unit = "CS_cop_C45_R870",
 				freq = 1,
+				tactics = self._tactics.CS_defend,
+				rank = 1
+			},
+			{
+				unit = "wildcard",
+				freq = 0.25,
 				tactics = self._tactics.CS_defend,
 				rank = 1
 			}
@@ -14419,7 +14578,13 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 1,
 				tactics = self._tactics.CS_defend,
 				rank = 2
-			}		
+			},
+			{
+				unit = "wildcard",
+				freq = 0.25,
+				tactics = self._tactics.CS_defend,
+				rank = 1
+			}
 		}
 	}
 	self.enemy_spawn_groups.CS_defend_c = {
@@ -14438,7 +14603,13 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 1,
 				tactics = self._tactics.CS_defend,
 				rank = 2
-			}			
+			},
+			{
+				unit = "wildcard",
+				freq = 0.25,
+				tactics = self._tactics.CS_defend,
+				rank = 1
+			}
 		}
 	}
 	self.enemy_spawn_groups.CS_cops = {
@@ -14463,6 +14634,18 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				freq = 0.5,
 				tactics = self._tactics.CS_cop_flank,
 				rank = 3
+			},
+			{
+				unit = "wildcard",
+				freq = 0.25,
+				tactics = self._tactics.CS_cop_shotgun,
+				rank = 1
+			},
+			{
+				unit = "wildcard",
+				freq = 0.25,
+				tactics = self._tactics.CS_cop_flank,
+				rank = 1
 			}
 		}
 	}
@@ -14480,6 +14663,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				unit = "CS_cop_stealth_MP5",
 				freq = 1,
 				amount_max = 1,
+				tactics = self._tactics.CS_cop_stealth,
+				rank = 1
+			},
+			{
+				unit = "wildcard",
+				freq = 0.25,
 				tactics = self._tactics.CS_cop_stealth,
 				rank = 1
 			}
@@ -14507,6 +14696,18 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				freq = 0.5,
 				tactics = self._tactics.CS_swat_rifle_flank,
 				rank = 3
+			},
+			{
+				unit = "wildcard",
+				freq = 0.25,
+				tactics = self._tactics.CS_swat_shotgun,
+				rank = 1
+			},
+			{
+				unit = "wildcard",
+				freq = 0.25,
+				tactics = self._tactics.CS_swat_rifle_flank,
+				rank = 1
 			}
 		}
 	}
@@ -14610,6 +14811,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_max = 1,
 					tactics = self._tactics.FBI_medic_flank,
 					rank = 1
+				},
+				{
+					unit = "gensec_sgt",
+					freq = 0.2,
+					tactics = self._tactics.sergeants,
+					rank = 1
 				}
 			}
 		}		
@@ -14639,6 +14846,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					freq = 0.2,
 					amount_max = 1,
 					tactics = self._tactics.FBI_medic_flank,
+					rank = 1
+				},
+				{
+					unit = "gensec_sgt",
+					freq = 0.2,
+					tactics = self._tactics.sergeants,
 					rank = 1
 				}
 			}
@@ -14671,6 +14884,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_max = 2,
 					tactics = self._tactics.DW_heavy,
 					rank = 1
+				},
+				{
+					unit = "gensec_sgt",
+					freq = 0.2,
+					tactics = self._tactics.sergeants,
+					rank = 1
 				}
 			}
 		}
@@ -14700,6 +14919,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_max = 2,
 					tactics = self._tactics.DW_heavy,
 					rank = 1
+				},
+				{
+					unit = "gensec_sgt",
+					freq = 0.2,
+					tactics = self._tactics.sergeants,
+					rank = 1
 				}
 			}
 		}			
@@ -14726,6 +14951,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				freq = 0.5,
 				amount_max = 1,
 				tactics = self._tactics.CS_tazer,
+				rank = 1
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.2,
+				tactics = self._tactics.sergeants,
 				rank = 1
 			}
 		}
@@ -14756,6 +14987,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_max = 1,
 					tactics = self._tactics.FBI_medic_flank,
 					rank = 2
+				},
+				{
+					unit = "gensec_sgt",
+					freq = 0.2,
+					tactics = self._tactics.sergeants,
+					rank = 1
 				}
 			}
 		}
@@ -14785,6 +15022,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_max = 1,
 					tactics = self._tactics.FBI_medic_flank,
 					rank = 2
+				},
+				{
+					unit = "gensec_sgt",
+					freq = 0.2,
+					tactics = self._tactics.sergeants,
+					rank = 1
 				}
 			}
 		}			
@@ -14811,6 +15054,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 1,
 				tactics = self._tactics.FBI_defend,
 				rank = 2
+			},
+			{
+				unit = "wildcard",
+				freq = 0.25,
+				tactics = self._tactics.FBI_defend,
+				rank = 1
 			}
 		}
 	}
@@ -14844,6 +15093,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 1,
 				tactics = self._tactics.FBI_defend,
 				rank = 2
+			},
+			{
+				unit = "wildcard",
+				freq = 0.25,
+				tactics = self._tactics.FBI_defend,
+				rank = 1
 			}
 		}
 	}
@@ -14877,6 +15132,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 1,
 				tactics = self._tactics.FBI_defend,
 				rank = 2
+			},
+			{
+				unit = "wildcard",
+				freq = 0.25,
+				tactics = self._tactics.FBI_defend,
+				rank = 1
 			}
 		}
 	}	
@@ -14903,6 +15164,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 1,
 				tactics = self._tactics.FBI_defend,
 				rank = 2
+			},
+			{
+				unit = "wildcard",
+				freq = 0.25,
+				tactics = self._tactics.FBI_defend,
+				rank = 1
 			}
 		}
 	}
@@ -14929,6 +15196,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 1,
 				tactics = self._tactics.FBI_defend,
 				rank = 2
+			},
+			{
+				unit = "wildcard",
+				freq = 0.25,
+				tactics = self._tactics.FBI_defend,
+				rank = 1
 			}
 		}
 	}	
@@ -14955,6 +15228,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 1,
 				tactics = self._tactics.FBI_defend,
 				rank = 2
+			},
+			{
+				unit = "wildcard",
+				freq = 0.25,
+				tactics = self._tactics.FBI_defend,
+				rank = 1
 			}
 		}
 	}
@@ -14981,6 +15260,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 1,
 				tactics = self._tactics.FBI_defend,
 				rank = 2
+			},
+			{
+				unit = "wildcard",
+				freq = 0.25,
+				tactics = self._tactics.FBI_defend,
+				rank = 1
 			}
 		}
 	}	
@@ -14999,6 +15284,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				unit = "GS_swat_M4",
 				freq = 1,
 				tactics = self._tactics.FBI_defend,
+				rank = 1
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.2,
+				tactics = self._tactics.sergeants,
 				rank = 1
 			}
 		}
@@ -15027,6 +15318,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_max = 1,
 					tactics = self._tactics.FBI_medic_flank,
 					rank = 1
+				},
+				{
+					unit = "wildcard",
+					freq = 0.25,
+					tactics = self._tactics.FBI_suit_stealth,
+					rank = 1
 				}
 			}
 		}
@@ -15053,6 +15350,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					freq = 0.2,
 					amount_max = 1,
 					tactics = self._tactics.FBI_medic_flank,
+					rank = 1
+				},
+				{
+					unit = "wildcard",
+					freq = 0.25,
+					tactics = self._tactics.FBI_suit_stealth,
 					rank = 1
 				}
 			}
@@ -15081,6 +15384,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_max = 1,
 					tactics = self._tactics.FBI_medic_flank,
 					rank = 1
+				},
+				{
+					unit = "wildcard",
+					freq = 0.25,
+					tactics = self._tactics.FBI_suit_stealth,
+					rank = 1
 				}
 			}
 		}		
@@ -15107,6 +15416,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					freq = 0.35,
 					amount_max = 1,
 					tactics = self._tactics.FBI_medic_flank,
+					rank = 1
+				},
+				{
+					unit = "wildcard",
+					freq = 0.25,
+					tactics = self._tactics.FBI_suit_stealth,
 					rank = 1
 				}
 			}
@@ -15136,6 +15451,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_max = 1,
 					tactics = self._tactics.FBI_medic_flank,
 					rank = 1
+				},
+				{
+					unit = "wildcard",
+					freq = 0.25,
+					tactics = self._tactics.FBI_suit_stealth,
+					rank = 1
 				}
 			}
 		}
@@ -15163,6 +15484,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_max = 1,
 					tactics = self._tactics.FBI_medic_flank,
 					rank = 1
+				},
+				{
+					unit = "wildcard",
+					freq = 0.25,
+					tactics = self._tactics.FBI_suit_stealth,
+					rank = 1
 				}
 			}
 		}		
@@ -15189,6 +15516,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					freq = 0.35,
 					amount_max = 1,
 					tactics = self._tactics.FBI_medic_flank,
+					rank = 1
+				},
+				{
+					unit = "wildcard",
+					freq = 0.25,
+					tactics = self._tactics.FBI_suit_stealth,
 					rank = 1
 				}
 			}
@@ -15217,6 +15550,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_max = 1,
 					tactics = self._tactics.FBI_medic_flank,
 					rank = 1
+				},
+				{
+					unit = "wildcard",
+					freq = 0.25,
+					tactics = self._tactics.FBI_suit_stealth,
+					rank = 2
 				}
 			}
 		}
@@ -15244,6 +15583,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_max = 1,
 					tactics = self._tactics.FBI_medic_flank,
 					rank = 1
+				},
+				{
+					unit = "wildcard",
+					freq = 0.25,
+					tactics = self._tactics.FBI_suit_stealth,
+					rank = 1
 				}
 			}
 		}
@@ -15269,6 +15614,18 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					freq = 0.2,
 					amount_max = 1,
 					tactics = self._tactics.FBI_medic_flank,
+					rank = 1
+				},
+				{
+					unit = "wildcard",
+					freq = 0.25,
+					tactics = self._tactics.FBI_suit,
+					rank = 1
+				},
+				{
+					unit = "wildcard",
+					freq = 0.25,
+					tactics = self._tactics.FBI_suit_stealth,
 					rank = 1
 				}
 			}
@@ -15296,6 +15653,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_max = 1,
 					tactics = self._tactics.FBI_medic_flank,
 					rank = 1
+				},
+				{
+					unit = "wildcard",
+					freq = 0.25,
+					tactics = self._tactics.FBI_suit,
+					rank = 1
 				}
 			}
 		}		
@@ -15321,6 +15684,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					freq = 0.35,
 					amount_max = 1,
 					tactics = self._tactics.FBI_medic_flank,
+					rank = 1
+				},
+				{
+					unit = "wildcard",
+					freq = 0.25,
+					tactics = self._tactics.ELITE_suit_stealth,
 					rank = 1
 				}
 			}
@@ -15350,6 +15719,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_max = 1,
 					tactics = self._tactics.FBI_medic_flank,
 					rank = 1
+				},
+				{
+					unit = "wildcard",
+					freq = 0.25,
+					tactics = self._tactics.FBI_suit,
+					rank = 1
 				}
 			}
 		}	
@@ -15375,6 +15750,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					freq = 0.2,
 					amount_max = 1,
 					tactics = self._tactics.FBI_medic_flank,
+					rank = 1
+				},
+				{
+					unit = "wildcard",
+					freq = 0.25,
+					tactics = self._tactics.FBI_suit_stealth,
 					rank = 1
 				}
 			}
@@ -15420,6 +15801,24 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_max = 1,
 					tactics = self._tactics.FBI_medic,
 					rank = 1
+				},
+				{
+					unit = "wildcard",
+					freq = 0.25,
+					tactics = self._tactics.FBI_swat_shotgun,
+					rank = 1
+				},
+				{
+					unit = "wildcard",
+					freq = 0.25,
+					tactics = self._tactics.FBI_swat_rifle_flank,
+					rank = 1
+				},
+				{
+					unit = "wildcard",
+					freq = 0.25,
+					tactics = self._tactics.FBI_swat_rifle,
+					rank = 1
 				}
 			}
 		}
@@ -15463,6 +15862,24 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_max = 1,
 					tactics = self._tactics.FBI_medic,
 					rank = 1
+				},
+				{
+					unit = "wildcard",
+					freq = 0.25,
+					tactics = self._tactics.FBI_swat_rifle,
+					rank = 1
+				},
+				{
+					unit = "wildcard",
+					freq = 0.25,
+					tactics = self._tactics.MH_swat_rifle_flank,
+					rank = 1
+				},
+				{
+					unit = "wildcard",
+					freq = 0.25,
+					tactics = self._tactics.MH_swat_shotgun,
+					rank = 1
 				}
 			}
 		}
@@ -15593,6 +16010,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_max = 1,
 					tactics = self._tactics.FBI_medic,
 					rank = 1
+				},
+				{
+					unit = "gensec_sgt",
+					freq = 0.2,
+					tactics = self._tactics.sergeants,
+					rank = 1
 				}
 			}
 		}
@@ -15633,6 +16056,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_min = 0,
 					amount_max = 1,
 					tactics = self._tactics.FBI_medic,
+					rank = 1
+				},
+				{
+					unit = "gensec_sgt",
+					freq = 0.2,
+					tactics = self._tactics.sergeants,
 					rank = 1
 				}
 			}
@@ -15671,6 +16100,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_max = 1,
 					tactics = self._tactics.FBI_medic_flank,
 					rank = 1
+				},
+				{
+					unit = "gensec_sgt",
+					freq = 0.2,
+					tactics = self._tactics.sergeants,
+					rank = 1
 				}
 			}
 		}
@@ -15706,6 +16141,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_min = 0,
 					amount_max = 1,
 					tactics = self._tactics.FBI_medic_flank,
+					rank = 1
+				},
+				{
+					unit = "gensec_sgt",
+					freq = 0.2,
+					tactics = self._tactics.sergeants,
 					rank = 1
 				}
 			}
@@ -15744,6 +16185,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_max = 1,
 					tactics = self._tactics.FBI_medic_flank,
 					rank = 1
+				},
+				{
+					unit = "gensec_sgt",
+					freq = 0.2,
+					tactics = self._tactics.sergeants,
+					rank = 1
 				}
 			}
 		}
@@ -15780,6 +16227,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_max = 1,
 					tactics = self._tactics.FBI_medic_flank,
 					rank = 1
+				},
+				{
+					unit = "gensec_sgt",
+					freq = 0.2,
+					tactics = self._tactics.sergeants,
+					rank = 1
 				}
 			}
 		}	
@@ -15802,6 +16255,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					freq = 1,
 					tactics = self._tactics.FBI_swat_rifle,
 					rank = 1
+				},
+				{
+					unit = "gensec_sgt",
+					freq = 0.2,
+					tactics = self._tactics.sergeants,
+					rank = 1
 				}
 			}
 		}
@@ -15822,6 +16281,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					unit = "FBI_swat_M4",
 					freq = 1,
 					tactics = self._tactics.FBI_swat_rifle,
+					rank = 1
+				},
+				{
+					unit = "gensec_sgt",
+					freq = 0.2,
+					tactics = self._tactics.sergeants,
 					rank = 1
 				}
 			}
@@ -15859,7 +16324,13 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_max = 1,
 					tactics = self._tactics.FBI_medic_flank,
 					rank = 2
-				}					
+				},
+				{
+					unit = "gensec_sgt",
+					freq = 0.5,
+					tactics = self._tactics.sergeants,
+					rank = 1
+				}
 			}
 		}
 	else	
@@ -15893,7 +16364,13 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_max = 1,
 					tactics = self._tactics.FBI_medic_flank,
 					rank = 2
-				}		
+				},
+				{
+					unit = "gensec_sgt",
+					freq = 0.5,
+					tactics = self._tactics.sergeants,
+					rank = 1
+				}
 			}
 		}
 	end
@@ -15915,6 +16392,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					freq = 1,
 					tactics = self._tactics.FBI_swat_rifle,
 					rank = 1
+				},
+				{
+					unit = "gensec_sgt",
+					freq = 0.5,
+					tactics = self._tactics.sergeants,
+					rank = 1
 				}
 			}
 		}
@@ -15935,6 +16418,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					unit = "FBI_swat_M4",
 					freq = 1,
 					tactics = self._tactics.FBI_swat_rifle,
+					rank = 1
+				},
+				{
+					unit = "gensec_sgt",
+					freq = 0.2,
+					tactics = self._tactics.sergeants,
 					rank = 1
 				}
 			}
@@ -15972,7 +16461,13 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_max = 1,
 					tactics = self._tactics.FBI_medic_flank,
 					rank = 2
-				}	
+				},
+				{
+					unit = "gensec_sgt",
+					freq = 0.5,
+					tactics = self._tactics.sergeants,
+					rank = 1
+				}
 			}
 		}		
 	else
@@ -16006,7 +16501,13 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_max = 1,
 					tactics = self._tactics.FBI_medic_flank,
 					rank = 2
-				}		
+				},
+				{
+					unit = "gensec_sgt",
+					freq = 0.5,
+					tactics = self._tactics.sergeants,
+					rank = 1
+				}
 			}
 		}
 	end
@@ -16029,6 +16530,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_max = 2,
 					tactics = self._tactics.FBI_swat_rifle,
 					rank = 1
+				},
+				{
+					unit = "gensec_sgt",
+					freq = 0.5,
+					tactics = self._tactics.sergeants,
+					rank = 1
 				}
 			}
 		}
@@ -16050,6 +16557,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					freq = 1,
 					amount_max = 2,
 					tactics = self._tactics.FBI_swat_rifle,
+					rank = 1
+				},
+				{
+					unit = "gensec_sgt",
+					freq = 0.5,
+					tactics = self._tactics.sergeants,
 					rank = 1
 				}
 			}
@@ -16088,6 +16601,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_max = 1,
 					tactics = self._tactics.FBI_medic_flank,
 					rank = 2
+				},
+				{
+					unit = "gensec_sgt",
+					freq = 0.5,
+					tactics = self._tactics.sergeants,
+					rank = 1
 				}
 			}
 		}		
@@ -16123,7 +16642,13 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_max = 1,
 					tactics = self._tactics.FBI_medic_flank,
 					rank = 2
-				}	
+				},
+				{
+					unit = "gensec_sgt",
+					freq = 0.5,
+					tactics = self._tactics.sergeants,
+					rank = 1
+				}
 			}
 		}
 	end
@@ -16146,6 +16671,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_min = 1,
 					tactics = self._tactics.FBI_heavy,
 					rank = 1
+				},
+				{
+					unit = "gensec_sgt",
+					freq = 0.5,
+					tactics = self._tactics.sergeants,
+					rank = 1
 				}
 			}
 		}
@@ -16167,6 +16698,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					freq = 1,
 					amount_min = 1,
 					tactics = self._tactics.FBI_heavy,
+					rank = 1
+				},
+				{
+					unit = "gensec_sgt",
+					freq = 0.5,
+					tactics = self._tactics.sergeants,
 					rank = 1
 				}
 			}
@@ -16198,6 +16735,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_max = 2,
 					tactics = self._tactics.FBI_medic_flank,
 					rank = 2
+				},
+				{
+					unit = "gensec_sgt",
+					freq = 0.5,
+					tactics = self._tactics.sergeants,
+					rank = 1
 				}
 			}
 		}		
@@ -16226,6 +16769,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_max = 2,
 					tactics = self._tactics.FBI_medic_flank,
 					rank = 2
+				},
+				{
+					unit = "gensec_sgt",
+					freq = 0.5,
+					tactics = self._tactics.sergeants,
+					rank = 1
 				}
 			}
 		}
@@ -16318,6 +16867,24 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_max = 1,
 					tactics = self._tactics.FBI_medic,
 					rank = 1
+				},
+				{
+					unit = "wildcard",
+					freq = 0.25,
+					tactics = self._tactics.DW_swat_rifle,
+					rank = 1
+				},
+				{
+					unit = "wildcard",
+					freq = 0.25,
+					tactics = self._tactics.HRT_attack,
+					rank = 1
+				},
+				{
+					unit = "wildcard",
+					freq = 0.25,
+					tactics = self._tactics.DW_swat_rifle_flank,
+					rank = 1
 				}
 			}
 		}		
@@ -16360,6 +16927,24 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_min = 0,
 					amount_max = 1,
 					tactics = self._tactics.FBI_medic,
+					rank = 1
+				},
+				{
+					unit = "wildcard",
+					freq = 0.25,
+					tactics = self._tactics.ELITE_swat_rifle,
+					rank = 1
+				},
+				{
+					unit = "wildcard",
+					freq = 0.25,
+					tactics = self._tactics.HRT_attack,
+					rank = 1
+				},
+				{
+					unit = "wildcard",
+					freq = 0.25,
+					tactics = self._tactics.ELITE_swat_rifle_flank,
 					rank = 1
 				}
 			}
@@ -16435,13 +17020,25 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					freq = 1,
 					tactics = self._tactics.FBI_heavy_shotgun,
 					rank = 2
-				},						
+				},
 				{
 					unit = "medic_M4",
 					freq = 0.6,
 					amount_min = 0,
 					amount_max = 1,
 					tactics = self._tactics.FBI_medic,
+					rank = 1
+				},
+				{
+					unit = "wildcard",
+					freq = 0.25,
+					tactics = self._tactics.MH_heavy,
+					rank = 1
+				},
+				{
+					unit = "wildcard",
+					freq = 0.25,
+					tactics = self._tactics.DW_swat_rifle_flank,
 					rank = 1
 				}
 			}
@@ -16477,6 +17074,18 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_min = 0,
 					amount_max = 1,
 					tactics = self._tactics.FBI_medic,
+					rank = 1
+				},
+				{
+					unit = "wildcard",
+					freq = 0.25,
+					tactics = self._tactics.MH_heavy,
+					rank = 1
+				},
+				{
+					unit = "wildcard",
+					freq = 0.25,
+					tactics = self._tactics.DW_swat_rifle_flank,
 					rank = 1
 				}
 			}
@@ -16563,6 +17172,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_max = 1,
 					tactics = self._tactics.FBI_medic_flank,
 					rank = 1
+				},
+				{
+					unit = "gensec_sgt",
+					freq = 0.25,
+					tactics = self._tactics.sergeants,
+					rank = 1
 				}
 			}
 		}	
@@ -16608,6 +17223,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_max = 1,
 					tactics = self._tactics.FBI_medic_flank,
 					rank = 1
+				},
+				{
+					unit = "gensec_sgt",
+					freq = 0.5,
+					tactics = self._tactics.sergeants,
+					rank = 1
 				}
 			}
 		}		
@@ -16651,6 +17272,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_max = 1,
 					tactics = self._tactics.FBI_medic_flank,
 					rank = 1
+				},
+				{
+					unit = "gensec_sgt",
+					freq = 0.5,
+					tactics = self._tactics.sergeants,
+					rank = 1
 				}
 			}
 		}
@@ -16689,6 +17316,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_min = 0,
 					amount_max = 1,
 					tactics = self._tactics.FBI_medic_flank,
+					rank = 1
+				},
+				{
+					unit = "gensec_sgt",
+					freq = 0.25,
+					tactics = self._tactics.sergeants,
 					rank = 1
 				}
 			}
@@ -16735,6 +17368,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_max = 1,
 					tactics = self._tactics.FBI_medic_flank,
 					rank = 1
+				},
+				{
+					unit = "gensec_sgt",
+					freq = 0.5,
+					tactics = self._tactics.sergeants,
+					rank = 1
 				}
 			}
 		}		
@@ -16778,6 +17417,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_max = 1,
 					tactics = self._tactics.FBI_medic_flank,
 					rank = 1
+				},
+				{
+					unit = "gensec_sgt",
+					freq = 0.5,
+					tactics = self._tactics.sergeants,
+					rank = 1
 				}
 			}
 		}
@@ -16810,6 +17455,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_max = 2,
 					tactics = self._tactics.MH_heavy,
 					rank = 1
+				},
+				{
+					unit = "gensec_sgt",
+					freq = 0.5,
+					tactics = self._tactics.sergeants,
+					rank = 1
 				}
 			}
 		}
@@ -16838,6 +17489,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					freq = 1,
 					amount_max = 2,
 					tactics = self._tactics.ELITE_heavy,
+					rank = 1
+				},
+				{
+					unit = "gensec_sgt",
+					freq = 0.5,
+					tactics = self._tactics.sergeants,
 					rank = 1
 				}
 			}
@@ -17259,6 +17916,54 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 			}
 		}
 	}
+
+	-- April Fools Captain
+	self.enemy_spawn_groups.boss_heavygunner = {
+		amount = 6,
+		force = true,
+		spawn = {
+			{
+				unit = "boss_heavygunner",
+				freq = 1,
+				amount_min = 1,
+				amount_max = 1,
+				tactics = self._tactics.ELITE_swat_rifle,
+				rank = 4
+			},
+			{
+				unit = "boss_heavygunner_buddy",
+				freq = 1,
+				amount_min = 1,
+				amount_max = 1,
+				tactics = self._tactics.HRT_attack,
+				rank = 4
+			},
+			{
+				unit = "vip_heavymedic_ump",
+				freq = 1,
+				amount_min = 4,
+				amount_max = 4,
+				tactics = self._tactics.FBI_medic_flank,
+				rank = 2
+			}
+		}
+	}
+
+	-- Sniper Dozer Captain
+	self.enemy_spawn_groups.Cap_Cruel_T = {
+		amount = 1,
+		force = true,
+		spawn = {
+			{
+				unit = "Cap_Cruel_T",
+				freq = 1,
+				amount_min = 1,
+				amount_max = 1,
+				tactics = self._tactics.Cap_spring,
+				rank = 1
+			}
+		}
+	}
 	
 	-- Single Cloaker groups
 	self.enemy_spawn_groups.single_spooc = {
@@ -17478,7 +18183,146 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				"GS_Booms"
 			})
 		}	
-	end		
+	end
+
+	if difficulty_index <= 3 then
+		-- spawn nothing, hopefully
+		self.enemy_spawn_groups.police_enforcer = {}
+	elseif difficulty_index == 4 then
+		self.enemy_spawn_groups.police_enforcer = {
+			spawn_cooldown = 15,
+			max_nr_simultaneous_groups = 1,
+			initial_spawn_delay = 60,
+			amount = {
+				1,
+				1
+			},
+			spawn = {
+				{
+					respawn_cooldown = 25,
+					amount_min = 1,
+					amount_max = 2,
+					rank = 1,
+					freq = 1,
+					unit = "police_heavygunner",
+					tactics = self._tactics.police_enforcer
+				}
+			},
+		}
+	elseif difficulty_index == 5 then
+		self.enemy_spawn_groups.police_enforcer = {
+			spawn_cooldown = 15,
+			max_nr_simultaneous_groups = 1,
+			initial_spawn_delay = 60,
+			amount = {
+				1,
+				1
+			},
+			spawn = {
+				{
+					respawn_cooldown = 25,
+					amount_min = 1,
+					amount_max = 2,
+					rank = 1,
+					freq = 1,
+					unit = "police_heavygunner",
+					tactics = self._tactics.police_enforcer
+				},
+				{
+					respawn_cooldown = 25,
+					amount_min = 1,
+					amount_max = 1,
+					rank = 1,
+					freq = 0.25,
+					unit = "police_heavygunner",
+					tactics = self._tactics.police_enforcer_murder
+				}
+			},
+		}
+	elseif difficulty_index == 6 or 7 then
+		self.enemy_spawn_groups.police_enforcer = {
+			spawn_cooldown = 15,
+			max_nr_simultaneous_groups = 2,
+			initial_spawn_delay = 60,
+			amount = {
+				1,
+				1
+			},
+			spawn = {
+				{
+					respawn_cooldown = 25,
+					amount_min = 1,
+					amount_max = 2,
+					rank = 1,
+					freq = 1,
+					unit = "police_heavygunner",
+					tactics = self._tactics.police_enforcer
+				},
+				{
+					respawn_cooldown = 25,
+					amount_min = 1,
+					amount_max = 1,
+					rank = 1,
+					freq = 0.5,
+					unit = "police_heavygunner",
+					tactics = self._tactics.police_enforcer_murder
+				}
+			},
+		}
+	else
+		if pro_job then
+			self.enemy_spawn_groups.police_enforcer = {
+				spawn_cooldown = 15,
+				max_nr_simultaneous_groups = 3,
+				initial_spawn_delay = 45,
+				amount = {
+					1,
+					2
+				},
+				spawn = {
+					{
+						respawn_cooldown = 25,
+						amount_min = 1,
+						amount_max = 1,
+						rank = 1,
+						freq = 1,
+						unit = "police_heavygunner",
+						tactics = self._tactics.police_enforcer_murder
+					}
+				},
+			}
+		else
+			self.enemy_spawn_groups.police_enforcer = {
+				spawn_cooldown = 15,
+				max_nr_simultaneous_groups = 2,
+				initial_spawn_delay = 60,
+				amount = {
+					1,
+					2
+				},
+				spawn = {
+					{
+						respawn_cooldown = 25,
+						amount_min = 1,
+						amount_max = 2,
+						rank = 1,
+						freq = 1,
+						unit = "police_heavygunner",
+						tactics = self._tactics.police_enforcer
+					},
+					{
+						respawn_cooldown = 25,
+						amount_min = 1,
+						amount_max = 1,
+						rank = 1,
+						freq = 0.75,
+						unit = "police_heavygunner",
+						tactics = self._tactics.police_enforcer_murder
+					}
+				},
+			}
+		end
+	end
 	
 	self.enemy_spawn_groups.snowman_boss = {
 		amount = {
@@ -17596,6 +18440,24 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				freq = 1,
 				tactics = self._tactics.ELITE_swat_shotgun,
 				rank = 2
+			},
+			{
+				unit = "wildcard",
+				freq = 0.25,
+				tactics = self._tactics.ELITE_swat_shotgun,
+				rank = 1
+			},
+			{
+				unit = "wildcard",
+				freq = 0.25,
+				tactics = self._tactics.HRT_attack,
+				rank = 1
+			},
+			{
+				unit = "wildcard",
+				freq = 0.25,
+				tactics = self._tactics.ELITE_swat_rifle_flank,
+				rank = 1
 			}
 		}
 	}
@@ -17635,7 +18497,13 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_min = 2,
 				tactics = self._tactics.FBI_heavy,
 				rank = 1
-			}			
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.25,
+				tactics = self._tactics.sergeants,
+				rank = 1
+			}
 		}
 	}	
 		
@@ -17677,6 +18545,18 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_min = 0,
 				amount_max = 1,
 				tactics = self._tactics.FBI_medic,
+				rank = 1
+			},
+			{
+				unit = "wildcard",
+				freq = 0.25,
+				tactics = self._tactics.HRT_attack,
+				rank = 1
+			},
+			{
+				unit = "wildcard",
+				freq = 0.25,
+				tactics = self._tactics.FBI_heavy_shotgun,
 				rank = 1
 			}
 		}
@@ -17733,7 +18613,13 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 1,
 				tactics = self._tactics.FBI_medic_flank,
 				rank = 1
-			}			
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.25,
+				tactics = self._tactics.sergeants,
+				rank = 1
+			}
 		}
 	}	
 	self.enemy_spawn_groups.SKM_Tazers_W2 = {
@@ -17752,6 +18638,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				freq = 1,
 				amount_max = 2,
 				tactics = self._tactics.FBI_heavy,
+				rank = 1
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.25,
+				tactics = self._tactics.sergeants,
 				rank = 1
 			}
 		}
@@ -17772,6 +18664,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				freq = 1,
 				amount_max = 2,
 				tactics = self._tactics.FBI_heavy,
+				rank = 1
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.25,
+				tactics = self._tactics.sergeants,
 				rank = 1
 			}
 		}
@@ -17815,6 +18713,24 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_min = 0,
 				amount_max = 1,
 				tactics = self._tactics.FBI_medic,
+				rank = 1
+			},
+			{
+				unit = "wildcard",
+				freq = 0.25,
+				tactics = self._tactics.HRT_attack,
+				rank = 1
+			},
+			{
+				unit = "wildcard",
+				freq = 0.25,
+				tactics = self._tactics.ELITE_swat_rifle,
+				rank = 1
+			},
+			{
+				unit = "wildcard",
+				freq = 0.25,
+				tactics = self._tactics.ELITE_swat_rifle_flank,
 				rank = 1
 			}
 		}
@@ -17871,6 +18787,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 1,
 				tactics = self._tactics.FBI_medic_flank,
 				rank = 1
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.25,
+				tactics = self._tactics.sergeants,
+				rank = 1
 			}			
 		}
 	}		
@@ -17891,6 +18813,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 2,
 				tactics = self._tactics.FBI_heavy,
 				rank = 1
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.25,
+				tactics = self._tactics.sergeants,
+				rank = 1
 			}
 		}
 	}		
@@ -17910,6 +18838,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				freq = 1,
 				amount_max = 2,
 				tactics = self._tactics.FBI_heavy,
+				rank = 1
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.25,
+				tactics = self._tactics.sergeants,
 				rank = 1
 			}
 		}
@@ -17972,6 +18906,18 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 1,
 				tactics = self._tactics.FBI_medic,
 				rank = 1
+			},
+			{
+				unit = "wildcard",
+				freq = 0.25,
+				tactics = self._tactics.HRT_attack,
+				rank = 1
+			},
+			{
+				unit = "wildcard",
+				freq = 0.25,
+				tactics = self._tactics.ELITE_swat_rifle_flank,
+				rank = 1
 			}
 		}
 	}		
@@ -18027,7 +18973,13 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 1,
 				tactics = self._tactics.FBI_medic_flank,
 				rank = 1
-			}			
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.35,
+				tactics = self._tactics.sergeants,
+				rank = 1
+			}
 		}
 	}		
 	self.enemy_spawn_groups.SKM_Tazers_W4 = {
@@ -18046,6 +18998,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				freq = 1,
 				amount_max = 2,
 				tactics = self._tactics.FBI_heavy,
+				rank = 1
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.35,
+				tactics = self._tactics.sergeants,
 				rank = 1
 			}
 		}
@@ -18067,6 +19025,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 2,
 				tactics = self._tactics.FBI_heavy,
 				rank = 1
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.35,
+				tactics = self._tactics.sergeants,
+				rank = 1
 			}
 		}
 	}		
@@ -18085,6 +19049,18 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				freq = 0.75,
 				tactics = self._tactics.FBI_suit,
 				rank = 2
+			},
+			{
+				unit = "wildcard",
+				freq = 0.25,
+				tactics = self._tactics.ELITE_suit_stealth,
+				rank = 1
+			},
+			{
+				unit = "wildcard",
+				freq = 0.25,
+				tactics = self._tactics.FBI_suit,
+				rank = 1
 			}
 		}
 	}		
@@ -18118,7 +19094,13 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 1,
 				tactics = self._tactics.FBI_medic_flank,
 				rank = 2
-			}		
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.5,
+				tactics = self._tactics.sergeants,
+				rank = 1
+			}
 		}
 	}	
 	
@@ -18159,6 +19141,18 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 1,
 				tactics = self._tactics.FBI_medic,
 				rank = 1
+			},
+			{
+				unit = "wildcard",
+				freq = 0.25,
+				tactics = self._tactics.ELITE_swat_shotgun,
+				rank = 1
+			},
+			{
+				unit = "wildcard",
+				freq = 0.25,
+				tactics = self._tactics.HRT_attack,
+				rank = 1
 			}
 		}
 	}		
@@ -18191,6 +19185,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_min = 0,
 				amount_max = 1,
 				tactics = self._tactics.FBI_medic,
+				rank = 1
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.5,
+				tactics = self._tactics.sergeants,
 				rank = 1
 			}
 		}
@@ -18227,6 +19227,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 1,
 				tactics = self._tactics.FBI_medic_flank,
 				rank = 1
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.5,
+				tactics = self._tactics.sergeants,
+				rank = 1
 			}
 		}
 	}		
@@ -18255,6 +19261,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 2,
 				tactics = self._tactics.DW_heavy,
 				rank = 1
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.5,
+				tactics = self._tactics.sergeants,
+				rank = 1
 			}
 		}
 	}		
@@ -18282,6 +19294,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				freq = 1,
 				amount_max = 2,
 				tactics = self._tactics.ELITE_heavy,
+				rank = 1
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.5,
+				tactics = self._tactics.sergeants,
 				rank = 1
 			}
 		}
@@ -18341,7 +19359,13 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 1,
 				tactics = self._tactics.FBI_medic_flank,
 				rank = 2
-			}		
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.5,
+				tactics = self._tactics.sergeants,
+				rank = 1
+			}
 		}
 	}		
 	self.enemy_spawn_groups.SKM_GREEN_Tank_W5 = {
@@ -18374,7 +19398,13 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 1,
 				tactics = self._tactics.FBI_medic_flank,
 				rank = 2
-			}		
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.5,
+				tactics = self._tactics.sergeants,
+				rank = 1
+			}
 		}
 	}	
 	self.enemy_spawn_groups.SKM_FBI_spoocs_W5 = {
@@ -18428,6 +19458,24 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 1,
 				tactics = self._tactics.FBI_medic,
 				rank = 1
+			},
+			{
+				unit = "wildcard",
+				freq = 0.25,
+				tactics = self._tactics.ELITE_swat_rifle,
+				rank = 1
+			},
+			{
+				unit = "wildcard",
+				freq = 0.25,
+				tactics = self._tactics.HRT_attack,
+				rank = 1
+			},
+			{
+				unit = "wildcard",
+				freq = 0.25,
+				tactics = self._tactics.ELITE_swat_rifle_flank,
+				rank = 1
 			}
 		}
 	}	
@@ -18460,6 +19508,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_min = 0,
 				amount_max = 1,
 				tactics = self._tactics.FBI_medic,
+				rank = 1
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.5,
+				tactics = self._tactics.sergeants,
 				rank = 1
 			}
 		}
@@ -18503,6 +19557,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 1,
 				tactics = self._tactics.FBI_medic,
 				rank = 1
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.5,
+				tactics = self._tactics.sergeants,
+				rank = 1
 			}
 		}
 	}
@@ -18545,6 +19605,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 1,
 				tactics = self._tactics.FBI_medic,
 				rank = 1
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.5,
+				tactics = self._tactics.sergeants,
+				rank = 1
 			}
 		}
 	}	
@@ -18573,6 +19639,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 2,
 				tactics = self._tactics.DW_heavy,
 				rank = 1
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.5,
+				tactics = self._tactics.sergeants,
+				rank = 1
 			}
 		}
 	}
@@ -18600,6 +19672,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				freq = 1,
 				amount_max = 2,
 				tactics = self._tactics.ELITE_heavy,
+				rank = 1
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.5,
+				tactics = self._tactics.sergeants,
 				rank = 1
 			}
 		}
@@ -18659,7 +19737,13 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 1,
 				tactics = self._tactics.FBI_medic_flank,
 				rank = 2
-			}		
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.5,
+				tactics = self._tactics.sergeants,
+				rank = 1
+			}
 		}
 	}	
 	self.enemy_spawn_groups.SKM_GREEN_Tank_W6 = {
@@ -18692,7 +19776,13 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 1,
 				tactics = self._tactics.FBI_medic_flank,
 				rank = 2
-			}		
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.5,
+				tactics = self._tactics.sergeants,
+				rank = 1
+			}
 		}
 	}	
 	self.enemy_spawn_groups.SKM_SKULL_Tank_W6 = {
@@ -18726,7 +19816,13 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 1,
 				tactics = self._tactics.FBI_medic_flank,
 				rank = 2
-			}	
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.5,
+				tactics = self._tactics.sergeants,
+				rank = 1
+			}
 		}
 	}	
 	self.enemy_spawn_groups.SKM_TIT_Tank_W6 = {
@@ -18753,6 +19849,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 2,
 				tactics = self._tactics.FBI_medic_flank,
 				rank = 2
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.5,
+				tactics = self._tactics.sergeants,
+				rank = 1
 			}
 		}
 	}	
@@ -18807,6 +19909,24 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 1,
 				tactics = self._tactics.FBI_medic,
 				rank = 1
+			},
+			{
+				unit = "wildcard",
+				freq = 0.25,
+				tactics = self._tactics.HRT_attack,
+				rank = 1
+			},
+			{
+				unit = "wildcard",
+				freq = 0.25,
+				tactics = self._tactics.ELITE_swat_rifle,
+				rank = 1
+			},
+			{
+				unit = "wildcard",
+				freq = 0.25,
+				tactics = self._tactics.ELITE_swat_rifle_flank,
+				rank = 1
 			}
 		}
 	}	
@@ -18839,6 +19959,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_min = 0,
 				amount_max = 1,
 				tactics = self._tactics.FBI_medic,
+				rank = 1
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.5,
+				tactics = self._tactics.sergeants,
 				rank = 1
 			}
 		}
@@ -18882,6 +20008,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 1,
 				tactics = self._tactics.FBI_medic,
 				rank = 1
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.5,
+				tactics = self._tactics.sergeants,
+				rank = 1
 			}
 		}
 	}
@@ -18924,6 +20056,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 1,
 				tactics = self._tactics.FBI_medic,
 				rank = 1
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.5,
+				tactics = self._tactics.sergeants,
+				rank = 1
 			}
 		}
 	}	
@@ -18952,6 +20090,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 2,
 				tactics = self._tactics.DW_heavy,
 				rank = 1
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.5,
+				tactics = self._tactics.sergeants,
+				rank = 1
 			}
 		}
 	}
@@ -18979,6 +20123,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				freq = 1,
 				amount_max = 2,
 				tactics = self._tactics.ELITE_heavy,
+				rank = 1
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.5,
+				tactics = self._tactics.sergeants,
 				rank = 1
 			}
 		}
@@ -19038,7 +20188,13 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 1,
 				tactics = self._tactics.FBI_medic_flank,
 				rank = 2
-			}		
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.5,
+				tactics = self._tactics.sergeants,
+				rank = 1
+			}
 		}
 	}	
 	self.enemy_spawn_groups.SKM_GREEN_Tank_W7 = {
@@ -19071,7 +20227,13 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 1,
 				tactics = self._tactics.FBI_medic_flank,
 				rank = 2
-			}		
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.5,
+				tactics = self._tactics.sergeants,
+				rank = 1
+			}
 		}
 	}	
 	self.enemy_spawn_groups.SKM_SKULL_Tank_W7 = {
@@ -19105,7 +20267,13 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 1,
 				tactics = self._tactics.FBI_medic_flank,
 				rank = 2
-			}	
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.5,
+				tactics = self._tactics.sergeants,
+				rank = 1
+			}
 		}
 	}	
 	self.enemy_spawn_groups.SKM_TIT_Tank_W7 = {
@@ -19132,6 +20300,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 2,
 				tactics = self._tactics.FBI_medic_flank,
 				rank = 2
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.5,
+				tactics = self._tactics.sergeants,
+				rank = 1
 			}
 		}
 	}	
@@ -19186,6 +20360,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 1,
 				tactics = self._tactics.FBI_medic,
 				rank = 1
+			},
+			{
+				unit = "wildcard",
+				freq = 0.25,
+				tactics = self._tactics.HRT_attack,
+				rank = 1
 			}
 		}
 	}	
@@ -19218,6 +20398,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_min = 0,
 				amount_max = 1,
 				tactics = self._tactics.FBI_medic,
+				rank = 1
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.5,
+				tactics = self._tactics.sergeants,
 				rank = 1
 			}
 		}
@@ -19261,6 +20447,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 1,
 				tactics = self._tactics.FBI_medic,
 				rank = 1
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.5,
+				tactics = self._tactics.sergeants,
+				rank = 1
 			}
 		}
 	}
@@ -19303,6 +20495,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 1,
 				tactics = self._tactics.FBI_medic,
 				rank = 1
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.5,
+				tactics = self._tactics.sergeants,
+				rank = 1
 			}
 		}
 	}	
@@ -19331,6 +20529,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 2,
 				tactics = self._tactics.DW_heavy,
 				rank = 1
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.5,
+				tactics = self._tactics.sergeants,
+				rank = 1
 			}
 		}
 	}
@@ -19358,6 +20562,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				freq = 1,
 				amount_max = 2,
 				tactics = self._tactics.ELITE_heavy,
+				rank = 1
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.5,
+				tactics = self._tactics.sergeants,
 				rank = 1
 			}
 		}
@@ -19417,7 +20627,13 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 1,
 				tactics = self._tactics.FBI_medic_flank,
 				rank = 2
-			}		
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.5,
+				tactics = self._tactics.sergeants,
+				rank = 1
+			}
 		}
 	}	
 	self.enemy_spawn_groups.SKM_GREEN_Tank_W8 = {
@@ -19450,7 +20666,13 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 1,
 				tactics = self._tactics.FBI_medic_flank,
 				rank = 2
-			}		
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.5,
+				tactics = self._tactics.sergeants,
+				rank = 1
+			}
 		}
 	}	
 	self.enemy_spawn_groups.SKM_SKULL_Tank_W8 = {
@@ -19484,7 +20706,13 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 1,
 				tactics = self._tactics.FBI_medic_flank,
 				rank = 2
-			}	
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.5,
+				tactics = self._tactics.sergeants,
+				rank = 1
+			}
 		}
 	}	
 	self.enemy_spawn_groups.SKM_TIT_Tank_W8 = {
@@ -19511,6 +20739,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 2,
 				tactics = self._tactics.FBI_medic_flank,
 				rank = 2
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.5,
+				tactics = self._tactics.sergeants,
+				rank = 1
 			}
 		}
 	}	
@@ -19565,6 +20799,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 1,
 				tactics = self._tactics.FBI_medic,
 				rank = 1
+			},
+			{
+				unit = "wildcard",
+				freq = 0.5,
+				tactics = self._tactics.HRT_attack,
+				rank = 1
 			}
 		}
 	}	
@@ -19597,6 +20837,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_min = 0,
 				amount_max = 1,
 				tactics = self._tactics.FBI_medic,
+				rank = 1
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.75,
+				tactics = self._tactics.sergeants,
 				rank = 1
 			}
 		}
@@ -19640,6 +20886,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 1,
 				tactics = self._tactics.FBI_medic,
 				rank = 1
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.75,
+				tactics = self._tactics.sergeants,
+				rank = 1
 			}
 		}
 	}
@@ -19682,6 +20934,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 1,
 				tactics = self._tactics.FBI_medic,
 				rank = 1
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.75,
+				tactics = self._tactics.sergeants,
+				rank = 1
 			}
 		}
 	}	
@@ -19709,6 +20967,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				freq = 1,
 				amount_max = 2,
 				tactics = self._tactics.DW_heavy,
+				rank = 1
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.75,
+				tactics = self._tactics.sergeants,
 				rank = 1
 			}
 		}
@@ -19738,6 +21002,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 2,
 				tactics = self._tactics.ELITE_heavy,
 				rank = 1
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.75,
+				tactics = self._tactics.sergeants,
+				rank = 1
 			}
 		}
 	}	
@@ -19763,6 +21033,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 1,
 				tactics = self._tactics.FBI_medic_flank,
 				rank = 2
+			},
+			{
+				unit = "wildcard",
+				freq = 0.5,
+				tactics = self._tactics.ELITE_suit_stealth,
+				rank = 1
 			}
 		}
 	}	
@@ -19796,7 +21072,13 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 1,
 				tactics = self._tactics.FBI_medic_flank,
 				rank = 2
-			}		
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.75,
+				tactics = self._tactics.sergeants,
+				rank = 1
+			}
 		}
 	}	
 	self.enemy_spawn_groups.SKM_GREEN_Tank_W9 = {
@@ -19829,7 +21111,13 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 1,
 				tactics = self._tactics.FBI_medic_flank,
 				rank = 2
-			}		
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.75,
+				tactics = self._tactics.sergeants,
+				rank = 1
+			}
 		}
 	}	
 	self.enemy_spawn_groups.SKM_SKULL_Tank_W9 = {
@@ -19863,7 +21151,13 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 1,
 				tactics = self._tactics.FBI_medic_flank,
 				rank = 2
-			}	
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.75,
+				tactics = self._tactics.sergeants,
+				rank = 1
+			}
 		}
 	}	
 	self.enemy_spawn_groups.SKM_TIT_Tank_W9 = {
@@ -19890,6 +21184,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 2,
 				tactics = self._tactics.FBI_medic_flank,
 				rank = 2
+			},
+			{
+				unit = "gensec_sgt",
+				freq = 0.75,
+				tactics = self._tactics.sergeants,
+				rank = 1
 			}
 		}
 	}	
@@ -20013,6 +21313,8 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 			}
 		}
 	self.enemy_spawn_groups.SKM_Cap_Summers_W9 = deep_clone(self.enemy_spawn_groups.Cap_Summers)
+	self.enemy_spawn_groups.SKM_Cap_HeavyG_W9 = deep_clone(self.enemy_spawn_groups.boss_heavygunner)
+	self.enemy_spawn_groups.SKM_Cap_Cruel_T_W9 = deep_clone(self.enemy_spawn_groups.Cap_Cruel_T)
 end
 
 function GroupAITweakData:_init_enemy_spawn_groups_level(tweak_data, difficulty_index)
@@ -20448,7 +21750,8 @@ function GroupAITweakData:_init_task_data(difficulty_index, difficulty)
 			spring = 0,
 			headless_hatman = 0,
 			autumn = 0,
-			summers = 0
+			summers = 0,
+			sergeant = math.max(math.round(2 * map_scale_factor), 1)
 		}
 	elseif difficulty_index == 3 then
 		self.besiege.assault.force = {
@@ -20472,7 +21775,8 @@ function GroupAITweakData:_init_task_data(difficulty_index, difficulty)
 			spring = 0,
 			headless_hatman = 0,
 			autumn = 0,
-			summers = 0
+			summers = 0,
+			sergeant = math.max(math.round(4 * map_scale_factor), 1)
 		}
 	elseif difficulty_index == 4 then
 		self.besiege.assault.force = {
@@ -20496,7 +21800,8 @@ function GroupAITweakData:_init_task_data(difficulty_index, difficulty)
 			spring = 1,
 			headless_hatman = 1,
 			autumn = 1,
-			summers = 1
+			summers = 1,
+			sergeant = math.max(math.round(4 * map_scale_factor), 1)
 		}
 	elseif difficulty_index == 5 then
 		self.besiege.assault.force = {
@@ -20520,7 +21825,8 @@ function GroupAITweakData:_init_task_data(difficulty_index, difficulty)
 			spring = 1,
 			headless_hatman = 1,
 			autumn = 1,
-			summers = 1
+			summers = 1,
+			sergeant = math.max(math.round(4 * map_scale_factor), 1)
 		}
 	elseif difficulty_index == 6 then
 		self.besiege.assault.force = {
@@ -20544,7 +21850,8 @@ function GroupAITweakData:_init_task_data(difficulty_index, difficulty)
 			spring = 1,
 			headless_hatman = 1,
 			autumn = 1,
-			summers = 1
+			summers = 1,
+			sergeant = math.max(math.round(4 * map_scale_factor), 1)
 		}
 	elseif difficulty_index == 7 then
 		self.besiege.assault.force = {
@@ -20568,7 +21875,8 @@ function GroupAITweakData:_init_task_data(difficulty_index, difficulty)
 			spring = 1,
 			headless_hatman = 1,
 			autumn = 1,
-			summers = 1
+			summers = 1,
+			sergeant = math.max(math.round(6 * map_scale_factor), 1)
 		}
 	else
 		self.besiege.assault.force = {
@@ -20592,7 +21900,8 @@ function GroupAITweakData:_init_task_data(difficulty_index, difficulty)
 			spring = 1,
 			headless_hatman = 1,
 			autumn = 1,
-			summers = 1
+			summers = 1,
+			sergeant = math.max(math.round(6 * map_scale_factor), 1)
 		}
 	end
 	

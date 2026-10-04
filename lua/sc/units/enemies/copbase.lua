@@ -1270,6 +1270,65 @@ function CopBase:default_weapon_name(...)
 		self._weapon_set = true
 	end
 
+	--For UMP 4U2 mutator
+	--Female FBI units have bronco and that thing already hurts like hell
+	if not self._weapon_set and restoration and restoration.umpp then
+		if self._tweak_table == "fbi" then
+			self._default_weapon_id = "benelli"
+			self._weapon_set = true
+		elseif self._tweak_table == "fbi_vet" then
+			self._default_weapon_id = "x_raging_bull_npc"
+			self._weapon_set = true
+		elseif self._tweak_table == "hrt" or self._tweak_table == "hrt_titan" then
+			self._default_weapon_id = "ump"
+			self._weapon_set = true
+		elseif self._tweak_table == "hrt_titan_heavy" then
+			self._default_weapon_id = "scar_heavy"
+			self._weapon_set = true
+		end
+
+		if self._tweak_table == "medic" then
+			if faction == "america" or faction == "zombie" or faction == "nypd" or faction == "lapd" or faction == "fbi" then
+				self._default_weapon_id = "bravo_lmg"
+				self._weapon_set = true
+			elseif faction == "russia" then
+				self._default_weapon_id = "bravo_rpk74"
+				self._weapon_set = true
+			elseif faction == "murkywater" then
+				self._default_weapon_id = "m60_om"
+				self._weapon_set = true
+			elseif faction == "federales" then
+				self._default_weapon_id = "hk21_bravo_npc"
+				self._weapon_set = true
+			end
+		end
+
+		if self._tweak_table == "spooc" then
+			self._default_weapon_id = "x_deagle"
+			self._weapon_set = true
+		end
+		-- suffer
+		if self._tweak_table == "medic_heavy" then
+			self._default_weapon_id = "m32"
+			self._weapon_set = true
+		end
+
+		if self._tweak_table == "boom" then
+			self._default_weapon_id = "m79_npc"
+			self._weapon_set = true
+		end
+
+		if self._tweak_table == "medic_summers" then
+			self._default_weapon_id = "coal_npc"
+			self._weapon_set = true
+		end
+
+		if self._tweak_table == "tank_mini" then
+			self._default_weapon_id = "m60"
+			self._weapon_set = true
+		end
+	end
+
 	return default_weapon_name_orig(self, ...)
 end
 
@@ -1322,3 +1381,408 @@ do
   "[SequenceAuthority] sequence_authority.lua did not initialize; verify the complete integrated lua folder is installed")
  authority:install()
 end -- Restoration authority bootstrap
+
+-- IareAwesome17's mixed weapons
+-- Modified with custom units and weapons
+--Beat cops
+local cop = {
+	pistol = {
+		"c45",
+		"raging_bull"
+	},
+	heavy = {
+		"mp5",
+		"r870",
+		"ump"
+	}
+}
+--SWAT
+local swat = {
+	rifle_light = {
+		"mp5",
+		"ump",
+		"amcar",
+	},
+	rifle_heavy = {
+		"mp5",
+		"m4",
+		"ump",
+		"amcar",
+	}
+}
+--FBI and Medics
+local fbi = {
+	pistol_agent = {
+		"c45",
+		"raging_bull"
+	},
+	rifle_agent = {
+		"mp5",
+		"amcar",
+		"m4"
+	},
+	rifle_light = {
+		"mp5",
+		"amcar",
+		"m4"
+	},
+	rifle_heavy = {
+		"m4",
+		"m249"
+	},
+	shotgun = {
+		"r870",
+		"saiga"
+	},
+	shotgun_medic = {
+		"r870",
+		"benelli",
+		"saiga"
+	}
+}
+--GenSec
+local gensec = {
+	rifle_light = {
+		"g36",
+		"m4",
+		"shepheard"
+	},
+	rifle_heavy = {
+		"g36",
+		"amcar",
+		"m249"
+	},
+	shotgun = {
+		"r870",
+		"saiga",
+		"benelli",
+		"spas12",
+		"ksg"
+	}
+}
+--ZEAL
+local zeal = {
+	rifle_light = {
+		"m4",
+		"mp5",
+		"ump",
+		"shepheard",
+		"amcar",
+	},
+	rifle_heavy = {
+		"m4",
+		"g36",
+		"ump",
+	--	"g3a3_npc",
+	--	"scar_heavy",
+		"amcar",
+		"m249"
+	},
+	shotgun_heavy = {
+		"r870",
+		"saiga",
+		"benelli",
+		"spas12",
+		"ksg"
+	},
+}
+--Russian Reapers
+local russia = {
+	rifle_light = {
+		"ak47_ass",
+		"akmsu_smg",
+	--	"coal_npc"
+	},
+	rifle_heavy = {
+		"ak47_ass_elite",
+		"rpk_lmg"
+	},
+	shotgun = {
+		"fort_500",
+		"saiga",
+		"benelli"
+	},
+	hrt = {
+		"akmsu_smg",
+	--	"coal_npc"
+	}
+}
+--Murkywater
+local murkywater = {
+	rifle_light = {
+		"m4",
+		"scar_murky",
+		"ump",
+		"scar_npc",
+		"amcar",
+		"shepheard",
+	--	"coal_npc"
+	},
+	rifle_heavy = {
+		"m4",
+		"scar_murky",
+		"ump",
+		"shepheard",
+	--	"g3a3_npc",
+	--	"scar_heavy",
+		"m249",
+		"m249",
+		"m249",
+		"m249"
+	},
+	shotgun = {
+		"r870",
+		"benelli",
+		"saiga",
+		"spas12",
+		"ksg"
+	}
+}
+--Policia Federal
+local federales = {
+	rifle_light = {
+		"mp5",
+		"m4",
+		"ump",
+		"shepheard",
+		"amcar",
+	--	"coal_npc"
+	},
+	rifle_heavy = {
+		"m4",
+		"ump",
+	--	"g3a3_npc",
+		"amcar",
+		"m249"
+	},
+	shotgun = {
+		"ksg",
+		"r870",
+		"benelli",
+		"saiga"
+	}
+}
+local dave = {
+	all_the_guns = {
+		"c45",
+		"beretta92",
+		"raging_bull",
+		"mp5",
+		"r870",
+		"benelli",
+		"ump",
+		"m4",
+		"g36",
+		"m249",
+		"s552",
+		"mossberg",
+		"mp9",
+		"sg417",
+	--	"g3a3_npc",
+		"m1911_npc",
+		"deagle",
+	--	"scar_heavy",
+	--	"mateba_ap",
+		"m14_sniper_npc",
+	--	"atf_ddm4v7",
+		"saiga",
+		"hk21_sc",
+		"shepheard",
+		"spas12",
+		"ksg",
+		"mac11_sup",
+		"amcar",
+		"ak47_ass",
+	--	"coal_npc",
+		"m60"
+	},
+	akan = {
+		"streak",
+		"x_streak",
+		"sr2_smg",
+		"ak47_ass",
+		"akmsu_smg",
+		"ak47_ass_elite",
+	--	"coal_npc",
+		"benelli",
+		"fort_500",
+		"saiga",
+	--	"mateba_ap",
+		"rpk_lmg",
+		"svd_snp"
+	},
+	kasane_teto = {
+		"mac11_sup",
+		"m249",
+	--	"g3a3_npc",
+		"m14_sniper_npc",
+	--	"atf_ddm4v7",
+	--	"mateba_ap",
+		"hk21_sc",
+		"m60",
+		"x_deagle"
+	}
+}
+local medic_heavy = {
+	medic_heavy = {
+		"ump",
+	--	"scar_heavy"
+	}
+}
+local bravo_heavy = {
+	rifle_heavy = {
+		"bravo_rifle",
+	--	"g3a3_npc"
+	}
+}
+local cruel_zeal = {
+	zeal_light = {
+		"mp5",
+		"m4",
+		"ump",
+		"g36",
+		"shepheard",
+	--	"scar_heavy",
+		"amcar",
+	--	"coal_npc"
+	},
+	zeal_light_shotgun = {
+		"r870",
+		"benelli",
+		"saiga",
+		"spas12",
+		"ksg"
+	},
+	zeal_heavy = {
+		"ump",
+		"bravo_rifle",
+	--	"g3a3_npc",
+		"benelli",
+		"bravo_shotgun",
+		"spas12",
+	}
+}
+local weapon_mapping = {
+-- Beat cops
+	[("units/payday2/characters/ene_cop_1/ene_cop_1"):key()] = cop.pistol,
+	[("units/payday2/characters/ene_cop_2/ene_cop_2"):key()] = cop.pistol,
+	[("units/payday2/characters/ene_cop_3/ene_cop_3"):key()] = cop.heavy,
+	[("units/payday2/characters/ene_cop_4/ene_cop_4"):key()] = cop.heavy,
+	[("units/pd2_dlc_rvd/characters/ene_la_cop_1/ene_la_cop_1"):key()] = cop.pistol,
+	[("units/pd2_dlc_rvd/characters/ene_la_cop_2/ene_la_cop_2"):key()] = cop.pistol,
+	[("units/pd2_dlc_rvd/characters/ene_la_cop_3/ene_la_cop_3"):key()] = cop.heavy,
+	[("units/pd2_dlc_rvd/characters/ene_la_cop_4/ene_la_cop_4"):key()] = cop.heavy,
+	[("units/pd2_dlc_bex/characters/ene_policia_01/ene_policia_01"):key()] = cop.pistol,
+	[("units/pd2_dlc_bex/characters/ene_policia_02/ene_policia_02"):key()] = cop.pistol,
+-- SWAT
+	[("units/payday2/characters/ene_swat_1/ene_swat_1"):key()] = swat.rifle_light,
+	[("units/payday2/characters/ene_swat_heavy_1/ene_swat_heavy_1"):key()] = swat.rifle_heavy,
+-- FBI
+	[("units/payday2/characters/ene_fbi_1/ene_fbi_1"):key()] = fbi.pistol_agent,
+	[("units/payday2/characters/ene_fbi_2/ene_fbi_2"):key()] = fbi.rifle_agent,
+	[("units/payday2/characters/ene_fbi_3/ene_fbi_3"):key()] = fbi.rifle_agent,
+	[("units/payday2/characters/ene_fbi_swat_1/ene_fbi_swat_1"):key()] = fbi.rifle_light,
+--	[("units/payday2/characters/ene_medic_m4/ene_medic_m4"):key()] = fbi.rifle_light,
+	[("units/payday2/characters/ene_fbi_heavy_1/ene_fbi_heavy_1"):key()] = fbi.rifle_heavy,
+	[("units/payday2/characters/ene_fbi_swat_2/ene_fbi_swat_2"):key()] = fbi.shotgun,
+	[("units/payday2/characters/ene_fbi_heavy_r870/ene_fbi_heavy_r870"):key()] = fbi.shotgun,
+	[("units/payday2/characters/ene_medic_r870/ene_medic_r870"):key()] = fbi.shotgun_medic,
+-- GenSec
+	[("units/payday2/characters/ene_city_heavy_g36/ene_city_heavy_g36"):key()] = gensec.rifle_heavy,
+	[("units/payday2/characters/ene_city_swat_2/ene_city_swat_2"):key()] = gensec.shotgun,
+	[("units/payday2/characters/ene_city_swat_r870/ene_city_swat_r870"):key()] = gensec.shotgun,
+	[("units/payday2/characters/ene_city_heavy_r870/ene_city_heavy_r870"):key()] = gensec.shotgun,
+-- ZEAL
+	[("units/pd2_dlc_gitgud/characters/ene_zeal_swat/ene_zeal_swat"):key()] = zeal.rifle_light,
+	[("units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy/ene_zeal_swat_heavy"):key()] = zeal.rifle_heavy,
+	[("units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_2/ene_zeal_swat_heavy_2"):key()] = zeal.shotgun_heavy,
+-- Russia
+	[("units/pd2_dlc_mad/characters/ene_akan_cs_swat_ak47_ass/ene_akan_cs_swat_ak47_ass"):key()] = russia.rifle_light,
+	[("units/pd2_dlc_mad/characters/ene_akan_cs_heavy_ak47_ass/ene_akan_cs_heavy_ak47_ass"):key()] = russia.rifle_light,
+	[("units/pd2_dlc_mad/characters/ene_akan_fbi_swat_ak47_ass/ene_akan_fbi_swat_ak47_ass"):key()] = russia.rifle_light,
+	[("units/pd2_dlc_mad/characters/ene_akan_fbi_swat_dw_ak47_ass/ene_akan_fbi_swat_dw_ak47_ass"):key()] = russia.rifle_light,
+	[("units/pd2_dlc_mad/characters/ene_akan_medic_ak47_ass/ene_akan_medic_ak47_ass"):key()] = russia.rifle_light,
+	[("units/pd2_dlc_mad/characters/ene_akan_fbi_heavy_g36/ene_akan_fbi_heavy_g36"):key()] = russia.rifle_heavy,
+	[("units/pd2_dlc_mad/characters/ene_akan_cs_swat_r870/ene_akan_cs_swat_r870"):key()] = russia.shotgun,
+	[("units/pd2_dlc_mad/characters/ene_akan_cs_heavy_r870/ene_akan_cs_heavy_r870"):key()] = russia.shotgun,
+	[("units/pd2_dlc_mad/characters/ene_akan_fbi_swat_r870/ene_akan_fbi_swat_r870"):key()] = russia.shotgun,
+	[("units/pd2_dlc_mad/characters/ene_akan_fbi_heavy_r870/ene_akan_fbi_heavy_r870"):key()] = russia.shotgun,
+	[("units/pd2_dlc_mad/characters/ene_akan_fbi_swat_dw_r870/ene_akan_fbi_swat_dw_r870"):key()] = russia.shotgun,
+	[("units/pd2_mod_reapers/characters/ene_fbi_3/ene_fbi_3"):key()] = russia.hrt,
+	[("units/pd2_mod_reapers/characters/ene_drak_hrt_2/ene_drak_hrt_2"):key()] = russia.hrt,
+-- Zombie
+	[("units/pd2_dlc_hvh/characters/ene_cop_hvh_1/ene_cop_hvh_1"):key()] = cop.pistol,
+	[("units/pd2_dlc_hvh/characters/ene_cop_hvh_2/ene_cop_hvh_2"):key()] = cop.pistol,
+	[("units/pd2_dlc_hvh/characters/ene_cop_hvh_3/ene_cop_hvh_3"):key()] = cop.heavy,
+	[("units/pd2_dlc_hvh/characters/ene_cop_hvh_4/ene_cop_hvh_4"):key()] = cop.heavy,
+	[("units/pd2_dlc_hvh/characters/ene_swat_hvh_1/ene_swat_hvh_1"):key()] = swat.rifle_light,
+	[("units/pd2_dlc_hvh/characters/ene_swat_heavy_hvh_1/ene_swat_heavy_hvh_1"):key()] = swat.rifle_heavy,
+	[("units/pd2_dlc_hvh/characters/ene_fbi_hvh_1/ene_fbi_hvh_1"):key()] = fbi.pistol_agent,
+	[("units/pd2_dlc_hvh/characters/ene_fbi_hvh_2/ene_fbi_hvh_2"):key()] = fbi.rifle_agent,
+	[("units/pd2_dlc_hvh/characters/ene_fbi_hvh_3/ene_fbi_hvh_3"):key()] = fbi.rifle_agent,
+	[("units/pd2_dlc_hvh/characters/ene_fbi_swat_hvh_1/ene_fbi_swat_hvh_1"):key()] = fbi.rifle_light,
+--	[("units/pd2_dlc_hvh/characters/ene_medic_hvh_m4/ene_medic_hvh_m4"):key()] = fbi.rifle_light,
+	[("units/pd2_dlc_hvh/characters/ene_fbi_heavy_hvh_1/ene_fbi_heavy_hvh_1"):key()] = fbi.rifle_heavy,
+	[("units/pd2_dlc_hvh/characters/ene_fbi_swat_hvh_2/ene_fbi_swat_hvh_2"):key()] = fbi.shotgun,
+	[("units/pd2_dlc_hvh/characters/ene_fbi_heavy_hvh_r870/ene_fbi_heavy_hvh_r870"):key()] = fbi.shotgun,
+	[("units/pd2_dlc_hvh/characters/ene_medic_hvh_r870/ene_medic_hvh_r870"):key()] = fbi.shotgun_medic,
+	[("units/pd2_dlc_hvh/characters/ene_city_swat_1/ene_city_swat_1"):key()] = gensec.rifle_light,
+	[("units/pd2_dlc_hvh/characters/ene_city_swat_2/ene_city_swat_2"):key()] = gensec.shotgun,
+	[("units/pd2_dlc_hvh/characters/ene_city_heavy_g36/ene_city_heavy_g36"):key()] = gensec.rifle_heavy,
+	[("units/pd2_dlc_hvh/characters/ene_city_heavy_r870/ene_city_heavy_r870"):key()] = gensec.shotgun,
+	[("units/pd2_dlc_hvh/characters/ene_zeal_swat/ene_zeal_swat"):key()] = zeal.rifle_light,
+	[("units/pd2_dlc_hvh/characters/ene_zeal_swat_2/ene_zeal_swat_2"):key()] = zeal.shotgun_heavy,
+	[("units/pd2_dlc_hvh/characters/ene_zeal_swat_heavy/ene_zeal_swat_heavy"):key()] = zeal.rifle_heavy,
+	[("units/pd2_dlc_hvh/characters/ene_zeal_swat_heavy_2/ene_zeal_swat_heavy_2"):key()] = zeal.shotgun_heavy,
+-- Murkywater
+	[("units/pd2_dlc_bph/characters/ene_murkywater_light/ene_murkywater_light"):key()] = murkywater.rifle_light,
+	[("units/pd2_dlc_bph/characters/ene_murkywater_heavy/ene_murkywater_heavy"):key()] = murkywater.rifle_light,
+	[("units/pd2_dlc_bph/characters/ene_murkywater_light_fbi/ene_murkywater_light_fbi"):key()] = murkywater.rifle_light,
+	[("units/pd2_dlc_bph/characters/ene_murkywater_light_city/ene_murkywater_light_city"):key()] = murkywater.rifle_light,
+	[("units/pd2_dlc_bph/characters/ene_murkywater_medic/ene_murkywater_medic"):key()] = murkywater.rifle_light,
+	[("units/pd2_dlc_bph/characters/ene_murkywater_heavy_g36/ene_murkywater_heavy_g36"):key()] = murkywater.rifle_heavy,
+	[("units/pd2_dlc_bph/characters/ene_murkywater_light_r870/ene_murkywater_light_r870"):key()] = murkywater.shotgun,
+	[("units/pd2_dlc_bph/characters/ene_murkywater_light_fbi_r870/ene_murkywater_light_fbi_r870"):key()] = murkywater.shotgun,
+	[("units/pd2_dlc_bph/characters/ene_murkywater_light_city_r870/ene_murkywater_light_city_r870"):key()] = murkywater.shotgun,
+	[("units/pd2_dlc_bph/characters/ene_murkywater_heavy_shotgun/ene_murkywater_heavy_shotgun"):key()] = murkywater.shotgun,
+	[("units/pd2_dlc_bph/characters/ene_murkywater_medic_r870/ene_murkywater_medic_r870"):key()] = murkywater.shotgun,
+-- Federales
+	[("units/pd2_dlc_bex/characters/ene_swat_policia_federale/ene_swat_policia_federale"):key()] = federales.rifle_light,
+	[("units/pd2_dlc_bex/characters/ene_swat_heavy_policia_federale/ene_swat_heavy_policia_federale"):key()] = federales.rifle_light,
+	[("units/pd2_dlc_bex/characters/ene_swat_heavy_policia_federale_g36/ene_swat_heavy_policia_federale_g36"):key()] = federales.rifle_light,
+	[("units/pd2_dlc_bex/characters/ene_swat_policia_federale_fbi/ene_swat_policia_federale_fbi"):key()] = federales.rifle_light,
+	[("units/pd2_dlc_bex/characters/ene_swat_policia_federale_city/ene_swat_policia_federale_city"):key()] = federales.rifle_light,
+	[("units/pd2_dlc_bex/characters/ene_swat_medic_policia_federale/ene_swat_medic_policia_federale"):key()] = federales.rifle_light,
+	[("units/pd2_dlc_bex/characters/ene_swat_heavy_policia_federale_fbi/ene_swat_heavy_policia_federale_fbi"):key()] = federales.rifle_heavy,
+	[("units/pd2_dlc_bex/characters/ene_swat_heavy_policia_federale_fbi_g36/ene_swat_heavy_policia_federale_fbi_g36"):key()] = federales.rifle_heavy,
+	[("units/pd2_dlc_bex/characters/ene_swat_policia_federale_r870/ene_swat_policia_federale_r870"):key()] = federales.shotgun,
+	[("units/pd2_dlc_bex/characters/ene_swat_policia_federale_fbi_r870/ene_swat_policia_federale_fbi_r870"):key()] = federales.shotgun,
+	[("units/pd2_dlc_bex/characters/ene_swat_policia_federale_city_r870/ene_swat_policia_federale_city_r870"):key()] = federales.shotgun,
+	[("units/pd2_dlc_bex/characters/ene_swat_heavy_policia_federale_r870/ene_swat_heavy_policia_federale_r870"):key()] = federales.shotgun,
+	[("units/pd2_dlc_bex/characters/ene_swat_heavy_policia_federale_fbi_r870/ene_swat_heavy_policia_federale_fbi_r870"):key()] = federales.shotgun,
+-- Heavy Medic get's his SCAR back
+	[("units/pd2_mod_nc/characters/ene_heavymedic_1/ene_heavymedic_1"):key{}] = medic_heavy.medic_heavy,
+	[("units/pd2_mod_halloween/characters/ene_heavymedic_1/ene_heavymedic_1"):key{}] = medic_heavy.medic_heavy,
+-- Wildcard
+	[("units/pd2_mod_nc/characters/ene_wildcard/ene_wildcard"):key{}] = dave.all_the_guns,
+	[("units/pd2_mod_reapers/characters/ene_akan_wildcard/ene_akan_wildcard"):key{}] = dave.akan,
+	[("units/pd2_mod_sharks/characters/ene_murky_wildcard/ene_murky_wildcard"):key{}] = dave.all_the_guns,
+	[("units/pd2_dlc_bex/characters/ene_policia_wildcard/ene_policia_wildcard"):key{}] = dave.all_the_guns,
+	[("units/pd2_mod_halloween/characters/ene_wildcard/ene_wildcard"):key{}] = dave.all_the_guns,
+	[("units/pd2_mod_cruel/characters/ene_sniper_1/ene_sniper_1"):key{}] = dave.kasane_teto,
+-- Bravo Heavy
+	[("units/pd2_mod_ng/characters/ene_ntl_heavyswat/ene_ntl_heavyswat"):key{}] = bravo_heavy.rifle_heavy,
+	[("units/pd2_mod_ngvh/characters/ene_ntl_heavyswat/ene_ntl_heavyswat"):key{}] = bravo_heavy.rifle_heavy,
+-- Cruel Trance ZEAL
+	[("units/pd2_mod_cruel/characters/ene_zeal_swat/ene_zeal_swat"):key{}] = cruel_zeal.zeal_light,
+	[("units/pd2_mod_cruel/characters/ene_zeal_swat_2/ene_zeal_swat_2"):key{}] = cruel_zeal.zeal_light_shotgun,
+	[("units/pd2_mod_cruel/characters/ene_zeal_swat_heavy/ene_zeal_swat_heavy"):key{}] = cruel_zeal.zeal_heavy,
+}
+
+Hooks:PreHook(CopBase, "post_init", "MIX_post_init", function(self)
+	local weapon_swap = weapon_mapping[self._unit:name():key()]
+
+	if weapon_swap then
+		self._default_weapon_id = type(weapon_swap) == "table" and table.random(weapon_swap) or weapon_swap
+	end
+end)

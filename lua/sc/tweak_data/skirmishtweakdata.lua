@@ -69,7 +69,10 @@ local map_scale_factor = 1
 			spring = 1,
 			headless_hatman = 1,
 			autumn = 1,
-			summers = 1
+			summers = 1,
+			heavygunner = 1,
+			tank_captain = 1,
+			sergeant = math.max(math.round(4 * map_scale_factor), 1),
 		}
 	}
 end

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<unit type="wpn" slot="13">
+  <object file="units/payday2/weapons/wpn_npc_m79/wpn_npc_m79" />
+  <dependencies>
+   <depends_on bnk="soundbanks/weapon_gl40"/>
+  </dependencies>
+  <extensions>
+  	<extension name="unit_data" class="ScriptUnitData" />
+    <extension name="base" class="NPCGrenadeLauncherBaseBoss" >
+		<var name="name_id" value="m79_npc" />
+		<var name="_multivoice" value="true" />
+    </extension>
+  <extension name="damage" class="UnitDamage" />
+  </extensions>
+  <sounds>
+    <soundsource name="root" source="rp_m79" />
+    <default_soundsource source="rp_m79" />
+  </sounds>
+</unit>

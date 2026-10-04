@@ -548,6 +548,38 @@ return {
 		{ "units/weapons/gas_grenade/gas_grenade", "unit" },
 		{ "units/weapons/gas_grenade/gas_grenade_husk", "unit" },
 
+		-- fork units go here
+		{ "units/pd2_mod_nc/characters/ene_acc_zeal_swat_helmet/ene_acc_zeal_swat_helmet", "unit" },
+		
+		{ "units/pd2_mod_nc/characters/ene_police_heavygunner/ene_police_heavygunner", "unit" },
+		{ "units/pd2_mod_nc/characters/ene_police_heavygunner/ene_police_heavygunner_husk", "unit" },
+
+		{ "units/pd2_mod_nc/characters/ene_wildcard/ene_wildcard", "unit" },
+		{ "units/pd2_mod_nc/characters/ene_wildcard/ene_wildcard_husk", "unit" },
+
+		{ "units/pd2_mod_nc/characters/ene_gensec_sgt/ene_gensec_sgt", "unit" },
+		{ "units/pd2_mod_nc/characters/ene_gensec_sgt/ene_gensec_sgt_husk", "unit" },
+
+		{ "units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_back/ene_acc_zeal_bulldozer_back", "unit" },
+		{ "units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_chest/ene_acc_zeal_bulldozer_chest", "unit" },
+		{ "units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_helmet_plate/ene_acc_zeal_bulldozer_helmet_plate", "unit" },
+		{ "units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_neck/ene_acc_zeal_bulldozer_neck", "unit" },
+		{ "units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_stomache/ene_acc_zeal_bulldozer_stomache", "unit" },
+		{ "units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_throat/ene_acc_zeal_bulldozer_throat", "unit" },
+
+		{ "units/pd2_mod_caps/characters/ene_bulldozer_captain/ene_bulldozer_captain", "unit" },
+		{ "units/pd2_mod_caps/characters/ene_bulldozer_captain/ene_bulldozer_captain_husk", "unit" },
+
+		-- weapons
+		{ "units/payday2/weapons/wpn_npc_m95/wpn_npc_m95", "unit" },
+		{ "units/payday2/weapons/wpn_npc_m95/wpn_npc_m95_fuck", "unit" },
+		{ "units/payday2/weapons/wpn_npc_mac11_sup/wpn_npc_mac11_sup", "unit" },
+		{ "units/pd2_dlc_usm2/weapons/wpn_npc_deagle/wpn_npc_x_deagle", "unit" },
+		{ "units/payday2/weapons/wpn_npc_m79/wpn_npc_m79", "unit" },
+		{ "units/payday2/weapons/wpn_npc_ksg/wpn_npc_ksg", "unit" },
+		{ "units/payday2/weapons/wpn_npc_spas12/wpn_npc_spas12", "unit" },
+		{ "units/payday2/weapons/wpn_npc_shepheard/wpn_npc_shepheard", "unit" },
+
 		-- NPC weapon units the mod adds itself. Nothing in the base game loads
 		-- these, and HuskCopInventory spawns them with no preload, so a client
 		-- that never loaded one dies in World:spawn_unit the moment the enemy

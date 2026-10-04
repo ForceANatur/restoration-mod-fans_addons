@@ -5600,12 +5600,16 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 		["menu_mutator_captain_replace_spring"] = "Spring",
 		["menu_mutator_captain_replace_summer"] = "Summers",
 		["menu_mutator_captain_replace_hvh"] = "HHHTDFH",
+		["menu_mutator_captain_replace_heavyg"] = "!!! NOT IMPLENTED !!! DO NOT USE !!!",
+		["menu_mutator_captain_replace_dzr_snp"] = "Mr. Cruel T",
 		["menu_mutator_captain_cooldown"] = "Captain Cooldown (in s)",
 		["menu_mutator_winter_blacklist_toggle"] = "Blacklist Winters for \"Random\" option",
 		["menu_mutator_spring_blacklist_toggle"] = "Blacklist Spring for \"Random\" option",
 		["menu_mutator_summer_blacklist_toggle"] = "Blacklist Summers for \"Random\" option",
 		["menu_mutator_autumn_blacklist_toggle"] = "Blacklist Autumn for \"Random\" option",
 		["menu_mutator_hvh_blacklist_toggle"] = "Blacklist HHHTDFH for \"Random\" option",
+		["menu_mutator_heavyg_blacklist_toggle"] = "!!! NOT IMPLENTED !!! DO NOT USE !!!",
+		["menu_mutator_dzr_snp_blacklist_toggle"] = "Blacklist Mr. Cruel T for \"Random\" option",
 		["mutator_captain_replace_desc"] = "Changes the Captain that spawns during a heist.",
 		["mutator_captain_replace_longdesc"] = "The Captain that will spawn during a heist will instead be the selected Captain.\n\nNote: Scripted Captain Encounters will be unchanged. Blacklisting all captains for \"Random\" option will sequence to use \"No Changes\" option.",
 
@@ -5650,6 +5654,10 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 		["mutator_letthesleepinggoddie_longdesc"] = "Upon a non-empty reload, ammo from the previous magazine is lost.\n\nNote: Weapons that retain their ammo during their reload (per-round loading, retention reloads, etc.) as well as reloads triggered by skills are exempt from the effects of this mutator.",
 		["mutator_letthesleepinggoddie_no_effect"] = "Unaffected by the \"Magazine Martyr\" mutator.",
 
+		-- Fork mutators here
+		["MutatorUMP4U2"] = "Sting Like A Bee",
+		["MutatorUMP4U2_desc"] = "Various units have better guns.",
+		["MutatorUMP4U2_longdesc"] = "Various units have better weapons. Some weapons only appear with this mutator enabled.",
 
 		["menu_cg22_post_objective_1_desc"] = "Kill 200 enemies with any sniper rifle.",
 		["menu_cg22_post_objective_2_desc"] = "Kill 15 Cloakers with the North Star rifle on Very Hard or above.",

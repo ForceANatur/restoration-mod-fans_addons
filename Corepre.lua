@@ -28,7 +28,8 @@ local restoration_registration_packages = {
 	"packages/res_misc_rex_gold",
 	"packages/res_misc_scassets",
 	"packages/res_misc_npcfixes",
-	"packages/dmc"
+	"packages/dmc",
+	"packages/fanscout"
 }
 
 for _, package in ipairs(restoration_registration_packages) do

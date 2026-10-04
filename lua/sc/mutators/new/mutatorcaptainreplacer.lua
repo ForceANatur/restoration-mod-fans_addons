@@ -28,6 +28,9 @@ function MutatorCaptainReplacer:register_values(mutator_manager)
 	self:register_value("summer_blacklist", false, "cpt_bl3")
 	self:register_value("autumn_blacklist", false, "cpt_bl4")
 	self:register_value("hvh_blacklist", false, "cpt_bl5")
+	self:register_value("heavyg_blacklist", false, "cpt_bl6")
+	self:register_value("dzr_snp_blacklist", false, "cpt_bl7")
+--	self:register_value("mega_blacklist", false, "cpt_bl8")
 	self:register_value("captain_cooldown", 2700, "cpt_cd")
 end
 
@@ -56,6 +59,12 @@ function MutatorCaptainReplacer:modify_value(id, value)
 				new_icon = "guis/textures/pd2/hud_buff_fire"
 			elseif new_icon == "autumn" then
 				new_icon = "guis/textures/pd2/hud_buff_spooc"
+			elseif new_icon == "heavyg" then
+				new_icon = "guis/textures/pd2/hud_buff_heavyg"
+			elseif new_icon == "dzr_snp" then
+				new_icon = "guis/textures/pd2/hud_buff_generic"
+		--	elseif new_icon == "mega" then
+		--		new_icon = "guis/textures/pd2/hud_buff_mememan"
 		end
 		return new_icon
 	end
@@ -70,6 +79,9 @@ function MutatorCaptainReplacer:setup()
 	local summer_preset = tweak_data.group_ai.enemy_spawn_groups.Cap_Summers
 	local autumn_preset = tweak_data.group_ai.enemy_spawn_groups.Cap_Autumn
 	local spooky_preset = tweak_data.group_ai.enemy_spawn_groups.HVH_Boss
+	local heavyg_preset = tweak_data.group_ai.enemy_spawn_groups.boss_heavygunner
+	local dzr_snp_preset = tweak_data.group_ai.enemy_spawn_groups.Cap_Cruel_T
+--	local mega_preset = tweak_data.group_ai.enemy_spawn_groups.OHGODWHY
 	local new_captain = self:get_captain_override()
 	local new_cooldown = self:get_captain_cooldown()
 	if new_captain ~= "no_captain_override" then	
@@ -96,6 +108,18 @@ function MutatorCaptainReplacer:setup()
 				table.insert(captain_table, "hvh")
 				num_of_captains = num_of_captains + 1
 			end
+			if not self:heavyg_blacklist() then
+				table.insert(captain_table, "heavyg")
+				num_of_captains = num_of_captains + 1
+			end
+			if not self:dzr_snp_blacklist() then
+				table.insert(captain_table, "dzr_snp")
+				num_of_captains = num_of_captains + 1
+			end
+		--	if not self:mega_blacklist() then
+		--		table.insert(captain_table, "mega")
+		--		num_of_captains = num_of_captains + 1
+		--	end
 			--[[for i, value in ipairs(captain_table) do
 				log("Captain Table "..tostring(i).." = "..tostring(value))
 			end--]]
@@ -117,6 +141,12 @@ function MutatorCaptainReplacer:setup()
 		new_captain = summer_preset
 	elseif new_captain == "autumn" then
 		new_captain = autumn_preset
+	elseif new_captain == "heavyg" then
+		new_captain = heavyg_preset
+	elseif new_captain == "dzr_snp" then
+		new_captain = dzr_snp_preset
+	--elseif new_captain == "mega" then
+	--	new_captain = mega_preset
 	end
 	-- Exclude double captain groups
 	local captain_type = restoration.captain_spawns[job]
@@ -137,6 +167,15 @@ function MutatorCaptainReplacer:setup()
 			
 			tweak_data.group_ai.enemy_spawn_groups.Cap_Summers = new_captain
 			tweak_data.group_ai.besiege.group_constraints.Cap_Summers.cooldown = new_cooldown
+
+			tweak_data.group_ai.enemy_spawn_groups.boss_heavygunner = new_captain
+			tweak_data.group_ai.besiege.group_constraints.boss_heavygunner.cooldown = new_cooldown
+
+			tweak_data.group_ai.enemy_spawn_groups.Cap_Cruel_T = new_captain
+			tweak_data.group_ai.besiege.group_constraints.Cap_Cruel_T.cooldown = new_cooldown
+
+		--	tweak_data.group_ai.enemy_spawn_groups.OHGODWHY = new_captain
+		--	tweak_data.group_ai.besiege.group_constraints.OHGODWHY.cooldown = new_cooldown
 		else
 			tweak_data.group_ai.enemy_spawn_groups.Fake_Captain = new_captain
 			tweak_data.group_ai.besiege.assault.groups.Fake_Captain = {0, 0.1, 0.2}
@@ -165,6 +204,18 @@ end
 function MutatorCaptainReplacer:hvh_blacklist()
 	return self:value("hvh_blacklist")
 end
+
+function MutatorCaptainReplacer:heavyg_blacklist()
+	return self:value("heavyg_blacklist")
+end
+
+function MutatorCaptainReplacer:dzr_snp_blacklist()
+	return self:value("dzr_snp_blacklist")
+end
+
+--function MutatorCaptainReplacer:mega_blacklist()
+--	return self:value("mega_blacklist")
+--end
 
 function MutatorCaptainReplacer:get_captain_override(specific_day)
 --specific_day need only for settings
@@ -227,6 +278,21 @@ function MutatorCaptainReplacer:setup_options_gui(node)
 			text_id = "menu_mutator_captain_replace_hvh",
 			_meta = "option"
 		},
+		{
+			value = "heavyg",
+			text_id = "menu_mutator_captain_replace_heavyg",
+			_meta = "option"
+		},
+		{
+			value = "dzr_snp",
+			text_id = "menu_mutator_captain_replace_dzr_snp",
+			_meta = "option"
+		},
+	--	{
+	--		value = "mega",
+	--		text_id = "menu_mutator_captain_replace_mega",
+	--		_meta = "option"
+	--	},
 		type = "MenuItemMultiChoice"
 	}
 	local new_item = node:create_item(data_node, params)
@@ -486,6 +552,133 @@ function MutatorCaptainReplacer:setup_options_gui(node)
 
 	new_item:set_value(self:hvh_blacklist() and "on" or "off")
 	node:add_item(new_item)
+
+	local params = {
+		name = "heavyg_blacklist_toggle",
+		callback = "_update_mutator_value",
+		text_id = "menu_mutator_heavyg_blacklist_toggle",
+		update_callback = callback(self, self, "_toggle_heavyg_blacklist")
+	}
+	local data_node = {
+		{
+			w = 24,
+			y = 0,
+			h = 24,
+			s_y = 24,
+			value = "on",
+			s_w = 24,
+			s_h = 24,
+			s_x = 24,
+			_meta = "option",
+			icon = "guis/textures/menu_tickbox",
+			x = 24,
+			s_icon = "guis/textures/menu_tickbox"
+		},
+		{
+			w = 24,
+			y = 0,
+			h = 24,
+			s_y = 24,
+			value = "off",
+			s_w = 24,
+			s_h = 24,
+			s_x = 0,
+			_meta = "option",
+			icon = "guis/textures/menu_tickbox",
+			x = 0,
+			s_icon = "guis/textures/menu_tickbox"
+		},
+		type = "CoreMenuItemToggle.ItemToggle"
+	}
+	local new_item = node:create_item(data_node, params)
+
+	new_item:set_value(self:heavyg_blacklist() and "on" or "off")
+	node:add_item(new_item)
+
+	local params = {
+		name = "dzr_snp_blacklist_toggle",
+		callback = "_update_mutator_value",
+		text_id = "menu_mutator_dzr_snp_blacklist_toggle",
+		update_callback = callback(self, self, "_toggle_dzr_snp_blacklist")
+	}
+	local data_node = {
+		{
+			w = 24,
+			y = 0,
+			h = 24,
+			s_y = 24,
+			value = "on",
+			s_w = 24,
+			s_h = 24,
+			s_x = 24,
+			_meta = "option",
+			icon = "guis/textures/menu_tickbox",
+			x = 24,
+			s_icon = "guis/textures/menu_tickbox"
+		},
+		{
+			w = 24,
+			y = 0,
+			h = 24,
+			s_y = 24,
+			value = "off",
+			s_w = 24,
+			s_h = 24,
+			s_x = 0,
+			_meta = "option",
+			icon = "guis/textures/menu_tickbox",
+			x = 0,
+			s_icon = "guis/textures/menu_tickbox"
+		},
+		type = "CoreMenuItemToggle.ItemToggle"
+	}
+	local new_item = node:create_item(data_node, params)
+
+	new_item:set_value(self:dzr_snp_blacklist() and "on" or "off")
+	node:add_item(new_item)
+
+--[[	local params = {
+		name = "mega_blacklist_toggle",
+		callback = "_update_mutator_value",
+		text_id = "menu_mutator_mega_blacklist_toggle",
+		update_callback = callback(self, self, "_toggle_mega_blacklist")
+	}
+	local data_node = {
+		{
+			w = 24,
+			y = 0,
+			h = 24,
+			s_y = 24,
+			value = "on",
+			s_w = 24,
+			s_h = 24,
+			s_x = 24,
+			_meta = "option",
+			icon = "guis/textures/menu_tickbox",
+			x = 24,
+			s_icon = "guis/textures/menu_tickbox"
+		},
+		{
+			w = 24,
+			y = 0,
+			h = 24,
+			s_y = 24,
+			value = "off",
+			s_w = 24,
+			s_h = 24,
+			s_x = 0,
+			_meta = "option",
+			icon = "guis/textures/menu_tickbox",
+			x = 0,
+			s_icon = "guis/textures/menu_tickbox"
+		},
+		type = "CoreMenuItemToggle.ItemToggle"
+	}
+	local new_item = node:create_item(data_node, params)
+
+	new_item:set_value(self:mega_blacklist() and "on" or "off")
+	node:add_item(new_item)
+]]
 	
 	self._node = node
 
@@ -527,6 +720,18 @@ end
 function MutatorCaptainReplacer:_toggle_hvh_blacklist(item)
 	self:set_value("hvh_blacklist", item:value() == "on")
 end
+
+function MutatorCaptainReplacer:_toggle_heavyg_blacklist(item)
+	self:set_value("heavyg_blacklist", item:value() == "on")
+end
+
+function MutatorCaptainReplacer:_toggle_dzr_snp_blacklist(item)
+	self:set_value("dzr_snp_blacklist", item:value() == "on")
+end
+
+--function MutatorCaptainReplacer:_toggle_mega_blacklist(item)
+--	self:set_value("mega_blacklist", item:value() == "on")
+--end
 
 function MutatorCaptainReplacer:reset_to_default()
 	self:clear_values()
@@ -573,5 +778,24 @@ function MutatorCaptainReplacer:reset_to_default()
 		if toggle5 then
 			toggle5:set_value(self:hvh_blacklist() and "on" or "off")
 		end
+
+		local toggle6 = self._node:item("heavyg_blacklist_toggle")
+
+		if toggle6 then
+			toggle6:set_value(self:heavyg_blacklist() and "on" or "off")
+		end
+
+		local toggle7 = self._node:item("dzr_snp_blacklist_toggle")
+
+		if toggle7 then
+			toggle7:set_value(self:dzr_snp_blacklist() and "on" or "off")
+		end
+
+	--[[	local toggle8 = self._node:item("mega_blacklist_toggle")
+
+		if toggle8 then
+			toggle8:set_value(self:mega_blacklist() and "on" or "off")
+		end
+	]]--
 	end
 end

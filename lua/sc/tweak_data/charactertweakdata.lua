@@ -58,6 +58,14 @@ function CharacterTweakData:init(tweak_data, presets)
 	self:_init_omnia_lpf(presets)
 	self:_init_tank_biker(presets)
 	self:_init_zombie(presets)
+	--[[self:_init_heavygunner(presets)
+	self:_init_atf_marksman(presets)
+	self:_init_city_swat_rpg(presets)
+	self:_init_weekend_vanilla(presets)
+	self:_init_weekend_vanilla_heavy(presets)
+	self:_init_weekend_vanilla_snp(presets)
+	]]--
+	self:_init_city_swat_sergeant(presets)
 	self:_process_weapon_usage_table()
 	
 	--Dozer Armor Multiplier, lower means more EHP
@@ -415,6 +423,18 @@ function CharacterTweakData:_init_cop(presets)
 	self.dave.speech_prefix_count = nil   
 	self.dave.heal_cooldown = 5
 	self.dave.overheal_mult = 1
+
+	-- non meme version of big dave
+	self.cop_wildcard = deep_clone(self.cop)
+	self.cop_wildcard.HEALTH_INIT = 10
+	self.cop_wildcard.melee_weapon = "fists_dozer"
+	self.cop_wildcard.move_speed = presets.move_speed.fast
+	if self:get_ai_group_type() == "zombie" then
+		self.cop_wildcard.custom_voicework = "wildcard_hvh"
+	else
+		self.cop_wildcard.custom_voicework = nil
+	end
+	table.insert(self._enemy_list, "cop_wildcard")
 end
 
 function CharacterTweakData:_init_fbi(presets)	
@@ -1506,7 +1526,37 @@ function CharacterTweakData:_init_gangster(presets)
 	self.enforcer_assault.access = "swat"
 	self.enforcer_assault.speech_prefix_p1 = self._prefix_data_p1.cloaker()
 	self.enforcer_assault.speech_prefix_count = nil
-	table.insert(self._enemy_list, "enforcer_assault")	
+	table.insert(self._enemy_list, "enforcer_assault")
+
+	self.enforcer_swat = deep_clone(self.enforcer_assault)
+	self.enforcer_swat.HEALTH_INIT = 200
+	self.enforcer_swat.headshot_dmg_mul = 2.345
+	self.enforcer_swat.move_speed = presets.move_speed.normal
+	self.enforcer_swat.speech_prefix_p1 = nil
+	if self:get_ai_group_type() == "federales" then
+		self.enforcer_swat.custom_voicework = nil
+	elseif self:get_ai_group_type() == "zombie" then
+		self.enforcer_swat.custom_voicework = "heavygunner_hvh"
+	elseif self:get_ai_group_type() == "murkywater" then
+		self.enforcer_swat.custom_voicework = "murky_heavygunner"
+	else
+		self.enforcer_swat.custom_voicework = "heavygunner"
+	end
+	table.insert(self._enemy_list, "enforcer_swat")
+
+	-- bravo variants, moves faster, but much more squishy
+	self.enforcer_swat_cruel = deep_clone(self.enforcer_swat)
+	self.enforcer_swat_cruel.HEALTH_INIT = 175
+	self.enforcer_swat_cruel.headshot_dmg_mul = 3.575
+	self.enforcer_swat_cruel.move_speed = presets.move_speed.fast
+	self.enforcer_swat_cruel.can_throw_frag = true
+	self.enforcer_swat_cruel.grenade_toss_chance = 0.2
+	if self:get_ai_group_type() == "zombie" then
+		self.enforcer_swat_cruel.custom_voicework = "cruel_enforcer"
+	else
+		self.enforcer_swat_cruel.custom_voicework = nil
+	end
+	table.insert(self._enemy_list, "enforcer_swat_cruel")
 end
 
 function CharacterTweakData:_init_biker(presets)
@@ -3441,6 +3491,21 @@ function CharacterTweakData:_init_spring(presets)
 	self.headless_hatman.captain_type = restoration.captain_types.hvh
 	self.headless_hatman.no_dozer_armor_resistance = true
 	table.insert(self._enemy_list, "headless_hatman")
+
+	-- Sniper Bulldozer Captain
+	self.tank_captain = deep_clone(self.spring)
+	self.tank_captain.HEALTH_INIT = 1500
+	self.tank_captain.headshot_dmg_mul = 4
+	self.tank_captain.can_throw_frag = false
+	self.tank_captain.custom_voicework = "mr_cruel_t"
+	self.tank_captain.captain_type = restoration.captain_types.dzr_snp
+	self.tank_captain.announce_incomming = "incomming_captain"
+	self.tank_captain.damage.hurt_severity = presets.hurt_severities.only_light_hurt_no_explode
+	self.tank_captain.move_speed = presets.move_speed.slow_plus
+	self.tank_captain.rage_move_speed = presets.move_speed.fast
+	self.tank_captain.melee_concuss = false	-- he crashes the game when doing so
+	self.tank_captain.chatter = presets.enemy_chatter.swat -- talk damn it
+	table.insert(self._enemy_list, "tank_captain")
 end
 
 function CharacterTweakData:_init_summers(presets)	
@@ -4134,8 +4199,57 @@ end
 
 function CharacterTweakData:_init_zombie(presets)
 	self.zombie_light = deep_clone(self.swat)
-	table.insert(self._enemy_list, "zombie_light")	
+	table.insert(self._enemy_list, "zombie_light")
+end
 
+--GenSec Sergeant, Mix of Vet Cop, ASU, and SWAT, Less HS Multu the higher the diff
+function CharacterTweakData:_init_city_swat_sergeant(presets)
+	self.city_swat_sergeant = deep_clone(self.city_swat)
+	self.city_swat_sergeant.tags = {"law", "custom", "special"}
+	self.city_swat_sergeant.HEALTH_INIT = 15
+	self.city_swat_sergeant.priority_shout_max_dis = 3000
+	self.city_swat_sergeant.priority_shout = "g29"
+	self.city_swat_sergeant.bot_priority_shout = "g29"
+	self.city_swat_sergeant.is_special = true
+	self.city_swat_sergeant.custom_shout = true
+	self.city_swat_sergeant.can_shoot_while_dodging = true
+	self.city_swat_sergeant.can_slide_on_suppress = true
+	self.city_swat_sergeant.move_speed = presets.move_speed.fast
+	if self:get_ai_group_type() == "federales" then
+		self.city_swat_sergeant.custom_voicework = "mexico_vet"
+	elseif self:get_ai_group_type() == "murkywater" then
+		self.city_swat_sergeant.custom_voicework = "murky_vet"
+	else
+		self.city_swat_sergeant.custom_voicework = "swat_pd3"
+	end
+	self.city_swat_sergeant.melee_weapon = "buzzer_summer"
+	self.city_swat_sergeant.melee_weapon_dmg_multiplier = 1
+	self.city_swat_sergeant.tase_on_melee = true
+	self.city_swat_sergeant.surrender = nil
+	self.city_swat_sergeant.dodge = presets.dodge.elite
+	self.city_swat_sergeant.steal_loot = true
+	self.city_swat_sergeant.do_asu = true
+	self.city_swat_sergeant.no_asu = true
+	self.city_swat_sergeant.immune_to_knock_down = true
+	self.city_swat_sergeant.headshot_dmg_mul = 3
+	self.city_swat_sergeant.damage.bullet_dodge_chance = 10
+	self.city_swat_sergeant.dodge_with_grenade = {
+		smoke = {duration = {
+			6,
+			6
+		}},
+		check = function (t, nr_grenades_used)
+			local delay_till_next_use = 20
+			local chance = 0.05
+
+			if math.random() < chance then
+				return true, t + delay_till_next_use
+			end
+
+			return false, t + delay_till_next_use
+		end
+	}
+	table.insert(self._enemy_list, "city_swat_sergeant")
 end
 
 function CharacterTweakData:_presets(tweak_data)
@@ -4161,7 +4275,6 @@ function CharacterTweakData:_presets(tweak_data)
 			controlpanic = true,
 			dodge = true,
 			cuffed = true,
-			entry = true,
 			aggressive_assault = true,
 			retreat = true,
 			contact = true,
@@ -5237,7 +5350,6 @@ function CharacterTweakData:_presets(tweak_data)
 		is_smg = {},
 		mp9 = {},
 		mac11 = {},
-		is_revolver = {},
 		akimbo_pistol = {},
 		mini = {},
 		is_sniper = {},
@@ -18374,8 +18486,71 @@ Hooks:PostHook(CharacterTweakData, "_create_table_structure", "remod_create_tabl
 	
 	--Akimbo Peacemaker
 	table.insert(self.weap_ids, "x_peacemaker")
-	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_peacemaker/wpn_x_npc_peacemaker"))	
+	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_peacemaker/wpn_x_npc_peacemaker"))
 
+	--ATF DDM4 V7 (❌)
+	table.insert(self.weap_ids, "atf_ddm4v7")
+	table.insert(self.weap_unit_names, Idstring("units/pd2_dlc_usm1/weapons/wpn_npc_ddm4v7/wpn_npc_ddm4v7"))
+
+	--MPX
+	table.insert(self.weap_ids, "shepheard")
+	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_shepheard/wpn_npc_shepheard"))
+
+	--SPAS 12
+	table.insert(self.weap_ids, "spas12")
+	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_spas12/wpn_npc_spas12"))
+
+	--KelTec KSG
+	table.insert(self.weap_ids, "ksg")
+	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_ksg/wpn_npc_ksg"))
+
+	--Mateba Model 6 (❌)
+	table.insert(self.weap_ids, "mateba_ap")
+	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_matever/wpn_npc_matever"))
+
+	--HK G3A3 (❌)
+	table.insert(self.weap_ids, "g3a3_npc")
+	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_g3a3/wpn_npc_g3a3"))
+
+	--Highly modified CAR-4 (❌)
+	table.insert(self.weap_ids, "m4_tacticool_snp")
+	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_sniper_tacticool/wpn_npc_sniper_tacticool"))
+
+	--fanni gee thirte sex 😂 (❌)
+	table.insert(self.weap_ids, "g36_lol_npc")
+	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_g36_mememan/wpn_npc_g36_mememan"))
+
+	--Akimbo Cloaker MP5 (unused)
+	--table.insert(self.weap_ids, "x_mp5_tactical")
+	--table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_mp5_tactical/wpn_npc_x_mp5_tactical"))
+
+	--Akimbo Deagles
+	table.insert(self.weap_ids, "x_deagle")
+	table.insert(self.weap_unit_names, Idstring("units/pd2_dlc_usm2/weapons/wpn_npc_deagle/wpn_npc_x_deagle"))
+
+	--SCAR Heavy (❌)
+	table.insert(self.weap_ids, "scar_heavy")
+	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_scar_heavy/wpn_npc_scar_heavy"))
+
+	--PDTH Mark 10
+	table.insert(self.weap_ids, "mac11_sup")
+	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_mac11_sup/wpn_npc_mac11_sup"))
+
+	--Barrett M95
+	table.insert(self.weap_ids, "m95_npc")
+	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_m95/wpn_npc_m95"))
+
+	--god help us all
+	table.insert(self.weap_ids, "m95_auto_npc")
+	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_m95/wpn_npc_m95_fuck"))
+
+	--TEAR GAS! DONT BREATHE THIS!
+	table.insert(self.weap_ids, "m79_npc")
+	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_m79/wpn_npc_m79"))
+
+	--PP-19 Bizon (❌)
+	table.insert(self.weap_ids, "coal_npc")
+	table.insert(self.weap_unit_names, Idstring("units/pd2_dlc_mad/weapons/wpn_npc_coal/wpn_npc_coal"))
 end)
 
 function CharacterTweakData:_set_easy()
@@ -18627,6 +18802,14 @@ function CharacterTweakData:_set_overkill_145()
 	self:_multiply_weapon_delay(self.presets.weapon.deathwish, 0)
 	self:_multiply_weapon_delay(self.presets.weapon.gang_member, 0)
 	self:_set_characters_weapon_preset("expert", "good")
+
+	if pro_job then
+		self.city_swat_sergeant.headshot_dmg_mul = 2.5
+		self.city_swat_sergeant.damage.bullet_dodge_chance = 15
+	else
+		self.city_swat_sergeant.headshot_dmg_mul = 3
+		self.city_swat_sergeant.damage.bullet_dodge_chance = 10
+	end
 	
 	self.city_swat.weapon = deep_clone(self.presets.weapon.good)
 	self.city_swat.dodge = self.presets.dodge.athletic_very_hard
@@ -18685,6 +18868,14 @@ function CharacterTweakData:_set_easy_wish()
 	self:_multiply_weapon_delay(self.presets.weapon.expert, 0)
 	self:_multiply_weapon_delay(self.presets.weapon.deathwish, 0)
 	self:_multiply_weapon_delay(self.presets.weapon.gang_member, 0)
+
+	if pro_job then
+		self.city_swat_sergeant.headshot_dmg_mul = 2
+		self.city_swat_sergeant.damage.bullet_dodge_chance = 20
+	else
+		self.city_swat_sergeant.headshot_dmg_mul = 2.5
+		self.city_swat_sergeant.damage.bullet_dodge_chance = 15
+	end
 	
 	--Tankier Dozer Armor
 	self.tank_armor_damage_mul = 0.8
@@ -18756,7 +18947,15 @@ function CharacterTweakData:_set_overkill_290()
 	self:_set_characters_melee_preset("2.5", "2")
 	self.fbi.can_shoot_while_dodging = true
 	self.swat.can_shoot_while_dodging = true	
-	self.hrt.can_shoot_while_dodging = true		
+	self.hrt.can_shoot_while_dodging = true
+
+	if pro_job then
+		self.city_swat_sergeant.headshot_dmg_mul = 1.6
+		self.city_swat_sergeant.damage.bullet_dodge_chance = 25
+	else
+		self.city_swat_sergeant.headshot_dmg_mul = 2
+		self.city_swat_sergeant.damage.bullet_dodge_chance = 20
+	end
 	
 	--Tankier Dozer Armor
 	self.tank_armor_damage_mul = 0.5
@@ -18834,6 +19033,14 @@ function CharacterTweakData:_set_sm_wish()
 	]]--
 	
 	self.tank_hw_black.headshot_dmg_mul = 2.75
+
+	if pro_job then
+		self.city_swat_sergeant.headshot_dmg_mul = 1
+		self.city_swat_sergeant.damage.bullet_dodge_chance = 30
+	else
+		self.city_swat_sergeant.headshot_dmg_mul = 1.6
+		self.city_swat_sergeant.damage.bullet_dodge_chance = 25
+	end
 
 	self:_multiply_all_hp(2, 0.915)	
 	self:_multiply_weapon_delay(self.presets.weapon.normal, 0)
@@ -19145,6 +19352,7 @@ function CharacterTweakData:_set_characters_melee_preset(preset, special_preset)
 end
 
 -- TODO: alphabetize the lists so it's easier to see when a unit is missing or shouldn't be there
+-- TODO: ADD THE REST OF THE UNITS TO THIS WHY DID I ADD SO MUCH SHIT TO THIS AAAAAAAAAAAAA (❌, Indicates not added)
 local orig_character_map = CharacterTweakData.character_map
 function CharacterTweakData.character_map(...)
 	local char_map = orig_character_map(...)
@@ -19199,6 +19407,9 @@ function CharacterTweakData.character_map(...)
 		table.insert(char_map.basic.list, "ene_bulldozer_4_minion")			
 		table.insert(char_map.basic.list, "ene_mememan_1")
 		table.insert(char_map.basic.list, "ene_mememan_2")
+		table.insert(char_map.basic.list, "ene_mememan_3") --(❌)
+		table.insert(char_map.basic.list, "ene_mememan_4") --(❌)
+		table.insert(char_map.basic.list, "ene_mememan_5_kamikaze") --(❌)
 		table.insert(char_map.basic.list, "ene_bulldozer_biker_1")
 		table.insert(char_map.basic.list, "ene_guard_biker_1")
 		table.insert(char_map.basic.list, "ene_gang_black_enforcer")
@@ -19211,6 +19422,9 @@ function CharacterTweakData.character_map(...)
 		table.insert(char_map.basic.list, "ene_hoxton_breakout_responder_2")
 		table.insert(char_map.basic.list, "ene_cop_1_forest")
 		table.insert(char_map.basic.list, "ene_cop_2_forest")
+		table.insert(char_map.basic.list, "ene_swole_spook_1") --(❌)
+		table.insert(char_map.basic.list, "ene_swole_medic_m249") --(❌)
+		table.insert(char_map.basic.list, "ene_fbi_4") --(❌)
 			
 	--dlc1
 		table.insert(char_map.dlc1.list, "ene_security_gensec_guard_1")
@@ -19218,8 +19432,8 @@ function CharacterTweakData.character_map(...)
 		table.insert(char_map.dlc1.list, "ene_security_gensec_3")
 		
 	--drm	
-		table.insert(char_map.drm.list, "ene_bulldozer_medic_classic")
 		table.insert(char_map.drm.list, "ene_bulldozer_medic_sc")
+		table.insert(char_map.drm.list, "ene_bulldozer_medic_classic")
 		
 	--flat
 		table.insert(char_map.flat.list, "ene_gang_colombian_1")
@@ -19243,6 +19457,7 @@ function CharacterTweakData.character_map(...)
 		table.insert(char_map.ranc.list, "ene_cop_4")
 	--usm1
 		table.insert(char_map.usm1.list, "ene_male_marshal_marksman_scripted_2")
+		table.insert(char_map.usm1.list, "ene_atf_field_agent_1")  --(❌)
 		table.insert(char_map.usm1.list, "ene_titan_sniper")
 		table.insert(char_map.usm1.list, "ene_titan_rifle")
 		table.insert(char_map.usm1.list, "ene_titan_shotgun")
@@ -19250,7 +19465,25 @@ function CharacterTweakData.character_map(...)
 		table.insert(char_map.usm1.list, "ene_phalanx_1_assault")
 		
 	--Christmas
-		table.insert(char_map.cg22.list, "ene_bulldozer_snowman")		
+		table.insert(char_map.cg22.list, "ene_bulldozer_snowman")
+	--HvH  (❌, the entire faction is not in yet)
+		table.insert(char_map.hvh.list, "ene_bulldozer_minigun_classic")
+		table.insert(char_map.hvh.list, "ene_bulldozer_medic")
+		table.insert(char_map.hvh.list, "ene_city_swat_1")
+		table.insert(char_map.hvh.list, "ene_city_swat_2")
+		table.insert(char_map.hvh.list, "ene_city_swat_3")
+		table.insert(char_map.hvh.list, "ene_city_heavy_g36")
+		table.insert(char_map.hvh.list, "ene_city_heavy_r870")
+		table.insert(char_map.hvh.list, "ene_zeal_swat_shield")
+		table.insert(char_map.hvh.list, "ene_zeal_swat")
+		table.insert(char_map.hvh.list, "ene_zeal_swat_2")
+		table.insert(char_map.hvh.list, "ene_zeal_swat_heavy")
+		table.insert(char_map.hvh.list, "ene_zeal_swat_heavy_2")
+		table.insert(char_map.hvh.list, "ene_fbi_hvh_4")
+		table.insert(char_map.hvh.list, "ene_bulldozer_snowman")
+	--bph  (❌)
+		table.insert(char_map.bph.list, "ene_murky_heavyg")
+		table.insert(char_map.bph.list, "ene_murky_sgt")
 	--vip
 		char_map.vip = {
 			path = "units/pd2_dlc_vip/characters/",
@@ -19266,8 +19499,8 @@ function CharacterTweakData.character_map(...)
 				"ene_phalanx_grenadier",
 				"ene_phalanx_taser",
 				"ene_phalanx_1",
+				"ene_phalanx_1_assault",
 				"ene_phalanx_1_new",
-				"ene_phalanx_1_assault",					
 				"ene_titan_shotgun",
 				"ene_titan_rifle",
 				"ene_titan_grenadier",
@@ -19275,7 +19508,8 @@ function CharacterTweakData.character_map(...)
 				"ene_fbi_titan_1",
 				"ene_titan_sniper",
 				"ene_titan_sniper_scripted",
-				"ene_titan_taser"
+				"ene_titan_taser",
+				"ene_fbi_titan_heavy_1"  --(❌)
 			}
 		}
 	--gitgud
@@ -19292,6 +19526,7 @@ function CharacterTweakData.character_map(...)
 				"ene_zeal_cloaker",
 				"ene_zeal_cloaker_sc",
 				"ene_zeal_swat",
+				"ene_zeal_swat_2", --(❌)
 				"ene_zeal_city_1",
 				"ene_zeal_city_2",
 				"ene_zeal_city_3",
@@ -19299,14 +19534,18 @@ function CharacterTweakData.character_map(...)
 				"ene_grenadier_1",				
 				"ene_zeal_sniper",
 				"ene_zeal_swat_heavy",
+				"ene_zeal_swat_heavy_2", --(❌)
 				"ene_zeal_swat_shield",
 				"ene_zeal_swat_shield_sc",
 				"ene_zeal_tazer",
 				"ene_zeal_tazer_sc",
+				"ene_zeal_fbi_c45", --(❌)
 				"ene_zeal_fbi_m4",
 				"ene_zeal_fbi_mp5",
+				"ene_zeal_fbi_r870", --(❌)
 				"ene_zeal_swat_heavy_sc",
 				"ene_zeal_swat_heavy_r870_sc",
+				"ene_deathvox_medic" --(❌)
 			}
 		}
 	--bex
@@ -19376,9 +19615,11 @@ function CharacterTweakData.character_map(...)
 				"ene_policia_02",
 				"ene_policia_03",
 				"ene_policia_04",
+				"ene_policia_sgt", --(❌)
 				"ene_fbi_1",
 				"ene_fbi_2",
 				"ene_fbi_3",
+				"ene_fbi_4", --(❌)
 				"ene_grenadier_1",
 				"ene_bex_security_01",
 				"ene_bex_security_02",
@@ -19394,7 +19635,9 @@ function CharacterTweakData.character_map(...)
 				"civ_male_mariachi_01",
 				"civ_male_mariachi_02",
 				"civ_male_mariachi_03",
-				"civ_male_mariachi_04"
+				"civ_male_mariachi_04",
+				"ene_deathvox_fbi_heavyswat", --(❌)
+				"ene_policia_wildcard" --(❌)
 			}
 		}
 	--fully custom
@@ -19415,6 +19658,7 @@ function CharacterTweakData.character_map(...)
 				"ene_fbi_3",
 				"ene_fbi_1",
 				"ene_fbi_2",
+				"ene_fbi_4", --(❌)
 				"ene_fbi_swat_1",
 				"ene_fbi_swat_2",
 				"ene_fbi_swat_3",
@@ -19428,7 +19672,7 @@ function CharacterTweakData.character_map(...)
 				"ene_zeal_swat_shield",
 				"ene_titan_rifle",
 				"ene_titan_shotgun",
-				"ene_rpg_grunt",
+				"ene_rpg_grunt", --(❌)
 				"ene_titan_sniper",
 				"ene_titan_sniper_scripted",
 				"ene_city_swat_1",
@@ -19455,7 +19699,8 @@ function CharacterTweakData.character_map(...)
 				"ene_swat_2",
 				"ene_swat_3",
 				"ene_murky_sniper",
-				"ene_murky_sniper_2"
+				"ene_murky_sniper_2",
+				"ene_murky_wildcard" --(❌)
 			}
 		}
 
@@ -19465,6 +19710,7 @@ function CharacterTweakData.character_map(...)
 				"ene_omnia_hrt_1",
 				"ene_omnia_hrt_2",
 				"ene_omnia_hrt_3",
+				"ene_omnia_hrt_4", --(❌)
 				"ene_omnia_crew",
 				"ene_omnia_crew_2",
 				"ene_omnia_city",
@@ -19492,11 +19738,11 @@ function CharacterTweakData.character_map(...)
 			list = {
 				"ene_shield_1",
 				"ene_sniper_1",
-				"ene_sniper_2",
 				"ene_fbi_swat_1",
 				"ene_fbi_swat_2",
 				"ene_fbi_swat_3",
 				"ene_fbi_heavy_1",
+				"ene_fbi_heavy_r870",
 				"ene_fbi_heavy_r870_sc",
 				"ene_city_swat_1",
 				"ene_city_swat_2",
@@ -19515,7 +19761,6 @@ function CharacterTweakData.character_map(...)
 				"ene_nypd_medic",
 				"ene_tazer_1",
 				"ene_grenadier_1",
-				"ene_fbi_1",
 				"ene_fbi_2",	
 				"ene_fbi_3",	
 				"ene_nypd_veteran_cop_1",		
@@ -19525,6 +19770,8 @@ function CharacterTweakData.character_map(...)
 				"ene_nypd_swat_2",
 				"ene_nypd_swat_3",
 				"ene_nypd_shield",
+				"ene_nypd_murky_1",
+				"ene_nypd_murky_2",
 				"ene_security_1",	
 				"ene_security_2",	
 				"ene_security_3",	
@@ -19548,10 +19795,10 @@ function CharacterTweakData.character_map(...)
 				"ene_cop_3",
 				"ene_cop_4",				
 				"ene_sniper_1",
-				"ene_sniper_2",
 				"ene_sniper_3",				
 				"ene_grenadier_1",
 				"ene_tazer_1",
+				"ene_spook_1",	
 				"ene_fbi_swat_1",
 				"ene_fbi_swat_2",
 				"ene_fbi_3",
@@ -19563,6 +19810,7 @@ function CharacterTweakData.character_map(...)
 				"ene_bulldozer_3",
 				"ene_city_shield",
 				"ene_fbi_heavy_1",
+				"ene_fbi_heavy_r870",
 				"ene_fbi_heavy_r870_sc",
 				"ene_city_heavy_g36",
 				"ene_city_heavy_r870_sc",
@@ -19599,14 +19847,64 @@ function CharacterTweakData.character_map(...)
 				"ene_bravo_dmr_mex",
 				"ene_bravo_lmg_mex",
 				"ene_bravo_rifle_mex",
-				"ene_bravo_shotgun_mex"
+				"ene_bravo_shotgun_mex",
+				"ene_bravo_shield" --(❌)
 			}
 		}
 		
 		char_map.dave = {
 			path = "units/pd2_mod_dave/characters/",
 			list = {
-				"ene_big_dave"
+				"ene_big_dave",
+				"ene_dave_hvh" --(❌)
+			}
+		}
+
+		char_map.nc = {
+			path = "units/pd2_mod_nc/characters/",
+			list = {
+				"ene_heavymedic_1", --(❌)
+				"ene_police_heavygunner",
+				"ene_gensec_heavygunner", --(❌)
+				"ene_gensec_sgt",
+				"ene_wildcard"
+			}
+		}
+
+		char_map.ng = { --(❌)
+			path = "units/pd2_mod_ng/characters/",
+			list = {
+				"ene_ntl_benelli",
+				"ene_ntl_groundsniper",
+				"ene_ntl_heavyshotgun",
+				"ene_ntl_heavyswat",
+				"ene_ntl_swat_1",
+				"ene_ntl_swat_2",
+				"ene_ntl_swat_3",
+				"ene_ntl_medic",
+				"ene_ntl_shield"
+			}
+		}
+
+		char_map.ngvh = { --(❌)
+			path = "units/pd2_mod_ngvh/characters/",
+			list = {
+				"ene_ntl_groundsniper",
+				"ene_ntl_heavyshotgun",
+				"ene_ntl_heavyswat",
+				"ene_ntl_swat_1",
+				"ene_ntl_swat_2",
+				"ene_ntl_swat_3",
+				"ene_ntl_medic",
+				"ene_ntl_shield"
+			}
+		}
+
+		char_map.caps = {
+			path = "units/pd2_mod_caps/characters/",
+			list = {
+				"ene_bulldozer_captain",
+				"ene_mememan_captain" -- this one can be ingored
 			}
 		}
 		
@@ -19639,8 +19937,10 @@ function CharacterTweakData.character_map(...)
 				"ene_bulldozer_2",
 				"ene_bulldozer_3",
 				"ene_medic_mp5",
+				"ene_zeal_fbi_c45",
 				"ene_zeal_fbi_m4",
 				"ene_zeal_fbi_mp5",
+				"ene_zeal_fbi_r870",
 				"ene_zeal_medic",
 				"ene_zeal_swat_shield",
 				"ene_zeal_bulldozer",
@@ -19667,7 +19967,16 @@ function CharacterTweakData.character_map(...)
 				"ene_titan_sniper_scripted",
 				"ene_titan_taser",
 				"ene_veteran_cop_1",
-				"ene_phalanx_1_assault"
+				"ene_phalanx_1_assault",
+				"ene_gensec_sgt", --(❌)
+				"ene_heavymedic_1", --(❌)
+				"ene_marshal_marksman_1", --(❌)
+				"ene_marshal_shield_1", --(❌)
+				"ene_police_heavygunner", --(❌)
+				"ene_undead_titan", --(❌)
+				"ene_rpg_grunt", --(❌)
+				"ene_fbi_titan_heavy_1", --(❌)
+				"ene_wildcard" --(❌)
 			}
 		}
 		
@@ -19697,8 +20006,10 @@ function CharacterTweakData.character_map(...)
 				"ene_fbi_1",
 				"ene_fbi_2",
 				"ene_fbi_3",
+				"ene_fbi_4", --(❌)
 				"ene_drak_hrt_1",
 				"ene_drak_hrt_2",
+				"ene_drak_hrt_3", --(❌)
 				"ene_akan_veteran_1",
 				"ene_akan_veteran_2",
 				"ene_akan_veteran_subject",
@@ -19741,7 +20052,66 @@ function CharacterTweakData.character_map(...)
 				"ene_spook_cloak_1",										
 				"ene_titan_sniper",
 				"ene_titan_sniper_scripted",
-				"ene_titan_taser"
+				"ene_titan_taser",
+				"ene_fbi_titan_heavy_1", --(❌)
+				"ene_akan_wildcard" --(❌)
+			}
+		}
+
+		char_map.cruel = { --(❌, this one can not be a solo project with the sheer units for this)
+			path = "units/pd2_mod_cruel/characters/",
+			list = {
+				"ene_cop_4",
+				"ene_fbi_1",
+				"ene_fbi_2",
+				"ene_fbi_3",
+				"ene_fbi_4",
+				"ene_fbi_swat_1",
+				"ene_fbi_swat_2",
+				"ene_fbi_heavy_1",
+				"ene_fbi_heavy_r870",
+				"ene_zeal_cloaker",
+				"ene_zeal_hrt_1",
+				"ene_zeal_hrt_2",
+				"ene_zeal_hrt_3",
+				"ene_zeal_hrt_4",
+				"ene_zeal_swat",
+				"ene_zeal_swat_2",
+				"ene_zeal_swat_3", --(i want to use the new zeal light for the smg unit)
+				"ene_zeal_swat_heavy",
+				"ene_zeal_swat_shield",
+				"ene_zeal_tazer",
+				"ene_murkywater_1",
+				"ene_murkywater_2",
+				"ene_male_marshal_marksman_1",
+				"ene_male_marshal_marksman_2",
+				"ene_phalanx_1",
+				"ene_shield_1",
+				"ene_sniper_1",
+				"ene_hoxton_breakout_guard_1",
+				"ene_medic_m4",
+				"ene_medic_r870",
+				"ene_city_shield",
+				"ene_city_heavy_g36",
+				"ene_city_heavy_r870",
+				"ene_city_swat_1",
+				"ene_city_swat_2",
+				"ene_city_swat_3",
+				"ene_city_swat_r870",
+				"ene_spook_1",
+				"ene_police_heavygunner"
+			}
+		}
+
+		char_map.boom = { --(❌)
+			path = "units/pd2_mod_boom/characters/",
+			list = {
+				"ene_akan_dozer_m32",
+				"ene_bulldozer_frag",
+				"ene_bulldozer_frag_hvh",
+				"ene_bulldozer_frag_murky",
+				"ene_swat_dozer_policia_federale_m32",
+				"ene_zeal_bulldozer_frag"
 			}
 		}
 

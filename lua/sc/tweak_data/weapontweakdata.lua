@@ -975,7 +975,7 @@ local crew_wep_preset = {
 		self.colt_1911_primary_npc.DAMAGE = 4.5
 
 		self.beretta92_titan_npc = deep_clone(self.c45_npc)
-		self.beretta92_titan_npc.usage = "is_revolver"
+		self.beretta92_titan_npc.usage = "is_lmg"
 		self.beretta92_titan_npc.sounds.prefix = "beretta_npc"
 		self.beretta92_titan_npc.DAMAGE = 2.4
 		self.beretta92_titan_npc.CLIP_AMMO_MAX = 14
@@ -1103,6 +1103,12 @@ local crew_wep_preset = {
 		self.x_raging_bull_npc.NR_CLIPS_MAX = 5
 		self.x_raging_bull_npc.hold = "akimbo_pistol"
 		self.x_raging_bull_npc.FIRE_MODE = "single"
+
+		self.matever_ap_npc = deep_clone(self.raging_bull_npc)
+		self.matever_ap_npc.DAMAGE = 10
+		self.matever_ap_npc.sounds.prefix = "mateba_npc"
+		self.matever_ap_npc.armor_piercing = true
+		self.matever_ap_npc.suppression = 6.4
 	end
 
 	function WeaponTweakData:_init_data_m4_npc()
@@ -1194,7 +1200,32 @@ local crew_wep_preset = {
 		self.ak102_npc = deep_clone(self.amcar_npc)
 		self.ak102_npc.sounds.prefix = "ak74_npc"
 
-		-- 
+		--HK G3A3
+		self.gewehr3_npc = deep_clone(self.m4_npc)
+		self.gewehr3_npc.sounds.prefix = "g3_npc"
+		self.gewehr3_npc.DAMAGE = 3.2
+		self.gewehr3_npc.CLIP_AMMO_MAX = 15
+		self.gewehr3_npc.suppression = 1.3
+		self.gewehr3_npc.auto.fire_rate = 0.1
+		self.gewehr3_npc.usage = "is_lmg"
+
+		--SCAR Heavy
+		self.scar_heavy_npc = deep_clone(self.m4_npc)
+		self.scar_heavy_npc.sounds.prefix = "scar_npc"
+		self.scar_heavy_npc.DAMAGE = 2.8
+		self.scar_heavy_npc.CLIP_AMMO_MAX = 20
+
+		--oops moving this here while using the m4_npc should work
+		self.m14_sniper_mememan_npc = deep_clone(self.m4_npc)
+		self.m14_sniper_mememan_npc.sounds.prefix = "sniper_npc"
+		self.m14_sniper_mememan_npc.DAMAGE = 4.5	--so we dont instantly die
+		self.m14_sniper_mememan_npc.can_shoot_through_enemy = false
+		self.m14_sniper_mememan_npc.can_shoot_through_shield = false
+		self.m14_sniper_mememan_npc.can_shoot_through_wall = false
+		self.m14_sniper_mememan_npc.CLIP_AMMO_MAX = 20
+		self.m14_sniper_mememan_npc.suppression = 6.9
+		self.m14_sniper_mememan_npc.use_sniper_trail = true
+		self.m14_sniper_mememan_npc.trail_effect = Idstring("effects/particles/weapons/sniper_trail_sc")
 	end
 
 	function WeaponTweakData:_init_data_m4_yellow_npc()
@@ -1272,6 +1303,25 @@ local crew_wep_preset = {
 		self.railgun_npc.trail_effect = Idstring("effects/particles/weapons/sniper_trail_sc")
 		self.railgun_npc.use_sniper_trail = true
 		--self.railgun_npc.sounds.prefix = "barrett_npc"
+
+		--so called sniper captain barrett
+		self.m95_npc = deep_clone(self.m14_sniper_npc)
+		self.m95_npc.sounds.prefix = "barrett_npc"
+		self.m95_npc.muzzleflash = "effects/payday2/particles/weapons/50cal_auto"
+		self.m95_npc.shell_ejection = "effects/payday2/particles/weapons/shells/shell_sniper_m95"
+		self.m95_npc.DAMAGE = 27	-- if this is too lethal, then ill take it down a bit
+		self.m95_npc.CLIP_AMMO_MAX = 4
+		self.m95_npc.suppression = 7
+		self.m95_npc.use_sniper_trail = true
+		self.m95_npc.trail_effect = Idstring("effects/particles/weapons/sniper_trail_sc")
+
+		--god help us all
+		self.m95_full_auto_npc = deep_clone(self.m95_npc)
+		self.m95_full_auto_npc.categories = {"smg"}
+		self.m95_full_auto_npc.CLIP_AMMO_MAX = 999
+		self.m95_full_auto_npc.suppression = 999
+		self.m95_full_auto_npc.fire_rate = 0.08571428571
+		self.m95_full_auto_npc.usage = "is_lmg"
 	end
 
 	function WeaponTweakData:_init_data_heavy_snp_npc()
@@ -1301,12 +1351,17 @@ local crew_wep_preset = {
 		self.r870_taser_npc.DAMAGE = 5
 		self.r870_taser_npc.CLIP_AMMO_MAX = 8
 
+		self.ksg_npc = deep_clone(self.r870_npc)
+		self.ksg_npc.sounds.prefix = "keltec_npc"
+		self.ksg_npc.DAMAGE = 5
+		self.ksg_npc.CLIP_AMMO_MAX = 14
+
 		self.m500_npc = deep_clone(self.r870_npc)
 		self.m500_npc.sounds.prefix = "m590_npc"
 
 		self.fort_500_npc = deep_clone(self.r870_npc)
 	end
-	
+
 	function WeaponTweakData:_init_data_mossberg_npc()
 		self.mossberg_npc.categories = {"shotgun"}
 		self.mossberg_npc.sounds.prefix = "remington_npc"
@@ -1347,6 +1402,14 @@ local crew_wep_preset = {
 		self.mp5_tactical_npc.alert_size = 0
 		self.mp5_tactical_npc.suppression = 0.1
 
+		--Akimbo Cloaker Mp5 (do not use, animation is fucked)
+		--[[self.x_mp5_tactical_npc = deep_clone(self.mp5_tactical_npc)
+		self.x_mp5_tactical_npc.CLIP_AMMO_MAX = 60
+		self.x_mp5_tactical_npc.NR_CLIPS_MAX = 10
+		self.x_mp5_tactical_npc.hold ="akimbo_pistol"
+		self.x_mp5_tactical_npc.usage = "is_lmg"
+		]]--
+
 		--T. Cloaker Mp5
 		self.mp5_cloak_npc = deep_clone(self.mp5_npc)
 
@@ -1383,6 +1446,19 @@ local crew_wep_preset = {
 
 		self.akmsu_tactical_smg_npc = deep_clone(self.mp5_tactical_npc)
 		self.akmsu_tactical_smg_npc.has_suppressor = "suppressed_c"
+
+		--pp bizon
+		self.coal_npc = deep_clone(self.mp5_npc)
+		self.coal_npc.sounds.prefix = "coal_npc"
+		self.coal_npc.CLIP_AMMO_MAX = 64
+		self.coal_npc.usage = "is_lmg"
+
+		--MPX
+		self.shepheard_npc = deep_clone(self.mp5_npc)
+		self.shepheard_npc.sounds.prefix = "shepheard_npc"
+		self.shepheard_npc.auto.fire_rate = 0.14117647058
+		self.shepheard_npc.DAMAGE = 2.8
+		self.shepheard_npc.suppression = 3.2
 
 		--Autumn MPX
 		self.mpx_npc = deep_clone(self.mp5_tactical_npc)
@@ -1438,6 +1514,11 @@ local crew_wep_preset = {
 		self.mac11_npc.reload = "uzi"
 		self.mac11_npc.suppression = 2.8
 		self.mac11_npc.FIRE_MODE = "auto"
+
+		self.mac11_sil_npc = deep_clone(self.mac11_npc)
+		self.mac11_sil_npc.has_suppressor = "suppressed_a"
+		self.mac11_sil_npc.usage = "is_lmg"
+		self.mac11_sil_npc.CLIP_AMMO_MAX = 30
 	end
 
 	function WeaponTweakData:_init_data_g36_npc()
@@ -1455,6 +1536,12 @@ local crew_wep_preset = {
 		self.g36_npc.alert_size = 2500
 		self.g36_npc.suppression = 2.6
 		self.g36_npc.FIRE_MODE = "auto"
+
+		self.g36_mememan_npc = deep_clone(self.g36_npc)
+		self.g36_mememan_npc.DAMAGE = 2.1
+		self.g36_mememan_npc.CLIP_AMMO_MAX = 100
+		self.g36_mememan_npc.usage = "is_lmg"
+		self.g36_mememan_npc.alert_size = 9999
 	end
 
 	function WeaponTweakData:_init_data_mp9_npc()
@@ -1532,6 +1619,16 @@ local crew_wep_preset = {
 		self.benelli_npc.usage = "is_shotgun_semi"
 		self.benelli_npc.anim_usage = "is_shotgun_pump"
 
+		self.spas12_npc = deep_clone(self.saiga_npc)
+		self.spas12_npc.sounds.prefix = "spas_npc"
+		self.spas12_npc.auto.fire_rate = 0.064
+		self.spas12_npc.DAMAGE = 4
+		self.spas12_npc.CLIP_AMMO_MAX = 8
+		self.spas12_npc.suppression = 2
+		self.spas12_npc.FIRE_MODE = "single"
+		self.spas12_npc.usage = "is_shotgun_semi"
+		self.spas12_npc.anim_usage = "is_shotgun_pump"
+
 		self.bayou_npc = deep_clone(self.benelli_npc)
 		self.bayou_npc.sounds.prefix = "spas_npc"
 		self.bayou_npc.DAMAGE = 4.5
@@ -1542,25 +1639,37 @@ local crew_wep_preset = {
 		--Reaper Bravo Argos
 		self.argos_bravo_npc = deep_clone(self.bayou_npc)
 		self.argos_bravo_npc.sounds.prefix = "ultima_npc"
+
+		--[[self.bleckert_npc = deep_clone(self.benelli_npc)
+		self.bleckert_npc.sounds.prefix = "bleckert_npc"
+		self.bleckert_npc.DAMAGE = 6
+		self.bleckert_npc.CLIP_AMMO_MAX = 5
+		self.bleckert_npc.hold = "rifle"
+		]]--
 	end
 
-	--Vanilla Deagle, less lethal (Marshal Shields)
+	--Vanilla Deagle
 	function WeaponTweakData:_init_data_deagle_npc()
 		self.deagle_npc = deep_clone(self.raging_bull_npc)
-		self.deagle_npc.DAMAGE = 3 --Slightly more damage than the standard pistol, just so Marshal shields are a bit more balanced compared to their standard Titan Shield counterpart
+		self.deagle_npc.DAMAGE = 8
 		self.deagle_npc.CLIP_AMMO_MAX = 8
 		self.deagle_npc.sounds.prefix = "deagle_npc"
 		self.deagle_npc.anim_usage = "is_pistol"
 		self.deagle_npc.hold = "pistol"
 		self.deagle_npc.reload = "pistol"
+
+		self.x_deagle_npc = deep_clone(self.x_raging_bull_meme_npc)
+		self.x_deagle_npc.DAMAGE = 4
+		self.x_deagle_npc.CLIP_AMMO_MAX = 16
+		self.x_deagle_npc.sounds.prefix = "deagle_npc"
 	end
 
-	--Marshal Shield Phase 2 Shotgun, less lethal
+	--Marshal Shield Phase 2 Shotgun
 	function WeaponTweakData:_init_data_sko12_conc_npc()
 		self.sko12_conc_npc.categories = clone(self.sko12.categories)
 		self.sko12_conc_npc.sounds.prefix = "sko12_npc"
 		self.sko12_conc_npc.use_data.selection_index = 2
-		self.sko12_conc_npc.DAMAGE = 1
+		self.sko12_conc_npc.DAMAGE = 5
 		self.sko12_conc_npc.muzzleflash = "effects/payday2/particles/weapons/big_762_auto"
 		self.sko12_conc_npc.shell_ejection = "effects/payday2/particles/weapons/shells/shell_slug_g2"
 		self.sko12_conc_npc.CLIP_AMMO_MAX = 25
@@ -1950,6 +2059,22 @@ local crew_wep_preset = {
 		self.dmr_npc.use_sniper_trail = true
 		self.dmr_npc.trail = nil
 
+		--ATF DDM4V7, less damage but higher rate of fire
+		--The rate of fire is handled in the charactertweakdata
+		self.ddm4v7_npc = deep_clone(self.scar_npc)
+		self.ddm4v7_npc.DAMAGE = 3
+		self.ddm4v7_npc.CLIP_AMMO_MAX = 40
+		self.ddm4v7_npc.NR_CLIPS_MAX = 10
+		--self.ddm4v7_npc.sounds.prefix = "saint_victor_npc"	--needs a better sound
+		self.ddm4v7_npc.trail_effect = Idstring("effects/particles/weapons/sniper_trail_marshal")
+		self.ddm4v7_npc.use_sniper_trail = false
+		self.ddm4v7_npc.trail = nil
+		--Slows downfire rate as temp fix (unless u wanna suffer)
+		self.ddm4v7_npc.auto.fire_rate = 0.5
+		--Cheap fix idk what value is actually causing it to be automatic (Forced to Recat as something else) :c
+		--self.ddm4v7_npc.usage = "is_smg"
+		self.ddm4v7_npc.usage = "is_lmg"
+
 		--Type-7
 		self.type_7_npc = deep_clone(self.scar_npc)
 		self.type_7_npc.DAMAGE = 1
@@ -1992,7 +2117,7 @@ local crew_wep_preset = {
 		self.hk21_sc_npc.DAMAGE = 3
 		self.hk21_sc_npc.muzzleflash = "effects/payday2/particles/weapons/big_762_auto"
 		self.hk21_sc_npc.shell_ejection = "effects/payday2/particles/weapons/shells/shell_556_lmg"
-		self.hk21_sc_npc.CLIP_AMMO_MAX = 100
+	    self.hk21_sc_npc.CLIP_AMMO_MAX = 100
 		self.hk21_sc_npc.NR_CLIPS_MAX = 5
 		self.hk21_sc_npc.auto.fire_rate = 0.075
 		self.hk21_sc_npc.hold = "rifle"
@@ -2016,6 +2141,9 @@ local crew_wep_preset = {
 		--M60
 		self.m60_npc = deep_clone(self.m249_npc)
 		self.m60_npc.sounds.prefix = "m60_npc"
+		self.m60_npc.DAMAGE = 3.4
+		self.m60_npc.CLIP_AMMO_MAX = 100
+		self.m60_npc.auto.fire_rate = 0.1
 
 		--Bravo LMG--
 		self.m249_bravo_npc = deep_clone(self.hk23_sc_npc)
@@ -2077,7 +2205,7 @@ local crew_wep_preset = {
 		self.m32_npc.sounds.prefix = "mgl_npc"
 		self.m32_npc.anim_usage = "is_shotgun_pump"
 		self.m32_npc.usage = "is_m32"
-		self.m32_npc.projectile = "cluster_fuck"
+		self.m32_npc.projectile = "bravo_frag"
 		self.m32_npc.CLIP_AMMO_MAX = 6
 		self.m32_npc.looped_reload_speed = nil
 		self.m32_npc.has_fire_animation = true
@@ -2096,6 +2224,14 @@ local crew_wep_preset = {
 		self.rpg7_npc.projectile = "rocket_frag"
 		self.rpg7_npc.CLIP_AMMO_MAX = 1
 		self.rpg7_npc.looped_reload_speed = nil
+
+		--M79
+		self.m79_npc = deep_clone(self.m32_npc)
+		self.m79_npc.CLIP_AMMO_MAX = 1
+		self.m79_npc.gl_voiceline = true
+		self.m79_npc.projectile = "gas_grenade"
+		self.m79_npc.gl_cooldown_max = 10
+		self.m79_npc.gl_speaking_cooldown = 0.9
 	end
 
 	function WeaponTweakData:_init_data_mini_npc()

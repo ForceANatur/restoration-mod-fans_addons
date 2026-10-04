@@ -1,0 +1,158 @@
+<?xml version="1.0"?>
+<!-- Fork Exclusive units, everything loads here because i am dum dum -->
+<table directory="assets">
+
+	<!--This helmet is agony for anything new coppers related. - FaN Scout-->
+	<object				path="units/pd2_mod_nc/characters/ene_acc_zeal_swat_helmet/ene_acc_zeal_swat_helmet" force="false"/>
+	<cooked_physics		path="units/pd2_mod_nc/characters/ene_acc_zeal_swat_helmet/ene_acc_zeal_swat_helmet" force="false"/>
+	<model				path="units/pd2_mod_nc/characters/ene_acc_zeal_swat_helmet/ene_acc_zeal_swat_helmet" force="false"/>
+	<unit				path="units/pd2_mod_nc/characters/ene_acc_zeal_swat_helmet/ene_acc_zeal_swat_helmet" force="false" load="true"/>
+	<material_config	path="units/pd2_mod_nc/characters/ene_acc_zeal_swat_helmet/ene_acc_zeal_swat_helmet" force="false"/>
+	
+	<cooked_physics   path="units/pd2_mod_nc/characters/ene_police_heavygunner/ene_police_heavygunner"/>
+	<material_config  path="units/pd2_mod_nc/characters/ene_police_heavygunner/ene_police_heavygunner"/>
+	<material_config  path="units/pd2_mod_nc/characters/ene_police_heavygunner/ene_police_heavygunner_contour"/>
+	<model            path="units/pd2_mod_nc/characters/ene_police_heavygunner/ene_police_heavygunner"/>
+	<object           path="units/pd2_mod_nc/characters/ene_police_heavygunner/ene_police_heavygunner"/>
+	<unit             path="units/pd2_mod_nc/characters/ene_police_heavygunner/ene_police_heavygunner"/>
+	<unit             path="units/pd2_mod_nc/characters/ene_police_heavygunner/ene_police_heavygunner_husk"/>
+
+	<texture          path="units/pd2_mod_nc/characters/ene_police_heavygunner/helmets_atlas_df"/>
+	<texture          path="units/pd2_mod_nc/characters/ene_police_heavygunner/swat_body_df"/>
+
+	<cooked_physics   path="units/pd2_mod_nc/characters/ene_wildcard/ene_wildcard"/>
+	<material_config  path="units/pd2_mod_nc/characters/ene_wildcard/ene_wildcard"/>
+	<material_config  path="units/pd2_mod_nc/characters/ene_wildcard/ene_wildcard_contour"/>
+	<model            path="units/pd2_mod_nc/characters/ene_wildcard/ene_wildcard"/>
+	<object           path="units/pd2_mod_nc/characters/ene_wildcard/ene_wildcard"/>
+	<unit             path="units/pd2_mod_nc/characters/ene_wildcard/ene_wildcard"/>
+	<unit             path="units/pd2_mod_nc/characters/ene_wildcard/ene_wildcard_husk"/>
+
+	<texture          path="units/pd2_mod_nc/characters/ene_wildcard/body_df"/>
+	<texture          path="units/pd2_mod_nc/characters/ene_wildcard/head_df"/>
+
+	<model path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_throat/ene_acc_bulldozer_throat"  force="false"/>
+	<model path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_stomache/ene_acc_bulldozer_stomache"  force="false"/>
+	<model path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_neck/ene_acc_bulldozer_neck"  force="false"/>
+	<model path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_helmet_plate/ene_acc_bulldozer_helmet_plate"  force="false"/>
+	<model path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_chest/ene_acc_bulldozer_chest"  force="false"/>
+	<model path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_back/ene_acc_bulldozer_back"  force="false"/>
+
+	<material_config path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_throat/ene_acc_bulldozer_throat" force="false"/>
+	<material_config path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_stomache/ene_acc_bulldozer_stomache" force="false"/>
+	<material_config path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_neck/ene_acc_bulldozer_neck" force="false"/>
+	<material_config path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_helmet_plate/ene_acc_bulldozer_helmet_plate" force="false"/>
+	<material_config path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_chest/ene_acc_bulldozer_chest" force="false"/>
+	<material_config path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_back/ene_acc_bulldozer_back" force="false"/>
+
+	<object path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_throat/ene_acc_bulldozer_throat" force="false"/>
+	<object path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_stomache/ene_acc_bulldozer_stomache" force="false"/>
+	<object path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_neck/ene_acc_bulldozer_neck" force="false"/>
+	<object path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_helmet_plate/ene_acc_bulldozer_helmet_plate" force="false"/>
+	<object path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_chest/ene_acc_bulldozer_chest" force="false"/>
+	<object path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_back/ene_acc_bulldozer_back" force="false"/>
+
+	<cooked_physics path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_throat/ene_acc_bulldozer_throat" force="false"/>
+	<cooked_physics path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_stomache/ene_acc_bulldozer_stomache" force="false"/>
+	<cooked_physics path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_neck/ene_acc_bulldozer_neck" force="false"/>
+	<cooked_physics path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_helmet_plate/ene_acc_bulldozer_helmet_plate" force="false"/>
+	<cooked_physics path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_chest/ene_acc_bulldozer_chest" force="false"/>
+	<cooked_physics path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_back/ene_acc_bulldozer_back" force="false"/>
+
+	<unit path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_throat/ene_acc_bulldozer_throat" force="false" load="true"/>
+	<unit path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_stomache/ene_acc_bulldozer_stomache" force="false" load="true"/>
+	<unit path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_neck/ene_acc_bulldozer_neck" force="false" load="true"/>
+	<unit path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_helmet_plate/ene_acc_bulldozer_helmet_plate" force="false" load="true"/>
+	<unit path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_chest/ene_acc_bulldozer_chest" force="false" load="true"/>
+	<unit path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_back/ene_acc_bulldozer_back" force="false" load="true"/>
+
+	<texture path= "units/pd2_mod_caps/characters/ene_bulldozer_captain/debris_generic_df"/>
+
+	<texture			path="units/pd2_mod_caps/characters/ene_bulldozer_captain/bulldozer_df"/>
+	<texture			path="units/pd2_mod_caps/characters/ene_bulldozer_captain/bulldozer_1_nm"/>
+	<texture			path="units/pd2_mod_caps/characters/ene_bulldozer_captain/bulldozer_il"/>
+	<material_config	path="units/pd2_mod_caps/characters/ene_bulldozer_captain/ene_bulldozer_captain" force="false"/>
+	<material_config	path="units/pd2_mod_caps/characters/ene_bulldozer_captain/ene_bulldozer_captain_contour" force="false"/>
+	<model				path="units/pd2_mod_caps/characters/ene_bulldozer_captain/ene_bulldozer_captain" force="false"/>
+	<unit				path="units/pd2_mod_caps/characters/ene_bulldozer_captain/ene_bulldozer_captain" force="false" load="true"/>
+	<unit				path="units/pd2_mod_caps/characters/ene_bulldozer_captain/ene_bulldozer_captain_husk" force="false" load="true"/>
+	<object				path="units/pd2_mod_caps/characters/ene_bulldozer_captain/ene_bulldozer_captain" force="false"/>
+	<sequence_manager	path="units/pd2_mod_caps/characters/ene_bulldozer_captain/ene_bulldozer_captain" force="false"/>
+
+	<!--GenSec Sergeant-->
+	<object				path="units/pd2_mod_nc/characters/ene_gensec_sgt/ene_gensec_sgt" force="false"/>
+	<cooked_physics		path="units/pd2_mod_nc/characters/ene_gensec_sgt/ene_gensec_sgt" force="false"/>
+	<model				path="units/pd2_mod_nc/characters/ene_gensec_sgt/ene_gensec_sgt" force="false"/>
+	<unit				path="units/pd2_mod_nc/characters/ene_gensec_sgt/ene_gensec_sgt" force="false" load="true"/>
+	<material_config	path="units/pd2_mod_nc/characters/ene_gensec_sgt/ene_gensec_sgt" force="false"/>
+	<material_config	path="units/pd2_mod_nc/characters/ene_gensec_sgt/ene_gensec_sgt_contour" force="true"/>
+	<unit				path="units/pd2_mod_nc/characters/ene_gensec_sgt/ene_gensec_sgt_husk" force="false" load="true"/>
+	<texture			path="units/pd2_mod_nc/characters/shared_textures/sgt_head_df"/>
+	<texture			path="units/pd2_mod_nc/characters/shared_textures/sgt_head_nm"/>
+	<texture			path="units/pd2_mod_nc/characters/shared_textures/sgt_body_df"/>
+	<texture			path="units/pd2_mod_nc/characters/shared_textures/sgt_body_nm"/>
+	<texture			path="units/pd2_mod_nc/characters/shared_textures/sgt_gasmask_df"/>
+	<texture			path="units/pd2_mod_nc/characters/shared_textures/sgt_gasmask_nm"/>
+
+	<!--Thanatos for captain-->
+	<material_config	path="units/payday2/weapons/wpn_npc_m95/wpn_npc_m95" force="false"/>
+	<model				path="units/payday2/weapons/wpn_npc_m95/wpn_npc_m95" force="false"/>
+	<object				path="units/payday2/weapons/wpn_npc_m95/wpn_npc_m95" force="false"/>
+	<cooked_physics		path="units/payday2/weapons/wpn_npc_m95/wpn_npc_m95" force="false"/>
+	<unit				path="units/payday2/weapons/wpn_npc_m95/wpn_npc_m95" force="false"/>
+	<sequence_manager	path="units/payday2/weapons/wpn_npc_m95/wpn_npc_m95" force="false"/>
+	<texture			path="units/payday2/weapons/wpn_npc_m95/m95_df" force="true"/>
+	<texture			path="units/payday2/weapons/wpn_npc_m95/m95_nm" force="true"/>
+
+	<unit				path="units/payday2/weapons/wpn_npc_m95/wpn_npc_m95_fuck" force="false"/>
+
+	<!--AMCAR-->	
+	<cooked_physics		path="units/payday2/weapons/wpn_npc_amcar/wpn_npc_amcar" force="false"/>
+	<material_config	path="units/payday2/weapons/wpn_npc_amcar/wpn_npc_amcar" force="true"/>
+	<model				path="units/payday2/weapons/wpn_npc_amcar/wpn_npc_amcar" force="true"/>
+	<object				path="units/payday2/weapons/wpn_npc_amcar/wpn_npc_amcar" force="true"/>
+
+	<!--PDTH Mark 10-->	
+	<unit				path="units/payday2/weapons/wpn_npc_mac11_sup/wpn_npc_mac11_sup" load="false" />
+	<material_config	path="units/payday2/weapons/wpn_npc_mac11_sup/wpn_npc_mac11_sup" />
+	<sequence_manager	path="units/payday2/weapons/wpn_npc_mac11_sup/wpn_npc_mac11_sup" />
+	<model				path="units/payday2/weapons/wpn_npc_mac11_sup/wpn_npc_mac11_sup" />
+	<object				path="units/payday2/weapons/wpn_npc_mac11_sup/wpn_npc_mac11_sup" />
+
+	<!-- PDTH M79 -->
+	<object				path="units/payday2/weapons/wpn_npc_m79/wpn_npc_m79" force="false"/>
+	<cooked_physics		path="units/payday2/weapons/wpn_npc_m79/wpn_npc_m79" force="false"/>
+	<model				path="units/payday2/weapons/wpn_npc_m79/wpn_npc_m79" force="false"/>
+	<unit				path="units/payday2/weapons/wpn_npc_m79/wpn_npc_m79"  load="true"/>
+	<material_config	path="units/payday2/weapons/wpn_npc_m79/wpn_npc_m79" force="false"/>
+	<texture			path="units/payday2/weapons/wpn_npc_m79/m79_df"/>
+	<texture			path="units/payday2/weapons/wpn_npc_m79/m79_nm"/>
+
+	<!--Akimbo Deagles-->
+	<unit				path="units/pd2_dlc_usm2/weapons/wpn_npc_deagle/wpn_npc_x_deagle" force="false"/>
+
+	<!--SH NPC Weapons-->
+	<material_config	path="units/payday2/weapons/wpn_npc_ksg/wpn_npc_ksg" force="false"/>
+	<model				path="units/payday2/weapons/wpn_npc_ksg/wpn_npc_ksg" force="false"/>
+	<object				path="units/payday2/weapons/wpn_npc_ksg/wpn_npc_ksg" force="false"/>
+	<cooked_physics		path="units/payday2/weapons/wpn_npc_ksg/wpn_npc_ksg" force="false"/>
+	<unit				path="units/payday2/weapons/wpn_npc_ksg/wpn_npc_ksg" force="false"/>
+	<texture			path="units/payday2/weapons/wpn_npc_ksg/ksg_df" force="true"/>
+	<texture			path="units/payday2/weapons/wpn_npc_ksg/ksg_nm" force="true"/>
+
+	<material_config	path="units/payday2/weapons/wpn_npc_spas12/wpn_npc_spas12" force="false"/>
+	<model				path="units/payday2/weapons/wpn_npc_spas12/wpn_npc_spas12" force="false"/>
+	<object				path="units/payday2/weapons/wpn_npc_spas12/wpn_npc_spas12" force="false"/>
+	<cooked_physics		path="units/payday2/weapons/wpn_npc_spas12/wpn_npc_spas12" force="false"/>
+	<unit				path="units/payday2/weapons/wpn_npc_spas12/wpn_npc_spas12" force="false"/>
+	<texture			path="units/payday2/weapons/wpn_npc_spas12/spas12_df" force="true"/>
+	<texture			path="units/payday2/weapons/wpn_npc_spas12/spas12_nm" force="true"/>
+
+	<material_config	path="units/payday2/weapons/wpn_npc_shepheard/wpn_npc_shepheard" force="false"/>
+	<model				path="units/payday2/weapons/wpn_npc_shepheard/wpn_npc_shepheard" force="false"/>
+	<object				path="units/payday2/weapons/wpn_npc_shepheard/wpn_npc_shepheard" force="false"/>
+	<cooked_physics		path="units/payday2/weapons/wpn_npc_shepheard/wpn_npc_shepheard" force="false"/>
+	<unit				path="units/payday2/weapons/wpn_npc_shepheard/wpn_npc_shepheard" force="false"/>
+	<texture			path="units/payday2/weapons/wpn_npc_shepheard/shepheard_df" force="true"/>
+	<texture			path="units/payday2/weapons/wpn_npc_shepheard/shepheard_nm" force="true"/>
+</table>

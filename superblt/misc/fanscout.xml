@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<assets base_path="assets/">
+
+	<!-- ///FORK ASSETS\\\ -->
+	<!-- see messages in other xml files -->
+	<group dyn_package="false">
+
+		<!--New Coppers goes here!-->
+		<group name="units/pd2_mod_nc/characters/ene_police_heavygunner/">
+			<file :name="ene_police_heavygunner.cooked_physics"/>
+			<file :name="ene_police_heavygunner.material_config"/>
+			<file :name="ene_police_heavygunner.model"/>
+			<file :name="ene_police_heavygunner.object"/>
+			<file :name="ene_police_heavygunner.unit"/>
+			<file :name="ene_police_heavygunner_contour.material_config"/>
+			<file :name="ene_police_heavygunner_husk.unit"/>
+			<file :name="helmets_atlas_df.texture"/>
+			<file :name="swat_body_df.texture"/>
+		</group>
+
+		<group name="units/pd2_mod_nc/characters/ene_wildcard/">
+			<file :name="ene_wildcard.cooked_physics"/>
+			<file :name="ene_wildcard.material_config"/>
+			<file :name="ene_wildcard.model"/>
+			<file :name="ene_wildcard.object"/>
+			<file :name="ene_wildcard.unit"/>
+			<file :name="ene_wildcard_contour.material_config"/>
+			<file :name="ene_wildcard_husk.unit"/>
+			<file :name="body_df.texture"/>
+			<file :name="head_df.texture"/>
+		</group>
+
+	</group>
+
+</assets>

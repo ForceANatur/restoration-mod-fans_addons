@@ -1,5 +1,5 @@
 if not ModCore then
-	log("[RestorationMod][Error] Unable to find ModCore from BeardLib! Is BeardLib installed correctly?")
+	log("[RestorationMod][Error] bruh. i think beardlib broke or you messed up installing it. try installing it the right way or wait for a patch.")
 	return
 end
 
@@ -39,7 +39,17 @@ function restoration:Init()
 			icon = "guis/textures/pd2/hud_buff_halloween",
 			vs_line = "hud_assault_vip_hvh",
 			captain_warn = "hud_assault_vip_hvhwarn"
-		}
+		},
+		heavyg = { --(❌)
+			spawn_group = "boss_heavygunner",
+			icon = "guis/textures/pd2/hud_buff_heavyg",
+			vs_line = "hud_assault_vip_heavygunner"
+		},
+		dzr_snp = {
+			spawn_group = "Cap_Cruel_T",
+			icon = "guis/textures/pd2/hud_buff_generic",
+			vs_line = "hud_assault_vip_heavygunner"
+		},
 	}
 		--Defines what captains spawn on what heists.
 	restoration.captain_spawns = {
