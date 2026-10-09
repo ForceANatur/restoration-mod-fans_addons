@@ -13855,7 +13855,7 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 			}
 		},
 		access = access_type_all,
-	--	special_type = "sergeant"	--broken? might have fucked up adding this
+		special_type = "sergeant"	--broken? might have fucked up adding this
 	}
 
 	--Sniper Dozer Captain
