@@ -40,7 +40,7 @@ function restoration:Init()
 			vs_line = "hud_assault_vip_hvh",
 			captain_warn = "hud_assault_vip_hvhwarn"
 		},
-		heavyg = { --(❌)
+		heavyg = {
 			spawn_group = "boss_heavygunner",
 			icon = "guis/textures/pd2/hud_buff_heavyg",
 			vs_line = "hud_assault_vip_heavygunner"

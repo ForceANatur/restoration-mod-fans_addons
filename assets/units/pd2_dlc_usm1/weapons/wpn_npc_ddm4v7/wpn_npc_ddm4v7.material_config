@@ -1,0 +1,10 @@
+<materials version="3">
+	<material name="optical" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" version="2">
+        <diffuse_texture file="units/payday2/weapons/wpn_third_upg_o_eotech/wpn_third_upg_o_eotech_df"/>
+        <bump_normal_texture file="units/payday2/weapons/wpn_third_upg_o_eotech/wpn_third_upg_o_eotech_nm"/>
+	</material>
+	<material name="mat_wpn_npc_victor" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" version="2">
+		<diffuse_texture file="units/pd2_dlc_usm1/weapons/wpn_npc_ddm4v7/mat_wpn_npc_ddm4v7_df" />
+		<bump_normal_texture file="units/pd2_dlc_usm1/weapons/wpn_npc_ddm4v7/mat_wpn_npc_ddm4v7_nm" />
+	</material>
+</materials>

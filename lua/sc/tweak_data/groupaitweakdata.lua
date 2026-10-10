@@ -13890,6 +13890,100 @@ function GroupAITweakData:_init_unit_categories(difficulty_index)
 		access = access_type_all,
 		ignore_spawn_cap = true
 	}
+
+	--April Fools captain
+	self.unit_categories.boss_heavygunner = {
+		unit_types = {
+			america = {
+				Idstring("units/pd2_mod_nc/characters/ene_gensec_heavygunner/ene_gensec_heavygunner")
+			},
+			russia = {
+				Idstring("units/pd2_mod_nc/characters/ene_gensec_heavygunner/ene_gensec_heavygunner")
+			},
+			zombie = {
+				Idstring("units/pd2_mod_nc/characters/ene_gensec_heavygunner/ene_gensec_heavygunner")
+			},					
+			murkywater = {
+				Idstring("units/pd2_mod_nc/characters/ene_gensec_heavygunner/ene_gensec_heavygunner")
+			},
+			federales = {
+				Idstring("units/pd2_mod_nc/characters/ene_gensec_heavygunner/ene_gensec_heavygunner")
+			},					
+			nypd = {
+				Idstring("units/pd2_mod_nc/characters/ene_gensec_heavygunner/ene_gensec_heavygunner")
+			},	
+			lapd = {
+				Idstring("units/pd2_mod_nc/characters/ene_gensec_heavygunner/ene_gensec_heavygunner")
+			},
+			fbi = {
+				Idstring("units/pd2_mod_nc/characters/ene_gensec_heavygunner/ene_gensec_heavygunner")
+			}		
+		},
+		access = access_type_all,
+		ignore_spawn_cap = true
+	}
+	--April Fools captain friend :)
+	self.unit_categories.boss_heavygunner_buddy = {
+		unit_types = {
+			america = {
+				Idstring("units/pd2_dlc_usm1/characters/ene_atf_field_agent_1/ene_atf_field_agent_1")
+			},
+			russia = {
+				Idstring("units/pd2_dlc_usm1/characters/ene_atf_field_agent_1/ene_atf_field_agent_1")
+			},
+			zombie = {
+				Idstring("units/pd2_dlc_usm1/characters/ene_atf_field_agent_1/ene_atf_field_agent_1")
+			},					
+			murkywater = {
+				Idstring("units/pd2_dlc_usm1/characters/ene_atf_field_agent_1/ene_atf_field_agent_1")
+			},
+			federales = {
+				Idstring("units/pd2_dlc_usm1/characters/ene_atf_field_agent_1/ene_atf_field_agent_1")
+			},					
+			nypd = {
+				Idstring("units/pd2_dlc_usm1/characters/ene_atf_field_agent_1/ene_atf_field_agent_1")
+			},	
+			lapd = {
+				Idstring("units/pd2_dlc_usm1/characters/ene_atf_field_agent_1/ene_atf_field_agent_1")
+			},
+			fbi = {
+				Idstring("units/pd2_dlc_usm1/characters/ene_atf_field_agent_1/ene_atf_field_agent_1")
+			}		
+		},
+		access = access_type_all,
+		ignore_spawn_cap = true
+	}
+	--Heavymedics that spawn with April Fools Captain
+	self.unit_categories.vip_heavymedic_ump = {
+		unit_types = {
+			america = {
+				Idstring("units/pd2_mod_nc/characters/ene_heavymedic_1/ene_heavymedic_1")
+			},
+			russia = {
+				Idstring("units/pd2_mod_nc/characters/ene_heavymedic_1/ene_heavymedic_1")
+			},
+			zombie = {
+				Idstring("units/pd2_mod_halloween/characters/ene_heavymedic_1/ene_heavymedic_1")
+			},
+			murkywater = {
+				Idstring("units/pd2_mod_nc/characters/ene_heavymedic_1/ene_heavymedic_1")
+			},
+			federales = {
+				Idstring("units/pd2_mod_nc/characters/ene_heavymedic_1/ene_heavymedic_1")
+			},					
+			nypd = {
+				Idstring("units/pd2_mod_nc/characters/ene_heavymedic_1/ene_heavymedic_1")
+			},
+			lapd = {
+				Idstring("units/pd2_mod_nc/characters/ene_heavymedic_1/ene_heavymedic_1")
+			},
+			fbi = {
+				Idstring("units/pd2_mod_nc/characters/ene_heavymedic_1/ene_heavymedic_1")
+			}
+		},
+		access = access_type_all,
+		ignore_spawn_cap = true
+	}
 	
 end
 	
