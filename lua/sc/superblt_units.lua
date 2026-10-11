@@ -560,6 +560,15 @@ return {
 		{ "units/pd2_mod_nc/characters/ene_gensec_sgt/ene_gensec_sgt", "unit" },
 		{ "units/pd2_mod_nc/characters/ene_gensec_sgt/ene_gensec_sgt_husk", "unit" },
 
+		{ "units/pd2_mod_nc/characters/ene_gensec_heavygunner/ene_gensec_heavygunner", "unit" },
+		{ "units/pd2_mod_nc/characters/ene_gensec_heavygunner/ene_gensec_heavygunner_husk", "unit" },
+
+		{ "units/pd2_mod_nc/characters/ene_heavymedic_1/ene_heavymedic_1", "unit" },
+		{ "units/pd2_mod_nc/characters/ene_heavymedic_1/ene_heavymedic_1_husk", "unit" },
+
+		{ "units/pd2_dlc_usm1/characters/ene_atf_field_agent_1/ene_atf_field_agent_1", "unit" },
+		{ "units/pd2_dlc_usm1/characters/ene_atf_field_agent_1/ene_atf_field_agent_1_husk", "unit" },
+
 		{ "units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_back/ene_acc_zeal_bulldozer_back", "unit" },
 		{ "units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_chest/ene_acc_zeal_bulldozer_chest", "unit" },
 		{ "units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_helmet_plate/ene_acc_zeal_bulldozer_helmet_plate", "unit" },
@@ -579,6 +588,8 @@ return {
 		{ "units/payday2/weapons/wpn_npc_ksg/wpn_npc_ksg", "unit" },
 		{ "units/payday2/weapons/wpn_npc_spas12/wpn_npc_spas12", "unit" },
 		{ "units/payday2/weapons/wpn_npc_shepheard/wpn_npc_shepheard", "unit" },
+		{ "units/pd2_dlc_usm1/weapons/wpn_npc_ddm4v7/wpn_npc_ddm4v7", "unit" },
+		{ "units/payday2/weapons/wpn_npc_scar_heavy/wpn_npc_scar_heavy", "unit" },
 
 		-- NPC weapon units the mod adds itself. Nothing in the base game loads
 		-- these, and HuskCopInventory spawns them with no preload, so a client

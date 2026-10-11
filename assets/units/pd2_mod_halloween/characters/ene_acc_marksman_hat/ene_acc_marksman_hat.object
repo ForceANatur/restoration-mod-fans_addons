@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<dynamic_object>
+	<diesel materials="units/pd2_mod_halloween/characters/ene_acc_marksman_hat/ene_acc_marksman_hat" orientation_object="rp_ene_acc_marksman_hat" />
+	<bodies>
+		<body name="static_body" enabled="true" template="small_prop" pushed_by_mover="false" ang_damping="0.9">
+			<object name="rp_ene_acc_marksman_hat" />
+			<object name="c_convex" collision_type="convex" padding="-2.5" mass="1.5"/>
+		</body>
+	</bodies>
+	<graphics>
+		<object name="g_hat" enabled="true" />
+	</graphics>
+</dynamic_object>

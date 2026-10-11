@@ -31,6 +31,31 @@
 	<texture          path="units/pd2_mod_nc/characters/ene_wildcard/body_df"/>
 	<texture          path="units/pd2_mod_nc/characters/ene_wildcard/head_df"/>
 
+	<!--HRT Shotgun-->
+	<object				path="units/payday2/characters/ene_fbi_4/ene_fbi_4" force="false"/>
+	<cooked_physics		path="units/payday2/characters/ene_fbi_4/ene_fbi_4" force="false"/>
+	<model				path="units/payday2/characters/ene_fbi_4/ene_fbi_4" force="false"/>
+	<unit				path="units/payday2/characters/ene_fbi_4/ene_fbi_4" force="false" load="true"/>
+	<material_config	path="units/payday2/characters/ene_fbi_4/ene_fbi_4" force="false"/>
+	<material_config	path="units/payday2/characters/ene_fbi_4/ene_fbi_4_contour" force="true"/>
+	<unit				path="units/payday2/characters/ene_fbi_4/ene_fbi_4_husk" force="false" load="true"/>
+	<texture			path="units/payday2/characters/ene_fbi_4/arena_fbi_head_df"/>
+	<texture			path="units/payday2/characters/ene_fbi_4/arena_fbi_head_nm"/>
+	<texture			path="units/payday2/characters/ene_fbi_4/arena_fbi_body_df"/>
+	<texture			path="units/payday2/characters/ene_fbi_4/arena_fbi_body_nm"/>
+
+	<object				path="units/pd2_mod_sharks/characters/ene_rpg_grunt/ene_rpg_grunt"/>
+	<cooked_physics		path="units/pd2_mod_sharks/characters/ene_rpg_grunt/ene_rpg_grunt"/>
+	<model				path="units/pd2_mod_sharks/characters/ene_rpg_grunt/ene_rpg_grunt"/>
+	<sequence_manager	path="units/pd2_mod_sharks/characters/ene_rpg_grunt/ene_rpg_grunt"/>
+	<material_config	path="units/pd2_mod_sharks/characters/ene_rpg_grunt/ene_rpg_grunt"/>
+	<material_config	path="units/pd2_mod_sharks/characters/ene_rpg_grunt/ene_rpg_grunt_contour"/>
+	<unit				path="units/pd2_mod_sharks/characters/ene_rpg_grunt/ene_rpg_grunt" force="false" load="true"/>
+	<unit				path="units/pd2_mod_sharks/characters/ene_rpg_grunt/ene_rpg_grunt_husk" force="false" load="true"/>
+
+    <texture			path="units/pd2_mod_sharks/characters/ene_rpg_grunt/murkyclava_df" />
+	<texture			path="units/pd2_mod_sharks/characters/ene_rpg_grunt/murkywater2_df" />
+
 	<model path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_throat/ene_acc_bulldozer_throat"  force="false"/>
 	<model path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_stomache/ene_acc_bulldozer_stomache"  force="false"/>
 	<model path="units/pd2_mod_caps/characters/ene_acc_zeal_bulldozer_neck/ene_acc_bulldozer_neck"  force="false"/>
@@ -119,6 +144,8 @@
 	<texture			path="units/pd2_mod_nc/characters/shared_textures/heavymedic_head_df"/>
 	<texture			path="units/pd2_mod_nc/characters/shared_textures/gasmask_df"/>
 	<texture			path="units/pd2_mod_nc/characters/shared_textures/gasmask_nm"/>
+
+	<texture			path="guis/textures/pd2/hud_buff_heavyg" force="false" load="false"/>
 
 	<!--HeavyGunner deserves a friend-->
 	<object				path="units/pd2_dlc_usm1/characters/ene_atf_field_agent_1/ene_atf_field_agent_1" force="false"/>

@@ -659,6 +659,21 @@ function CharacterTweakData:_init_medic(presets)
 	self.medic.no_omnia_heal = true
 	self.medic.can_be_healed = false
 	table.insert(self._enemy_list, "medic")
+
+	self.medic_cruel = deep_clone(self.medic)
+	self.medic_cruel.custom_voicework = "murky_medic"
+	table.insert(self._enemy_list, "medic_cruel")
+
+	--ugly heavy medic
+	self.medic_heavy = deep_clone(self.medic)
+	self.medic_heavy.HEALTH_INIT = 63
+	self.medic_heavy.headshot_dmg_mul = 1.6
+	self.medic_heavy.damage_resistance = presets.damage_resistance.none
+	self.medic_heavy.move_speed = presets.move_speed.normal
+	self.medic_heavy.custom_voicework = "heavy_medic"
+	self.medic_heavy.dodge = presets.dodge.heavy
+	self.medic_heavy.no_asu = true
+	table.insert(self._enemy_list, "medic_heavy")
 	
 	self.medic_summers = deep_clone(self.medic)
 	--Base health
@@ -2806,11 +2821,7 @@ function CharacterTweakData:_init_tank(presets)
 	--Halloween Bulldozer (Black)
 	self.tank_hw_black = deep_clone(self.tank_black)
 	self.tank_hw_black.weapon = deep_clone(presets.weapon.normal)
-	if self:get_ai_group_type() == "russia" or self:get_ai_group_type() == "federales" then
-		self.tank_hw_black.custom_voicework = "tdozer_ru"
-	else
-		self.tank_hw_black.custom_voicework = "tdozer"
-	end
+	self.tank_hw_black.custom_voicework = "dozer_nypd_hvh"
 	--Dozerish head health, lowered to account for no visor so they're about the same head health
 	self.tank_hw_black.headshot_dmg_mul = 5.5
 	self.tank_hw_black.ignore_headshot = false

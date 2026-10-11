@@ -274,6 +274,8 @@ logic_variants.weekend_lmg.attack = MarshalLogicAttack
 logic_variants.taser_titan_reaper = clone(security_variant)
 logic_variants.taser_titan_reaper.attack = MarshalLogicAttack
 
+logic_variants.heavygunner = security_variant
+logic_variants.medic_heavy = security_variant
 logic_variants.city_swat_rpg = security_variant
 logic_variants.weekend_vanilla = security_variant
 logic_variants.weekend_vanilla_heavy = security_variant
