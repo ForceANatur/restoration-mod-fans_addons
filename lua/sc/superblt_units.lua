@@ -579,6 +579,40 @@ return {
 		{ "units/pd2_mod_caps/characters/ene_bulldozer_captain/ene_bulldozer_captain", "unit" },
 		{ "units/pd2_mod_caps/characters/ene_bulldozer_captain/ene_bulldozer_captain_husk", "unit" },
 
+		{ "units/payday2/characters/ene_fbi_4/ene_fbi_4", "unit" },
+		{ "units/payday2/characters/ene_fbi_4/ene_fbi_4_husk", "unit" },
+
+		{ "units/pd2_mod_ng/characters/ene_marshal_shield_1/ene_marshal_shield_1", "unit" },
+		{ "units/pd2_mod_ng/characters/ene_marshal_shield_1/ene_marshal_shield_1_husk", "unit" },
+		{ "units/pd2_mod_ng/characters/ene_acc_marshal_shield_1/ene_acc_marshal_shield_1", "unit" },
+		{ "units/pd2_mod_ng/characters/ene_acc_marshal_shield_1/ene_acc_marshal_shield_1_dummy", "unit" },
+
+		{ "units/pd2_mod_ng/characters/ene_ntl_shield/ene_ntl_shield", "unit" },
+		{ "units/pd2_mod_ng/characters/ene_ntl_shield/ene_ntl_shield_husk", "unit" },
+		{ "units/pd2_mod_ng/characters/ene_acc_ntl_shield/ene_acc_ntl_shield", "unit" },
+		{ "units/pd2_mod_ng/characters/ene_acc_ntl_shield/ene_acc_ntl_shield_dummy", "unit" },
+
+		{ "units/pd2_mod_ng/characters/ene_ntl_swat_1/ene_ntl_swat_1", "unit" },
+		{ "units/pd2_mod_ng/characters/ene_ntl_swat_1/ene_ntl_swat_1_husk", "unit" },
+		{ "units/pd2_mod_ng/characters/ene_ntl_swat_2/ene_ntl_swat_2", "unit" },
+		{ "units/pd2_mod_ng/characters/ene_ntl_swat_2/ene_ntl_swat_2_husk", "unit" },
+		{ "units/pd2_mod_ng/characters/ene_ntl_swat_3/ene_ntl_swat_3", "unit" },
+		{ "units/pd2_mod_ng/characters/ene_ntl_swat_3/ene_ntl_swat_3_husk", "unit" },
+		{ "units/pd2_mod_ng/characters/ene_ntl_benelli/ene_ntl_benelli", "unit" },
+		{ "units/pd2_mod_ng/characters/ene_ntl_benelli/ene_ntl_benelli_husk", "unit" },
+
+		{ "units/pd2_mod_ng/characters/ene_ntl_heavyswat/ene_ntl_heavyswat", "unit" },
+		{ "units/pd2_mod_ng/characters/ene_ntl_heavyswat/ene_ntl_heavyswat_husk", "unit" },
+
+		{ "units/pd2_mod_ng/characters/ene_ntl_heavyshotgun/ene_ntl_heavyshotgun", "unit" },
+		{ "units/pd2_mod_ng/characters/ene_ntl_heavyshotgun/ene_ntl_heavyshotgun_husk", "unit" },
+
+		{ "units/pd2_mod_ng/characters/ene_ntl_medic/ene_ntl_medic", "unit" },
+		{ "units/pd2_mod_ng/characters/ene_ntl_medic/ene_ntl_medic_husk", "unit" },
+
+		{ "units/pd2_mod_ng/characters/ene_ntl_groundsniper/ene_ntl_groundsniper", "unit" },
+		{ "units/pd2_mod_ng/characters/ene_ntl_groundsniper/ene_ntl_groundsniper_husk", "unit" },
+
 		-- weapons
 		{ "units/payday2/weapons/wpn_npc_m95/wpn_npc_m95", "unit" },
 		{ "units/payday2/weapons/wpn_npc_m95/wpn_npc_m95_fuck", "unit" },
@@ -590,6 +624,9 @@ return {
 		{ "units/payday2/weapons/wpn_npc_shepheard/wpn_npc_shepheard", "unit" },
 		{ "units/pd2_dlc_usm1/weapons/wpn_npc_ddm4v7/wpn_npc_ddm4v7", "unit" },
 		{ "units/payday2/weapons/wpn_npc_scar_heavy/wpn_npc_scar_heavy", "unit" },
+		{ "units/payday2/weapons/wpn_npc_g3a3/wpn_npc_g3a3", "unit" },
+		{ "units/payday2/weapons/wpn_npc_matever/wpn_npc_matever", "unit" },
+		{ "units/pd2_dlc_mad/weapons/wpn_npc_coal/wpn_npc_coal", "unit" },
 
 		-- NPC weapon units the mod adds itself. Nothing in the base game loads
 		-- these, and HuskCopInventory spawns them with no preload, so a client

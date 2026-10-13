@@ -15053,6 +15053,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					freq = 0.2,
 					tactics = self._tactics.sergeants,
 					rank = 1
+				},
+				{
+					unit = "ground_snipers",
+					freq = 0.05,
+					tactics = self._tactics.CS_sniper,
+					rank = 1
 				}
 			}
 		}		
@@ -15088,6 +15094,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					unit = "gensec_sgt",
 					freq = 0.2,
 					tactics = self._tactics.sergeants,
+					rank = 1
+				},
+				{
+					unit = "ground_snipers",
+					freq = 0.1,
+					tactics = self._tactics.CS_sniper,
 					rank = 1
 				}
 			}
@@ -15126,6 +15138,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					freq = 0.2,
 					tactics = self._tactics.sergeants,
 					rank = 1
+				},
+				{
+					unit = "ground_snipers",
+					freq = 0.05,
+					tactics = self._tactics.CS_sniper,
+					rank = 1
 				}
 			}
 		}
@@ -15161,6 +15179,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					freq = 0.2,
 					tactics = self._tactics.sergeants,
 					rank = 1
+				},
+				{
+					unit = "ground_snipers",
+					freq = 0.05,
+					tactics = self._tactics.CS_sniper,
+					rank = 1
 				}
 			}
 		}			
@@ -15193,6 +15217,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				unit = "gensec_sgt",
 				freq = 0.2,
 				tactics = self._tactics.sergeants,
+				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.05,
+				tactics = self._tactics.CS_sniper,
 				rank = 1
 			}
 		}
@@ -15228,6 +15258,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					unit = "gensec_sgt",
 					freq = 0.2,
 					tactics = self._tactics.sergeants,
+					rank = 1
+				},
+				{
+					unit = "ground_snipers",
+					freq = 0.05,
+					tactics = self._tactics.CS_sniper,
 					rank = 1
 				}
 			}
@@ -15271,6 +15307,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					unit = "gensec_sgt",
 					freq = 0.2,
 					tactics = self._tactics.sergeants,
+					rank = 1
+				},
+				{
+					unit = "ground_snipers",
+					freq = 0.05,
+					tactics = self._tactics.CS_sniper,
 					rank = 1
 				}
 			}
@@ -15542,7 +15584,13 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				amount_max = 2,
 				tactics = self._tactics.FBI_defend,
 				rank = 2
-			},					
+			},
+			{
+				unit = "marshal_shield",
+				freq = 0.5,
+				tactics = self._tactics.FBI_defend,
+				rank = 2
+			},
 			{
 				unit = "GS_swat_M4",
 				freq = 1,
@@ -15553,6 +15601,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 				unit = "gensec_sgt",
 				freq = 0.2,
 				tactics = self._tactics.sergeants,
+				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.05,
+				tactics = self._tactics.CS_sniper,
 				rank = 1
 			}
 		}
@@ -16315,6 +16369,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					freq = 0.2,
 					tactics = self._tactics.sergeants,
 					rank = 1
+				},
+				{
+					unit = "ground_snipers",
+					freq = 0.05,
+					tactics = self._tactics.CS_sniper,
+					rank = 1
 				}
 			}
 		}
@@ -16362,6 +16422,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					freq = 0.2,
 					tactics = self._tactics.sergeants,
 					rank = 1
+				},
+				{
+					unit = "ground_snipers",
+					freq = 0.05,
+					tactics = self._tactics.CS_sniper,
+					rank = 1
 				}
 			}
 		}		
@@ -16379,45 +16445,9 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					rank = 3
 				},
 				{
-					unit = "CS_tazer",
-					freq = 0.75,
-					amount_max = 1,
-					tactics = self._tactics.CS_Tazer,
-					rank = 2
-				},		
-				{
-					unit = "FBI_heavy_G36",
+					unit = "marshal_shield",
 					freq = 0.5,
-					amount_max = 1,
-					tactics = self._tactics.MH_heavy,
-					rank = 1
-				},
-				{
-					unit = "medic_M4",
-					freq = 0.2,
-					amount_min = 0,
-					amount_max = 1,
-					tactics = self._tactics.FBI_medic_flank,
-					rank = 1
-				},
-				{
-					unit = "gensec_sgt",
-					freq = 0.2,
-					tactics = self._tactics.sergeants,
-					rank = 1
-				}
-			}
-		}
-	else
-		self.enemy_spawn_groups.FBI_shields = {
-			amount = {3, 4},
-			spawn = {
-				{
-					unit = "FBI_shield",
-					freq = 1,
-					amount_min = 1,
-					amount_max = 2,
-					tactics = self._tactics.MH_shield,
+					tactics = self._tactics.FBI_defend,
 					rank = 3
 				},
 				{
@@ -16447,6 +16477,66 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					freq = 0.2,
 					tactics = self._tactics.sergeants,
 					rank = 1
+				},
+				{
+					unit = "ground_snipers",
+					freq = 0.05,
+					tactics = self._tactics.CS_sniper,
+					rank = 1
+				}
+			}
+		}
+	else
+		self.enemy_spawn_groups.FBI_shields = {
+			amount = {3, 4},
+			spawn = {
+				{
+					unit = "FBI_shield",
+					freq = 1,
+					amount_min = 1,
+					amount_max = 2,
+					tactics = self._tactics.MH_shield,
+					rank = 3
+				},
+				{
+					unit = "marshal_shield",
+					freq = 0.5,
+					tactics = self._tactics.FBI_defend,
+					rank = 3
+				},
+				{
+					unit = "CS_tazer",
+					freq = 0.75,
+					amount_max = 1,
+					tactics = self._tactics.CS_Tazer,
+					rank = 2
+				},		
+				{
+					unit = "FBI_heavy_G36",
+					freq = 0.5,
+					amount_max = 1,
+					tactics = self._tactics.MH_heavy,
+					rank = 1
+				},
+				{
+					unit = "medic_M4",
+					freq = 0.2,
+					amount_min = 0,
+					amount_max = 1,
+					tactics = self._tactics.FBI_medic_flank,
+					rank = 1
+				},
+				{
+					unit = "gensec_sgt",
+					freq = 0.2,
+					tactics = self._tactics.sergeants,
+					rank = 1
+				},
+				{
+					unit = "ground_snipers",
+					freq = 0.05,
+					tactics = self._tactics.CS_sniper,
+					rank = 1
 				}
 			}
 		}	
@@ -16461,6 +16551,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_min = 1,
 					amount_max = 2,
 					tactics = self._tactics.FBI_shield_flank,
+					rank = 3
+				},
+				{
+					unit = "marshal_shield",
+					freq = 0.5,
+					tactics = self._tactics.FBI_defend,
 					rank = 3
 				},
 				{
@@ -16490,6 +16586,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					freq = 0.2,
 					tactics = self._tactics.sergeants,
 					rank = 1
+				},
+				{
+					unit = "ground_snipers",
+					freq = 0.05,
+					tactics = self._tactics.CS_sniper,
+					rank = 1
 				}
 			}
 		}
@@ -16503,6 +16605,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_min = 1,
 					amount_max = 2,
 					tactics = self._tactics.MH_shield_flank,
+					rank = 3
+				},
+				{
+					unit = "marshal_shield",
+					freq = 0.5,
+					tactics = self._tactics.FBI_defend,
 					rank = 3
 				},
 				{
@@ -16532,6 +16640,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					freq = 0.2,
 					tactics = self._tactics.sergeants,
 					rank = 1
+				},
+				{
+					unit = "ground_snipers",
+					freq = 0.05,
+					tactics = self._tactics.CS_sniper,
+					rank = 1
 				}
 			}
 		}	
@@ -16560,6 +16674,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					freq = 0.2,
 					tactics = self._tactics.sergeants,
 					rank = 1
+				},
+				{
+					unit = "ground_snipers",
+					freq = 0.05,
+					tactics = self._tactics.CS_sniper,
+					rank = 1
 				}
 			}
 		}
@@ -16586,6 +16706,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					unit = "gensec_sgt",
 					freq = 0.2,
 					tactics = self._tactics.sergeants,
+					rank = 1
+				},
+				{
+					unit = "ground_snipers",
+					freq = 0.05,
+					tactics = self._tactics.CS_sniper,
 					rank = 1
 				}
 			}
@@ -16629,6 +16755,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					freq = 0.5,
 					tactics = self._tactics.sergeants,
 					rank = 1
+				},
+				{
+					unit = "ground_snipers",
+					freq = 0.05,
+					tactics = self._tactics.CS_sniper,
+					rank = 1
 				}
 			}
 		}
@@ -16669,6 +16801,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					freq = 0.5,
 					tactics = self._tactics.sergeants,
 					rank = 1
+				},
+				{
+					unit = "ground_snipers",
+					freq = 0.05,
+					tactics = self._tactics.CS_sniper,
+					rank = 1
 				}
 			}
 		}
@@ -16697,6 +16835,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					freq = 0.5,
 					tactics = self._tactics.sergeants,
 					rank = 1
+				},
+				{
+					unit = "ground_snipers",
+					freq = 0.05,
+					tactics = self._tactics.CS_sniper,
+					rank = 1
 				}
 			}
 		}
@@ -16723,6 +16867,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					unit = "gensec_sgt",
 					freq = 0.2,
 					tactics = self._tactics.sergeants,
+					rank = 1
+				},
+				{
+					unit = "ground_snipers",
+					freq = 0.05,
+					tactics = self._tactics.CS_sniper,
 					rank = 1
 				}
 			}
@@ -16765,6 +16915,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					unit = "gensec_sgt",
 					freq = 0.5,
 					tactics = self._tactics.sergeants,
+					rank = 1
+				},
+				{
+					unit = "ground_snipers",
+					freq = 0.05,
+					tactics = self._tactics.CS_sniper,
 					rank = 1
 				}
 			}
@@ -16806,6 +16962,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					freq = 0.5,
 					tactics = self._tactics.sergeants,
 					rank = 1
+				},
+				{
+					unit = "ground_snipers",
+					freq = 0.05,
+					tactics = self._tactics.CS_sniper,
+					rank = 1
 				}
 			}
 		}
@@ -16835,6 +16997,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					freq = 0.5,
 					tactics = self._tactics.sergeants,
 					rank = 1
+				},
+				{
+					unit = "ground_snipers",
+					freq = 0.05,
+					tactics = self._tactics.CS_sniper,
+					rank = 1
 				}
 			}
 		}
@@ -16862,6 +17030,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					unit = "gensec_sgt",
 					freq = 0.5,
 					tactics = self._tactics.sergeants,
+					rank = 1
+				},
+				{
+					unit = "ground_snipers",
+					freq = 0.05,
+					tactics = self._tactics.CS_sniper,
 					rank = 1
 				}
 			}
@@ -16905,6 +17079,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					unit = "gensec_sgt",
 					freq = 0.5,
 					tactics = self._tactics.sergeants,
+					rank = 1
+				},
+				{
+					unit = "ground_snipers",
+					freq = 0.05,
+					tactics = self._tactics.CS_sniper,
 					rank = 1
 				}
 			}
@@ -16947,6 +17127,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					freq = 0.5,
 					tactics = self._tactics.sergeants,
 					rank = 1
+				},
+				{
+					unit = "ground_snipers",
+					freq = 0.05,
+					tactics = self._tactics.CS_sniper,
+					rank = 1
 				}
 			}
 		}
@@ -16976,6 +17162,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					freq = 0.5,
 					tactics = self._tactics.sergeants,
 					rank = 1
+				},
+				{
+					unit = "ground_snipers",
+					freq = 0.05,
+					tactics = self._tactics.CS_sniper,
+					rank = 1
 				}
 			}
 		}
@@ -17003,6 +17195,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					unit = "gensec_sgt",
 					freq = 0.5,
 					tactics = self._tactics.sergeants,
+					rank = 1
+				},
+				{
+					unit = "ground_snipers",
+					freq = 0.05,
+					tactics = self._tactics.CS_sniper,
 					rank = 1
 				}
 			}
@@ -17040,6 +17238,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					freq = 0.5,
 					tactics = self._tactics.sergeants,
 					rank = 1
+				},
+				{
+					unit = "ground_snipers",
+					freq = 0.05,
+					tactics = self._tactics.CS_sniper,
+					rank = 1
 				}
 			}
 		}		
@@ -17073,6 +17277,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					unit = "gensec_sgt",
 					freq = 0.5,
 					tactics = self._tactics.sergeants,
+					rank = 1
+				},
+				{
+					unit = "ground_snipers",
+					freq = 0.05,
+					tactics = self._tactics.CS_sniper,
 					rank = 1
 				}
 			}
@@ -17491,6 +17701,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					freq = 0.25,
 					tactics = self._tactics.sergeants,
 					rank = 1
+				},
+				{
+					unit = "ground_snipers",
+					freq = 0.1,
+					tactics = self._tactics.CS_sniper,
+					rank = 1
 				}
 			}
 		}	
@@ -17505,6 +17721,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					freq = 1,
 					amount_min = 1,
 					amount_max = 2,
+					tactics = self._tactics.MH_shield,
+					rank = 3
+				},
+				{
+					unit = "marshal_shield",
+					freq = 0.5,
 					tactics = self._tactics.MH_shield,
 					rank = 3
 				},
@@ -17549,6 +17771,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					freq = 0.5,
 					tactics = self._tactics.sergeants,
 					rank = 1
+				},
+				{
+					unit = "ground_snipers",
+					freq = 0.1,
+					tactics = self._tactics.CS_sniper,
+					rank = 1
 				}
 			}
 		}		
@@ -17561,6 +17789,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					freq = 1,
 					amount_min = 1,
 					amount_max = 2,
+					tactics = self._tactics.MH_shield,
+					rank = 3
+				},
+				{
+					unit = "marshal_shield",
+					freq = 0.5,
 					tactics = self._tactics.MH_shield,
 					rank = 3
 				},
@@ -17605,6 +17839,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					freq = 0.5,
 					tactics = self._tactics.sergeants,
 					rank = 1
+				},
+				{
+					unit = "ground_snipers",
+					freq = 0.1,
+					tactics = self._tactics.CS_sniper,
+					rank = 1
 				}
 			}
 		}
@@ -17621,6 +17861,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_min = 1,
 					amount_max = 2,
 					tactics = self._tactics.MH_shield_flank,
+					rank = 3
+				},
+				{
+					unit = "marshal_shield",
+					freq = 0.5,
+					tactics = self._tactics.MH_shield,
 					rank = 3
 				},
 				{
@@ -17650,6 +17896,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					freq = 0.25,
 					tactics = self._tactics.sergeants,
 					rank = 1
+				},
+				{
+					unit = "ground_snipers",
+					freq = 0.05,
+					tactics = self._tactics.CS_sniper,
+					rank = 1
 				}
 			}
 		}		
@@ -17665,6 +17917,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_min = 1,
 					amount_max = 2,
 					tactics = self._tactics.MH_shield_flank,
+					rank = 3
+				},
+				{
+					unit = "marshal_shield",
+					freq = 0.5,
+					tactics = self._tactics.MH_shield,
 					rank = 3
 				},
 				{
@@ -17708,6 +17966,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					freq = 0.5,
 					tactics = self._tactics.sergeants,
 					rank = 1
+				},
+				{
+					unit = "ground_snipers",
+					freq = 0.05,
+					tactics = self._tactics.CS_sniper,
+					rank = 1
 				}
 			}
 		}		
@@ -17721,6 +17985,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					amount_min = 1,
 					amount_max = 2,
 					tactics = self._tactics.MH_shield_flank,
+					rank = 3
+				},
+				{
+					unit = "marshal_shield",
+					freq = 0.5,
+					tactics = self._tactics.MH_shield,
 					rank = 3
 				},
 				{
@@ -17764,6 +18034,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					freq = 0.5,
 					tactics = self._tactics.sergeants,
 					rank = 1
+				},
+				{
+					unit = "ground_snipers",
+					freq = 0.05,
+					tactics = self._tactics.CS_sniper,
+					rank = 1
 				}
 			}
 		}
@@ -17791,6 +18067,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					rank = 3
 				},
 				{
+					unit = "marshal_shield",
+					freq = 0.5,
+					tactics = self._tactics.MH_shield,
+					rank = 3
+				},
+				{
 					unit = "GS_heavy_G36",
 					freq = 1,
 					amount_max = 2,
@@ -17801,6 +18083,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					unit = "gensec_sgt",
 					freq = 0.5,
 					tactics = self._tactics.sergeants,
+					rank = 1
+				},
+				{
+					unit = "ground_snipers",
+					freq = 0.05,
+					tactics = self._tactics.CS_sniper,
 					rank = 1
 				}
 			}
@@ -17826,6 +18114,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					rank = 3
 				},
 				{
+					unit = "marshal_shield",
+					freq = 0.5,
+					tactics = self._tactics.MH_shield,
+					rank = 3
+				},
+				{
 					unit = "GS_heavy_G36",
 					freq = 1,
 					amount_max = 2,
@@ -17836,6 +18130,12 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 					unit = "gensec_sgt",
 					freq = 0.5,
 					tactics = self._tactics.sergeants,
+					rank = 1
+				},
+				{
+					unit = "ground_snipers",
+					freq = 0.05,
+					tactics = self._tactics.CS_sniper,
 					rank = 1
 				}
 			}
@@ -18833,6 +19133,12 @@ tactics = self._tactics.police_enforcer_murder
 				rank = 3
 			},
 			{
+				unit = "marshal_shield",
+				freq = 0.5,
+				tactics = self._tactics.MH_shield,
+				rank = 3
+			},
+			{
 				unit = "SKM_Heavy_SWAT_Rifle_W1",
 				freq = 1,
 				amount_min = 2,
@@ -18843,6 +19149,12 @@ tactics = self._tactics.police_enforcer_murder
 				unit = "gensec_sgt",
 				freq = 0.25,
 				tactics = self._tactics.sergeants,
+				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.05,
+				tactics = self._tactics.CS_sniper,
 				rank = 1
 			}
 		}
@@ -18941,6 +19253,12 @@ tactics = self._tactics.police_enforcer_murder
 				rank = 3
 			},
 			{
+				unit = "marshal_shield",
+				freq = 0.5,
+				tactics = self._tactics.MH_shield,
+				rank = 3
+			},
+			{
 				unit = "SKM_Heavy_SWAT_Rifle_W1",
 				freq = 1,
 				amount_min = 2,
@@ -18959,6 +19277,12 @@ tactics = self._tactics.police_enforcer_murder
 				unit = "gensec_sgt",
 				freq = 0.25,
 				tactics = self._tactics.sergeants,
+				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.05,
+				tactics = self._tactics.CS_sniper,
 				rank = 1
 			}
 		}
@@ -18986,6 +19310,12 @@ tactics = self._tactics.police_enforcer_murder
 				freq = 0.25,
 				tactics = self._tactics.sergeants,
 				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.05,
+				tactics = self._tactics.CS_sniper,
+				rank = 1
 			}
 		}
 	}		
@@ -19011,6 +19341,12 @@ tactics = self._tactics.police_enforcer_murder
 				unit = "gensec_sgt",
 				freq = 0.25,
 				tactics = self._tactics.sergeants,
+				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.05,
+				tactics = self._tactics.CS_sniper,
 				rank = 1
 			}
 		}
@@ -19115,6 +19451,12 @@ tactics = self._tactics.police_enforcer_murder
 				rank = 3
 			},
 			{
+				unit = "marshal_shield",
+				freq = 0.5,
+				tactics = self._tactics.MH_shield,
+				rank = 3
+			},
+			{
 				unit = "SKM_Heavy_SWAT_Rifle_W3",
 				freq = 1,
 				amount_min = 2,
@@ -19134,7 +19476,13 @@ tactics = self._tactics.police_enforcer_murder
 				freq = 0.25,
 				tactics = self._tactics.sergeants,
 				rank = 1
-			}			
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.05,
+				tactics = self._tactics.CS_sniper,
+				rank = 1
+			}
 		}
 	}		
 	self.enemy_spawn_groups.SKM_Tazers_W3 = {
@@ -19159,6 +19507,12 @@ tactics = self._tactics.police_enforcer_murder
 				unit = "gensec_sgt",
 				freq = 0.25,
 				tactics = self._tactics.sergeants,
+				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.05,
+				tactics = self._tactics.CS_sniper,
 				rank = 1
 			}
 		}
@@ -19185,6 +19539,12 @@ tactics = self._tactics.police_enforcer_murder
 				unit = "gensec_sgt",
 				freq = 0.25,
 				tactics = self._tactics.sergeants,
+				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.05,
+				tactics = self._tactics.CS_sniper,
 				rank = 1
 			}
 		}
@@ -19301,6 +19661,12 @@ tactics = self._tactics.police_enforcer_murder
 				rank = 3
 			},
 			{
+				unit = "marshal_shield",
+				freq = 0.5,
+				tactics = self._tactics.MH_shield,
+				rank = 3
+			},
+			{
 				unit = "SKM_Heavy_SWAT_Rifle_W3",
 				freq = 1,
 				amount_min = 2,
@@ -19319,6 +19685,12 @@ tactics = self._tactics.police_enforcer_murder
 				unit = "gensec_sgt",
 				freq = 0.35,
 				tactics = self._tactics.sergeants,
+				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.05,
+				tactics = self._tactics.CS_sniper,
 				rank = 1
 			}
 		}
@@ -19346,6 +19718,12 @@ tactics = self._tactics.police_enforcer_murder
 				freq = 0.35,
 				tactics = self._tactics.sergeants,
 				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.05,
+				tactics = self._tactics.CS_sniper,
+				rank = 1
 			}
 		}
 	}		
@@ -19371,6 +19749,12 @@ tactics = self._tactics.police_enforcer_murder
 				unit = "gensec_sgt",
 				freq = 0.35,
 				tactics = self._tactics.sergeants,
+				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.05,
+				tactics = self._tactics.CS_sniper,
 				rank = 1
 			}
 		}
@@ -19440,6 +19824,12 @@ tactics = self._tactics.police_enforcer_murder
 				unit = "gensec_sgt",
 				freq = 0.5,
 				tactics = self._tactics.sergeants,
+				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.05,
+				tactics = self._tactics.CS_sniper,
 				rank = 1
 			}
 		}
@@ -19533,6 +19923,12 @@ tactics = self._tactics.police_enforcer_murder
 				freq = 0.5,
 				tactics = self._tactics.sergeants,
 				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.05,
+				tactics = self._tactics.CS_sniper,
+				rank = 1
 			}
 		}
 	}
@@ -19544,6 +19940,12 @@ tactics = self._tactics.police_enforcer_murder
 				freq = 1,
 				amount_min = 1,
 				amount_max = 2,
+				tactics = self._tactics.MH_shield,
+				rank = 3
+			},
+			{
+				unit = "marshal_shield",
+				freq = 0.5,
 				tactics = self._tactics.MH_shield,
 				rank = 3
 			},
@@ -19574,6 +19976,12 @@ tactics = self._tactics.police_enforcer_murder
 				freq = 0.5,
 				tactics = self._tactics.sergeants,
 				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.05,
+				tactics = self._tactics.CS_sniper,
+				rank = 1
 			}
 		}
 	}		
@@ -19597,6 +20005,12 @@ tactics = self._tactics.police_enforcer_murder
 				rank = 3
 			},
 			{
+				unit = "marshal_shield",
+				freq = 0.5,
+				tactics = self._tactics.MH_shield,
+				rank = 3
+			},
+			{
 				unit = "SKM_Heavy_SWAT_Rifle_W5",
 				freq = 1,
 				amount_max = 2,
@@ -19607,6 +20021,12 @@ tactics = self._tactics.police_enforcer_murder
 				unit = "gensec_sgt",
 				freq = 0.5,
 				tactics = self._tactics.sergeants,
+				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.05,
+				tactics = self._tactics.CS_sniper,
 				rank = 1
 			}
 		}
@@ -19631,6 +20051,12 @@ tactics = self._tactics.police_enforcer_murder
 				rank = 3
 			},
 			{
+				unit = "marshal_shield",
+				freq = 0.5,
+				tactics = self._tactics.MH_shield,
+				rank = 3
+			},
+			{
 				unit = "SKM_Heavy_SWAT_Rifle_W5",
 				freq = 1,
 				amount_max = 2,
@@ -19641,6 +20067,12 @@ tactics = self._tactics.police_enforcer_murder
 				unit = "gensec_sgt",
 				freq = 0.5,
 				tactics = self._tactics.sergeants,
+				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.1,
+				tactics = self._tactics.CS_sniper,
 				rank = 1
 			}
 		}
@@ -19706,6 +20138,12 @@ tactics = self._tactics.police_enforcer_murder
 				freq = 0.5,
 				tactics = self._tactics.sergeants,
 				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.1,
+				tactics = self._tactics.CS_sniper,
+				rank = 1
 			}
 		}
 	}		
@@ -19744,6 +20182,12 @@ tactics = self._tactics.police_enforcer_murder
 				unit = "gensec_sgt",
 				freq = 0.5,
 				tactics = self._tactics.sergeants,
+				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.1,
+				tactics = self._tactics.CS_sniper,
 				rank = 1
 			}
 		}
@@ -19856,6 +20300,12 @@ tactics = self._tactics.police_enforcer_murder
 				freq = 0.5,
 				tactics = self._tactics.sergeants,
 				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.1,
+				tactics = self._tactics.CS_sniper,
+				rank = 1
 			}
 		}
 	}	
@@ -19867,6 +20317,12 @@ tactics = self._tactics.police_enforcer_murder
 				freq = 1,
 				amount_min = 1,
 				amount_max = 3,
+				tactics = self._tactics.MH_shield,
+				rank = 3
+			},
+			{
+				unit = "marshal_shield",
+				freq = 0.5,
 				tactics = self._tactics.MH_shield,
 				rank = 3
 			},
@@ -19904,6 +20360,12 @@ tactics = self._tactics.police_enforcer_murder
 				freq = 0.5,
 				tactics = self._tactics.sergeants,
 				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.1,
+				tactics = self._tactics.CS_sniper,
+				rank = 1
 			}
 		}
 	}
@@ -19916,6 +20378,12 @@ tactics = self._tactics.police_enforcer_murder
 				amount_min = 1,
 				amount_max = 3,
 				tactics = self._tactics.MH_shield_flank,
+				rank = 3
+			},
+			{
+				unit = "marshal_shield",
+				freq = 0.5,
+				tactics = self._tactics.MH_shield,
 				rank = 3
 			},
 			{
@@ -19952,6 +20420,12 @@ tactics = self._tactics.police_enforcer_murder
 				freq = 0.5,
 				tactics = self._tactics.sergeants,
 				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.1,
+				tactics = self._tactics.CS_sniper,
+				rank = 1
 			}
 		}
 	}	
@@ -19975,6 +20449,12 @@ tactics = self._tactics.police_enforcer_murder
 				rank = 3
 			},
 			{
+				unit = "marshal_shield",
+				freq = 0.5,
+				tactics = self._tactics.MH_shield,
+				rank = 3
+			},
+			{
 				unit = "SKM_Heavy_SWAT_Rifle_W5",
 				freq = 1,
 				amount_max = 2,
@@ -19985,6 +20465,12 @@ tactics = self._tactics.police_enforcer_murder
 				unit = "gensec_sgt",
 				freq = 0.5,
 				tactics = self._tactics.sergeants,
+				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.1,
+				tactics = self._tactics.CS_sniper,
 				rank = 1
 			}
 		}
@@ -20009,6 +20495,12 @@ tactics = self._tactics.police_enforcer_murder
 				rank = 3
 			},
 			{
+				unit = "marshal_shield",
+				freq = 0.5,
+				tactics = self._tactics.MH_shield,
+				rank = 3
+			},
+			{
 				unit = "SKM_Heavy_SWAT_Rifle_W5",
 				freq = 1,
 				amount_max = 2,
@@ -20019,6 +20511,12 @@ tactics = self._tactics.police_enforcer_murder
 				unit = "gensec_sgt",
 				freq = 0.5,
 				tactics = self._tactics.sergeants,
+				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.1,
+				tactics = self._tactics.CS_sniper,
 				rank = 1
 			}
 		}
@@ -20084,6 +20582,12 @@ tactics = self._tactics.police_enforcer_murder
 				freq = 0.5,
 				tactics = self._tactics.sergeants,
 				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.1,
+				tactics = self._tactics.CS_sniper,
+				rank = 1
 			}
 		}
 	}	
@@ -20122,6 +20626,12 @@ tactics = self._tactics.police_enforcer_murder
 				unit = "gensec_sgt",
 				freq = 0.5,
 				tactics = self._tactics.sergeants,
+				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.1,
+				tactics = self._tactics.CS_sniper,
 				rank = 1
 			}
 		}
@@ -20163,6 +20673,12 @@ tactics = self._tactics.police_enforcer_murder
 				freq = 0.5,
 				tactics = self._tactics.sergeants,
 				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.1,
+				tactics = self._tactics.CS_sniper,
+				rank = 1
 			}
 		}
 	}	
@@ -20195,6 +20711,12 @@ tactics = self._tactics.police_enforcer_murder
 				unit = "gensec_sgt",
 				freq = 0.5,
 				tactics = self._tactics.sergeants,
+				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.15,
+				tactics = self._tactics.CS_sniper,
 				rank = 1
 			}
 		}
@@ -20307,6 +20829,12 @@ tactics = self._tactics.police_enforcer_murder
 				freq = 0.5,
 				tactics = self._tactics.sergeants,
 				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.15,
+				tactics = self._tactics.CS_sniper,
+				rank = 1
 			}
 		}
 	}	
@@ -20318,6 +20846,12 @@ tactics = self._tactics.police_enforcer_murder
 				freq = 1,
 				amount_min = 1,
 				amount_max = 2,
+				tactics = self._tactics.MH_shield,
+				rank = 3
+			},
+			{
+				unit = "marshal_shield",
+				freq = 0.5,
 				tactics = self._tactics.MH_shield,
 				rank = 3
 			},
@@ -20355,6 +20889,12 @@ tactics = self._tactics.police_enforcer_murder
 				freq = 0.5,
 				tactics = self._tactics.sergeants,
 				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.15,
+				tactics = self._tactics.CS_sniper,
+				rank = 1
 			}
 		}
 	}
@@ -20367,6 +20907,12 @@ tactics = self._tactics.police_enforcer_murder
 				amount_min = 1,
 				amount_max = 2,
 				tactics = self._tactics.MH_shield_flank,
+				rank = 3
+			},
+			{
+				unit = "marshal_shield",
+				freq = 0.5,
+				tactics = self._tactics.MH_shield,
 				rank = 3
 			},
 			{
@@ -20403,6 +20949,12 @@ tactics = self._tactics.police_enforcer_murder
 				freq = 0.5,
 				tactics = self._tactics.sergeants,
 				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.15,
+				tactics = self._tactics.CS_sniper,
+				rank = 1
 			}
 		}
 	}	
@@ -20426,6 +20978,12 @@ tactics = self._tactics.police_enforcer_murder
 				rank = 3
 			},
 			{
+				unit = "marshal_shield",
+				freq = 0.5,
+				tactics = self._tactics.MH_shield,
+				rank = 3
+			},
+			{
 				unit = "SKM_Heavy_SWAT_Rifle_W7",
 				freq = 1,
 				amount_max = 2,
@@ -20436,6 +20994,12 @@ tactics = self._tactics.police_enforcer_murder
 				unit = "gensec_sgt",
 				freq = 0.5,
 				tactics = self._tactics.sergeants,
+				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.15,
+				tactics = self._tactics.CS_sniper,
 				rank = 1
 			}
 		}
@@ -20460,6 +21024,12 @@ tactics = self._tactics.police_enforcer_murder
 				rank = 3
 			},
 			{
+				unit = "marshal_shield",
+				freq = 0.5,
+				tactics = self._tactics.MH_shield,
+				rank = 3
+			},
+			{
 				unit = "SKM_Heavy_SWAT_Rifle_W7",
 				freq = 1,
 				amount_max = 2,
@@ -20470,6 +21040,12 @@ tactics = self._tactics.police_enforcer_murder
 				unit = "gensec_sgt",
 				freq = 0.5,
 				tactics = self._tactics.sergeants,
+				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.15,
+				tactics = self._tactics.CS_sniper,
 				rank = 1
 			}
 		}
@@ -20535,6 +21111,12 @@ tactics = self._tactics.police_enforcer_murder
 				freq = 0.5,
 				tactics = self._tactics.sergeants,
 				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.15,
+				tactics = self._tactics.CS_sniper,
+				rank = 1
 			}
 		}
 	}	
@@ -20573,6 +21155,12 @@ tactics = self._tactics.police_enforcer_murder
 				unit = "gensec_sgt",
 				freq = 0.5,
 				tactics = self._tactics.sergeants,
+				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.15,
+				tactics = self._tactics.CS_sniper,
 				rank = 1
 			}
 		}
@@ -20614,6 +21202,12 @@ tactics = self._tactics.police_enforcer_murder
 				freq = 0.5,
 				tactics = self._tactics.sergeants,
 				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.15,
+				tactics = self._tactics.CS_sniper,
+				rank = 1
 			}
 		}
 	}	
@@ -20646,6 +21240,12 @@ tactics = self._tactics.police_enforcer_murder
 				unit = "gensec_sgt",
 				freq = 0.5,
 				tactics = self._tactics.sergeants,
+				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.15,
+				tactics = self._tactics.CS_sniper,
 				rank = 1
 			}
 		}
@@ -20746,6 +21346,12 @@ tactics = self._tactics.police_enforcer_murder
 				freq = 0.5,
 				tactics = self._tactics.sergeants,
 				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.2,
+				tactics = self._tactics.CS_sniper,
+				rank = 1
 			}
 		}
 	}	
@@ -20757,6 +21363,12 @@ tactics = self._tactics.police_enforcer_murder
 				freq = 1,
 				amount_min = 1,
 				amount_max = 2,
+				tactics = self._tactics.MH_shield,
+				rank = 3
+			},
+			{
+				unit = "marshal_shield",
+				freq = 0.5,
 				tactics = self._tactics.MH_shield,
 				rank = 3
 			},
@@ -20794,6 +21406,12 @@ tactics = self._tactics.police_enforcer_murder
 				freq = 0.5,
 				tactics = self._tactics.sergeants,
 				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.2,
+				tactics = self._tactics.CS_sniper,
+				rank = 1
 			}
 		}
 	}
@@ -20806,6 +21424,12 @@ tactics = self._tactics.police_enforcer_murder
 				amount_min = 1,
 				amount_max = 2,
 				tactics = self._tactics.MH_shield_flank,
+				rank = 3
+			},
+			{
+				unit = "marshal_shield",
+				freq = 0.5,
+				tactics = self._tactics.MH_shield,
 				rank = 3
 			},
 			{
@@ -20842,6 +21466,12 @@ tactics = self._tactics.police_enforcer_murder
 				freq = 0.5,
 				tactics = self._tactics.sergeants,
 				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.2,
+				tactics = self._tactics.CS_sniper,
+				rank = 1
 			}
 		}
 	}	
@@ -20865,6 +21495,12 @@ tactics = self._tactics.police_enforcer_murder
 				rank = 3
 			},
 			{
+				unit = "marshal_shield",
+				freq = 0.5,
+				tactics = self._tactics.MH_shield,
+				rank = 3
+			},
+			{
 				unit = "SKM_Heavy_SWAT_Rifle_W8",
 				freq = 1,
 				amount_max = 2,
@@ -20875,6 +21511,12 @@ tactics = self._tactics.police_enforcer_murder
 				unit = "gensec_sgt",
 				freq = 0.5,
 				tactics = self._tactics.sergeants,
+				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.2,
+				tactics = self._tactics.CS_sniper,
 				rank = 1
 			}
 		}
@@ -20899,6 +21541,12 @@ tactics = self._tactics.police_enforcer_murder
 				rank = 3
 			},
 			{
+				unit = "marshal_shield",
+				freq = 0.5,
+				tactics = self._tactics.MH_shield,
+				rank = 3
+			},
+			{
 				unit = "SKM_Heavy_SWAT_Rifle_W8",
 				freq = 1,
 				amount_max = 2,
@@ -20909,6 +21557,12 @@ tactics = self._tactics.police_enforcer_murder
 				unit = "gensec_sgt",
 				freq = 0.5,
 				tactics = self._tactics.sergeants,
+				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.2,
+				tactics = self._tactics.CS_sniper,
 				rank = 1
 			}
 		}
@@ -20974,6 +21628,12 @@ tactics = self._tactics.police_enforcer_murder
 				freq = 0.5,
 				tactics = self._tactics.sergeants,
 				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.2,
+				tactics = self._tactics.CS_sniper,
+				rank = 1
 			}
 		}
 	}	
@@ -21012,6 +21672,12 @@ tactics = self._tactics.police_enforcer_murder
 				unit = "gensec_sgt",
 				freq = 0.5,
 				tactics = self._tactics.sergeants,
+				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.2,
+				tactics = self._tactics.CS_sniper,
 				rank = 1
 			}
 		}
@@ -21053,6 +21719,12 @@ tactics = self._tactics.police_enforcer_murder
 				freq = 0.5,
 				tactics = self._tactics.sergeants,
 				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.2,
+				tactics = self._tactics.CS_sniper,
+				rank = 1
 			}
 		}
 	}	
@@ -21085,6 +21757,12 @@ tactics = self._tactics.police_enforcer_murder
 				unit = "gensec_sgt",
 				freq = 0.5,
 				tactics = self._tactics.sergeants,
+				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.2,
+				tactics = self._tactics.CS_sniper,
 				rank = 1
 			}
 		}
@@ -21185,6 +21863,12 @@ tactics = self._tactics.police_enforcer_murder
 				freq = 0.75,
 				tactics = self._tactics.sergeants,
 				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.2,
+				tactics = self._tactics.CS_sniper,
+				rank = 1
 			}
 		}
 	}	
@@ -21196,6 +21880,12 @@ tactics = self._tactics.police_enforcer_murder
 				freq = 1,
 				amount_min = 1,
 				amount_max = 2,
+				tactics = self._tactics.MH_shield,
+				rank = 3
+			},
+			{
+				unit = "marshal_shield",
+				freq = 0.5,
 				tactics = self._tactics.MH_shield,
 				rank = 3
 			},
@@ -21233,6 +21923,12 @@ tactics = self._tactics.police_enforcer_murder
 				freq = 0.75,
 				tactics = self._tactics.sergeants,
 				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.2,
+				tactics = self._tactics.CS_sniper,
+				rank = 1
 			}
 		}
 	}
@@ -21245,6 +21941,12 @@ tactics = self._tactics.police_enforcer_murder
 				amount_min = 1,
 				amount_max = 2,
 				tactics = self._tactics.MH_shield_flank,
+				rank = 3
+			},
+			{
+				unit = "marshal_shield",
+				freq = 0.5,
+				tactics = self._tactics.MH_shield,
 				rank = 3
 			},
 			{
@@ -21281,6 +21983,12 @@ tactics = self._tactics.police_enforcer_murder
 				freq = 0.75,
 				tactics = self._tactics.sergeants,
 				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.2,
+				tactics = self._tactics.CS_sniper,
+				rank = 1
 			}
 		}
 	}	
@@ -21304,6 +22012,12 @@ tactics = self._tactics.police_enforcer_murder
 				rank = 3
 			},
 			{
+				unit = "marshal_shield",
+				freq = 0.5,
+				tactics = self._tactics.MH_shield,
+				rank = 3
+			},
+			{
 				unit = "SKM_Heavy_SWAT_Rifle_W8",
 				freq = 1,
 				amount_max = 2,
@@ -21314,6 +22028,12 @@ tactics = self._tactics.police_enforcer_murder
 				unit = "gensec_sgt",
 				freq = 0.75,
 				tactics = self._tactics.sergeants,
+				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.2,
+				tactics = self._tactics.CS_sniper,
 				rank = 1
 			}
 		}
@@ -21338,6 +22058,12 @@ tactics = self._tactics.police_enforcer_murder
 				rank = 3
 			},
 			{
+				unit = "marshal_shield",
+				freq = 0.5,
+				tactics = self._tactics.MH_shield,
+				rank = 3
+			},
+			{
 				unit = "SKM_Heavy_SWAT_Rifle_W8",
 				freq = 1,
 				amount_max = 2,
@@ -21348,6 +22074,12 @@ tactics = self._tactics.police_enforcer_murder
 				unit = "gensec_sgt",
 				freq = 0.75,
 				tactics = self._tactics.sergeants,
+				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.2,
+				tactics = self._tactics.CS_sniper,
 				rank = 1
 			}
 		}
@@ -21419,6 +22151,12 @@ tactics = self._tactics.police_enforcer_murder
 				freq = 0.75,
 				tactics = self._tactics.sergeants,
 				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.2,
+				tactics = self._tactics.CS_sniper,
+				rank = 1
 			}
 		}
 	}	
@@ -21457,6 +22195,12 @@ tactics = self._tactics.police_enforcer_murder
 				unit = "gensec_sgt",
 				freq = 0.75,
 				tactics = self._tactics.sergeants,
+				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.2,
+				tactics = self._tactics.CS_sniper,
 				rank = 1
 			}
 		}
@@ -21498,6 +22242,12 @@ tactics = self._tactics.police_enforcer_murder
 				freq = 0.75,
 				tactics = self._tactics.sergeants,
 				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.2,
+				tactics = self._tactics.CS_sniper,
+				rank = 1
 			}
 		}
 	}	
@@ -21530,6 +22280,12 @@ tactics = self._tactics.police_enforcer_murder
 				unit = "gensec_sgt",
 				freq = 0.75,
 				tactics = self._tactics.sergeants,
+				rank = 1
+			},
+			{
+				unit = "ground_snipers",
+				freq = 0.2,
+				tactics = self._tactics.CS_sniper,
 				rank = 1
 			}
 		}

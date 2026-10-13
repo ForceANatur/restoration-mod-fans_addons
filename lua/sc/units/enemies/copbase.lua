@@ -1473,8 +1473,8 @@ local zeal = {
 		"m4",
 		"g36",
 		"ump",
-	--	"g3a3_npc",
-	--	"scar_heavy",
+		"g3a3_npc",
+		"scar_heavy",
 		"amcar",
 		"m249"
 	},
@@ -1491,7 +1491,7 @@ local russia = {
 	rifle_light = {
 		"ak47_ass",
 		"akmsu_smg",
-	--	"coal_npc"
+		"coal_npc"
 	},
 	rifle_heavy = {
 		"ak47_ass_elite",
@@ -1504,7 +1504,7 @@ local russia = {
 	},
 	hrt = {
 		"akmsu_smg",
-	--	"coal_npc"
+		"coal_npc"
 	}
 }
 --Murkywater
@@ -1516,15 +1516,15 @@ local murkywater = {
 		"scar_npc",
 		"amcar",
 		"shepheard",
-	--	"coal_npc"
+		"coal_npc"
 	},
 	rifle_heavy = {
 		"m4",
 		"scar_murky",
 		"ump",
 		"shepheard",
-	--	"g3a3_npc",
-	--	"scar_heavy",
+		"g3a3_npc",
+		"scar_heavy",
 		"m249",
 		"m249",
 		"m249",
@@ -1546,12 +1546,12 @@ local federales = {
 		"ump",
 		"shepheard",
 		"amcar",
-	--	"coal_npc"
+		"coal_npc"
 	},
 	rifle_heavy = {
 		"m4",
 		"ump",
-	--	"g3a3_npc",
+		"g3a3_npc",
 		"amcar",
 		"m249"
 	},
@@ -1578,13 +1578,13 @@ local dave = {
 		"mossberg",
 		"mp9",
 		"sg417",
-	--	"g3a3_npc",
+		"g3a3_npc",
 		"m1911_npc",
 		"deagle",
-	--	"scar_heavy",
-	--	"mateba_ap",
+		"scar_heavy",
+		"mateba_ap",
 		"m14_sniper_npc",
-	--	"atf_ddm4v7",
+		"atf_ddm4v7",
 		"saiga",
 		"hk21_sc",
 		"shepheard",
@@ -1593,7 +1593,7 @@ local dave = {
 		"mac11_sup",
 		"amcar",
 		"ak47_ass",
-	--	"coal_npc",
+		"coal_npc",
 		"m60"
 	},
 	akan = {
@@ -1603,21 +1603,21 @@ local dave = {
 		"ak47_ass",
 		"akmsu_smg",
 		"ak47_ass_elite",
-	--	"coal_npc",
+		"coal_npc",
 		"benelli",
 		"fort_500",
 		"saiga",
-	--	"mateba_ap",
+		"mateba_ap",
 		"rpk_lmg",
 		"svd_snp"
 	},
 	kasane_teto = {
 		"mac11_sup",
 		"m249",
-	--	"g3a3_npc",
+		"g3a3_npc",
 		"m14_sniper_npc",
-	--	"atf_ddm4v7",
-	--	"mateba_ap",
+		"atf_ddm4v7",
+		"mateba_ap",
 		"hk21_sc",
 		"m60",
 		"x_deagle"
@@ -1626,13 +1626,13 @@ local dave = {
 local medic_heavy = {
 	medic_heavy = {
 		"ump",
-	--	"scar_heavy"
+		"scar_heavy"
 	}
 }
 local bravo_heavy = {
 	rifle_heavy = {
 		"bravo_rifle",
-	--	"g3a3_npc"
+		"g3a3_npc"
 	}
 }
 local cruel_zeal = {
@@ -1642,9 +1642,9 @@ local cruel_zeal = {
 		"ump",
 		"g36",
 		"shepheard",
-	--	"scar_heavy",
+		"scar_heavy",
 		"amcar",
-	--	"coal_npc"
+		"coal_npc"
 	},
 	zeal_light_shotgun = {
 		"r870",
@@ -1656,7 +1656,7 @@ local cruel_zeal = {
 	zeal_heavy = {
 		"ump",
 		"bravo_rifle",
-	--	"g3a3_npc",
+		"g3a3_npc",
 		"benelli",
 		"bravo_shotgun",
 		"spas12",

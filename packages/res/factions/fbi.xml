@@ -39,8 +39,8 @@
 	<unit             path="units/pd2_dlc_usm1/characters/ene_titan_taser/ene_titan_taser_husk"/>
 	<texture          path="units/pd2_dlc_usm1/characters/shared_textures/ene_marshal_body_df"/>
 	<texture          path="units/pd2_dlc_usm1/characters/shared_textures/ene_marshal_equipment_df"/>
-	<texture          path="units/pd2_dlc_usm2/characters/ene_acc_marshal_shield_1/marshal_shield_df"/>
-	<texture          path="units/pd2_dlc_usm2/characters/ene_acc_marshal_shield_1/marshal_shield_nm"/>
+	<texture          path="units/pd2_dlc_usm2/characters/ene_acc_marshal_shield_1/marshal_shield_sc_df"/>
+	<texture          path="units/pd2_dlc_usm2/characters/ene_acc_marshal_shield_1/marshal_shield_sc_nm"/>
 	<texture          path="units/pd2_dlc_usm2/characters/ene_male_marshal_shield_1/ene_male_marshal_shield_1_equipment_df"/>
 	<cooked_physics   path="units/pd2_mod_lapd/characters/ene_bulldozer_3/ene_bulldozer_3"/>
 	<material_config  path="units/pd2_mod_lapd/characters/ene_bulldozer_3/ene_bulldozer_3"/>

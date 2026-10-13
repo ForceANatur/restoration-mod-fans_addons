@@ -60,11 +60,10 @@ function CharacterTweakData:init(tweak_data, presets)
 	self:_init_zombie(presets)
 	self:_init_heavygunner(presets)
 	self:_init_atf_marksman(presets)
-	--[[self:_init_city_swat_rpg(presets)
+	self:_init_city_swat_rpg(presets)
 	self:_init_weekend_vanilla(presets)
 	self:_init_weekend_vanilla_heavy(presets)
 	self:_init_weekend_vanilla_snp(presets)
-	]]--
 	self:_init_city_swat_sergeant(presets)
 	self:_process_weapon_usage_table()
 	
@@ -2836,6 +2835,7 @@ function CharacterTweakData:_init_tank(presets)
 	self.tank_hw.weapon = deep_clone(presets.weapon.normal)
 	self.tank_hw.ignore_headshot = false
 	self.tank_hw.melee_anims = nil
+	self.tank_hw.custom_voicework = "dozer_nypd_hvh"
 	table.insert(self._enemy_list, "tank_hw")
 	
 	--Halloween Bulldozer, captain minion variant with LMG (Used only for Winters' Squad on DSPJ)
@@ -2843,6 +2843,7 @@ function CharacterTweakData:_init_tank(presets)
 	self.tank_hw_minion.weapon = deep_clone(presets.weapon.normal)
 	self.tank_hw_minion.ignore_headshot = false
 	self.tank_hw_minion.melee_anims = nil
+	self.tank_hw_minion.custom_voicework = "dozer_nypd_hvh"
 	table.insert(self._enemy_list, "tank_hw_minion")
 	
 	--Benelli (Bravo) Dozer
@@ -3192,6 +3193,34 @@ function CharacterTweakData:_init_shield(presets)
 	self.shield.min_obj_interrupt_dis = 300
 	self.shield.no_mutator_weapon_override = true
 	table.insert(self._enemy_list, "shield")
+
+	self.shield_cruel = deep_clone(self.shield)
+	self.shield_cruel.tags = {"law", "shield", "special"}
+	self.shield_cruel.custom_voicework = "tswat_ru"
+	self.shield_cruel.damage.hurt_severity = presets.hurt_severities.only_explosion_hurts
+	self.shield_cruel.damage.shield_knocked = true
+	table.insert(self._enemy_list, "shield_cruel")
+
+	self.shield_cruel_fbi  = deep_clone(self.shield_cruel)
+	self.shield_cruel_fbi.tags = {"law", "shield", "special"}
+	self.shield_cruel_fbi.custom_voicework = "bravo_elite"
+	table.insert(self._enemy_list, "shield_cruel_fbi")
+
+	self.shield_weekend = deep_clone(self.shield)
+	self.shield_weekend.tags = {"law", "shield", "special"}
+	self.shield_weekend.damage.hurt_severity = presets.hurt_severities.only_explosion_hurts
+	self.shield_weekend.damage.shield_knocked = true
+	self.shield_weekend.HEALTH_INIT = 20
+	self.shield_weekend.headshot_dmg_mul = 3.8
+	self.shield_weekend.custom_voicework = "bravo_elite"
+	table.insert(self._enemy_list, "shield_weekend")
+
+	self.shield_weekend_vanilla = deep_clone(self.shield_weekend)
+	self.shield_weekend_vanilla.tags = {"law", "shield", "special"}
+	self.shield_weekend_vanilla.HEALTH_INIT = 18
+	self.shield_weekend_vanilla.headshot_dmg_mul = 2.8
+	self.shield_weekend_vanilla.custom_voicework = "swat_pd3"
+	table.insert(self._enemy_list, "shield_weekend_vanilla")
 end
 
 function CharacterTweakData:_init_phalanx_minion(presets)	
@@ -3263,33 +3292,113 @@ function CharacterTweakData:_init_phalanx_minion(presets)
 	table.insert(self._enemy_list, "phalanx_minion_assault")
 end
 
+-- Stronger than normal shields but not as tough as titan shields
 function CharacterTweakData:_init_marshal_shield(presets)
-	--Clones Titan Shield
-	self.marshal_shield = deep_clone(self.phalanx_minion_assault)
+	self.marshal_shield = deep_clone(presets.base)
+	self.marshal_shield.tags = {
+		"law",
+		"shield", 
+		"shield_titan" -- added tag so that the shield of the marshal shield is considered a titan-shield
+	}
+	self.marshal_shield.experience = {}
+	self.marshal_shield.weapon = deep_clone(presets.weapon.normal)
+	self.marshal_shield.static_weapon_preset = true
+	self.marshal_shield.detection = presets.detection.normal
+	self.marshal_shield.HEALTH_INIT = 18
+	self.marshal_shield.headshot_dmg_mul = 2.2
+	self.marshal_shield.allowed_stances = {
+		cbt = true
+	}
+	self.marshal_shield.allowed_poses = {
+		crouch = true
+	}
+	self.marshal_shield.always_face_enemy = true
+	self.marshal_shield.move_speed = presets.move_speed.fast
+	self.marshal_shield.no_run_start = true
+	self.marshal_shield.no_run_stop = true
+	self.marshal_shield.no_retreat = true
+	self.marshal_shield.no_arrest = true
+	self.marshal_shield.surrender = nil
+	self.marshal_shield.rotation_speed = 1.5 -- dunno what this does but im gonna set it to 1.5 and see what happens
+	self.marshal_shield.ecm_vulnerability = 0
+	self.marshal_shield.ecm_hurts = {
+		ears = {
+			max_duration = 0,
+			min_duration = 0
+		}
+	}
+	self.marshal_shield.rescue_hostages = false
+	self.marshal_shield.deathguard = false
+	self.marshal_shield.no_equip_anim = true
+	self.marshal_shield.wall_fwd_offset = 100
+	self.marshal_shield.damage.explosion_damage_mul = 0.8
+	self.marshal_shield.calls_in = nil
+	self.marshal_shield.ignore_medic_revive_animation = true
+	self.marshal_shield.shooting_death = false
+	self.marshal_shield.damage.hurt_severity = presets.hurt_severities.no_hurts
+	self.marshal_shield.damage.shield_knocked = false
+	self.marshal_shield.immune_to_concussion = true
+	self.marshal_shield.damage.immune_to_knockback = true
+	self.marshal_shield.immune_to_knock_down = true
+	self.marshal_shield.use_animation_on_fire_damage = false
+	self.marshal_shield.flammable = true
+	self.marshal_shield.weapon_voice = "3"
+	self.marshal_shield.experience.cable_tie = "tie_swat"
+	self.marshal_shield.speech_prefix_p1 = "cum"
+	self.marshal_shield.speech_prefix_p2 = nil
+	self.marshal_shield.speech_prefix_count = nil
 	self.marshal_shield.yellow_blood = nil
-	if self:get_ai_group_type() == "russia" then
-		self.marshal_shield.custom_voicework = "tswat_ru"
-	elseif self:get_ai_group_type() == "murkywater" then
-		self.marshal_shield.custom_voicework = "bravo_elite_murky"	
-	elseif self:get_ai_group_type() == "federales" then
-		self.marshal_shield.custom_voicework = "bravo_elite_mex"
+	self.marshal_shield.no_asu = true
+	if self:get_ai_group_type() == "zombie" then
+		self.marshal_shield.custom_voicework = "bravo_murky"
 	else
-		self.marshal_shield.custom_voicework = "bravo_dmr"
-	end	
+		self.marshal_shield.custom_voicework = "marshal_marksman"
+	end
+	self.marshal_shield.speech_prefix_count = nil
+	self.marshal_shield.priority_shout = "f31"
+	self.marshal_shield.access = "shield"
+	self.marshal_shield.chatter = presets.enemy_chatter.shield
+	self.marshal_shield.announce_incomming = "incomming_shield"
+	self.marshal_shield.spawn_sound_event = "shield_identification"
+	self.marshal_shield.steal_loot = nil
+	self.marshal_shield.no_mutator_weapon_override = true
+	self.marshal_shield.is_special = true
+	self.marshal_shield.heal_cooldown = 4
 	table.insert(self._enemy_list, "marshal_shield")
 
-	--Clones Titan SWAT
-	self.marshal_shield_break = deep_clone(self.city_swat_titan_assault)
-	self.marshal_shield_break.yellow_blood = nil
-	if self:get_ai_group_type() == "russia" then
-		self.marshal_shield_break.custom_voicework = "tswat_ru"
-	elseif self:get_ai_group_type() == "murkywater" then
-		self.marshal_shield_break.custom_voicework = "bravo_elite_murky"	
-	elseif self:get_ai_group_type() == "federales" then
-		self.marshal_shield_break.custom_voicework = "bravo_elite_mex"
-	else
-		self.marshal_shield_break.custom_voicework = "bravo_dmr"
-	end	
+	self.marshal_shield_break = deep_clone(self.marshal_shield)
+	self.marshal_shield_break.rotation_speed = 4 -- dunno what this does but im gonna set it to 4 and see what happens
+	self.marshal_shield_break.tags = {
+		"law"
+	}
+	self.marshal_shield_break.HEALTH_INIT = 20
+	self.marshal_shield_break.headshot_dmg_mul = 2.4
+	self.marshal_shield_break.allowed_stances = nil
+	self.marshal_shield_break.allowed_poses = nil
+	self.marshal_shield_break.no_equip_anim = nil
+	self.marshal_shield_break.no_run_start = nil
+	self.marshal_shield_break.no_run_stop = nil
+	self.marshal_shield_break.always_face_enemy = true
+	self.marshal_shield_break.wall_fwd_offset = nil
+	self.marshal_shield_break.priority_shout = nil
+	self.marshal_shield_break.access = "swat"
+	self.marshal_shield_break.no_mutator_weapon_override = false
+	self.marshal_shield_break.chatter = presets.enemy_chatter.swat
+	self.marshal_shield_break.announce_incomming = nil
+	self.marshal_shield_break.damage.hurt_severity = presets.hurt_severities.base
+	self.marshal_shield_break.damage.explosion_damage_mul = 1
+	self.marshal_shield_break.use_animation_on_fire_damage = nil
+	self.marshal_shield_break.damage.shield_knocked = nil
+	self.marshal_shield_break.modify_health_on_tweak_change = true
+	self.marshal_shield_break.tmp_invulnerable_on_tweak_change = 1.5 --still better than 3 seconds
+	self.marshal_shield_break.unintimidateable = true
+	self.marshal_shield_break.no_asu = true
+	self.marshal_shield_break.heal_cooldown = 2
+	self.marshal_shield_break.damage.explosion_damage_mul = 0.67
+	self.marshal_shield_break.damage.rocket_damage_mul = 0.9
+	self.marshal_shield_break.damage.fire_pool_damage_mul = 0.8
+	self.marshal_shield_break.damage.bullet_damage_mul = 0.85
+	self.marshal_shield_break.damage.fire_damage_mul = 0.8
 	table.insert(self._enemy_list, "marshal_shield_break")
 end
 
@@ -4374,6 +4483,66 @@ function CharacterTweakData:_init_atf_marksman(presets)
 	self.atf_marksman.marshal_logic = true
 	self.atf_marksman.grenade_toss_chance = 1
 	table.insert(self._enemy_list, "atf_marksman")
+end
+
+-- New Coppers National Gaurd stuff
+-- Standard Units have slightly more speed but less hp and hs multu
+function CharacterTweakData:_init_weekend_vanilla(presets)
+	self.weekend_vanilla = deep_clone(self.weekend)
+	self.weekend_vanilla.HEALTH_INIT = 16.8
+	self.weekend_vanilla.headshot_dmg_mul = 2.85
+	self.weekend_vanilla.move_speed = presets.move_speed.very_fast_plus
+	self.weekend_vanilla.custom_voicework = "swat_pd3"
+	table.insert(self._enemy_list, "weekend_vanilla")
+end
+
+-- Heavies are slower than normal heavies with an even lower hs multi
+-- more harder to convert too
+function CharacterTweakData:_init_weekend_vanilla_heavy(presets)
+	self.weekend_vanilla_heavy = deep_clone(self.weekend)
+	self.weekend_vanilla_heavy.HEALTH_INIT = 36
+	self.weekend_vanilla_heavy.headshot_dmg_mul = 1.8
+	self.weekend_vanilla_heavy.can_throw_frag = true
+	self.weekend_vanilla_heavy.move_speed = presets.move_speed.normal
+	self.weekend_vanilla_heavy.custom_voicework = "bravo_heavy"
+	self.weekend_vanilla_heavy.surrender = presets.surrender.bravo_hard
+	table.insert(self._enemy_list, "weekend_vanilla_heavy")
+
+	self.weekend_vanilla_heavy_cruel = deep_clone(self.weekend_vanilla_heavy)
+	self.weekend_vanilla_heavy_cruel.custom_voicework = "murky_shield"
+	table.insert(self._enemy_list, "weekend_vanilla_heavy_cruel")
+end
+
+-- Ground Snipers throw grenades a lot more
+function CharacterTweakData:_init_weekend_vanilla_snp(presets)
+	self.weekend_vanilla_snp = deep_clone(self.weekend_dmr_scripted)
+	self.weekend_vanilla_snp.spawn_sound_event_2 = nil
+	self.weekend_vanilla_snp.chatter = presets.enemy_chatter.swat
+	self.weekend_vanilla_snp.marshal_logic = true
+	self.weekend_vanilla_snp.can_throw_frag = true
+	self.weekend_vanilla_snp.grenade_toss_chance = 0.7
+	self.weekend_vanilla_snp.HEALTH_INIT = 19
+	self.weekend_vanilla_snp.headshot_dmg_mul = 2
+	self.weekend_vanilla_snp.custom_voicework = "marshal_marksman"
+	self.weekend_vanilla_snp.die_sound_event_2 = nil
+	table.insert(self._enemy_list, "weekend_vanilla_snp")
+end
+
+--RPG Grunts, Less HP, Less HS Multi, moves slower
+--suffer
+function CharacterTweakData:_init_city_swat_rpg(presets)
+	self.city_swat_rpg = deep_clone(self.city_swat_titan)
+	self.city_swat_rpg.move_speed = presets.move_speed.slow_plus
+	self.city_swat_rpg.dodge = presets.dodge.average
+	self.city_swat_rpg.yellow_blood = false
+	self.city_swat_rpg.HEALTH_INIT = 20
+	self.city_swat_rpg.headshot_dmg_mul = 1.9
+	self.city_swat_rpg.damage.bullet_damage_mul = 1
+	self.city_swat_rpg.damage.explosion_damage_mul = 1
+	self.city_swat_rpg.damage.tase_damage_mul = 1
+	self.city_swat_rpg.custom_voicework = "rpg_grunt"
+	self.city_swat_rpg.shooting_death = false
+	table.insert(self._enemy_list, "city_swat_rpg")
 end
 
 function CharacterTweakData:_presets(tweak_data)
@@ -18227,7 +18396,126 @@ function CharacterTweakData:_presets(tweak_data)
 					}
 				}
 			}
-		}	
+		},
+		very_fast_plus = {
+			stand = {
+				walk = {
+					ntl = {
+						fwd = 160,
+						strafe = 130,
+						bwd = 120
+					},
+					hos = {
+						fwd = 342,
+						strafe = 342,
+						bwd = 342
+					},
+					cbt = {
+						fwd = 342,
+						strafe = 342,
+						bwd = 342
+					}
+				},
+				run = {
+					hos = {
+						fwd = 556,
+						strafe = 342,
+						bwd = 342
+					},
+					cbt = {
+						fwd = 556,
+						strafe = 342,
+						bwd = 342
+					}
+				}
+			},
+			crouch = {
+				walk = {
+					hos = {
+						fwd = 223,
+						strafe = 223,
+						bwd = 223
+					},
+					cbt = {
+						fwd = 223,
+						strafe = 223,
+						bwd = 223
+					}
+				},
+				run = {
+					hos = {
+						fwd = 350,
+						strafe = 223,
+						bwd = 223
+					},
+					cbt = {
+						fwd = 350,
+						strafe = 223,
+						bwd = 223
+					}
+				}
+			}
+		},
+		-- only for secret zombie unit
+		extremely_slow = {
+			stand = {
+				walk = {
+					ntl = {
+						strafe = 60,
+						fwd = 72,
+						bwd = 56
+					},
+					hos = {
+						strafe = 60,
+						fwd = 72,
+						bwd = 56
+					},
+					cbt = {
+						strafe = 60,
+						fwd = 72,
+						bwd = 56
+					}
+				},
+				run = {
+					hos = {
+						strafe = 70,
+						fwd = 72,
+						bwd = 56
+					},
+					cbt = {
+						strafe = 50,
+						fwd = 72,
+						bwd = 60
+					}
+				}
+			},
+			crouch = {
+				walk = {
+					hos = {
+						strafe = 60,
+						fwd = 72,
+						bwd = 56
+					},
+					cbt = {
+						strafe = 60,
+						fwd = 72,
+						bwd = 56
+					}
+				},
+				run = {
+					hos = {
+						strafe = 65,
+						fwd = 72,
+						bwd = 56
+					},
+					cbt = {
+						strafe = 50,
+						fwd = 72,
+						bwd = 60
+					}
+				}
+			}
+		}
 	}
 	for speed_preset_name, poses in pairs(presets.move_speed) do
 		for pose, hastes in pairs(poses) do
@@ -18312,7 +18600,32 @@ function CharacterTweakData:_presets(tweak_data)
 				[300] = 0.2
 			}
 		}
-	}	
+	}
+	-- somehow even lower than special
+	presets.surrender.bravo_hard = {
+		base_chance = 0.2,
+		significant_chance = 0.3,
+		violence_timeout = 1.5,
+		reasons = {
+			health = {
+				[1] = 0.2,
+				[0.75] = 0.3,
+				[0.5] = 0.4,
+			},
+			weapon_down = 0.5,
+			pants_down = 1,
+			isolated = 0.12
+		},
+		factors = {
+			flanked = 0.03,
+			unaware_of_aggressor = 0.1,
+			enemy_weap_cold = 0.11,
+			aggressor_dis = {
+				[1000] = 0,
+				[300] = 0.2
+			}
+		}
+	}
 	presets.surrender.special = {
 		base_chance = 0.25,
 		significant_chance = 0.35,
@@ -18691,7 +19004,7 @@ Hooks:PostHook(CharacterTweakData, "_create_table_structure", "remod_create_tabl
 	table.insert(self.weap_ids, "x_peacemaker")
 	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_peacemaker/wpn_x_npc_peacemaker"))
 
-	--ATF DDM4 V7 (❌)
+	--ATF DDM4 V7
 	table.insert(self.weap_ids, "atf_ddm4v7")
 	table.insert(self.weap_unit_names, Idstring("units/pd2_dlc_usm1/weapons/wpn_npc_ddm4v7/wpn_npc_ddm4v7"))
 
@@ -18707,11 +19020,11 @@ Hooks:PostHook(CharacterTweakData, "_create_table_structure", "remod_create_tabl
 	table.insert(self.weap_ids, "ksg")
 	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_ksg/wpn_npc_ksg"))
 
-	--Mateba Model 6 (❌)
+	--Mateba Model 6
 	table.insert(self.weap_ids, "mateba_ap")
 	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_matever/wpn_npc_matever"))
 
-	--HK G3A3 (❌)
+	--HK G3A3
 	table.insert(self.weap_ids, "g3a3_npc")
 	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_g3a3/wpn_npc_g3a3"))
 
@@ -18731,7 +19044,7 @@ Hooks:PostHook(CharacterTweakData, "_create_table_structure", "remod_create_tabl
 	table.insert(self.weap_ids, "x_deagle")
 	table.insert(self.weap_unit_names, Idstring("units/pd2_dlc_usm2/weapons/wpn_npc_deagle/wpn_npc_x_deagle"))
 
-	--SCAR Heavy (❌)
+	--SCAR Heavy
 	table.insert(self.weap_ids, "scar_heavy")
 	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_scar_heavy/wpn_npc_scar_heavy"))
 
@@ -18751,7 +19064,7 @@ Hooks:PostHook(CharacterTweakData, "_create_table_structure", "remod_create_tabl
 	table.insert(self.weap_ids, "m79_npc")
 	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_m79/wpn_npc_m79"))
 
-	--PP-19 Bizon (❌)
+	--PP-19 Bizon
 	table.insert(self.weap_ids, "coal_npc")
 	table.insert(self.weap_unit_names, Idstring("units/pd2_dlc_mad/weapons/wpn_npc_coal/wpn_npc_coal"))
 end)
@@ -19627,7 +19940,7 @@ function CharacterTweakData.character_map(...)
 		table.insert(char_map.basic.list, "ene_cop_2_forest")
 		table.insert(char_map.basic.list, "ene_swole_spook_1") --(❌)
 		table.insert(char_map.basic.list, "ene_swole_medic_m249") --(❌)
-		table.insert(char_map.basic.list, "ene_fbi_4") --(❌)
+		table.insert(char_map.basic.list, "ene_fbi_4")
 			
 	--dlc1
 		table.insert(char_map.dlc1.list, "ene_security_gensec_guard_1")
@@ -19660,7 +19973,7 @@ function CharacterTweakData.character_map(...)
 		table.insert(char_map.ranc.list, "ene_cop_4")
 	--usm1
 		table.insert(char_map.usm1.list, "ene_male_marshal_marksman_scripted_2")
-		table.insert(char_map.usm1.list, "ene_atf_field_agent_1")  --(❌)
+		table.insert(char_map.usm1.list, "ene_atf_field_agent_1")
 		table.insert(char_map.usm1.list, "ene_titan_sniper")
 		table.insert(char_map.usm1.list, "ene_titan_rifle")
 		table.insert(char_map.usm1.list, "ene_titan_shotgun")
@@ -20051,7 +20364,7 @@ function CharacterTweakData.character_map(...)
 				"ene_bravo_lmg_mex",
 				"ene_bravo_rifle_mex",
 				"ene_bravo_shotgun_mex",
-				"ene_bravo_shield" --(❌)
+				"ene_bravo_shield"
 			}
 		}
 		
@@ -20066,15 +20379,15 @@ function CharacterTweakData.character_map(...)
 		char_map.nc = {
 			path = "units/pd2_mod_nc/characters/",
 			list = {
-				"ene_heavymedic_1", --(❌)
+				"ene_heavymedic_1",
 				"ene_police_heavygunner",
-				"ene_gensec_heavygunner", --(❌)
+				"ene_gensec_heavygunner",
 				"ene_gensec_sgt",
 				"ene_wildcard"
 			}
 		}
 
-		char_map.ng = { --(❌)
+		char_map.ng = {
 			path = "units/pd2_mod_ng/characters/",
 			list = {
 				"ene_ntl_benelli",
