@@ -1,8 +1,61 @@
 <?xml version="1.0"?>
 <!-- Fork Exclusive units, everything loads here for now. I plan to sort everything into it's own package. -->
 <table directory="assets">
-	<texture          path="units/pd2_dlc_usm2/characters/ene_acc_marshal_shield_1/marshal_shield_sc_df"/>
-	<texture          path="units/pd2_dlc_usm2/characters/ene_acc_marshal_shield_1/marshal_shield_sc_nm"/>
+	<texture	path="units/pd2_dlc_usm2/characters/ene_acc_marshal_shield_1/marshal_shield_sc_df"/>
+	<texture	path="units/pd2_dlc_usm2/characters/ene_acc_marshal_shield_1/marshal_shield_sc_nm"/>
+
+	<texture	path="units/pd2_dlc_gitgud/characters/ene_zeal_swat/ene_zeal_swat_head_df_sc"/>
+
+	<texture	path="units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_2/swat_heavy_head_df"/>
+	<texture	path="units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_2/swat_heavy_head_nm"/>
+
+	<texture	path="units/pd2_dlc_gitgud/characters/ene_zeal_swat_2/swat_df"/>
+	<texture	path="units/pd2_dlc_gitgud/characters/ene_zeal_swat_2/swat_head_df"/>
+	<texture	path="units/pd2_dlc_gitgud/characters/ene_zeal_swat_2/swat_nm"/>
+	<texture	path="units/pd2_dlc_gitgud/characters/ene_zeal_swat_2/swat_head_nm"/>
+
+	<!--SH Zeal Heavy shotgunner-->
+	<object				path="units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_2/ene_zeal_swat_heavy_2" force="false"/>
+	<cooked_physics		path="units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_2/ene_zeal_swat_heavy_2" force="false"/>
+	<model				path="units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_2/ene_zeal_swat_heavy_2" force="false"/>
+	<unit				path="units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_2/ene_zeal_swat_heavy_2" force="false" load="true"/>
+	<material_config	path="units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_2/ene_zeal_swat_heavy_2" force="false"/>
+	<material_config	path="units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_2/ene_zeal_swat_heavy_2_contour" force="false"/>
+	<unit				path="units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy_2/ene_zeal_swat_heavy_2_husk" force="false" load="true"/>
+
+	<!--SH Zeal shotgunner-->
+	<object				path="units/pd2_dlc_gitgud/characters/ene_zeal_swat_2/ene_zeal_swat_2" force="false"/>
+	<cooked_physics		path="units/pd2_dlc_gitgud/characters/ene_zeal_swat_2/ene_zeal_swat_2" force="false"/>
+	<model				path="units/pd2_dlc_gitgud/characters/ene_zeal_swat_2/ene_zeal_swat_2" force="false"/>
+	<unit				path="units/pd2_dlc_gitgud/characters/ene_zeal_swat_2/ene_zeal_swat_2" force="false" load="true"/>
+	<material_config	path="units/pd2_dlc_gitgud/characters/ene_zeal_swat_2/ene_zeal_swat_2" force="false"/>
+	<material_config	path="units/pd2_dlc_gitgud/characters/ene_zeal_swat_2/ene_zeal_swat_2_contour" force="false"/>
+	<unit				path="units/pd2_dlc_gitgud/characters/ene_zeal_swat_2/ene_zeal_swat_2_husk" force="false" load="true"/>
+
+	<!--zeal fbi c45-->
+	<unit				path="units/pd2_dlc_gitgud/characters/ene_zeal_fbi_c45/ene_zeal_fbi_c45" load="true"/>
+	<unit				path="units/pd2_dlc_gitgud/characters/ene_zeal_fbi_c45/ene_zeal_fbi_c45_husk" load="true"/>
+	<object				path="units/pd2_dlc_gitgud/characters/ene_zeal_fbi_c45/ene_zeal_fbi_c45"/>
+	<cooked_physics		path="units/pd2_dlc_gitgud/characters/ene_zeal_fbi_c45/ene_zeal_fbi_c45"/>
+	<model				path="units/pd2_dlc_gitgud/characters/ene_zeal_fbi_c45/ene_zeal_fbi_c45"/>
+	<material_config	path="units/pd2_dlc_gitgud/characters/ene_zeal_fbi_c45/ene_zeal_fbi_c45"/>
+	<material_config	path="units/pd2_dlc_gitgud/characters/ene_zeal_fbi_c45/ene_zeal_fbi_c45_contour"/>
+
+	<texture			path="units/pd2_dlc_gitgud/characters/ene_zeal_fbi_c45/secret_service_df" />
+
+	<!--zeal fbi r870-->
+	<unit				path="units/pd2_dlc_gitgud/characters/ene_zeal_fbi_r870/ene_zeal_fbi_r870" load="true"/>
+	<unit				path="units/pd2_dlc_gitgud/characters/ene_zeal_fbi_r870/ene_zeal_fbi_r870_husk" load="true"/>
+	<object				path="units/pd2_dlc_gitgud/characters/ene_zeal_fbi_r870/ene_zeal_fbi_r870"/>
+	<cooked_physics		path="units/pd2_dlc_gitgud/characters/ene_zeal_fbi_r870/ene_zeal_fbi_r870"/>
+	<model				path="units/pd2_dlc_gitgud/characters/ene_zeal_fbi_r870/ene_zeal_fbi_r870"/>
+	<material_config	path="units/pd2_dlc_gitgud/characters/ene_zeal_fbi_r870/ene_zeal_fbi_r870"/>
+	<material_config	path="units/pd2_dlc_gitgud/characters/ene_zeal_fbi_r870/ene_zeal_fbi_r870_contour"/>
+
+	<texture			path="units/pd2_dlc_gitgud/characters/ene_zeal_fbi_r870/ene_zeal_swat_df" />
+	<texture			path="units/pd2_dlc_gitgud/characters/ene_zeal_fbi_r870/ene_zeal_swat_nm" />
+	<texture			path="units/pd2_dlc_gitgud/characters/ene_zeal_fbi_r870/ene_zeal_swat_head_df" />
+	<texture			path="units/pd2_dlc_gitgud/characters/ene_zeal_fbi_r870/ene_zeal_swat_head_nm" />
 
 	<!--This helmet is agony for anything new coppers related. - FaN Scout-->
 	<object				path="units/pd2_mod_nc/characters/ene_acc_zeal_swat_helmet/ene_acc_zeal_swat_helmet" force="false"/>
@@ -291,6 +344,102 @@
 	<df_nm				path="units/pd2_mod_bravo/characters/ene_bravo_shield/ene_national_guard_head_atlas"/>
 	<df_nm				path="units/pd2_mod_bravo/characters/ene_bravo_shield/ene_zeal_swat_shield"/>
 	<df_nm_op			path="units/pd2_mod_bravo/characters/ene_acc_zeal_swat_helmet/helmet_ng"/>
+
+	<!--ZOMBIES GO HERE-->
+	<object				path="units/pd2_dlc_hvh/characters/ene_bulldozer_snowman/ene_bulldozer_snowman"/>
+	<cooked_physics		path="units/pd2_dlc_hvh/characters/ene_bulldozer_snowman/ene_bulldozer_snowman"/>
+	<model				path="units/pd2_dlc_hvh/characters/ene_bulldozer_snowman/ene_bulldozer_snowman"/>
+	<unit				path="units/pd2_dlc_hvh/characters/ene_bulldozer_snowman/ene_bulldozer_snowman" load="true"/>
+	<material_config	path="units/pd2_dlc_hvh/characters/ene_bulldozer_snowman/ene_bulldozer_snowman"/>
+	<material_config	path="units/pd2_dlc_hvh/characters/ene_bulldozer_snowman/ene_bulldozer_snowman_contour" />
+	<unit				path="units/pd2_dlc_hvh/characters/ene_bulldozer_snowman/ene_bulldozer_snowman_husk" load="true"/>
+
+	<texture			path="units/pd2_dlc_hvh/characters/ene_bulldozer_snowman/ene_snowman_boss_df"/>
+
+	<object				path="units/pd2_dlc_hvh/characters/ene_dozer_piggy/ene_dozer_piggy"/>
+	<cooked_physics		path="units/pd2_dlc_hvh/characters/ene_dozer_piggy/ene_dozer_piggy"/>
+	<model				path="units/pd2_dlc_hvh/characters/ene_dozer_piggy/ene_dozer_piggy"/>
+	<unit				path="units/pd2_dlc_hvh/characters/ene_dozer_piggy/ene_dozer_piggy" load="true"/>
+	<material_config	path="units/pd2_dlc_hvh/characters/ene_dozer_piggy/ene_dozer_piggy"/>
+	<material_config	path="units/pd2_dlc_hvh/characters/ene_dozer_piggy/ene_dozer_piggy_contour" />
+	<unit				path="units/pd2_dlc_hvh/characters/ene_dozer_piggy/ene_dozer_piggy_husk" load="true"/>
+	<sequence_manager	path="units/pd2_dlc_hvh/characters/ene_dozer_piggy/ene_dozer_piggy" force="false"/>
+
+	<texture			path="units/pd2_dlc_hvh/characters/ene_dozer_piggy/ene_dozer_piggy_df"/>
+	<!--ZOMBIES END HERE-->
+
+	<!--MURKYWATER GO HERE-->
+
+	<!--Omnia fbi 4-->
+	<unit				path="units/pd2_mod_omnia/characters/ene_omnia_hrt_4/ene_omnia_hrt_4" force="false" load="true"/>
+	<unit				path="units/pd2_mod_omnia/characters/ene_omnia_hrt_4/ene_omnia_hrt_4_husk" force="false" load="true"/>
+	<object				path="units/pd2_mod_omnia/characters/ene_omnia_hrt_4/ene_omnia_hrt_4" force="false"/>
+	<cooked_physics		path="units/pd2_mod_omnia/characters/ene_omnia_hrt_4/ene_omnia_hrt_4" force="false"/>
+	<model				path="units/pd2_mod_omnia/characters/ene_omnia_hrt_4/ene_omnia_hrt_4" force="false"/>
+	<material_config	path="units/pd2_mod_omnia/characters/ene_omnia_hrt_4/ene_omnia_hrt_4" force="false"/>
+	<material_config	path="units/pd2_mod_omnia/characters/ene_omnia_hrt_4/ene_omnia_hrt_4_contour" force="false"/>
+	<texture			path="units/pd2_mod_omnia/characters/ene_omnia_hrt_4/hrt_omnia_body_df" force="false"/>
+
+	<!--Enforcer-->
+	<!--The model is from Crackdown-->
+	<cooked_physics		path="units/pd2_dlc_bph/characters/ene_acc_murky_helmet/ene_acc_murky_helmet" force="false"/>
+	<material_config	path="units/pd2_dlc_bph/characters/ene_acc_murky_helmet/ene_acc_murky_helmet" force="false"/>
+	<model				path="units/pd2_dlc_bph/characters/ene_acc_murky_helmet/ene_acc_murky_helmet" force="false"/>
+	<object				path="units/pd2_dlc_bph/characters/ene_acc_murky_helmet/ene_acc_murky_helmet" force="false"/>
+	<unit				path="units/pd2_dlc_bph/characters/ene_acc_murky_helmet/ene_acc_murky_helmet" force="false" load="true"/>
+
+	<object				path="units/pd2_dlc_bph/characters/ene_murky_heavyg/ene_murky_heavyg" />
+	<cooked_physics		path="units/pd2_dlc_bph/characters/ene_murky_heavyg/ene_murky_heavyg" />
+	<model				path="units/pd2_dlc_bph/characters/ene_murky_heavyg/ene_murky_heavyg" />
+	<unit				path="units/pd2_dlc_bph/characters/ene_murky_heavyg/ene_murky_heavyg"  load="true"/>
+	<material_config	path="units/pd2_dlc_bph/characters/ene_murky_heavyg/ene_murky_heavyg" />
+	<material_config	path="units/pd2_dlc_bph/characters/ene_murky_heavyg/ene_murky_heavyg_contour" />
+	<unit				path="units/pd2_dlc_bph/characters/ene_murky_heavyg/ene_murky_heavyg_husk"  load="true"/>
+
+	<texture			path="units/pd2_dlc_bph/characters/ene_murky_heavyg/fbi_heads_atlas_df"/>
+	<texture			path="units/pd2_dlc_bph/characters/ene_murky_heavyg/fbi_helmets_atlas_df"/>
+	<texture			path="units/pd2_dlc_bph/characters/ene_murky_heavyg/spook_heavy_df" />
+
+	<!--Sergeants-->
+	<!--The model is from Hyper Heisting-->
+	<object				path="units/pd2_dlc_bph/characters/ene_murky_sgt/ene_murky_sgt" />
+	<cooked_physics		path="units/pd2_dlc_bph/characters/ene_murky_sgt/ene_murky_sgt" />
+	<model				path="units/pd2_dlc_bph/characters/ene_murky_sgt/ene_murky_sgt" />
+	<unit				path="units/pd2_dlc_bph/characters/ene_murky_sgt/ene_murky_sgt"  load="true"/>
+	<material_config	path="units/pd2_dlc_bph/characters/ene_murky_sgt/ene_murky_sgt" />
+	<material_config	path="units/pd2_dlc_bph/characters/ene_murky_sgt/ene_murky_sgt_contour" />
+	<unit				path="units/pd2_dlc_bph/characters/ene_murky_sgt/ene_murky_sgt_husk"  load="true"/>
+
+	<texture			path="units/pd2_dlc_bph/characters/ene_murky_sgt/heads_atlas_df"/>
+	<texture			path="units/pd2_dlc_bph/characters/ene_murky_sgt/murky_light_df"/>
+
+	<!--FBI 4-->
+	<object				path="units/pd2_mod_sharks/characters/ene_fbi_4/ene_fbi_4" force="false"/>
+	<cooked_physics		path="units/pd2_mod_sharks/characters/ene_fbi_4/ene_fbi_4" force="false"/>
+	<model				path="units/pd2_mod_sharks/characters/ene_fbi_4/ene_fbi_4" force="false"/>
+	<unit				path="units/pd2_mod_sharks/characters/ene_fbi_4/ene_fbi_4" force="false" load="true"/>
+	<material_config	path="units/pd2_mod_sharks/characters/ene_fbi_4/ene_fbi_4" force="false"/>
+	<material_config	path="units/pd2_mod_sharks/characters/ene_fbi_4/ene_fbi_4_contour" force="false"/>
+	<unit				path="units/pd2_mod_sharks/characters/ene_fbi_4/ene_fbi_4_husk" force="false" load="true"/>
+	<texture			path="units/pd2_mod_sharks/characters/ene_fbi_4/hrt_df" force="false"/>
+
+	<!--Wildcard-->
+	<object				path="units/pd2_mod_sharks/characters/ene_murky_wildcard/ene_murky_wildcard" force="false"/>
+	<cooked_physics		path="units/pd2_mod_sharks/characters/ene_murky_wildcard/ene_murky_wildcard" force="false"/>
+	<model				path="units/pd2_mod_sharks/characters/ene_murky_wildcard/ene_murky_wildcard" force="false"/>
+	<unit				path="units/pd2_mod_sharks/characters/ene_murky_wildcard/ene_murky_wildcard" force="false" load="true"/>
+	<material_config	path="units/pd2_mod_sharks/characters/ene_murky_wildcard/ene_murky_wildcard" force="false"/>
+	<material_config	path="units/pd2_mod_sharks/characters/ene_murky_wildcard/ene_murky_wildcard_contour" force="false"/>
+	<unit				path="units/pd2_mod_sharks/characters/ene_murky_wildcard/ene_murky_wildcard_husk" force="false" load="true"/>
+	<texture			path="units/pd2_mod_sharks/characters/ene_murky_wildcard/murkywater_d" force="false"/>
+	<texture			path="units/pd2_mod_sharks/characters/ene_murky_wildcard/murkywater_n" force="false"/>
+	<!--MURKYWATER END HERE-->
+
+	<!--REAPERS GO HERE-->
+	<!--REAPERS END HERE-->
+
+	<!--MEXICO GO HERE-->
+	<!--MEXICO GO HERE-->
 
 	<unit				path="units/pd2_dlc_usm1/weapons/wpn_npc_ddm4v7/wpn_npc_ddm4v7" force="false"/>
 	<object				path="units/pd2_dlc_usm1/weapons/wpn_npc_ddm4v7/wpn_npc_ddm4v7" force="false"/>

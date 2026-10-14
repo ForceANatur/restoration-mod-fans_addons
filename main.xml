@@ -437,6 +437,7 @@
 		<!--<hook file="sc/mutators/new/mutatorfactionreplacer.lua" source_file="lib/mutators/basemutator"/>-->
 		<!--///FORK MUTATORS GO HERE\\\-->
 		<hook file="sc/mutators/new/mutatorumpforyoutoo.lua" source_file="lib/mutators/basemutator"/>
+		<hook file="sc/mutators/new/mutatorwarthogs.lua" source_file="lib/mutators/basemutator"/>
 		<!--///NETWORKING\\\-->
 		<hook file="sc/network/base/hostnetworksession.lua" source_file="lib/network/base/hostnetworksession"/>
 		<hook file="sc/network/base/networkpeer.lua" source_file="lib/network/base/networkpeer"/>

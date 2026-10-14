@@ -613,6 +613,9 @@ return {
 		{ "units/pd2_mod_ng/characters/ene_ntl_groundsniper/ene_ntl_groundsniper", "unit" },
 		{ "units/pd2_mod_ng/characters/ene_ntl_groundsniper/ene_ntl_groundsniper_husk", "unit" },
 
+		{ "units/pd2_dlc_hvh/characters/ene_dozer_piggy/ene_dozer_piggy", "unit" },
+		{ "units/pd2_dlc_hvh/characters/ene_dozer_piggy/ene_dozer_piggy_husk", "unit" },
+
 		-- weapons
 		{ "units/payday2/weapons/wpn_npc_m95/wpn_npc_m95", "unit" },
 		{ "units/payday2/weapons/wpn_npc_m95/wpn_npc_m95_fuck", "unit" },

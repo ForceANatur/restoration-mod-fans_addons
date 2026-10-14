@@ -1819,11 +1819,7 @@ function CharacterTweakData:_init_snowman_boss(presets)
 	self.snowman_boss.speech_prefix_p1 = "snowman"
 	self.snowman_boss.speech_prefix_p2 = nil
 	self.snowman_boss.speech_prefix_count = nil
-	if self:get_ai_group_type() == "russia" or self:get_ai_group_type() == "federales" then
-		self.snowman_boss.custom_voicework = "tdozer_ru"
-	else
-		self.snowman_boss.custom_voicework = "tdozer"
-	end
+	self.snowman_boss.custom_voicework = "piggy_dozer"
 	self.snowman_boss.aoe_damage_data = {
 		verification_delay = 0.3,
 		activation_range = 300,
@@ -1853,11 +1849,7 @@ function CharacterTweakData:_init_piggydozer(presets)
 	self.piggydozer.speech_prefix_p1 = "fuckingpig"
 	self.piggydozer.speech_prefix_p2 = nil
 	self.piggydozer.speech_prefix_count = nil
-	if self:get_ai_group_type() == "russia" or self:get_ai_group_type() == "federales" then
-		self.piggydozer.custom_voicework = "tdozer_ru"
-	else
-		self.piggydozer.custom_voicework = "tdozer"
-	end
+	self.piggydozer.custom_voicework = "piggy_dozer"
 	self.piggydozer.aoe_damage_data = {
 		verification_delay = 0.3,
 		activation_range = 300,
@@ -19997,6 +19989,7 @@ function CharacterTweakData.character_map(...)
 		table.insert(char_map.hvh.list, "ene_zeal_swat_heavy_2")
 		table.insert(char_map.hvh.list, "ene_fbi_hvh_4")
 		table.insert(char_map.hvh.list, "ene_bulldozer_snowman")
+		table.insert(char_map.hvh.list, "ene_dozer_piggy")
 	--bph  (❌)
 		table.insert(char_map.bph.list, "ene_murky_heavyg")
 		table.insert(char_map.bph.list, "ene_murky_sgt")

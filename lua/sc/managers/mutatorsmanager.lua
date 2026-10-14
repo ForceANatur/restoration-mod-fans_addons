@@ -63,9 +63,9 @@ function MutatorsManager:init()
 		MutatorNoAmmoDrop:new(self),
 		-- Fork Content
 		MutatorUMP4U2:new(self),
+		MutatorPiggyBulldozer:new(self),
 		-- anything under here is ❌
 --[[	MutatorOopsAllSpecials:new(self),
-		MutatorPiggyBulldozer:new(self),
 		MutatorSnipersAndSnipers:new(self),
 		MutatorMoreSpecials:new(self),
 		MutatorHighNoon:new(self),

@@ -64,6 +64,9 @@ local prefix_lookup_for_humans = {
 		"units/pd2_mod_ttr/characters/ene_fbi_gensec_heavy_r870/ene_fbi_gensec_heavy_r870",
 		"units/pd2_mod_ttr/characters/ene_fbi_gensec_shield/ene_fbi_gensec_shield",
 		"units/pd2_mod_ttr/characters/ene_marshal_gensec/ene_marshal_gensec",
+		-- Vanilla units
+		"units/pd2_dlc_gitgud/characters/ene_zeal_swat/ene_zeal_swat",
+		"units/pd2_dlc_gitgud/characters/ene_zeal_swat_heavy/ene_zeal_swat_heavy",
 	},
 	american_cop_list = {
 		func = function(self, nr_variations)

@@ -5121,6 +5121,15 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 				["bm_w_x_type54"] = weapon_names == 2 and "The twin colts" or "The twin crosskills",
 				["bm_akmsu_sc_desc"] = "A small rifle useful for taking down #{stat_maxed}#BIG MEN##. Not to be underestimated as this rifle can hold its own in just about any scenario.",
 				["bm_melee_shock_info"] = "\"Th- This is all I could gift.... Um...\" \n\"Spanner!\" \n\"For you!\"",
+				["bm_w_rc_auto9_desc"] = "Dead or alive; you're coming with me.",
+				["bm_menu_sc_huntsman_desc"] = "The ultimate demon slaying weapon, the pinnacle of shotguns, you think 'Why didn't they call it the Double Barrel?' Because it's better, because it's super!",
+				["bm_super_sc_desc"] = "The ultimate demon slaying weapon, the pinnacle of shotguns, you think 'Why didn't they call it the Double Barrel?' Because it's better, because it's super!",
+				["menu_silence_expert_beta_sc"] = "Explosive Headshot",
+				["bm_melee_fight_info"] = "KAKATTE KOI!\n\nParrying an enemy attack deals #{skill_color}#120## melee damage to them. This can be increased with skills.\n#{stats_negative}#I'M NOT GONNA SUGARCOAT IT\nR1 + (Triangle)##",
+				["RestorationModLogOutfitStringsDescID"] = "Logs when outfit string updates are called through NetworkPeer - turn this off when youre done for those sweet sweet frames",
+				["bm_melee_erica_info"] = "#{stats_negative}#You will never be a Caber Knight.##\n\nFully charged hits against living enemies have a #{skill_color}#100%## chance to explode dealing #{risk}#720## damage in a #{skill_color}#5## meter radius from the point of impact.\n\n#{important_1}#The explosion deals self-damage.##",
+				["bm_melee_bonk_info"] = "#{risk}#STOUT SHAKO FOR 2 REFINED##",
+				["bm_melee_funder_strike_info"] = "#{skill_color}#\"Pick up that can.\"##\n#{important_1}#\"No Fuck Off.\"##\n\nJerry rigged shock baton that stuns targets on touch.\n\n#{skill_color}#Electrocutes on impact,## stunning most enemies; a fully charged strike is needed to stun special and elite enemies.\n#{important_1}#Titan-Shields, Titan-Tasers, Titan-Bulldozers and Captains are immune to its stunning effects.##",
 			})
 		end
 
@@ -5654,11 +5663,6 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 		["mutator_letthesleepinggoddie_longdesc"] = "Upon a non-empty reload, ammo from the previous magazine is lost.\n\nNote: Weapons that retain their ammo during their reload (per-round loading, retention reloads, etc.) as well as reloads triggered by skills are exempt from the effects of this mutator.",
 		["mutator_letthesleepinggoddie_no_effect"] = "Unaffected by the \"Magazine Martyr\" mutator.",
 
-		-- Fork mutators here
-		["MutatorUMP4U2"] = "Sting Like A Bee",
-		["MutatorUMP4U2_desc"] = "Various units have better guns.",
-		["MutatorUMP4U2_longdesc"] = "Various units have better weapons. Some weapons only appear with this mutator enabled.",
-
 		["menu_cg22_post_objective_1_desc"] = "Kill 200 enemies with any sniper rifle.",
 		["menu_cg22_post_objective_2_desc"] = "Kill 15 Cloakers with the North Star rifle on Very Hard or above.",
 		["menu_cg22_post_objective_3_desc"] = "Perform 50 double kills with the North Star rifle on any difficulty.",
@@ -5720,6 +5724,15 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 		["mutator_high_noon_longdesc"] = "Howdy Cowboys! Prepare to fan your hammers in a thrilling heist of rustlers and deputies.\n\nNo Tactical Advantage Whatsoever: Can only use weapons from the age of Cowboys.\n\nNOTE: When this mutator is disabled after being enabled, this mutator's effects on weapons will remain visible in menus until after a restart or a loading screen.",
 		["bm_not_cowboy_sc"] = "CANNOT USE!!!",
 		["bm_not_cowboy_sc_desc"] = "#{important_1}#Not Rootin' Tootin'!##",
+
+		-- Fork mutators here
+		["MutatorUMP4U2"] = "Sting Like A Bee",
+		["MutatorUMP4U2_desc"] = "Various units have better guns.",
+		["MutatorUMP4U2_longdesc"] = "Various units have better weapons. Some weapons only appear with this mutator enabled.",
+
+		["mutator_warthogs"] = "Warthogs",
+		["mutator_warthogs_desc"] = "Warthogs spawn in naturally.",
+		["mutator_warthogs_longdesc"] = "Whenever a Bulldozer of any variety spawns, there is a chance that it will be replaced by a flamethrower weilding Warthog.",
 
 		--Crime Spree mutators
 		["mutator_cloakercuff"] = "Conjurer",
