@@ -498,11 +498,15 @@ function CharacterTweakData:_init_fbi(presets)
 	self.fbi_vet.use_animation_on_fire_damage = false
 	self.fbi_vet.move_speed = presets.move_speed.lightning
 	self.fbi_vet.surrender = nil
-	if self:get_ai_group_type() == "russia" or self:get_ai_group_type() == "federales" then
-	   self.fbi_vet.custom_voicework = nil	
-	else   
-	   self.fbi_vet.custom_voicework = "bruce"
-	end   
+	if self:get_ai_group_type() == "russia" then
+		self.fbi_vet.custom_voicework = nil
+	elseif self:get_ai_group_type() == "murkywater" then
+		self.fbi_vet.custom_voicework = "murky_vet"
+	elseif self:get_ai_group_type() == "federales" then
+		self.fbi_vet.custom_voicework = "mexico_vet"
+	else
+		self.fbi_vet.custom_voicework = "bruce"
+	end  
 	self.fbi_vet.dodge_with_grenade = {
 		smoke = {duration = {
 			12,
@@ -938,6 +942,11 @@ function CharacterTweakData:_init_heavy_swat(presets)
 	self.heavy_swat.static_dodge_preset = true
 	self.heavy_swat.static_melee_preset = false	
 	self.heavy_swat.heal_cooldown = 2.5
+	if self:get_ai_group_type() == "murkywater" then
+		self.heavy_swat.custom_voicework = "murky_heavygunner"
+	else
+		self.heavy_swat.custom_voicework = nil
+	end
 	table.insert(self._enemy_list, "heavy_swat")
 	
 	self.zeal_heavy_swat = deep_clone(self.heavy_swat)
@@ -979,7 +988,11 @@ function CharacterTweakData:_init_heavy_swat(presets)
 	self.heavy_swat_sniper.static_melee_preset = true
 	self.heavy_swat_sniper.spawn_sound_event_2 = "cloaker_spawn"
 	if self:get_ai_group_type() == "russia" or self:get_ai_group_type() == "federales" then
-		self.heavy_swat_sniper.custom_voicework = "tswat_ru"
+		self.heavy_swat_sniper.custom_voicework = "marshal_marksman_ru"
+	elseif self:get_ai_group_type() == "zombie" then
+		self.heavy_swat_sniper.custom_voicework = "tsniper_hvh"
+	elseif self:get_ai_group_type() == "murkywater" then
+		self.heavy_swat_sniper.custom_voicework = "murky_tsniper"
 	else
 		self.heavy_swat_sniper.custom_voicework = "tsniper"
 	end
@@ -1136,6 +1149,11 @@ function CharacterTweakData:_init_fbi_heavy_swat(presets)
 	self.fbi_heavy_swat.static_dodge_preset = true
 	self.fbi_heavy_swat.static_melee_preset = true	
 	self.fbi_heavy_swat.heal_cooldown = 1.875
+	if self:get_ai_group_type() == "murkywater" then
+		self.fbi_heavy_swat.custom_voicework = "murky_heavygunner"
+	else
+		self.fbi_heavy_swat.custom_voicework = nil
+	end
 	table.insert(self._enemy_list, "fbi_heavy_swat")
 end
 
@@ -1265,6 +1283,8 @@ function CharacterTweakData:_init_city_swat(presets)
 		self.city_swat_titan.custom_voicework = "tswat_ru"
 	elseif self:get_ai_group_type() == "zombie" then
 		self.city_swat_titan.custom_voicework = "skeleton"
+	elseif self:get_ai_group_type() == "murkywater" then
+		self.city_swat_titan.custom_voicework = "murky_tswat"
 	else
 		self.city_swat_titan.custom_voicework = "pdth"
 	end
@@ -1332,6 +1352,22 @@ function CharacterTweakData:_init_city_swat(presets)
 		self.weekend_lmg.yellow_blood = false
 	end
 	table.insert(self._enemy_list, "weekend_lmg")
+
+	--Cruel Trance variant
+	self.weekend_lmg_cruel = deep_clone(self.weekend_lmg)
+	self.weekend_lmg_cruel.custom_voicework = "murky_heavygunner"
+	table.insert(self._enemy_list, "weekend_lmg_cruel")
+
+	self.weekend_lmg_cruel_assault = deep_clone(self.city_swat_titan_assault)
+	self.weekend_lmg_cruel_assault.speech_prefix_p1 = "null"
+	self.weekend_lmg_cruel_assault.speech_prefix_p2 = nil
+	self.weekend_lmg_cruel_assault.speech_prefix_count = nil
+	self.weekend_lmg_cruel_assault.HEALTH_INIT = 28.125
+	self.weekend_lmg_cruel_assault.headshot_dmg_mul = 3.3125
+	self.weekend_lmg_cruel_assault.heal_cooldown = 1.875
+	self.weekend_lmg_cruel_assault.can_throw_frag = true
+	self.weekend_lmg_cruel_assault.custom_voicework = "murky_heavygunner"
+	table.insert(self._enemy_list, "weekend_lmg_cruel_assault")
 	
 	--Weekend LMG (Guard Variant)
 	self.weekend_elite_guard = deep_clone(self.weekend_lmg)	
@@ -1515,7 +1551,7 @@ function CharacterTweakData:_init_gangster(presets)
 	self.enforcer.damage.hurt_severity = presets.hurt_severities.only_light_hurt_no_explode
 	self.enforcer.damage.explosion_damage_mul = 1.25
 	self.enforcer.damage.rocket_damage_mul = 1.25
-	self.enforcer.surrender = nil	
+	self.enforcer.surrender = nil
 	self.enforcer.unintimidateable = nil
 	self.enforcer.priority_shout = "g29"
 	self.enforcer.bot_priority_shout = "g29"
@@ -2930,6 +2966,13 @@ function CharacterTweakData:_init_spooc(presets)
 		}
 	}
 	self.spooc.min_obj_interrupt_dis = 800
+	if self:get_ai_group_type() == "murkywater" then
+		self.spooc.custom_voicework = "murky_spook"
+	elseif self:get_ai_group_type() == "nypd" then
+		self.spooc.custom_voicework = "spook_nypd"
+	else
+		self.spooc.custom_voicework = nil
+	end
 	table.insert(self._enemy_list, "spooc")
 
 	--Titan Cloaker
@@ -3184,6 +3227,13 @@ function CharacterTweakData:_init_shield(presets)
 	self.shield.heal_cooldown = 5
 	self.shield.min_obj_interrupt_dis = 300
 	self.shield.no_mutator_weapon_override = true
+	if self:get_ai_group_type() == "nypd" then
+		self.shield.custom_voicework = "shield_nypd"
+	elseif self:get_ai_group_type() == "murkywater" then
+		self.shield.custom_voicework = "murky_shield"
+	else
+		self.shield.custom_voicework = nil
+	end
 	table.insert(self._enemy_list, "shield")
 
 	self.shield_cruel = deep_clone(self.shield)
@@ -3268,7 +3318,7 @@ function CharacterTweakData:_init_phalanx_minion(presets)
 	if self:get_ai_group_type() == "russia" or self:get_ai_group_type() == "federales" then
 		self.phalanx_minion.custom_voicework = "tswat_ru"
 	else
-		self.phalanx_minion.custom_voicework = "tshield"
+		self.phalanx_minion.custom_voicework = "pdth"
 	end
 
 	self.phalanx_minion.yellow_blood = true
@@ -3282,6 +3332,11 @@ function CharacterTweakData:_init_phalanx_minion(presets)
 	self.phalanx_minion_assault.spawn_sound_event_3 = "hos_shield_indication_sound_terminator_style" --that's a big ass name
 	self.phalanx_minion_assault.no_retreat = false
 	table.insert(self._enemy_list, "phalanx_minion_assault")
+
+	self.phalanx_minion_cruel = deep_clone(self.phalanx_minion_assault)
+	self.phalanx_minion_cruel.custom_voicework = "murky_tswat"
+	self.phalanx_minion_cruel.marshal_logic = true
+	table.insert(self._enemy_list, "phalanx_minion_cruel")
 end
 
 -- Stronger than normal shields but not as tough as titan shields
@@ -3493,7 +3548,21 @@ function CharacterTweakData:_init_phalanx_vip(presets)
 	--Just in case
 	self.phalanx_vip_break.melee_push_multiplier = 1
 	self.phalanx_vip_break.melee_force_crouch = false	
-	table.insert(self._enemy_list, "phalanx_vip_break")		
+	table.insert(self._enemy_list, "phalanx_vip_break")
+
+	self.phalanx_minion_cruel_break = deep_clone(self.city_swat_titan)
+	self.phalanx_minion_cruel_break.custom_voicework = "murky_tswat"
+	self.phalanx_minion_cruel_break.HEALTH_INIT = 28.5
+	self.phalanx_minion_cruel_break.headshot_dmg_mul = 2.75
+	self.phalanx_minion_cruel_break.damage.hurt_severity = presets.hurt_severities.titan
+	self.phalanx_minion_cruel_break.damage.bullet_damage_mul = 1
+	self.phalanx_minion_cruel_break.damage.explosion_damage_mul = 1
+	self.phalanx_minion_cruel_break.damage.tase_damage_mul = 1
+	self.phalanx_minion_cruel_break.modify_health_on_tweak_change = true
+	self.phalanx_minion_cruel_break.tmp_invulnerable_on_tweak_change = 2
+	self.phalanx_minion_cruel_break.marshal_logic = true
+	self.phalanx_minion_cruel_break.is_special = false
+	table.insert(self._enemy_list, "phalanx_minion_cruel_break")
 end
 
 function CharacterTweakData:_init_spring(presets)
@@ -4019,6 +4088,10 @@ function CharacterTweakData:_init_boom(presets)
 	--Temp, until we get a better one
 	elseif self:get_ai_group_type() == "russia" then
 		self.boom.custom_voicework = "tswat_ru"
+	elseif self:get_ai_group_type() == "nypd" then
+		self.boom.custom_voicework = "grenadier_nypd"
+	elseif self:get_ai_group_type() == "murkywater" then
+		self.boom.custom_voicework = "murky_grenadier"
 	else
 		self.boom.custom_voicework = "grenadier"
 	end
@@ -4027,6 +4100,18 @@ function CharacterTweakData:_init_boom(presets)
 	self.boom.marshal_logic = true
 	self.boom.heal_cooldown = 7.5
 	table.insert(self._enemy_list, "boom")
+
+	-- insert serious sam kamikaze scream
+	self.kamikaze = deep_clone(self.boom)
+	self.kamikaze.move_speed = presets.move_speed.lightning
+	self.kamikaze.dodge = nil
+	self.kamikaze.use_gas = false
+	self.kamikaze.can_deploy_tear_gas = false
+	self.kamikaze.custom_voicework = "meme_man"
+	self.kamikaze.HEALTH_INIT = 1
+	self.kamikaze.headshot_dmg_mul = 15
+	self.kamikaze.damage.melee_damage_mul = 12345	-- even that toy knife wont save you
+	table.insert(self._enemy_list, "kamikaze")
 	
 	self.boom_summers = deep_clone(self.boom)
 	self.boom_summers.flammable = false
@@ -19990,7 +20075,7 @@ function CharacterTweakData.character_map(...)
 		table.insert(char_map.hvh.list, "ene_fbi_hvh_4")
 		table.insert(char_map.hvh.list, "ene_bulldozer_snowman")
 		table.insert(char_map.hvh.list, "ene_dozer_piggy")
-	--bph  (❌)
+	--bph
 		table.insert(char_map.bph.list, "ene_murky_heavyg")
 		table.insert(char_map.bph.list, "ene_murky_sgt")
 	--vip
@@ -20167,7 +20252,7 @@ function CharacterTweakData.character_map(...)
 				"ene_fbi_3",
 				"ene_fbi_1",
 				"ene_fbi_2",
-				"ene_fbi_4", --(❌)
+				"ene_fbi_4",
 				"ene_fbi_swat_1",
 				"ene_fbi_swat_2",
 				"ene_fbi_swat_3",
@@ -20181,7 +20266,7 @@ function CharacterTweakData.character_map(...)
 				"ene_zeal_swat_shield",
 				"ene_titan_rifle",
 				"ene_titan_shotgun",
-				"ene_rpg_grunt", --(❌)
+				"ene_rpg_grunt",
 				"ene_titan_sniper",
 				"ene_titan_sniper_scripted",
 				"ene_city_swat_1",
@@ -20209,7 +20294,7 @@ function CharacterTweakData.character_map(...)
 				"ene_swat_3",
 				"ene_murky_sniper",
 				"ene_murky_sniper_2",
-				"ene_murky_wildcard" --(❌)
+				"ene_murky_wildcard"
 			}
 		}
 
@@ -20219,7 +20304,7 @@ function CharacterTweakData.character_map(...)
 				"ene_omnia_hrt_1",
 				"ene_omnia_hrt_2",
 				"ene_omnia_hrt_3",
-				"ene_omnia_hrt_4", --(❌)
+				"ene_omnia_hrt_4",
 				"ene_omnia_crew",
 				"ene_omnia_crew_2",
 				"ene_omnia_city",
