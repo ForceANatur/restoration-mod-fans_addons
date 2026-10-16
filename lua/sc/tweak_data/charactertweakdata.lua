@@ -434,6 +434,12 @@ function CharacterTweakData:_init_cop(presets)
 		self.cop_wildcard.custom_voicework = nil
 	end
 	table.insert(self._enemy_list, "cop_wildcard")
+
+	self.teto = deep_clone(self.dave)
+	self.teto.HEALTH_INIT = 30
+	self.teto.headshot_dmg_mul = 3
+	self.teto.custom_voicework = "kasane_teto"
+	table.insert(self._enemy_list, "teto")
 end
 
 function CharacterTweakData:_init_fbi(presets)	
@@ -546,7 +552,14 @@ function CharacterTweakData:_init_fbi(presets)
 	self.fbi_vet_boss.rescue_hostages = false
 	self.fbi_vet_boss.steal_loot = false	
 	self.fbi_vet_boss.gas_on_death = false
-	table.insert(self._enemy_list, "fbi_vet_boss")	
+	table.insert(self._enemy_list, "fbi_vet_boss")
+
+	self.fbi_vet_cruel = deep_clone(self.fbi_vet)
+	self.fbi_vet_cruel.HEALTH_INIT = 24
+	self.fbi_vet_cruel.headshot_dmg_mul = 2
+	--temp until i can ask hylie for her voice
+	self.fbi_vet_cruel.custom_voicework = "bruce"
+	table.insert(self._enemy_list, "fbi_vet_cruel")
 		
 	self.meme_man = deep_clone(self.fbi_vet)		
 	self.meme_man.tags = {"law", "tank", "special"}		
@@ -607,9 +620,14 @@ function CharacterTweakData:_init_fbi(presets)
 	self.vetlod.speech_prefix_p1 = "buge"
 	self.vetlod.speech_prefix_p2 = nil
 	self.vetlod.speech_prefix_count = nil		
-	self.vetlod.custom_voicework = "tdozer"
+	self.vetlod.custom_voicework = "bruce_bitcrushed"
 	self.vetlod.access = "fbi"
-	table.insert(self._enemy_list, "vetlod")							
+	table.insert(self._enemy_list, "vetlod")
+
+	-- Cruel Trance FBI
+	self.fbi_cruel = deep_clone(self.fbi)
+	self.fbi_cruel.custom_voicework = "bravo_elite_murky"
+	table.insert(self._enemy_list, "fbi_cruel")
 end
 
 function CharacterTweakData:_init_medic(presets)	
@@ -851,6 +869,10 @@ function CharacterTweakData:_init_swat(presets)
 	self.hrt.rescue_hostages = true
 	self.hrt.steal_loot = true	
 	table.insert(self._enemy_list, "hrt")
+
+	self.hrt_cruel = deep_clone(self.hrt)
+	self.hrt_cruel.custom_voicework = "bravo_murky"
+	table.insert(self._enemy_list, "hrt_cruel")
 	
 	self.hrt_titan = deep_clone(self.hrt)
 	self.hrt_titan.tags = {"law", "custom", "special"}
@@ -892,6 +914,20 @@ function CharacterTweakData:_init_swat(presets)
 	self.hrt_titan.no_asu = true
 	self.hrt_titan.marshal_logic = true
 	table.insert(self._enemy_list, "hrt_titan")
+
+	self.hrt_titan_heavy = deep_clone(self.hrt_titan)
+	self.hrt_titan_heavy.HEALTH_INIT = 17.5
+	self.hrt_titan.headshot_dmg_mul = 1.9
+	self.hrt_titan_heavy.heal_cooldown = 2
+	self.hrt_titan_heavy.move_speed = presets.move_speed.normal
+	if self:get_ai_group_type() == "russia" or self:get_ai_group_type() == "federales" then
+		self.hrt_titan_heavy.custom_voicework = "asu_ru_heavy"
+	elseif self:get_ai_group_type() == "zombie" then
+		self.hrt_titan_heavy.custom_voicework = "silent"
+	else
+		self.hrt_titan_heavy.custom_voicework = "heavygunner"
+	end
+	table.insert(self._enemy_list, "hrt_titan_heavy")
 end
 
 function CharacterTweakData:_init_heavy_swat(presets)	
@@ -1262,6 +1298,11 @@ function CharacterTweakData:_init_city_swat(presets)
 		self.weekend_guard.access = "security"
 	end
 	table.insert(self._enemy_list, "weekend_guard")
+
+	self.weekend_cruel = deep_clone(self.weekend)
+	-- temp until i can get a va for this
+	self.weekend_cruel.custom_voicework = "bravo_murky"
+	table.insert(self._enemy_list, "weekend_cruel")
 	
 	--Titan SWAT (LMG)
 	self.city_swat_titan = deep_clone(self.city_swat)
@@ -1446,15 +1487,15 @@ function CharacterTweakData:_init_marshal_marksman(presets)
 	self.marshal_marksman.speech_prefix_p2 = nil
 	self.marshal_marksman.speech_prefix_count = nil
 	self.marshal_marksman.yellow_blood = false
-	if self:get_ai_group_type() == "russia" then
-		self.marshal_marksman.custom_voicework = "tswat_ru"
-	elseif self:get_ai_group_type() == "murkywater" then
-		self.marshal_marksman.custom_voicework = "bravo_elite_murky"	
-	elseif self:get_ai_group_type() == "federales" then
-		self.marshal_marksman.custom_voicework = "bravo_elite_mex"
+	if self:get_ai_group_type() == "federales" then
+		self.marshal_marksman.custom_voicework = "marshal_marksman_bex"
+	elseif self:get_ai_group_type() == "russia" then
+		self.marshal_marksman.custom_voicework = "marshal_marksman_ru"
+	elseif self:get_ai_group_type() == "zombie" then
+		self.marshal_marksman.custom_voicework = "marshal_marksman_hvh"
 	else
-		self.marshal_marksman.custom_voicework = "bravo_dmr"
-	end		
+		self.marshal_marksman.custom_voicework = "marshal_marksman"
+	end
 
 	--Clones the scripted version of Titan Sniper
 	self.marshal_marksman_scripted = deep_clone(self.heavy_swat_sniper_scripted)
@@ -1462,16 +1503,26 @@ function CharacterTweakData:_init_marshal_marksman(presets)
 	self.marshal_marksman_scripted.speech_prefix_p2 = nil
 	self.marshal_marksman_scripted.speech_prefix_count = nil
 	self.marshal_marksman_scripted.yellow_blood = false
-	if self:get_ai_group_type() == "russia" then
-		self.marshal_marksman_scripted.custom_voicework = "tswat_ru"
-	elseif self:get_ai_group_type() == "murkywater" then
-		self.marshal_marksman_scripted.custom_voicework = "bravo_elite_murky"	
-	elseif self:get_ai_group_type() == "federales" then
-		self.marshal_marksman_scripted.custom_voicework = "bravo_elite_mex"
+	if self:get_ai_group_type() == "federales" then
+		self.marshal_marksman_scripted.custom_voicework = "marshal_marksman_bex"
+	elseif self:get_ai_group_type() == "russia" then
+		self.marshal_marksman_scripted.custom_voicework = "marshal_marksman_ru"
+	elseif self:get_ai_group_type() == "zombie" then
+		self.marshal_marksman_scripted.custom_voicework = "marshal_marksman_hvh"
 	else
-		self.marshal_marksman_scripted.custom_voicework = "bravo_dmr"
-	end	
+		self.marshal_marksman_scripted.custom_voicework = "marshal_marksman"
+	end
 	table.insert(self._enemy_list, "marshal_marksman")
+
+	--Mememan Sniper
+	self.heavy_swat_sniper_mememan = deep_clone(self.heavy_swat_sniper)
+	self.heavy_swat_sniper_mememan.custom_voicework = "meme_man"
+	self.heavy_swat_sniper_mememan.yellow_blood = false
+	self.heavy_swat_sniper_mememan.HEALTH_INIT = 21
+	self.heavy_swat_sniper_mememan.headshot_dmg_mul = 1.69
+	self.heavy_swat_sniper_mememan.move_speed = presets.move_speed.lightning
+	self.heavy_swat_sniper_mememan.dodge = presets.dodge.elite
+	table.insert(self._enemy_list, "heavy_swat_sniper_mememan")
 end
 
 
@@ -3254,7 +3305,7 @@ function CharacterTweakData:_init_shield(presets)
 	self.shield_weekend.damage.shield_knocked = true
 	self.shield_weekend.HEALTH_INIT = 20
 	self.shield_weekend.headshot_dmg_mul = 3.8
-	self.shield_weekend.custom_voicework = "bravo_elite"
+	self.shield_weekend.custom_voicework = "cruel_enforcer"
 	table.insert(self._enemy_list, "shield_weekend")
 
 	self.shield_weekend_vanilla = deep_clone(self.shield_weekend)
@@ -3317,6 +3368,8 @@ function CharacterTweakData:_init_phalanx_minion(presets)
 	self.phalanx_minion.speech_prefix_count = 1	
 	if self:get_ai_group_type() == "russia" or self:get_ai_group_type() == "federales" then
 		self.phalanx_minion.custom_voicework = "tswat_ru"
+	elseif self:get_ai_group_type() == "zombie" then
+		self.phalanx_minion.custom_voicework = "skeleton"
 	else
 		self.phalanx_minion.custom_voicework = "pdth"
 	end
@@ -20059,7 +20112,7 @@ function CharacterTweakData.character_map(...)
 		
 	--Christmas
 		table.insert(char_map.cg22.list, "ene_bulldozer_snowman")
-	--HvH  (❌, the entire faction is not in yet)
+	--HvH
 		table.insert(char_map.hvh.list, "ene_bulldozer_minigun_classic")
 		table.insert(char_map.hvh.list, "ene_bulldozer_medic")
 		table.insert(char_map.hvh.list, "ene_city_swat_1")
@@ -20120,7 +20173,7 @@ function CharacterTweakData.character_map(...)
 				"ene_zeal_cloaker",
 				"ene_zeal_cloaker_sc",
 				"ene_zeal_swat",
-				"ene_zeal_swat_2", --(❌)
+				"ene_zeal_swat_2",
 				"ene_zeal_city_1",
 				"ene_zeal_city_2",
 				"ene_zeal_city_3",
@@ -20128,15 +20181,15 @@ function CharacterTweakData.character_map(...)
 				"ene_grenadier_1",				
 				"ene_zeal_sniper",
 				"ene_zeal_swat_heavy",
-				"ene_zeal_swat_heavy_2", --(❌)
+				"ene_zeal_swat_heavy_2",
 				"ene_zeal_swat_shield",
 				"ene_zeal_swat_shield_sc",
 				"ene_zeal_tazer",
 				"ene_zeal_tazer_sc",
-				"ene_zeal_fbi_c45", --(❌)
+				"ene_zeal_fbi_c45",
 				"ene_zeal_fbi_m4",
 				"ene_zeal_fbi_mp5",
-				"ene_zeal_fbi_r870", --(❌)
+				"ene_zeal_fbi_r870",
 				"ene_zeal_swat_heavy_sc",
 				"ene_zeal_swat_heavy_r870_sc",
 				"ene_deathvox_medic" --(❌)
@@ -20450,7 +20503,7 @@ function CharacterTweakData.character_map(...)
 			path = "units/pd2_mod_dave/characters/",
 			list = {
 				"ene_big_dave",
-				"ene_dave_hvh" --(❌)
+				"ene_dave_hvh"
 			}
 		}
 
@@ -20480,7 +20533,7 @@ function CharacterTweakData.character_map(...)
 			}
 		}
 
-		char_map.ngvh = { --(❌)
+		char_map.ngvh = {
 			path = "units/pd2_mod_ngvh/characters/",
 			list = {
 				"ene_ntl_groundsniper",

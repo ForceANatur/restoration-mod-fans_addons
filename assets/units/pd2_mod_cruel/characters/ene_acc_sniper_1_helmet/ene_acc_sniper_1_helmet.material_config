@@ -1,0 +1,23 @@
+<materials version="3">
+	<material name="mtr_ene_acc_security_cap" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP:SELF_ILLUMINATION:SELF_ILLUMINATION_BLOOM" version="2">
+		<bump_normal_texture 	file="units/pd2_mod_cruel/characters/ene_sniper_1/ene_omnia_lpf_nm"/>
+		<diffuse_texture 		file="units/pd2_mod_cruel/characters/ene_sniper_1/ene_omnia_lpf_df"/>
+		<self_illumination_texture file="units/pd2_mod_cruel/characters/ene_sniper_1/ene_omnia_lpf_il"/>
+		<variable type="scalar" name="il_bloom" value="5"/>
+        <variable type="scalar" name="il_multiplier" value="neonsign"/>
+	</material>
+	<material name="mtr_ene_acc_security_cap_lod_1" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP:SELF_ILLUMINATION:SELF_ILLUMINATION_BLOOM" version="2">
+		<bump_normal_texture 	file="units/pd2_mod_cruel/characters/ene_sniper_1/ene_omnia_lpf_nm" mip="1"/>
+		<diffuse_texture 		file="units/pd2_mod_cruel/characters/ene_sniper_1/ene_omnia_lpf_df" mip="1"/>
+		<self_illumination_texture file="units/pd2_mod_cruel/characters/ene_sniper_1/ene_omnia_lpf_il"/>
+		<variable type="scalar" name="il_bloom" value="5"/>
+        <variable type="scalar" name="il_multiplier" value="neonsign"/>
+	</material>
+	<material name="mtr_ene_acc_security_cap_lod_2" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP:SELF_ILLUMINATION:SELF_ILLUMINATION_BLOOM" version="2">
+		<bump_normal_texture 	file="units/pd2_mod_cruel/characters/ene_sniper_1/ene_omnia_lpf_nm" mip="4"/>
+		<diffuse_texture 		file="units/pd2_mod_cruel/characters/ene_sniper_1/ene_omnia_lpf_df" mip="4"/>
+		<self_illumination_texture file="units/pd2_mod_cruel/characters/ene_sniper_1/ene_omnia_lpf_il"/>
+		<variable type="scalar" name="il_bloom" value="5"/>
+        <variable type="scalar" name="il_multiplier" value="neonsign"/>
+	</material>
+</materials>

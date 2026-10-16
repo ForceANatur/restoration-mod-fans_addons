@@ -1,0 +1,79 @@
+<materials version="3" group="ene_fbi_heavy_r870">
+    <material render_template="generic:CONTOUR:DIFFUSE_TEXTURE:NORMALMAP:SKINNED_3WEIGHTS" unique="true" version="2" name="mtr_head">
+        <bump_normal_texture 	file="units/pd2_mod_cruel/characters/ene_fbi_heavy_r870/helmets_city_atlas_nm"/>
+		<diffuse_texture 		file="units/pd2_mod_cruel/characters/ene_fbi_heavy_r870/ene_fbi_heavy_r870_helmet_df"/>
+        <variable value="1 1 1" type="vector3" name="contour_color"/>
+        <variable value="0" type="scalar" name="contour_opacity"/>
+    </material>
+    <material render_template="generic:CONTOUR:DIFFUSE_TEXTURE:NORMALMAP:SKINNED_3WEIGHTS" unique="true" version="2" name="mtr_head_lod_1">
+        <bump_normal_texture 	file="units/pd2_mod_cruel/characters/ene_fbi_heavy_r870/helmets_city_atlas_nm" mip="1"/>
+		<diffuse_texture 		file="units/pd2_mod_cruel/characters/ene_fbi_heavy_r870/ene_fbi_heavy_r870_helmet_df" mip="1"/>
+        <variable value="1 1 1" type="vector3" name="contour_color"/>
+        <variable value="0" type="scalar" name="contour_opacity"/>
+    </material>
+    <material render_template="generic:CONTOUR:DIFFUSE_TEXTURE:NORMALMAP:SKINNED_3WEIGHTS" unique="true" version="2" name="mtr_head_lod_2">
+        <bump_normal_texture 	file="units/pd2_mod_cruel/characters/ene_fbi_heavy_r870/helmets_city_atlas_nm" mip="4"/>
+		<diffuse_texture 		file="units/pd2_mod_cruel/characters/ene_fbi_heavy_r870/ene_fbi_heavy_r870_helmet_df" mip="4"/>
+        <variable value="1 1 1" type="vector3" name="contour_color"/>
+        <variable value="0" type="scalar" name="contour_opacity"/>
+    </material>
+
+    <material render_template="generic:CONTOUR:DIFFUSE_TEXTURE:NORMALMAP:SELF_ILLUMINATION:SELF_ILLUMINATION_BLOOM:SKINNED_3WEIGHTS" unique="true" version="2" name="mtr_body">
+        <bump_normal_texture 	file="units/pd2_mod_cruel/characters/ene_fbi_heavy_r870/body_nm"/>
+        <diffuse_texture 		file="units/pd2_mod_cruel/characters/ene_fbi_heavy_r870/body_df"/>
+		<self_illumination_texture file="units/pd2_mod_cruel/characters/ene_fbi_heavy_r870/body_il"/>
+		<variable type="scalar" name="il_bloom" value="5"/>
+		<variable type="scalar" name="il_multiplier" value="neonsign"/>
+        <variable value="1 1 1" type="vector3" name="contour_color"/>
+        <variable value="0" type="scalar" name="contour_opacity"/>
+    </material>
+    <material render_template="generic:CONTOUR:DIFFUSE_TEXTURE:NORMALMAP:SELF_ILLUMINATION:SELF_ILLUMINATION_BLOOM:SKINNED_3WEIGHTS" unique="true" version="2" name="mtr_body_lod_1">
+        <bump_normal_texture    file="units/pd2_mod_cruel/characters/ene_fbi_heavy_r870/body_nm" mip="1"/>
+        <diffuse_texture 		file="units/pd2_mod_cruel/characters/ene_fbi_heavy_r870/body_df" mip="1"/>
+		<self_illumination_texture file="units/pd2_mod_cruel/characters/ene_fbi_heavy_r870/body_il"/>
+		<variable type="scalar" name="il_bloom" value="5"/>
+		<variable type="scalar" name="il_multiplier" value="neonsign"/>
+        <variable value="1 1 1" type="vector3" name="contour_color"/>
+        <variable value="0" type="scalar" name="contour_opacity"/>
+    </material>
+    <material render_template="generic:CONTOUR:DIFFUSE_TEXTURE:NORMALMAP:SELF_ILLUMINATION:SELF_ILLUMINATION_BLOOM:SKINNED_3WEIGHTS" unique="true" version="2" name="mtr_body_lod_2">
+        <bump_normal_texture    file="units/pd2_mod_cruel/characters/ene_fbi_heavy_r870/body_nm" mip="4"/>
+        <diffuse_texture 		file="units/pd2_mod_cruel/characters/ene_fbi_heavy_r870/body_df" mip="4"/>
+		<self_illumination_texture file="units/pd2_mod_cruel/characters/ene_fbi_heavy_r870/body_il"/>
+		<variable type="scalar" name="il_bloom" value="5"/>
+		<variable type="scalar" name="il_multiplier" value="neonsign"/>
+        <variable value="1 1 1" type="vector3" name="contour_color"/>
+        <variable value="0" type="scalar" name="contour_opacity"/>
+    </material>
+
+	<material render_template="generic:CONTOUR:DIFFUSE_TEXTURE:NORMALMAP:SELF_ILLUMINATION:SELF_ILLUMINATION_BLOOM" unique="true" version="2" name="mtr_heavy_helmet">
+		<bump_normal_texture 	file="units/pd2_mod_cruel/characters/ene_fbi_heavy_r870/helmets_city_atlas_nm"/>
+		<diffuse_texture 		file="units/pd2_mod_cruel/characters/ene_fbi_heavy_r870/ene_fbi_heavy_r870_helmet_df"/>
+		<self_illumination_texture file="units/pd2_mod_cruel/characters/ene_fbi_heavy_r870/ene_fbi_heavy_r870_helmet_il"/>
+		<variable type="scalar" name="il_bloom" value="10"/>
+        <variable type="scalar" name="il_multiplier" value="sun"/>
+		<variable value="1 1 1" type="vector3" name="contour_color"/>
+		<variable value="0" type="scalar" name="contour_opacity"/>
+	</material>
+    <material render_template="generic:CONTOUR:DIFFUSE_TEXTURE:NORMALMAP:SELF_ILLUMINATION:SELF_ILLUMINATION_BLOOM" unique="true" version="2" name="mtr_heavy_helmet_lod_1">
+		<bump_normal_texture 	file="units/pd2_mod_cruel/characters/ene_fbi_heavy_r870/helmets_city_atlas_nm" mip="1"/>
+		<diffuse_texture 		file="units/pd2_mod_cruel/characters/ene_fbi_heavy_r870/ene_fbi_heavy_r870_helmet_df" mip="1"/>
+		<self_illumination_texture file="units/pd2_mod_cruel/characters/ene_fbi_heavy_r870/ene_fbi_heavy_r870_helmet_il"/>
+		<variable type="scalar" name="il_bloom" value="10"/>
+        <variable type="scalar" name="il_multiplier" value="sun"/>
+        <variable value="1 1 1" type="vector3" name="contour_color"/>
+        <variable value="0" type="scalar" name="contour_opacity"/>
+    </material>
+    <material render_template="generic:CONTOUR:DIFFUSE_TEXTURE:NORMALMAP:SELF_ILLUMINATION:SELF_ILLUMINATION_BLOOM" unique="true" version="2" name="mtr_heavy_helmet_lod_2">
+		<bump_normal_texture 	file="units/pd2_mod_cruel/characters/ene_fbi_heavy_r870/helmets_city_atlas_nm" mip="4"/>
+		<diffuse_texture 		file="units/pd2_mod_cruel/characters/ene_fbi_heavy_r870/ene_fbi_heavy_r870_helmet_df" mip="4"/>
+		<self_illumination_texture file="units/pd2_mod_cruel/characters/ene_fbi_heavy_r870/ene_fbi_heavy_r870_helmet_il"/>
+		<variable type="scalar" name="il_bloom" value="10"/>
+        <variable type="scalar" name="il_multiplier" value="sun"/>
+        <variable value="1 1 1" type="vector3" name="contour_color"/>
+        <variable value="0" type="scalar" name="contour_opacity"/>
+    </material>
+
+    </material>		
+    <material name="shadow_caster" render_template="shadow_caster_only:SKINNED_1WEIGHT" version="2"/>
+</materials>

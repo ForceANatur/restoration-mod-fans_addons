@@ -1637,13 +1637,15 @@ local bravo_heavy = {
 }
 local cruel_zeal = {
 	zeal_light = {
-		"mp5",
 		"m4",
+		"g36",
+		"scar_heavy",
+		"amcar"
+	},
+	zeal_light_smg = {
 		"ump",
 		"g36",
 		"shepheard",
-		"scar_heavy",
-		"amcar",
 		"coal_npc"
 	},
 	zeal_light_shotgun = {
@@ -1654,9 +1656,12 @@ local cruel_zeal = {
 		"ksg"
 	},
 	zeal_heavy = {
+		"m4",
+		"hk21_sc",
 		"ump",
 		"bravo_rifle",
 		"g3a3_npc",
+		"scar_heavy",
 		"benelli",
 		"bravo_shotgun",
 		"spas12",
@@ -1776,6 +1781,7 @@ local weapon_mapping = {
 -- Cruel Trance ZEAL
 	[("units/pd2_mod_cruel/characters/ene_zeal_swat/ene_zeal_swat"):key{}] = cruel_zeal.zeal_light,
 	[("units/pd2_mod_cruel/characters/ene_zeal_swat_2/ene_zeal_swat_2"):key{}] = cruel_zeal.zeal_light_shotgun,
+	[("units/pd2_mod_cruel/characters/ene_zeal_swat_3/ene_zeal_swat_3"):key{}] = cruel_zeal.zeal_light_smg,
 	[("units/pd2_mod_cruel/characters/ene_zeal_swat_heavy/ene_zeal_swat_heavy"):key{}] = cruel_zeal.zeal_heavy,
 }
 
