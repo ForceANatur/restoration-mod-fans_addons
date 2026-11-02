@@ -3710,7 +3710,7 @@ function CharacterTweakData:_init_spring(presets)
 	self.headless_hatman.speech_prefix_p2 = nil
 	self.headless_hatman.speech_prefix_count = nil
 	self.headless_hatman.spawn_sound_event_2 = nil
-	self.headless_hatman.custom_voicework = "hatman"
+	self.headless_hatman.custom_voicework = "hatman_customVO_v1"
 	self.headless_hatman.slowing_bullets = {
 		duration = 1,
 		power = 0.5,
@@ -19197,6 +19197,22 @@ Hooks:PostHook(CharacterTweakData, "_create_table_structure", "remod_create_tabl
 	--PP-19 Bizon
 	table.insert(self.weap_ids, "coal_npc")
 	table.insert(self.weap_unit_names, Idstring("units/pd2_dlc_mad/weapons/wpn_npc_coal/wpn_npc_coal"))
+
+	-- Raid WW2 MP40
+	table.insert(self.weap_ids, "mp38_npc")
+	table.insert(self.weap_unit_names, Idstring("units/raid_ww2/weapons/wpn_npc_ger_mp38/wpn_npc_ger_mp38"))
+
+	-- Raid WW2 STG44
+	table.insert(self.weap_ids, "stg44_npc")
+	table.insert(self.weap_unit_names, Idstring("units/raid_ww2/weapons/wpn_npc_ger_stg44/wpn_npc_ger_stg44"))
+
+	-- Raid WW2 Thompson M1A1
+	table.insert(self.weap_ids, "m1928_npc")
+	table.insert(self.weap_unit_names, Idstring("units/raid_ww2/weapons/wpn_npc_smg_thompson/wpn_npc_smg_thompson"))
+
+	-- Raid WW2 M1 Garand
+	table.insert(self.weap_ids, "m1_garand_npc")
+	table.insert(self.weap_unit_names, Idstring("units/raid_ww2/weapons/wpn_npc_usa_garand/wpn_npc_usa_garand"))
 end)
 
 function CharacterTweakData:_set_easy()

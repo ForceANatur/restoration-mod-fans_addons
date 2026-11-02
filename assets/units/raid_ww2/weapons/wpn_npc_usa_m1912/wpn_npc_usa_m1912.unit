@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<unit type="wpn" slot="13">
+	<object file="units/vanilla/weapons/wpn_npc_usa_m1912/wpn_npc_usa_m1912" />
+	<dependencies>
+		<depends_on bnk="soundbanks/weapon_shotgun" />
+	</dependencies>
+  <extensions>
+  	<extension name="unit_data" class="ScriptUnitData" />
+    <extension name="base" class="NPCRaycastWeaponBase" >
+			<var name="name_id" value="usa_m1912_npc" />
+			<var name="_multivoice" value="true" />
+    </extension>
+    <extension name="damage" class="UnitDamage" />
+  </extensions>
+  <sounds>
+    <soundsource name="root" source="rp_wpn_npc_usa_m1912" />
+    <default_soundsource source="rp_wpn_npc_usa_m1912" />
+  </sounds>
+</unit>

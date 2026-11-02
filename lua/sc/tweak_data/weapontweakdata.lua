@@ -1106,7 +1106,7 @@ local crew_wep_preset = {
 
 		self.matever_ap_npc = deep_clone(self.raging_bull_npc)
 		self.matever_ap_npc.DAMAGE = 10
-		self.matever_ap_npc.sounds.prefix = "mateba_npc"
+		self.matever_ap_npc.sounds.prefix = "mateba_fire"
 		self.matever_ap_npc.armor_piercing = true
 		self.matever_ap_npc.suppression = 6.4
 	end
@@ -1226,6 +1226,21 @@ local crew_wep_preset = {
 		self.m14_sniper_mememan_npc.suppression = 6.9
 		self.m14_sniper_mememan_npc.use_sniper_trail = true
 		self.m14_sniper_mememan_npc.trail_effect = Idstring("effects/particles/weapons/sniper_trail_sc")
+
+		-- Raid WW2 STG 44, used by wildcard and cruel trance units
+		self.stg44_npc = deep_clone(self.m4_npc)
+		self.stg44_npc.DAMAGE = 3.2
+		self.stg44_npc.CLIP_AMMO_MAX = 20
+		self.stg44_npc.sounds.prefix = "stg44_fire_npc"
+		self.stg44_npc.auto.fire_rate = 0.175
+
+		-- putting this in dmr made it fire as slow as titan sniper so putting this here to keep the sound and the dmr part is very fucked.
+		self.garand_npc = deep_clone(self.m4_npc)
+		self.garand_npc.DAMAGE = 4.2
+		self.garand_npc.trail_effect = Idstring("effects/particles/weapons/sniper_trail_marshal")
+		self.garand_npc.sounds.prefix = "ching_npc"
+		self.garand_npc.auto.fire_rate = 0.4
+		self.garand_npc.CLIP_AMMO_MAX = 8
 	end
 
 	function WeaponTweakData:_init_data_m4_yellow_npc()
@@ -1479,6 +1494,18 @@ local crew_wep_preset = {
 		--Titan HRT SR2
 		self.sr2_smg_titan_npc = deep_clone(self.mp9_titan_npc)
 		self.sr2_smg_titan_npc.sounds.prefix = "sr2_npc"
+
+		--MP40, used by wildcard and cruel trance
+		self.mp38_npc = deep_clone(self.mp5_npc)
+		self.mp38_npc.CLIP_AMMO_MAX = 32
+		self.mp38_npc.auto.fire_rate = 0.12
+		self.mp38_npc.DAMAGE = 3
+		self.mp38_npc.sounds.prefix = "erma_npc"
+
+		--Thompson, MP5 but it's full auto, also for wildcard and cruel trance
+		self.thompson_npc = deep_clone(self.mp5_npc)
+		self.thompson_npc.sounds.prefix = "m1928_npc"
+		self.thompson_npc.usage = "is_lmg"
 	end
 
 	function WeaponTweakData:_init_data_smoke_npc()
@@ -2065,7 +2092,7 @@ local crew_wep_preset = {
 		self.ddm4v7_npc.DAMAGE = 3
 		self.ddm4v7_npc.CLIP_AMMO_MAX = 40
 		self.ddm4v7_npc.NR_CLIPS_MAX = 10
-		--self.ddm4v7_npc.sounds.prefix = "saint_victor_npc"	--needs a better sound
+		self.ddm4v7_npc.sounds.prefix = "saint_victor_npc"	--needs a better sound, placeholder
 		self.ddm4v7_npc.trail_effect = Idstring("effects/particles/weapons/sniper_trail_marshal")
 		self.ddm4v7_npc.use_sniper_trail = false
 		self.ddm4v7_npc.trail = nil

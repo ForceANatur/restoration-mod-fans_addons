@@ -3062,6 +3062,8 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Weapons_Eng", function
 				["bm_x_judge_sc_desc"] = "Judge and Jury, and with two of these portable room-clearers, you're the executioner.",
 				--Joceline
 				["bm_b682_sc_desc"] = "A competition over-under typically reserved for sporting events, only instead of clay pigeons you'll be using it for popping helmets.",
+				--Karussell
+				["bm_w_bleckert_desc"] = "placeholder desc",
 				--Custom Shotguns
 					--BO6 ASG-89
 					["bm_wp_upg_i_autousas"] = "Battlefield-Tested Internals",

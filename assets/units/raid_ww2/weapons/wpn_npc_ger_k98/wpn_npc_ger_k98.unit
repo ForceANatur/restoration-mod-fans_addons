@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<unit type="props" slot="1">
+	<object file="units/vanilla/weapons/wpn_npc_ger_k98/wpn_npc_ger_k98" />
+	<dependencies>
+		<depends_on effect="effects/vanilla/weapons/rifle/muzzleflash_3dp" />
+		<depends_on effect="effects/vanilla/weapons/wpn_sniper_trail_001"/>
+		<depends_on effect="effects/vanilla/flares/sniper_glare" />
+		<depends_on bnk = "soundbanks/weapon_kar98"/>
+		<depends_on bnk = "soundbanks/weapon_enemy_sniper"/>
+	</dependencies>
+	<extensions>
+		<extension name="unit_data" class="ScriptUnitData" />
+		<extension name="base" class="NPCRaycastWeaponBase" >
+			<var name="name_id" value="ger_kar98_npc" />
+		</extension>
+		<extension name="damage" class="UnitDamage" />
+	</extensions>	
+	<sounds>
+		<soundsource name="root" source="rp_wpn_npc_ger_k98" />
+		<default_soundsource source="rp_wpn_npc_ger_k98" />
+	</sounds>
+</unit>

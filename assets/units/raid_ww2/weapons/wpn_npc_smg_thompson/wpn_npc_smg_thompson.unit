@@ -1,0 +1,18 @@
+<unit type="wpn" slot="13">
+	<object file="units/raid_ww2/weapons/wpn_npc_smg_thompson/wpn_npc_smg_thompson" />
+	<dependencies>
+		<depends_on bnk="soundbanks/weapon_m1928" />
+	</dependencies>
+  <extensions>
+  	<extension name="unit_data" class="ScriptUnitData" />
+    <extension name="base" class="NPCRaycastWeaponBase" >
+			<var name="name_id" value="thompson_npc" />
+			<var name="_multivoice" value="true" />
+    </extension>
+    <extension name="damage" class="UnitDamage" />
+  </extensions>
+  <sounds>
+    <soundsource name="root" source="rp_wpn_npc_smg_thompson" />
+    <default_soundsource source="rp_wpn_npc_smg_thompson" />
+  </sounds>
+</unit>

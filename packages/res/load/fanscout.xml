@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!-- Fork Exclusive units, everything loads here for now. I plan to sort everything into it's own package. -->
+<!-- Fork Exclusive stuff, everything loads here for now. I plan to sort everything into it's own package. -->
 <table directory="assets">
 	<texture	path="units/pd2_dlc_usm2/characters/ene_acc_marshal_shield_1/marshal_shield_sc_df"/>
 	<texture	path="units/pd2_dlc_usm2/characters/ene_acc_marshal_shield_1/marshal_shield_sc_nm"/>
@@ -1567,4 +1567,64 @@
 	<unit				path="units/pd2_dlc_mad/weapons/wpn_npc_coal/wpn_npc_coal" force="false"/>
 	<texture			path="units/pd2_dlc_mad/weapons/wpn_npc_coal/coal_df" force="true"/>
 	<texture			path="units/pd2_dlc_mad/weapons/wpn_npc_coal/coal_nm" force="true"/>
+
+	<!--Raid WW2 Weapons-->
+	<!--Lion Game Lion, don't sue me-->
+	<bnk				path="soundbanks/weapon_stg44" force = "true"/>
+
+	<!--MP40-->
+	<material_config	path="units/raid_ww2/weapons/wpn_npc_ger_mp38/wpn_npc_ger_mp38"/>
+	<model				path="units/raid_ww2/weapons/wpn_npc_ger_mp38/wpn_npc_ger_mp38"/>
+	<object				path="units/raid_ww2/weapons/wpn_npc_ger_mp38/wpn_npc_ger_mp38"/>
+	<cooked_physics		path="units/raid_ww2/weapons/wpn_npc_ger_mp38/wpn_npc_ger_mp38"/>
+	<unit				path="units/raid_ww2/weapons/wpn_npc_ger_mp38/wpn_npc_ger_mp38"/>
+	<sequence_manager	path="units/raid_ww2/weapons/wpn_npc_ger_mp38/wpn_npc_ger_mp38"/>
+
+	<!--Kinda wish this wasn't so ugly to do-->
+	<df_nm				path="units/raid_ww2/weapons/wpn_npc_ger_mp38/textures/wpn_npc_smg_mp38_dh_standard"/>
+	<df_nm				path="units/raid_ww2/weapons/wpn_npc_ger_mp38/textures/wpn_npc_smg_mp38_body_standard"/>
+	<df_nm				path="units/raid_ww2/weapons/wpn_npc_ger_mp38/textures/wpn_npc_smg_mp38_s_standard"/>
+	<df_nm				path="units/raid_ww2/weapons/wpn_npc_ger_mp38/textures/wpn_npc_smg_mp38_m_standard"/>
+	<df_nm				path="units/raid_ww2/weapons/wpn_npc_ger_mp38/textures/wpn_npc_smg_mp38_b_standard"/>
+
+	<texture			path="units/raid_ww2/weapons/wpn_npc_ger_mp38/textures/wpn_npc_smg_mp38_dh_standard_gsm"/>
+	<texture			path="units/raid_ww2/weapons/wpn_npc_ger_mp38/textures/wpn_npc_smg_mp38_body_standard_gsm"/>
+	<texture			path="units/raid_ww2/weapons/wpn_npc_ger_mp38/textures/wpn_npc_smg_mp38_s_standard_gsm"/>
+	<texture			path="units/raid_ww2/weapons/wpn_npc_ger_mp38/textures/wpn_npc_smg_mp38_m_standard_gsm"/>
+	<texture			path="units/raid_ww2/weapons/wpn_npc_ger_mp38/textures/wpn_npc_smg_mp38_b_standard_gsm"/>
+
+	<!--STG44-->
+	<material_config	path="units/raid_ww2/weapons/wpn_npc_ger_stg44/wpn_npc_ger_stg44"/>
+	<model				path="units/raid_ww2/weapons/wpn_npc_ger_stg44/wpn_npc_ger_stg44"/>
+	<object				path="units/raid_ww2/weapons/wpn_npc_ger_stg44/wpn_npc_ger_stg44"/>
+	<cooked_physics		path="units/raid_ww2/weapons/wpn_npc_ger_stg44/wpn_npc_ger_stg44"/>
+	<unit				path="units/raid_ww2/weapons/wpn_npc_ger_stg44/wpn_npc_ger_stg44"/>
+	<sequence_manager	path="units/raid_ww2/weapons/wpn_npc_ger_stg44/wpn_npc_ger_stg44"/>
+
+	<df_nm				path="units/raid_ww2/weapons/wpn_npc_ger_stg44/textures/wpn_third_ass_mp44"/>
+	<texture			path="units/raid_ww2/weapons/wpn_npc_ger_stg44/textures/wpn_third_ass_mp44_gsm"/>
+
+	<!--Thompson M1A1-->
+	<material_config	path="units/raid_ww2/weapons/wpn_npc_smg_thompson/wpn_npc_smg_thompson"/>
+	<model				path="units/raid_ww2/weapons/wpn_npc_smg_thompson/wpn_npc_smg_thompson"/>
+	<object				path="units/raid_ww2/weapons/wpn_npc_smg_thompson/wpn_npc_smg_thompson"/>
+	<cooked_physics		path="units/raid_ww2/weapons/wpn_npc_smg_thompson/wpn_npc_smg_thompson"/>
+	<unit				path="units/raid_ww2/weapons/wpn_npc_smg_thompson/wpn_npc_smg_thompson"/>
+	<sequence_manager	path="units/raid_ww2/weapons/wpn_npc_smg_thompson/wpn_npc_smg_thompson"/>
+
+	<df_nm				path="units/raid_ww2/weapons/wpn_npc_smg_thompson/wpn_third_smg_thompson"/>
+	<texture			path="units/raid_ww2/weapons/wpn_npc_smg_thompson/wpn_third_smg_thompson_gsm"/>
+
+	<df_nm				path="units/raid_ww2/weapons/wpn_npc_smg_thompson/wpn_third_bullets"/>
+
+	<!--M1 Garand-->
+	<material_config	path="units/raid_ww2/weapons/wpn_npc_usa_garand/wpn_npc_usa_garand"/>
+	<model				path="units/raid_ww2/weapons/wpn_npc_usa_garand/wpn_npc_usa_garand"/>
+	<object				path="units/raid_ww2/weapons/wpn_npc_usa_garand/wpn_npc_usa_garand"/>
+	<cooked_physics		path="units/raid_ww2/weapons/wpn_npc_usa_garand/wpn_npc_usa_garand"/>
+	<unit				path="units/raid_ww2/weapons/wpn_npc_usa_garand/wpn_npc_usa_garand"/>
+	<sequence_manager	path="units/raid_ww2/weapons/wpn_npc_usa_garand/wpn_npc_usa_garand"/>
+
+	<df_nm				path="units/raid_ww2/weapons/wpn_npc_usa_garand/wpn_third_ass_garand"/>
+	<texture			path="units/raid_ww2/weapons/wpn_npc_usa_garand/wpn_third_ass_garand_gsm"/>
 </table>

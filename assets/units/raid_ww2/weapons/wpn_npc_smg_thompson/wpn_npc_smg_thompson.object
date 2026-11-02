@@ -1,0 +1,18 @@
+<dynamic_object>
+    <diesel materials="units/raid_ww2/weapons/wpn_npc_smg_thompson/wpn_npc_smg_thompson" orientation_object="rp_wpn_npc_smg_thompson" />
+    <sequence_manager file="units/raid_ww2/weapons/wpn_npc_smg_thompson/wpn_npc_smg_thompson" />
+    <bodies>
+    <body name="body" enabled="false" template="small_prop" pushed_by_mover="false">
+            <object name="rp_wpn_npc_smg_thompson" />
+            <object name="c_box_01" collision_type="box" padding="-2.5" mass="1" />
+            <object name="c_box_02" collision_type="box" padding="-2.5" mass="0.5" />
+            <object name="c_box_03" collision_type="box" padding="-2.5" mass="0.2" />
+            <object name="c_box_04" collision_type="box" padding="-2.5" mass="0.4" />
+            <object name="c_box_05" collision_type="box" padding="-2.5" mass="0.3" />
+        </body>
+    </bodies>
+    <graphics>
+        <object name="g_body" enabled="true" culling_object="co_weapon" />
+        <object name="s_body" enabled="true" shadow_caster="true" />
+    </graphics>
+</dynamic_object>

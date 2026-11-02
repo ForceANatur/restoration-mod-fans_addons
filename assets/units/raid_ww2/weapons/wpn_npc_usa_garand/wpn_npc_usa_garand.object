@@ -1,0 +1,23 @@
+<dynamic_object>
+	<diesel materials="units/raid_ww2/weapons/wpn_npc_usa_garand/wpn_npc_usa_garand" orientation_object="rp_wpn_npc_usa_garand" />
+  <sequence_manager file="units/raid_ww2/weapons/wpn_npc_usa_garand/wpn_npc_usa_garand" />
+	<bodies>
+	<body name="body" enabled="false" template="small_prop" pushed_by_mover="false">
+			<object name="rp_wpn_npc_usa_garand" />
+			<object name="c_box" collision_type="box" mass="1.5" />
+		</body>
+	</bodies>
+	<graphics>
+		<object  name="g_body" enabled="true" />
+		<object  name="s_body" enabled="true" shadow_caster="true" />
+	</graphics>
+	<!-- <graphics>		
+		<graphic_group name="lod_group" enabled="true" culling_object="co_weapon">
+			<lod_object name="weapon_lod">
+				<object  name="g_body" enabled="true" max_draw_lod="0" max_distance="1000" />
+				<object lod="1" name="g_body_lod1" enabled="true" />
+			</lod_object>
+		</graphic_group> 
+		<object  name="s_body" enabled="true" shadow_caster="true" />
+	</graphics> -->
+</dynamic_object>

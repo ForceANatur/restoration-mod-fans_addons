@@ -1,0 +1,12 @@
+<materials version="3">
+    <material unique="true" render_template="generic:CONTOUR:CUBE_ENVIRONMENT_MAPPING:DIFFUSE_TEXTURE:GLOSS_BLURS_CUBEMAP:GSMA_TEXTURE:NORMALMAP" name="wpn_third_ass_garand" version="2">
+        <diffuse_texture file="units/raid_ww2/weapons/wpn_npc_usa_garand/wpn_third_ass_garand_df"/>
+        <bump_normal_texture file="units/raid_ww2/weapons/wpn_npc_usa_garand/wpn_third_ass_garand_nm"/>
+        <material_texture file="units/raid_ww2/weapons/wpn_npc_usa_garand/wpn_third_ass_garand_gsm"/>
+        <reflection_texture type="cubemap" global_texture="current_global_texture"/>
+        <variable type="vector3" name="contour_color" value="1 1 1"/>
+        <variable type="scalar" name="contour_opacity" value="0"/>
+        <variable type="scalar" name="contour_distance" value="200000"/>
+    </material>
+    <material render_template="shadow_caster_only" name="shadow_caster" version="2"/>
+</materials>

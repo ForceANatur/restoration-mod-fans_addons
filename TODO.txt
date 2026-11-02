@@ -2,34 +2,34 @@ Lua:
 - The self insert.
 - The many loc.lua changes
 - tipstweakdata.lua
-- Randomized weapons
+- Randomized weapons (done)
 - Mutators (Code pasted from fanscout branch)
 - Bravo units (modifiersmanager.lua)
 - Mr. Cruel T's challenge
 
 Units:
-- Voicelines from fanscout branch, especially the other factions
-- HeavyGunner's icon
-- Everything marked with (❌)
-- NPC Weapons marked with (❌)
-- Bravo units
+- Voicelines from fanscout branch, especially the other factions (Mostly done)
+- HeavyGunner's icon (done)
+- Everything marked with (❌) (non mutator content done)
+- NPC Weapons marked with (❌) (done)
+- Bravo units (done)
 - Other units for the non america factions
 
 Other units that need to be done:
-- FBI 4
-- ZEAL pistol hrt
-- HeavyGunner
-- Heavy Medic
-- ATF Marksman
-- Zombie faction edits
+- FBI 4 (done)
+- ZEAL pistol hrt (done)
+- HeavyGunner (done)
+- Heavy Medic (done)
+- ATF Marksman (done)
+- Zombie faction edits (done)
 - Undead Titandozer
 - Swole Clocker and Medics
 - Crackdown Medics
-- Heavy ASU
-- National Guard Shield
+- Heavy ASU (zombie implented)
+- National Guard Shield (done)
 - Mememan 3, 4, and 5
 
-NPC Weapons:
+NPC Weapons: (all done, ignore this)
 - ATF DDM4 V7
 - Mateba Model 6
 - HK G3A3

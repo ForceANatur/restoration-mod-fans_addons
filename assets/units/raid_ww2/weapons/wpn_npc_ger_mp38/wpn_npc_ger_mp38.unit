@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<unit type="wpn" slot="13">
+  <object file="units/raid_ww2/weapons/wpn_npc_ger_mp38/wpn_npc_ger_mp38" />
+  <dependencies>
+    <depends_on bnk="soundbanks/weapon_erma" />
+  </dependencies>
+  <extensions>
+  	<extension name="unit_data" class="ScriptUnitData" />
+    <extension name="base" class="NPCRaycastWeaponBase" >
+			<var name="name_id" value="mp38_npc" />
+			<var name="_multivoice" value="true" />
+    </extension>
+    <extension name="damage" class="UnitDamage" />
+  </extensions>
+  <sounds>
+    <soundsource name="root" source="rp_wpn_npc_smg_mp38" />
+    <default_soundsource source="rp_wpn_npc_smg_mp38" />
+  </sounds>
+</unit>

@@ -1445,11 +1445,13 @@ local gensec = {
 	rifle_light = {
 		"g36",
 		"m4",
+		"s552_sc",
 		"shepheard"
 	},
 	rifle_heavy = {
 		"g36",
 		"amcar",
+		"s552_sc",
 		"m249"
 	},
 	shotgun = {
@@ -1468,6 +1470,7 @@ local zeal = {
 		"ump",
 		"shepheard",
 		"amcar",
+		"s552_sc"
 	},
 	rifle_heavy = {
 		"m4",
@@ -1476,6 +1479,7 @@ local zeal = {
 		"g3a3_npc",
 		"scar_heavy",
 		"amcar",
+		"s552_sc",
 		"m249"
 	},
 	shotgun_heavy = {
@@ -1516,6 +1520,7 @@ local murkywater = {
 		"scar_npc",
 		"amcar",
 		"shepheard",
+		"s552_sc",
 		"coal_npc"
 	},
 	rifle_heavy = {
@@ -1525,6 +1530,7 @@ local murkywater = {
 		"shepheard",
 		"g3a3_npc",
 		"scar_heavy",
+		"s552_sc",
 		"m249",
 		"m249",
 		"m249",
@@ -1546,13 +1552,15 @@ local federales = {
 		"ump",
 		"shepheard",
 		"amcar",
-		"coal_npc"
+		"coal_npc",
+		"s552_sc"
 	},
 	rifle_heavy = {
 		"m4",
 		"ump",
 		"g3a3_npc",
 		"amcar",
+		"s552_sc",
 		"m249"
 	},
 	shotgun = {
@@ -1564,7 +1572,7 @@ local federales = {
 }
 local dave = {
 	all_the_guns = {
-		"c45",
+		"c45", -- Glock 17
 		"beretta92",
 		"raging_bull",
 		"mp5",
@@ -1574,10 +1582,10 @@ local dave = {
 		"m4",
 		"g36",
 		"m249",
-		"s552",
-		"mossberg",
+		"s552_sc",
+		"mossberg", -- Double Barrel Shotgun/Mosconi
 		"mp9",
-		"sg417",
+		"sg417", -- Little Friend 7.62
 		"g3a3_npc",
 		"m1911_npc",
 		"deagle",
@@ -1587,14 +1595,19 @@ local dave = {
 		"atf_ddm4v7",
 		"saiga",
 		"hk21_sc",
-		"shepheard",
+		"shepheard", -- MPX
 		"spas12",
 		"ksg",
 		"mac11_sup",
 		"amcar",
 		"ak47_ass",
 		"coal_npc",
-		"m60"
+		"m60",
+		"sko12_conc",
+		"mp38_npc",
+		"stg44_npc",
+		"m1928_npc",
+		"m1_garand_npc"
 	},
 	akan = {
 		"streak",
@@ -1620,7 +1633,9 @@ local dave = {
 		"mateba_ap",
 		"hk21_sc",
 		"m60",
-		"x_deagle"
+		"x_deagle",
+		"stg44_npc",
+		"m1_garand_npc"
 	}
 }
 local medic_heavy = {
@@ -1640,13 +1655,16 @@ local cruel_zeal = {
 		"m4",
 		"g36",
 		"scar_heavy",
-		"amcar"
+		"amcar",
+		"s552_sc",
+		"stg44_npc"
 	},
 	zeal_light_smg = {
 		"ump",
-		"g36",
 		"shepheard",
-		"coal_npc"
+		"coal_npc",
+		"mp38_npc",
+		"m1928_npc"
 	},
 	zeal_light_shotgun = {
 		"r870",
@@ -1662,9 +1680,33 @@ local cruel_zeal = {
 		"bravo_rifle",
 		"g3a3_npc",
 		"scar_heavy",
+		"s552_sc",
+		"mp38_npc",
+		"stg44_npc",
+		"m1_garand_npc",
+		"mossberg",
 		"benelli",
 		"bravo_shotgun",
+		"saiga",
 		"spas12",
+		"ksg"
+	},
+	zeal_heavy_rifles = {
+		"m4",
+		"hk21_sc",
+		"bravo_rifle",
+		"g3a3_npc",
+		"scar_heavy",
+		"s552_sc",
+		"m1_garand_npc"
+	},
+	zeal_heavy_shotguns = {
+		"mossberg",
+		"benelli",
+		"bravo_shotgun",
+		"saiga",
+		"spas12",
+		"ksg"
 	}
 }
 local weapon_mapping = {
@@ -1783,6 +1825,17 @@ local weapon_mapping = {
 	[("units/pd2_mod_cruel/characters/ene_zeal_swat_2/ene_zeal_swat_2"):key{}] = cruel_zeal.zeal_light_shotgun,
 	[("units/pd2_mod_cruel/characters/ene_zeal_swat_3/ene_zeal_swat_3"):key{}] = cruel_zeal.zeal_light_smg,
 	[("units/pd2_mod_cruel/characters/ene_zeal_swat_heavy/ene_zeal_swat_heavy"):key{}] = cruel_zeal.zeal_heavy,
+-- Cruel Trance FBI
+	[("units/pd2_mod_cruel/characters/ene_fbi_swat_1/ene_fbi_swat_1"):key{}] = cruel_zeal.zeal_light,
+	[("units/pd2_mod_cruel/characters/ene_fbi_swat_2/ene_fbi_swat_2"):key{}] = cruel_zeal.zeal_light_shotgun,
+	[("units/pd2_mod_cruel/characters/ene_fbi_heavy_1/ene_fbi_heavy_1"):key{}] = cruel_zeal.zeal_heavy_rifles,
+	[("units/pd2_mod_cruel/characters/ene_fbi_heavy_r870/ene_fbi_heavy_r870"):key{}] = cruel_zeal.zeal_heavy_shotguns,
+-- Cruel Trance GenSec
+	[("units/pd2_mod_cruel/characters/ene_city_swat_1/ene_city_swat_1"):key{}] = cruel_zeal.zeal_light,
+	[("units/pd2_mod_cruel/characters/ene_city_swat_2/ene_city_swat_2"):key{}] = cruel_zeal.zeal_heavy_shotguns,
+	[("units/pd2_mod_cruel/characters/ene_city_swat_3/ene_city_swat_3"):key{}] = cruel_zeal.zeal_light_smg,
+	[("units/pd2_mod_cruel/characters/ene_city_heavy_g36/ene_city_heavy_g36"):key{}] = cruel_zeal.zeal_heavy_rifles,
+	[("units/pd2_mod_cruel/characters/ene_city_heavy_r870/ene_city_heavy_r870"):key{}] = cruel_zeal.zeal_heavy_shotguns,	-- accidently goes unused. lol
 }
 
 Hooks:PreHook(CopBase, "post_init", "MIX_post_init", function(self)

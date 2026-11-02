@@ -1,0 +1,48 @@
+<materials version="3">
+    <material unique="true" render_template="generic:CONTOUR:CUBE_ENVIRONMENT_MAPPING:DIFFUSE_TEXTURE:GLOSS_BLURS_CUBEMAP:GSMA_TEXTURE:NORMALMAP" name="wpn_npc_smg_mp38_body_standard" version="2">
+        <diffuse_texture file="units/raid_ww2/weapons/wpn_npc_ger_mp38/textures/wpn_npc_smg_mp38_body_standard_df"/>
+        <bump_normal_texture file="units/raid_ww2/weapons/wpn_npc_ger_mp38/textures/wpn_npc_smg_mp38_body_standard_nm"/>
+        <material_texture file="units/raid_ww2/weapons/wpn_npc_ger_mp38/textures/wpn_npc_smg_mp38_body_standard_gsm"/>
+        <reflection_texture type="cubemap" global_texture="current_global_texture"/>
+        <variable type="vector3" name="contour_color" value="1 1 1"/>
+        <variable type="scalar" name="contour_opacity" value="0"/>
+        <variable type="scalar" name="contour_distance" value="200000"/>
+    </material>
+    <material unique="true" render_template="generic:CONTOUR:CUBE_ENVIRONMENT_MAPPING:DIFFUSE_TEXTURE:GLOSS_BLURS_CUBEMAP:GSMA_TEXTURE:NORMALMAP" name="wpn_npc_smg_mp38_dh_standard" version="2">
+        <diffuse_texture file="units/raid_ww2/weapons/wpn_npc_ger_mp38/textures/wpn_npc_smg_mp38_dh_standard_df"/>
+        <bump_normal_texture file="units/raid_ww2/weapons/wpn_npc_ger_mp38/textures/wpn_npc_smg_mp38_dh_standard_nm"/>
+        <material_texture file="units/raid_ww2/weapons/wpn_npc_ger_mp38/textures/wpn_npc_smg_mp38_dh_standard_gsm"/>
+        <reflection_texture type="cubemap" global_texture="current_global_texture"/>
+        <variable type="vector3" name="contour_color" value="1 1 1"/>
+        <variable type="scalar" name="contour_opacity" value="0"/>
+        <variable type="scalar" name="contour_distance" value="200000"/>
+    </material>
+    <material unique="true" render_template="generic:CONTOUR:CUBE_ENVIRONMENT_MAPPING:DIFFUSE_TEXTURE:GLOSS_BLURS_CUBEMAP:GSMA_TEXTURE:NORMALMAP" name="wpn_npc_smg_mp38_s_standard" version="2">
+        <diffuse_texture file="units/raid_ww2/weapons/wpn_npc_ger_mp38/textures/wpn_npc_smg_mp38_s_standard_df"/>
+        <bump_normal_texture file="units/raid_ww2/weapons/wpn_npc_ger_mp38/textures/wpn_npc_smg_mp38_s_standard_nm"/>
+        <material_texture file="units/raid_ww2/weapons/wpn_npc_ger_mp38/textures/wpn_npc_smg_mp38_s_standard_gsm"/>
+        <reflection_texture type="cubemap" global_texture="current_global_texture"/>
+        <variable type="vector3" name="contour_color" value="1 1 1"/>
+        <variable type="scalar" name="contour_opacity" value="0"/>
+        <variable type="scalar" name="contour_distance" value="200000"/>
+    </material>
+    <material unique="true" render_template="generic:CONTOUR:CUBE_ENVIRONMENT_MAPPING:DIFFUSE_TEXTURE:GLOSS_BLURS_CUBEMAP:GSMA_TEXTURE:NORMALMAP" name="wpn_npc_smg_mp38_m_standard" version="2">
+        <diffuse_texture file="units/raid_ww2/weapons/wpn_npc_ger_mp38/textures/wpn_npc_smg_mp38_m_standard_df"/>
+        <bump_normal_texture file="units/raid_ww2/weapons/wpn_npc_ger_mp38/textures/wpn_npc_smg_mp38_m_standard_nm"/>
+        <material_texture file="units/raid_ww2/weapons/wpn_npc_ger_mp38/textures/wpn_npc_smg_mp38_m_standard_gsm"/>
+        <reflection_texture type="cubemap" global_texture="current_global_texture"/>
+        <variable type="vector3" name="contour_color" value="1 1 1"/>
+        <variable type="scalar" name="contour_opacity" value="0"/>
+        <variable type="scalar" name="contour_distance" value="200000"/>
+    </material>
+    <material unique="true" render_template="generic:CONTOUR:CUBE_ENVIRONMENT_MAPPING:DIFFUSE_TEXTURE:GLOSS_BLURS_CUBEMAP:GSMA_TEXTURE:NORMALMAP" name="wpn_npc_smg_mp38_b_standard" version="2">
+        <diffuse_texture file="units/raid_ww2/weapons/wpn_npc_ger_mp38/textures/wpn_npc_smg_mp38_b_standard_df"/>
+        <bump_normal_texture file="units/raid_ww2/weapons/wpn_npc_ger_mp38/textures/wpn_npc_smg_mp38_b_standard_nm"/>
+        <material_texture file="units/raid_ww2/weapons/wpn_npc_ger_mp38/textures/wpn_npc_smg_mp38_b_standard_gsm"/>
+        <reflection_texture type="cubemap" global_texture="current_global_texture"/>
+        <variable type="vector3" name="contour_color" value="1 1 1"/>
+        <variable type="scalar" name="contour_opacity" value="0"/>
+        <variable type="scalar" name="contour_distance" value="200000"/>
+    </material>
+    <material render_template="shadow_caster_only" name="shadow_caster" version="2"/>
+</materials>
