@@ -982,6 +982,10 @@ local crew_wep_preset = {
 		self.beretta92_titan_npc.alert_size = 0
 		self.beretta92_titan_npc.suppression = 0.1
 		self.beretta92_titan_npc.has_suppressor = "suppressed_a"
+
+		self.m1912_npc = deep_clone(self.c45_npc)
+		self.m1912_npc.DAMAGE = 3
+		self.m1912_npc.CLIP_AMMO_MAX = 12
 	end
 
 	function WeaponTweakData:_init_data_x_c45_npc()

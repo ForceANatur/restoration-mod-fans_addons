@@ -1607,7 +1607,30 @@ local dave = {
 		"mp38_npc",
 		"stg44_npc",
 		"m1928_npc",
-		"m1_garand_npc"
+		"m1_garand_npc",
+	--	"m1912",	-- INVISIBLE MODEL, DO NOT USE
+		"streak",
+		"sr2_smg",
+		"akmsu_smg",
+		"rpk_lmg",
+		"svd_snp",
+		"aa12_npc",
+		"m416_npc",
+		"oicw",
+		"bleckert", -- Revolving Shotgun
+		"bravo_argos",
+		"lmg_titan", -- HK21 with drum
+		"fort_500",
+		"bravo_rifle", -- AMR-16
+		"bravo_shotgun", -- SPAS 12
+		"hajk_cop",
+		"uzi_cop",
+		"ak102",
+		"hk33",
+		"m500",
+		"x_pm9_enemy",
+		"ak12",
+		"bravo_ak17"
 	},
 	akan = {
 		"streak",

@@ -11,7 +11,7 @@ Units:
 - Voicelines from fanscout branch, especially the other factions (Mostly done)
 - HeavyGunner's icon (done)
 - Everything marked with (❌) (non mutator content done)
-- NPC Weapons marked with (❌) (done)
+- NPC Weapons marked with (❌) (done, mememan weapons not added yet)
 - Bravo units (done)
 - Other units for the non america factions
 
@@ -29,11 +29,11 @@ Other units that need to be done:
 - National Guard Shield (done)
 - Mememan 3, 4, and 5
 
-NPC Weapons: (all done, ignore this)
+NPC Weapons: (mostly done)
 - ATF DDM4 V7
 - Mateba Model 6
 - HK G3A3
-- Highly modified CAR-4 (Mememan 3 weapon)
-- fanni gee thirte sex 😂 (Mememan 4 weapon)
+- Highly modified CAR-4 (Mememan 3 weapon) (not added)
+- fanni gee thirte sex 😂 (Mememan 4 weapon) (not added)
 - SCAR Heavy
 - PP-19 Bizon

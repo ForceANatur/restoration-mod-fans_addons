@@ -19213,6 +19213,10 @@ Hooks:PostHook(CharacterTweakData, "_create_table_structure", "remod_create_tabl
 	-- Raid WW2 M1 Garand
 	table.insert(self.weap_ids, "m1_garand_npc")
 	table.insert(self.weap_unit_names, Idstring("units/raid_ww2/weapons/wpn_npc_usa_garand/wpn_npc_usa_garand"))
+
+	-- Raid WW2 M1912
+	table.insert(self.weap_ids, "m1912")
+	table.insert(self.weap_unit_names, Idstring("units/raid_ww2/weapons/wpn_npc_usa_m1912/wpn_npc_usa_m1912"))
 end)
 
 function CharacterTweakData:_set_easy()

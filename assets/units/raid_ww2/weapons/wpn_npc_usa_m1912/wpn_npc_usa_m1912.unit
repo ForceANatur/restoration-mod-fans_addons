@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <unit type="wpn" slot="13">
-	<object file="units/vanilla/weapons/wpn_npc_usa_m1912/wpn_npc_usa_m1912" />
+	<object file="units/raid_ww2/weapons/wpn_npc_usa_m1912/wpn_npc_usa_m1912" />
 	<dependencies>
-		<depends_on bnk="soundbanks/weapon_shotgun" />
+		<depends_on bnk="soundbanks/weapon_m1911" />
 	</dependencies>
   <extensions>
   	<extension name="unit_data" class="ScriptUnitData" />
     <extension name="base" class="NPCRaycastWeaponBase" >
-			<var name="name_id" value="usa_m1912_npc" />
+			<var name="name_id" value="m1912_npc" />
 			<var name="_multivoice" value="true" />
     </extension>
     <extension name="damage" class="UnitDamage" />

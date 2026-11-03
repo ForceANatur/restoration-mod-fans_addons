@@ -1,17 +1,17 @@
 <materials version="3">
     <material unique="true" render_template="generic:CONTOUR:CUBE_ENVIRONMENT_MAPPING:DIFFUSE_TEXTURE:GLOSS_BLURS_CUBEMAP:GSMA_TEXTURE:NORMALMAP" name="wpn_third_sho_m1912" version="2">
-        <diffuse_texture file="units/vanilla/weapons/wpn_third_sho_m1912_pts/textures/wpn_third_sho_m1912_df"/>
-        <bump_normal_texture file="units/vanilla/weapons/wpn_third_sho_m1912_pts/textures/wpn_third_sho_m1912_nm"/>
-        <material_texture file="units/vanilla/weapons/wpn_third_sho_m1912_pts/textures/wpn_third_sho_m1912_gsm"/>
+        <diffuse_texture file="units/raid_ww2/weapons/wpn_npc_usa_m1912/textures/wpn_npc_sho_m1912_df"/>
+        <bump_normal_texture file="units/raid_ww2/weapons/wpn_npc_usa_m1912/textures/wpn_npc_sho_m1912_nm"/>
+        <material_texture file="units/raid_ww2/weapons/wpn_npc_usa_m1912/textures/wpn_npc_sho_m1912_gsm"/>
         <reflection_texture type="cubemap" global_texture="current_global_texture"/>
         <variable type="vector3" name="contour_color" value="1 1 1"/>
         <variable type="scalar" name="contour_opacity" value="0"/>
         <variable type="scalar" name="contour_distance" value="200000"/>
     </material>
     <material unique="true" render_template="generic:CONTOUR:CUBE_ENVIRONMENT_MAPPING:DIFFUSE_TEXTURE:GLOSS_BLURS_CUBEMAP:GSMA_TEXTURE:NORMALMAP" name="wpn_third_sho_m1912_b_standard" version="2">
-        <diffuse_texture file="units/vanilla/weapons/wpn_third_sho_m1912_pts/textures/wpn_third_sho_m1912_b_standard_df"/>
-        <bump_normal_texture file="units/vanilla/weapons/wpn_third_sho_m1912_pts/textures/wpn_third_sho_m1912_b_standard_nm"/>
-        <material_texture file="units/vanilla/weapons/wpn_third_sho_m1912_pts/textures/wpn_third_sho_m1912_b_standard_gsm"/>
+        <diffuse_texture file="units/raid_ww2/weapons/wpn_npc_usa_m1912/textures/wpn_npc_sho_m1912_b_standard_df"/>
+        <bump_normal_texture file="units/raid_ww2/weapons/wpn_npc_usa_m1912/textures/wpn_npc_sho_m1912_b_standard_nm"/>
+        <material_texture file="units/raid_ww2/weapons/wpn_npc_usa_m1912/textures/wpn_npc_sho_m1912_b_standard_gsm"/>
         <reflection_texture type="cubemap" global_texture="current_global_texture"/>
         <variable type="vector3" name="contour_color" value="1 1 1"/>
         <variable type="scalar" name="contour_opacity" value="0"/>

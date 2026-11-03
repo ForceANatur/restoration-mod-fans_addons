@@ -1,6 +1,6 @@
 <dynamic_object>
-    <diesel orientation_object="rp_wpn_npc_usa_m1912" materials="units/vanilla/weapons/wpn_npc_usa_m1912/wpn_npc_usa_m1912" />
-    <sequence_manager file="units/vanilla/weapons/wpn_npc_usa_m1912/wpn_npc_usa_m1912" />
+    <diesel orientation_object="rp_wpn_npc_usa_m1912" materials="units/raid_ww2/weapons/wpn_npc_usa_m1912/wpn_npc_usa_m1912" />
+    <sequence_manager file="units/raid_ww2/weapons/wpn_npc_usa_m1912/wpn_npc_usa_m1912" />
     <graphics>
         <object name="g_body" enabled="true" />
         <object name="s_body" enabled="true" shadow_caster="true" />

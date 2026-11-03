@@ -1627,4 +1627,15 @@
 
 	<df_nm				path="units/raid_ww2/weapons/wpn_npc_usa_garand/wpn_third_ass_garand"/>
 	<texture			path="units/raid_ww2/weapons/wpn_npc_usa_garand/wpn_third_ass_garand_gsm"/>
+
+	<!--M1912-->
+	<material_config	path="units/raid_ww2/weapons/wpn_npc_usa_m1912/wpn_npc_usa_m1912"/>
+	<model				path="units/raid_ww2/weapons/wpn_npc_usa_m1912/wpn_npc_usa_m1912"/>
+	<object				path="units/raid_ww2/weapons/wpn_npc_usa_m1912/wpn_npc_usa_m1912"/>
+	<cooked_physics		path="units/raid_ww2/weapons/wpn_npc_usa_m1912/wpn_npc_usa_m1912"/>
+	<unit				path="units/raid_ww2/weapons/wpn_npc_usa_m1912/wpn_npc_usa_m1912"/>
+	<sequence_manager	path="units/raid_ww2/weapons/wpn_npc_usa_m1912/wpn_npc_usa_m1912"/>
+
+	<df_nm				path="units/raid_ww2/weapons/wpn_npc_usa_m1912/wpn_npc_sho_m1912"/>
+	<texture			path="units/raid_ww2/weapons/wpn_npc_usa_m1912/wpn_npc_sho_m1912_gsm"/>
 </table>
