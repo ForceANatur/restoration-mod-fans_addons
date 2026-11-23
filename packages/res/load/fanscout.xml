@@ -854,9 +854,83 @@
 	<!--MURKYWATER END HERE-->
 
 	<!--REAPERS GO HERE-->
+	<!--Wildcard Unit-->
+	<unit				path="units/pd2_mod_reapers/characters/ene_akan_wildcard/ene_akan_wildcard" load="true"/>
+	<unit				path="units/pd2_mod_reapers/characters/ene_akan_wildcard/ene_akan_wildcard_husk" load="true"/>	
+	<object				path="units/pd2_mod_reapers/characters/ene_akan_wildcard/ene_akan_wildcard" />
+	<model				path="units/pd2_mod_reapers/characters/ene_akan_wildcard/ene_akan_wildcard" />
+	<material_config	path="units/pd2_mod_reapers/characters/ene_akan_wildcard/ene_akan_wildcard" />
+	<material_config	path="units/pd2_mod_reapers/characters/ene_akan_wildcard/ene_akan_wildcard_contour" />
+	<texture			path="units/pd2_mod_reapers/characters/ene_akan_wildcard/head_atlas_nm" />
+	<texture			path="units/pd2_mod_reapers/characters/ene_akan_wildcard/head_atlas_df" />
+	<texture			path="units/pd2_mod_reapers/characters/ene_akan_wildcard/akan_light_rifle_df" />
+
+	<unit  				path="units/pd2_mod_reapers/characters/ene_fbi_4/ene_fbi_4" load="true" force="false"/>
+	<unit  				path="units/pd2_mod_reapers/characters/ene_fbi_4/ene_fbi_4_husk" load="true" force="false"/>
+	<material_config 	path="units/pd2_mod_reapers/characters/ene_fbi_4/ene_fbi_4"/>
+	<material_config 	path="units/pd2_mod_reapers/characters/ene_fbi_4/ene_fbi_4_contour"/>
+	<cooked_physics 	path="units/pd2_mod_reapers/characters/ene_fbi_4/ene_fbi_4"/>
+	<model 				path="units/pd2_mod_reapers/characters/ene_fbi_4/ene_fbi_4"/>
+	<object 			path="units/pd2_mod_reapers/characters/ene_fbi_4/ene_fbi_4"/>
+	<texture 			path="units/pd2_mod_reapers/characters/ene_fbi_4/ene_soldier_akan_3_df"/>
+
+	<unit  				path="units/pd2_mod_reapers/characters/ene_drak_hrt_3/ene_drak_hrt_3" load="true"/>
+	<unit  				path="units/pd2_mod_reapers/characters/ene_drak_hrt_3/ene_drak_hrt_3_husk" load="true"/>
 	<!--REAPERS END HERE-->
 
 	<!--MEXICO GO HERE-->
+	<texture			path="units/pd2_dlc_bex/characters/shared_textures/sjnp_beatcop_atlas_df" force="false"/>
+	<texture			path="units/pd2_dlc_bex/characters/shared_textures/sjnp_beatcop_atlas_nm" force="false"/>
+
+	<!--Wildcard Unit-->	
+	<unit				path="units/pd2_dlc_bex/characters/ene_policia_wildcard/ene_policia_wildcard" load="true"/>
+	<unit				path="units/pd2_dlc_bex/characters/ene_policia_wildcard/ene_policia_wildcard_husk" load="true"/>	
+	<object				path="units/pd2_dlc_bex/characters/ene_policia_wildcard/ene_policia_wildcard" />
+	<model				path="units/pd2_dlc_bex/characters/ene_policia_wildcard/ene_policia_wildcard" />
+	<material_config	path="units/pd2_dlc_bex/characters/ene_policia_wildcard/ene_policia_wildcard" />
+	<material_config	path="units/pd2_dlc_bex/characters/ene_policia_wildcard/ene_policia_wildcard_contour" />
+	<cooked_physics		path="units/pd2_dlc_bex/characters/ene_policia_wildcard/ene_policia_wildcard" />
+
+	<!--r870-->
+	<object				path="units/pd2_dlc_bex/characters/ene_fbi_4/ene_fbi_4" />
+	<cooked_physics		path="units/pd2_dlc_bex/characters/ene_fbi_4/ene_fbi_4" />
+	<model				path="units/pd2_dlc_bex/characters/ene_fbi_4/ene_fbi_4" />
+	<unit				path="units/pd2_dlc_bex/characters/ene_fbi_4/ene_fbi_4" load="true"/>
+	<material_config	path="units/pd2_dlc_bex/characters/ene_fbi_4/ene_fbi_4"/>
+	<material_config	path="units/pd2_dlc_bex/characters/ene_fbi_4/ene_fbi_4_contour"/>
+	<unit				path="units/pd2_dlc_bex/characters/ene_fbi_4/ene_fbi_4_husk" load="true"/>
+
+	<!--Mexico Sergeant (Stolen design from Hyper Heisting)-->
+	<object				path="units/pd2_dlc_bex/characters/ene_policia_sgt/ene_policia_sgt" force="false"/>
+	<cooked_physics		path="units/pd2_dlc_bex/characters/ene_policia_sgt/ene_policia_sgt" force="false"/>
+	<model				path="units/pd2_dlc_bex/characters/ene_policia_sgt/ene_policia_sgt" force="false"/>
+	<unit				path="units/pd2_dlc_bex/characters/ene_policia_sgt/ene_policia_sgt" force="false" load="true"/>
+	<material_config	path="units/pd2_dlc_bex/characters/ene_policia_sgt/ene_policia_sgt" force="false"/>
+	<material_config	path="units/pd2_dlc_bex/characters/ene_policia_sgt/ene_policia_sgt_contour" force="true"/>
+	<unit				path="units/pd2_dlc_bex/characters/ene_policia_sgt/ene_policia_sgt_husk" force="false" load="true"/>
+
+	<object				path="units/pd2_dlc_bex/characters/ene_acc_mp5_hat/ene_acc_mp5_hat" force="false"/>
+	<cooked_physics		path="units/pd2_dlc_bex/characters/ene_acc_mp5_hat/ene_acc_mp5_hat" force="false"/>
+	<model				path="units/pd2_dlc_bex/characters/ene_acc_mp5_hat/ene_acc_mp5_hat" force="false"/>
+	<unit				path="units/pd2_dlc_bex/characters/ene_acc_mp5_hat/ene_acc_mp5_hat" force="false" load="true"/>
+	<material_config	path="units/pd2_dlc_bex/characters/ene_acc_mp5_hat/ene_acc_mp5_hat" force="false"/>
+
+	<texture			path="units/pd2_dlc_bex/characters/ene_policia_sgt/ene_swat_policia_federale_heads_df"/>
+	<texture			path="units/pd2_dlc_bex/characters/ene_policia_sgt/ene_swat_policia_federale_body_df"/>
+	<texture			path="units/pd2_dlc_bex/characters/ene_policia_sgt/ene_swat_policia_federale_helmets_df"/>
+
+	<!--Stolen Crackdown FBI Heavy-->
+	<object				path="units/pd2_dlc_bex/characters/ene_deathvox_fbi_heavyswat/ene_deathvox_fbi_heavyswat" force="false"/>
+	<cooked_physics		path="units/pd2_dlc_bex/characters/ene_deathvox_fbi_heavyswat/ene_deathvox_fbi_heavyswat" force="false"/>
+	<model				path="units/pd2_dlc_bex/characters/ene_deathvox_fbi_heavyswat/ene_deathvox_fbi_heavyswat" force="false"/>
+	<unit				path="units/pd2_dlc_bex/characters/ene_deathvox_fbi_heavyswat/ene_deathvox_fbi_heavyswat" force="false" load="true"/>
+	<material_config	path="units/pd2_dlc_bex/characters/ene_deathvox_fbi_heavyswat/ene_deathvox_fbi_heavyswat" force="false"/>
+	<material_config	path="units/pd2_dlc_bex/characters/ene_deathvox_fbi_heavyswat/ene_deathvox_fbi_heavyswat_contour" force="false"/>
+	<unit				path="units/pd2_dlc_bex/characters/ene_deathvox_fbi_heavyswat/ene_deathvox_fbi_heavyswat_husk" force="false" load="true"/>
+
+	<texture			path="units/pd2_dlc_bex/characters/ene_deathvox_fbi_heavyswat/heads_atlas_df" force="false"/>
+	<texture			path="units/pd2_dlc_bex/characters/ene_deathvox_fbi_heavyswat/helmets_atlas_df" force="false"/>
+	<texture			path="units/pd2_dlc_bex/characters/ene_deathvox_fbi_heavyswat/spook_heavy_df" force="false"/>
 	<!--MEXICO END HERE-->
 
 	<!--CRUEL TRANCE GO HERE-->

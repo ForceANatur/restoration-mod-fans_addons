@@ -168,6 +168,7 @@ function GameSetup:load_packages()
     elseif ai_type == m then
 		load_faction_assets("murkywater")
 		load_difficulty_package("packages/sm_wish")
+		PackageManager:load("packages/dlcs/bph/job_bph")
     elseif ai_type == f then
 		load_faction_assets("federales")
 		load_difficulty_package("packages/sm_wish")

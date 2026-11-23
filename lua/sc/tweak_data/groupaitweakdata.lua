@@ -18911,54 +18911,55 @@ function GroupAITweakData:_init_enemy_spawn_groups(difficulty_index)
 			},
 		}
 	else
+		-- was overtuned on ds. reduced to make more breathing more when taking them down
 		if pro_job then
 			self.enemy_spawn_groups.police_enforcer = {
-				spawn_cooldown = 15,
+				spawn_cooldown = 45,
 				max_nr_simultaneous_groups = 3,
-				initial_spawn_delay = 45,
+				initial_spawn_delay = 145,
 				amount = {
 					1,
 					2
 				},
 				spawn = {
 					{
-respawn_cooldown = 25,
-amount_min = 1,
-amount_max = 1,
-rank = 1,
-freq = 1,
-unit = "police_heavygunner",
-tactics = self._tactics.police_enforcer_murder
+						respawn_cooldown = 25,
+						amount_min = 1,
+						amount_max = 1,
+						rank = 1,
+						freq = 1,
+						unit = "police_heavygunner",
+						tactics = self._tactics.police_enforcer_murder
 					}
 				},
 			}
 		else
 			self.enemy_spawn_groups.police_enforcer = {
-				spawn_cooldown = 15,
+				spawn_cooldown = 45,
 				max_nr_simultaneous_groups = 2,
-				initial_spawn_delay = 60,
+				initial_spawn_delay = 160,
 				amount = {
 					1,
 					2
 				},
 				spawn = {
 					{
-respawn_cooldown = 25,
-amount_min = 1,
-amount_max = 2,
-rank = 1,
-freq = 1,
-unit = "police_heavygunner",
-tactics = self._tactics.police_enforcer
+						respawn_cooldown = 25,
+						amount_min = 1,
+						amount_max = 2,
+						rank = 1,
+						freq = 1,
+						unit = "police_heavygunner",
+						tactics = self._tactics.police_enforcer
 					},
 					{
-respawn_cooldown = 25,
-amount_min = 1,
-amount_max = 1,
-rank = 1,
-freq = 0.75,
-unit = "police_heavygunner",
-tactics = self._tactics.police_enforcer_murder
+						respawn_cooldown = 25,
+						amount_min = 1,
+						amount_max = 1,
+						rank = 1,
+						freq = 0.75,
+						unit = "police_heavygunner",
+						tactics = self._tactics.police_enforcer_murder
 					}
 				},
 			}
