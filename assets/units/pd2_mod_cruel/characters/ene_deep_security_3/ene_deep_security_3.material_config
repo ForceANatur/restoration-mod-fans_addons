@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<materials group="ene_deep_security_3" version="3">
+	<material name="mtr_body" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP:RL_COPS:SKINNED_3WEIGHTS" version="2">
+		<diffuse_texture file="units/pd2_mod_cruel/characters/ene_deep_security_3/body_df"/>
+        <bump_normal_texture file="units/pd2_mod_cruel/characters/ene_deep_security_3/body_nm"/>
+	</material>
+	<material name="mtr_head" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP:RL_COPS:SELF_ILLUMINATION:SELF_ILLUMINATION_BLOOM:SKINNED_3WEIGHTS" version="2">
+		<diffuse_texture file="units/pd2_mod_cruel/characters/ene_deep_security_3/head_df"/>
+        <bump_normal_texture file="units/pd2_mod_cruel/characters/ene_deep_security_3/head_nm"/>
+		<self_illumination_texture file="units/pd2_mod_cruel/characters/ene_deep_security_3/head_il"/>
+		<variable type="scalar" name="il_bloom" value="5"/> 
+        <variable type="scalar" name="il_multiplier" value="neonsign"/>
+	</material>
+	<material name="shadow_caster" render_template="shadow_caster_only:SKINNED_1WEIGHT"/>
+</materials>

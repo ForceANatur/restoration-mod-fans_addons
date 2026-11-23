@@ -1457,6 +1457,18 @@
 	<texture			path="units/pd2_mod_cruel/characters/ene_police_heavygunner/swat_body_df"/>
 	<texture			path="units/pd2_mod_cruel/characters/ene_police_heavygunner/helmets_atlas_il"/>
 	<texture			path="units/pd2_mod_cruel/characters/ene_police_heavygunner/swat_body_il"/>
+
+	<!--Deep Security as ASU-->
+	<object				path="units/pd2_mod_cruel/characters/ene_deep_security_3/ene_deep_security_3"/>
+	<cooked_physics		path="units/pd2_mod_cruel/characters/ene_deep_security_3/ene_deep_security_3"/>
+	<model				path="units/pd2_mod_cruel/characters/ene_deep_security_3/ene_deep_security_3"/>
+	<unit				path="units/pd2_mod_cruel/characters/ene_deep_security_3/ene_deep_security_3" load="true"/>
+	<material_config	path="units/pd2_mod_cruel/characters/ene_deep_security_3/ene_deep_security_3"/>
+	<material_config	path="units/pd2_mod_cruel/characters/ene_deep_security_3/ene_deep_security_3_contour" />
+	<unit				path="units/pd2_mod_cruel/characters/ene_deep_security_3/ene_deep_security_3_husk" load="true"/>
+
+	<df_nm_il			path="units/pd2_mod_cruel/characters/ene_deep_security_3/head"/>
+	<df_nm				path="units/pd2_mod_cruel/characters/ene_deep_security_3/body"/>
 	<!--CRUEL TRANCE END HERE-->
 
 	<!--WEAPONS GO HERE-->

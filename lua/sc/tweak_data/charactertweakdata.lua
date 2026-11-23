@@ -928,6 +928,10 @@ function CharacterTweakData:_init_swat(presets)
 		self.hrt_titan_heavy.custom_voicework = "heavygunner"
 	end
 	table.insert(self._enemy_list, "hrt_titan_heavy")
+
+	self.hrt_titan_cruel = deep_clone(self.hrt_titan)
+	self.hrt_titan_cruel.custom_voicework = "bravo_murky"
+	table.insert(self._enemy_list, "hrt_titan_cruel")
 end
 
 function CharacterTweakData:_init_heavy_swat(presets)	
@@ -20725,7 +20729,7 @@ function CharacterTweakData.character_map(...)
 			}
 		}
 
-		char_map.cruel = { --(❌, this one can not be a solo project with the sheer units for this)
+		char_map.cruel = { --i am not doing the new cruel trance on pre existing units. this took a lot of willpower to port :(
 			path = "units/pd2_mod_cruel/characters/",
 			list = {
 				"ene_cop_4",
@@ -20766,7 +20770,8 @@ function CharacterTweakData.character_map(...)
 				"ene_city_swat_3",
 				"ene_city_swat_r870",
 				"ene_spook_1",
-				"ene_police_heavygunner"
+				"ene_police_heavygunner",
+				"ene_deep_security_3"
 			}
 		}
 
