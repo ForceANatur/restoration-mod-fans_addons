@@ -560,11 +560,11 @@ function CharacterTweakData:_init_fbi(presets)
 	--temp until i can ask hylie for her voice
 	self.fbi_vet_cruel.custom_voicework = "bruce"
 	table.insert(self._enemy_list, "fbi_vet_cruel")
-		
-	self.meme_man = deep_clone(self.fbi_vet)		
-	self.meme_man.tags = {"law", "tank", "special"}		
+
+	self.meme_man = deep_clone(self.fbi_vet)
+	self.meme_man.tags = {"law", "tank", "special"}
 	self.meme_man.HEALTH_INIT = 500
-	self.meme_man.headshot_dmg_mul = 12.5		
+	self.meme_man.headshot_dmg_mul = 12.5
 	self.meme_man.can_shoot_while_dodging = true
 	self.meme_man.smoke_dodge_increase = 10
 	self.meme_man.priority_shout = "f30"
@@ -576,6 +576,7 @@ function CharacterTweakData:_init_fbi(presets)
 	self.meme_man.use_animation_on_fire_damage = false
 	self.meme_man.move_speed = presets.move_speed.lightning
 	self.meme_man.surrender = nil
+	self.meme_man.custom_voicework = "meme_man"
 	self.meme_man.is_special = true
 	self.meme_man.no_asu = true
 	self.meme_man.heal_cooldown = 22.5
@@ -584,14 +585,14 @@ function CharacterTweakData:_init_fbi(presets)
 	self.meme_man.modify_health_on_tweak_change = true
 	self.meme_man.tmp_invulnerable_on_tweak_change = 6.5
 	self.meme_man.priority_shout = "f30"
-	self.meme_man.bot_priority_shout = "f30x_any"	
-	self.meme_man.custom_shout = false	
+	self.meme_man.bot_priority_shout = "f30x_any"
+	self.meme_man.custom_shout = false
 	table.insert(self._enemy_list, "meme_man")	
-	self.meme_man_shield = deep_clone(self.meme_man)		
-	self.meme_man_shield.tags = {"medic", "special", "shield"}		
+	self.meme_man_shield = deep_clone(self.meme_man)
+	self.meme_man_shield.tags = {"medic", "special", "shield"}
 	self.meme_man_shield.priority_shout = "f30"
 	self.meme_man_shield.bot_priority_shout = "f30x_any"
-	self.meme_man_shield.priority_shout_max_dis = 3000				
+	self.meme_man_shield.priority_shout_max_dis = 3000
 	self.meme_man_shield.access = "gangster"
 	self.meme_man_shield.use_animation_on_fire_damage = false
 	self.meme_man_shield.surrender = nil
@@ -611,15 +612,15 @@ function CharacterTweakData:_init_fbi(presets)
 	self.meme_man_shield.calls_in = nil
 	self.meme_man_shield.ignore_medic_revive_animation = true
 	self.meme_man_shield.damage.hurt_severity = presets.hurt_severities.only_explosion_hurts
-	self.meme_man_shield.damage.shield_knocked = true	
-	self.meme_man_shield.custom_shout = false		
-	table.insert(self._enemy_list, "meme_man_shield")	
+	self.meme_man_shield.damage.shield_knocked = true
+	self.meme_man_shield.custom_shout = false
+	table.insert(self._enemy_list, "meme_man_shield")
 
 	--April Fools Vet Cop
 	self.vetlod = deep_clone(self.fbi_vet)	
 	self.vetlod.speech_prefix_p1 = "buge"
 	self.vetlod.speech_prefix_p2 = nil
-	self.vetlod.speech_prefix_count = nil		
+	self.vetlod.speech_prefix_count = nil
 	self.vetlod.custom_voicework = "bruce_bitcrushed"
 	self.vetlod.access = "fbi"
 	table.insert(self._enemy_list, "vetlod")
@@ -1264,7 +1265,23 @@ function CharacterTweakData:_init_city_swat(presets)
 	self.city_swat_guard.melee_weapon = "baton"
 	self.city_swat_guard.use_radio = nil
 	table.insert(self._enemy_list, "city_swat_guard")
-			
+
+	--Mememan 4, High Dodge chance, Takes no melee damage. Have fun! :D
+	self.city_swat_dodge_mememan = deep_clone(self.city_swat)
+	self.city_swat_dodge_mememan.tags = {"law", "custom", "special"}
+	self.city_swat_dodge_mememan.HEALTH_INIT = 42
+	self.city_swat_dodge_mememan.priority_shout_max_dis = 3000
+	self.city_swat_dodge_mememan.priority_shout = "g29"
+	self.city_swat_dodge_mememan.bot_priority_shout = "g29"
+	self.city_swat_dodge_mememan.is_special = true
+	self.city_swat_dodge_mememan.custom_shout = true
+	self.city_swat_dodge_mememan.damage.bullet_dodge_chance = 90
+	self.city_swat_dodge_mememan.headshot_dmg_mul = 6.9
+	self.city_swat_dodge_mememan.damage.melee_damage_mul = 0
+	self.city_swat_dodge_mememan.custom_voicework = "meme_man"
+	self.city_swat_dodge_mememan.surrender = nil
+	table.insert(self._enemy_list, "city_swat_dodge_mememan")
+
 	--Weekend
 	self.weekend = deep_clone(self.city_swat)
 	if self:get_ai_group_type() == "russia" then
@@ -19162,11 +19179,11 @@ Hooks:PostHook(CharacterTweakData, "_create_table_structure", "remod_create_tabl
 	table.insert(self.weap_ids, "g3a3_npc")
 	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_g3a3/wpn_npc_g3a3"))
 
-	--Highly modified CAR-4 (❌)
+	--Highly modified CAR-4
 	table.insert(self.weap_ids, "m4_tacticool_snp")
 	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_sniper_tacticool/wpn_npc_sniper_tacticool"))
 
-	--fanni gee thirte sex 😂 (❌)
+	--fanni gee thirte sex 😂
 	table.insert(self.weap_ids, "g36_lol_npc")
 	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_g36_mememan/wpn_npc_g36_mememan"))
 
@@ -20077,9 +20094,9 @@ function CharacterTweakData.character_map(...)
 		table.insert(char_map.basic.list, "ene_bulldozer_4_minion")			
 		table.insert(char_map.basic.list, "ene_mememan_1")
 		table.insert(char_map.basic.list, "ene_mememan_2")
-		table.insert(char_map.basic.list, "ene_mememan_3") --(❌)
-		table.insert(char_map.basic.list, "ene_mememan_4") --(❌)
-		table.insert(char_map.basic.list, "ene_mememan_5_kamikaze") --(❌)
+		table.insert(char_map.basic.list, "ene_mememan_3")
+		table.insert(char_map.basic.list, "ene_mememan_4")
+		table.insert(char_map.basic.list, "ene_mememan_5_kamikaze")
 		table.insert(char_map.basic.list, "ene_bulldozer_biker_1")
 		table.insert(char_map.basic.list, "ene_guard_biker_1")
 		table.insert(char_map.basic.list, "ene_gang_black_enforcer")

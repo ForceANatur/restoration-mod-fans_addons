@@ -64,6 +64,7 @@ function MutatorsManager:init()
 		-- Fork Content
 		MutatorUMP4U2:new(self),
 		MutatorPiggyBulldozer:new(self),
+		MutatorMemezMalware:new(self),
 		-- anything under here is ❌
 --[[	MutatorOopsAllSpecials:new(self),
 		MutatorSnipersAndSnipers:new(self),
@@ -74,7 +75,6 @@ function MutatorsManager:init()
 		MutatorSWOLENBOYS:new(self),
 		MutatorDeathvoxMedics:new(self),
 		MutatorSafehouseNightmareHell:new(self),
-		MutatorMemezMalware:new(self),
 		MutatorFragDozers:new(self),
 		MutatorAdvancedTraining:new(self),
 		MutatorHeavyFBITitans:new(self)

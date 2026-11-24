@@ -3,10 +3,8 @@
   "ene_murky_cs_cop" : "Murkywater Security",
   "ene_swat" : "Murkywater Tactical Security",
   "ene_swat_heavy" : "Murkywater Heavy Security",
-  "ene_bulldozer_1" : "OMNIA Bulldozer",
   "ene_bulldozer_2" : "OMNIA Blackdozer",
   "ene_bulldozer_3" : "OMNIA Skulldozer",
-  "ene_bulldozer_medic" : "OMNIA Medicdozer",
   "ene_bulldozer_minigun" : "OMNIA Benellidozer",
   "ene_fbi" : "Murkywater SRT",
   "ene_murky_hrt" : "Murkywater SRT",  
@@ -32,5 +30,6 @@
   "ene_grenadier" : "Murky Grenadier",
   "ene_murky_shield_fbi" : "Murkywater Marine Shield",
   "ene_murky_shield_yellow" : "Murkywater Tactical Security Shield",
-  "ene_murky_shield_city" : "Murkywater Elite Shield"
+  "ene_murky_shield_city" : "Murkywater Elite Shield",
+  "ene_murky_wildcard" : "Wildcard Murkywater Unit"
 }

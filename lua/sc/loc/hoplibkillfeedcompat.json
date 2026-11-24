@@ -1,8 +1,17 @@
 { 
   "ene_mememan_1" : "MEME MAN: THE AKIMBO MINIGUNNER",
   "ene_mememan_2" : "MEME MAN 2 ELECTRIC BOOGALOO: THE OVERPOWERED SHIELD MAN",
+  "ene_mememan_3" : "THEH BESTEST SNAIPAH IN DA WROLD!!!",
+  "ene_mememan_4" : "MR. DODGE 'Mc DOJEFACE' DODGE",
+  "ene_mememan_5_kamikaze" : "Mr. Boom",
   "ene_big_dave" : "BIG DAVE",
   "ene_veteran_lod" : "EPIC JONATHAN MACCLANE",
+  "ene_gensec_heavygunner" : "GenSec HeavyGunner Elite Leader Squad",
+  "ene_heavymedic_1" : "Emergency Paramedic Heavy",
+  "ene_swole_spook_1" : "S W O L E  C L O A K E R",
+  "ene_swole_medic_m249" : "B U F F  M E D I C",
+  "ene_gensec_sgt" : "GenSec Sergeant",
+  "ene_wildcard" : "Wildcard Agent",
   "ene_fbi" : "HRT",
   "ene_fbi_boss" : "Agent Riker",   
   "ene_nypd_murky" : "Murkywater Elite Security",
@@ -83,7 +92,8 @@
   "ene_titan_rifle" : "OMNIA Titan SWAT",   
   "ene_omnia_lpf" : "OMNIA LPF",
   "ene_akan_lpf" : "D-1001 ZETA LPF",
-  "ene_fbi_titan" : "OMNIA ASU",    
+  "ene_fbi_titan" : "OMNIA ASU",
+  "ene_fbi_titan_heavy" : "OMNIA ASU Heavy",
   "ene_vip" : "Captain Winters",
   "ene_phalanx_1" : "Winters Minion Shield",
   "ene_phalanx_1_assault" : "OMNIA Titan Shield",
@@ -214,6 +224,6 @@
   "ene_cartel_soldier_heavy_fbi_shotgun" : "Valerio Cartel Heavy Veteran Soldier",
   "ene_cartel_soldier_city" : "Valerio Cartel Elite Soldier",
   "ene_cartel_soldier_city_shotgun" : "Valerio Cartel Elite Soldier",
-  "ene_cartel_soldier_heavy_city" : "Valerio Cartel Heavy Elite Soldier"
-
+  "ene_cartel_soldier_heavy_city" : "Valerio Cartel Heavy Elite Soldier",
+  "ene_bulldozer_captain" : "Mr. Cruel T"
 }
